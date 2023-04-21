@@ -64,6 +64,11 @@
 }
 
 /* 헤더 상단 */
+
+.header--container__top{
+    
+}
+
 .header--container__top>div{
     width: 250px;
     display: flex;
