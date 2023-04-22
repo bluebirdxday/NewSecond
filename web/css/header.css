@@ -22,8 +22,8 @@
 .glass{
     color:#005EEE ;
     cursor: pointer;
-   float: right;
-   margin: 10px;
+    float: right;
+    margin: 10px;
 }
 /* 검색창 섹션 */
 .header--mid__serach{
