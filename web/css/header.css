@@ -1,3 +1,15 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+
+header{
+    font-family: 'Pretendard';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 
 /* 컨테이너 박스 전체 영역 */
 .header--container__containerbox{
@@ -6,7 +18,7 @@
     height: 150px;
     width: 100%;
     margin: auto;
-    margin-top: 10px;
+    padding-top: 10px;
     background-color: #fafcee;
 }
 
@@ -20,15 +32,16 @@
 
 /* 검색 돋보기 이미지 */
 .glass{
-    color:#005EEE ;
+    color:#C2D3EB ;
     cursor: pointer;
    float: right;
    margin: 10px;
 }
+
 /* 검색창 섹션 */
 .header--mid__serach{
-    border: 1px solid #005EEE;
-    color:#005EEE;
+    border: 2px solid #C2D3EB;
+    color:#C2D3EB;
     border-radius: 30px; 
     margin: 20px;
 }
@@ -63,25 +76,27 @@
     display: inline-block;
 }
 
+
 /* 헤더 상단 */
-
-.header--container__top{
-    
-}
-
 .header--container__top>div{
     width: 250px;
     display: flex;
     justify-content: space-between;
-}
-
-/* 로그아웃 | 마이페이지 | 관심상품 */
-.header--container__top span{
     align-items: center;
 }
 
+/* 로그아웃 | 마이페이지 | 관심상품 */
+/* .header--container__top span{
+    align-items: center;
+} */
+
 .header--container__top a{
     text-decoration: none;
+}
+
+.header--container__top a:visited{
+   color: black;
+   text-decoration: none;
 }
 
 /* 헤더 중단 */
@@ -103,9 +118,16 @@
     align-items: center;
 }
 
+.header--left__img>img{
+    width: 280px;
+    height: 90px;
+}
 
 
 
+.header--container__bottom{
+    background-color: #fafcee;
+}
 
 
 /* nav-bar menu */
@@ -138,7 +160,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #000;
+    background-color: #C2D3EB;
 }
 
 .nav--container__menu div:hover::after {
