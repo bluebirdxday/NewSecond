@@ -12,11 +12,11 @@ header{
 /* 컨테이너 박스 전체 영역 */
 .header--container__containerbox{
     display: inline-block;
-    height: 195px;
+    height: 150px;
     width: 100%;
     margin: auto;
-    padding-top: 20px;
-    border-bottom: 1px solid #E3E3E3;
+    padding-top: 10px;
+    border-bottom: 2px solid #E3E3E3;
     background-color: #fafcee;
 }
 
@@ -53,7 +53,7 @@ header{
     justify-content: center;
     padding-left: 10px;
     margin: 10px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .search:focus{
@@ -77,13 +77,21 @@ header{
 
 
 /* 헤더 상단 */
+
 .header--container__top>div{
-    width: 250px;
+    width: 13%;
     display: flex;
     justify-content: space-between;
+    margin: auto;
     margin-left: auto;
-    margin-right: 250px;
+    margin-right: 150px;
 }
+
+.header--container__top span{
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 
 .header--container__top a{
     text-decoration: none;
@@ -97,16 +105,14 @@ header{
 /* 헤더 중단 */
 .header--container__middle{
     display: flex;
-    padding-top: 10px;
     border-bottom: 2px solid #E3E3E3;
     justify-content: center;
-    padding-bottom: 20px;
 }
 
 /* 상품명 검색창 */
 .header--mid__serach{
     display: flex;
-    width: 700px;
+    width: 600px;
     background-color: #ffffff;
 }
 
@@ -118,8 +124,8 @@ header{
 
 /* 로고 */
 .homeLogo{
-    width: 280px;
-    height: 90px;
+    width: 240px;
+    height: 70px;
 }
 
 
@@ -132,12 +138,17 @@ header{
     margin-left: 150px;
 }
 
+.header--right__icons img{
+    width: 2rem;
+    height: 2rem;
+}
+
 /* nav-bar menu */
 .nav--container__menu{
     display: flex;
     margin: auto;
-    height: 50px;
-    width: 600px;
+    height: 28%;
+    width: 700px;
     justify-content: space-between;
     align-items: center;
     background-color: #fafcee;
