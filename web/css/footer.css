@@ -49,3 +49,9 @@
 .footer--right a:hover{
     color: #005EEE;
 }
+
+.footerHomeLogo{
+    width: 200px;
+    height: auto;
+    
+}

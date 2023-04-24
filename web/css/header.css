@@ -1,29 +1,37 @@
 *{
     font-family: 'Pretendard';
+    margin: 0;
+    padding: 0;
 }
 
 header{
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    display: flex;
+    height: 150px;
 }
+
+header>section:nth-child(1){ height: 10%; }
+header>section:nth-child(2){ height: 60%; }
+header>section:nth-child(3){ height: 30%; }
 
 /* 컨테이너 박스 전체 영역 */
 .header--container__containerbox{
     display: inline-block;
-    height: 150px;
     width: 100%;
     margin: auto;
     padding-top: 10px;
-    border-bottom: 2px solid #E3E3E3;
     background-color: #fafcee;
+    border-bottom: 2px solid #E3E3E3;
 }
 
 /* 컨테이너 박스 각 섹션 영역의 설정 */
 .header--container__containerbox section{
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
+
 
 /* 검색 돋보기 이미지 */
 .searchGlass{
@@ -60,16 +68,6 @@ header{
     outline: none;
 } 
 
-.header--right__icons img{
-    width: 36px;
-    height: 36px;
-    margin: 10px;
-}
-
-.header--right__icons a{
-    text-decoration: none;
-}
-
 .header--right__user-menu{
     display: inline-block;
 }
@@ -79,9 +77,9 @@ header{
 /* 헤더 상단 */
 
 .header--container__top>div{
-    width: 13%;
+    width: 12%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
     margin-left: auto;
     margin-right: 150px;
@@ -98,8 +96,8 @@ header{
 }
 
 .header--container__top a:visited{
-   color: black;
-   text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 /* 헤더 중단 */
@@ -122,10 +120,11 @@ header{
     align-items: center;
 }
 
+
 /* 로고 */
 .homeLogo{
     width: 240px;
-    height: 70px;
+    height: auto;
 }
 
 
@@ -134,20 +133,22 @@ header{
 }
 
 /* 내상점, 채팅, 알림 아이콘 */
-.header--right__icons{
-    margin-left: 150px;
-}
-
 .header--right__icons img{
     width: 2rem;
     height: 2rem;
+    margin: 10px;
+}
+
+
+.header--right__icons a{
+    text-decoration: none;
 }
 
 /* nav-bar menu */
 .nav--container__menu{
     display: flex;
     margin: auto;
-    height: 28%;
+    height: 30%;
     width: 700px;
     justify-content: space-between;
     align-items: center;
