@@ -9,6 +9,7 @@ header{
     top: 0;
     display: flex;
     height: 150px;
+    user-select: none;
 }
 
 header>section:nth-child(1){ height: 10%; }
@@ -187,4 +188,8 @@ header>section:nth-child(3){ height: 30%; }
 
 .nav--container__menu div:hover::after {
     display: block;
+}
+
+.login{
+    cursor: pointer;
 }
