@@ -1,0 +1,65 @@
+.qna_bar{
+    margin: 10px 10px;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.qna_head div{
+    padding: 1px;
+    margin: 10px ;
+}
+
+.qna_head{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+    border: 1px solid #005EEE;
+    background-color: #8ab2e24b;
+    color: #005EEE;
+}
+
+.qna_content_head{
+    margin: 15px 0px;   
+}
+
+
+#qna_content{
+    border-radius: 13px;
+    border: none;
+    outline: none;
+    width: 80%;
+    border: 1px solid #005EEE;
+    background-color: #8ab2e22e;
+    margin: 0px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+#qna_content::placeholder{
+  color: #005EEE;
+}
+
+.qna_photo_send{
+ border: none;
+ cursor: pointer;
+ color: #005EEE;
+ padding: 0px;
+ margin: 0px;
+
+}
+
+.qna_button{
+   background-color: #005EEE;
+   color: white;
+   padding: 8px 30px;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: none;
+   cursor: pointer;
+}
