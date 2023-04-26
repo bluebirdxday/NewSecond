@@ -1,7 +1,16 @@
-function show(){
-    document.querySelector('.modal--layout').classList.add('show');
+function openModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = 'block';
+} 
+  
+function closeModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = 'none';
 }
 
-function closeModal(){
-    document.querySelector('.modal--layout').classList.remove('show');
+function closeModalWindow(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 }

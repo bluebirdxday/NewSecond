@@ -4,38 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <link rel="stylesheet" href="/web/css/로그인.css">
 </head>
 <body>
 
-    <div class="black-bg modal--layout">
-        <div class="white-bg modal--container">
-            <div class="row">
-                <div class="col-10"></div>
-                <i class="fa-solid fa-xmark col-2 modal--close" style="cursor: pointer;" onclick="closeModal()"></i>
-            </div>
-            <img src="/web/src/img/LOGO.png">
-            <br>
-            <section class="w-80">
-                <fieldset class="id-pw-area">
-                    <input class="rounded-4 modal--login__input" type="text" name="inputId" placeholder="이메일" autocomplete="off">
-                    <input class="mt-2 rounded-4 input" type="password" name="inputPw" placeholder="비밀번호" >
-                </fieldset>
-            </section>
-            <section>
-                <button class="col-6 mt-3 btn btn-primary w-75">로그인</button>
-            </section>
-            <section class="d-flex justify-content-evenly mt-3 modal--search-bar">
-                <div>아이디 찾기</div>
-                <div>비밀번호 찾기</div>
-            </section>
-            <section class="mt-2">
-                <div>회원가입</div>
-            </section>
+    <div id="loginModal" class="modal" onclick="closeModalWindow(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>로그인/회원가입</h2>
+            <p>로그인 또는 회원가입을 해주세요.</p>
+            <!-- 로그인/회원가입 폼 등을 여기에 추가 -->
         </div>
-    </div> 
+    </div>
 
-
+    <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

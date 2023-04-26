@@ -1,55 +1,34 @@
-
-.modal--layout{
-    visibility: hidden;
-}       
-
-.black-bg {
-    width : 100%;
-    height : 129%;
-    position : fixed;
-    top: -50px;
-    background : rgba(0,0,0,0.5);
-    z-index : 5;
-    padding: 30px;
-}
-
-.white-bg {
-    width: 300px;
-    margin: auto;
-    margin-top: 150px;
-    background: white;
-    border-radius: 5px;
-    padding: 30px;
-    text-align: center;
-} 
-
-.modal--container img{
-    margin-top: 10px;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
-    margin-bottom: 10px;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.show{
-    visibility: visible;
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
 
-.modal--close{
-    font-size: 1.2rem;
-    color: gray;
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.modal--login__btn{
-    background-color: #225dcb;
-    border: 0;
-    border-radius: 5px;
-    width: 20px;
-}
-
-.modal--search-bar{
-    font-size: 0.7rem;
-}
-
-.id-pw-area input{
-    width: 70%;
-    padding-left: 20px;
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
