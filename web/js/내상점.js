@@ -7,14 +7,15 @@ tapContent.forEach(el => el.style.display = 'none');
 tapContent[0].style.display = 'block';
 
 // 탭메뉴 클릭 이벤트
-var tabList = document.querySelectorAll(".tabs li");
+const tabList = document.querySelectorAll(".tabs li");
 
 tabList.forEach(function(tab) {
-  
+
     tab.addEventListener('click' , function(){
         tabList.forEach(function(e){
             e.classList.remove('active');
-      });
-      tab.classList.add('active');
+    });
+
+    tab.classList.add('active');
     });
 });

@@ -209,7 +209,7 @@ a{
     display: table-cell;
     height: 100%;
     padding: 15px 0 15px;
-    border-bottom: 1px solid #222;
+    /* border-bottom: 1px solid #222; */
     border-right: 2px solid #D9D9D9;
     text-align: center;
 }
@@ -247,4 +247,14 @@ a{
     background-color: #D9D9D9;
 }
 
-.myshop--tab__content>div>div:first-of-type
+.myshop--tab__content>div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* 최신순, 인기순, 저가순, 고가순 */
+.myshop--tab1__sort{
+    display: flex;
+    justify-content: center;
+}
