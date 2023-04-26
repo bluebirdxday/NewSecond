@@ -1,4 +1,3 @@
-<!-- 20230426 상준 작성 시작 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,31 +8,44 @@
     <title>PRICEVIEW IN CONSTRUCTION</title>
 </head>
 <body>
-    <div class="priceview--background" id="priceview--background">
-        <section class="priceview--top__title" id="priceview--top__title">
-            <h1>시세조회</h1>
+    <div class="content--priceView__background">
+        <section class="content--priceView__top">
+            시세조회
         </section>
 
-        <section class="priceview--main__background" id="priceview--main__background">
-            <div class="priceview--main"> 
-                <div class="priceview--catchphrase">
+        <section class="content--priceView__main">
+            <aside class="content--aside__left">left</aside>
+            <section class="priceView--background">
+                <div class="priceView--Titlesentence">
                     내가 원하는 상품은 얼마에 거래되고 있을까요?<br>
                     쉽고 빠르게 시세를 조회하세요!
                 </div>
-                <div class="priceview--box" id="priceview--box"> <!-- 여기부터 사실상의 mainContent 시작 -->
-                    <span id="priceview--box__left">
-                        <div id="priceview--box__search">
-                            <div>검색어를 입력하세요
-                                <div>검색 아이콘 삽입</div>
-                            </div>
-                        </div>
-                        <div id="priceview--box__recentSearch">최근 시세조회한 검색어</div>
+
+                <div class="priceView--box"> <!-- main은 여기부터 -->
+                    <!--  -->
+
+                    <span class="priceView--box__left">
+                        <!--  -->
+
+                        <div class="priceView--leftBox__top"></div>
+
+                        <!-- 좌측 상하 분할 -->
+
+                        <div class="priceView--leftBox__bottom"></div>
+
+                        <!--  -->
                     </span>
-                    <span id="priceview--box__right">
-                        시세조회 인기 검색어
+
+                    <!-- 좌우 분할 -->
+
+                    <span class="priceView--box__right">
+
                     </span>
+
+                    <!--  -->
                 </div>
-            </div>
+            </section>
+            <aside class="content--aside__right">right</aside>
         </section>
     </div>
 </body>

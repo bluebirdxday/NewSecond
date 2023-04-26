@@ -1,121 +1,139 @@
-/* 20230426 상준 작성 시작 */
-.priceview--background {
-    background-color: lightblue;
+/* 20230425 상준 작성 시작 */
+/* 
+    css는 class
+    js는 id
+*/
+
+/* ---------------------------------------------------- */
+/* 1depth */
+/* ---------------------------------------------------- */
+
+/* 화면 전체 배경 */
+.content--priceView__background {
+    background-color: lightblue;                                                   /* 추후 삭제 */
     height: calc(100vh - 150px); /* header 150px 고정값 빼기 */
 }
 
-/* ---------------------------------------------------- */
 
-.priceview--top__title { /* 이 부분은 추후 높이 협의 보기 */
+/* 시세조회 타이틀 */
+.content--priceView__top { /* 이 부분은 추후 높이 협의 보기 */
     background-color: #C2D3EB;
-    color: #2365B9;
-    font-weight: bold;
-    font-style: italic;
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 200px; /* priceview--main의 width 참조 */
+    padding-left: 200px; /* priceView--box 양 사이드 값 참조 */
+
+    color: #2365B9;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
 }
 
 /* ---------------------------------------------------- */
 
-.priceview--main__background {
+/* 시세조회 메인 */
+.content--priceView__main {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
-.priceview--main {
+/* ---------------------------------------------------- */
+/* 2depth */
+/* ---------------------------------------------------- */
+
+/* 좌측 여백 */
+.priceView--aside__left {
+    height: 100%;
+    width: 200px;
+}
+
+
+/* 시세조회 박스 배경 */
+.priceView--background {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: calc(100vh - 150px - 100px);
-    width: calc(100vw - 400px);
-}
-
-.priceview--catchphrase {
-    border: 3px solid black;
-    height: 200px;
-    width: 90%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    height: calc((100vh - 150px) - 100px);
+    width: calc(100vw - 400px); /* 좌/우측 여백 빼기 */
+}
 
-    font-size: 30px;
+
+/* 우측 여백 */
+.priceView--aside__right {
+    height: 100%;
+    width: 200px;
+}
+
+/* ---------------------------------------------------- */
+
+/* 시세조회 캐치프레이즈 */
+.priceView--Titlesentence {
+    height: 200px;
+    display: flex;
+    align-items: center;
+
+    font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
-    color: #2365B9;
+    color:#2365B9;
 }
 
-/* ---------------------------------------------------- */
-/* -------- 여기부터 사실상의 mainContent 시작 -------- */
-/* ---------------------------------------------------- */
 
-.priceview--box {
+/* 시세조회 박스 */
+.priceView--box {
     background-color: #C2D3EB;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    height: calc(100% - 200px); /* 200px = priceview--catchphrase의 높이 */
+    height: 90%;
     width: 90%;
     border-radius: 20px;
-    margin-top: 10px;
     margin-bottom: 10px;
 }
 
 /* ---------------------------------------------------- */
-/* -----------------------left------------------------- */
+/* 3depth - left */
+/* ---------------------------------------------------- */
 
-#priceview--box__left {
+/* 좌측 박스 */
+.priceView--box__left {
+    border: 3px solid black;
+    height: 95%;
+    width: 40%;
+}
+
+/* ---------------------------------------------------- */
+
+/* 좌측 상단 박스 */
+.priceView--leftBox__top {
+    border: 1px dotted black;
+    height: 40%;
+    width: 100%;
+}
+
+/* ---------------------------------------------------- */
+
+/* 좌측 하단 박스 */
+.priceView--leftBox__bottom {
+    border: 1px dotted black;
+    height: 60%;
+    width: 100%;
+}
+
+/* ---------------------------------------------------- */
+/* 3depth - right */
+/* ---------------------------------------------------- */
+
+/* 우측 박스 */
+.priceView--box__right {
     border: 3px solid black;
     height: 95%;
     width: 60%;
 }
 
 /* ---------------------------------------------------- */
-
-#priceview--box__search { /* 검색창 파트 */
-    border: 1px solid grey;
-    height: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    padding: 30px;
-}
-
-#priceview--box__search > div { /* 검색창 */
-    border: 3px solid #2365B9;
-    background-color: white;
-    height: 50px;
-    width: 80%;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 30px;
-}
-
-#priceview--box__search > div > div { /* 검색버튼 */
-    padding-right: 10px;
-}
-
-/* ---------------------------------------------------- */
-
-#priceview--box__recentSearch { /* 최근 시세조회한 검색어 파트 */
-    border: 1px solid grey;
-    height: 80%;
-}
-
-/* ---------------------------------------------------- */
-/* ---------------------right-------------------------- */
-
-#priceview--box__right { /* 시세조회 인기 검색어 파트 */
-    border: 3px solid black;
-    height: 95%;
-    width: 40%;
-}

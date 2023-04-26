@@ -1,46 +1,76 @@
 /* 20230425 상준 작성 시작 */
-.chatting--background {
-    background-color: lightblue;
+/* 
+    css는 class
+    js는 id
+*/
+
+/* ---------------------------------------------------- */
+/* 1depth */
+/* ---------------------------------------------------- */
+
+/* 화면 전체 배경 */
+.content--chatting__background {
+    background-color: lightblue;                                                   /* 추후 삭제 */
     height: calc(100vh - 150px); /* header 150px 고정값 빼기 */
 }
 
-/* ---------------------------------------------------- */
 
-.chatting--top__title { /* 이 부분은 추후 높이 협의 보기 */
+/* 채팅 타이틀 */
+.content--chatting__top { /* 이 부분은 추후 높이 협의 보기 */
     background-color: #C2D3EB;
-    color: #2365B9;
-    font-weight: bold;
-    font-style: italic;
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 200px; /* chatting--main의 width 참조 */
+    padding-left: 200px; /* chatting--box 양 사이드 값 참조 */
+
+    color: #2365B9;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
 }
 
-/* ---------------------------------------------------- */
+/* ---------------------------------------------------- */s
 
-.chatting--main__background {
+/* 채팅 메인 */
+.content--chatting__main {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
-.chatting--main {
+/* ---------------------------------------------------- */
+/* 2depth */
+/* ---------------------------------------------------- */
+
+/* 좌측 여백 */
+.chatting--aside__left {
+    height: 100%;
+    width: 200px;
+}
+
+
+/* 채팅 박스 배경 */
+.chatting--background {
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1200px;
-    height: calc(100vh - 150px - 100px);
+    height: calc((100vh - 150px) - 100px);
     width: calc(100vw - 400px);
 }
 
-/* ---------------------------------------------------- */
-/* -------- 여기부터 사실상의 mainContent 시작 -------- */
+
+/* 우측 여백 */
+.chatting--aside__right {
+    height: 100%;
+    width: 200px;
+}
+
 /* ---------------------------------------------------- */
 
+/* 채팅 박스 */
 .chatting--box {
     background-color: #C2D3EB;
     display: flex;
@@ -52,9 +82,11 @@
 }
 
 /* ---------------------------------------------------- */
-/* -----------------------left------------------------- */
+/* 3depth - left */
+/* ---------------------------------------------------- */
 
-#chatting--box__left{
+/* 좌측 채팅 박스 */
+.chatting--box__left {
     background-color: white;
     height: 90%;
     width: 30%;
@@ -67,7 +99,11 @@
     padding-bottom: 10px;
 }
 
-#chatting--box__left > a{
+/* ---------------------------------------------------- */
+
+/* 채팅 박스 내 프로필 */
+.chatting--myProfile {
+    background-color: yellow;
     height: 100px;
     width: 90%;
     border-radius: 20px;
@@ -75,7 +111,10 @@
     margin-bottom: 5px;
 }
 
-#client--list { /* 이 안에서 스크롤 */
+/* ---------------------------------------------------- */
+
+/* 채팅 박스 고객 프로필 박스 */
+.chatting--clientList {
     border: 3px solid black;
     height: calc(100% - 100px);
     width: 90%;
@@ -83,7 +122,9 @@
     margin-bottom: 5px;
 }
 
-#client--list > div {
+
+/* 채팅 박스 고객 프로필 리스트 */
+.chatting--clientList > div {
     background-color: #C2D3EB;
     height: 100px;
     border-radius: 20px;
@@ -91,9 +132,11 @@
 }
 
 /* ---------------------------------------------------- */
-/* ---------------------right-------------------------- */
+/* 3depth - right */
+/* ---------------------------------------------------- */
 
-#chatting--box__right{
+/* 우측 채팅 박스 */
+.chatting--box__right {
     background-color: white;
     height: 90%;
     width: 65%;
@@ -106,16 +149,9 @@
     padding-bottom: 10px;
 }
 
-#chatting--box__right > :first-child {
-    background-color: #C2D3EB;
-    height: 100px;
-    width: 95%;
-    border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
-#chatting--box__right > :last-child {
+/* 채팅 시 연결 게시물 */
+.chatting--post {
     background-color: #C2D3EB;
     height: 100px;
     width: 95%;
@@ -126,7 +162,8 @@
 
 /* ---------------------------------------------------- */
 
-#chatting--list { /* 이 안에서 스크롤 */
+/* 채팅이 이루어지는 공간 */
+.chatting--list {
     height: calc(100% - 100px - 100px);
     width: 95%;
     border: 3px solid black;
@@ -134,9 +171,25 @@
     margin-bottom: 5px;
 }
 
-#chatting--list > div {
+
+/* 말풍선 */
+.chatting--list > div {
     background-color: yellow;
     height: 100px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+/* ---------------------------------------------------- */
+
+/* 채팅 치는 곳 */
+.chatting--chat {
+    background-color: #C2D3EB;
+    height: 100px;
+    width: 95%;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* ---------------------------------------------------- */
