@@ -1,0 +1,142 @@
+/* 20230425 상준 작성 시작 */
+.chatting--background {
+    background-color: lightblue;
+    height: calc(100vh - 150px); /* header 150px 고정값 빼기 */
+}
+
+/* ---------------------------------------------------- */
+
+.chatting--top__title { /* 이 부분은 추후 높이 협의 보기 */
+    background-color: #C2D3EB;
+    color: #2365B9;
+    font-weight: bold;
+    font-style: italic;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 200px; /* chatting--main의 width 참조 */
+}
+
+/* ---------------------------------------------------- */
+
+.chatting--main__background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chatting--main {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: calc(100vh - 150px - 100px);
+    width: calc(100vw - 400px);
+}
+
+/* ---------------------------------------------------- */
+/* -------- 여기부터 사실상의 mainContent 시작 -------- */
+/* ---------------------------------------------------- */
+
+.chatting--box {
+    background-color: #C2D3EB;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90%;
+    width: 90%;
+    border-radius: 20px;
+}
+
+/* ---------------------------------------------------- */
+/* -----------------------left------------------------- */
+
+#chatting--box__left{
+    background-color: white;
+    height: 90%;
+    width: 30%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: sapce;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#chatting--box__left > a{
+    height: 100px;
+    width: 90%;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#client--list { /* 이 안에서 스크롤 */
+    border: 3px solid black;
+    height: calc(100% - 100px);
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#client--list > div {
+    background-color: #C2D3EB;
+    height: 100px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* ---------------------right-------------------------- */
+
+#chatting--box__right{
+    background-color: white;
+    height: 90%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#chatting--box__right > :first-child {
+    background-color: #C2D3EB;
+    height: 100px;
+    width: 95%;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#chatting--box__right > :last-child {
+    background-color: #C2D3EB;
+    height: 100px;
+    width: 95%;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* ---------------------------------------------------- */
+
+#chatting--list { /* 이 안에서 스크롤 */
+    height: calc(100% - 100px - 100px);
+    width: 95%;
+    border: 3px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#chatting--list > div {
+    background-color: yellow;
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

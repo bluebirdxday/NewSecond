@@ -8,7 +8,7 @@
 }
 /* footer 속 section 배치 */
 .footer--logo, .footer--left, .footer--right{
-    height: 100px;
+    height: 150px;
     padding: 0 1.5rem 0 1.5rem;
 }
 
