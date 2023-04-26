@@ -1,0 +1,43 @@
+.container--outer{
+    background-color: #fff;
+    height: 1000px;
+    width: 100%;
+    display: flex;
+}
+
+.container--inner{
+    margin: 210px 40px 0px;
+}
+
+.container--inner__top{
+    display: flex;
+    flex-direction: row;
+}
+
+.searchNameCount{
+    width: 190px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: #c2d3eb;
+    opacity: 0.53;
+    padding-top: 14px;
+    font-size: 1.2em;
+    color: black;
+    font-weight: bolder;
+    box-shadow: 0 4 15 0 #000000;
+    text-align: center;
+    justify-content: center;
+}
+
+.selectSort{
+    justify-content: flex-end;
+}
+
+/* 판매 완료 상품 제외 체크박스 */
+.soldoutExcept + label{
+    width: auto;
+    height: 27px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 15%;
+}

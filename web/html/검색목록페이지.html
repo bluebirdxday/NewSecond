@@ -1,0 +1,56 @@
+<!--[서지영] 검색 목록 페이지 - 검색 기능, 검색 목록 기능별 조회, 더보기, 최근 검색어 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 목록 페이지</title>
+    
+    <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/web/css/검색목록페이지.css">
+    
+    <script src="/web/js/검색목록페이지.js"></script>
+    <script src="/web/src/includeHTML/main.js" type="module"></script>
+</head>
+<body style="overflow: auto;">
+    <div>
+        <!-- header -->
+        <div><header data-include="/web/include/header.html"></header></div>
+
+        <!-- content 내용 부분 -->
+        <div class="container--outer">
+            <!--  -->
+            <div class="container--inner">
+                <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
+                <div class="container--inner__top">
+                    <!-- 목록건수 -->
+                    <div class="searchNameCount">프라이탁 (152건)</div>
+                    <!-- 판매완료상품제외 -->
+                    <!-- js: 체크박스 누르면 판매 완료 상품은 제외하고 보이게. -->
+                    <div><input type="checkbox" class="soldoutExcept" id="check1">
+                        <label for="check1"> 판매 완료 상품 제외</label>
+                    </div>
+                    <!-- 기능별 조회 -->
+                    <div class="selectSort">
+                        <span>최신순</span>
+                        <span> | </span>
+                        <span>낮은가격순</span>
+                        <span> | </span>
+                        <span>높은가격순</span>
+                        <span> | </span>
+                        <span>인기순</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- footer -->
+        <div><footer data-include="/web/include/footer.html"></footer></div>
+    </div>
+    
+</body>
+</html>
