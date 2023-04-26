@@ -115,6 +115,23 @@
     border: 1px dotted black;
     height: 40%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+
+/* 검색창 */
+.priceView--leftBox__top > div {
+    background-color: white;
+    height: 50px;
+    width: 400px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ---------------------------------------------------- */
