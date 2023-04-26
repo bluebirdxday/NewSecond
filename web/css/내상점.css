@@ -226,6 +226,16 @@ a{
     color: #000000;
 }
 
+/* 탭 메뉴 모든 콘텐츠 */
+.myshop--tab__content{
+    display: none;
+}
+
+/* 활성화된 탭 메뉴 콘텐츠 */
+.myshop--tab__container div.active{
+    display: inherit;
+}
+
   /* 탭 메뉴 탭 txt */
 .tabs li a {
     font-size: 20px;
@@ -257,4 +267,9 @@ a{
 .myshop--tab1__sort{
     display: flex;
     justify-content: center;
+    padding: 18px;
+}
+
+.myshop--tab1__sort>div{
+    margin: 0 3px 0;
 }
