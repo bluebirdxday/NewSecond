@@ -12,72 +12,111 @@
 
     <link rel="stylesheet" href="/web/css/내상점.css">
 
-    <script src="/web/js/main.js" type="module"></script>
 </head>
 <body>
     
-    <header data-include="./include/content.html"></header>
+    <section class="myshop--profile">
 
-    <main>
+        <div class="myshop--profileImage__container">
+            <div class="myshop--profileImage__crop">
+                <img src="/web/src/img/profile.jpg" class="myshop--profileImage__img">
+            </div>
+        </div>
         
-        <section class="myshop">
-    
-            <div class="myshop--profileImage__container">
-                <div class="myshop--profileImage__crop">
-                    <img src="/web/src/img/profile.jpg" class="myshop--profileImage__img">
+        <div class="myshop--info__container">
+            <div class="myshop--info__top">
+                <div>
+                    <div class="myshop--info__title">윤슬 상점</div>
+                    <div class="myshop--info__connecting"></div>
                 </div>
+
+                <div>
+                    <button type="button" class="myshop--info__btn-follow">팔로우</button>
+                </div>
+            </div>
+
+            <div class="myshop--info__middle1">
+                <div class="myshop--info__content">윤슬 상점에 오신 것을 환영합니다!</div>
+            </div>
+
+            <div class="myshop--info__middle2">
+                <div>
+                    <div class="myshop--info__follower">팔로워</div>
+                    <div class="myshop--info__follower-txt">0명</div>
+                </div>
+
+                <div>
+                    <div class="myshop--info__openday">오픈일</div>
+                    <div class="myshop--info__openday-txt">0일 전</div>
+                </div>
+
+                <div>
+                    <div class="myshop--info__sellcount">판매건수</div>
+                    <div class="myshop--info__sellcount-txt">0회</div>
+                </div>
+
+            </div>
+
+            <div class="myshop--info__bottom">
+                <div class="myshop--info__btn-report">
+                    <a href="#">
+                        <img src="/web/src/img/siren.png">
+                        <div>신고하기</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    
+    <section class="myshop--tap">
+
+        <div class="myshop--tab__container">
+            
+            <div class="tabs">
+              <ul>
+                <li class="active"><a href="#" rel="tab1">상품<div>0</div></a></li>
+                <li><a href="#" rel="tab2">후기 <div>0</div></a></li>
+                <li><a href="#" rel="tab3">팔로잉<div>0</div></a></li>
+                <li><a href="#" rel="tab4">팔로워<div>0</div></a></li>
+              </ul>
             </div>
             
-            <div class="myshop--info__container">
-                <div class="myshop--info__top">
+            <div id="tab1" class="myshop--tab__content">
+                <div>
                     <div>
-                        <div class="myshop--info__title">@윤슬 상점</div>
-                        <div class="myshop--info__connecting">.</div>
+                        <button type="button">새 글</button>
                     </div>
 
-                    <div>
-                        <button type="button" class="myshop--info__btn-follow">팔로우</button>
+                    <div class="myshop--tab1__sort">
+                        <div>최신순</div>
+                        <div>인기순</div>
+                        <div>저가순</div>
+                        <div>고가순</div>
                     </div>
                 </div>
-    
-                <div class="myshop--info__middle1">
-                    <div class="myshop--info__content">상점 소개글을 입력해주세요.</div>
-                </div>
-    
-                <div class="myshop--info__middle2">
-                    <div>
-                        <div class="myshop--info__follower">팔로워</div>
-                        <div class="myshop--info__follower-txt">0명</div>
-                    </div>
-    
-                    <div>
-                        <div class="myshop--info__openday">오픈일</div>
-                        <div class="myshop--info__openday-txt">0일 전</div>
-                    </div>
-    
-                    <div>
-                        <div class="myshop--info__sellcount">판매건수</div>
-                        <div class="myshop--info__sellcount-txt">0회</div>
-                    </div>
-    
-                </div>
-    
-                <div class="myshop--info__bottom">
-                    <div class="myshop--info__btn-report">
-                        <a href="#">
-                            <img src="/web/src/img/siren.png">
-                            <div>신고하기</div>
-                        </a>
-                    </div>
-                </div>
-    
             </div>
-    
-        </section>
+          
+            <div id="tab2" class="myshop--tab__content">
+              후기
+            </div>
 
-    </main>
+            <div id="tab3" class="myshop--tab__content">
+              팔로잉
+            </div>
 
-    <footer data-include="./include/footer.html"></footer>
+            <div id="tab4" class="myshop--tab__content">
+              팔로워
+            </div>
+          </div>
+
+    </section>
+
+
+
+    <script src="/web/js/내상점.js"></script>
 
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

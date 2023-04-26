@@ -1,37 +1,39 @@
 *{
-    font-family: 'Pretendard';
+    font-family: 'Inter', 'Pretendard';
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-main{
+body{
     width: 1140px;
     margin: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 /* 내상점 컨테이너 */
-.myshop{
+.myshop--profile{
     margin-top: 30px;
     border: 0.5px solid #A5A5A5;
     border-radius: 20px;
-    background-color: #EEEEEE;
+    background-color: #F3F6FC;
     width: 850px;
     height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 4px #A5A5A5;
+    box-shadow: 0 4px 4px #CECECE;
 }
 
 /* 내상점 프로필 사진 컨테이너 */
-.myshop>div:first-of-type{ 
+.myshop--profile>div:first-of-type{ 
     height: 90%;
     width: 30%; 
     display: flex;
@@ -40,7 +42,7 @@ a{
 }
 
 /* 내 상점 컨텐츠 컨테이너 */
-.myshop>div:last-of-type{ 
+.myshop--profile>div:last-of-type{ 
     height: 90%;
     width: 70%; 
     display: flex;
@@ -55,8 +57,8 @@ a{
 
 /* 내 상점 컨텐츠 컨테이너 내 div들 */
 .myshop--info__container>div:nth-of-type(1){ height: 20%; }
-.myshop--info__container>div:nth-of-type(2){ height: 40%; }
-.myshop--info__container>div:nth-of-type(3){ height: 30%; }
+.myshop--info__container>div:nth-of-type(2){ height: 45%; }
+.myshop--info__container>div:nth-of-type(3){ height: 25%; }
 .myshop--info__container>div:nth-of-type(4){ height: 10%; }
 
 /* 이미지 크롭 */
@@ -77,6 +79,7 @@ a{
 /* 내 상점 컨텐츠 상단 (상점명, 접속여부, 팔로우 버튼) */
 .myshop--info__top{
     display: flex;
+    padding-left: 8px;
 }
 
 /* 내 상점 팔로우 버튼 */
@@ -84,7 +87,7 @@ a{
     width: 125px;
     height: 40px;
     border-radius: 10px;
-    background-color: #B4B4B4;
+    background-color: #CECECE;
     font-size: 18px;
     border: none;
     font-weight: bold;
@@ -93,6 +96,7 @@ a{
 /* 상점명, 접속여부 div */
 .myshop--info__top>div:first-of-type{
     width: 75%;
+    margin-top: 10px;
 }
 
 /* 팔로우버튼 div */
@@ -104,6 +108,7 @@ a{
 
 .myshop--info__top>div{
     display: flex;
+    align-items: center;
 }
 
 /* 상점명 */
@@ -112,9 +117,18 @@ a{
     font-weight: 700;
 }
 
+/* 접속 여부 */
+.myshop--info__connecting{
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: red;
+    border-radius: 100px;
+    margin-left: 15px;
+}
+
 /* 내상점 콘텐츠 소개글 */
 .myshop--info__middle1{
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 /* 내상점 콘텐츠 중단2 */
@@ -127,6 +141,10 @@ a{
 .myshop--info__middle2 div{
     display: flex;
     margin-right: 10px;
+}
+
+.myshop--info__middle2>div>div:last-of-type{
+    font-weight: 500;
 }
 
 
@@ -160,3 +178,73 @@ a{
     height: 15px;
     width: auto;
 }
+
+
+/* 탭 메뉴 */
+.myshop--tap{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 텝 메뉴 컨테이너 */
+.myshop--tab__container {
+    width:80%;
+    padding: 40px 0;
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+}
+  
+  /* 탭 메뉴 탭들 */
+.tabs ul {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+.tabs li {
+    display: table-cell;
+    height: 100%;
+    padding: 15px 0 15px;
+    border-bottom: 1px solid #222;
+    border-right: 2px solid #D9D9D9;
+    text-align: center;
+}
+
+  /* 탭 메뉴 활성화된 탭 */
+.tabs li.active {
+    background: #D9D9D9;
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+  /* 탭 메뉴 활성화된 탭 txt */
+.tabs li.active a {
+    color: #000000;
+}
+
+  /* 탭 메뉴 탭 txt */
+.tabs li a {
+    font-size: 20px;
+    color: #757575;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+}
+
+/* 탭 메뉴 별 숫자 */
+.tabs div{
+    display: inline-block;
+    margin-left: 13px;
+}
+
+/* 탭 컨텐츠 */
+.myshop--tab__content{
+    background-color: #D9D9D9;
+}
+
+.myshop--tab__content>div>div:first-of-type

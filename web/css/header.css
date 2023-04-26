@@ -1,8 +1,10 @@
+
 *{
-    font-family: 'Pretendard';
+    font-family: 'Inter', 'Pretendard';
     margin: 0;
     padding: 0;
 }
+
 
 header{
     position: fixed;
@@ -176,6 +178,7 @@ header>section:nth-child(3){ height: 30%; }
     cursor: pointer;
     position: relative;
     border-left: 2px solid #E3E3E3;
+    font-weight: 700;
 }
 
 .nav--container__menu :last-of-type{
