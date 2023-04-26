@@ -209,20 +209,19 @@ a{
     display: table-cell;
     height: 100%;
     padding: 15px 0 15px;
-    /* border-bottom: 1px solid #222; */
     border-right: 2px solid #D9D9D9;
     text-align: center;
 }
 
   /* 탭 메뉴 활성화된 탭 */
-.tabs li.active {
+.tabs li.tabs--active {
     background: #D9D9D9;
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
 }
 
   /* 탭 메뉴 활성화된 탭 txt */
-.tabs li.active a {
+.tabs li.tabs--active a {
     color: #000000;
 }
 
@@ -232,7 +231,7 @@ a{
 }
 
 /* 활성화된 탭 메뉴 콘텐츠 */
-.myshop--tab__container div.active{
+.myshop--tab__container div.tabs--active{
     display: inherit;
 }
 
@@ -257,19 +256,34 @@ a{
     background-color: #D9D9D9;
 }
 
-.myshop--tab__content>div{
+/* 상품 탭 컨텐츠 상단 */
+.myshop--tab1__content-top{
     display: flex;
     justify-content: flex-end;
 }
 
-
-/* 최신순, 인기순, 저가순, 고가순 */
-.myshop--tab1__sort{
-    display: flex;
-    justify-content: center;
-    padding: 18px;
+/* 상품 정렬 리스트 */
+.myshop--tab1__content-top ul{
+    display: table;
+    table-layout: fixed;
+    margin: 20px;
 }
 
-.myshop--tab1__sort>div{
-    margin: 0 3px 0;
+/* 상품 정렬 리스트 4개(최신순, 인기순, 저가순, 고가순) */
+.myshop--tab1__content-top li{
+    display: table-cell;
+    text-align: center;
 }
+
+/* 상품 정렬 리스트 4개 각각 연결된 a태그 */
+.myshop--tab1__content-top a{
+    color: black;
+    margin: 4px;
+    font-weight: 600;
+}
+
+/* 활성화된 정렬 기준 txt */
+.sort--active>a{
+    color: red;
+}
+
