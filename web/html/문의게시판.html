@@ -5,22 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>qna</title>
+
+    <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/문의게시판.css">
 
-    
-    <script src="/web/src/includeHTML/main.js" type="module"></script>
 </head>
 <body>
     <header data-include="/web/include/header.html"></header>
     <main data-include="/web/include/content.html" style="margin-top: 160px;"></main>
-
+    
+        <div class="container qna_bar">
     <div class="qna_bar">1:1 문의</div>
+    </div>  
 
-    <div class="qna_head"> 
-        <div>문의 유형 선택</div>
-    </div>
+    
+     
+    <div class="qna_head" >문의 유형 선택</div>
 
-    <div class="qna_content_head">
+    <ul class="qnd_head_content">
+        <a href="#" class="qnd_li"><li>거래 신고</li></a>
+        <a href="#" class="qnd_li"><li>회원/계정</li></a>
+        <a href="#" class="qnd_li"><li>오류/제안</li></a>
+        <a href="#" class="qnd_li"><li>채팅/알람</li></a>
+        <a href="#" class="qnd_li"><li>채팅/알람</li></a>
+    </ul>
+    
+
+
+    <div class="qna_content">
         <textarea name="" id="qna_content" cols="88" rows="20" 
         style="resize: none;" placeholder="  문의내용"></textarea>
     </div>
@@ -38,9 +51,11 @@
    
 
 
-    <footer data-include="/web/src/include/footer.html"></footer>
+    <footer data-include="/web/include/footer.html"></footer>
+    <script src="../js/문의게시판.js"></script>
 
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
 
 </body>
 </html>
