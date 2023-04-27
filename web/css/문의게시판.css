@@ -7,43 +7,57 @@
     margin-right: auto;
 }
 
-
+/* -------------------------------- */
 .qna_head{
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 1000px;
-    border: 1px solid #005EEE;
+    position : relative;
+    display : block;
+  }
+
+
+  .dropbtn{
+    border : 1px solid #005EEE;
+    border-radius : 5px;
     background-color: #8ab2e24b;
-    color: #005EEE;
+    width: 1000px;
+    height: 40px;
+    font-weight: 400;
+    color :  #005EEE;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
     user-select: none;
     cursor: pointer;
-    height: 40px;
-}
-
-.qna_head_content{
-    opacity: 0;
-    z-index: 2;
-    position:relative;
-   
-    display: flex;
-    justify-content: center;
- 
-}
-
-.qnd_li{
-    list-style: none;
+    text-align: left;
+  }
+  .qna_head_content{
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: white;
+    min-width : 200px;
+  }
+  
+  .qna_head_content a{
+    display : block;
+    text-decoration : none;
+    width: 1000px;
+    height: 80px;
+    text-align: center;
+    color : #005EEE;
     font-size: 30px;
-   
-}
+    padding : 12px 20px;
+  }
+  
+  .qna_head_content a:hover{
+    background-color : #f2f6d8
+  }
+  
+  .qna_head:hover .qnd_head_contentt {
+    display: block;
+  }
+/* ------------------------------------ */
 
-.hidden {
-    display: none;
-    position: absolute;
-    
-}
 .qna_content{
     margin: 15px 0px;
        
@@ -63,9 +77,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-   
-    
-    
 }
 
 #qna_content::placeholder{

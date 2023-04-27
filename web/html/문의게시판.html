@@ -21,17 +21,28 @@
 
     
      
-    <div class="qna_head" >문의 유형 선택</div>
+<!--     <div class="qna_head" >문의 유형 선택</div>
 
-    <ul class="qnd_head_content">
+    <ul class="qnd_head_content" style = "color:white">
         <a href="#" class="qnd_li"><li>거래 신고</li></a>
         <a href="#" class="qnd_li"><li>회원/계정</li></a>
         <a href="#" class="qnd_li"><li>오류/제안</li></a>
         <a href="#" class="qnd_li"><li>채팅/알람</li></a>
         <a href="#" class="qnd_li"><li>채팅/알람</li></a>
-    </ul>
+    </ul> -->
     
 
+    <div class="qna_head">
+        <button class="dropbtn"> 
+          <span class="dropbtn_icon">문의 유형 선택</span>
+        </button>
+        <div class="qna_head_content">
+                <a href="#" class="qna_li"><ul>거래 신고</ul></a>
+                <a href="#" class="qna_li"><ul>회원/계정</ul></a>
+                <a href="#" class="qna_li"><ul>오류/제안</ul></a>
+                <a href="#" class="qna_li"><ul>채팅/알람</ul></a>
+        </div>
+      </div>
 
     <div class="qna_content">
         <textarea name="" id="qna_content" cols="88" rows="20" 
@@ -50,9 +61,9 @@
 
    
 
-
-    <footer data-include="/web/include/footer.html"></footer>
     <script src="../js/문의게시판.js"></script>
+    <footer data-include="/web/include/footer.html"></footer>
+    
 
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
    

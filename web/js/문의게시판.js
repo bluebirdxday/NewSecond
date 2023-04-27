@@ -1,5 +1,5 @@
 const qnaHead = document.querySelector('.qna_head');
-  const qndHeadContent = document.querySelector('.qnd_head_content');
+  const qnaHeadContent = document.querySelector('.qna_head_content');
 
   qnaHead.addEventListener('click', function() {
     if (qndHeadContent.style.display === 'none') {
@@ -12,4 +12,15 @@ const qnaHead = document.querySelector('.qna_head');
     }
   });
 
- 
+  const qnaLi= document.querySelectorAll('.qna_li');
+
+  for(let qnaList of qnaLi){
+
+  qnaList.addEventListener(()=>{
+    
+for(let i=0; i<qnaLi.length; i++){
+  qnaHead.innerText = qnaLi[i].innerText
+
+
+   }});
+}
