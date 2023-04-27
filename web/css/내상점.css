@@ -1,5 +1,5 @@
 *{
-    font-family: 'Inter', 'Pretendard';
+    font-family: 'Pretendard';
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -211,6 +211,10 @@ a{
     padding: 15px 0 15px;
     border-right: 2px solid #D9D9D9;
     text-align: center;
+}
+
+.tabs li:first-of-type{
+    border-left: 2px solid #D9D9D9;
 }
 
   /* 탭 메뉴 활성화된 탭 */
