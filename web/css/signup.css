@@ -1,0 +1,53 @@
+
+/* singup box 영역 */
+.singupContainer{
+    z-index: 3;
+    background-color: gray;
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 500px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+/* 각 항목별 h3에 대한 스타일 */
+.singupContainer h3{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/* 각 인풋영역에 대한 스타일 */
+.singupContainer input{
+    width: 100%;
+    padding: 8px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+}
+
+/* 서밋영역에 대한 공간설정 => 버튼 가운데 정렬 역할 */
+.singupContainer--bottom__summit{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 버튼 스타일 */
+.singupContainer button{
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    border: none; 
+    background-color: #007bff; 
+    color: #fff; 
+    transition: background-color 0.3s; 
+    width: 200px;
+}
+
+/* 버튼 hover 스타일  */
+.singupContainer button:hover{
+    background-color: #0056b3; 
+}
