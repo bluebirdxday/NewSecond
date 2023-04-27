@@ -20,8 +20,8 @@ a{
 
 /* 내상점 컨테이너 */
 .myshop--profile{
-    margin-top: 30px;
-    border: 0.5px solid #A5A5A5;
+    margin-top: 10px;
+    border: 1px solid #E5EEFF;
     border-radius: 20px;
     background-color: #F3F6FC;
     width: 850px;
@@ -31,6 +31,7 @@ a{
     align-items: center;
     box-shadow: 0 4px 4px #CECECE;
 }
+
 
 /* 내상점 프로필 사진 컨테이너 */
 .myshop--profile>div:first-of-type{ 
@@ -67,12 +68,15 @@ a{
     height: 200px;
     overflow: hidden;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 내 상점 프로필 사진 */
 .myshop--profileImage__img{
-    max-width: 100%;
-    height: auto;
+    max-width: auto;
+    height: 100%;
     display: block;
 }
 
@@ -87,10 +91,25 @@ a{
     width: 125px;
     height: 40px;
     border-radius: 10px;
-    background-color: #CECECE;
-    font-size: 18px;
+    color: #343434;
+    background: #c2d3eb;
+    background: linear-gradient(0deg, rgba(194,211,235,1) 0%, rgb(222, 235, 253) 100%);
     border: none;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: bolder;
+    box-shadow: inset 0 -5px 5px #e5f0ff;
+}
+
+.myshop--info__btn-follow:before {
+    height: 0%;
+    width: 2px;
+}
+
+.myshop--info__btn-follow:hover {
+    box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
+            -3px -3px 5px 0 rgba(116, 125, 136, .5), 
+    inset -3px -3px 5px 0 rgba(255,255,255,.2),
+    inset 3px 3px 5px 0 rgba(0, 0, 0, .4);
 }
 
 /* 상점명, 접속여부 div */
@@ -143,6 +162,13 @@ a{
     margin-right: 10px;
 }
 
+/* 팔로워, 오픈일, 판매건 txt */
+.myshop--info__middle2>div>div:first-of-type{
+    font-weight: 500;
+    color: #6C6C6C;
+}
+
+/* 팔로워, 오픈일, 판매건 각각의 수 */
 .myshop--info__middle2>div>div:last-of-type{
     font-weight: 500;
 }
@@ -195,7 +221,7 @@ a{
     align-items: center;
     flex-direction: column; */
 }
-  
+
   /* 탭 메뉴 탭들 */
 .tabs ul {
     width: 100%;
@@ -209,17 +235,17 @@ a{
     display: table-cell;
     height: 100%;
     padding: 15px 0 15px;
-    border-right: 2px solid #D9D9D9;
+    border-right: 2px solid #EEEEEE;
     text-align: center;
 }
 
 .tabs li:first-of-type{
-    border-left: 2px solid #D9D9D9;
+    border-left: 2px solid #EEEEEE;
 }
 
   /* 탭 메뉴 활성화된 탭 */
 .tabs li.tabs--active {
-    background: #D9D9D9;
+    background: #EEEEEE;
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
 }
@@ -257,7 +283,7 @@ a{
 
 /* 탭 컨텐츠 */
 .myshop--tab__content{
-    background-color: #D9D9D9;
+    background-color: #EEEEEE;
 }
 
 /* 상품 탭 컨텐츠 상단 */
@@ -360,6 +386,100 @@ a{
     color: #3D3D3D;
 }
 
+
+/* 후기 탭  컨테이너 */
+.tab2--container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+/* 후기 탭 후기 div */
+.tab2--container__item{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* 후기 탭 후기 div 마지막 자식만 제외하고 */
+.tab2--container>div:not(:last-of-type){
+    margin-bottom: 30px;
+}
+
+/* 후기 탭 유저 프로필 이미지 */
+.tab2--item__img>img{
+    width: 90px;
+    height: 90px;
+}
+
+/* 후기 탭 유저 프로필 div*/
+.tab2--container__item>div:first-of-type{ 
+    width: 15%; 
+    display: flex;
+    justify-content: center;
+}
+
+/* 후기 탭 유저 후기 div */
+.tab2--container__item>div:last-of-type{ 
+    width: 85%; 
+    display: flex;
+    justify-content: center;
+}
+
+.tab2--item__detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 후기 탭 유저 후기 말풍선 */
+.tab2--item__detail>div:first-of-type{
+    background-color: #eef3fd;
+    border: #7689fd solid 1px;
+    border-radius: 15px;
+    color: #505bf0;
+    font-size: 15px;
+    font-weight: 500;
+    height: 90px;
+    letter-spacing: -0.25px;
+    margin-top: 6.8px;
+    padding: 10px 20px;
+    position: relative;
+    width: 90%;
+    z-index: 100;
+}
+
+.tab2--item__detail>div:first-of-type::after {
+    border-color: transparent #eef3fd transparent transparent;
+    border-style: solid;
+    border-width: 10px 25px 10px 25px;
+    content: '';
+    display: block;
+    right: 99.6%;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    z-index: 1;
+}
+
+.tab2--item__detail>div:first-of-type::before {
+    border-color: transparent #7689fd transparent transparent;
+    border-style: solid;
+    border-width: 10px 25px 10px 25px;
+    content: '';
+    display: block;
+    right: 100%;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    z-index: 0;
+}
 
 
 

@@ -1,10 +1,10 @@
 
 *{
     font-family: 'Inter', 'Pretendard';
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 
 header{
     position: fixed;
@@ -198,6 +198,7 @@ header>section:nth-child(3){ height: 30%; }
     width: 100%;
     height: 2px;
     background-color: #C2D3EB;
+    box-shadow: 1px 1px 1px 1px rgb(234, 243, 255);
 }
 
 .nav--container__menu div:hover::after {
