@@ -1,25 +1,30 @@
 .container--outer{
     background-color: #fff;
     height: 1000px;
+    /* width: 1440px; */
     width: 100%;
-    display: flex;
+    display: inline-grid;
 }
 
 .container--inner{
-    margin: 210px 40px 0px;
+    width: 100%;
+    /* width: 1440px; */
+    margin: 210px 60px 0px;
 }
 
 .container--inner__top{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: 1fr 4fr 2fr;
+    gap: 30px;
 }
 
 .searchNameCount{
     width: 190px;
     height: 55px;
     border-radius: 35px;
-    background-color: #c2d3eb;
-    opacity: 0.53;
+    background-color: #c0d5e8;
     padding-top: 14px;
     font-size: 1.2em;
     color: black;
@@ -39,5 +44,17 @@
     height: 27px;
     display: inline-block;
     cursor: pointer;
+    border-radius: 15%;
+}
+
+/* 검색한 상품 목록들 */
+.container--inner__middle{
+    display: grid;
+}
+
+.container--inner__middle>div[class*=item]{
+    width: 265px;
+    height: 265px;
+    border: 1px solid black;
     border-radius: 15%;
 }
