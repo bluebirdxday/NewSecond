@@ -1,0 +1,40 @@
+
+/* 마이페이지 컨텐츠 전체 박스 */
+.mypage--wholeContainer{
+    margin: auto;
+    margin-top: 100px;
+    width: 1400px;
+    height: 800px;
+    border: 1px solid black;
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* 컨테이너 왼쪽 사이드 */
+.mypage--wholeContainer__left-nav{
+    width: 35%;
+    border: 1px solid black;
+}
+
+/* 왼쪽 사이드 위 로고 영역 */
+.leftNav--top__logoArea{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 로고 이미지 크기 */
+.leftNav--top__logoArea img{
+    width: 80%;
+}
+
+
+
+
+
+/* 컨테이너 오른쪽 사이드 */
+.mypage--wholeContainer__right-contents{
+    width: 65%;
+    border: 1px solid black;
+}
+
