@@ -5,10 +5,11 @@ const qnaHead = document.querySelector('.qna_head');
     if (qnaHeadContent.style.display === 'none') {
       qnaHeadContent.style.display = 'block';
       qnaHeadContent.style.position = 'absolute'
-         
-    }else {
+       
+    } else {
       qnaHeadContent.style.display = 'none';
      
-    } 
+    }
   });
 
+  

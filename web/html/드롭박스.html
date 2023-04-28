@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+.qna_dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.qna_dropbtn_icon{
+  font-family : 'Material Icons';
+}
+
+.qna_dropbtn{
+  display : block;
+  border : 1px solid #005EEE;
+    border-radius : 5px;
+    background-color: #8ab2e24b;
+    width: 1000px;
+    height: 40px;
+    color :  #005EEE;
+    margin-left: auto;
+    margin-right: auto;
+  z-index :1;
+  position : relative;
+}
+.qna_dropdown-content{
+  display : none;
+  overflow : scroll;
+  background-color: white;
+ min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+padding: 12px 16px;
+ 
+}
+.qna_dropdown-content::-webkit-scrollbar{
+  width : 5px;
+  height : 10px;
+}
+.qna_dropdown-content::-webkit-scrollbar-thumb{
+  border-radius : 2px;
+  background-color :rgb(194, 194, 194)
+}
+
+.qna_dropdown-content div{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
+  color: #005EEE;
+  text-align: center;
+}
+.qna_dropdown-content div:hover{
+  background-color: rgb(246, 247, 203);
+}
+
+.qna_dropdown-content.show{
+  display : block;
+}
+</style>
+
+<body>
+
+    
+      <div class="qna_dropdown">
+        <button class="qna_dropbtn">
+          <span class="qna_dropbtn_content">문의 게시판</span>
+          <span class="qna_dropbtn_click" style="font-family: Material Icons; font-size : 30px; color :  #005EEE; float:right;"
+            onclick="dropdown()">arrow_drop_down</span>
+        </button>
+        <div class="qna_dropdown-content">
+          <div class="fastfood" onclick="showMenu(this.innerText)">거래신고</div>
+          <div class="fastfood" onclick="showMenu(this.innerText)">회원/계정</div>
+          <div class="fastfood" onclick="showMenu(this.innerText)">오류/제안</div>
+          <div class="fastfood" onclick="showMenu(this.innerText)">채팅/알람</div>
+        </div>
+      </div>
+
+      <div class="qna_content">
+        <textarea name="" id="qna_content" cols="88" rows="20" 
+        style="resize: none;" placeholder="  문의내용"></textarea>
+    </div>
+    <!-- ---------------------------------------------------------------- -->
+      <script>
+      window.onload=()=>{
+        document.querySelector('.qna_dropbtn_click').onclick = ()=>{
+            qna_dropdown();
+        }
+        document.getElementsByClassName('fastfood').onclick = ()=>{
+          showMenu(value);
+        };
+        qna_dropdown = () => {
+          var v = document.querySelector('.qna_dropdown-content');
+          var qna_dropbtn = document.querySelector('.qna_dropbtn')
+          v.classList.toggle('show');
+          qna_dropbtn.style.borderColor = 'rgb(94, 94, 94)';
+
+        }
+  
+        showMenu=(value)=>{
+          var qna_dropbtn_content = document.querySelector('.qna_dropbtn_content');
+          var qna_dropbtn_click = document.querySelector('.qna_dropbtn_click');
+          var qna_dropbtn = document.querySelector('.qna_dropbtn');
+  
+         qna_dropbtn_content.innerText = '';
+          qna_dropbtn_content.innerText = value;
+          qna_dropbtn_content.style.color = '#005EEE';
+          qna_dropbtn.style.borderColor = '#005EEE';
+          
+        }
+      }
+      window.onclick= (e)=>{
+        if(!e.target.matches('.qna_dropbtn_click')){
+          var qna_dropdowns = document.getElementsByClassName("qna_dropdown-content");
+  
+          var qna_dropbtn_icon = document.querySelector('.qna_dropbtn_icon');
+          var qna_dropbtn_content = document.querySelector('.qna_dropbtn_content');
+          var qna_dropbtn_click = document.querySelector('.qna_dropbtn_click');
+          var qna_dropbtn = document.querySelector('.qna_dropbtn');
+  
+          var i;
+          for (i = 0; i < qna_dropdowns.length; i++) {
+            var openDropdown = qna_dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }</script>
+</body>
+</html>
