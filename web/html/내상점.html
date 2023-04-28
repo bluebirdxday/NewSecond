@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="/web/css/내상점.css">
+    <script src="/web/src/includeHTML/main.js" type="module"></script>
 
 </head>
+
 <body>
-    
+
     <section class="myshop--profile">
 
         <div class="myshop--profileImage__container">
@@ -31,7 +33,8 @@
                 </div>
 
                 <div>
-                    <button type="button" class="myshop--info__btn-follow">팔로우</button>
+                    <!-- <button type="button" class="myshop--info__btn-follow">팔로우</button> -->
+                    <a href="/web/html/내상점편집.html"><div class="myshop--info__btn-edit">편집</div></a>
                 </div>
             </div>
 
@@ -226,10 +229,13 @@
         </div>
 
     </section>
-    
+
+    <a href="#" class="myshop--btn__fixed-addpost">
+        <img src="/web/src/img/addPost.png">
+    </a>
+
 
     <script src="/web/js/내상점.js"></script>
-
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

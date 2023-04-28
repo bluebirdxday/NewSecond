@@ -1,3 +1,4 @@
+
 *{
     font-family: 'Pretendard';
     box-sizing: border-box;
@@ -6,7 +7,7 @@
 }
 
 body{
-    width: 1140px;
+    width: 1000px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -24,12 +25,13 @@ a{
     border: 1px solid #E5EEFF;
     border-radius: 20px;
     background-color: #F3F6FC;
-    width: 850px;
+    width: 800px;
     height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 4px #CECECE;
+    padding:  2px 12px;
 }
 
 
@@ -87,7 +89,7 @@ a{
 }
 
 /* 내 상점 팔로우 버튼 */
-.myshop--info__btn-follow{
+/* .myshop--info__btn-follow{
     width: 125px;
     height: 40px;
     border-radius: 10px;
@@ -106,6 +108,35 @@ a{
 }
 
 .myshop--info__btn-follow:hover {
+    box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
+            -3px -3px 5px 0 rgba(116, 125, 136, .5), 
+    inset -3px -3px 5px 0 rgba(255,255,255,.2),
+    inset 3px 3px 5px 0 rgba(0, 0, 0, .4);
+} */
+
+
+/* 내 상점 편집 버튼 */
+.myshop--info__btn-edit{
+    width: 125px;
+    height: 40px;
+    border-radius: 10px;
+    color: #343434;
+    background: #ffffff;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(222, 235, 253) 100%);
+    border: none;
+    font-size: 20px;
+    font-weight: 900;
+    box-shadow: inset 0 -5px 5px #c1c9d3;
+    text-align: center;
+    line-height: 40px;
+}
+
+.myshop--info__btn-edit:before {
+    height: 0%;
+    width: 2px;
+}
+
+.myshop--info__btn-edit:hover {
     box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
             -3px -3px 5px 0 rgba(116, 125, 136, .5), 
     inset -3px -3px 5px 0 rgba(255,255,255,.2),
@@ -206,6 +237,7 @@ a{
     width: auto;
 }
 
+/* -------------------------------------------------------------------------------- */
 
 /* 탭 메뉴 */
 .myshop--tab{
@@ -324,6 +356,8 @@ a{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20%, auto));
     padding: 10px;
+
+    perspective: 150px;
 }
 
 /* 상품 탭 리스트 아이템들 */
@@ -331,7 +365,15 @@ a{
     height: 200px;
     margin: 6px;
     /* border: 1px solid black; */
+    box-shadow: 1px 1px 3px 1px #dadce0;
+    cursor: pointer;
     border-radius: 3px;
+    transition: all 0.3s ease-out;
+}
+
+/* 상품 탭 리스트 아이템들 마우스 hover 시 */
+.myshop--tab1__gridcontainer>div:hover{
+    transform: translate(-2px, -2px);
 }
 
 /* 상품 탭  리스트 아이템 사진, 상세설명 비율 */
@@ -387,6 +429,8 @@ a{
     color: #3D3D3D;
 }
 
+/* ---------------------------------------------------------------------------- */
+
 
 /* 후기 탭  컨테이너 */
 .tab2--container{
@@ -402,15 +446,20 @@ a{
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
+/* 후기 탭 후기 div 중 img, 후기 내용 */
 .tab2--item__detail{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* 후기 탭 후기 div 중 게시글명 */
+.tab2--container__item>div:last-of-type{
+    margin-left: 135px;
 }
 
 /* 후기 탭 후기 div 마지막 자식만 제외하고 */
@@ -432,11 +481,10 @@ a{
 /* 후기 탭 유저 후기 div */
 .tab2--item__detail>div:last-of-type{ 
     width: 85%; 
-    margin: 0 20px;
+    margin: 0 10px 0 35px;
     display: flex;
     flex-direction: column;
 }
-
 
 /* 후기 탭 유저 후기 말풍선 */
 .tab2--item__detail>div:last-of-type{
@@ -501,4 +549,21 @@ a{
     box-shadow: 0 4px 4px #CECECE;
 }
 
+/* 후기 탭 후기 작성 유저명 */
+.tab2--item__detail>div:nth-of-type(2)>div:nth-of-type(1){
+    font-weight: 800;
+    margin-bottom: 2px;
+}
 
+/* 내상점 내 포스팅(새 게시글 작성) 버튼 */
+.myshop--btn__fixed-addpost>img{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    right: 10%;
+    bottom: 5%;
+    background-color: #C2D3EB;
+    border: 2px solid #adbdd3;
+    border-radius: 100%;
+    box-shadow: 0 4px 4px #CECECE;
+}
