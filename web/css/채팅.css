@@ -27,7 +27,6 @@
     color: #2365B9;
     font-size: 1.5rem;
     font-weight: bold;
-    font-style: italic;
 }
 
 /* ---------------------------------------------------- */
@@ -139,14 +138,12 @@
     color: black;
     font-size: 1.5em;
     font-weight: bold;
-    font-style: italic;
 }
 /* 닉네임 옆 동네이름 */
 .chatting--myProfile > span:last-child > div {
     color: black;
     font-size: 1.0em;
     font-weight: bold;
-    font-style: italic;
 
     padding-block-start: 15px;
     padding-left: 10px;
@@ -225,7 +222,6 @@
     color: black;
     font-size: 1.2em;
     font-weight: bold;
-    font-style: italic;
 
     padding-right: 5px;
 }
@@ -234,7 +230,6 @@
     color: grey;
     font-size: 0.7em;
     font-weight: bold;
-    font-style: italic;
     padding-top: 10px;
 }
 
@@ -279,6 +274,9 @@
 }
 
 
+/* ---------------------------------------------------- */
+
+
 /* 채팅 시 연결 게시물 */
 .chatting--post {
     background-color: #C2D3EB;
@@ -287,7 +285,39 @@
     border-radius: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
+
+
+/* 게시물 사진/텍스트 배치 */
+.chatting--post > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+/* 게시물 사진 배치 */
+.chatting--post > a > div:first-child {
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+/* 게시물 사진 */
+.chatting--post > a > div:first-child > * {
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
 
 /* ---------------------------------------------------- */
 
@@ -311,7 +341,7 @@
 
 /* ---------------------------------------------------- */
 
-/* 채팅 치는 곳 */
+/* 채팅 치는 박스 */
 .chatting--chat {
     background-color: #C2D3EB;
     height: 100px;
@@ -319,6 +349,12 @@
     border-radius: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+
+/* 채팅창 배치 */
+.chatting--chat > * {
+    padding: 10px 10px 10px 10px;
 }
 
 /* ---------------------------------------------------- */
