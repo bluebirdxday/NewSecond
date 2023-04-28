@@ -13,29 +13,27 @@
     display : block;
   }
 
-
   .dropbtn{
     border : 1px solid #005EEE;
     border-radius : 5px;
     background-color: #8ab2e24b;
     width: 1000px;
     height: 40px;
-    font-weight: 400;
     color :  #005EEE;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
     user-select: none;
     cursor: pointer;
     text-align: left;
+    
   }
   .qna_head_content{
-    position : absolute;
-    z-index : 1; /*다른 요소들보다 앞에 배치*/
-    font-weight: 400;
     background-color: white;
-    min-width : 200px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+      
   }
   
   .qna_head_content a{
@@ -47,15 +45,17 @@
     color : #005EEE;
     font-size: 30px;
     padding : 12px 20px;
+    
   }
   
   .qna_head_content a:hover{
     background-color : #f2f6d8
+    
   }
   
-  .qna_head:hover .qnd_head_contentt {
+/*   .qna_head:hover .qnd_head_contentt {
     display: block;
-  }
+  } */
 /* ------------------------------------ */
 
 .qna_content{
