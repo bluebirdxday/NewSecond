@@ -5,7 +5,7 @@
     margin-top: 100px;
     width: 1400px;
     height: 800px;
-    border: 1px solid black;
+    border: 1px solid black; /* 삭제 */
     display: flex;
     box-sizing: border-box;
 }
@@ -13,19 +13,65 @@
 /* 컨테이너 왼쪽 사이드 */
 .mypage--wholeContainer__left-nav{
     width: 35%;
-    border: 1px solid black;
+    border: 1px solid black; /* 삭제 */
 }
 
 /* 왼쪽 사이드 위 로고 영역 */
-.leftNav--top__logoArea{
+.leftNav--top__logoArea a{
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    border: 1px solid black; /* 삭제 */
 }
 
 /* 로고 이미지 크기 */
 .leftNav--top__logoArea img{
     width: 80%;
+}
+
+/* 왼쪽 사이드 아래 영역 */
+.leftNav--bot__profileNav{
+    border: 1px solid black; /* 삭제 */
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    margin-top: 60px;
+}
+
+/* 유저 nav영역 정보 */
+.profileNav--profileInfo{
+    text-align: center;
+}
+
+/* 유저 nav영역에 기본 정보 영역 */
+.profileInfo--container{
+    border: 1px solid black; /* 삭제 */
+}
+
+/* 유저 이미지 영역 */
+.profileInfo--top__img{
+    width: 64px;
+    height: 64px;
+    border: 1px solid black; /* 삭제 */
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 유저 이미지 영역 임시 디테일 */
+.profileInfo--top__img i{
+    font-size: 60px;
+}
+
+
+/* 왼쪽 nav menu box 영역 */
+.profileNav--menus{
+    margin-top: 20px;
+    border: 1px solid black; /* 삭제 */
 }
 
 
@@ -35,6 +81,114 @@
 /* 컨테이너 오른쪽 사이드 */
 .mypage--wholeContainer__right-contents{
     width: 65%;
+    border: 1px solid black; /* 삭제 */
+    margin: auto;
+}
+
+/* 오른쪽 컨텐츠 박스 */
+.rightContents--boxOutline{
+    border: 1px solid black; /* 삭제 */
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+/* 오른쪽 컨텐츠 기본정보 박스 */
+.contentsBox--basicInfo{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black; /* 삭제 */
+    height: 100px;
+    margin: auto;
+}
+
+/* 기본 정보 박스 이미지 */
+.contentsBox--basicInfo__img{
+    margin-left: 10px;
+    width: 64px;
+    height: 64px;
+    border: 1px solid black; /* 삭제 */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 기본 정보 박스 이미지 디테일 */
+.contentsBox--basicInfo__img i{
+    font-size: 60px;
+}
+
+
+/* 기본 정보 박스 디테일 */
+.contentsBox--basicInfo__detail{
+    margin-left: 20px;
+}
+
+.contentsBox--basicInfo__detail h3,h5{
+    margin: 5px;
+}
+
+
+/* 연락처박스 */
+.contentsBox--telInfo{
+    padding: 40px;
+    margin-top: 20px;
     border: 1px solid black;
 }
 
+/* 연락처 폰트 정렬 */
+.contentsBox--telInfo h2{
+    text-align: center;
+}
+
+/* 연락처 각 데이터 영역 */
+.contentsBox--telInfo td{
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* 연락처 테이블 1열 설정 */
+.contentsBox--telInfo tr td:nth-child(1) {
+    width: 100px;
+    text-align: left;
+}
+
+/* 연락처 테이블 2열 설정 */
+.contentsBox--telInfo tr td:nth-child(2) {
+    padding-left: 100px;
+    text-align: left;
+}
+
+/* 활동영역 */
+.contentsBox--activityInfo{
+    margin-top: 20px;
+    padding: 40px;
+    border: 1px solid black;
+    margin-bottom: 100px;
+}
+
+/* 활동영역 앞 주제 폰트 정렬 */
+.contentsBox--activityInfo h2{
+    text-align: center;
+}
+
+/* 활동영역 각 테이블 데이터 영역 */
+.contentsBox--activityInfo td{
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* 활동영역 테이블 1열 영역 */
+.contentsBox--activityInfo tr td:nth-child(1){
+    text-align: left;
+    width: 100px;
+}
+
+/* 활동영역 테이블 2열 영역 */
+.contentsBox--activityInfo tr td:nth-child(2){
+    padding-left: 100px;
+    text-align: left;
+}

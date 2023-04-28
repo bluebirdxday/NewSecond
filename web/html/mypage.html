@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내프로필</title>
+
+    <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
+
     <link rel="stylesheet" href="/web/css/mypage.css">
 </head>
 <body>
@@ -14,17 +17,30 @@
         <div class="mypage--wholeContainer__left-nav">
             
             <div class="leftNav--top__logoArea">
-                <img src="/web/src/img/LOGO.png" >
+                <a href="/web/index.html">
+                    <img src="/web/src/img/LOGO.png" >
+                </a>
             </div>
 
             <div class="leftNav--bot__profileNav">
-                
-                <div class="profileNav--profileInfo">
 
+                <div class="profileNav--profileInfo">
+                    <div class="profileInfo--container">
+                        <div class="profileInfo--top__img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <h3>닉네임</h3>
+                        <h4>johnDoe@kh.or.kr</h4>
+                    </div>
                 </div>
 
                 <div class="profileNav--menus">
-                
+                    <div>
+                        <h3>내프로필</h3>
+                    </div>
+                    <div>
+                        <h3>회원정보수정</h3>
+                    </div>
                 </div>
 
             </div>
@@ -36,15 +52,48 @@
             <div class="rightContents--boxOutline">
 
                 <div class="contentsBox--basicInfo">
-
+                    <div class="contentsBox--basicInfo__img">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="contentsBox--basicInfo__detail">   
+                        <h3>닉네임</h3>
+                        <h5>johnDoe@kh.or.kr</h5>
+                    </div>
                 </div>
 
                 <div class="contentsBox--telInfo">
+                    <h2>연락처</h2>
 
+                    <table>
+
+                        <tr>
+                            <td>tel</td>
+                            <td>010-1234-1234</td>
+                        </tr>
+
+                        <tr>
+                            <td>email</td>
+                            <td>johnDoe@kh.or.kr</td>
+                        </tr>
+
+                    </table>
                 </div>
-
+                
                 <div class="contentsBox--activityInfo">
-                    
+                    <h2>활동</h2>
+                    <table>
+
+                        <tr>
+                            <td>관심지역</td>
+                            <td>Lorem ipsum </td>
+                        </tr>
+
+                        <tr>
+                            <td>관심물품</td>
+                            <td></td>
+                        </tr>
+                        
+                    </table>
                 </div>
 
             </div>
