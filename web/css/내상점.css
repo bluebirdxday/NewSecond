@@ -4,6 +4,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    letter-spacing: -0.25px;
 }
 
 body{
@@ -125,7 +126,7 @@ a{
     background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(222, 235, 253) 100%);
     border: none;
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 800;
     box-shadow: inset 0 -5px 5px #c1c9d3;
     text-align: center;
     line-height: 40px;
@@ -216,7 +217,7 @@ a{
 
 /* 내상점 신고하기 div */
 .myshop--info__btn-report{
-    border-bottom: 1px solid #6c6c6c;;
+    border-bottom: 1px solid #6c6c6c;
 }
 
 /* 내상점 신고하기 href */
@@ -227,7 +228,7 @@ a{
 }
 
 /* 내상점 신고하기 txt */
-.myshop--info__btn-report div{
+.myshop--info__btn-report div:nth-of-type(1){
     color: #6c6c6c;
 }
 
@@ -250,9 +251,6 @@ a{
 .myshop--tab__container {
     width:80%;
     padding: 40px 0;
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
 }
 
   /* 탭 메뉴 탭들 */
@@ -261,24 +259,24 @@ a{
     display: table;
     table-layout: fixed;
     padding: 0;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .tabs li {
     display: table-cell;
     height: 100%;
     padding: 15px 0 15px;
-    border-right: 2px solid #EEEEEE;
     text-align: center;
 }
 
-.tabs li:first-of-type{
-    border-left: 2px solid #EEEEEE;
+.tabs li:not(:first-of-type){
+    border-left: 3px solid #f0f1f4;
 }
+
 
   /* 탭 메뉴 활성화된 탭 */
 .tabs li.tabs--active {
-    background: #EEEEEE;
+    background: #f0f1f4;
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
 }
@@ -316,7 +314,7 @@ a{
 
 /* 탭 컨텐츠 */
 .myshop--tab__content{
-    background-color: #EEEEEE;
+    background-color: #f0f1f4;
 }
 
 /* 상품 탭 컨텐츠 상단 */
@@ -471,6 +469,8 @@ a{
 .tab2--item__img>img{
     width: 90px;
     height: 90px;
+    border: 1px solid white;
+    border-radius: 100%;
 }
 
 /* 후기 탭 유저 프로필 div*/
@@ -556,14 +556,139 @@ a{
 }
 
 /* 내상점 내 포스팅(새 게시글 작성) 버튼 */
-.myshop--btn__fixed-addpost>img{
+.myshop--btn__fixed-addpost{
     position: fixed;
-    width: 50px;
-    height: 50px;
-    right: 10%;
-    bottom: 5%;
-    background-color: #C2D3EB;
-    border: 2px solid #adbdd3;
+    width: 60px;
+    height: 60px;
+    right: 20px;
+    bottom: 20px;
     border-radius: 100%;
     box-shadow: 0 4px 4px #CECECE;
+
+    background: #ffffff;
+    background: linear-gradient(rgb(241, 247, 255) 10%, rgb(222, 235, 253) 40% 60%, rgb(241, 247, 255) 90%);
+    border: none;
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: inset 0 -5px 5px #c1c9d3;
+    text-align: center;
+    line-height: 60px;
+}
+
+/* 내상점 내 포스팅 버튼 속 + 이미지 */
+.myshop--btn__fixed-addpost>img{
+    width: 60%;   
+    height: 60%;
+}
+
+
+/* 툴팁 */
+
+/* 
+.tooltip {				 
+    background-color: #7689fd;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    height: 31px;
+    letter-spacing: -0.25px;
+    margin-top: 6.8px;
+    padding: 5px 36.5px 5px 11px;
+}
+
+.tooltip::after {  		
+    border-bottom: 8px solid #7689fd;
+    border-left: 7px solid white;
+    border-right: 7px solid white;
+    content: "";
+    height: 0;
+    left: 21%;
+    position: absolute;
+    top: 35%;
+    width: 0;
+} */
+
+
+/* 팔로잉 탭 리스트 */
+.myshop--tab3__gridcontainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+    padding: 10px;
+}
+
+/* 팔로잉 탭 리스트 아이템들 */
+.tab3--container__item{
+    height: 300px;
+    margin: 6px;
+}
+
+
+/* 팔로잉 탭 팔로잉 유저 div */
+.tab3--container__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 팔로잉 탭 팔로잉 유저 프로필 사진 */
+.tab3--container__item img{
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+
+/* 팔로잉 탭 팔로잉 유저명 */
+.tab3--container__item>div:nth-of-type(2){
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* 팔로잉 탭 팔로잉 유저 상점 설명 */
+.tab3--container__item>div:nth-of-type(3){
+    background-color: white;
+    padding: 10px;
+    margin: 3px 10px;
+    font-size: 12px;
+    border-radius: 1px;
+    width: 160px;
+    height: 55px;
+}
+
+/* 팔로잉 탭 상점가기, 언팔로우 버튼 div */
+.tab3--container__item>div:nth-of-type(4){
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+/* 팔로잉 탭 상점가기, 언팔로우 버튼 */
+.tab3--item__btn{
+    width: 78px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* 팔로잉 탭  상점가기 버튼 */
+.tab3--item__btn-gotoshop{
+    background-color: #5A6690;
+    color: white;
+}
+
+/* 팔로잉 탭 언팔로우 버튼 */
+.tab3--item__btn-unfollow{
+    background-color: #C2D3EB;
+    color: #343434;
+    box-shadow: rgb(121, 131, 146) 0px 11px 5px -8px inset, 
+    rgb(121, 131, 146) -4px 0px 4px -4px inset,
+    rgb(121, 131, 146) 4px 0px 4px -4px inset;
 }
