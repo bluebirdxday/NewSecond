@@ -1,0 +1,107 @@
+/* 위아래 상하 */
+.top{
+    height: 200px;
+    background-color: aqua;
+}
+
+.bottom{
+    display: block;
+    margin: 0px 0px;
+    height: 200px;
+    background-color: aqua;
+}
+/* -------------------- */
+
+/* 상단 제목 */
+.fav_bar_container{
+    width: auto;
+    background-color:#8ab2e24b;
+    
+  }
+  
+  .fav_bar{
+      margin: 10px 10px;
+      font-size: 30px;
+      font-style: italic;  
+      
+  }
+
+  /* ---------------조회 서비스---------- */
+
+  .fav_sorting{
+   float:right;
+   margin: 10px;
+}
+
+.fav_sorting:hover{
+    color: white;
+    background-color: #478bfb;
+    border-radius: 5px;
+   }
+   
+
+  /* -------------이미지---------------- */
+.fav_imgContatiner{
+    min-width:auto;
+    display: inline-block;
+        
+}
+
+  
+.fav_imgDiv{
+    display: block;
+    position: relative; 
+    width: 200px; 
+    height: 200px;
+    margin: 30px 10px; 
+    float: left; 
+    margin-left: 10px;
+
+}  
+
+ img{
+    width: 200px;
+    height: 200px; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 1px #ebeaea9b;
+   
+
+  }
+/* ------------------이미지 체크박스-------------------- */
+ .fav_checkbox{
+     position: absolute; 
+     top: 0px; 
+     right: 0px;
+}
+
+
+.fav_checkbox {
+    -webkit-appearance: none;
+    width: 100%;
+    cursor: pointer;
+    position: absolute; 
+    top: 10px; 
+    right: 8px;
+  }
+  .fav_checkbox:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    content: "\f004";
+    font-size: 20px;
+   color: #478bfb;
+    right: 10px;
+    top: -5px;
+  }
+  .fav_checkbox:checked:after {
+    font-weight: 900;
+    content: "\f004";
+    color: #478bfb;
+  }     
+
+
+
+
