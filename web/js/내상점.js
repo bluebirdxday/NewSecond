@@ -34,3 +34,18 @@ sortList.forEach(function(sort){
         sort.classList.add('sort--active');
     });
 });
+
+
+
+// 내 상점 편집 팝업
+document.querySelector(".myshop--popup__show").addEventListener("click", ()=>{
+    document.querySelector(".myshop--popup__background").className = "myshop--popup__background myshop--popup__show";
+});
+
+document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
+    document.querySelector(".myshop--popup__background").className = "myshop--popup__background";
+});
+
+document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
+    document.querySelector(".myshop--popup__background").className = "myshop--popup__background";
+});

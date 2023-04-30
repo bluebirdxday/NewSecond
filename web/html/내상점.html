@@ -34,7 +34,7 @@
 
                 <div>
                     <!-- <button type="button" class="myshop--info__btn-follow">팔로우</button> -->
-                    <a href="/web/html/내상점편집.html"><div class="myshop--info__btn-edit">편  집</div></a>
+                    <div class="myshop--info__btn-edit myshop--popup__show">편  집</div>
                 </div>
             </div>
 
@@ -71,6 +71,36 @@
 
         </div>
 
+    </section>
+
+    <!-- 편집 팝업 -->
+    <section class="myshop--popup__edit">
+        <div class="myshop--popup__background">
+            <div class="myshop--window">
+                <div class="myshop--popup">
+                    <div class="myshop--popup__top">
+                        <div>내 상점 편집</div>
+                        <img src="/web/src/img/closePopup.png" class="myshop--popup__btn-close"/>
+                    </div>
+
+                    <div class="myshop--popup__content">
+                        <div>
+                            <div class=""></div> <!-- 내상점 이미지 -->
+                        </div>
+                        <div>
+                            <input type="text" minlength="3" maxlength="20">
+                        </div>
+                        <div>
+                            <textarea name="" id="" cols="40" rows="3" maxlength="50"></textarea>
+                        </div>
+                        <div>
+                            <button class="myshop--popup__btn-save">저장</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     </section>
 
     
