@@ -2,18 +2,16 @@
 /* 마이페이지 컨텐츠 전체 박스 */
 .mypage--wholeContainer{
     margin: auto;
-    margin-top: 100px;
     width: 1400px;
-    height: 800px;
-    border: 1px solid black; /* 삭제 */
+    height: 700px;
     display: flex;
     box-sizing: border-box;
+    user-select: none;
 }
 
 /* 컨테이너 왼쪽 사이드 */
 .mypage--wholeContainer__left-nav{
     width: 35%;
-    border: 1px solid black; /* 삭제 */
 }
 
 /* 왼쪽 사이드 위 로고 영역 */
@@ -21,7 +19,6 @@
     margin-top: 50px;
     display: flex;
     justify-content: center;
-    border: 1px solid black; /* 삭제 */
 }
 
 /* 로고 이미지 크기 */
@@ -31,11 +28,12 @@
 
 /* 왼쪽 사이드 아래 영역 */
 .leftNav--bot__profileNav{
-    border: 1px solid black; /* 삭제 */
-    width: 80%;
+    width: 70%;
     height: 60%;
     margin: auto;
     margin-top: 60px;
+    background-color: rgba(0, 0, 0, 0.199);
+    border-radius: 20px;
 }
 
 /* 유저 nav영역 정보 */
@@ -45,7 +43,7 @@
 
 /* 유저 nav영역에 기본 정보 영역 */
 .profileInfo--container{
-    border: 1px solid black; /* 삭제 */
+    padding: 30px 0;
 }
 
 /* 유저 이미지 영역 */
@@ -55,7 +53,6 @@
     border: 1px solid black; /* 삭제 */
     border-radius: 50%;
     margin: auto;
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,49 +68,51 @@
 /* 왼쪽 nav menu box 영역 */
 .profileNav--menus{
     margin-top: 20px;
-    border: 1px solid black; /* 삭제 */
+    margin-left: 40px;
 }
-
-
 
 
 
 /* 컨테이너 오른쪽 사이드 */
 .mypage--wholeContainer__right-contents{
     width: 65%;
-    border: 1px solid black; /* 삭제 */
     margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 오른쪽 컨텐츠 박스 */
 .rightContents--boxOutline{
-    border: 1px solid black; /* 삭제 */
     width: 80%;
+    height: 80%;
     margin: auto;
     border-radius: 20px;
+    background-color: rgba(7, 51, 134, 0.39);
 }
 
 /* 오른쪽 컨텐츠 기본정보 박스 */
 .contentsBox--basicInfo{
     padding: 20px;
+    padding-top: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid black; /* 삭제 */
     height: 100px;
     margin: auto;
 }
 
 /* 기본 정보 박스 이미지 */
 .contentsBox--basicInfo__img{
-    margin-left: 10px;
+    margin-left: 30px;
     width: 64px;
     height: 64px;
-    border: 1px solid black; /* 삭제 */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border: 1px solid black;
 }
 
 /* 기본 정보 박스 이미지 디테일 */
@@ -124,7 +123,7 @@
 
 /* 기본 정보 박스 디테일 */
 .contentsBox--basicInfo__detail{
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .contentsBox--basicInfo__detail h3,h5{
@@ -132,11 +131,19 @@
 }
 
 
+.contentsBox--telInfo::before{
+    content: "";
+    display: block;
+    border-bottom: 1px solid black;
+    border-color: rgba(0, 0, 0, 0.199);
+    width: 80%;
+    height: 1px;
+    margin: 40px auto;
+}
+
 /* 연락처박스 */
 .contentsBox--telInfo{
-    padding: 40px;
-    margin-top: 20px;
-    border: 1px solid black;
+    padding: 0 40px;
 }
 
 /* 연락처 폰트 정렬 */
@@ -153,7 +160,7 @@
 /* 연락처 테이블 1열 설정 */
 .contentsBox--telInfo tr td:nth-child(1) {
     width: 100px;
-    text-align: left;
+    text-align: center;
 }
 
 /* 연락처 테이블 2열 설정 */
@@ -162,11 +169,19 @@
     text-align: left;
 }
 
+.contentsBox--activityInfo::before{
+    content: "";
+    display: block;
+    border-bottom: 1px solid black;
+    border-color: rgba(0, 0, 0, 0.199);
+    width: 80%;
+    height: 1px;
+    margin: 40px auto;
+}
+
 /* 활동영역 */
 .contentsBox--activityInfo{
-    margin-top: 20px;
-    padding: 40px;
-    border: 1px solid black;
+    padding: 0 40px;
     margin-bottom: 100px;
 }
 
@@ -183,7 +198,7 @@
 
 /* 활동영역 테이블 1열 영역 */
 .contentsBox--activityInfo tr td:nth-child(1){
-    text-align: left;
+    text-align: center;
     width: 100px;
 }
 
