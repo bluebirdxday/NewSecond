@@ -47,21 +47,21 @@ const qnaHead = document.querySelector('.qna_head');
     }
   }
 
-  /* 모달 */
-  const qnaBtn = document.getElementById('qna_button');
+   /* 모달 */
+/*     const qnaBtn = document.getElementById('qna_button');
   const modal = document.getElementById('qna_modal');
   const qnaCloseBtn = document.getElementById('qna_closeBtn');
-  
-  qnaBtn.onclick = function() {
+     */
+/*     qnaBtn.onclick = function() {
     modal.style.display = 'block';
-    modal.style.position = 'fixed';
-  }
-  qnaCloseBtn.onclick = function() {
+     modal.style.position = 'fixed';
+  }   */
+/*     qnaCloseBtn.onclick = function() {
     modal.style.display = 'none';
-  }
+  } */
   
-  window.onclick = function(event) {
+/*    window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+  }    */
