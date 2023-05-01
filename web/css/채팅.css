@@ -1,4 +1,4 @@
-/* 20230425 상준 작성 시작 */
+/* 20230501 상준 작성 시작 */
 /* 
     css는 class
     js는 id
@@ -10,8 +10,7 @@
 
 /* 화면 전체 배경 */
 .content--chatting__background {
-    background-color: lightblue;                                                   /* 추후 삭제 */
-    height: calc(100vh - 150px); /* header 150px 고정값 빼기 */
+    height: 100vh;
 }
 
 
@@ -19,11 +18,14 @@
 .content--chatting__top { /* 이 부분은 추후 높이 협의 보기 */
     background-color: #C2D3EB;
     height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 200px; /* chatting--box 양 사이드 값 참조 */
-
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas: ". title . . . . . . . .";
+    place-items: center;
+}
+.content--chatting__title {
+    grid-area: title;
+    
     color: #2365B9;
     font-size: 1.5rem;
     font-weight: bold;
@@ -33,11 +35,15 @@
 
 /* 채팅 메인 */
 .content--chatting__main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    display: grid;
+    height: 500px;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-areas:
+        ". . ."
+        "left main right"
+        ". . .";
+    place-items: center;
 }
 
 /* ---------------------------------------------------- */
@@ -45,316 +51,48 @@
 /* ---------------------------------------------------- */
 
 /* 좌측 여백 */
-.chatting--aside__left {
-    background-color: yellow;
-    height: 1400px;
-    width: 200px;
+.content--aside__left {
+    grid-area: left;
+}
+
+
+/* 우측 여백 */
+.content--aside__right {
+    grid-area: right;
 }
 
 
 /* 채팅 박스 배경 */
 .chatting--background {
+    grid-area: main;
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc((100vh - 150px) - 100px);
-    width: calc(100vw - 400px); /* 좌/우측 여백 빼기 */
-}
-
-
-/* 우측 여백 */
-.chatting--aside__right {
-    height: 1400px;
-    width: 200px;
 }
 
 /* ---------------------------------------------------- */
+/* mainFrame */
+/* ---------------------------------------------------- */
 
-/* 채팅 박스 */
-.chatting--box {
+.chatting--main__box {
+    height: 400px;
+    width: 1000px;
+    border-radius: 20px;
     background-color: #C2D3EB;
+    
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    height: 90%;
-    width: 90%;
-    border-radius: 20px;
 }
-
-
-
-/* ---------------------------------------------------- */
-/* 3depth - left */
-/* ---------------------------------------------------- */
-
-/* 좌측 채팅 박스 */
-.chatting--box__left {
+.chatting--main__leftBox {
+    height: 380px;
+    width: 280px;
+    border-radius: 20px;
     background-color: white;
-    height: 90%;
-    width: 30%;
+}
+.chatting--main__rightBox {
+    height: 380px;
+    width: 680px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: sapce;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-/* ---------------------------------------------------- */
-
-/* 채팅 박스 내 프로필 */
-.chatting--myProfile {
-    /* background-color: yellow; */                                                 /* 확인용 */
-    height: 100px;
-    width: 90%;
-    border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    display: flex;
-    direction: row;
-    justify-content: left;
-}
-
-
-/* chatting--myProfile 요소 배치 */
-.chatting--myProfile > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 20px;
-}
-/* 나의 프로필 사진 */
-.chatting--myProfile > span:first-child > * {
     background-color: white;
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-}
-/* 나의 프로필 닉네임 */
-.chatting--myProfile > span:last-child > a {
-    color: black;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-/* 닉네임 옆 동네이름 */
-.chatting--myProfile > span:last-child > div {
-    color: black;
-    font-size: 1.0em;
-    font-weight: bold;
-
-    padding-block-start: 15px;
-    padding-left: 10px;
-}
-/* 나의 프로필 닉네임 태그 */
-.chatting--myProfile > span:last-child > * {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-/* 안 읽은 메시지 보기 */
-.chatting--box__left > div:nth-child(2) {
-    font-weight: bold;
-    margin-left: 200px;
-}
-
-/* ---------------------------------------------------- */
-
-/* 채팅 박스 고객 프로필 컨테이너 article */
-.chatting--clientList {
-   /*  border: 3px solid black;  */                                   /* 확인용 */
-    height: calc(100% - 100px);
-    width: 90%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-
-/* 채팅 박스 고객 프로필 박스 */
-.chatting--clientList > div {
-    background-color: #C2D3EB;
-    height: 100px;
-    border-radius: 20px;
-    margin-bottom: 5px;
-
-    display: flex;
-    direction: row;
-    justify-content: left;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-/* 고객 프로필 사진 박스 */
-.chatting--clientList > div > div:first-child {
-    padding-right: 10px;
-}
-/* 고객 프로필 사진 */
-.chatting--clientList > div > div:first-child > * {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-}
-
-
-/* ---------------------------------------------------- */
-
-
-/* 고객 프로필 사진 우측 텍스트 박스 */
-.chatting--clientList > div > div:nth-child(2) {
-    /* border: 1px dotted black;  */                                        /* 확인용 */
-    height: 95%;
-    width: 95%;
-}
-/* 고객 프로필 닉네임/주소 박스 */
-.chatting--clientList > div > div:nth-child(2) > div:first-child {
-    /* border: 1px dotted red;  */                                         /* 확인용 */                  
-    height: 30%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-}
-/* 고객 프로필 닉네임 박스 */
-.chatting--clientList > div > div:nth-child(2) > div:first-child > div:first-child {
-    color: black;
-    font-size: 1.2em;
-    font-weight: bold;
-
-    padding-right: 5px;
-}
-/* 고객 프로필 주소 박스 */
-.chatting--clientList > div > div:nth-child(2) > div:first-child > div:last-child {
-    color: grey;
-    font-size: 0.7em;
-    font-weight: bold;
-    padding-top: 10px;
-}
-
-/* 고객 프로필 우측 메시지 박스 */
-.chatting--clientList > div > div:nth-child(2) > div:last-child {
-    /* border: 1px dotted blue;  */                                       /* 확인용 */  
-    height: 70%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-}
-/* 메시지 말풍선 */
-.chatting--clientList > div > div:nth-child(2) > div:last-child > a {
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-
-
-
-
-
-
-/* ---------------------------------------------------- */
-/* 3depth - right */
-/* ---------------------------------------------------- */
-
-/* 우측 채팅 박스 */
-.chatting--box__right {
-    background-color: white;
-    height: 90%;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-
-/* ---------------------------------------------------- */
-
-
-/* 채팅 시 연결 게시물 */
-.chatting--post {
-    background-color: #C2D3EB;
-    height: 100px;
-    width: 95%;
-    border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    display: flex;
-    justify-content: left;
-    align-items: center;
-}
-
-
-/* 게시물 사진/텍스트 배치 */
-.chatting--post > a {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-
-    color: inherit;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-/* 게시물 사진 배치 */
-.chatting--post > a > div:first-child {
-    padding-right: 10px;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-}
-/* 게시물 사진 */
-.chatting--post > a > div:first-child > * {
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
-}
-
-
-/* ---------------------------------------------------- */
-
-/* 채팅이 이루어지는 공간 */
-.chatting--list {
-    height: calc(100% - 100px - 100px);
-    width: 95%;
-    border: 3px solid black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-
-/* 말풍선 */
-.chatting--list > div {
-    background-color: yellow;
-    height: 100px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-/* ---------------------------------------------------- */
-
-/* 채팅 치는 박스 */
-.chatting--chat {
-    background-color: #C2D3EB;
-    height: 100px;
-    width: 95%;
-    border-radius: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-
-/* 채팅창 배치 */
-.chatting--chat > * {
-    padding: 10px 10px 10px 10px;
 }
 
 /* ---------------------------------------------------- */
