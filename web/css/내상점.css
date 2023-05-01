@@ -20,6 +20,18 @@ a{
     text-decoration: none !important;
 }
 
+input[type=text], textarea{
+    border: none;
+}
+
+textarea{
+    resize: none;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
 /* 내상점 컨테이너 */
 .myshop--profile{
     margin-top: 10px;
@@ -747,7 +759,7 @@ a{
 /* 내 상점 팝업 상단 */
 .myshop--popup__top{
     width: 100%;
-    height: 45px;
+    height: 7%;
     background-color: #7E98BC;
     display: flex;
     justify-content: space-between;
@@ -770,14 +782,54 @@ a{
 }
 
 /* 내 상점 팝업 컨텐츠 */
-.myshop--popup__content div{
-    text-align: center;
+.myshop--popup__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 93%;
+    padding: 30px;
 }
 
-.myshop--popup__content>div:nth-of-type(1){ height: 30%; }
-.myshop--popup__content>div:nth-of-type(2){ height: 10%; }
-.myshop--popup__content>div:nth-of-type(3){ height: 40%; }
-.myshop--popup__content>div:nth-of-type(4){ height: 20%; }
+/* 내 상점 팝업 컨텐츠 모든 div */
+.myshop--popup__content>div{
+    margin-bottom: 10px;
+}
+
+/* 내 상점 팝업 컨텐츠 상점 img 선택  div */
+.myshop--popup__content>div:nth-of-type(1){ 
+    width: 230px;
+    height: 50%; 
+    border: 1px solid black;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+/* 내 상점 팝업 컨텐츠 상점명 입력 div */
+.myshop--popup__content>div:nth-of-type(2){ 
+    width: 339px;
+    height: 10%; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+/* 내 상점 팝업 컨텐츠 상점 소개 입력 div */
+.myshop--popup__content>div:nth-of-type(3){ 
+    width: 339px;
+    height: 30%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+/* 내 상점 팝업 컨텐츠 편집 저장 버튼 div */
+.myshop--popup__content>div:nth-of-type(4){ 
+    height: 10%;
+    padding: 10px;
+}
 
 /* 내 상점 편집 팝업 저장 버튼 */
 .myshop--popup__btn-save{
@@ -788,5 +840,38 @@ a{
     font-size: 20px;
     font-weight: bold;
     border: none;
+}
+
+/*  내 상점 팝업 컨텐츠 상점명 입력 div,
+    내 상점 팝업 컨텐츠 상점 소개 입력 div */
+.myshop--popup__content>div:nth-of-type(2),
+.myshop--popup__content>div:nth-of-type(3){
+    background-color: #D9D9D9;
+}
+
+/*  내 상점 팝업 컨텐츠 상점명 입력 input,
+    내 상점 팝업 컨텐츠 상점 소개 입력 textarea */
+.myshop--popup__input-edit,
+.myshop--popup__textarea-edit{
+    background-color: #D9D9D9;
+}
+
+/* 내 상점 팝업 컨텐츠 상점명 입력 input */
+.myshop--popup__input-edit{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* 내 상점 팝업 컨텐츠 상점 소개 입력 textarea 글자수 */
+.myshop--popup__textarea-edit+span{
+    align-self: flex-end;
+}
+
+/* 내 상점 팝업 컨텐츠 상점 소개 입력 textarea, 상점명 입력 input 글자수  */
+.myshop--popup__textarea-edit+span,
+.myshop--popup__input-edit+span{
+    color: #656565;
+    font-size: 18px;
+    font-weight: 600;
 }
 
