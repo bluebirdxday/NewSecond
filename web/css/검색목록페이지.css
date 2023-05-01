@@ -49,12 +49,23 @@
 
 /* 검색한 상품 목록들 */
 .container--inner__middle{
-    display: grid;
+    width: 1060px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 30px 0;
+    overflow: hidden;
 }
 
-.container--inner__middle>div[class*=item]{
+.container--inner__middle>div[class*=goods]{
     width: 265px;
-    height: 265px;
+    height: 360px;
     border: 1px solid black;
+    float: left;
+}
+
+.container--inner__middle img{
+    width: 265px;
     border-radius: 15%;
+    padding: 15px;
+    display: block;
 }
