@@ -37,7 +37,7 @@ sortList.forEach(function(sort){
 
 
 
-// 내 상점 편집 팝업
+// 내 상점 편집 팝업 열기
 document.querySelector(".myshop--popup__show").addEventListener("click", ()=>{
     document.querySelector(".myshop--popup__background").className = "myshop--popup__background myshop--popup__show";
 });
@@ -48,4 +48,16 @@ document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()
 
 document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
     document.querySelector(".myshop--popup__background").className = "myshop--popup__background";
+});
+
+
+// 내상점 편집 팝업 이미지 
+const realUpload = document.querySelector(".real-upload");
+const upload = document.querySelector(".upload");
+
+upload.addEventListener("click", ()=> realUpload.click());
+
+realUpload.addEventListener("change", ()=>{
+    const imageSrc = URL.createObjectURL(realUpload.files[0]);
+    upload.src = imageSrc;
 });

@@ -34,7 +34,7 @@
 
                 <div>
                     <!-- <button type="button" class="myshop--info__btn-follow">팔로우</button> -->
-                    <div class="myshop--info__btn-edit myshop--popup__show">편  집</div>
+                    <div class="myshop--info__btn-edit myshop--popup__show">편집</div>
                 </div>
             </div>
 
@@ -85,7 +85,9 @@
 
                     <div class="myshop--popup__content">
                         <div>
-                            <input type="file" class="myshop--popup__profile-edit"></input> <!-- 내상점 이미지 -->
+                            <img src="/web/src/img/myshop_profile.png" class="upload">
+                            <img src="/web/src/img/notifications.png" class="changeProfileImg" style="display: none;">
+                            <input type="file" class="myshop--popup__profile-edit real-upload" accept="image/*" style="display: none;"></input> <!-- 내상점 이미지 -->
                         </div>
                         <div>
                             <input type="text" class="myshop--popup__input-edit" minlength="3" maxlength="20">
@@ -298,8 +300,21 @@
                 
             </div>
 
+            <!-- 팔로워 탭 -->
             <div id="tab4" class="myshop--tab__content">
-            팔로워
+                <div class="myshop--tab3__gridcontainer">
+                    <div class="tab3--container__item">
+                        <div>
+                            <img src="/web/src/img/cat2.jpg">
+                        </div>
+                        <div>USER#123456</div>
+                        <div>좋은 것만 취급합니다 네고 사절 찔러보기 금지</div>
+                        <div>
+                            <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
+                            <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

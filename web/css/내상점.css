@@ -634,16 +634,12 @@ textarea:focus, input:focus{
 .tab3--container__item{
     height: 300px;
     margin: 6px;
-}
-
-
-/* 팔로잉 탭 팔로잉 유저 div */
-.tab3--container__item{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 
 /* 팔로잉 탭 팔로잉 유저 프로필 사진 */
 .tab3--container__item img{
@@ -691,8 +687,10 @@ textarea:focus, input:focus{
     cursor: pointer;
 }
 
+
 /* 팔로잉 탭  상점가기 버튼 */
-.tab3--item__btn-gotoshop{
+.tab3--item__btn-gotoshop,
+.tab3--item__btn-follow{
     background-color: #5A6690;
     color: white;
 }
@@ -800,10 +798,28 @@ textarea:focus, input:focus{
 .myshop--popup__content>div:nth-of-type(1){ 
     width: 230px;
     height: 50%; 
-    border: 1px solid black;
     margin-bottom: 20px;
     border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.myshop--popup__content>div:nth-of-type(1)>img{
+    max-height: 100%;
+    width: auto;
+}
+
+.myshop--popup__content>div:nth-of-type(1)>img:hover{
+    filter: brightness(0.5);
+}
+
+.myshop--popup__content>div:nth-of-type(1):hover{
+    border: 3px solid #C2D3EB;
+}
+
 
 /* 내 상점 팝업 컨텐츠 상점명 입력 div */
 .myshop--popup__content>div:nth-of-type(2){ 
@@ -840,20 +856,22 @@ textarea:focus, input:focus{
     font-size: 20px;
     font-weight: bold;
     border: none;
+    box-shadow: 0 4px 4px #CECECE;
+
 }
 
 /*  내 상점 팝업 컨텐츠 상점명 입력 div,
     내 상점 팝업 컨텐츠 상점 소개 입력 div */
 .myshop--popup__content>div:nth-of-type(2),
 .myshop--popup__content>div:nth-of-type(3){
-    background-color: #D9D9D9;
+    background-color: #eae8e8;
 }
 
 /*  내 상점 팝업 컨텐츠 상점명 입력 input,
     내 상점 팝업 컨텐츠 상점 소개 입력 textarea */
 .myshop--popup__input-edit,
 .myshop--popup__textarea-edit{
-    background-color: #D9D9D9;
+    background-color: #eae8e8;
 }
 
 /* 내 상점 팝업 컨텐츠 상점명 입력 input */
