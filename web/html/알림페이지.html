@@ -11,12 +11,12 @@
 
     <link rel="stylesheet" href="/web/css/알림페이지.css">
 
-    <script src="/web/js/main.js" type="module"></script>
 </head>
 <body>
     
     <section class="notice--container">
 
+        <!-- 활동 알림 탭 -->
         <div class="notice--container__activity">
 
             <div class="notice--tabs">
@@ -28,7 +28,7 @@
 
             <div id="tab1" class="notice--tab__content notice--tabs__active">
                 
-                <div class="notice--tab1__item notice--activity__new">
+                <div class="notice--tab1__item notice--new">
 
                     <div class="notice--tab1__item-first">
                         <img src="/web/src/img/cat2.jpg" class="notice--tab1__img">
@@ -43,6 +43,7 @@
 
                     <div class="notice--tab1__item-third">1시간 전</div>
                 </div>
+                
                 
                 <div class="notice--tab1__item">
                     
@@ -59,7 +60,43 @@
 
                     <div class="notice--tab1__item-third">1시간 전</div>
                 </div>
+
             </div>
+
+            
+                    <!-- 키워드 알림 탭 -->
+                    <div id="tab2" class="notice--tab__content">
+                        
+                        <div class="notice--tab2__banner">
+                            <div><img src="/web/src/img/loudSpeaker.png"> 알림 받고 있는 키워드 <span>0</span>개</div>
+                            <a href="/web/html/키워드편집.html">편집</a>
+                        </div>
+
+                        <div class="notice--tab2__item notice--new">
+                            <div class="notice--tab2__item-first">
+                                <img src="/web/src/img/blackimg.jpg">
+                            </div>
+                            <div class="notice--tab2__item-second">
+                                <div>아디다스 삼바</div>
+                                <div>아디다스 삼바 250 새상품 판매합니다</div>
+                            </div>
+                            <div class="notice--tab2__item-third">1시간 전</div>
+                        </div>
+
+                        
+                        <div class="notice--tab2__item">
+                            <div class="notice--tab2__item-first">
+                                <img src="/web/src/img/blackimg.jpg">
+                            </div>
+                            <div class="notice--tab2__item-second">
+                                <div>키워드명</div>
+                                <div>게시글 제목</div>
+                            </div>
+                            <div class="notice--tab2__item-third">1시간 전</div>
+                        </div>
+
+
+                    </div>
 
         </div>
 

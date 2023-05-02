@@ -20,6 +20,7 @@ a{
     color: black;
 }
 
+
 /* 탭 메뉴 컨테이너 */
 .notice--container{
     margin-top: 20px;
@@ -40,6 +41,7 @@ a{
     table-layout: fixed;
     padding: 0;
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 /* 탭 메뉴 각각 탭 */
@@ -92,18 +94,14 @@ a{
 .notice--tab1__item{
     width: 100%;
     height: 190px;
-    background-color: #EEEEEE;
+    background-color: hsl(225, 60%, 96%);
     margin-bottom: 10px;
     box-shadow: 0 4px 4px 0 #C0C0C0;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px;
-}
-
-/* 활동 알림 - 새로운 알림 */
-.notice--activity__new{
-    background-color: #C2D3EB;
+    cursor: pointer;
 }
 
 /* 활동 알림 아이템(알림 div) 구성 */
@@ -132,13 +130,19 @@ a{
 
 /* 활동 알림명, 상세설명, 등 div들 */
 .notice--tab1__item-second>div{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /* 활동 알림명 */
 .notice--tab1__item-second>div:nth-of-type(1){
     font-size: 18px;
     font-weight: 600;
+}
+
+/* 활동 알림 상세설명 */
+.notice--tab1__item-second>div:nth-of-type(2){
+    height: 25px;
+    margin-bottom: 30px;
 }
 
 /* 활동 알림 - 가격하락,상승 */
@@ -150,7 +154,7 @@ a{
     background-color: white;
     font-size: 17px;
     font-weight: 700;
-    color: #656565;
+    color: #807f7f;
     box-shadow: 0 4px 4px 0 #B3B3B3;
     /* 919EB0 */
     text-align: center;
@@ -170,4 +174,112 @@ a{
     font-size: 16px;
 }
 
+/* 키워드 알림 탭 배너 */
+.notice--tab2__banner{
+    width: auto;
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5A6690;
+    padding: 0 25px;
+}
 
+/* 키워드 알림 탭 배너 div*/
+.notice--tab2__banner>div{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+}
+
+/* 키워드 알림 탭 배너 - 확성기 이미지 */
+.notice--tab2__banner>div>img{
+    width: 21px;
+    height: 22px;
+}
+
+/* 키워드 알림 탭 배너 - 편집 버튼  */
+.notice--tab2__banner>a{
+    width: 115px;
+    height: 50px;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 5px 5px 0 #444D6C;
+    text-align: center;
+    line-height: 50px;
+}
+
+.notice--tab2__banner>a:hover {
+    box-shadow:  inset 4px 4px 4px 0 rgba(0, 0, 0, .5);
+    color: #000000;
+}
+
+/* 키워드 알림 각각 */
+.notice--tab2__item{
+    width: auto;
+    height: 120px;
+    background-color: hsl(225, 60%, 96%);
+    margin-top: 10px;
+    box-shadow: 0 4px 4px 0 #C0C0C0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.notice--tab2__item:hover, .notice--tab1__item:hover{
+    transform: translate(-1px, -1px);
+    transition: 0.2s ease-out;
+}
+
+/* 키워드 알림 - 게시글 대표 이미지 */
+.notice--tab2__item img{
+    width: 100px;
+    height: 100px;
+}
+
+
+/* 활동 알림, 키워드 알림 - 새로운 알림 */
+.notice--new{
+    background-color: #ccd8f8;
+}
+
+
+/* 키워드 알림 - 게시글 이미지 div */
+.notice--tab2__item-first{ 
+    width: 15%;  
+    text-align: center; 
+}
+
+/* 키워드 알림 - 키워드명+게시글 제목 div */
+.notice--tab2__item-second{ 
+    width: 75%; 
+    padding: 0 20px; 
+    display: flex;
+    align-items: center;
+    
+}
+
+/* 키워드 알림 - 키워드명 */
+.notice--tab2__item-second>div:nth-of-type(1){ 
+    width: fit-content;
+    padding: 0 25px 0 5px;
+    font-size: 19px; 
+    font-weight: 700;
+}
+
+/* 키워드 알림 - 게시글 제목 */
+.notice--tab2__item-second>div:nth-of-type(2){
+    font-size: 18px;
+}
+
+/* 키워드 알림 - 알림 시간 div */
+.notice--tab2__item-third{ 
+    width: 10%; 
+    color: #656565;
+    font-size: 16px;
+}

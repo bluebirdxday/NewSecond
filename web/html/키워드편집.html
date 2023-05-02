@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키워드 편집</title>
+
+    <link rel="stylesheet" href="/web/css/키워드편집.css">
+</head>
+<body>
+
+    <section class="keywordedit--container">
+
+        <div class="keywordedit--container__banner">
+            <div>
+                <div class="keywordedit--banner__title"><img src="/web/src/img/loudSpeaker.png"> 등록한 키워드</div>
+                <div class="keywordedit--banner__count"><span id="keywordCount">0</span> / 20</div>
+            </div>
+            <div class="keywordedit--banner__close">
+                <img src="/web/src/img/closeBtn.png"> <!-- 누르면 이전 페이지로 돌아가게 만들기 -->
+            </div>
+        </div>
+
+        <div class="keywordedit--container__content">
+            
+            <div class="keywordedit--content__add">
+            
+                <form action="">
+
+                    <div class="keywordedit--input">
+                        <input type="text" placeholder="키워드를 입력해주세요" size="45" minlength="2" maxlength="20">
+                    </div>
+
+                    <button>추가</button> <!-- 누르면 DB에 키워드 추가 -->
+                </form>
+            </div>
+
+            <!-- 그리드 -->
+            <div class="keywordedit--content__list">
+
+                <div class="keywordedit--item">
+                    <div>아디다스 삼바</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>젤리키링</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>길다길다길다길다</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>에메모가든 백팩</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>자바의 정석</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>정보처리기사 필기</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+                <div class="keywordedit--item">
+                    <div>수제비</div>
+                    <div><img src="/web/src/img/minus-button.png" class="keyword--btn__delete"></div> 
+                    <!-- 누르면 DB에서 키워드 삭제 -->
+                </div>
+
+            </div>
+
+        </div>
+
+        <div></div>
+    </section>
+
+
+
+    <script src="/web/js/키워드편집.js"></script>
+    
+</body>
+</html>

@@ -35,9 +35,9 @@ textarea:focus, input:focus{
 /* 내상점 컨테이너 */
 .myshop--profile{
     margin-top: 10px;
-    border: 1px solid #E5EEFF;
+    border: 1px solid #e6ebfd;
     border-radius: 20px;
-    background-color: #F3F6FC;
+    background-color: hsl(207, 100%, 98%);
     width: 800px;
     height: 230px;
     display: flex;
@@ -702,6 +702,9 @@ textarea:focus, input:focus{
 }
 
 
+/* **************************************************************** */
+
+
 /* 내 상점 편집 버튼 클릭 시 */
 /* 내 상점 팝업 배경 */
 .myshop--popup__background {
@@ -846,7 +849,7 @@ textarea:focus, input:focus{
 
 /* 내 상점 편집 팝업 저장 버튼 */
 .myshop--popup__btn-save{
-    background-color: #C2D3EB;
+    background-color: #dae4ff;
     height: 46px;
     width: 150px;
     border-radius: 100px;
