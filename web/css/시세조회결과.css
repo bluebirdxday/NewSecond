@@ -100,6 +100,9 @@
     width: 980px;
     border-radius: 20px;
     background-color: white;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
 }
 
 /* ---------------------------------------------------- */
@@ -129,17 +132,67 @@
 
 /* ---------------------------------------------------- */
 
+.priceViewResult--main__LeftBox{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    place-items: center;
+}
+.priceViewResult--main__LeftBox > div:first-child {
+    color: #2365B9;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.priceViewResult--main__LeftBox > div:last-child {
+    height: 200px;
+    width: 450px;
+    background-color: #C2D3EB;
+    border-radius: 20px;
+}
 
 
+/* 그래프 */
+.chart {
+    width: 500px;
+    height: 300px;
+    background-color: #f0f0f0;
 
+    width: 400px;
+    height: 150px;
+    place-items: center;
+}
+.x-axis text {
+    font-size: 1.2em;
+    text-anchor: middle;
+}
 
+/* ---------------------------------------------------- */
 
+.priceViewResult--main__RightBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.priceViewResult--main__RightBox > div:first-child {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2365B9;
+    margin-bottom: 30px;
+}
+.priceViewResult--main__RightBox > div:last-child {
+    background-color: #2365B9;
+    border-radius: 20px;
+    height: 80px;
+    width: 300px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-
-
-
-
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
 /* ---------------------------------------------------- */
 /* bottomFrame */
