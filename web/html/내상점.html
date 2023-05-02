@@ -83,6 +83,8 @@
                         <img src="/web/src/img/closePopup.png" class="myshop--popup__btn-close"/>
                     </div>
 
+                    <!-- form 태그 추가 + 저장버튼 클릭 시 제출 필요 -->
+                    <!-- myPage.js, myPage-info.jsp 파일 참고 -->
                     <div class="myshop--popup__content">
                         <div>
                             <img src="/web/src/img/myshop_profile.png" class="upload">
@@ -90,12 +92,12 @@
                             <input type="file" class="myshop--popup__profile-edit real-upload" accept="image/*" style="display: none;"></input> <!-- 내상점 이미지 -->
                         </div>
                         <div>
-                            <input type="text" class="myshop--popup__input-edit" minlength="3" maxlength="20">
-                            <span>(0/20)</span>
+                            <input type="text" class="myshop--popup__input-edit" minlength="3" maxlength="20" value="상점명"> 
+                            <span>(<span id="myshopEditInput">0</span>/20)</span>
                         </div>
                         <div>
-                            <textarea name="" id="" class="myshop--popup__textarea-edit" cols="35" rows="4" maxlength="50"></textarea>
-                            <span>(0/50)</span>
+                            <textarea name="" id="" class="myshop--popup__textarea-edit" cols="35" rows="4" maxlength="50">상점소개</textarea>
+                            <span>(<span id="myshopEditTextArea">0</span>/50)</span>
                         </div>
                         <div>
                             <button class="myshop--popup__btn-save">저장</button>

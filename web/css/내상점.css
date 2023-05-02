@@ -302,6 +302,7 @@ textarea:focus, input:focus{
 /* 탭 메뉴 모든 콘텐츠 */
 .myshop--tab__content{
     display: none;
+    background-color: #f0f1f4;
 }
 
 /* 활성화된 탭 메뉴 콘텐츠 */
@@ -325,10 +326,6 @@ textarea:focus, input:focus{
     margin-left: 13px;
 }
 
-/* 탭 컨텐츠 */
-.myshop--tab__content{
-    background-color: #f0f1f4;
-}
 
 /* 상품 탭 컨텐츠 상단 */
 .myshop--tab1__content-top{
@@ -881,15 +878,19 @@ textarea:focus, input:focus{
 }
 
 /* 내 상점 팝업 컨텐츠 상점 소개 입력 textarea 글자수 */
-.myshop--popup__textarea-edit+span{
+.myshop--popup__textarea-edit~span{
     align-self: flex-end;
 }
 
 /* 내 상점 팝업 컨텐츠 상점 소개 입력 textarea, 상점명 입력 input 글자수  */
-.myshop--popup__textarea-edit+span,
-.myshop--popup__input-edit+span{
+.myshop--popup__textarea-edit~span,
+.myshop--popup__input-edit~span{
     color: #656565;
     font-size: 18px;
     font-weight: 600;
 }
 
+/* 내 상점 편집 */
+.myshop--edit__error{
+    color: red;
+}

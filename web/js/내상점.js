@@ -40,6 +40,11 @@ sortList.forEach(function(sort){
 // 내 상점 편집 팝업 열기
 document.querySelector(".myshop--popup__show").addEventListener("click", ()=>{
     document.querySelector(".myshop--popup__background").className = "myshop--popup__background myshop--popup__show";
+
+    // 글자수 입력
+    document.getElementById("myshopEditInput").innerText = document.querySelector(".myshop--popup__input-edit").value.length;
+    document.getElementById("myshopEditTextArea").innerText = document.querySelector(".myshop--popup__textarea-edit").value.length;
+    
 });
 
 document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
@@ -60,4 +65,29 @@ upload.addEventListener("click", ()=> realUpload.click());
 realUpload.addEventListener("change", ()=>{
     const imageSrc = URL.createObjectURL(realUpload.files[0]);
     upload.src = imageSrc;
+});
+
+
+// 내상점 팝업 편집 글자수 세기
+const inputCount = document.getElementById("myshopEditInput");
+const textAreaCount = document.getElementById("myshopEditTextArea");
+
+document.querySelector(".myshop--popup__input-edit").addEventListener("input", e=>{
+    inputCount.innerText = e.target.value.length;
+
+    if(e.target.value.length>=20 || e.target.value.length<=2){
+        inputCount.classList.add("myshop--edit__error");
+    }else{ 
+        inputCount.classList.remove("myshop--edit__error");
+    }
+});
+
+document.querySelector(".myshop--popup__textarea-edit").addEventListener("input", e=>{
+    textAreaCount.innerText = e.target.value.length;
+
+    if(e.target.value.length>=50){
+        textAreaCount.classList.add("myshop--edit__error");
+    }else{ 
+        textAreaCount.classList.remove("myshop--edit__error");
+    }
 });

@@ -1,4 +1,3 @@
-<!-- 알림 페이지 - 활동 알림, 키워드 알림 [전희진] -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,19 +15,58 @@
 </head>
 <body>
     
-    <header data-include="./include/content.html"></header>
-<!--  -->
+    <section class="notice--container">
+
+        <div class="notice--container__activity">
+
+            <div class="notice--tabs">
+                <ul>
+                    <li class="notice--tabs__active"><a href="#" rel="tab1">활동 알림</a></li>
+                    <li><a href="#" rel="tab2">키워드 알림</a></li>
+                </ul>
+            </div>
+
+            <div id="tab1" class="notice--tab__content notice--tabs__active">
+                
+                <div class="notice--tab1__item notice--activity__new">
+
+                    <div class="notice--tab1__item-first">
+                        <img src="/web/src/img/cat2.jpg" class="notice--tab1__img">
+                        <div>닉네임</div>
+                    </div>
+
+                    <div class="notice--tab1__item-second">
+                        <div>관심상품으로 등록한 게시물명</div>
+                        <div>의 가격을 <span>103,000</span>원에서 <span>93,000</span>원으로 내렸습니다.</div>
+                        <div><span>가격 하락</span> <span>10,000</span>원 <span id="upDownArrow">↓</span></div>
+                    </div>
+
+                    <div class="notice--tab1__item-third">1시간 전</div>
+                </div>
+                
+                <div class="notice--tab1__item">
+                    
+                    <div class="notice--tab1__item-first">
+                        <img src="/web/src/img/cat2.jpg" class="notice--tab1__img">
+                        <div class="notice--tab1__username">닉네임</div>
+                    </div>
+
+                    <div class="notice--tab1__item-second">
+                        <div>관심상품으로 등록한 게시물명</div>
+                        <div>의 가격을 <span>103,000</span>원에서 <span>93,000</span>원으로 내렸습니다.</div>
+                        <div><span>가격 하락</span> <span>10,000</span>원 <span id="upDownArrow">↓</span></div>
+                    </div>
+
+                    <div class="notice--tab1__item-third">1시간 전</div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
 
 
-
-
-
-
-
-
-<!--  -->
-    <footer data-include="./include/footer.html"></footer>
-
+    <script src="/web/js/알림페이지.js"></script>
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,173 @@
+*{
+    font-family: 'Pretendard';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    letter-spacing: -0.25px;
+}
+
+body{
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 탭 메뉴 컨테이너 */
+.notice--container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 탭 메뉴 컨테이너-활동 알림 */
+.notice--container__activity{
+    width:80%;
+    padding: 40px 0;
+}
+
+/* 탭 메뉴 탭들 */
+.notice--tabs ul {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+/* 탭 메뉴 각각 탭 */
+.notice--tabs li {
+    display: table-cell;
+    height: 100%;
+    padding: 20px 0 20px;
+    text-align: center;
+    background-color: #D3D3D3;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 1px solid black;
+}
+
+/* 탭 메뉴 각각 탭 txt*/
+.notice--tabs li a {
+    font-size: 18px;
+    color: #656565;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+}
+
+/* 활성화된 탭 li */
+.notice--tabs li.notice--tabs__active{
+    border: 1px solid black;
+    background-color: white;
+    border-bottom: none;
+}
+
+/* 활성화된 탭 li txt*/
+.notice--tabs li.notice--tabs__active a{
+    color: #000000;
+}
+
+
+/* 탭 메뉴 모든 콘텐츠 */
+.notice--tab__content{
+    display: none;
+    border: 1px solid black;
+    border-top-style: none;
+    padding: 10px;
+}
+
+/* 활성화된 탭 메뉴 콘텐츠 */
+.notice--container__activity div.notice--tabs__active{
+    display: inherit;
+}
+
+/* 활성화된 탭 메뉴 아이템(알림 div) */
+.notice--tab1__item{
+    width: 100%;
+    height: 190px;
+    background-color: #EEEEEE;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 4px 0 #C0C0C0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* 활동 알림 - 새로운 알림 */
+.notice--activity__new{
+    background-color: #C2D3EB;
+}
+
+/* 활동 알림 아이템(알림 div) 구성 */
+.notice--tab1__item>div:nth-of-type(1){ width: 20%; }
+.notice--tab1__item>div:nth-of-type(2){ width: 70%; }
+.notice--tab1__item>div:nth-of-type(3){ width: 10%; }
+
+/* 활동 알림 img */
+.notice--tab1__img{
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+}
+
+/* 활동 알림 닉네임+프로필이미지 div */
+.notice--tab1__item-first{
+    text-align: center;
+}
+
+/* 활동 알림 닉네임, 프로필이미지 div들 */
+.notice--tab1__item-first>div{
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+/* 활동 알림명, 상세설명, 등 div들 */
+.notice--tab1__item-second>div{
+    margin-top: 20px;
+}
+
+/* 활동 알림명 */
+.notice--tab1__item-second>div:nth-of-type(1){
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* 활동 알림 - 가격하락,상승 */
+.notice--tab1__item-second>div:nth-of-type(3){
+    height: 33px;
+    width: fit-content;
+    padding: 0 18px;
+    border-radius: 80px;
+    background-color: white;
+    font-size: 17px;
+    font-weight: 700;
+    color: #656565;
+    box-shadow: 0 4px 4px 0 #B3B3B3;
+    /* 919EB0 */
+    text-align: center;
+    line-height: 33px;
+}
+
+/* 활동 알림 - 가격 하락 화살표 */
+#upDownArrow{
+    color: red;
+}
+
+/* 활동 알림 - 알림 시간 */
+.notice--tab1__item-third{
+    text-align: end;
+    align-self: flex-end;
+    color: #656565;
+    font-size: 16px;
+}
+
+
