@@ -12,7 +12,7 @@ const qnaHead = document.querySelector('.qna_head');
       var v = document.querySelector('.qna_dropdown-content');
       var qna_dropbtn = document.querySelector('.qna_dropbtn')
       v.classList.toggle('show');
-      qna_dropbtn.style.borderColor = 'rgb(94, 94, 94)';
+      qna_dropbtn.style.borderColor = '#005EEE';
 
     }
 
