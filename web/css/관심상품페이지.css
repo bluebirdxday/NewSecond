@@ -13,13 +13,13 @@
 /* -------------------- */
 
 /* 상단 제목 */
-.fav_bar_container{
+.wish_bar_container{
     width: auto;
     background-color:#8ab2e24b;
     
   }
   
-  .fav_bar{
+  .wish_bar{
       margin: 10px 10px;
       font-size: 30px;
       font-style: italic;  
@@ -28,31 +28,31 @@
 
   /* ---------------조회 서비스---------- */
 /* 선택삭제 및 조회서비스 전체 div */
-  .fav_sortContainer{
+  .wish_sortContainer{
   min-width: 500px;
 }
 
 /* 선택삭제 span */
-.fav_ck_delete{
+.wish_ck_delete{
   position: absolute;
   left: 100px;
   top: 265px;
 }
 
 /* 선택삭제 체크박스 */
-.fav_checkboxOne{
+.wish_checkboxOne{
 
 
 }
 
 /* 최신순 가격순등 조회서비스 class */
-  .fav_sorting{
+  .wish_sorting{
    float:right;
    margin: 0px 10PX;
  
 }
 
-.fav_sorting:hover{
+.wish_sorting:hover{
     color: #478bfb;
     border-radius: 5px;
     font-weight: bold;
@@ -60,14 +60,14 @@
    
 
   /* -------------이미지---------------- */
-.fav_imgContatiner{
+.wish_imgContatiner{
     min-width:auto;
     display: inline-block;
     margin-left: 6%;
 }
 
   
-.fav_imgDiv{
+.wish_imgDiv{
     display: block;
     position: relative; 
     width: 200px; 
@@ -87,30 +87,30 @@
     border-radius: 10px;
     box-shadow: 4px 4px 4px 1px #ebeaea9b;
   }
-  .fav_info{
+  .wish_info{
     display: flex;
     justify-content: center;
     margin: 10px;
   }
 
-.fav_price{
+.wish_price{
   display: flex;
   justify-content: center;
 }
 
 /* ------------------이미지 체크박스-------------------- */
- .fav_checkbox{
+ .wish_checkbox{
      position: absolute; 
      top: 0px; 
      right: 0px;
 }
 
-.fav_ck_label{
+.wish_ck_label{
   width: 200px;
   height: 200px;
 }
 
-.fav_checkbox {
+.wish_checkbox {
     -webkit-appearance: none;
     width: 100%;
     cursor: pointer;
@@ -118,7 +118,7 @@
     top: 0px; 
     right: 0px;
   }
-  .fav_checkbox:after {
+  .wish_checkbox:after {
     position: absolute;
     font-family: "Font Awesome 5 Free";
     font-weight: 400;
@@ -128,7 +128,7 @@
     right: 1px;
     top: 5px;
   }
-  .fav_checkbox:checked:after {
+  .wish_checkbox:checked:after {
     font-weight: 900;
     content: "\f004";
     color: #478bfb;

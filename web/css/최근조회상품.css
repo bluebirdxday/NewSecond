@@ -13,13 +13,13 @@
 /* -------------------- */
 
 /* 상단 제목 */
-.lately_bar_container{
+.new_bar_container{
     width: auto;
     background-color:#8ab2e24b;
     
   }
   
-  .lately_bar{
+  .new_bar{
       margin: 10px 10px;
       font-size: 30px;
       font-style: italic;
@@ -27,33 +27,33 @@
   }
   /* ---------------조회 서비스---------- */
 
-.lately_ck_delete{
+.new_ck_delete{
   position: absolute;
   left: 100px;
   top: 265px;
 }
 
 
-  .lately_sorting{
+  .new_sorting{
     float:right;
     margin: 0px 10PX;
  }
 
  
- .lately_sorting:hover{
+ .new_sorting:hover{
   color: #478bfb;
   font-weight: bold;
  }
  
   /* -------------이미지---------------- */
-.lately_imgContatiner{
+.new_imgContatiner{
     min-width:auto;
     display: inline-block;
     margin-left: 6%;
 }
 
   
-.lately_imgDiv{
+.new_imgDiv{
     display: block;
     position: relative; 
     width: 200px; 
@@ -73,29 +73,29 @@
     border-radius: 10px;
     box-shadow: 4px 4px 4px 1px #ebeaea9b;
   }
-.lately_info{
+.new_info{
   display: flex;
   justify-content: center;
   margin: 10px;
 }
 
-.lately_price{
+.new_price{
   display: flex;
   justify-content: center;
 }
 /* ------------------이미지 체크박스-------------------- */
-.lately_checkbox{
+.new_checkbox{
   position: absolute; 
   top: 0px; 
   right: 0px;
 }
 
-.lately_ck_label{
+.new_ck_label{
   width: 200px;
   height: 200px;
 }
 
-.lately_checkbox {
+.new_checkbox {
  -webkit-appearance: none;
  width: 100%;
  cursor: pointer;
@@ -103,7 +103,7 @@
  top: 0px; 
  right: 0px;
 }
-.lately_checkbox:after {
+.new_checkbox:after {
  position: absolute;
  font-family: "Font Awesome 5 Free";
  font-weight: 400;
@@ -113,7 +113,7 @@
  right: 1px;
  top: 5px;
 }
-.lately_checkbox:checked:after {
+.new_checkbox:checked:after {
  font-weight: 900;
  content: "\f0c8";
  color: #478bfb;
