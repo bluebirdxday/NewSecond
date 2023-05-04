@@ -181,25 +181,31 @@ textarea:focus, input:focus{
     font-weight: 700;
 }
 
-/* 접속 여부 */
-.myshop--info__connecting{
-    width: 0.6rem;
-    height: 0.6rem;
-    background-color: red;
-    box-shadow: inset 1px 1px 1px 1px #ba0101;
-    border-radius: 100px;
+/* 별점 */
+.myshop--info__rating{
     margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myshop--info__rating>img{
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
 }
 
 /* 내상점 콘텐츠 소개글 */
 .myshop--info__middle1{
-    padding: 20px 10px;
+    padding: 25px 10px 10px 10px;
 }
 
 /* 내상점 콘텐츠 중단2 */
 .myshop--info__middle2{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
 /* 내상점 콘텐츠 중단2 div들 (팔로워, 오픈일, 판매건수) */
@@ -543,6 +549,25 @@ textarea:focus, input:focus{
     z-index: 0;
 }
 
+/* 후기 탭 유저 닉네임 + 별점 div */
+.tab2--item__detail>div:nth-of-type(2)>div:nth-of-type(1){
+    display: flex;
+}
+
+/* 후기 탭 유저 별점 div */
+.tab2--item__rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 3px 10px;
+}
+
+/* 후기 탭 유저 별점 img */
+.tab2--item__rating>img{
+    width: 15px;
+    height: 15px;
+}
+
 /* 후기 탭 유저가 구매한 상품 게시글명 */
 .tab2--container__item>div:last-of-type{
     background-color: white;
@@ -560,7 +585,7 @@ textarea:focus, input:focus{
 }
 
 /* 후기 탭 후기 작성 유저명 */
-.tab2--item__detail>div:nth-of-type(2)>div:nth-of-type(1){
+.tab2--item__username{
     font-weight: 800;
     margin-bottom: 2px;
 }
