@@ -1,0 +1,144 @@
+/* 20230504 상준 작성 시작 */
+/* 
+    css는 class
+    js는 id
+*/
+
+/* ---------------------------------------------------- */
+/* 1depth */
+/* ---------------------------------------------------- */
+
+/* 화면 전체 배경 */
+.content--post__background {
+    display: grid;
+    grid-template-rows: 80px 1650px 100px;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas:
+        ". topFix ."
+        "leftSide main rightSide"
+        "bottomFix bottomFix bottomFix";
+}
+
+
+
+
+/* 탑 픽스(기본정보) */
+.content--post__topFix {
+    grid-area: topFix;
+    border-bottom: 1px solid black;
+    background-color: white;
+
+    font-weight: bold;
+    font-size: 1.5em;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+
+/* 바텀 픽스(등록하기) */
+.content--post__bottomFix {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-area: bottomFix;
+    background-color: #E5E5E5;
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 10px 30px 10px 30px;
+
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+/* 등록하기 버튼 */
+.content--post__bottomFix > button {
+    background-color: #C2D3EB;
+    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 20px 50px 20px 50px;
+    border: none;
+    border-radius: 50px;
+}
+
+
+/* 왼쪽 여백 */
+.content--post__leftSide {
+    grid-area: leftSide;
+}
+/* 메인 콘텐츠 */
+.content--post__main {
+    grid-area: main;
+}
+/* 오른쪽 여백 */
+.content--post__rightSide {
+    grid-area: rightSide;
+}
+
+/* ---------------------------------------------------- */
+/* 2depth */
+/* ---------------------------------------------------- */
+
+/* 메인 콘텐츠 */
+.content--post__main {
+    display: grid;
+    grid-template-rows:
+        150px 400px 300px 120px 120px 120px 400px;
+    overflow-y: scroll;
+}
+
+
+/* 가격 입력 */
+.post--main__inputTitle {
+    height: 150px;
+    background-color: yellow;
+}
+
+
+/* 상품 이미지 입력 */
+.post--main__inputImage {
+    height: 400px;
+    background-color: red;
+}
+
+
+/* 상세정보 입력 */
+.post--main__inputDetailText {
+    height: 300px;
+    background-color: yellow;
+}
+
+
+/* 가격 입력 */
+.post--main__inputPrice {
+    height: 120px;
+    background-color: red;
+}
+
+
+/* 수량 입력 */
+.post--main__inputQuantity {
+    height: 120px;
+    background-color: yellow;
+}
+
+
+/* 상태 입력 */
+.post--main__inputCondition {
+    height: 120px;
+    background-color: red;
+}
+
+
+/* 카테고리 입력 */
+.post--main__inputCategory {
+    height: 400px;
+    background-color: yellow;
+}
