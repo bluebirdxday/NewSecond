@@ -20,8 +20,6 @@
 }
 
 
-
-
 /* 탑 픽스(기본정보) */
 .content--post__topFix {
     grid-area: topFix;
@@ -30,9 +28,10 @@
 
     font-weight: bold;
     font-size: 1.5em;
+    color: #2365B9;
 
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 
     position: sticky;
@@ -61,11 +60,15 @@
 .content--post__bottomFix > button {
     background-color: #C2D3EB;
     color: black;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
-    padding: 20px 50px 20px 50px;
+    padding: 20px 30px 20px 30px;
     border: none;
     border-radius: 50px;
+}
+.content--post__bottomFix > button:hover {
+    background-color: #2365B9;
+    color: white;
 }
 
 
@@ -85,6 +88,14 @@
 /* ---------------------------------------------------- */
 /* 2depth */
 /* ---------------------------------------------------- */
+
+/* requiredMark */
+.requiredMark {
+    color: red;
+    font-size: small;
+    font-weight: 100;
+}
+
 
 /* 메인 콘텐츠 */
 .content--post__main {
@@ -124,6 +135,8 @@
 .post--main__inputPrice {
     height: 60px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -131,6 +144,8 @@
 .post--main__inputQuantity {
     height: 60px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -139,6 +154,8 @@
     height: 60px;
     padding: 10px;
     border-bottom: 1px solid grey;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -173,7 +190,11 @@
 }
 .post--main__inputTitle > article > input {
     width: 100%;
-    background-color: #E3E3E3; 
+    background-color: #E3E3E3;
+    border: none;
+}
+.post--main__inputTitle > article > input:hover {
+    background-color: #C2D3EB;
 }
 
 /* ---------------------------------------------------- */
@@ -192,15 +213,56 @@
 }
 
 
-.post--main__inputImage > article {
+/* 이미지 추가 버튼 */
+.post--main__ImageContainer {
     display: flex;
 }
-.post--main__ImageContainer > img {
+.post--main__ImageContainer > div:first-child {
     height: 180px;
     width: 180px;
     margin-right: 10px;
     border: 3px solid #C2D3EB;
     border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    background-color: #C2D3EB;
+}
+.post--main__ImageContainer > div:first-child > a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 100px;
+}
+
+
+/* 이미지 스크롤러 */
+.post--main__ImageScroller {
+    display: flex;
+    overflow-x: scroll;
+    width: 780px;
+}
+.post--main__ImageScroller > img {
+    height: 180px;
+    width: 180px;
+    margin-right: 10px;
+    border: 3px solid #C2D3EB;
+    border-radius: 20px;
+}
+
+
+/* 스크롤 모양 */
+::-webkit-scrollbar {
+    height: 10px;
+    width: 12px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #E3E3E3; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 모서리 둥글게 */
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2365B9; /* 커서 호버 시 스크롤바 색상 변경 */
 }
 
 /* ---------------------------------------------------- */
@@ -227,6 +289,10 @@
     width: 100%;
     resize: none;
     background-color: #E3E3E3;
+    border: none;
+}
+.post--main__inputDetailText > article > textarea:hover {
+    background-color: #C2D3EB;
 }
 
 /* ---------------------------------------------------- */
@@ -248,6 +314,12 @@
 .post--main__inputPrice > div > input {
     background-color: #E3E3E3;
     margin-left: 20px;
+    border: none;
+    height: 30px;
+    text-align: right;
+}
+.post--main__inputPrice > div > input:hover {
+    background-color: #C2D3EB;
 }
 
 /* ---------------------------------------------------- */
@@ -269,6 +341,12 @@
 .post--main__inputQuantity > div > input {
     background-color: #E3E3E3;
     margin-left: 20px;
+    border: none;
+    height: 30px;
+    text-align: right;
+}
+.post--main__inputQuantity > div > input:hover {
+    background-color: #C2D3EB;
 }
 
 /* ---------------------------------------------------- */
@@ -314,6 +392,7 @@
 .inputCategorySelector {
     height: 250px;
     
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
