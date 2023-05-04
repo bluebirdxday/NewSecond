@@ -11,8 +11,8 @@
 /* 화면 전체 배경 */
 .content--post__background {
     display: grid;
-    grid-template-rows: 80px 1650px 100px;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 80px 1070px 100px;
+    grid-template-columns: 1fr 1000px 1fr;
     grid-template-areas:
         ". topFix ."
         "leftSide main rightSide"
@@ -90,55 +90,235 @@
 .content--post__main {
     display: grid;
     grid-template-rows:
-        150px 400px 300px 120px 120px 120px 400px;
+        100px 250px 180px 80px 80px 80px 300px;
     overflow-y: scroll;
+    overflow: hidden;
 }
 
 
 /* 가격 입력 */
 .post--main__inputTitle {
-    height: 150px;
-    background-color: yellow;
+    height: 80px;
+    padding: 10px;
+    border-bottom: 1px solid grey;
 }
 
 
 /* 상품 이미지 입력 */
 .post--main__inputImage {
-    height: 400px;
-    background-color: red;
+    height: 230px;
+    padding: 10px;
+    border-bottom: 1px solid grey;
 }
 
 
 /* 상세정보 입력 */
 .post--main__inputDetailText {
-    height: 300px;
-    background-color: yellow;
+    height: 160px;
+    padding: 10px;
+    border-bottom: 1px solid grey;
 }
 
 
 /* 가격 입력 */
 .post--main__inputPrice {
-    height: 120px;
-    background-color: red;
+    height: 60px;
+    padding: 10px;
 }
 
 
 /* 수량 입력 */
 .post--main__inputQuantity {
-    height: 120px;
-    background-color: yellow;
+    height: 60px;
+    padding: 10px;
 }
 
 
 /* 상태 입력 */
 .post--main__inputCondition {
-    height: 120px;
-    background-color: red;
+    height: 60px;
+    padding: 10px;
+    border-bottom: 1px solid grey;
 }
 
 
 /* 카테고리 입력 */
 .post--main__inputCategory {
-    height: 400px;
-    background-color: yellow;
+    height: 280px;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+
+/* ---------------------------------------------------- */
+/* 3depth */
+/* ---------------------------------------------------- */
+
+/* 1) 제목 박스 안 */
+.post--main__inputTitle > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputTitle > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputTitle > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputTitle > article {
+    height: 40px;
+    display: flex;
+}
+.post--main__inputTitle > article > input {
+    width: 100%;
+    background-color: #E3E3E3; 
+}
+
+/* ---------------------------------------------------- */
+
+/* 2) 상품이미지 안 */
+.post--main__inputImage > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputImage > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputImage > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputImage > article {
+    display: flex;
+}
+.post--main__ImageContainer > img {
+    height: 180px;
+    width: 180px;
+    margin-right: 10px;
+    border: 3px solid #C2D3EB;
+    border-radius: 20px;
+}
+
+/* ---------------------------------------------------- */
+
+/* 3) 상세설명 안 */
+.post--main__inputDetailText > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputDetailText > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputDetailText > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputDetailText > article {
+    height: 120px;
+    display: flex;
+}
+.post--main__inputDetailText > article > textarea {
+    width: 100%;
+    resize: none;
+    background-color: #E3E3E3;
+}
+
+/* ---------------------------------------------------- */
+
+/* 4) 가격 안 */
+.post--main__inputPrice > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputPrice > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputPrice > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputPrice > div > input {
+    background-color: #E3E3E3;
+    margin-left: 20px;
+}
+
+/* ---------------------------------------------------- */
+
+/* 5) 수량 안 */
+.post--main__inputQuantity > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputQuantity > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputQuantity > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputQuantity > div > input {
+    background-color: #E3E3E3;
+    margin-left: 20px;
+}
+
+/* ---------------------------------------------------- */
+
+/* 6) 상태 안 */
+.post--main__inputCondition > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputCondition > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputCondition > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.post--main__inputConditionSelector {
+    margin-left: 20px;
+    display: inline-block;
+}
+.post--main__inputConditionSelector > div {
+    padding-right: 300px;
+}
+
+/* ---------------------------------------------------- */
+
+/* 7) 카테고리 안 */
+.post--main__inputCategory > div {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.post--main__inputCategory > div > span:first-child {
+    font-size: 1.2em;
+}
+.post--main__inputCategory > div > span:nth-child(2) {
+    color: red;
+    font-size: smaller;
+}
+
+
+.inputCategorySelector {
+    height: 250px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.inputCategorySelector > div {
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 3px solid #E3E3E3;
 }
