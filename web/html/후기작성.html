@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후기 작성</title>
+
+    <link rel="stylesheet" href="/web/css/후기작성.css">
+</head>
+<body>
+
+    <form action="/web/html/후기작성내역.html">
+
+        <section class="writereview--container">
+    
+            <div class="writereview--container__top">기본 정보</div>
+    
+            <div class="writereview--container__content">
+    
+                <div class="writereview--content__rating">
+                    <span>별점</span>
+                    <div>★★★★★</div>
+                </div>
+    
+                <div class="writereview--content__input">
+                    <span>구매내역</span>
+                    <div class="writereview--dropdown">
+                        <button class="writereview--dropdown__btn" type="button">
+                            <span class="writereview--dropdown__btn-content">후기를 작성하고자 하는 거래 내역을 선택해주세요.</span>
+                            <span class="writereview--dropdown__btn-click" style="float:right;">▼</span>
+                        </button>
+                        <div class="writereview--dropdown__content">
+                            <div class="writereview--dropdown__item">Burgerking</div>
+                            <div class="writereview--dropdown__item">Mcdonals</div>
+                            <div class="writereview--dropdown__item">Lotteria</div>
+                            <div class="writereview--dropdown__item">Mom's touch</div>
+                            <div class="writereview--dropdown__item">In n out</div>
+                            <div class="writereview--dropdown__item">Subway</div>
+                            <div class="writereview--dropdown__item">Shake shack</div>
+                        </div>
+
+                    </div>
+    
+                    <div class="writereview--textarea">
+                        <textarea name="" id="" cols="103" rows="20" placeholder="자세한 거래 후기를 작성해주세요. 무분별한 비난 및 욕설은 제재를 받으실 수 있습니다." 
+                        maxlength="200"></textarea>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </section>
+    
+        <section class="writereview--bottom">
+            <button id="registerReviewBtn">등록하기</button>
+        </section>
+        
+    </form>
+
+    <script src="/web/js/후기작성.js"></script>
+
+</body>
+</html>

@@ -132,14 +132,16 @@ textarea:focus, input:focus{
 .myshop--info__btn-edit{
     width: 125px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 50px;
     color: #343434;
-    background: #ffffff;
-    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(222, 235, 253) 100%);
+    background: #f5faff;
+    box-shadow: -1px -1px 6px #d5d5d573, 2px 2px 6px rgba(94, 104, 121, .288);
+    /* background: #ffffff;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(222, 235, 253) 100%); */
+    /* box-shadow: inset 0 -5px 5px #c1c9d3; */
     border: none;
     font-size: 20px;
     font-weight: 800;
-    box-shadow: inset 0 -5px 5px #c1c9d3;
     text-align: center;
     line-height: 40px;
     cursor: pointer;
@@ -151,10 +153,11 @@ textarea:focus, input:focus{
 }
 
 .myshop--info__btn-edit:hover {
-    box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
+    /* box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
             -3px -3px 5px 0 rgba(116, 125, 136, .5), 
     inset -3px -3px 5px 0 rgba(255,255,255,.2),
-    inset 3px 3px 5px 0 rgba(0, 0, 0, .4);
+    inset 3px 3px 5px 0 rgba(0, 0, 0, .4); */
+    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
 }
 
 /* 상점명, 접속여부 div */
@@ -485,7 +488,8 @@ textarea:focus, input:focus{
 .tab2--item__img>img{
     width: 90px;
     height: 90px;
-    border: 1px solid white;
+    border: 3px solid white;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, .288), inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
     border-radius: 100%;
 }
 
@@ -504,11 +508,11 @@ textarea:focus, input:focus{
 
 /* 후기 탭 유저 후기 말풍선 */
 .tab2--item__detail>div:last-of-type{
-    background-color: #eef3fd;
+    /*background-color: #eef3fd;
     border: #7689fd solid 1px;
-    border-radius: 15px;
-    color: #505bf0;
+    color: #505bf0; */
     font-size: 15px;
+    border-radius: 15px;
     font-weight: 500;
     height: 90px;
     letter-spacing: -0.25px;
@@ -517,11 +521,16 @@ textarea:focus, input:focus{
     position: relative;
     width: 90%;
     z-index: 100;
+
+    background: #ffffff;
+    box-shadow:  2px 2px 15px #dbdbdb,
+                -5px -5px 10px #ffffff;
 }
 
 /* 후기 탭 유저 후기 말풍선 화살표*/
 .tab2--item__detail>div:last-of-type::after {
-    border-color: transparent #eef3fd transparent transparent;
+    /* border-color: transparent #eef3fd transparent transparent; */
+    border-color: transparent white transparent transparent;
     border-style: solid;
     border-width: 10px 25px 10px 25px;
     content: '';
@@ -534,9 +543,10 @@ textarea:focus, input:focus{
     z-index: 1;
 }
 
-/* 후기 탭 유저 후기 말풍선 화살표2*/
+/* 후기 탭 유저 후기 말풍선 화살표2 */
 .tab2--item__detail>div:last-of-type::before {
-    border-color: transparent #7689fd transparent transparent;
+    /* border-color: transparent #7689fd transparent transparent; */
+    border-color: transparent white transparent transparent;
     border-style: solid;
     border-width: 10px 25px 10px 25px;
     content: '';
@@ -573,7 +583,7 @@ textarea:focus, input:focus{
     background-color: white;
     border-radius: 50px;
     width: fit-content;
-    height: 25px;
+    height: 33px;
     line-height: 25px;
     margin-top: 10px;
     text-align: center;
@@ -581,7 +591,9 @@ textarea:focus, input:focus{
     font-weight: 400;
     font-size: 14px;
     color: #646464;
-    box-shadow: 0 4px 4px #CECECE;
+    /* box-shadow: 0 4px 4px #CECECE; */
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, .288), inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
+    border: 5px solid transparent;
 }
 
 /* 후기 탭 후기 작성 유저명 */
@@ -617,33 +629,6 @@ textarea:focus, input:focus{
 }
 
 
-/* 툴팁 */
-
-/* 
-.tooltip {				 
-    background-color: #7689fd;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 500;
-    height: 31px;
-    letter-spacing: -0.25px;
-    margin-top: 6.8px;
-    padding: 5px 36.5px 5px 11px;
-}
-
-.tooltip::after {  		
-    border-bottom: 8px solid #7689fd;
-    border-left: 7px solid white;
-    border-right: 7px solid white;
-    content: "";
-    height: 0;
-    left: 21%;
-    position: absolute;
-    top: 35%;
-    width: 0;
-} */
-
 
 /* 팔로잉 탭 리스트 */
 .myshop--tab3__gridcontainer{
@@ -668,7 +653,8 @@ textarea:focus, input:focus{
     width: 90px;
     height: 90px;
     border-radius: 100%;
-    border: 2px solid black;
+    border: 3px solid white;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, .288), inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
 }
 
 /* 팔로잉 탭 팔로잉 유저명 */
@@ -713,17 +699,23 @@ textarea:focus, input:focus{
 /* 팔로잉 탭  상점가기 버튼 */
 .tab3--item__btn-gotoshop,
 .tab3--item__btn-follow{
-    background-color: #5A6690;
-    color: white;
+    /* background-color: #5A6690;
+    color: white; */
+    background: #f0f1f4;
+    box-shadow:  5px 5px 9px #dddee0,
+                -5px -5px 9px #ffffff;
 }
 
 /* 팔로잉 탭 언팔로우 버튼 */
 .tab3--item__btn-unfollow{
-    background-color: #C2D3EB;
-    color: #343434;
+    /* background-color: #C2D3EB;
     box-shadow: rgb(121, 131, 146) 0px 11px 5px -8px inset, 
     rgb(121, 131, 146) -4px 0px 4px -4px inset,
-    rgb(121, 131, 146) 4px 0px 4px -4px inset;
+    rgb(121, 131, 146) 4px 0px 4px -4px inset; */
+    color: #343434;
+    background: #C2D3EB;
+    box-shadow: inset 5px 5px 16px #abbacf,
+                inset -5px -5px 16px #d9ecff;
 }
 
 

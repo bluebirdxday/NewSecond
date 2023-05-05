@@ -133,7 +133,8 @@ body{
 }
 
 .keywordedit--content__add button:hover {
-    box-shadow:  inset 4px 4px 4px 0 rgba(0, 0, 0, .5);
+    box-shadow:  inset 4px 4px 4px 0 rgba(98, 98, 98, 0.5);
+    transition: all 0.3s;
 }
 
 /* 등록한 키워드 수 */

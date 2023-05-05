@@ -1,0 +1,191 @@
+*{
+    font-family: 'Pretendard';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    letter-spacing: -0.25px;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 후기 작성 컨테이너 */
+.writereview--container{
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* 후기 작성 하단 fixed */
+.writereview--bottom{
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    background-color: #FAFCEE;
+    /* border-top: 2px solid #E9EDCE; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* 후기 등록 버튼 */
+#registerReviewBtn{
+    /* background-color: #C2D3EB; */
+    /* box-shadow: 0 4px 4px 0 #BCBDB3; */
+    cursor: pointer;
+    width: 200px;
+    height: 70px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-right: 16px;
+
+    background: #FAFCEE;
+    box-shadow: -3px -3px 7px #eaebe673, 3px 3px 5px rgba(113, 121, 94, 0.288);
+}
+
+
+#registerReviewBtn:hover{
+    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
+}
+
+
+/* 후기 작성 페이지 상단 */
+.writereview--container__top{
+    width: 90%;
+    height: 40px;
+    font-size: 25px;
+    font-weight: bolder;
+    border-bottom: 2px solid #656565;
+}
+
+/* 후기 작성 페이지 컨텐츠 */
+.writereview--container__content{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 후기 작성 페이지 textarea */
+.writereview--textarea{
+    margin-top: 10px;
+    background-color: #F0F0F0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.writereview--textarea>textarea{
+    color: #656565;
+    font-size: 16px;
+    border: none;
+    background-color: #F0F0F0;
+    outline: none;
+    resize: none;
+}
+
+/* 별점 */
+.writereview--content__rating{
+    width: 100%;
+    display: flex;
+    padding: 25px 0;
+    border-bottom: 2px solid #E3E3E3;
+}
+
+/* 별점 - 별점 div */
+.writereview--content__rating div{
+    margin-left: 20px;
+}
+
+/* 별점 - 별점 txt, 구매내역 txt */
+.writereview--content__rating span,
+.writereview--content__input>span{
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* 후기 드롭다운 + 자세한 거래 후기 컨테이너 */
+.writereview--content__input{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 드롭다운 */
+.writereview--dropdown{
+    position : relative;
+    display : inline-block;
+    width: 500px;
+}
+
+/* 구매내역 드롭다운 */
+.writereview--dropdown__btn{
+    display : block;
+    border: none;
+    border-radius : 5px;
+    background-color: #F0F0F0;
+    font-size : 15px;
+    color : #656565;
+    padding : 0 20px;
+    height: 42px;
+    width : 900px;
+    text-align: left;
+    cursor : pointer;
+    z-index :1;
+    position : relative;
+    margin-top: 10px;
+}
+
+/* 드롭다운 list */
+.writereview--dropdown__content{
+    display: none;
+    font-weight: 400;
+    background-color: #fcfcfc;
+    width: 900px;
+    border-radius: 8px;
+    height : 200px;
+    overflow : scroll;
+    box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
+}
+
+/* 드롭다운 스크롤 */
+.writereview--dropdown__content::-webkit-scrollbar{
+    width : 5px;
+    height : 10px;
+}
+
+/* 드롭다운 스크롤 */
+.writereview--dropdown__content::-webkit-scrollbar-thumb{
+    border-radius : 2px;
+    background-color :rgb(194, 194, 194);
+}
+
+/* 드롭다운 리스트 내 아이템들 */
+.writereview--dropdown__content div{
+    display : block;
+    text-decoration : none;
+    color : rgb(37, 37, 37);
+    font-size: 16px;
+    padding : 12px 18px;
+    cursor: pointer;
+}
+
+/* 드롭다운 콘텐츠 hover시 */
+.writereview--dropdown__content div:hover{
+    background-color: rgb(226, 226, 226);
+}
+
+/* 드롭다운 show */
+.writereview--dropdown__content.show{
+    display : block;
+}
+
