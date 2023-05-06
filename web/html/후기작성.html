@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <form action="/web/html/후기작성내역.html">
+    <form action="/web/html/후기작성내역.html" id="reviewForm">
 
         <section class="writereview--container">
     
@@ -20,7 +20,13 @@
     
                 <div class="writereview--content__rating">
                     <span>별점</span>
-                    <div>★★★★★</div>
+                    
+                    <span class="rating--star">
+                        ⭐⭐⭐⭐⭐
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                    </span>
+                    
                 </div>
     
                 <div class="writereview--content__input">

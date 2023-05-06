@@ -100,16 +100,13 @@ a{
     border-bottom: 2px solid #E3E3E3;
 }
 
-/* 별점 - 별점 div */
-.writereview--content__rating div{
-    margin-left: 20px;
-}
-
 /* 별점 - 별점 txt, 구매내역 txt */
 .writereview--content__rating span,
 .writereview--content__input>span{
     font-size: 18px;
     font-weight: 800;
+    display: flex;
+    align-items: flex-end;
 }
 
 /* 후기 드롭다운 + 자세한 거래 후기 컨테이너 */
@@ -189,3 +186,35 @@ a{
     display : block;
 }
 
+/* 별점 */
+.rating--star {
+    position: relative;
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+    margin-left: 20px;
+    user-select: none;
+    letter-spacing: -1px;
+}
+
+/* 별점 range input */
+.rating--star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* 별점 span*/
+.rating--star span {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: transparent;
+    text-shadow: 0 0 0 gold;
+    overflow: hidden;
+    pointer-events: none;
+    letter-spacing: -1px;
+}
