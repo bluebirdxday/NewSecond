@@ -40,10 +40,13 @@
 }
 
 /* 선택삭제 체크박스 */
-.wish_checkboxOne{
-
-
+.wish_checkboxDelete{
+ border: none;
+ background-color: none;
 }
+
+
+
 
 /* 최신순 가격순등 조회서비스 class */
   .wish_sorting{

@@ -35,25 +35,27 @@
         </div>
         <div class="admin_user_raidos">
             <span>
-            <label ><input type="radio" name="admin_user_raidos" id="">전체</label>
-            <label ><input type="radio" name="admin_user_raidos" id="">정상</label>
-            <label ><input type="radio" name="admin_user_raidos" id="">블락</label>
-            <label ><input type="radio" name="admin_user_raidos" id="">탈퇴</label>
+            <label ><input type="radio" name="admin_user_raidos" id="all">전체</label>
+            <label ><input type="radio" name="admin_user_raidos" id="normal">정상</label>
+            <label ><input type="radio" name="admin_user_raidos" id="block">블락</label>
+            <label ><input type="radio" name="admin_user_raidos" id="signOut">탈퇴</label>
          
         </span>
         </div>
     <div class="admin_user_result">
         <span >검색결과 : </span> 
-            <span class="admin_user_resultOne">3</span>
-            <span>/</span>
-            <span class="admin_user_resultAll"> 총 35명</span>
+            <span class="admin_user_countOne">3</span>
+            <span>/ 총</span>
+            <span class="admin_user_countAll">35</span>
+            <span>명</span>
         </div>
         
         <div class="admin_user_tableWrap">
         <table class="admin_user_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id=""></th>
+                <th><input type="checkbox" name="" id="" value='selectall'
+                    onclick='userSelectAll(this)'></th>
                 <th >번호</th>
                 <th>아이디</th>
                 <th>상태</th>
@@ -66,26 +68,52 @@
                 <td><input type="checkbox" name="" id=""></td>
                 <td>1</td>
                 <td>bungae</td>
-                <td>정상</td>
+                <td class="admin_user_states">정상</td>
                 <td>2022.10.01</td>
                 <td>
-                <button class="admin_user_tableBtn">강제탈퇴</button>
+                <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
                 </td>
                 <td>
-                <button class="admin_user_tableBtn">회원블락</button>
+                <button class="admin_user_tableBtn block" >회원블락</button>
                 </td>
             </tr>
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
+                <td>2</td>
                 <td>bungae</td>
-                <td>정상</td>
+                <td class="admin_user_states">블락</td>
                 <td>2022.10.01</td>
                 <td>
-                    <button class="admin_user_tableBtn">강제탈퇴</button>
+                    <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
                     </td>
                     <td>
-                    <button class="admin_user_tableBtn">회원블락</button>
+                    <button class="admin_user_tableBtn block" >블락해제</button>
+                    </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>3</td>
+                <td>bungae</td>
+                <td class="admin_user_states">탈퇴</td>
+                <td>2022.10.01</td>
+                <td>
+                    <button class="admin_user_tableBtn signOut">강제탈퇴</button>
+                    </td>
+                    <td>
+                    <button class="admin_user_tableBtn block">회원블락</button>
+                    </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>4</td>
+                <td>bungae</td>
+                <td class="admin_user_states">정상</td>
+                <td>2022.10.01</td>
+                <td>
+                    <button class="admin_user_tableBtn signOut">강제탈퇴</button>
+                    </td>
+                    <td>
+                    <button class="admin_user_tableBtn block">회원블락</button>
                     </td>
             </tr>
         </tbody>
@@ -93,7 +121,7 @@
     </div>
 
     </div>
-
+<script src="../js/관리자_회원관리.js"></script>
 
 </body>
 </html>

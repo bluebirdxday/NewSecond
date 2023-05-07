@@ -45,18 +45,22 @@
 }
 
 /* 인원수 결과창 */
+.admin_user_countOne{
+    color: #005eee;
+    font-weight: bold;
+}
+
 .admin_user_result{
      padding: 0 10px; 
      margin-bottom: 10px;
 }
 
-.admin_user_resultOne{
-    color: #005eee;
-    font-weight: bold;
-}
-
 /* 테이블 */
 
+
+.admin_user_table{
+    width: 100%;
+}
 
 .admin_user_table:first-child{
     border-top-left-radius: 10px;
@@ -86,14 +90,25 @@ tbody td{
     padding: 10px 10px;
 }
 
+tbody td:nth-child(1){
+    width: 10%;
+    padding: 0px;
+}
+tbody td:nth-child(2){
+    width: 10%;
+    padding: 0px;
+}
+
 tbody td:nth-child(6){
     width: 90px;
     padding: 0px;
+    margin: 0px;
 }
 
 tbody td:last-child{
     width: 90px;
     padding: 0px;
+    margin: 0px;
 }
 
 .admin_user_tableBtn{

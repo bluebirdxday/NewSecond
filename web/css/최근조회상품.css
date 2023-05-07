@@ -33,6 +33,10 @@
   top: 265px;
 }
 
+.new_checkboxDelete{
+ border: none;   
+}
+
 
   .new_sorting{
     float:right;

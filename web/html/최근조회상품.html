@@ -21,8 +21,11 @@
         <div class="new_sortContainer">
             <div class="new_ck_deleteWrap">
             <span class="new_ck_delete"> 
-                <input type="checkbox" class="new_checkboxOne" id="new_label">
-                <label class="new_ck_label" for="new_label">선택 삭제</label>
+                <input type="checkbox" class="new_checkboxOne" id="new_label" value='selectall'
+                onclick='newSelectAll(this)'>
+                <label class="new_ck_label" for="new_label">선택 
+                    <button class="new_checkboxDelete">삭제</button>
+                </label>
             </span>  
       
             <span class="new_sorting new">최근 조회순</span>
