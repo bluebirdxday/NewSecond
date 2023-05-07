@@ -1,0 +1,136 @@
+.container--outer{
+    background-color: #fff;
+    height: 1000px;
+    /* width: 1440px; */
+    width: 100%;
+    /* display: inline-grid; */
+    overflow: auto;
+}
+
+.container--inner{
+    width: 100%;
+    /* width: 1440px; */
+    margin-top: 210px;
+}
+
+.container--inner__top{
+    margin: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container--inner__top__left{
+    /* border: 1px solid brown; */
+    width: 350px;
+    height: 400px;
+    display: flex;
+    justify-content: start;
+
+}
+
+.container--inner__top__left img{
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.container--inner__top__right{
+    /* border: 1px solid green; */
+    width: 500px;
+    height: 400px;
+}
+
+.container--inner__top__right__title{
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.container--inner__top__right__price{
+    font-size: 2.0em;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.container--inner__top__right__viewAndLike{
+    display: flex;
+}
+
+.container--inner__top__right__viewAndLike *{
+    margin: 5px 5px;
+    color: #848383;
+}
+
+.container--inner__top__right__likeHeart img{
+    margin: 0 0 5px 0;
+    width: 15px;
+}
+
+.container--inner__top__right__describe{
+    margin: 10px 0;
+    width: 400px;
+    height: 150px;
+    background-color: #d8e1ee;
+    box-shadow: 5px 5px 5px #d6d5d5;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 15px;
+}
+
+.container--inner__top__right__describeTitle{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2365b9;
+}
+
+.container--inner__top__right__describeContent{
+    margin: 5px 0;
+}
+
+.container--inner__bottom{
+    /* border: solid 1px blue; */
+    margin: 10px 50px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 850px; */
+    height: 350px;
+}
+
+.container--inner__bottom__shopInfo__folder__outer{
+    width: 840px;
+    height: 50px;
+    justify-content: start;
+}
+
+.container--inner__bottom__shopInfo__folder{
+    width: 200px;
+    height: 50px;
+    background-color: #FAFCEE;
+    border: 2px solid #2365b9;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    color: #2365b9;
+    letter-spacing: 0.2em;
+    box-shadow: 5px 5px 5px #c2c2c2;
+}
+
+.container--inner__bottom__shopInfo{
+    width: 840px;
+    height: 290px;
+    background-color: #FAFCEE;
+    border: 2px solid #2365b9;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 5px 5px 5px #c2c2c2;
+}
+
+
+

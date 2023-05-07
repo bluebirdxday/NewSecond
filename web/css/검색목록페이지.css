@@ -17,11 +17,13 @@
     margin: 0 50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 4fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 30px;
+    /* place-items: center; */
+    /* position: fixed; */
 }
 
 .searchNameCount{
@@ -35,7 +37,7 @@
     font-weight: bolder;
     box-shadow: 5px 5px 5px #dbdee1;
     text-align: center;
-    justify-content: center;
+    justify-self: center;
 }
 
 .selectSort{
@@ -87,7 +89,7 @@
     /* border: 1px solid red; */
 }
 .container--inner__middle img:hover{
-box-shadow: 5px 5px 5px #2365b9;
+box-shadow: 5px 5px 5px #a09f9f;
 transition-duration: 0.2s;
 }
 
@@ -113,12 +115,15 @@ transition-duration: 0.2s;
     margin-top: 10px;
 }
 
+.container--inner__bottom{
+    height: 100px;
+}
 .more{
     display: block;
     font-size: 1.5em;
     font-weight: bold;
     color: #2365b9;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: #e4ecf3;
     box-shadow: 3px 3px 3px #d5d6d7;
     border: none;
@@ -128,4 +133,8 @@ transition-duration: 0.2s;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.more:hover{
+    box-shadow: 3px 3px 3px #bbbdbd;
+    transition-duration: 0.2s;
 }

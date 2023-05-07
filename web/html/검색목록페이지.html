@@ -25,7 +25,7 @@
             <div class="container--inner">
                 <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
                 <div class="container--inner__top">
-                    <!-- 목록건수 -->
+                    <!-- 목록건수 jsp구현 -->
                     <div class="searchNameCount">프라이탁 (152건)</div>
                     <!-- 판매완료상품제외 -->
                     <!-- js: 체크박스 누르면 판매 완료 상품은 제외하고 보이게. -->
@@ -125,10 +125,11 @@
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
-                    <div>
-                        <!-- 일정 상품 갯수만큼 뜨고 밑에 버튼 누르면 상품 더 보이도록. -->
-                        <button class="more">MORE</button>
-                    </div>
+                </div>
+                <div class="container--inner__bottom">
+                    <!-- 일정 상품 갯수만큼 뜨고 밑에 버튼 누르면 상품 더 보이도록. 
+                    비동기식 사용 ajax로 구현..?-->
+                    <button class="more">MORE</button>
                 </div>
             </div>
 
