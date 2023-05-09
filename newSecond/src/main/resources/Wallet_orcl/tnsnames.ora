@@ -1,0 +1,12 @@
+orcl_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+orcl_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+orcl_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+orcl_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+orcl_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+
