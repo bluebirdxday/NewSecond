@@ -1,0 +1,56 @@
+/* 4월 20일 상준 작성 */
+
+/* 전체적인 footer 배치 */
+.realFooter{
+    display: flex;
+    justify-content: space-around;
+}
+/* footer 속 section 배치 */
+.footer--logo, .footer--left, .footer--right{
+    height: 150px;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+/* footer에 배치된 logo 배치 */
+.footer--logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+/* footer의 좌측 텍스트 사업자 정보 배치 */
+.footer--left{
+    display: flex;
+    width: 30%;
+    margin-top: 1rem;
+}
+
+/* footer 우측 텍스트 버튼 3개 배치 */
+.footer--right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%;
+    margin-top: 1rem;
+    border-left: 1px solid lightgrey;
+}
+
+/* 여기서부터는 .footer--right의 mouseover 관련 css */
+.footer--right a{
+    text-decoration: none;
+}
+
+.footer--right a:visited{
+    color: inherit;
+}
+
+.footer--right a:hover{
+    color: #005EEE;
+}
+
+.footerHomeLogo{
+    width: 200px;
+    height: auto;
+    
+}

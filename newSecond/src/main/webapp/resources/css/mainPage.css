@@ -1,0 +1,22 @@
+
+/* 메인페이지 전체에 대한 공간 */
+.mainPage--wholeWrapper{
+    width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: -2;
+}
+
+/* 캐러셀 영역 */
+.mainPage--carousel{
+    z-index: -5;
+    margin: auto;
+    margin-top: 200px;
+    width: 900px;
+    height: 30%;
+}
+
+/* 첫번째 상품 소개 페이지(최근 업데이트 상품) */
+.mainPage--goodsContainer1{
+    margin-top: 50px;
+}
