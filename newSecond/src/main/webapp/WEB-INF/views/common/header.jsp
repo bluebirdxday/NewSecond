@@ -7,7 +7,7 @@
     <section class="header--container__top">
         <div></div>
         <div>
-            <span class="login" id="loginBtn" onclick="openModal()">로그인/회원가입</span>
+            <span class="login" id="loginBtn" onclick="openModal()">로그인</span>
             <span> | </span>
             <span class="myPage"><a href=>마이페이지</a></span>
             <span> | </span>

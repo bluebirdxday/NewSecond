@@ -18,7 +18,7 @@
 
 
 	<main>
-		<jsp:include page="/WEB-INF/views/header.jsp"/>
+		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 			<div class="mainPage--wholeWrapper">
 			<section class="mainPage--carousel" style="color:black; ">
@@ -141,7 +141,7 @@
 
 	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<jsp:include page="/WEB-INF/views/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
 </html>
