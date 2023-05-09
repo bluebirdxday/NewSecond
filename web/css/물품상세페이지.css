@@ -58,7 +58,7 @@
 }
 
 .container--inner__top__right__viewAndLike *{
-    margin: 5px 5px;
+    margin: 5px 3px;
     color: #848383;
 }
 
@@ -130,6 +130,73 @@
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
     box-shadow: 5px 5px 5px #c2c2c2;
+    display: flex;
+    padding: 30px ;
+}
+
+.container--inner__bottom__shopInfo__profile{
+    /* border: 1px solid black; */
+    width: 150px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.container--inner__bottom__shopInfo__profile>img{
+    width: 120px;
+    height: 120px;
+    background-color: #d5d4d4;
+    border-radius: 50%;
+}
+
+.container--inner__bottom__shopInfo__others{
+    /* border: 1px solid black; */
+    width: 400px;
+    height: 200px;
+    padding-left: 30px;
+}
+
+.container--inner__bottom__shopInfo__buttons{
+    /* border: 1px solid red; */
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: start;
+}
+
+.container--inner__bottom__shopInfo__buttons a{
+    text-decoration: none;
+    color: black;
+}
+
+.container--inner__bottom__shopInfo_shopTitleButton{
+    background-color: #c2d3eb;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 43px;
+    box-shadow: 3px 3px 3px #c3c3c3;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.container--inner__bottom__shopInfo__chattingButton{
+    background-color: #518fdf;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 43px;
+    box-shadow: 3px 3px 3px #c3c3c3;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.container--inner__bottom__shopInfo__shopDescibe{
+    margin-top: 15px;
+    margin-left: 10px;
 }
 
 
