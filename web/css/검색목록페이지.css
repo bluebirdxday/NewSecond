@@ -1,0 +1,140 @@
+.container--outer{
+    background-color: #fff;
+    height: 1000px;
+    /* width: 1440px; */
+    width: 100%;
+    display: inline-grid;
+    overflow: auto;
+}
+
+.container--inner{
+    width: 100%;
+    /* width: 1440px; */
+    margin-top: 210px;
+}
+
+.container--inner__top{
+    margin: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    /* place-items: center; */
+    /* position: fixed; */
+}
+
+.searchNameCount{
+    width: 190px;
+    height: 55px;
+    border-radius: 35px;
+    background-color: #c0d5e8;
+    padding-top: 14px;
+    font-size: 1.2em;
+    color: black;
+    font-weight: bolder;
+    box-shadow: 5px 5px 5px #dbdee1;
+    text-align: center;
+    justify-self: center;
+}
+
+.selectSort{
+    justify-content: flex-end;
+    color: #8f8d8d;
+}
+
+/* 판매 완료 상품 제외 체크박스 */
+.soldoutExcept + label{
+    width: auto;
+    height: 27px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+/* 최신순,낮은가격순,높은가격순,인기순 */
+.container--inner__top :not([class="container--inner__top_sort_split"]){
+    cursor: pointer;
+}
+.container--inner__top :not([class="container--inner__top_sort_split"]):checked{
+    color: #000;
+    font-weight: bold;
+}
+
+/* 검색한 상품 목록들 */
+.container--inner__middle{
+    width: 1060px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 30px 0;
+    overflow: hidden;
+}
+
+.container--inner__middle>div[class*=goods]{
+    width: 265px;
+    height: 370px;
+    /* border: 1px solid black; */
+    padding: 0 10px;
+    float: left;
+}
+
+.container--inner__middle img{
+    width: 240px;
+    border-radius: 15%;
+    /* padding: 15px; */
+    display: block;
+    box-shadow: 5px 7px 5px #c1c1c1;
+    /* border: 1px solid red; */
+}
+.container--inner__middle img:hover{
+box-shadow: 5px 5px 5px #a09f9f;
+transition-duration: 0.2s;
+}
+
+/* 상품 가격, 타이틀 */
+.container--inner__middle div[class*=goods_]{
+    /* border: 1px solid red; */
+    padding: 5px 15px;
+    display: block;
+}
+
+.container--inner__middle a{
+    text-decoration: none;
+    cursor: pointer;
+}
+/* 상품 클릭 전후중 글자 색 */
+.container--inner__middle a:link{color:black;}
+.container--inner__middle a:visited{color:#8f8d8d;}
+.container--inner__middle a:hover{color:#2365b9;}
+
+.goods_price{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.container--inner__bottom{
+    height: 100px;
+}
+.more{
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2365b9;
+    border-radius: 40%;
+    background-color: #e4ecf3;
+    box-shadow: 3px 3px 3px #d5d6d7;
+    border: none;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.more:hover{
+    box-shadow: 3px 3px 3px #bbbdbd;
+    transition-duration: 0.2s;
+}
