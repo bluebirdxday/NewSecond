@@ -1,0 +1,186 @@
+/* 1:1 문의게시판 제목 */
+.qna_bar_container{
+  width: auto;
+  background-color:#8ab2e24b;
+}
+
+.qna_bar{
+    margin: 10px 10px;
+    font-size: 30px;
+    font-style: italic;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    text-align: left;
+    
+}
+
+/* -----------------문의유형 드랍--------------- */
+
+.qna_container{
+  width: 1000px;
+  margin: auto auto;
+}
+
+/* qna 드랍박스 */
+.qna_dropdown{
+  position : relative;
+  display : inline-block;
+}
+/* qna 드랍아이콘 */
+.qna_dropbtn_icon{
+  font-family : 'Material Icons';
+}
+
+/* qna 드랍박스 버튼 */
+.qna_dropbtn{
+  display : block;
+  border : 1px solid #005EEE;
+    border-radius : 5px;
+    background-color: #8ab2e24b;
+    width: 1000px;
+    height: 40px;
+    color :  #005EEE;
+  z-index :1;
+  position : relative;
+  text-align: left;
+
+}
+
+/* qna 드랍박스 버튼 */
+.qna_dropdown-content{
+  display : none;
+  overflow : scroll;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  width: 1000px;
+  position: absolute;
+  border: 1px solid #005EEE;
+
+}
+.qna_dropdown-content::-webkit-scrollbar{
+  width : 5px;
+  height : 10px;
+}
+.qna_dropdown-content::-webkit-scrollbar-thumb{
+  border-radius : 2px;
+  background-color :rgb(194, 194, 194)
+}
+
+.qna_dropdown-content div{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 20px;
+  padding : 12px 20px;
+  color: #005EEE;
+  text-align: center;
+}
+.qna_dropdown-content div:hover{
+  background-color: #f8faeb;
+}
+
+.qna_dropdown-content.show{
+  display : block;
+}
+
+
+  
+/* -------------문의 내용 쓰는 칸----------------------- */
+
+.qna_content{
+    margin: 15px 0px;
+       
+}
+
+#qna_content{
+    border-radius: 13px;
+    border: none;
+    outline: none;
+    width: 1000px;
+    border: 1px solid #005EEE;
+    background-color: #8ab2e22e;
+    margin: 0px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#qna_content::placeholder{
+  color: #005EEE;
+}
+
+/* 사진 첨부 버튼 */
+.qna_photo_btn{
+ border: none;
+ cursor: pointer;
+ background-color: none;
+ color: #005EEE;
+ padding: 0px;
+ margin: 0px;
+}
+
+.qna_photo{
+  background-color: white;
+}
+
+/* 문의하기 버튼 */
+
+#qna_button_wrap {
+  width: 500px;
+  margin: 10px auto;
+}
+#qna_button{
+   background-color: #005EEE;
+   color: white;
+   padding: 8px 30px;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   border: none;
+   cursor: pointer;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/* ----------모달 창------------- */
+#qna_modal{
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none;
+}
+
+#qna_modal_body {
+  width: 400px;
+  height: 100px;
+  padding: 30px 30px;
+  margin: 0 auto;
+  border: 1px solid #777;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+#qna_closeBtn {
+  float:right;
+  font-weight: bold;
+  color: #777;
+  font-size:25px;
+  cursor: pointer;
+}

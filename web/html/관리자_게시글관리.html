@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admid_board</title>
+    <link rel="stylesheet" href="../css/관리자페이지side.css">
+    <link rel="stylesheet" href="../css/관리자_게시글관리.css">
+</head>
+<body>
+
+    <ul class="admin_ul">
+        <a href="/">
+            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+        </a>
+        <li class="admin_list"><a class="admid_user" href="/web/html/관리자_회원관리.html">회원 관리</a></li>
+        <li class="admin_list"><a class="admid_notice" href="/web/html/관리자_공지사항관리.html">공지사항 관리</a></li>
+        <li class="admin_list"><a class="admid_board" href="/web/html/관리자_게시글관리.html">게시글 관리</a></li>
+        <li class="admin_list"><a class="admid_qna" href="/web/html/관리자_문의관리.html">문의 관리</a></li>
+    </ul>
+
+    <!-- ----------상단 제목---------- -->
+    <div class="admin_board_wrap">
+        <span class="admin_board_bar">게시글 관리</span>
+     <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->
+        <hr>
+
+        <!-- 선택 숨김,삭제 버튼 -->
+        
+        <div class="admin_board_Btn">
+            <button class="admin_board_HiddenBtn">블라인드</button>
+            <button class="admin_board_DelBtn">선택 삭제</button>
+        </div>
+
+
+        
+        <!-- ----테이블------ -->
+        <div class="admin_board_tableWrap">
+        <table class="admin_board_table" style="border-collapse: collapse;">
+            <thead>
+            <tr >
+                <th><input type="checkbox" name="" id="" value='selectall'
+                    onclick='boardSelectAll(this)'></th>
+                <th>번호</th>
+                <th>회원번호</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>관리</th>
+            </thead>
+            </tr>
+            <tbody>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>1</td>
+                <td>110</td>
+                <td>나이키 운동화 팔아요</td>
+                <td>2023.04.30</td>
+                <td>250</td>
+                <td>
+                <button class="admin_board_tableBtn">블라인드 해제</button>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>1</td>
+                <td>1100</td>
+                <td>프라이탁 50,000원</td>
+                <td>2023.04.27</td>
+                <td>330</td>
+                <td>
+                    <button class="admin_board_tableBtn">블라인드</button>
+                    </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    </div>
+
+<script src="../js/관리자_게시글관리.js"></script>
+</body>
+</html>
