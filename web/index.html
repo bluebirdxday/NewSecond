@@ -13,30 +13,20 @@
 
     <script src="/web/src/includeHTML/main.js" type="module"></script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
-        main{
-            width: 1000px;
-            margin: auto;
-            margin-top: 180px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
-
 </head>
 <body>
+
+    <div data-include="/web/html/login.html"></div>
     
-    <header data-include="./include/header.html"></header>
+    <header data-include="/web/include/header.html"></header>
 
-    <main data-include="/web/html/내상점.html"></main>
 
-    <footer data-include="./include/footer.html"></footer>
+    <main data-include="/web/include/content.html" style="margin-top: 160px;"></main>
 
-    <script src="/web/js/내상점.js"></script>
+
+    <footer data-include="/web/include/footer.html"></footer>
+
     <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/web/js/login.js"></script>
 </body>
 </html>
