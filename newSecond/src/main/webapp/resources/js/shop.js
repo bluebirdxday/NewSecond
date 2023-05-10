@@ -36,10 +36,11 @@ sortList.forEach(function(sort){
 });
 
 
+const popup = document.querySelector(".myshop--popup__background");
 
 // 내 상점 편집 팝업 열기
-document.querySelector(".myshop--popup__show").addEventListener("click", ()=>{
-    document.querySelector(".myshop--popup__background").className = "myshop--popup__background myshop--popup__show";
+document.querySelector(".myshop--info__btn-edit").addEventListener("click", ()=>{
+    popup.classList.toggle("myshop--popup__show");
 
     // 글자수 입력
     document.getElementById("myshopEditInput").innerText = document.querySelector(".myshop--popup__input-edit").value.length;
@@ -48,11 +49,11 @@ document.querySelector(".myshop--popup__show").addEventListener("click", ()=>{
 });
 
 document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
-    document.querySelector(".myshop--popup__background").className = "myshop--popup__background";
+    popup.classList.remove("myshop--popup__show");
 });
 
 document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
-    document.querySelector(".myshop--popup__background").className = "myshop--popup__background";
+    popup.classList.remove("myshop--popup__show");
 });
 
 

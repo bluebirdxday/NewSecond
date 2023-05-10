@@ -9,7 +9,7 @@
         <div>
             <span class="login" id="loginBtn" onclick="openModal()">로그인</span>
             <span> | </span>
-            <span class="myPage"><a href=>마이페이지</a></span>
+            <span class="myPage"><a href="">마이페이지</a></span>
             <span> | </span>
             <span class="wishList"><a href="">관심상품</a></span>
         </div>
@@ -18,7 +18,7 @@
     <section class="header--container__middle">
         
         <div class="header--left__img">
-            <a href="#">
+            <a href="/">
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
         </div>
@@ -31,7 +31,7 @@
         
         <div class="header--right__icons">
                 <span>
-                    <a href="#">
+                    <a href="/shop/myShop">
                         <img class="myMarket" src="/resources/src/img/home.png"/>
                     </a>
                 </span>
@@ -41,7 +41,7 @@
                     </a>
                 </span>
                 <span>
-                    <a href="#">
+                    <a href="/notification/notification">
                         <img class="notifications" src="/resources/src/img/notifications.png"/>
                     </a>
                 </span>

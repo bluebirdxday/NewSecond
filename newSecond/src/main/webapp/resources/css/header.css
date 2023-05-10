@@ -12,6 +12,7 @@ header{
     display: flex;
     height: 150px;
     user-select: none;
+    z-index: 10000;
 }
 
 header>section:nth-child(1){ height: 10%; }
