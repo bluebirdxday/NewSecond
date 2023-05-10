@@ -64,11 +64,11 @@
 		 </dependency>   		
    		
    		<!-- 오라클 JDBC 드라이버 -->	
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
-		    <artifactId>ojdbc11</artifactId>
-		    <version>21.5.0.0</version>
+		    <artifactId>ojdbc10</artifactId>
+		    <version>19.15.0.0.1</version>
 		</dependency>
    		
    		      <!-- 스프링에서 JDBC를 사용할 수 있게 하는 라이브러리 -->

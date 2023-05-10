@@ -15,7 +15,7 @@ public class UserDAO {
 	
 	
 	public User login(User inputUser) {
-		return sqlSession.selectOne("memberUser.login", inputUser);
+		return sqlSession.selectOne("userMapper.login", inputUser);
 	}
 
 }

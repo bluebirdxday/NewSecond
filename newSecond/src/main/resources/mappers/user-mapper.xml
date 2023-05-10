@@ -7,7 +7,7 @@
 		<id property="userNo" column="USER_NO" />
 		
 		<!-- DB의 일반 컬럼들 -->
-		<result property= userEmail" column="USER_EMAIL" />
+		<result property="userEmail" column="USER_EMAIL" />
 		<result property="userPassword" column="USER_PASSWORD" />
 		<result property="userNickname" column="USER_NICKNAME" />
 		<result property="userTel" column="USER_TEL" />
@@ -26,9 +26,9 @@
 		SELECT USER_NO, USER_EMAIL, USER_NICKNAME, USER_PASSWORD,
 				USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
 				TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
-		FROM users
-		WHERE USER_STATES = 'A'
-		AND MEMBER_EMAIL = #{userEmail}
+		FROM "users"
+		WHERE USER_STATUS = 'A'
+		AND USER_EMAIL = #{userEmail}
 	</select>
 		
 		
