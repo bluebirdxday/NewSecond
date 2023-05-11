@@ -23,9 +23,9 @@
             </a>
         </div>
         
-        <div class="header--mid__serach"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
-                <a href="#">
+        <div class="header--mid__search"><!-- 검색창 -->
+                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search-input">
+                <a href="/goods/searchGoodsList">
                 <img class="searchGlass" src="/resources/src/img/glass.png"/>
         </div>
         
