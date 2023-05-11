@@ -14,7 +14,7 @@ import project.kh.newsecond.user.model.service.UserService;
 
 @Controller
 @RequestMapping("/member")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginUser"})
 public class UserController {
 	
 	@Autowired

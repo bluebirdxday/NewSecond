@@ -51,6 +51,8 @@
 					</button>
 				</div>
 			</section>
+			
+			${loginUser}
 
 			<section class="mainPage--goodsContainer1 mt-5">
 				<h4>최근 업데이트된 상품</h4>
@@ -73,7 +75,6 @@
 				</div>
 				<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 			</section>
-			${loginUser.userNo}
 			<section class="mainPage--goodsContainer2 mt-5">
 				<h4>최근 본 상품</h4>
 				<div class="row">
@@ -145,10 +146,6 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<script>
-		console.log(${loginUser})
-	</script>
 
 </body>
 </html>
