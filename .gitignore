@@ -30,4 +30,4 @@ MANIFEST.MF
 settings.json
 
 # root-context.xml 무시
-/newSecond/src/main/resources/spring/root-context.xml
+root-context.xml
