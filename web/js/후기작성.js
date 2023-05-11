@@ -26,7 +26,15 @@ window.onload=()=>{
     document.querySelector(".writereview--dropdown__btn").addEventListener("click", ()=>{
         dropdown();
     });
-    
+
+    document.querySelector(".writereview--dropdown__btn-click").addEventListener("click", ()=>{
+        dropdown();
+    });
+
+    document.querySelector(".writereview--dropdown__btn-content").addEventListener("click", ()=>{
+        dropdown();
+    });
+
     document.querySelectorAll(".writereview--dropdown__item").forEach(item =>{
         item.addEventListener("click", function(){
             const itemText = item.innerText;
@@ -60,28 +68,35 @@ window.onload=()=>{
         changeArrow();
     }
     
-    function changeArrow(){
-        const arrow = document.querySelector(".writereview--dropdown__btn-click");
-        
-        if(arrow.innerText=="▼"){
-            arrow.innerText = "▲";
-        }else{
-            arrow.innerText="▼";
-        }
-    }
-
+    
 };
 
 
 
 window.onclick= (e)=>{
-
-    if(!e.target.matches(".writereview--dropdown__btn")){
-        const dropdown = document.querySelector(".writereview--dropdown__content");
     
+    if(!e.target.matches(".writereview--dropdown__btn") && !e.target.matches(".writereview--dropdown__btn-click")){
+        const dropdown = document.querySelector(".writereview--dropdown__content");
+        
         if (dropdown.classList.contains("show")) {
             dropdown.classList.remove("show");
+            changeArrow();
         }
+        
+    }
+    
+    if(e.target.matches(".writereview--dropdown__content>div")){
+        changeArrow();
+    }
+}
+
+function changeArrow(){
+    const arrow = document.querySelector(".writereview--dropdown__btn-click");
+    
+    if(arrow.innerText=="▼"){
+        arrow.innerText = "▲";
+    }else{
+        arrow.innerText="▼";
     }
 }
 

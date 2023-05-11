@@ -128,7 +128,7 @@ COMMENT ON COLUMN "reviews"."REVIEW_MESSAGE" IS '후기 메세지';
 
 COMMENT ON COLUMN "reviews"."REVIEW_DT" IS '거래 후기 작성 일자';
 
-COMMENT ON COLUMN "reviews"."REVIEW_STARTS" IS '별점(0~5)';
+COMMENT ON COLUMN "reviews"."REVIEW_STARTS" IS '별점(1~10, 1당 0.5씩 총 5점)';
 
 COMMENT ON COLUMN "reviews"."REVIEW_DEL_FL" IS '삭제 여부(N: 삭제X, Y: 삭제O)';
 
@@ -479,6 +479,9 @@ REFERENCES "shop" (
 
 
 
+ALTER TABLE "notifications" ADD "NOTIFICATION_KIND" CHAR(1) NOT NULL;
+
+
 CREATE SEQUENCE SEQ_USER_NO NOCACHE; -- 회원 번호
 CREATE SEQUENCE SEQ_WISH_NO NOCACHE; -- 관심 번호
 CREATE SEQUENCE SEQ_GOODS_NO NOCACHE; -- 상품 게시글 번호
@@ -494,3 +497,21 @@ CREATE SEQUENCE SEQ_QNA_NO NOCACHE; -- 문의번호
 
 
 COMMIT;
+
+
+SELECT * FROM "categories";
+SELECT * FROM "chat_messages";
+SELECT * FROM "chat_room";
+SELECT * FROM "files";
+SELECT * FROM "follow";
+SELECT * FROM "goods_board";
+SELECT * FROM "notification_keywords";
+SELECT * FROM "notifications";
+SELECT * FROM "qna";
+SELECT * FROM "recent_views";
+SELECT * FROM "reviews";
+SELECT * FROM "shop";
+SELECT * FROM "users";
+SELECT * FROM "wish_lists";
+
+
