@@ -28,19 +28,14 @@ public class UserController {
 		
 		User loginUser = service.login(inputUser);
 		
-		String path = "redirect:";
-		
 		if(loginUser != null) {
-			
-			path += "/";
 			model.addAttribute("loginUser", loginUser);
 			System.out.println(loginUser);
 		} else {
-			path += referer;
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
 		
-		return path;
+		return "redirect:/";
 	} 
 	
 }

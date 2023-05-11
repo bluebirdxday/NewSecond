@@ -16,9 +16,11 @@
 </head>
 <body>
 
-
+	<jsp:include page="/WEB-INF/views/user/login.jsp"/>
+	
 	<main>
 		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
 
 			<div class="mainPage--wholeWrapper">
 			<section class="mainPage--carousel" style="color:black; ">
@@ -71,7 +73,7 @@
 				</div>
 				<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 			</section>
-
+			${loginUser.userNo}
 			<section class="mainPage--goodsContainer2 mt-5">
 				<h4>최근 본 상품</h4>
 				<div class="row">
@@ -139,9 +141,14 @@
 
 	</main>
 
-	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		console.log(${loginUser})
+	</script>
 
 </body>
 </html>
