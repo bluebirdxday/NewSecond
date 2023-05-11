@@ -1,71 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" href="/resources/css/header.css">
 
-    <link rel="stylesheet" href="/resources/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+<header class="header--container__containerbox">
+    <section class="header--container__top">
+        <div></div>
+        <div>
+            <span class="login" id="loginBtn" onclick="openModal()">로그인</span>
+            <span> | </span>
+            <span class="myPage"><a href="">마이페이지</a></span>
+            <span> | </span>
+            <span class="wishList"><a href="">관심상품</a></span>
+        </div>
+    </section>
 
-    <link rel="stylesheet" href="/resources/css/header.css">
-    
-<body>
-
-    <header class="header--container__containerbox">
-        <section class="header--container__top">
-            <div></div>
-            <div>
-                <span class="login" id="loginBtn" onclick="openModal()">로그인/회원가입</span>
-                <span> | </span>
-                <span class="myPage"><a href="/web/html/mypage.html">마이페이지</a></span>
-                <span> | </span>
-                <span class="wishList"><a href="">관심상품</a></span>
-            </div>
-        </section>
-
-        <section class="header--container__middle">
-            
-            <div class="header--left__img">
-                <a href="/web/index.html">
-                    <img class="homeLogo" src="/resources/images/common/LOGO.png">
-                </a>
-            </div>
-            
-            <div class="header--mid__serach"><!-- 검색창 -->
-                    <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
-                    <a href="#">
-                    <img class="searchGlass" src="/resources/images/common/glass.png"></img>
-            </div>
-            
-            <div class="header--right__icons">
-                    <span>
-                        <a href="/web/html/내상점.html">
-                            <img class="myMarket" src="/resources/images/common/home.png"/>
-                        </a>
-                    </span>
-                    <span>
-                        <a href="#">
-                            <img class="chattings" src="/resources/images/common/message.png"/>
-                        </a>
-                    </span>
-                    <span>
-                        <a href="/web/html/알림페이지.html">
-                            <img class="notifications" src="/resources/images/common/notifications.png"/>
-                        </a>
-                    </span>
-                </div>
-            
-        </section>
-    
-        <nav class="nav--container__menu">
-            <div>홈</div>
-            <div>카테고리</div>
-            <div>시세조회</div>
-        </nav>
+    <section class="header--container__middle">
         
-    </header>
-    
+        <div class="header--left__img">
+            <a href="/">
+                <img class="homeLogo" src="/resources/src/img/LOGO.png">
+            </a>
+        </div>
+        
+        <div class="header--mid__serach"><!-- 검색창 -->
+                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
+                <a href="#">
+                <img class="searchGlass" src="/resources/src/img/glass.png"/>
+        </div>
+        
+        <div class="header--right__icons">
+                <span>
+                    <a href="/shop/myShop">
+                        <img class="myMarket" src="/resources/src/img/home.png"/>
+                    </a>
+                </span>
+                <span>
+                    <a href="#">
+                        <img class="chattings" src="/resources/src/img/message.png"/>
+                    </a>
+                </span>
+                <span>
+                    <a href="/notification/notification">
+                        <img class="notifications" src="/resources/src/img/notifications.png"/>
+                    </a>
+                </span>
+            </div>
+        
+    </section>
 
-    <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/resources/js/login.js"></script>
+    <nav class="nav--container__menu">
+        <div>홈</div>
+        <div>카테고리</div>
+        <div>시세조회</div>
+    </nav>
     
-</body>
-</html>
+</header>
