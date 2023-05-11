@@ -20,7 +20,7 @@
         </section>
 
         <section class="footer--right" id="footer--right">
-            <a href="#"><strong>1:1 문의사항</strong></a>
+            <a href="/a"><strong>1:1 문의사항</strong></a>
             <a href="#"><strong>FAQ</strong></a>
             <a href="#"><strong>공지사항</strong></a>
         </section>

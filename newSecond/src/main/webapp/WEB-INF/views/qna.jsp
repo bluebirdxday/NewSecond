@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,15 +13,15 @@
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
     </style>
 
-  <link rel="stylesheet" href="/resources/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/resources/css/qna.css">
+    <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/문의게시판.css">
 
    
 
 </head>
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    <header data-include="/web/include/header.html"></header>
     <main data-include="/web/include/content.html" style="margin-top: 160px;"></main>
     
   <!-- 제목 바 -->
