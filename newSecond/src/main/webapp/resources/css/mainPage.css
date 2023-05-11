@@ -1,3 +1,10 @@
+*{
+    font-family: 'Pretendard';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    letter-spacing: -0.25px;
+}
 
 /* 메인페이지 전체에 대한 공간 */
 .mainPage--wholeWrapper{

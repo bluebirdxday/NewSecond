@@ -70,7 +70,7 @@
                         
                         <div class="notice--tab2__banner">
                             <div><img src="/resources/src/img/loudSpeaker.png"> 알림 받고 있는 키워드 <span>0</span>개</div>
-                            <a href="/resources/html/키워드편집.html">편집</a>
+                            <a href="/notification/editKeyword">편집</a>
                         </div>
 
                         <div class="notice--tab2__item notice--new">

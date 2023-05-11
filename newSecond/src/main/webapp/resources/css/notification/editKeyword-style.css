@@ -6,13 +6,15 @@
     letter-spacing: -0.25px;
 }
 
-body{
+main{
     width: 1000px;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 140px;
+    margin-bottom: 40px;
 }
 
 /* 키워드 편집 컨테이너 */

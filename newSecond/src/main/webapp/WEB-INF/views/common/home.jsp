@@ -21,6 +21,7 @@
 		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 			<div class="mainPage--wholeWrapper">
+
 			<section class="mainPage--carousel" style="color:black; ">
 				<div id="carouselExampleIndicators" class="carousel slide mainPage--carousel__container" data-bs-ride="true">
 					<div class="carousel-indicators">
