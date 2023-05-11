@@ -69,6 +69,7 @@
                         <img src="/resources/src/img/siren.png">
                         <div>신고하기</div>
                     </a>
+                    <p class="arrow_box">무분별한 신고는 제재 대상이 될 수 있습니다</p>
                 </div>
             </div>
 
