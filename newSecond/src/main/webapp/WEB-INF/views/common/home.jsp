@@ -9,7 +9,10 @@
 	<title>New Second</title>
 
 	<link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="/resources/src/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+
+
+
 
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
 
@@ -146,7 +149,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</body>
+</body>	
 </html>

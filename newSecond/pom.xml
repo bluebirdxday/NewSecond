@@ -22,6 +22,12 @@
    
    <dependencies>
    		
+   		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>bootstrap</artifactId>
+		    <version>5.2.3</version>
+		</dependency>
    		
    		
    		<!-- Jackson-databind -->
@@ -65,11 +71,11 @@
    		
    		<!-- 오라클 JDBC 드라이버 -->	
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
 		    <artifactId>ojdbc10</artifactId>
 		    <version>19.15.0.0.1</version>
-		</dependency>
+		</dependency> -->
    		
    		      <!-- 스프링에서 JDBC를 사용할 수 있게 하는 라이브러리 -->
       <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
