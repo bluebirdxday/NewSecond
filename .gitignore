@@ -28,3 +28,6 @@ MANIFEST.MF
 *.log
 .factorypath
 settings.json
+
+# root-context.xml 무시
+root-context.xml
