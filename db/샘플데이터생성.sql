@@ -146,6 +146,19 @@ INSERT INTO "reviews" VALUES(SEQ_REVIEWS_NO.NEXTVAL, 7, 8, '깔끔한 거래 좋
 SELECT * FROM "reviews";
 
 
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 8;
+
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 9;
+
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 10;
+
+SELECT * FROM "goods_board";
 
 
 

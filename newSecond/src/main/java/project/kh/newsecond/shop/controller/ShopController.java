@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
-import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.shop.model.service.ShopService;
 import project.kh.newsecond.user.model.dto.User;
 
@@ -30,16 +29,13 @@ public class ShopController {
 		
 		int userNo = loginUser.getUserNo();
 		
-		Shop myShop = service.selectShopInfo(userNo);
 		List<GoodsBoard> board = service.selectGoodsBoardList(userNo);
-		
-		if(myShop!=null) {
-			model.addAttribute("myShop", myShop);
-		}
-		
+
 		if(board!=null) {
 			model.addAttribute("goodsBoardList", board);
 		}
+		
+		model.addAttribute("loginUser", loginUser);
 		
 		return "shop/myShop";
 	}

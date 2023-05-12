@@ -27,7 +27,7 @@
         <div class="myshop--info__container">
             <div class="myshop--info__top">
                 <div>
-                    <div class="myshop--info__title">${myShop.shopTitle}</div>
+                    <div class="myshop--info__title">${loginUser.shopTitle}</div>
                     <div class="myshop--info__rating">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
@@ -44,7 +44,7 @@
             </div>
 
             <div class="myshop--info__middle1">
-                <div class="myshop--info__content">${myShop.shopInfo}</div>
+                <div class="myshop--info__content">${loginUser.shopInfo}</div>
             </div>
 
             <div class="myshop--info__middle2">
@@ -207,25 +207,6 @@
                         </div>
                     </div>
 
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="tab1--gridcontainer__item">상품2</div>
-                    <div class="tab1--gridcontainer__item">상품3</div>
-                    <div class="tab1--gridcontainer__item">상품4</div>
-                    <div class="tab1--gridcontainer__item">상품5</div>
-                    <div class="tab1--gridcontainer__item">상품6</div>
                 </div>
 
             </div>

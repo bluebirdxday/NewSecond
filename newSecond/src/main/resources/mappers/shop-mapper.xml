@@ -2,24 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="shopMapper">
 
-	<resultMap type="Shop" id="shop_rm">
-		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
-		<id property="userNo" column="USER_NO" />
-		
-		<!-- DB의 일반 컬럼들 -->
-		<result property="shopTitle" column="SHOP_TITLE" />
-		<result property="shopInfo" column="SHOP_INFO" />
-	</resultMap>
-	
-	
-	<select id="selectShopInfo" parameterType="int" resultMap="shop_rm" >
-		SELECT USER_NO, SHOP_TITLE, SHOP_INFO
-		FROM "shop"
-		JOIN "users" USING(USER_NO)
-		WHERE USER_NO = #{userNo}
-	</select>
-		
-		
-		
 		
 </mapper>
