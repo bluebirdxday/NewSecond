@@ -11,7 +11,7 @@
                 <c:when test="${empty loginUser}">
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
                     <span> | </span>
-                    <span class="myPage"><a href="">회원가입</a></span>
+                    <span><a href="/user/signUp">회원가입</a></span>
                 </c:when>
             
                 <c:otherwise>

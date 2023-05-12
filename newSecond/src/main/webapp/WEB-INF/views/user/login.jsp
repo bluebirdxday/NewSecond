@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <link rel="stylesheet" href="/resources/css/login.css">
+<link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/resources/css/user/login.css">
 
     <div class="dropdown">
 
@@ -43,3 +46,4 @@
 
     </div>
 
+<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -13,8 +13,6 @@
 
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
 
-
-
 </head>
 <body>
 
@@ -146,7 +144,6 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>	
 </html>
