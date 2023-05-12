@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 
-
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
 
 
@@ -19,8 +18,6 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/user/login.jsp"/>
-	
 	<main>
 		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 

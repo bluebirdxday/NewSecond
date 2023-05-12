@@ -7,11 +7,21 @@
     <section class="header--container__top">
         <div></div>
         <div>
-            <span class="login" id="loginBtn" onclick="openModal()">로그인</span>
-            <span> | </span>
-            <span class="myPage"><a href="">마이페이지</a></span>
-            <span> | </span>
-            <span class="wishList"><a href="">관심상품</a></span>
+            <c:choose>
+                <c:when test="${empty loginUser}">
+                    <jsp:include page="/WEB-INF/views/user/login.jsp"/>
+                    <span> | </span>
+                    <span class="myPage"><a href="">회원가입</a></span>
+                </c:when>
+            
+                <c:otherwise>
+                    <span class="logout" id="logoutBtn"><a href="/user/logout">로그아웃</a></span>
+                    <span> | </span>
+                    <span class="myPage"><a href="">마이페이지</a></span>
+                    <span> | </span>
+                    <span class="wishList"><a href="">관심상품</a></span>
+                </c:otherwise>
+            </c:choose>
         </div>
     </section>
 
