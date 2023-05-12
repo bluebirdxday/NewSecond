@@ -22,4 +22,11 @@ public interface ShopService {
 	List<GoodsBoard> selectGoodsBoardList(int userNo);
 
 
+	/** 상점 오픈일 조회
+	 * @param userNo
+	 * @return openDays
+	 */
+	int selectShopOpenDay(int userNo);
+
+
 }

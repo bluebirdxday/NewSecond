@@ -1,25 +1,18 @@
 package project.kh.newsecond.shop.model.dto;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import project.kh.newsecond.review.model.dto.Review;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Shop {
+public class Following {
 
 	private int userNo;
 	private String shopTitle;
 	private String shopInfo;
-	
-	
-	private List<Follower> followerList;
-	private List<Review> reviewList;
-	
+	private String userImage;
 }

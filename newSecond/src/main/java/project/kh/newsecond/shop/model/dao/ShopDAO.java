@@ -26,4 +26,9 @@ public class ShopDAO {
 		return sqlSession.selectList("goodsBoardMapper.selectGoodsBoardList", userNo);
 	}
 
+	// 상점 오픈일 조회
+	public int selectShopOpenDay(int userNo) {
+		return sqlSession.selectOne("shopMapper.selectShopOpenDay", userNo);
+	}
+
 }

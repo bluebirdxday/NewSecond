@@ -29,5 +29,11 @@ public class ShopServiceImpl implements ShopService{
 		return dao.selectGoodsBoardList(userNo);
 	}
 
+	// 상점 오픈일 조회
+	@Override
+	public int selectShopOpenDay(int userNo) {
+		return dao.selectShopOpenDay(userNo);
+	}
+
 
 }

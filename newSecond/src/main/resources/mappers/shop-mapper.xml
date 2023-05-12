@@ -3,20 +3,69 @@
 <mapper namespace="shopMapper">
 
 	<resultMap type="Shop" id="shop_rm">
-		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
 		<id property="userNo" column="USER_NO" />
-
-		<!-- DB의 일반 컬럼들 -->
+		
 		<result property="shopTitle" column="SHOP_TITLE" />
 		<result property="shopInfo" column="SHOP_INFO" />
+		
+		<collection property="followerList" select="selectFollowerList"
+			column="USER_NO" javaType="java.util.ArrayList" ofType="Follower"/>
+		<collection property="reviewList" select="selectReviewList"
+			column="USER_NO" javaType="java.util.ArrayList" ofType="Review"/>
+	</resultMap>
+	
+	
+	<resultMap type="Follower" id="follower_rm">
+		<id property="follwingUerNo" column="FOLLOWING_USER_NO"/>
+		<result property="shopTitle" column="SHOP_TITLE"/>
+		<result property="shopInfo" column="SHOP_INFO"/>
+		<result property="userImage" column="USER_IMG"/>
+	</resultMap>
+	
+	<resultMap type="Review" id="review_rm">
+		<id property="reviewNo" column="REVIEW_NO"/>
+		<result property="shopTitle" column="SHOP_TITLE"/>
+		<result property="goodsTitle" column="GOODS_TITLE"/>
+		<result property="reviewMessage" column="REVIEW_MESSAGE"/>
+		<result property="reviewDate" column="REVIEW_DT"/>
+		<result property="reviewStars" column="REVIEW_STARS"/>
 	</resultMap>
 
 
+	<!-- 내상점 정보 -->
 	<select id="selectShopInfo" parameterType="int" resultMap="shop_rm" >
 		SELECT USER_NO, SHOP_TITLE, SHOP_INFO
 		FROM "shop"
 		JOIN "users" USING(USER_NO)
 		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<!-- 오픈일 계산 -->
+	<select id="selectShopOpenDay" resultType="_int">
+		SELECT TRUNC(SYSDATE-ENROLL_DT) OPEN_DAY
+		FROM "users"
+		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<!-- 팔로워 리스트 -->
+	<select id="selectFollowerList" resultMap="follower_rm">
+		SELECT FOLLOWING_USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG 
+		FROM "follow" F
+		JOIN "users" U ON(U.USER_NO = F.USER_NO)
+		JOIN "shop" S ON(FOLLOWING_USER_NO = S.USER_NO)
+		WHERE F.USER_NO = #{userNo}
+	</select>
+	
+	<!-- 특정 유저(상점)의 거래 후기 목록 조회 (받은 후기)-->
+	<select id="selectReviewList" resultMap="review_rm">
+		SELECT REVIEW_NO, SHOP_TITLE, GOODS_TITLE, REVIEW_MESSAGE,
+		REVIEW_DT, REVIEW_STARS
+		FROM "reviews" R
+		JOIN "users" USING(USER_NO)
+		JOIN "shop" USING(USER_NO)
+		JOIN "goods_board" B USING(GOODS_NO)
+		WHERE REVIEW_DEL_FL = 'N'
+		AND B.USER_NO = #{userNo}
 	</select>
 
 		

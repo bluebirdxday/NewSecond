@@ -20,9 +20,4 @@ public class User {
 	private String userStatues;
 	private String enrollDate;
 	private int userRole;
-	
-	
-	// 내상점 join
-	private String shopTitle;
-	private String shopInfo;
 }

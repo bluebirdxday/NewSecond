@@ -28,11 +28,18 @@ public class ShopController {
 	public String shop(@SessionAttribute(value="loginUser", required=false) User loginUser,
 			Model model){
 		
+		if(loginUser==null) {
+			return "redirect:/";
+		}
+		
 		int userNo = loginUser.getUserNo();
 		
 		Shop myShop = service.selectShopInfo(userNo);
 		List<GoodsBoard> board = service.selectGoodsBoardList(userNo);
 
+		int openDays = service.selectShopOpenDay(userNo);
+		
+		
 		if(myShop!=null) {
 			model.addAttribute("myShop", myShop);
 		}
@@ -41,6 +48,7 @@ public class ShopController {
 			model.addAttribute("goodsBoardList", board);
 		}
 		
+		model.addAttribute("openDays", openDays);
 		model.addAttribute("loginUser", loginUser);
 		
 		return "shop/myShop";

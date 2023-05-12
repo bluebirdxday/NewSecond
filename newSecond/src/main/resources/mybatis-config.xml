@@ -11,6 +11,9 @@
 	<typeAliases>
 		<typeAlias type="project.kh.newsecond.user.model.dto.User" alias="User" />
 		<typeAlias type="project.kh.newsecond.shop.model.dto.Shop" alias="Shop" />
+		<typeAlias type="project.kh.newsecond.shop.model.dto.Following" alias="Following" />
+		<typeAlias type="project.kh.newsecond.shop.model.dto.Follower" alias="Follower" />
+		<typeAlias type="project.kh.newsecond.review.model.dto.Review" alias="Review" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
 	</typeAliases>
 	

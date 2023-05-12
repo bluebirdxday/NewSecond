@@ -44,18 +44,25 @@
             </div>
 
             <div class="myshop--info__middle1">
-                <div class="myshop--info__content">${myShop.shopInfo}</div>
+                <div class="myshop--info__content">
+                        <c:if test="${empty myShop.shopInfo}" >
+                            ${myShop.shopTitle}에 오신것을 환영합니다!
+                        </c:if>
+                        
+                        <c:if test="${not empty myShop.shopInfo}">
+                            ${myShop.shopInfo}
+                        </c:if></div>
             </div>
 
             <div class="myshop--info__middle2">
                 <div>
                     <div class="myshop--info__follower">팔로워</div>
-                    <div class="myshop--info__follower-txt">0명</div>
+                    <div class="myshop--info__follower-txt">${fn:length(myShop.followerList)}명</div>
                 </div>
 
                 <div>
                     <div class="myshop--info__openday">오픈일</div>
-                    <div class="myshop--info__openday-txt">0일 전</div>
+                    <div class="myshop--info__openday-txt">${openDays}일 전</div>
                 </div>
 
                 <div>
@@ -123,9 +130,9 @@
             <div class="tabs">
                 <ul>
                     <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
-                    <li><a href="#" rel="tab2">후기 <div>0</div></a></li>
+                    <li><a href="#" rel="tab2">후기 <div>${fn:length(myShop.reviewList)}</div></a></li>
                     <li><a href="#" rel="tab3">팔로잉 <div>0</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div>0</div></a></li>
+                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(myShop.followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -216,49 +223,27 @@
 
                 <div class="tab2--container">
 
-                    <div class="tab2--container__item">
-
-                        <div class="tab2--item__detail">
-                            <div class="tab2--item__img"><img src="/resources/src/img/user_profile.jpg"></div>
-                            <div>
-                                <div>
-                                    <div class="tab2--item__username">USER#123456</div>
-                                    <div class="tab2--item__rating">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star_half.png" class="rating--star__half">
-                                        <img src="/resources/src/img/rating_star_none.png" class="rating--star__none">
+                    <c:if test="${not empty myShop.reviewList}" >
+                        <c:forEach items="${myShop.reviewList}" var="review">
+                                <div class="tab2--container__item">
+                                    <div class="tab2--item__detail">
+                                        <div class="tab2--item__img"><img src="/resources/src/img/user_profile.jpg"></div>
+                                        <div>
+                                            <div>
+                                                <div class="tab2--item__username">${review.shopTitle}</div>
+                                                    <span class="tab2--item__rating">
+                                                        ⭐⭐⭐⭐⭐
+                                                        <span style="display:inline-block; width:${review.reviewStars * 10 + 1}%; text-shadow: 0 0 0 gold;">⭐⭐⭐⭐⭐</span>
+                                                    </span>
+                                                </div>
+                                            <div class="tab2--item__message">${review.reviewMessage}</div>
+                                        </div>
                                     </div>
+
+                                    <div>${review.goodsTitle}</div>
                                 </div>
-                                <div>후기 상세 내용</div>
-                            </div>
-                        </div>
-
-                        <div>게시글 제목 길다길다길다길다길다길다 더 길다</div>
-                    </div>
-
-                    <div class="tab2--container__item">
-
-                        <div class="tab2--item__detail">
-                            <div class="tab2--item__img"><img src="/resources/src/img/user_profile.jpg"></div>
-                            <div>
-                                <div>
-                                    <div class="tab2--item__username">USER#123456</div>
-                                    <div class="tab2--item__rating">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                                        <img src="/resources/src/img/rating_star_half.png" class="rating--star__half">
-                                        <img src="/resources/src/img/rating_star_none.png" class="rating--star__none">
-                                    </div>
-                                </div>
-                                <div>후기 상세 내용</div>
-                            </div>
-                        </div>
-
-                        <div>아이폰 14프로 퍼플 256</div>
-                    </div>
+                        </c:forEach>
+                    </c:if>
 
                 </div>
             </div>
@@ -311,17 +296,38 @@
             <!-- 팔로워 탭 -->
             <div id="tab4" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
-                    <div class="tab3--container__item">
-                        <div>
-                            <img src="/resources/src/img/cat2.jpg">
-                        </div>
-                        <div>USER#123456</div>
-                        <div>좋은 것만 취급합니다 네고 사절 찔러보기 금지</div>
-                        <div>
-                            <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
-                            <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
-                        </div>
-                    </div>
+                    
+                    <c:if test="${not empty myShop.followerList}" >
+                        <c:forEach items="${myShop.followerList}" var="follower">
+                            <div class="tab3--container__item">
+                                <div>
+                                    <c:if test="${empty follower.userImage}" >
+                                        <img src="/resources/src/img/cat2.jpg">  <%-- 기본 프로필 이미지 --%>
+                                    </c:if>
+
+                                    <c:if test="${not empty follower.userImage}" >
+                                        <img src="${follower.userImage}">  <%-- 기본 프로필 이미지 --%>
+                                    </c:if>
+                                </div>
+                                <div>${follower.shopTitle}</div>
+                                <div>
+                                    <c:if test="${empty follower.shopInfo}" >
+                                        <div>${follower.shopTitle}에 오신것을 환영합니다!</div>
+                                    </c:if>
+
+                                    <c:if test="${not empty follower.shopInfo}" >
+                                        <div>${follower.shopInfo}</div>
+                                    </c:if>
+                                </div>
+                                <div>
+                                    <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
+                                    <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+
+
                 </div>
             </div>
         </div>
