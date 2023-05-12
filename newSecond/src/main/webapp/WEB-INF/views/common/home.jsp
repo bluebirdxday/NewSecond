@@ -12,9 +12,9 @@
 	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 
 
-
-
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
+
+
 
 </head>
 <body>
