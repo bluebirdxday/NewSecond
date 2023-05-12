@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dao.ShopDAO;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
 public class ShopServiceImpl implements ShopService{
@@ -14,6 +15,14 @@ public class ShopServiceImpl implements ShopService{
 	@Autowired
 	private ShopDAO dao;
 
+	
+
+	// 내 상점 정보 조회
+	@Override
+	public Shop selectShopInfo(int userNo) {
+		return dao.selectShopInfo(userNo);
+	}
+	
 	// 게시글 리스트 조회
 	@Override
 	public List<GoodsBoard> selectGoodsBoardList(int userNo) {

@@ -27,7 +27,7 @@
         <div class="myshop--info__container">
             <div class="myshop--info__top">
                 <div>
-                    <div class="myshop--info__title">${loginUser.shopTitle}</div>
+                    <div class="myshop--info__title">${myShop.shopTitle}</div>
                     <div class="myshop--info__rating">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
@@ -44,7 +44,7 @@
             </div>
 
             <div class="myshop--info__middle1">
-                <div class="myshop--info__content">${loginUser.shopInfo}</div>
+                <div class="myshop--info__content">${myShop.shopInfo}</div>
             </div>
 
             <div class="myshop--info__middle2">

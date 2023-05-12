@@ -10,6 +10,7 @@
 	<!-- DTO클래스의 패키지명 + 클래스명 작성하는 것이 불편하기 때문에 짧은 별칭 부여 -->
 	<typeAliases>
 		<typeAlias type="project.kh.newsecond.user.model.dto.User" alias="User" />
+		<typeAlias type="project.kh.newsecond.shop.model.dto.Shop" alias="Shop" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
 	</typeAliases>
 	
@@ -17,6 +18,7 @@
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/user-mapper.xml" />
+		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
 	</mappers>
 
