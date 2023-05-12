@@ -15,14 +15,12 @@
 
     <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/문의게시판.css">
+      <link rel="stylesheet" href="/resources/css/qna.css">
 
-   
 
 </head>
 <body>
-    <header data-include="/web/include/header.html"></header>
-    <main data-include="/web/include/content.html" style="margin-top: 160px;"></main>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
   <!-- 제목 바 -->
         <div class="qna_bar_container" style =" background-color:#8ab2e24b"> 
@@ -76,11 +74,9 @@
 
 
   
-    <footer data-include="/web/scr/include/footer.html"></footer>
-    <script src="../js/문의게시판.js"></script>
-
-    <script src="/web/src/bootstrap/js/bootstrap.bundle.min.js"></script>
-   
+   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <script src="/resources/js/qna.js"></script>
+    
 
 </body>
 </html>

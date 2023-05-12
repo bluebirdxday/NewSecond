@@ -2,6 +2,7 @@
 .qna_bar_container{
   width: auto;
   background-color:#8ab2e24b;
+  margin-top: 160px;
 }
 
 .qna_bar{
@@ -13,7 +14,6 @@
     margin-right: auto;
     width: 1000px;
     text-align: left;
-    
 }
 
 /* -----------------문의유형 드랍--------------- */
