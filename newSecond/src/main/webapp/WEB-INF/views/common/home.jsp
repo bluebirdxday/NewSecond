@@ -144,6 +144,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+	<c:if test="${not empty loginUser}" >
+		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+	</c:if>
 
 </body>	
 </html>
+
