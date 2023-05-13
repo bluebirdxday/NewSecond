@@ -22,6 +22,7 @@ public class UserController{
 	@Autowired
 	private UserService service;
 	
+	// 로그인 -> 유저 정보 세션 넘기기
 	@PostMapping("/login")
 	public String login(User inputUser, Model model
 						,@RequestHeader(value="referer") String referer
@@ -40,7 +41,7 @@ public class UserController{
 		return "redirect:/";
 	} 
 	
-	
+	// 로그아웃 -> 세션 만료
 	@GetMapping("/logout")
 	public String logout(SessionStatus status) {
 		status.setComplete(); 
@@ -48,10 +49,12 @@ public class UserController{
 		return "redirect:/";
 	}
 	
-	
+	// 회원가입 화면 전환
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "user/signUp";
 	}
+	
+	
 	
 }

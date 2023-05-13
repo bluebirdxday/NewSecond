@@ -15,7 +15,7 @@
                 </c:when>
             
                 <c:otherwise>
-                    <span class="logout" id="logoutBtn"><a href="/user/logout">로그아웃</a></span>
+                    <span class="logout"><a href="/user/logout">로그아웃</a></span>
                     <span> | </span>
                     <span class="myPage"><a href="">마이페이지</a></span>
                     <span> | </span>
@@ -41,17 +41,17 @@
         
         <div class="header--right__icons">
                 <span>
-                    <a href="/shop/myShop">
+                    <a href="/shop/myShop" id="myShop">
                         <img class="myMarket" src="/resources/src/img/home.png"/>
                     </a>
                 </span>
                 <span>
-                    <a href="#">
+                    <a href="#" id="chattings">
                         <img class="chattings" src="/resources/src/img/message.png"/>
                     </a>
                 </span>
                 <span>
-                    <a href="/notification/notification">
+                    <a href="/notification/notification" id="notification">
                         <img class="notifications" src="/resources/src/img/notifications.png"/>
                     </a>
                 </span>
@@ -66,3 +66,24 @@
     </nav>
     
 </header>
+
+
+<c:if test="${empty loginUser}" >
+    <script>
+    document.getElementById('myShop').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+    });
+
+    document.getElementById('chattings').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+    });
+
+    document.getElementById('notification').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+    });
+    </script>
+</c:if>
+

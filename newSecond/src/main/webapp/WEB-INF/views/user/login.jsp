@@ -8,11 +8,15 @@
 
     <div class="dropdown">
 
-        <button type="button" class="dropdown-text " data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-offset="-100,10" >
+        <button type="button" class="dropdown-text" id="login" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false" data-bs-offset="-100,10" >
             로그인
         </button>
 
         <form class="dropdown-menu p-4 speech-bubble loginPage--WrapForm" action="/user/login" method="post">
+                
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close" aria-label="Close" id="loginClose"></button>
+                </div>
 
                 <div class="mb-2">
                     <label for="userEmail" class="form-label">이메일</label>
@@ -47,3 +51,9 @@
     </div>
 
 <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('loginClose').addEventListener('click', e => {
+        document.getElementById('login').click();
+    });
+</script>

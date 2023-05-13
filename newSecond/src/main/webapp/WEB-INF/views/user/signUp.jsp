@@ -7,63 +7,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>회원가입 페이지</title>
+
     <link rel="stylesheet" href="/resources/css/user/signUp.css">
+
+    <link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="login-container">
 
-        <h2>회원 정보를 입력해주세요</h2>
+        <div class="mb-5">
+            <h2>회원 정보를 입력해주세요</h2>
+        </div>
 
         <form action="/submit_registration" method="post">
-
-            <div class="input-group">
+            
+            <div class="input-container">
                 <input type="text" id="user_email" name="user_email" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Email</label>
             </div>
 
-            <div class="input-group">
+            <div class="input-container">
                 <input type="password" id="user_password" name="user_password" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Password</label>
             </div>
 
-            <div class="input-group">
+            <div class="input-container">
                 <input type="password" id="user_confirm_password" name="user_confirm_password" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Confirm Password</label>
             </div>
 
-            <div class="input-group">
+            <div class="input-container">
                 <input type="text" id="user_nickname" name="user_nickname" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Nickname</label>
             </div>
 
-            <div class="input-group">
+            <div class="input-container">
                 <input type="text" id="user_tel" name="user_tel" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Telephone</label>
             </div>
 
-            <div class="input-group">
+            <div class="input-container">
                 <input type="text" id="user_address" name="user_address" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
                 <label>Address</label>
             </div>
 
             <button type="submit" class="submit-button">Register</button>
-            
         </form>
 
     </div>
+    <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
