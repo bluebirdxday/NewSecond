@@ -34,9 +34,14 @@ public class UserController{
 		User loginUser = service.login(inputUser);
 		
 		if(loginUser != null) {
+			
 			model.addAttribute("loginUser", loginUser);
-			System.out.println(loginUser);
+			
+			ra.addFlashAttribute("alertType", "success");
+			ra.addFlashAttribute("message", loginUser.getUserNickname() + "님의 방문을 환영합니다!");
+			
 		} else {
+			ra.addFlashAttribute("alertType", "fail");
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
 		

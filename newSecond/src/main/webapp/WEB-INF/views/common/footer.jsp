@@ -23,4 +23,17 @@
         <a href="#"><strong>FAQ</strong></a>
         <a href="#"><strong>공지사항</strong></a>
     </section>
+
+    <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
+    <c:if test="${not empty loginUser}" >
+		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+	</c:if>
+
 </footer>
+
+
+<c:if test="${not empty message}" >
+    <script>
+        toastTrigger.click();
+    </script>
+</c:if>

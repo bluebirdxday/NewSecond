@@ -51,7 +51,6 @@
 				</div>
 			</section>
 			
-			${loginUser}
 
 			<section class="mainPage--goodsContainer1 mt-5">
 				<h4>최근 업데이트된 상품</h4>
@@ -144,9 +143,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-	<c:if test="${not empty loginUser}" >
-		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
-	</c:if>
+	
 
 </body>	
 </html>

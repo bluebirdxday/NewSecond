@@ -30,7 +30,6 @@
 	
 	<context:component-scan base-package="project.kh.newsecond" />
 	
-	
 	<!-- @Transactional 어노테이션 인식, 활성화 -->
 	<tx:annotation-driven   transaction-manager="transactionManager"/>
 	
