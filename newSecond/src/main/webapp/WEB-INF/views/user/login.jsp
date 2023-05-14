@@ -6,7 +6,7 @@
     <div id="loginModal" class="loginPage--loginModal" onclick="closeModalWindow(event)">
         <div class="loginPage--modalWindow">
                 <section class="loginPage--modalWindow__top">
-                    <img src="/resources/src/img/common/LOGO.png">
+                    <img src="/resources/src/img/LOGO.png">
                 </section>
                 <section class="loginPage--modalWindow__midForm">
                     <form action="/member/login" method="post">

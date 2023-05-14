@@ -31,9 +31,18 @@
         
         <div class="header--right__icons">
                 <span>
-                    <a href="/shop/myShop">
-                        <img class="myMarket" src="/resources/src/img/home.png"/>
-                    </a>
+                    <c:if test="${empty loginUser}">
+                        <a href="/">
+                            <img class="myMarket" src="/resources/src/img/home.png"/>
+                        </a>
+                    </c:if>
+
+                    <c:if test="${not empty loginUser}" >
+                        <a href="/shop/${loginUser.userNo}">
+                            <img class="myMarket" src="/resources/src/img/home.png"/>
+                        </a>
+                    </c:if>
+                    
                 </span>
                 <span>
                     <a href="#">

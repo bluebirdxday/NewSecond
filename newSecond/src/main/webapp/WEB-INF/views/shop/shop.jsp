@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:if test="${not empty shop.reviewList}" >
+    <c:set var="shopStarAvg" value="0"/>
+    <c:forEach items="${shop.reviewList}" var="review">
+        <c:set var="shopStarAvg"  value="${shopStarAvg + review.reviewStars}"/>
+    </c:forEach>
+    <c:set var="shopStarAvg" value="${shopStarAvg/fn:length(shop.reviewList)}"/>
+</c:if>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -27,37 +37,41 @@
         <div class="myshop--info__container">
             <div class="myshop--info__top">
                 <div>
-                    <div class="myshop--info__title">${myShop.shopTitle}</div>
-                    <div class="myshop--info__rating">
-                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                        <img src="/resources/src/img/rating_star.png" class="rating--star">
-                        <img src="/resources/src/img/rating_star_half.png" class="rating--star__half">
-                        <img src="/resources/src/img/rating_star_none.png" class="rating--star__none">
-                    </div>
+                    <div class="myshop--info__title">${shop.shopTitle}</div>
+                    <span class="myshop--stars_rating">
+                        ⭐⭐⭐⭐⭐
+                        <span style="width:${shopStarAvg * 10 +1}%; display:inline-block; text-shadow: 0 0 0 gold;">⭐⭐⭐⭐⭐</span>
+                    </span>
                 </div>
 
                 <div>
-                    <!-- <button type="button" class="myshop--info__btn-follow">팔로우</button> -->
-                    <div class="myshop--info__btn-edit">편집</div>
+                    <c:if test="${loginUser.userNo==shop.userNo}" >
+                        <div class="myshop--info__btn-edit">편집</div>
+                    </c:if>
+
+                    <c:if test="${loginUser.userNo!=shop.userNo}" >
+                        <%-- 팔로우 여부 확인해서 팔로우 or 언팔로우 버튼 보이게 바꾸기 --%>
+                        <button type="button" class="myshop--info__btn-follow">팔로우</button>
+                        <%-- <button type="button" class="myshop--info__btn-follow">언팔로우</button> --%>
+                    </c:if>
                 </div>
             </div>
 
             <div class="myshop--info__middle1">
                 <div class="myshop--info__content">
-                        <c:if test="${empty myShop.shopInfo}" >
-                            ${myShop.shopTitle}에 오신것을 환영합니다!
+                        <c:if test="${empty shop.shopInfo}" >
+                            ${shop.shopTitle}에 오신것을 환영합니다!
                         </c:if>
                         
-                        <c:if test="${not empty myShop.shopInfo}">
-                            ${myShop.shopInfo}
+                        <c:if test="${not empty shop.shopInfo}">
+                            ${shop.shopInfo}
                         </c:if></div>
             </div>
 
             <div class="myshop--info__middle2">
                 <div>
                     <div class="myshop--info__follower">팔로워</div>
-                    <div class="myshop--info__follower-txt">${fn:length(myShop.followerList)}명</div>
+                    <div class="myshop--info__follower-txt">${fn:length(shop.followerList)}명</div>
                 </div>
 
                 <div>
@@ -65,9 +79,19 @@
                     <div class="myshop--info__openday-txt">${openDays}일 전</div>
                 </div>
 
+
+
+                <c:set var="sellCount" value="0"/>
+                <c:if test="${not empty goodsBoardList}" >
+                    <c:forEach items="${goodsBoardList}" var="goods">
+                        <c:if test="${goods.goodsStatus == 'E'}">
+                            <c:set var="sellCount" value="${sellCount + 1}"/>    
+                        </c:if>
+                    </c:forEach>
+                </c:if>
                 <div>
                     <div class="myshop--info__sellcount">판매건수</div>
-                    <div class="myshop--info__sellcount-txt">0회</div>
+                    <div class="myshop--info__sellcount-txt">${sellCount}회</div>
                 </div>
 
             </div>
@@ -130,9 +154,9 @@
             <div class="tabs">
                 <ul>
                     <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
-                    <li><a href="#" rel="tab2">후기 <div>${fn:length(myShop.reviewList)}</div></a></li>
-                    <li><a href="#" rel="tab3">팔로잉 <div>0</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(myShop.followerList)}</div></a></li>
+                    <li><a href="#" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
+                    <li><a href="#" rel="tab3">팔로잉 <div>${fn:length(followingList)}</div></a></li>
+                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(shop.followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -147,74 +171,40 @@
                         </ul>
                 </div> 
 
+
                 <div class="myshop--tab1__gridcontainer">
-                    <!-- 상품 탭 리스트 아이템(게시글) : 추후에 DB에서 자동으로 로드할 수 있게 기능 구현-->
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab1--gridcontainer__item">
-                        <div class="tab1--item__img">
-                            <img src="/resources/src/img/cat.jpg">
-                        </div>
-                        <div class="tab1--item__description">
-                            <div>상품명</div>
-                            <div>
-                                <div>10,000원</div>
-                                <div>3시간 전</div>
-                            </div>
-                        </div>
-                    </div>
+                    <c:if test="${not empty goodsBoardList}" >
+                        <c:forEach items="${goodsBoardList}" var="goods">
+                                    <!-- 상품 탭 리스트 아이템(게시글) : 추후에 DB에서 자동으로 로드할 수 있게 기능 구현-->
+                                    <div class="tab1--gridcontainer__item">
+                                        <div class="tab1--item__img">
+                                            <img src="/resources/src/img/cat.jpg">
+                                        </div>
+                                        <div class="tab1--item__description">
+                                            <div> 
+                                            <c:choose>
+                                                <c:when test="${fn:length(goods.goodsTitle) > 10}">
+                                                    ${fn:substring(goods.goodsTitle, 0, 10)}...
+                                                </c:when>
+                                                
+                                                <c:otherwise>
+                                                    ${goods.goodsTitle} 
+                                                </c:otherwise>
+                                            </c:choose>
+                                            </div>
+                                            <div>
+                                                <div><fmt:formatNumber value="${goods.goodsPrice}" type="number"/></div>
+                                                <div>3시간 전</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </c:forEach>
+                    </c:if>
 
                 </div>
+                <c:if test="${empty goodsBoardList}" >
+                    <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다.</div>
+                </c:if>
 
             </div>
         
@@ -223,17 +213,17 @@
 
                 <div class="tab2--container">
 
-                    <c:if test="${not empty myShop.reviewList}" >
-                        <c:forEach items="${myShop.reviewList}" var="review">
+                    <c:if test="${not empty shop.reviewList}" >
+                        <c:forEach items="${shop.reviewList}" var="review">
                                 <div class="tab2--container__item">
                                     <div class="tab2--item__detail">
-                                        <div class="tab2--item__img"><img src="/resources/src/img/user_profile.jpg"></div>
+                                        <div class="tab2--item__img"><img src="/resources/src/img/basic_profile.png"></div>
                                         <div>
                                             <div>
                                                 <div class="tab2--item__username">${review.shopTitle}</div>
-                                                    <span class="tab2--item__rating">
+                                                    <span class="myshop--stars_rating">
                                                         ⭐⭐⭐⭐⭐
-                                                        <span style="display:inline-block; width:${review.reviewStars * 10 + 1}%; text-shadow: 0 0 0 gold;">⭐⭐⭐⭐⭐</span>
+                                                        <span style="width:${review.reviewStars * 10 + 1}%; display:inline-block; text-shadow: 0 0 0 gold;">⭐⭐⭐⭐⭐</span>
                                                     </span>
                                                 </div>
                                             <div class="tab2--item__message">${review.reviewMessage}</div>
@@ -245,6 +235,10 @@
                         </c:forEach>
                     </c:if>
 
+                    <c:if test="${empty shop.reviewList}" >
+                        <div class="tab--content__empty">현재 후기가 존재하지 않습니다.</div>
+                    </c:if>
+
                 </div>
             </div>
 
@@ -253,43 +247,43 @@
             <div id="tab3" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
             
-                    <div class="tab3--container__item">
-                        <div>
-                            <img src="/resources/src/img/cat2.jpg">
-                        </div>
-                        <div>USER#123456</div>
-                        <div>좋은 것만 취급합니다 네고 사절 찔러보기 금지</div>
-                        <div>
-                            <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
-                            <div class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</div>
-                        </div>
-                    </div>
+                    <c:if test="${not empty followingList}" >
+                        <c:forEach items="${followingList}" var="following">
+                            <div class="tab3--container__item">
+                                <div>
+                                        <c:if test="${empty following.userImage}" >
+                                        <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
+                                    </c:if>
 
-                    <div class="tab3--container__item">
-                        <div>
-                            <img src="/resources/src/img/cat2.jpg">
-                        </div>
-                        <div>USER#123456</div>
-                        <div>좋은 것만 취급합니다 네고 사절 찔러보기 금지</div>
-                        <div>
-                            <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
-                            <div class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</div>
-                        </div>
-                    </div>
+                                    <c:if test="${not empty following.userImage}" >
+                                        <img src="${following.userImage}">  <%-- 기본 프로필 이미지 --%>
+                                    </c:if>
+                                </div>
+                                <div>${following.shopTitle}</div>
+                                <div>
+                                    <c:if test="${empty following.shopInfo}" >
+                                        <div>${following.shopTitle}에 오신것을 환영합니다!</div>
+                                    </c:if>
 
-                    <div class="tab3--container__item">
-                        <div>
-                            <img src="/resources/src/img/cat2.jpg">
-                        </div>
-                        <div>USER#123456</div>
-                        <div>좋은 것만 취급합니다 네고 사절 찔러보기 금지</div>
-                        <div>
-                            <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
-                            <div class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</div>
-                        </div>
-                    </div>
-
+                                    <c:if test="${not empty following.shopInfo}" >
+                                        <div>${following.shopInfo}</div>
+                                    </c:if>
+                                </div>
+                                <div>
+                                    <a href="/shop/${following.userNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                    <form action="/shop/unfollow" method="POST">
+                                        <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                        <input type="hidden" name="unfollowUser" value="${following.userNo}">
+                                    </form>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
                 </div>
+
+                <c:if test="${empty followingList}" >
+                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다.</div>
+                </c:if>
                 
             </div>
 
@@ -297,12 +291,12 @@
             <div id="tab4" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
                     
-                    <c:if test="${not empty myShop.followerList}" >
-                        <c:forEach items="${myShop.followerList}" var="follower">
+                    <c:if test="${not empty shop.followerList}" >
+                        <c:forEach items="${shop.followerList}" var="follower">
                             <div class="tab3--container__item">
                                 <div>
                                     <c:if test="${empty follower.userImage}" >
-                                        <img src="/resources/src/img/cat2.jpg">  <%-- 기본 프로필 이미지 --%>
+                                        <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
                                     </c:if>
 
                                     <c:if test="${not empty follower.userImage}" >
@@ -320,7 +314,7 @@
                                     </c:if>
                                 </div>
                                 <div>
-                                    <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div>
+                                    <a href="/shop/${follower.follwingUerNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                     <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
                                 </div>
                             </div>
@@ -329,12 +323,16 @@
 
 
                 </div>
+
+                <c:if test="${empty shop.followerList}" >
+                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
+                </c:if>
             </div>
         </div>
 
     </section>
 
-    <a href="#">
+    <a href="/review/reviewList">
         <div class="myshop--btn__fixed-addpost">
             <img src="/resources/src/img/addPost.png">
         </div>

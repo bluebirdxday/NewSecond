@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dao.ShopDAO;
+import project.kh.newsecond.shop.model.dto.Following;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
@@ -33,6 +34,12 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public int selectShopOpenDay(int userNo) {
 		return dao.selectShopOpenDay(userNo);
+	}
+
+	// 팔로잉 리스트 조회
+	@Override
+	public List<Following> selectFollowingList(int userNo) {
+		return dao.selectFollowingList(userNo);
 	}
 
 

@@ -22,14 +22,26 @@
 		<result property="userImage" column="USER_IMG"/>
 	</resultMap>
 	
+	
 	<resultMap type="Review" id="review_rm">
 		<id property="reviewNo" column="REVIEW_NO"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="goodsNo" column="GOODS_NO"/>
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="goodsTitle" column="GOODS_TITLE"/>
 		<result property="reviewMessage" column="REVIEW_MESSAGE"/>
 		<result property="reviewDate" column="REVIEW_DT"/>
 		<result property="reviewStars" column="REVIEW_STARS"/>
 	</resultMap>
+	
+	
+	<resultMap type="Following" id="following_rm">
+		<id property="userNo" column="USER_NO"/>
+		<result property="shopTitle" column="SHOP_TITLE"/>
+		<result property="shopInfo" column="SHOP_INFO"/>
+		<result property="userImage" column="USER_IMG"/>
+	</resultMap>
+	
 
 
 	<!-- 내상점 정보 -->
@@ -56,6 +68,17 @@
 		WHERE F.USER_NO = #{userNo}
 	</select>
 	
+	
+	<!-- 특정 유저의 팔로잉 리스트 조회 -->
+	<select id="selectFollowingList" resultMap="following_rm">
+	SELECT F.USER_NO USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG
+	FROM "follow" F
+	JOIN "users" U ON(U.USER_NO = F.USER_NO)
+	JOIN "shop" S ON(U.USER_NO = S.USER_NO) 
+	WHERE FOLLOWING_USER_NO = #{userNo}
+	</select>
+	
+	
 	<!-- 특정 유저(상점)의 거래 후기 목록 조회 (받은 후기)-->
 	<select id="selectReviewList" resultMap="review_rm">
 		SELECT REVIEW_NO, SHOP_TITLE, GOODS_TITLE, REVIEW_MESSAGE,
@@ -67,6 +90,48 @@
 		WHERE REVIEW_DEL_FL = 'N'
 		AND B.USER_NO = #{userNo}
 	</select>
-
+	
+	
+	<!-- 특정 유저의 거래 후기 목록 조회 (쓴 후기) -->
+	<select id="selectWrittenReviewList" resultMap="review_rm">
+		SELECT REVIEW_NO, GOODS_NO, GOODS_TITLE, REVIEW_MESSAGE, REVIEW_DT, REVIEW_STARS
+		FROM "reviews" R
+		JOIN "goods_board" GB USING(GOODS_NO)
+		WHERE REVIEW_DEL_FL = 'N'
+		AND R.USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 아직 작성되지 않은(작성 가능한) 후기 목록 조회 (쓸 후기)-->
+	<select id="selectCanWriteReviewList" resultType="java.util.HashMap">
+		SELECT tl.GOODS_NO GOODS_NO, GOODS_TITLE
+		FROM "transaction_list" tl
+		JOIN "goods_board" gb ON(tl.GOODS_NO=gb.GOODS_NO)
+		WHERE tl.USER_NO = #{userNo}
+		AND gb.GOODS_NO NOT IN(
+				SELECT GOODS_NO FROM "reviews" WHERE USER_NO=#{userNo} AND REVIEW_DEL_FL='N')
+	</select>
+	
+	<!-- 리뷰 작성 -->
+	<insert id="insertReview">
+		INSERT INTO "reviews" VALUES(SEQ_REVIEWS_NO.NEXTVAL, #{userNo}, #{goodsNo}, 
+						#{reviewMessage}, DEFAULT,	#{reviewStars}, DEFAULT)
+	</insert>
+	
+	
+	<!-- 리뷰 삭제 -->
+	<update id="deleteReview">
+		UPDATE "reviews"
+		SET REVIEW_DEL_FL = 'Y'
+		WHERE REVIEW_NO = #{reviewNo}
+	</update>
+	
+	
+	<select id="selectReview" resultMap="review_rm">
+		SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVIEW_DT, REVIEW_STARS
+		FROM "reviews" r
+		JOIN "goods_board" gb USING(GOODS_NO)
+		WHERE REVIEW_NO = #{reviewNo}
+	</select>
 		
 </mapper>
