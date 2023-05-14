@@ -75,7 +75,7 @@
 
                 <label for="userTel">전화번호</label>
                 
-                <input type="text" id="userTel" name="userTel" placeholder="(- 없이 숫자만 입력)" maxlength="11">
+                <input type="text" id="userTel" name="userTel" placeholder="(- 없이 숫자만 입력)" maxlength="11" autocomplete="off">
                 
                 <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
 
@@ -86,10 +86,29 @@
             <%-- 주소 --%>
             <div class="input-container mb-4">
 
-                <label for="userAddress">주소</label>
+                <label for="userAddress">주소</label> 
 
-                <input type="text" id="userAddress" name="userAddress">
-                
+                <span class="fst-italic" style="font-size: 0.7rem;"> * 검색을 통해 주소를 입력해주세요</span>
+
+                <div class="input-container mb-4 w-75">
+                    <input class="w-50" type="text" name="userAddress" id="userAddress_postcode" placeholder="우편번호"  readonly onfocus="this.blur();">
+                    
+                    <button class="w-25 btn btn-primary" type="button" id="addressSearch"readonly >검색</button>
+
+                    <button type="button" class="d-none" id="valueRecognizer"></button>
+
+                </div>
+
+                <div class="input-container mb-4">
+                    <input type="text" name="userAddress" placeholder="도로명/지번 주소" id="userAddress_address" readonly onfocus="this.blur();">
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="userAddress" placeholder="상세 주소" id="userAddress_detailAddress" autocomplete="off">
+                </div>
+
+                <span class="signUp-message" id="addressMessage">주소를 입력해주세요.</span>
+
             </div>
             
 
@@ -104,6 +123,7 @@
 
     </div>
     <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/resources/js/user/signUp.js"></script>
 
 </body>
