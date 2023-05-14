@@ -48,7 +48,18 @@
 	</select>	
 	
 	
-	
+	<!-- 회원가입 -->
+	<insert id="signUp" parameterType="User">
+		INSERT INTO "users"
+		VALUES(SEQ_USER_NO.NEXTVAL,
+				#{userEmail},
+				#{userPassword},
+				#{userNickname},
+				#{userTel},
+				#{userAddress},
+				NULL, DEFAULT, DEFAULT, DEFAULT
+				)
+	</insert>
 	
 	
 	

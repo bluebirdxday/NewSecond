@@ -1,5 +1,7 @@
 package project.kh.newsecond.user.controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +55,39 @@ public class UserController{
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "user/signUp";
+	}
+	
+	@PostMapping("/signUp")
+	public String signUp(User inputUser
+						,String[] userAddress
+						,RedirectAttributes ra) {
+		
+		// 받아온 유저 주소 값 3개의 배열을 다시 하나의 스트링으로 합치기
+		String addr = String.join("^^^", userAddress);
+		inputUser.setUserAddress(addr);
+		
+		int result = service.signUp(inputUser);
+		
+		String path = "redirect:";
+		String message = null;
+		
+		if(result > 0) {
+			path += "/";
+			
+			message = inputUser.getUserNickname() + "님의 가입을 환영합니다."; 
+		} else {
+			
+			path += "signUp";
+			
+			message = "회원 가입 실패";
+			
+		}
+		
+		ra.addAttribute("message", message);
+		
+		
+		
+		return path;
 	}
 	
 	
