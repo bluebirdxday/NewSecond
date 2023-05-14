@@ -17,6 +17,12 @@
 </head>
 <body>
     <div class="login-container">
+        
+        <div class="d-flex justify-content-end mb-3">
+            <a href="/">
+                <button type="button" class="btn-close" aria-label="Close"></button>
+            </a>
+        </div>
 
         <div class="mb-5">
             <h2>회원 정보를 입력해주세요</h2>
