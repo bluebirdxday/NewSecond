@@ -27,19 +27,33 @@
 
     <section class="header--container__middle">
         
-        <div class="header--left__img">
+        <section class="header--left__img">
             <a href="/">
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
-        </div>
-        
-        <div class="header--mid__serach"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
-                <a href="#">
+        </section>
+
+        <%-- 검색창 (수정) --%>
+        <section>
+            <article class="header--mid__search">
+                <form action="/search/goodsList" method="GET">
+                    <fieldset>
+                    <input type="search" name="query" id="query" placeholder="상품명, @상점명을 입력해주세요.">
+                    <button class="searchBtn"></button>
+                    </fieldset>
+                </form>
+            </article>
+        </section>
+
+    <%--  
+        <div class="header--mid__search"><!-- 검색창 -->
+                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search-input">
+                <a href="/goods/searchGoodsList">
                 <img class="searchGlass" src="/resources/src/img/glass.png"/>
         </div>
-        
-        <div class="header--right__icons">
+    --%>    
+
+        <section class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
                         <a href="/">
@@ -64,7 +78,7 @@
                         <img class="notifications" src="/resources/src/img/notifications.png"/>
                     </a>
                 </span>
-            </div>
+            </section>
         
     </section>
 

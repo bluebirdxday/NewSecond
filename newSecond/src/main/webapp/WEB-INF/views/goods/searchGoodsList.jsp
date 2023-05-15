@@ -1,24 +1,21 @@
-<!--[서지영] 검색 목록 페이지 - 검색 기능, 검색 목록 기능별 조회, 더보기, 최근 검색어 -->
+<!--[서지영] 검색 목록 페이지 - 검색 기능, 검색 목록 기능별 조회, 더보기 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>검색 목록 페이지</title>
     
-    <link rel="stylesheet" href="/web/src/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/web/css/검색목록페이지.css">
-    
-    <script src="/web/js/검색목록페이지.js"></script>
-    <script src="/web/src/includeHTML/main.js" type="module"></script>
+    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
+
 </head>
 <body style="overflow: auto;">
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div>
         <!-- header -->
-        <div><header data-include="/web/include/header.html"></header></div>
-
         <!-- content 내용 부분 -->
         <div class="container--outer">
             <!--  -->
@@ -46,82 +43,82 @@
                 <div class="container--inner__middle">
                     <div class="goods1">
                         <!-- 3개 다 DB호출 -->
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods2">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods3">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods4">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods5">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods6">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods7">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods8">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods9">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods10">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods11">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods12">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods13">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods14">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
                     <div class="goods15">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">248,000원</div>
                         <div class="goods_title">프라이탁 라씨(거의 새것)</div></a>
                     </div>
                     <div class="goods16">
-                        <a href="#"><img src="/web/src/img/프라이탁1.jpeg">
+                        <a href="/goodsList/goodsDetail"><img src="/resources/src/img/freitag1.jpeg">
                         <div class="goods_price">180,000원</div>
                         <div class="goods_title">프라이탁 하와이파이브오 판매합니다!</div></a>
                     </div>
@@ -136,10 +133,11 @@
 
         </div>
 
+        <script src="/resources/js/goods/searchGoodsList.js"></script>
 
-        <!-- footer -->
-        <div><footer data-include="/web/include/footer.html"></footer></div>
+        <%-- <!-- footer --> --%>
     </div>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
 </body>
 </html>
