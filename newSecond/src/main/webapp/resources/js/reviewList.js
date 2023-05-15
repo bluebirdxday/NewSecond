@@ -2,10 +2,10 @@
 function deleteReview(reviewNo) {
 
     if(confirm("정말 삭제하시겠습니까?")){
-        fetch("/review/reviewList/updateOrDelete", {
+        fetch("/review/reviewList/delete", {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({reviewNo : reviewNo})
+            headers: { "Content-Type": "application/json" },
+            body:  reviewNo
             }).then(response => response.text())
             .then(result => {
 

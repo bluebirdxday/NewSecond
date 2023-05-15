@@ -96,11 +96,17 @@ public class ReviewController {
 	
 	
 	// 후기 삭제
-	@PostMapping("/reviewList/updateOrDelete")
+	@PostMapping("/reviewList/delete")
 	@ResponseBody
-	public int updateOrDelete(@RequestBody Map<String, Object> map) {
-	    int reviewNo = (int) map.get("reviewNo");
+	public int deleteReview(@RequestBody int reviewNo) {
 	    return service.deleteReview(reviewNo);
+	}
+	
+	
+	// 후기 업데이트 
+	@PostMapping("/reviewList/update")
+	public String updateReview() {
+		return null;
 	}
 
 }

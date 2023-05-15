@@ -16,7 +16,6 @@
 
     <main>
 
-        <form action="/review/reviewList/updateReview" method="POST">
             <section class="review--container">
 
                 <div class="review--container__top">후기 작성 내역</div>
@@ -27,7 +26,6 @@
                     <c:forEach items="${reviewList}" var="review">
 
                         <div class="reivew--item">
-                            <!-- form 태그로 감싸기? 수정 버튼을 눌렀을 때 후기의 정보가 넘어가야 함 -->
                             <div class="reivew--item__top">
                                 <div>
                                     <div id="reviewTitle">${review.goodsTitle}</div>
@@ -42,8 +40,8 @@
                                 <input type="hidden" name="reviewNo" value="${review.reviewNo}">
 
                                 <div>
-                                    <button name="updateReview" id="modifyReviewBtn" >수정</button>
-                                    <button type="button" id="deleteReviewBtn" onclick="deleteReview(${review.reviewNo})">삭제</button>
+                                    <button id="modifyReviewBtn" onclick="updateReview(${review.reviewNo})">수정</button>
+                                    <button id="deleteReviewBtn" onclick="deleteReview(${review.reviewNo})">삭제</button>
                                 </div>
                             </div>
 
@@ -63,6 +61,7 @@
 
                 </div>
 
+                <!-- 후기 작성 버튼 -->
                 <c:if test="${not empty canWriteReviewList}" >
                     <a href="/review/addReview">
                         <div class="review--btn__fixed-addpost">
@@ -70,10 +69,8 @@
                         </div>
                     </a>
                 </c:if>
-                <!-- 후기 작성 버튼 -->
 
             </section>
-        </form>
 
     </main>
     
