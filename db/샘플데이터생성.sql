@@ -24,10 +24,13 @@ INSERT INTO "users"
 VALUES(SEQ_USER_NO.NEXTVAL, 'user11@gmail.com', 'pass11!', '이철수', '01049019374', '성남시 분당구 백현동', NULL, DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO "users"
 VALUES(SEQ_USER_NO.NEXTVAL, 'user12@gmail.com', 'pass12!', '문십이', '01028371382', '인천광역시 남동구 만수동', NULL, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "users"
+VALUES(SEQ_USER_NO.NEXTVAL, 'admin01@gmail.com', 'admin01!', '어드민', '01012341234', '서울특별시 중구 남대문로 120', NULL, DEFAULT, DEFAULT, 2);
 
 SELECT * FROM "users";
 COMMIT;
 
+ROLLBACK;
 
 
 -- 카테고리 테이블

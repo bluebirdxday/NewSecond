@@ -19,7 +19,7 @@
                     <span> | </span>
                     <span class="myPage"><a href="">마이페이지</a></span>
                     <span> | </span>
-                    <span class="wishList"><a href="">관심상품</a></span>
+                    <span class="wishList"><a href="/wish/wish">관심상품</a></span>
                 </c:otherwise>
             </c:choose>
         </div>
