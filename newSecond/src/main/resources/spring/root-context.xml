@@ -9,11 +9,7 @@
    
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 
-<<<<<<< HEAD
-      <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=/Users/jy_green/Desktop/project/tools/semi_wallet/Wallet_orcl" />
-=======
-      <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/Users/user/Oracle_JDBC/Wallet_orcl" />
->>>>>>> 49a81bc56b1933a8544f8909a7fba1024ac17e0b
+      <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:\dev_tools\SemiProject\Wallet_orcl" />
       
       <property name="username" value="ADMIN" />
       <property name="password" value="Kh_yunseul_23" />
