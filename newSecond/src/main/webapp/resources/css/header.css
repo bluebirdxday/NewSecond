@@ -190,6 +190,11 @@ header>section:nth-child(3){ height: 30%; }
     font-weight: 700;
 }
 
+.nav--container__menu div a{
+    color: black;
+    text-decoration: none;
+}
+
 .nav--container__menu :last-of-type{
     border-right: 2px solid #E3E3E3;
 }

@@ -85,9 +85,9 @@
     </section>
 
     <nav class="nav--container__menu">
-        <div>홈</div>
-        <div>카테고리</div>
-        <div>시세조회</div>
+        <div><a href="#">홈</a></div>
+        <div><a href="#">카테고리</a></div>
+        <div><a href="/priceView/priceView">시세조회</a></div>
     </nav>
     
 </header>

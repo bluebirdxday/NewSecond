@@ -1,5 +1,5 @@
 package project.kh.newsecond.priceView.model.dao;
 
-public class priceViewDAO {
+public class PriceViewResultDAO {
 
 }
