@@ -5,10 +5,15 @@
     .toast-container{
         user-select : none;
     }
+
+    #liveToastBtn{
+        display:none;
+    }
+
 </style>
 
 
-<button type="button" class="btn btn-primary d-none" id="liveToastBtn">Show live toast</button>
+<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3 top-0 start-50 translate-middle-x">
                                     <%-- text-bg-danger : 빨간색 배경 , text-bg-primary : 파랑색 배경 --%>

@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" href="/resources/css/footer.css">
 
+
 <footer class="realFooter">
     <section class="footer--logo">
         <img src="/resources/src/img/LOGO.png" class="footerHomeLogo">
