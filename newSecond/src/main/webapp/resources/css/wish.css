@@ -1,0 +1,134 @@
+
+/* -------------------- */
+
+/* 상단 제목 */
+.wish_bar_container{
+    width: auto;
+    background-color:#8ab2e24b;
+    margin-top: 160px;
+    
+  }
+  
+  .wish_bar{
+      margin: 10px 10px;
+      font-size: 30px;
+      font-style: italic;  
+  }
+
+  /* ---------------조회 서비스---------- */
+/* 선택삭제 및 조회서비스 전체 div */
+  .wish_sortContainer{
+  min-width: 500px;
+}
+
+/* 선택삭제 span */
+.wish_ck_delete{
+  position: absolute;
+  left: 100px;
+  top: 265px;
+}
+
+/* 선택삭제 체크박스 */
+.wish_checkboxDelete{
+ border: none;
+ background-color: none;
+}
+
+
+
+
+/* 최신순 가격순등 조회서비스 class */
+  .wish_sorting{
+   float:right;
+   margin: 0px 10PX;
+ 
+}
+
+.wish_sorting:hover{
+    color: #478bfb;
+    border-radius: 5px;
+    font-weight: bold;
+   }
+   
+
+  /* -------------이미지---------------- */
+.wish_imgContatiner{
+    min-width:auto;
+    display: inline-block;
+    margin-left: 6%;
+    margin-top: 20px;
+}
+
+  
+.wish_imgDiv{
+    display: block;
+    position: relative; 
+    width: 200px; 
+    height: 200px;
+    margin: 40px 10px; 
+    float: left; 
+    margin-left: 10px;
+
+}  
+
+ img{
+    width: 200px;
+    height: 200px; 
+    padding: 0;
+    margin: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 1px #ebeaea9b;
+  }
+  .wish_info{
+    display: flex;
+    justify-content: center;
+
+  }
+
+.wish_price{
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------이미지 체크박스-------------------- */
+ .wish_checkbox{
+     position: absolute; 
+     top: 0px; 
+     right: 0px;
+}
+
+/* 체크박스 레벨 */
+.wish_ck_label{  
+  width: 200px;
+  height: 200px;
+}
+
+/* 체크박스 */
+.wish_checkbox {
+    -webkit-appearance: none;
+    width: 100%;
+    cursor: pointer;
+    position: absolute; 
+    top: 0px; 
+    right: 0px;
+  }
+  .wish_checkbox:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    content: "\f004";
+    font-size: 20px;
+   color: #478bfb;
+    right: 1px; /* 하트 위치 */
+    top: 15px;
+  }
+  .wish_checkbox:checked:after {
+    font-weight: 900;
+    content: "\f004";
+    color: #478bfb;
+  }     
+
+
+
+

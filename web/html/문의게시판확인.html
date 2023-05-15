@@ -35,6 +35,7 @@ position: absolute;
     color: #005EEE;
     border: none;
     background-color: none;
+    text-decoration: none;
     width: 170px;
 
 }
@@ -42,18 +43,23 @@ position: absolute;
     text-decoration: underline;
     border: none;
     background-color: none;
+    color: #005EEE;
 }
 .qna2_home{
     color: #005EEE;
     border: none;
     background-color: none;
+    text-decoration: none;
 
 }
 .qna2_home:hover{
     text-decoration: underline;
     border: none;
-    background-color: none
+    background-color: none;
+    color: #005EEE;
 }
+
+
 </style>
 
 <body>
@@ -62,8 +68,8 @@ position: absolute;
     <div class="qna2_content">문의하신 내용이 접수되었습니다.</div>
 </div>
 <div class="qna2_btn_wrap">
-    <button class="qna2_back">다른 문의사항 신고하기</button>
-    <button class="qna2_home">홈으로 돌아가기</button>
+    <span > <a href="/qna/qna" class="qna2_back">다른 문의사항 신고하기</a></span>
+    <span><a href="/"  class="qna2_home">홈으로 돌아가기</a></span>
 </div>
 </body>
 
