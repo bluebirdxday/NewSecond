@@ -267,6 +267,7 @@ COMMENT ON COLUMN "qna"."QNA_CHECK_FL" IS '처리여부(N: 처리X, Y: 처리O)'
 
 COMMENT ON COLUMN "qna"."USER_NO" IS '회원 번호(SEQ_USER_NO)';
 
+
 CREATE TABLE "follow" (
 	"FOLLOWING_USER_NO"	NUMBER		NOT NULL,
 	"USER_NO"	NUMBER		NOT NULL
@@ -284,6 +285,21 @@ CREATE TABLE "categories" (
 COMMENT ON COLUMN "categories"."CATEGORY_NO" IS '카테고리 번호(SEQ_CATEGORY_NO)';
 
 COMMENT ON COLUMN "categories"."CATEGORY_NAME" IS '카테고리 이름';
+
+
+
+
+CREATE TABLE "transaction_list"(
+    "USER_NO" NUMBER NOT NULL, 
+    "GOODS_NO" NUMBER NOT NULL,
+    
+    CONSTRAINT "PK_TRANSACTION_LIST" PRIMARY KEY("USER_NO", "GOODS_NO")
+);
+
+COMMENT ON COLUMN "transaction_list"."USER_NO" IS '구매 회원 번호';
+
+COMMENT ON COLUMN "transaction_list"."GOODS_NO" IS '구매 게시글 번호';
+
 
 ALTER TABLE "users" ADD CONSTRAINT "PK_USERS" PRIMARY KEY (
 	"USER_NO"
@@ -494,3 +510,4 @@ CREATE SEQUENCE SEQ_QNA_NO NOCACHE; -- 문의번호
 
 
 COMMIT;
+

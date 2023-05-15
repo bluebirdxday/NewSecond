@@ -15,11 +15,13 @@ main{
     align-items: center;
     flex-direction: column;
     margin-top: 170px;
+    margin-bottom: 100px;
 }
 
 
 a{
     text-decoration: none !important;
+    color: black;
 }
 
 input[type=text], textarea{
@@ -103,35 +105,10 @@ textarea:focus, input:focus{
     padding-left: 8px;
 }
 
-/* 내 상점 팔로우 버튼 */
-/* .myshop--info__btn-follow{
-    width: 125px;
-    height: 40px;
-    border-radius: 10px;
-    color: #343434;
-    background: #ffffff;
-    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(222, 235, 253) 100%);
-    border: none;
-    font-size: 20px;
-    font-weight: bolder;
-    box-shadow: inset 0 -5px 5px #c1c9d3;
-}
 
-.myshop--info__btn-follow:before {
-    height: 0%;
-    width: 2px;
-}
-
-.myshop--info__btn-follow:hover {
-    box-shadow:  3px 3px 5px 0 rgba(255,255,255,.5),
-            -3px -3px 5px 0 rgba(116, 125, 136, .5), 
-    inset -3px -3px 5px 0 rgba(255,255,255,.2),
-    inset 3px 3px 5px 0 rgba(0, 0, 0, .4);
-} */
-
-
-/* 내 상점 편집 버튼 */
-.myshop--info__btn-edit{
+/* 내 상점 편집 버튼, 팔로우 버튼 */
+.myshop--info__btn-edit,
+.myshop--info__btn-follow{
     width: 125px;
     height: 40px;
     border-radius: 50px;
@@ -146,12 +123,14 @@ textarea:focus, input:focus{
     cursor: pointer;
 }
 
-.myshop--info__btn-edit:before {
+.myshop--info__btn-edit:before,
+.myshop--info__btn-follow:before {
     height: 0%;
     width: 2px;
 }
 
-.myshop--info__btn-edit:hover {
+.myshop--info__btn-edit:hover,
+.myshop--info__btn-follow:hover{
     box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94, 104, 121, .288);
 }
 
@@ -177,20 +156,6 @@ textarea:focus, input:focus{
 .myshop--info__title{
     font-size: 20px;
     font-weight: 700;
-}
-
-/* 별점 */
-.myshop--info__rating{
-    margin-left: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.myshop--info__rating>img{
-    width: 15px;
-    height: 15px;
-    margin-right: 2px;
 }
 
 /* 내상점 콘텐츠 소개글 */
@@ -235,6 +200,8 @@ textarea:focus, input:focus{
 /* 내상점 신고하기 div */
 .myshop--info__btn-report{
     border-bottom: 1px solid #6c6c6c;
+    display: inline-block;
+    position: relative;
 }
 
 /* 내상점 신고하기 href */
@@ -307,6 +274,7 @@ textarea:focus, input:focus{
 .myshop--tab__content{
     display: none;
     background-color: #f0f1f4;
+    padding: 10px;
 }
 
 /* 활성화된 탭 메뉴 콘텐츠 */
@@ -341,7 +309,7 @@ textarea:focus, input:focus{
 .myshop--tab1__content-top ul{
     display: table;
     table-layout: fixed;
-    margin: 15px 15px 0 0;
+    margin: 5px 15px 0 0;
 }
 
 /* 상품 정렬 리스트 4개(최신순, 인기순, 저가순, 고가순) */
@@ -367,8 +335,6 @@ textarea:focus, input:focus{
 .myshop--tab1__gridcontainer{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20%, auto));
-    padding: 10px;
-
     perspective: 150px;
 }
 
@@ -426,7 +392,7 @@ textarea:focus, input:focus{
 .tab1--item__description>div:last-of-type{
     display: flex;
     justify-content: space-between;
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 /* 상품 탭 리스트 아이템 - 가격 */
@@ -439,6 +405,7 @@ textarea:focus, input:focus{
 .tab1--item__description>div:last-of-type>div:last-of-type{
     font-size: 13px;
     color: #3D3D3D;
+    margin-top: 2px;
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -450,7 +417,7 @@ textarea:focus, input:focus{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
 }
 
 /* 후기 탭 후기 div */
@@ -509,10 +476,10 @@ textarea:focus, input:focus{
     font-size: 15px;
     border-radius: 15px;
     font-weight: 500;
-    height: 90px;
+    height: auto;
     letter-spacing: -0.25px;
     margin-top: 6.8px;
-    padding: 10px 20px;
+    padding: 12px 22px;
     position: relative;
     width: 90%;
     z-index: 100;
@@ -554,23 +521,38 @@ textarea:focus, input:focus{
     z-index: 0;
 }
 
+.tab2--item__message{
+    padding: 13px 0 13px 0;
+}
+
 /* 후기 탭 유저 닉네임 + 별점 div */
 .tab2--item__detail>div:nth-of-type(2)>div:nth-of-type(1){
     display: flex;
 }
 
-/* 후기 탭 유저 별점 div */
-.tab2--item__rating{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 3px 10px;
+
+/* 별점 */
+.myshop--stars_rating {
+    position: relative;
+    margin: -2px 0 3px 12px;
+    font-size: 13px;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+    user-select: none;
+    letter-spacing: -2px;
 }
 
-/* 후기 탭 유저 별점 img */
-.tab2--item__rating>img{
-    width: 15px;
-    height: 15px;
+
+
+/* 별점 span*/
+.myshop--stars_rating span {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: transparent;
+    overflow: hidden;
+    pointer-events: none;
+    letter-spacing: -2px;
 }
 
 /* 후기 탭 유저가 구매한 상품 게시글명 */
@@ -580,7 +562,7 @@ textarea:focus, input:focus{
     width: fit-content;
     height: 33px;
     line-height: 25px;
-    margin-top: 10px;
+    margin-top: 4px;
     text-align: center;
     padding: 0 40px;
     font-weight: 400;
@@ -630,11 +612,12 @@ textarea:focus, input:focus{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25%, auto));
     padding: 10px;
+    justify-content: center;
 }
 
 /* 팔로잉 탭 리스트 아이템들 */
 .tab3--container__item{
-    height: 300px;
+    height: 250px;
     margin: 6px;
     display: flex;
     flex-direction: column;
@@ -688,14 +671,13 @@ textarea:focus, input:focus{
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
+    border: none;
 }
 
 
 /* 팔로잉 탭  상점가기 버튼 */
 .tab3--item__btn-gotoshop,
 .tab3--item__btn-follow{
-    /* background-color: #5A6690;
-    color: white; */
     background: #f0f1f4;
     box-shadow:  5px 5px 9px #dddee0,
                 -5px -5px 9px #ffffff;
@@ -703,16 +685,20 @@ textarea:focus, input:focus{
 
 /* 팔로잉 탭 언팔로우 버튼 */
 .tab3--item__btn-unfollow{
-    /* background-color: #C2D3EB;
-    box-shadow: rgb(121, 131, 146) 0px 11px 5px -8px inset, 
-    rgb(121, 131, 146) -4px 0px 4px -4px inset,
-    rgb(121, 131, 146) 4px 0px 4px -4px inset; */
     color: #343434;
     background: #C2D3EB;
     box-shadow: inset 5px 5px 16px #abbacf,
                 inset -5px -5px 16px #d9ecff;
 }
 
+/* 탭 내 컨텐츠가 존재하지 않는 경우 txt */
+.tab--content__empty{
+    font-size: 18px;
+    font-weight: 600;
+    color: #656565;
+    margin: 30px;
+    text-align: center;
+}
 
 /* **************************************************************** */
 
@@ -916,10 +902,11 @@ textarea:focus, input:focus{
 .arrow_box {
     display: none;
     position: absolute;
+    left: -90px;
+    top: 115%;
     width: 250px;
     padding: 5px;
     margin-top: 10px;
-    right: 20%;
     border-radius: 8px;
     background: #333;
     color: #fff;

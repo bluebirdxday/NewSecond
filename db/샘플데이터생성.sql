@@ -85,13 +85,14 @@ INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 2, 1, '헌터 오리지�
 INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 1, 12, '백예린 콘서트 일요일(21일) VIP석 실물 티켓 팝니다', '5월 21일 일요일 실물 티켓 팝니다! VIP석 B구역 10열입니다 연락주세요', 
 200000, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
-
 INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 1, 11, '더 발룬티어스 LP', '안에 속지 한장 빼고 본품 그대로 있어요~ LP 재생한 적 없습니다~ 보관만 했어요', 
 49000, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
-
 INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 1, 9, '산리오 마이멜로디 마이스위트피아노 피낫토 S', '피낫토 마이 스위트 피아노 인형 판매합니다! 미개봉 새상품이며, 평일 기준 빠른 배송 가능합니다!', 
 34900, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 3, 2, '프루아 에버백 스몰 꼬냑컬러', '어베백 실착 주번 저한테는 안 어룰려서 판매합니다 얼룩, 이염 있어서 저렴하게 내놓습니다 끈 종류 두가지 모두 같이 판매하고요 더스트백도 같이 드립니다 택배비 미포함', 
+65000, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
 
 SELECT * FROM "goods_board";
@@ -146,6 +147,23 @@ INSERT INTO "reviews" VALUES(SEQ_REVIEWS_NO.NEXTVAL, 7, 8, '깔끔한 거래 좋
 SELECT * FROM "reviews";
 
 
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 8;
+
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 9;
+
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 10;
+
+UPDATE "goods_board" 
+SET GOODS_STATUS = 'E'
+WHERE GOODS_NO = 14;
+
+SELECT * FROM "goods_board";
 
 
 
