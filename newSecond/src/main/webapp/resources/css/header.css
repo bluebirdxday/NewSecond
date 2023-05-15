@@ -12,7 +12,7 @@ header{
     display: flex;
     height: 150px;
     user-select: none;
-    z-index: 100;
+    z-index: 10000;
 }
 
 header>section:nth-child(1){ height: 10%; }
@@ -36,6 +36,47 @@ header>section:nth-child(3){ height: 30%; }
     align-items: center;
 }
 
+
+/* 검색 돋보기 이미지 */
+.searchBtn{
+    border: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    margin-right: 20px;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/resources/src/img/glass.png");
+}
+
+/* 검색창 섹션 */
+.header--mid__serach{
+    border: 2px solid #C2D3EB;
+    color:#C2D3EB;
+    border-radius: 35px; 
+    margin: 20px;
+    
+}
+
+/* 검색창 */
+.search{
+    border: none; 
+    appearance: none;
+    padding: 0px;
+    width: 40rem;
+    display:flex;
+    justify-content: center;
+    padding-left: 10px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.search:focus{
+    outline: none;
+} 
 
 .header--right__user-menu{
     display: inline-block;
@@ -84,6 +125,12 @@ header>section:nth-child(3){ height: 30%; }
     justify-content: center;
 }
 
+/* 상품명 검색창 */
+.header--mid__serach{
+    display: flex;
+    width: 600px;
+    background-color: #ffffff;
+}
 
 
 .header--container__middle div{
@@ -96,70 +143,8 @@ header>section:nth-child(3){ height: 30%; }
 .homeLogo{
     width: 240px;
     height: auto;
+    justify-self: flex-end;
 }
-
-/* 검색 */
-/* 지우기!!!!! */
-/* 검색 돋보기 이미지 */
-/* .searchGlass{
-    cursor: pointer;
-    float: right;
-    margin: 10px;
-    margin-right: 20px;
-    width: 1.5rem;
-    height: 1.5rem;
-} */
-
-/* 상품명 검색창 */
-.header--mid__search{
-    width: 400px;
-    /* background-color: #ffffff; */
-}
-
-.header--mid__search fieldset{
-    border: 2px solid #C2D3EB;
-    border-radius: 35px; 
-    padding: 2px;
-    display: flex;
-}
-
-/* 지우기 */
-/* 검색창 섹션 */
-/* .header--mid__serach{
-    color:#C2D3EB;
-} */
-/* 지우기 */
-/* 검색창 */
-.query{
-    border: none; 
-    /* appearance: none;
-    padding: 0px;
-    display:flex;
-    justify-content: center;
-    margin: 10px;
-    font-size: 15px; */
-    outline: none;
-    font-size: 15px;
-    padding-left: 10px;
-    width: 92%;
-
-}
-
-/* .searchBtn{
-    width: 2rem;
-    cursor: pointer;
-    border: none;
-    font-size: 10px;
-    color: #2365b9;
-    background-color: #fff
-    ;
-} */
-
-
-/* .search-input:focus{
-    outline: none;
-}  */
-
 
 
 .header--container__bottom{

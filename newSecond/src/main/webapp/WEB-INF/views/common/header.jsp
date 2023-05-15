@@ -27,14 +27,14 @@
 
     <section class="header--container__middle">
         
-        <section class="header--left__img">
+        <div class="header--left__img">
             <a href="/">
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
-        </section>
+        </div>
 
         <%-- 검색창 (수정) --%>
-        <section>
+        <%-- <section>
             <article class="header--mid__search">
                 <form action="/search/goodsList" method="GET">
                     <fieldset>
@@ -43,17 +43,19 @@
                     </fieldset>
                 </form>
             </article>
-        </section>
+        </section> --%>
 
-    <%--  
-        <div class="header--mid__search"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search-input">
-                <a href="/goods/searchGoodsList">
-                <img class="searchGlass" src="/resources/src/img/glass.png"/>
-        </div>
-    --%>    
+     
+        <form action="/search/goodsList" method="GET">
+            <div class="header--mid__serach"><!-- 검색창 -->
+                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
+                <a href="#">
+                <button class="searchBtn"></button>
+            </div>
+        </form>
+     
 
-        <section class="header--right__icons">
+        <div class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
                         <a href="/">
@@ -78,7 +80,7 @@
                         <img class="notifications" src="/resources/src/img/notifications.png"/>
                     </a>
                 </span>
-            </section>
+            </div>
         
     </section>
 
@@ -93,7 +95,7 @@
 
 <c:if test="${empty loginUser}" >
     <script>
-    document.getElementById('myShop').addEventListener('click', e => {
+    document.querySelector('.myMarket').addEventListener('click', e => {
         e.preventDefault();
         document.getElementById('login').click();
     });
