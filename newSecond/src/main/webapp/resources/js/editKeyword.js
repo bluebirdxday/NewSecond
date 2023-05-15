@@ -1,4 +1,4 @@
-
+// 키워드 추가 버튼 클릭 시
 document.getElementById("addKeyword").addEventListener("click", ()=>{
     
     const newDiv = document.createElement("div");
@@ -12,7 +12,7 @@ document.getElementById("addKeyword").addEventListener("click", ()=>{
 
     newChildDiv.innerText = inputKeyword.value;
 
-    newChildDiv2Child.setAttribute("src", "/web/src/img/minus-button.png");
+    newChildDiv2Child.setAttribute("src", "/resources/src/img/minus-button.png");
     newChildDiv2Child.setAttribute("class", "keyword--btn__delete");
     
     newChildDiv2.appendChild(newChildDiv2Child);
@@ -37,11 +37,11 @@ function addKeyword(){
     
         // 키워드 삭제 hover시
         item.addEventListener("mouseover", ()=>{
-            item.src = "/web/src/img/minus-button-hover.png"
+            item.src = "/resources/src/img/minus-button-hover.png"
         });
     
         item.addEventListener("mouseout", ()=>{
-            item.src = "/web/src/img/minus-button.png"
+            item.src = "/resources/src/img/minus-button.png"
         });
     
         // 키워드 삭제 클릭 시
@@ -51,5 +51,3 @@ function addKeyword(){
     
     });
 }
-
-addKeyword();

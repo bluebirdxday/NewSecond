@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,11 +23,11 @@
                 <img src="/resources/src/img/myshop_profile.png" class="myshop--profileImage__img">
             </div>
         </div>
-        
+
         <div class="myshop--info__container">
             <div class="myshop--info__top">
                 <div>
-                    <div class="myshop--info__title">윤슬 상점</div>
+                    <div class="myshop--info__title">${myShop.shopTitle}</div>
                     <div class="myshop--info__rating">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
                         <img src="/resources/src/img/rating_star.png" class="rating--star">
@@ -42,7 +44,7 @@
             </div>
 
             <div class="myshop--info__middle1">
-                <div class="myshop--info__content">윤슬 상점에 오신 것을 환영합니다!</div>
+                <div class="myshop--info__content">${myShop.shopInfo}</div>
             </div>
 
             <div class="myshop--info__middle2">
@@ -69,6 +71,7 @@
                         <img src="/resources/src/img/siren.png">
                         <div>신고하기</div>
                     </a>
+                    <p class="arrow_box">무분별한 신고는 제재 대상이 될 수 있습니다</p>
                 </div>
             </div>
 
@@ -119,7 +122,7 @@
             
             <div class="tabs">
                 <ul>
-                    <li class="tabs--active"><a href="#" rel="tab1">상품 <div>0</div></a></li>
+                    <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
                     <li><a href="#" rel="tab2">후기 <div>0</div></a></li>
                     <li><a href="#" rel="tab3">팔로잉 <div>0</div></a></li>
                     <li><a href="#" rel="tab4">팔로워 <div>0</div></a></li>

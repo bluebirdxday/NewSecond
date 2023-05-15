@@ -18,4 +18,10 @@ public class UserDAO {
 		return sqlSession.selectOne("userMapper.login", inputUser);
 	}
 
+
+
+	public int signUp(User inputUser) {
+		return sqlSession.insert("userMapper.signUp", inputUser);
+	}
+
 }

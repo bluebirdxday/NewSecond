@@ -9,20 +9,19 @@
 	<title>New Second</title>
 
 	<link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="/resources/src/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
 
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/user/login.jsp"/>
-	
 	<main>
 		<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
 			<div class="mainPage--wholeWrapper">
+
 			<section class="mainPage--carousel" style="color:black; ">
 				<div id="carouselExampleIndicators" class="carousel slide mainPage--carousel__container" data-bs-ride="true">
 					<div class="carousel-indicators">
@@ -52,7 +51,6 @@
 				</div>
 			</section>
 			
-			${loginUser}
 
 			<section class="mainPage--goodsContainer1 mt-5">
 				<h4>최근 업데이트된 상품</h4>
@@ -145,7 +143,8 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-	<script src="/resources/src/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 
-</body>
+</body>	
 </html>
+

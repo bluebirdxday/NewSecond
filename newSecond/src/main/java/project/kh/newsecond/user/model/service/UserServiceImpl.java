@@ -2,6 +2,7 @@ package project.kh.newsecond.user.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.user.model.dao.UserDAO;
 import project.kh.newsecond.user.model.dto.User;
@@ -31,5 +32,22 @@ public class UserServiceImpl implements UserService {
 
 		return loginUser;
 	}
+	
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int signUp(User inputUser) {
+		
+		int result = dao.signUp(inputUser);
+		
+		return result;
+	}
 
 }
+
+
+
+
+
+
+
+

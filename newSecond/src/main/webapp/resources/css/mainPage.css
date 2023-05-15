@@ -1,15 +1,22 @@
+*{
+    font-family: 'Pretendard';
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    letter-spacing: -0.25px;
+}
 
 /* 메인페이지 전체에 대한 공간 */
 .mainPage--wholeWrapper{
     width: 900px;
     margin: auto;
     position: relative;
-    z-index: -2;
+    /* z-index: -2; */
 }
 
 /* 캐러셀 영역 */
 .mainPage--carousel{
-    z-index: -5;
+    /* z-index: -5; */
     margin: auto;
     margin-top: 200px;
     width: 900px;
