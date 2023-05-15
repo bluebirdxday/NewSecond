@@ -45,7 +45,7 @@
             </article>
         </section> --%>
 
-     
+    
         <form action="/search/goodsList" method="GET">
             <div class="header--mid__serach"><!-- 검색창 -->
                 <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
@@ -53,7 +53,7 @@
                 <button class="searchBtn"></button>
             </div>
         </form>
-     
+    
 
         <div class="header--right__icons">
                 <span>
