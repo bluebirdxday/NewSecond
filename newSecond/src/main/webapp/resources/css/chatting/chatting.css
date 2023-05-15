@@ -10,6 +10,7 @@
 
 /* 화면 전체 배경 */
 .content--chatting__background {
+    padding-top: 170px;
     height: 100vh;
 }
 
@@ -20,7 +21,7 @@
     height: 100px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-areas: ". title . . . . . . . .";
+    grid-template-areas: ". title title . . . . . . .";
     place-items: center;
 }
 .content--chatting__title {
