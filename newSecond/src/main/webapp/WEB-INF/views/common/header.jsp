@@ -32,13 +32,29 @@
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
         </div>
-        
-        <div class="header--mid__serach"><!-- 검색창 -->
+
+        <%-- 검색창 (수정) --%>
+        <%-- <section>
+            <article class="header--mid__search">
+                <form action="/search/goodsList" method="GET">
+                    <fieldset>
+                    <input type="search" name="query" id="query" placeholder="상품명, @상점명을 입력해주세요.">
+                    <button class="searchBtn"></button>
+                    </fieldset>
+                </form>
+            </article>
+        </section> --%>
+
+    
+        <form action="/search/goodsList" method="GET">
+            <div class="header--mid__serach"><!-- 검색창 -->
                 <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
                 <a href="#">
-                <img class="searchGlass" src="/resources/src/img/glass.png"/>
-        </div>
-        
+                <button class="searchBtn"></button>
+            </div>
+        </form>
+    
+
         <div class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
@@ -69,9 +85,9 @@
     </section>
 
     <nav class="nav--container__menu">
-        <div>홈</div>
-        <div>카테고리</div>
-        <div>시세조회</div>
+        <div><a href="#">홈</a></div>
+        <div><a href="#">카테고리</a></div>
+        <div><a href="/priceView/priceView">시세조회</a></div>
     </nav>
     
 </header>
@@ -79,7 +95,7 @@
 
 <c:if test="${empty loginUser}" >
     <script>
-    document.getElementById('myShop').addEventListener('click', e => {
+    document.querySelector('.myMarket').addEventListener('click', e => {
         e.preventDefault();
         document.getElementById('login').click();
     });

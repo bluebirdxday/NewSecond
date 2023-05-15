@@ -40,32 +40,30 @@
 		AND USER_STATUS = 'A'
 	</select>
 
-	
-	<!-- 닉네임 중복 검사 -->
-	<select id="checkNickname" resultType="int">
-		SELECT COUNT(*) FROM "users"
-		WHERE USER_NICKNAME = #{nickname}
-		AND USER_STATUS='A'
-	</select>	
-	
-	
-	<!-- 회원가입 -->
-	<insert id="signUp" parameterType="User">
-		INSERT INTO "users"
-		VALUES(SEQ_USER_NO.NEXTVAL,
-				#{userEmail},
-				#{userPassword},
-				#{userNickname},
-				#{userTel},
-				#{userAddress},
-				NULL, DEFAULT, DEFAULT, DEFAULT
-				)
-	</insert>
-	
-	
-	
-	
-	
-		
-		
+   
+   <!-- 닉네임 중복 검사 -->
+   <select id="checkNickname" resultType="int">
+      SELECT COUNT(*) FROM "users"
+      WHERE USER_NICKNAME = #{nickname}
+      AND USER_STATUS='A'
+   </select>   
+   
+   
+   <!-- 회원가입 -->
+   <insert id="signUp" parameterType="User">
+      INSERT INTO "users"
+      VALUES(SEQ_USER_NO.NEXTVAL,
+            #{userEmail},
+            #{userPassword},
+            #{userNickname},
+            #{userTel},
+            #{userAddress},
+            NULL, DEFAULT, DEFAULT, DEFAULT
+            )
+   </insert>
+   
+   
+   
+      
+      
 </mapper>

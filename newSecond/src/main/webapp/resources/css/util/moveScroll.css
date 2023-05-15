@@ -1,0 +1,8 @@
+.page--rightBot__scrollTop{
+    position: fixed;
+    bottom: 120px;
+    right: 100px;
+    width: 64px;
+    height: 64px;
+    color: rgb(64, 83, 227);
+}

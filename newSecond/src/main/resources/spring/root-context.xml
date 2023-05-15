@@ -8,9 +8,9 @@
    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
    
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-	  
-	  <!-- 지갑경로 여러개 중 하나 선택하기 -->
-	  <!-- 기본 지갑 경로 -->
+   
+      <!-- 지갑경로 여러개 중 하나 선택하기 -->
+      <!-- 기본 지갑 경로 -->
       <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/yunsuel/Wallet_orcl" />
       
       <!-- 지영님 맥북 지갑 경로 -->
