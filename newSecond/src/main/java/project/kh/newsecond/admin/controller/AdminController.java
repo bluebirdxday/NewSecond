@@ -19,5 +19,21 @@ public class AdminController {
 		return "admin/admin_notice";
 	}
 
+	@GetMapping("/admin_board")
+	public String board() {
+		return "admin/admin_board";
+	}
+	
+	@GetMapping("/admin_qna")
+	public String qna() {
+		return "admin/admin_qna";
+	}
+
+	
+	@GetMapping("/admin_qna_read")
+	public String qna_read() {
+		return "admin/admin_qna_read";
+	}
+
 	
 }

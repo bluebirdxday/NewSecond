@@ -12,6 +12,7 @@
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
                     <span> | </span>
                     <span><a href="/user/signUp">회원가입</a></span>
+                     <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>
@@ -20,10 +21,11 @@
                     <span class="myPage"><a href="">마이페이지</a></span>
                     <span> | </span>
                     <span class="wishList"><a href="/wish/wish">관심상품</a></span>
+                     
                
                 <c:if test="${loginUser.userRole == 2}" >
                     <span> | </span>
-                    <span class="admin_user"><a href="/admin/admin_user">관리자 페이지</a></span>
+                    <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
 
                 </c:if>
                 </c:otherwise>

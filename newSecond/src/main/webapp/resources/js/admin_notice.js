@@ -13,7 +13,9 @@ function toggleImportant(event) {
     numberCell.dataset.originalNumber = number; // 원래 번호를 dataset에 저장
     numberCell.appendChild(span); // 해당 행의 번호 열에 span 태그 추가
     numberCell.style.backgroundColor= 'green';
-    numberCell.style.borderRadius= '15px';
+    numberCell.style.borderRadius= '20px';
+    numberCell.style.padding= '0px 0px';
+    span.style.padding = '0px 0px';
 
     button.textContent = '필독 취소'; // 버튼 텍스트 변경
   }

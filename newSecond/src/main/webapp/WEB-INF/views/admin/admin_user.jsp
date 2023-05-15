@@ -18,11 +18,10 @@
         <a href="/">
             <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
         </a>
-        <li class="admin_list"><a class="admid_user" href="\admin\admin_user">회원 관리</a></li>
         <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
-        <li class="admin_list"><a class="admid_board" href="/web/html/관리자_게시글관리.html">게시글 관리</a></li>
-        <li class="admin_list"><a class="admid_qna" href="/web/html/관리자_문의관리.html">문의 관리</a></li>
-    
+        <li class="admin_list"><a class="admid_user" href="\admin\admin_user">회원 관리</a></li>
+        <li class="admin_list"><a class="admid_board" href="\admin\admin_board">게시글 관리</a></li>
+        <li class="admin_list"><a class="admid_qna" href="\admin\admin_qna">문의 관리</a></li>
     </ul>
 
     <!-- -------------------- -->
