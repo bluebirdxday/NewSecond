@@ -16,6 +16,7 @@
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
 		<result property="userRole" column="USER_ROLE" />
+	
 	</resultMap>
 	
 	<!-- 로그인 => 정보 얻어오기 -->
@@ -65,7 +66,6 @@
 	
 	
 	
-		
 		
 		
 </mapper>
