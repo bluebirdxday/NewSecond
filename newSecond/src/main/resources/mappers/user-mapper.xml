@@ -25,7 +25,7 @@
 				USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
 				TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
 		FROM "users"
-		JOIN "shop" USING(USER_NO)
+		LEFT JOIN "shop" USING(USER_NO)
 		WHERE USER_STATUS = 'A'
 		AND USER_EMAIL = #{userEmail}
 	</select>
@@ -62,8 +62,6 @@
 				NULL, DEFAULT, DEFAULT, DEFAULT
 				)
 	</insert>
-	
-	
 	
 	
 	
