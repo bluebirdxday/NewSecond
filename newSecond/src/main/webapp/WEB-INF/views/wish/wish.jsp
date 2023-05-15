@@ -1,0 +1,179 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관심상품페이지</title>
+    
+     <link rel="stylesheet" href="\resources\fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/web/src/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/resources/css/wish.css">
+
+</head>
+<body>
+   
+       <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+    <div class="wish_bar_container" style =" background-color:#8ab2e24b">
+        <div class="wish_bar">관심 상품</div>
+        </div>  
+
+        <div class="wish_sortContainer">
+            <div class="wish_ck_deleteWrap">
+            <span class="wish_ck_delete"> 
+                <label class="wish_ck_dtLabel" for="wish_ck_dtLabel">
+                <input type="checkbox" class="wish_checkboxOne" id="wish_ck_dtLabel" value='selectall'
+                onclick='wishSelectAll(this)'>
+                선택 <button class="wish_checkboxDelete">삭제</button> </label>
+            </span>  
+       
+            <span class="wish_sorting lately">최근 조회순</span>
+            <span class="wish_sorting hprice">높은 가격순</span>
+            <span class="wish_sorting lprice">낮은 가격순</span>
+        </div>
+    </div>
+
+
+    <div style="text-align:center">
+        <div class="wish_imgContatiner">
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 bicyle.jpg" alt="">
+                    <input type="checkbox" class="wish_checkbox"></label>
+                </label>
+                <div class="wish_info"><span>서울 / 자전거 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 hoodie.jpeg" alt="">
+                <input type="checkbox" class="wish_checkbox"></label>
+                <div class="wish_info"><span>서울 / 그레이 후드 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 bicyle.jpg" alt="">
+                    <input type="checkbox" class="wish_checkbox"></label>
+                </label>
+                <div class="wish_info"><span>서울 / 자전거 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 hoodie.jpeg" alt="">
+                <input type="checkbox" class="wish_checkbox"></label>
+                <div class="wish_info"><span>서울 / 그레이 후드 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 bicyle.jpg" alt="">
+                    <input type="checkbox" class="wish_checkbox"></label>
+                </label>
+                <div class="wish_info"><span>서울 / 자전거 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 hoodie.jpeg" alt="">
+                <input type="checkbox" class="wish_checkbox"></label>
+                <div class="wish_info"><span>서울 / 그레이 후드 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 bicyle.jpg" alt="">
+                    <input type="checkbox" class="wish_checkbox"></label>
+                </label>
+                <div class="wish_info"><span>서울 / 자전거 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 hoodie.jpeg" alt="">
+                <input type="checkbox" class="wish_checkbox"></label>
+                <div class="wish_info"><span>서울 / 그레이 후드 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 bicyle.jpg" alt="">
+                    <input type="checkbox" class="wish_checkbox"></label>
+                </label>
+                <div class="wish_info"><span>서울 / 자전거 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+                <img class="wish_img" src="\resources\images\common\newProduct/img1 hoodie.jpeg" alt="">
+                <input type="checkbox" class="wish_checkbox"></label>
+                <div class="wish_info"><span>서울 / 그레이 후드 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+            <div class="wish_imgDiv">
+                <label class="wish_ck_label">
+            <img class="wish_img" src="\resources\images\common\newProduct/img1 nike shoes.jpeg" alt="">
+            <input type="checkbox" class="wish_checkbox"></label>
+            <div class="wish_info"><span>서울 / 나이키 운동화 <b class="wish_price" >50,000원</b></span></div>
+            </div>
+           
+          
+           
+     </div>
+     </div>
+ 
+
+   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <script src="/resources/js/wish.js"></script>
+    
+</body>
+</html>
