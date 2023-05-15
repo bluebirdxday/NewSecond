@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import project.kh.newsecond.goods.model.dao.GoodsDAO;
 
 @Service
-public class GoodsServiceImpl {
+public class GoodsServiceImpl implements GoodsService{
 	
 	@Autowired
 	private GoodsDAO dao;
