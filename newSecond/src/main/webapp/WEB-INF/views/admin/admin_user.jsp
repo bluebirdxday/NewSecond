@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_user</title>
-    <link rel="stylesheet" href="../css/관리자페이지side.css">
+    <link rel="stylesheet" href="\resources\css\adminSide.css">
     <link rel="stylesheet" href="\resources\css\admin_user.css">
 
 </head>
@@ -15,8 +18,8 @@
         <a href="/">
             <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
         </a>
-        <li class="admin_list"><a class="admid_user" href="\common\admin\admin_user.html">회원 관리</a></li>
-        <li class="admin_list"><a class="admid_notice" href="/web/html/관리자_공지사항관리.html">공지사항 관리</a></li>
+        <li class="admin_list"><a class="admid_user" href="\admin\admin_user">회원 관리</a></li>
+        <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
         <li class="admin_list"><a class="admid_board" href="/web/html/관리자_게시글관리.html">게시글 관리</a></li>
         <li class="admin_list"><a class="admid_qna" href="/web/html/관리자_문의관리.html">문의 관리</a></li>
     
@@ -49,7 +52,7 @@
         <span >검색결과 : </span> 
             <span class="admin_user_countOne">3</span>
             <span>/ 총</span>
-            <span class="admin_user_countAll">35</span>
+            <span class="admin_user_countAll">3</span>
             <span>명</span>
         </div>
         
@@ -127,7 +130,6 @@
 
 
 <script src="\resources\js\admin_user.js"></script>
-
 
 </body>
 </html>

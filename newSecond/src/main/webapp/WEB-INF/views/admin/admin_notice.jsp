@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_notice</title>
-    <link rel="stylesheet" href="../css/관리자페이지side.css">
-    <link rel="stylesheet" href="../css/관리자_공지사항관리.css">
+   <link rel="stylesheet" href="\resources\css\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin_notice.css">
 </head>
 <body>
 
@@ -62,20 +65,20 @@
                 <button class="admin_notice_tableBtn">내용 수정</button>
                 </td>
                 <td>
-                <button class="admin_notice_tableBtn">필독 등록</button>
-                </td>   
+                <button class="admin_notice_tableBtn">필독 취소</button>
+                </td>
             </tr>
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
                 <td>1</td>
-                <td>알림</td>
-                <td>2023.04.19</td>
-                <td>300</td>
+                <td>bungae</td>
+                <td>정상</td>
+                <td>2022.10.01</td>
                 <td>
                     <button class="admin_notice_tableBtn">공지 복구</button>
                     </td>
                     <td>
-                    <button class="admin_notice_tableBtn">필독 등록</button>
+                    <button class="admin_notice_tableBtn">필동 등록</button>
                     </td>
             </tr>
         </tbody>
@@ -84,7 +87,6 @@
 
     </div>
 
-    <script src="../js/관리자_공지사항관리.js"></script>
-
+<script src="\resources\js\admin_notice.js"></script>
 </body>
 </html>

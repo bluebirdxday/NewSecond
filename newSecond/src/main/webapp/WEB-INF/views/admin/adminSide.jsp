@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Side</title>
 
-    <link rel="stylesheet" href="../css/관리자페이지side.css">
+     <link rel="stylesheet" href="\resources\css\adminSide.css">
 </head>
 <body>
   
@@ -23,8 +26,6 @@
     </ul>
 
 <div class="admin_content">
-
-    <p>아이우에오ㅗㅗ</p>
 </div>
 
     

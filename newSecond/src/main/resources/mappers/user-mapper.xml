@@ -2,69 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="userMapper">
 
-	<resultMap type="User" id="user_rm">
-		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
-		<id property="userNo" column="USER_NO" />
-		
-		<!-- DB의 일반 컬럼들 -->
-		<result property="userEmail" column="USER_EMAIL" />
-		<result property="userPassword" column="USER_PASSWORD" />
-		<result property="userNickname" column="USER_NICKNAME" />
-		<result property="userTel" column="USER_TEL" />
-		<result property="userAddress" column="USER_ADDRESS" />
-		<result property="userImage" column="USER_IMG" />
-		<result property="userStatus" column="USER_STATES" />
-		<result property="enrollDate" column="ENROLL_DT" />
-		<result property="userRole" column="USER_ROLE" />
-	
-	</resultMap>
-	
-	<!-- 로그인 => 정보 얻어오기 -->
-	<select id="login" parameterType="User" resultMap="user_rm" >
-		SELECT USER_NO, USER_EMAIL, USER_NICKNAME, USER_PASSWORD,
-				USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
-				TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
-		FROM "users"
-		LEFT JOIN "shop" USING(USER_NO)
-		WHERE USER_STATUS = 'A'
-		AND USER_EMAIL = #{userEmail}
-	</select>
-	
-	
-	
-	<!-- 회원가입 파트 -->		
-	
-	<!-- email 중복 검사 -->
-	<select id="checkEmail" resultType="int">
-		SELECT COUNT(*) FROM "users"
-		WHERE USER_EMAIL = #{email}
-		AND USER_STATUS = 'A'
-	</select>
+   <resultMap type="User" id="user_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userEmail" column="USER_EMAIL" />
+      <result property="userPassword" column="USER_PASSWORD" />
+      <result property="userNickname" column="USER_NICKNAME" />
+      <result property="userTel" column="USER_TEL" />
+      <result property="userAddress" column="USER_ADDRESS" />
+      <result property="userImage" column="USER_IMG" />
+      <result property="userStatus" column="USER_STATES" />
+      <result property="enrollDate" column="ENROLL_DT" />
+      <result property="userRole" column="USER_ROLE" />
+   
+   </resultMap>
+   
+   <!-- 로그인 => 정보 얻어오기 -->
+   <select id="login" parameterType="User" resultMap="user_rm" >
+      SELECT USER_NO, USER_EMAIL, USER_NICKNAME, USER_PASSWORD,
+            USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
+            TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
+      FROM "users"
+      LEFT JOIN "shop" USING(USER_NO)
+      WHERE USER_STATUS = 'A'
+      AND USER_EMAIL = #{userEmail}
+   </select>
+   
+   
+   
+   <!-- 회원가입 파트 -->      
+   
+   <!-- email 중복 검사 -->
+   <select id="checkEmail" resultType="int">
+      SELECT COUNT(*) FROM "users"
+      WHERE USER_EMAIL = #{email}
+      AND USER_STATUS = 'A'
+   </select>
 
-	
-	<!-- 닉네임 중복 검사 -->
-	<select id="checkNickname" resultType="int">
-		SELECT COUNT(*) FROM "users"
-		WHERE USER_NICKNAME = #{nickname}
-		AND USER_STATUS='A'
-	</select>	
-	
-	
-	<!-- 회원가입 -->
-	<insert id="signUp" parameterType="User">
-		INSERT INTO "users"
-		VALUES(SEQ_USER_NO.NEXTVAL,
-				#{userEmail},
-				#{userPassword},
-				#{userNickname},
-				#{userTel},
-				#{userAddress},
-				NULL, DEFAULT, DEFAULT, DEFAULT
-				)
-	</insert>
-	
-	
-	
-		
-		
+   
+   <!-- 닉네임 중복 검사 -->
+   <select id="checkNickname" resultType="int">
+      SELECT COUNT(*) FROM "users"
+      WHERE USER_NICKNAME = #{nickname}
+      AND USER_STATUS='A'
+   </select>   
+   
+   
+   <!-- 회원가입 -->
+   <insert id="signUp" parameterType="User">
+      INSERT INTO "users"
+      VALUES(SEQ_USER_NO.NEXTVAL,
+            #{userEmail},
+            #{userPassword},
+            #{userNickname},
+            #{userTel},
+            #{userAddress},
+            NULL, DEFAULT, DEFAULT, DEFAULT
+            )
+   </insert>
+   
+   
+   
+      
+      
 </mapper>

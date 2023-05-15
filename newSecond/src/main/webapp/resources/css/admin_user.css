@@ -1,128 +1,133 @@
+/* 로그아웃 */
+.amdmin_user_logout{
+    margin-left: 90%;
+}
+
+
 /* 내부 내용 */
-.admin_board_wrap{
-    margin-left: 230px;
-    padding: 50px 50px;
-    height: 1000px;
-
-
+.admin_user_wrap{
+        margin-left: 230px;
+        padding: 50px 50px;
+        height: 1000px;
+    
+    
 }
 /* 상단 제목 바 */
-.admin_board_bar{
-color: #005eee;
-font-weight: bold;
-font-size: 25px;
-margin: 20px 20px; 
-}
-
-/* 상단 제목 바 새 공지사항 버튼 */
-.admin_board_barBtn{
+.admin_user_bar{
     color: #005eee;
-    border:1px solid #005eee;
-    border-radius: 5px;
-    padding: 3px 3px;
-    font-size: smaller;
     font-weight: bold;
- 
+    font-size: 25px;
+    margin: 20px 20px; 
+  
 }
 
-/* 중간 선택숨김,선택삭제 버튼 */
-.admin_board_Btn{
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-}
-
-.admin_board_HiddenBtn{
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin: 10px 10px;
-    padding: 3px 5px;
-}
-
-.admin_board_DelBtn{
-    border-radius: 5px;
-    border: 1px solid #e27f7f;
-    margin: 10px 10px;
-    padding: 3px 5px;
+/* 상단 검색창 */
+.admin_user_search{
+    border-radius: 7px;
+    height: 20px;
+    margin: 20px 10px;
+    padding: 1px;
+    border: 1px solid #7c7c7c;
+    width: 500px;
 }
 
 
+/* 상단 검색창 버튼 */
+.admin_user_searchBtn{
+    border-radius: 7px;
+    background-color: #005eeE;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+}
+
+/* 선택창 raidos */
+.admin_user_raidos{
+    border: none;
+    width: 500px;
+    margin-bottom: 10px;
+}
+.admin_user_raidos label{
+    padding: 0 10px;
+}
+
+/* 인원수 결과창 */
+.admin_user_countOne{
+    color: #005eee;
+    font-weight: bold;
+}
+
+.admin_user_result{
+     padding: 0 10px; 
+     margin-bottom: 10px;
+}
 
 /* 테이블 */
 
-table{
-    width: 100%;
 
+.admin_user_table{
+    width: 100%;
 }
 
+.admin_user_table:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
 th{
-background-color: #8AB2E2;
-padding: 5px;
+  background-color: #8AB2E2;
+  padding: 5px;
 }
 
 th:first-child{
-border-top-left-radius: 8px;
-border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 th:last-child{
-border-top-right-radius: 8px;
-border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 
 }
 
 tbody td{
-width: 120px;
-text-align: center;
-padding: 10px 10px;
+    width: 120px;
+    text-align: center;
+    padding: 10px 10px;
 }
 
 tbody td:nth-child(1){
-    width: 10px;
+    width: 10%;
     padding: 0px;
-    }
-
-tbody td:nth-child(2){
-        width: 10%;
-        padding: 0px;
- }
-
- 
-tbody td:nth-child(3){
-    width: 60px;
-    padding: 0px
 }
-tbody td:nth-child(4){
-    width: 300px;
+tbody td:nth-child(2){
+    width: 10%;
     padding: 0px;
 }
 
 tbody td:nth-child(6){
-width: 90px;
-padding: 0px;
+    width: 90px;
+    padding: 0px;
+    margin: 0px;
 }
 
 tbody td:last-child{
-width: 100px;
-padding: 0px;
+    width: 90px;
+    padding: 0px;
+    margin: 0px;
 }
 
-.admin_board_tableBtn{
-border-radius: 10px;
-border: 1px solid #ccc;
-padding: 2px 30px;
-width: 150px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-
+.admin_user_tableBtn{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+   
 }
 
 
-.admin_board_tableBtn:hover{
-border-radius: 10px;
-border: 1px solid #ccc;
-background-color: #9a9898;
-padding: 0px 30px;
-
+.admin_user_tableBtn:hover{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+   
 }

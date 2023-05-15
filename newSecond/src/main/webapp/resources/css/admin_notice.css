@@ -1,0 +1,124 @@
+/* 로그아웃 */
+.amdmin_notice_logout{
+    margin-left: 90%;
+}
+
+
+/* 내부 내용 */
+.admin_notice_wrap{
+    margin-left: 230px;
+    padding: 50px 50px;
+    height: 1000px;
+
+
+}
+/* 상단 제목 바 */
+.admin_notice_bar{
+color: #005eee;
+font-weight: bold;
+font-size: 25px;
+margin: 20px 20px; 
+}
+
+/* 상단 제목 바 새 공지사항 버튼 */
+.admin_notice_barBtn{
+    color: #005eee;
+    border:1px solid #005eee;
+    border-radius: 5px;
+    padding: 3px 3px;
+    font-size: smaller;
+    font-weight: bold;
+ 
+}
+
+/* 중간 선택숨김,선택삭제 버튼 */
+.admin_notice_Btn{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.admin_notice_HiddenBtn{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px 10px;
+    padding: 3px 5px;
+}
+
+.admin_notice_DelBtn{
+    border-radius: 5px;
+    border: 1px solid #e27f7f;
+    margin: 10px 10px;
+    padding: 3px 5px;
+}
+
+
+
+/* 테이블 */
+
+table{
+    width: 100%;
+
+}
+
+th{
+background-color: #8AB2E2;
+padding: 5px;
+}
+
+th:first-child{
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px;
+}
+
+th:last-child{
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+
+}
+
+tbody td{
+width: 120px;
+text-align: center;
+padding: 10px 10px;
+}
+
+tbody td:nth-child(1){
+    width: 10px;
+    padding: 0px;
+    }
+
+tbody td:nth-child(2){
+        width: 10px;
+        padding: 0px;
+ }
+
+ 
+tbody td:nth-child(3){
+    width: 500px;
+    padding: 0px;
+}
+
+tbody td:nth-child(6){
+width: 90px;
+padding: 0px;
+}
+
+tbody td:last-child{
+width: 90px;
+padding: 0px;
+}
+
+.admin_notice_tableBtn{
+border-radius: 10px;
+border: 1px solid #ccc;
+
+}
+
+
+.admin_notice_tableBtn:hover{
+border-radius: 10px;
+border: 1px solid #ccc;
+background-color: #14974f;
+
+}
