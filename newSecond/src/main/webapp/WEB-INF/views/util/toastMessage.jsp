@@ -58,35 +58,7 @@ if (toastTrigger) {
 }
 
 </script>
-
-<c:if test="${empty loginUser}" >
-    <script>
-    document.querySelector('.myMarket').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-        document.getElementById('liveToast').classList.remove('text-bg-primary');
-        document.getElementById('liveToast').classList.add('text-bg-danger');
-        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
-        toastTrigger.click();
-    });
-
-    document.getElementById('chattings').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-        document.getElementById('liveToast').classList.remove('text-bg-primary');
-        document.getElementById('liveToast').classList.add('text-bg-danger');
-        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
-        toastTrigger.click();
-    });
-
-    document.getElementById('notification').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-        document.getElementById('liveToast').classList.remove('text-bg-primary');
-        document.getElementById('liveToast').classList.add('text-bg-danger');
-        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
-        toastTrigger.click();
-    });
-    </script>
+<c:if test="${signUpPage}" >
 </c:if>
+
 

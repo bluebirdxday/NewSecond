@@ -39,6 +39,11 @@ public class UserServiceImpl implements UserService {
 		
 		int result = dao.signUp(inputUser);
 		
+		if(!(result > 0) ) return result;
+		
+		// 회원의 상점 기본정보 입력
+		result = dao.insertShopData(inputUser);
+		
 		return result;
 	}
 

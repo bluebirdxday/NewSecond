@@ -127,10 +127,19 @@
 
         </form>
 
+    <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
+
     </div>
     <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/resources/js/user/signUp.js"></script>
 
+    <c:if test="${not empty message}" >
+        <script>
+            toastTrigger.click();
+        </script>
+    </c:if>
+
 </body>
 </html>
+

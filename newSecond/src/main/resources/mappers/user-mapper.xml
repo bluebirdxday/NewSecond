@@ -49,10 +49,18 @@
    </select>   
    
    
+   <!-- 다음 회원번호 미리 가져오기 -->
+   
+   
    <!-- 회원가입 -->
    <insert id="signUp" parameterType="User">
+   
+   	<selectKey order="BEFORE" resultType="_int" keyProperty="userNo">
+			SELECT SEQ_USER_NO.NEXTVAL FROM DUAL
+	</selectKey>
+   
       INSERT INTO "users"
-      VALUES(SEQ_USER_NO.NEXTVAL,
+      VALUES(#{userNo},
             #{userEmail},
             #{userPassword},
             #{userNickname},
@@ -63,6 +71,14 @@
    </insert>
    
    
+   <!-- 회원의 상점(프로필) 기본정보 입력 -->
+   <insert id="insertShopData" parameterType="User">
+   		INSERT INTO "shop"
+ 		VALUES	(#{userNo},
+   				#{userNickname}||'님의 상점',
+   				NULL
+   				)
+   </insert>
    
       
       

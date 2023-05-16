@@ -85,3 +85,13 @@ SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVI
 FROM "reviews" r
 JOIN "goods_board" gb USING(GOODS_NO)
 WHERE REVIEW_NO = 8;
+
+
+-- 다음 회원번호 미리 뽑아오기  ==> 셀렉트 키를 통한 응용
+SELECT SEQ_USER_NO.NEXTVAL FROM DUAL
+
+-- 상점 정보 입력
+INSERT INTO "shop"
+	VALUES(#{userNo},
+			#{userNickname}||'님의 상점',
+			NULL);
