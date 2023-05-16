@@ -248,12 +248,6 @@
     font-size: 100px;
 }
 
-/* footer 밑에 있는 파일 추가 버튼 숨기기 */
-.fileInput {
-    display: none;
-}
-
-
 /* 이미지 스크롤러 */
 .post--main__ImageScroller {
     display: flex;
@@ -411,10 +405,42 @@
     
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 .inputCategorySelector > div {
     margin-left: 5px;
     margin-right: 5px;
     border: 3px solid #E3E3E3;
+}
+
+/* 1depth */
+.category--1depth__clothing:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__fashion:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__digital:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__life:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__hobby:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__other:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+
+/* 2depth */
+#category--2depth > div:hover {
+    background-color: #2365B9;
+    color: white;
 }

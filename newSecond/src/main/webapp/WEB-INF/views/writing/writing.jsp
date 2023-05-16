@@ -27,7 +27,7 @@
             <div class="post--main__inputTitle">
                 <div>
                     <span>제목</span><span>*</span>
-                    <span id="textLimit20Result"></span>
+                    <span id="textLimit20Result">(0/20)</span>
                 </div>
                 <article>
                     <input class="textLimit20" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
@@ -40,8 +40,9 @@
                 </div>
                 <article>
                     <div class="post--main__ImageContainer">
-                        <div for="fileInput">
+                        <div>
                             <a href="#" id="imagePlus">+</a>
+                            <input type="file" id="fileInput" style="display: none;">
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김 --%>
@@ -53,7 +54,7 @@
             <div class="post--main__inputDetailText">
                 <div>
                     <span>상세설명</span><span>*</span>
-                    <span id="textLimit500Result"></span>
+                    <span id="textLimit500Result">(0/500)</span>
                 </div>
                 <article>
                     <textarea rows="4" cols="50"
@@ -85,9 +86,16 @@
                 <div>
                     <span>카테고리</span><span>*</span>
                     <article class="inputCategorySelector">
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
+                        <div id="category--1depth">
+                            <div class="category--1depth__clothing">의류</div>
+                            <div class="category--1depth__fashion">패션잡화</div>
+                            <div class="category--1depth__digital">디지털/가전</div>
+                            <div class="category--1depth__life">생활</div>
+                            <div class="category--1depth__hobby">취미</div>
+                            <div class="category--1depth__other">기타</div>
+                        </div>
+                        <div id="category--2depth">
+                        </div>
                     </article>
                 </div>
             </div>
@@ -101,7 +109,7 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    <input type="file" class="fileInput">
+
     <script src="/resources/js/writing/writing.js"></script>
 
 </body>

@@ -21,7 +21,7 @@ textLimit500.addEventListener('input', () => {
 
 /* ------------------------------------------------------------------ */
 
-const fileInput = document.querySelector('.fileInput');
+const fileInput = document.querySelector('#fileInput');
 const imageContainer = document.querySelector('.post--main__ImageScroller');
 
 /* 이미지 파일 업로드 */
@@ -61,13 +61,12 @@ imagePlus.addEventListener('click', () => {
 /* ------------------------------------------------------------------ */
 
 const imageScroller = document.querySelector('.post--main__ImageScroller');
-
 let imageCount = 0;
 
 /* 파일 5개 제한 업로드 */
 /* 왜 같은 파일이 2번 업로드 될까 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ */
-fileInput.addEventListener('change', (event) => {
-    const files = event.target.files;
+fileInput.addEventListener('change', e => {
+    const files = e.target.files;
     const filesCount = files.length;
     for (let i = 0; i < filesCount; i++) {
         const file = files[i];
@@ -95,3 +94,136 @@ function updateImageCount() {
 }
 
 /* ------------------------------------------------------------------ */
+
+const clothing = document.querySelector('.category--1depth__clothing');
+const fashion = document.querySelector('.category--1depth__fashion');
+const digital = document.querySelector('.category--1depth__digital');
+const life = document.querySelector('.category--1depth__life');
+const hobby = document.querySelector('.category--1depth__hobby');
+const other = document.querySelector('.category--1depth__other');
+
+/* 카테고리 선택자 */
+// 1depth 각 div에 대한 클릭 이벤트를 등록합니다.
+clothing.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '남성의류';
+    const div2 = document.createElement('div');
+    div2.textContent = '여성의류';
+
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+});
+fashion.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '신발';
+    const div2 = document.createElement('div');
+    div2.textContent = '가방';
+    const div3 = document.createElement('div');
+    div3.textContent = '시계/주얼리';
+    const div4 = document.createElement('div');
+    div4.textContent = '패션 액세서리';
+
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+    depth2Container.appendChild(div3);
+    depth2Container.appendChild(div4);
+});
+digital.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '스포츠/레저';
+    const div2 = document.createElement('div');
+    div2.textContent = '차량/오토바이';
+
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+});
+life.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '스타굿즈';
+    const div2 = document.createElement('div');
+    div2.textContent = '키덜트';
+    const div3 = document.createElement('div');
+    div3.textContent = '예술/희귀/수집품';
+    const div4 = document.createElement('div');
+    div4.textContent = '음반/악기';
+    const div5 = document.createElement('div');
+    div4.textContent = '도서/티켓/문구';
+    
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+    depth2Container.appendChild(div3);
+    depth2Container.appendChild(div4);
+    depth2Container.appendChild(div5);
+});
+hobby.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '뷰티/미용';
+    const div2 = document.createElement('div');
+    div1.textContent = '가구/인테리어';
+    const div3 = document.createElement('div');
+    div2.textContent = '생활/주방용품';
+    const div4 = document.createElement('div');
+    div3.textContent = '공구/산업용품';
+    const div5 = document.createElement('div');
+    div4.textContent = '식품';
+    const div6 = document.createElement('div');
+    div4.textContent = '유아동/출산';
+    const div7 = document.createElement('div');
+    div4.textContent = '반려동물용품';
+
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+    depth2Container.appendChild(div3);
+    depth2Container.appendChild(div4);
+    depth2Container.appendChild(div5);
+    depth2Container.appendChild(div6);
+    depth2Container.appendChild(div7);
+});
+other.addEventListener('click', () => {
+    const depth2Container = document.getElementById('category--2depth');
+
+    while (depth2Container.firstChild) {
+        depth2Container.removeChild(depth2Container.firstChild);
+    }
+
+    const div1 = document.createElement('div');
+    div1.textContent = '기타';
+    const div2 = document.createElement('div');
+    div1.textContent = '나눔';
+    const div3 = document.createElement('div');
+    div2.textContent = '구인';
+
+    depth2Container.appendChild(div1);
+    depth2Container.appendChild(div2);
+    depth2Container.appendChild(div3);
+});
