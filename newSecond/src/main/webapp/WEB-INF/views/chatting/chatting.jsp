@@ -19,35 +19,35 @@
         </section>
 
         <section class="content--chatting__main">
-            <aside class="content--aside__left">left</aside>
+            <aside class="content--aside__left"></aside>
 
             <section class="chatting--background">
                 <!-- mainFrame -->
                 <div class="chatting--main__box">
                     <div class="chatting--main__leftBox">
                         <div>
-                            <img src="/web/src/img/채팅 페이지/IUprofile.jpg">
+                            <img src="#">
                             <div>당산동아이유</div>
                         </div>
                         <div class="chatting--leftBox__profileList">
                             <div class="chatting--leftBox__scroll">
                                 <div>
-                                    <img src="/web/src/img/채팅 페이지/kikiProfile.jpg">
+                                    <img src="#">
                                     <div>피자배달부키키</div>
                                     <div>인케이스 사고 싶어요!</div>
                                 </div>
                                 <div>
-                                    <img src="/web/src/img/채팅 페이지/PikachuProfile.jpg">
+                                    <img src="#">
                                     <div>내가만든쿠키</div>
                                     <div>네고 가능한가요?</div>
                                 </div>
                                 <div>
-                                    <img src="/web/src/img/채팅 페이지/RyanProfile.jpg">
+                                    <img src="#">
                                     <div>#USER01433</div>
                                     <div>감사합니다~</div>
                                 </div>
                                 <div>
-                                    <img src="/web/src/img/채팅 페이지/BatmanProfile.jpeg">
+                                    <img src="#">
                                     <div>다크나이트</div>
                                     <div>안녕하세요</div>
                                 </div>
@@ -59,7 +59,7 @@
 
                     <div class="chatting--main__rightBox">
                         <div class="chatting--rightBox__post">
-                            <div><img src="/web/src/img/채팅 페이지/goods_IncaseBackPack.jpeg"></div>
+                            <div><img src="#"></div>
                             <div><a href="#">인케이스 15인치 가방 싸게 팝니다</a></div>
                         </div>
 
@@ -86,7 +86,7 @@
                 <!-- mainFrame -->
             </section>
 
-            <aside class="content--aside__right">right</aside>
+            <aside class="content--aside__right"></aside>
         </section>
     </div>
     </main>

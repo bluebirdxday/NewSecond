@@ -11,7 +11,7 @@
 /* 화면 전체 배경 */
 .content--chatting__background {
     padding-top: 170px;
-    height: 100vh;
+    height: calc(100vh-100px);
 }
 
 
@@ -248,12 +248,12 @@
     border: none;
 }
 .chatting--rightBox__chatInput > button {
-    padding: 10px 20px 10px 20px;
+    padding: 5px 20px 5px 20px;
     color: white;
     background-color: #2365B9;
     border-radius: 20px;
     border: none;
 }
 .chatting--rightBox__chatInput > button:hover {
-    border: 2px solid black;
+    box-shadow: 0 0 0 2px black inset;
 }
