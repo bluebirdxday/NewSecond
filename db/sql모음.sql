@@ -95,3 +95,6 @@ INSERT INTO "shop"
 	VALUES(#{userNo},
 			#{userNickname}||'님의 상점',
 			NULL);
+
+-- 서버 커넥션 상태 조회
+SELECT STATUS FROM V$SESSION;
