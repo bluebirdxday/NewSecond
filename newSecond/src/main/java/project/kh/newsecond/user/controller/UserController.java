@@ -50,8 +50,12 @@ public class UserController{
 	
 	// 로그아웃 -> 세션 만료
 	@GetMapping("/logout")
-	public String logout(SessionStatus status) {
+	public String logout(SessionStatus status,
+						RedirectAttributes ra) {
+		
 		status.setComplete(); 
+		ra.addFlashAttribute("alertType", "success");
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
 		
 		return "redirect:/";
 	}

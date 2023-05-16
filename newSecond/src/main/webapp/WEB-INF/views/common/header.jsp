@@ -58,13 +58,13 @@
         <div class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
-                        <a href="/" id="myShop">
+                        <a href="/" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
 
                     <c:if test="${not empty loginUser}" >
-                        <a href="/shop/${loginUser.userNo}" id="myShop">
+                        <a href="/shop/${loginUser.userNo}" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
@@ -92,23 +92,4 @@
     
 </header>
 
-
-<c:if test="${empty loginUser}" >
-    <script>
-    document.querySelector('.myMarket').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('chattings').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('notification').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-    </script>
-</c:if>
 
