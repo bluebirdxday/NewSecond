@@ -343,6 +343,11 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <a href="/writing/writing">
+        <button>글쓰기테스트버튼입니다</button>
+    </a>
+
     <script src="/resources/js/shop.js"></script>
     
 </body>
