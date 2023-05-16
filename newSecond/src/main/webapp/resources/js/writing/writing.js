@@ -119,6 +119,7 @@ clothing.addEventListener('click', () => {
     depth2Container.appendChild(div1);
     depth2Container.appendChild(div2);
 });
+
 fashion.addEventListener('click', () => {
     const depth2Container = document.getElementById('category--2depth');
 
@@ -148,14 +149,11 @@ digital.addEventListener('click', () => {
     }
 
     const div1 = document.createElement('div');
-    div1.textContent = '스포츠/레저';
-    const div2 = document.createElement('div');
-    div2.textContent = '차량/오토바이';
+    div1.textContent = '디지털/가전';
 
     depth2Container.appendChild(div1);
-    depth2Container.appendChild(div2);
 });
-life.addEventListener('click', () => {
+hobby.addEventListener('click', () => {
     const depth2Container = document.getElementById('category--2depth');
 
     while (depth2Container.firstChild) {
@@ -179,7 +177,7 @@ life.addEventListener('click', () => {
     depth2Container.appendChild(div4);
     depth2Container.appendChild(div5);
 });
-hobby.addEventListener('click', () => {
+life.addEventListener('click', () => {
     const depth2Container = document.getElementById('category--2depth');
 
     while (depth2Container.firstChild) {
@@ -200,6 +198,10 @@ hobby.addEventListener('click', () => {
     div4.textContent = '유아동/출산';
     const div7 = document.createElement('div');
     div4.textContent = '반려동물용품';
+    const div8 = document.createElement('div');
+    div1.textContent = '스포츠/레저';
+    const div9 = document.createElement('div');
+    div2.textContent = '차량/오토바이';
 
     depth2Container.appendChild(div1);
     depth2Container.appendChild(div2);
@@ -208,6 +210,8 @@ hobby.addEventListener('click', () => {
     depth2Container.appendChild(div5);
     depth2Container.appendChild(div6);
     depth2Container.appendChild(div7);
+    depth2Container.appendChild(div8);
+    depth2Container.appendChild(div9);
 });
 other.addEventListener('click', () => {
     const depth2Container = document.getElementById('category--2depth');
@@ -219,9 +223,9 @@ other.addEventListener('click', () => {
     const div1 = document.createElement('div');
     div1.textContent = '기타';
     const div2 = document.createElement('div');
-    div1.textContent = '나눔';
+    div2.textContent = '나눔';
     const div3 = document.createElement('div');
-    div2.textContent = '구인';
+    div3.textContent = '구인';
 
     depth2Container.appendChild(div1);
     depth2Container.appendChild(div2);
