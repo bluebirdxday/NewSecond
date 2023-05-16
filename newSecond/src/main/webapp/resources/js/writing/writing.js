@@ -178,7 +178,7 @@ hobby.addEventListener('click', () => {
     const div4 = document.createElement('div');
     div4.textContent = '음반/악기';
     const div5 = document.createElement('div');
-    div4.textContent = '도서/티켓/문구';
+    div5.textContent = '도서/티켓/문구';
     
     depth2Container.appendChild(div1);
     depth2Container.appendChild(div2);
@@ -196,21 +196,21 @@ life.addEventListener('click', () => {
     const div1 = document.createElement('div');
     div1.textContent = '뷰티/미용';
     const div2 = document.createElement('div');
-    div1.textContent = '가구/인테리어';
+    div2.textContent = '가구/인테리어';
     const div3 = document.createElement('div');
-    div2.textContent = '생활/주방용품';
+    div3.textContent = '생활/주방용품';
     const div4 = document.createElement('div');
-    div3.textContent = '공구/산업용품';
+    div4.textContent = '공구/산업용품';
     const div5 = document.createElement('div');
-    div4.textContent = '식품';
+    div5.textContent = '식품';
     const div6 = document.createElement('div');
-    div4.textContent = '유아동/출산';
+    div6.textContent = '유아동/출산';
     const div7 = document.createElement('div');
-    div4.textContent = '반려동물용품';
+    div7.textContent = '반려동물용품';
     const div8 = document.createElement('div');
-    div1.textContent = '스포츠/레저';
+    div8.textContent = '스포츠/레저';
     const div9 = document.createElement('div');
-    div2.textContent = '차량/오토바이';
+    div9.textContent = '차량/오토바이';
 
     depth2Container.appendChild(div1);
     depth2Container.appendChild(div2);

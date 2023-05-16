@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/chatting/chatting.css">
-    <title>html문서 제목</title>
+    <title>New Second</title>
 </head>
 <body>
 
