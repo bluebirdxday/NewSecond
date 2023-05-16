@@ -52,6 +52,15 @@ fileInput.addEventListener('change', function () { /* 화살표 함수로 바꾸
 /* ------------------------------------------------------------------ */
 
 const imagePlus = document.querySelector('#imagePlus');
+const imageBtn = document.querySelector('.post--main__ImageContainer > div:first-child');
+
+imagePlus.addEventListener('mouseover', () => {
+    imageBtn.style.backgroundColor = '#2365B9';
+});
+
+imagePlus.addEventListener('mouseout', () => {
+    imageBtn.style.backgroundColor = '#C2D3EB';
+});
 
 /* +버튼을 눌렀을 떄 파일 업로드 */
 imagePlus.addEventListener('click', () => {

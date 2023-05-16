@@ -216,15 +216,6 @@
     font-size: smaller;
 }
 
-/* + 버튼 */
-#imagePlus {
-    color: white;
-    font-weight: bold;
-    font-size: 5.5em;
-    padding-bottom: 20px;
-    text-decoration: none;
-}
-
 /* 이미지 추가 버튼 */
 .post--main__ImageContainer {
     display: flex;
@@ -233,7 +224,7 @@
     height: 180px;
     width: 180px;
     margin-right: 10px;
-    border: 3px solid #C2D3EB;
+    border: none;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
@@ -246,6 +237,15 @@
     color: white;
     font-weight: bolder;
     font-size: 100px;
+}
+
+/* + 버튼 */
+#imagePlus {
+    color: white;
+    font-weight: bold;
+    font-size: 5.5em;
+    padding-bottom: 20px;
+    text-decoration: none;
 }
 
 /* 이미지 스크롤러 */
