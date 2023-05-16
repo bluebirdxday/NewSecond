@@ -8,6 +8,11 @@
 /* 1depth */
 /* ---------------------------------------------------- */
 
+/* topMargin */
+.content--post__topMargin{
+    margin-top: 150px;
+}
+
 /* 화면 전체 배경 */
 .content--post__background {
     display: grid;
@@ -109,7 +114,7 @@
 
 /* 가격 입력 */
 .post--main__inputTitle {
-    height: 80px;
+    height: 100px;
     padding: 10px;
     border-bottom: 1px solid grey;
 }
@@ -117,7 +122,7 @@
 
 /* 상품 이미지 입력 */
 .post--main__inputImage {
-    height: 230px;
+    height: 250px;
     padding: 10px;
     border-bottom: 1px solid grey;
 }
@@ -125,7 +130,7 @@
 
 /* 상세정보 입력 */
 .post--main__inputDetailText {
-    height: 160px;
+    height: 180px;
     padding: 10px;
     border-bottom: 1px solid grey;
 }
@@ -133,7 +138,7 @@
 
 /* 가격 입력 */
 .post--main__inputPrice {
-    height: 60px;
+    height: 80px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -163,7 +168,6 @@
 .post--main__inputCategory {
     height: 280px;
     padding: 10px;
-    border-bottom: 1px solid grey;
 }
 
 /* ---------------------------------------------------- */

@@ -13,7 +13,7 @@
 
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
-    <main>
+    <main class="content--post__topMargin">
         <section class="content--post__background">
         <section class="content--post__topFix">기본정보
             <div class="requiredMark">*: 필수 항목</div>
@@ -44,11 +44,11 @@
                             <a href="#">+</a>
                         </div>
                         <div class="post--main__ImageScroller">
-                            <img src="/web/src/img/글쓰기 페이지/test2.jpg">
-                            <img src="/web/src/img/글쓰기 페이지/test3.jpg">
-                            <img src="/web/src/img/글쓰기 페이지/test1.jpg">
-                            <img src="/web/src/img/글쓰기 페이지/test1.jpg">
-                            <img src="/web/src/img/글쓰기 페이지/test1.jpg">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
                         </div>
                     </div>
                 </article>
@@ -66,7 +66,7 @@
             </div>
             <div class="post--main__inputPrice">
                 <div>
-                    <span>가격</span><span>*</span><input required>원
+                    <span>가격</span><span>*</span><input type="number" min="1" placeholder="10000" required>원
                 </div>
             </div>
             <div class="post--main__inputQuantity">
