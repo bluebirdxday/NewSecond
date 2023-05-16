@@ -216,6 +216,14 @@
     font-size: smaller;
 }
 
+/* + 버튼 */
+#imagePlus {
+    color: white;
+    font-weight: bold;
+    font-size: 5.5em;
+    padding-bottom: 20px;
+    text-decoration: none;
+}
 
 /* 이미지 추가 버튼 */
 .post--main__ImageContainer {
@@ -238,6 +246,11 @@
     color: white;
     font-weight: bolder;
     font-size: 100px;
+}
+
+/* footer 밑에 있는 파일 추가 버튼 숨기기 */
+.fileInput {
+    display: none;
 }
 
 

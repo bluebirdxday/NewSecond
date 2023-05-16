@@ -27,10 +27,10 @@
             <div class="post--main__inputTitle">
                 <div>
                     <span>제목</span><span>*</span>
-                    <span>(0/30)</span>
+                    <span id="textLimit20Result"></span>
                 </div>
                 <article>
-                    <input type="text" placeholder="제목을 입력해주세요." required>
+                    <input class="textLimit20" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
                 </article>
             </div>
             <div class="post--main__inputImage">
@@ -40,15 +40,11 @@
                 </div>
                 <article>
                     <div class="post--main__ImageContainer">
-                        <div>
-                            <a href="#">+</a>
+                        <div for="fileInput">
+                            <a href="#" id="imagePlus">+</a>
                         </div>
                         <div class="post--main__ImageScroller">
-                            <img src="">
-                            <img src="">
-                            <img src="">
-                            <img src="">
-                            <img src="">
+                        </div>
                         </div>
                     </div>
                 </article>
@@ -56,30 +52,31 @@
             <div class="post--main__inputDetailText">
                 <div>
                     <span>상세설명</span><span>*</span>
-                    <span>(0/500)</span>
+                    <span id="textLimit500Result"></span>
                 </div>
                 <article>
                     <textarea rows="4" cols="50"
+                        class="textLimit500"
                         placeholder="구입 연도, 브랜드, 사용감, 하자 유무 등 판매하고자 하는 상품과 관련된 정보를 포함하여 게시글 내용을 작성해주세요.(500자 이내)"
                         maxlength="500" required></textarea>
                 </article>
             </div>
             <div class="post--main__inputPrice">
                 <div>
-                    <span>가격</span><span>*</span><input type="number" min="1" placeholder="10000" required>원
+                    <span>가격</span><span>*</span><input type="number" min="1" placeholder="10000" id="priceInput" required>원
                 </div>
             </div>
             <div class="post--main__inputQuantity">
                 <div>
-                    <span>수량</span><span>*</span><input type="number" min="1" placeholder="1" required>개
+                    <span>수량</span><span>*</span><input type="number" min="1" placeholder="1" id="quantityInput" required>개
                 </div>
             </div>
             <div class="post--main__inputCondition">
                 <div>
                     <span>상태</span><span>*</span>
                     <article class="post--main__inputConditionSelector">
-                        <input type="radio" name="inputCondition">새상품
-                        <input type="radio" name="inputCondition">중고상품
+                        <input type="radio" name="inputCondition" required>새상품
+                        <input type="radio" name="inputCondition" required>중고상품
                     </article>
                 </div>
             </div>
@@ -90,7 +87,7 @@
                         <div>1</div>
                         <div>2</div>
                         <div>3</div>
-                    </articlec>
+                    </article>
                 </div>
             </div>
         </section>
@@ -103,7 +100,8 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    <script src="/resources/writing/writing.js"></script>
+    <input type="file" class="fileInput">
+    <script src="/resources/js/writing/writing.js"></script>
 
 </body>
 </html>
