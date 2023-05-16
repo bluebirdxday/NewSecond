@@ -61,7 +61,7 @@
                 <td><input type="checkbox" name="" id=""></td>
                 <td>1</td>
                 <td>110</td>
-                <td>나이키 운동화 팔아요</td>
+                <td><a href="\admin\admin_board_read">나이키 운동화 팔아요</a></td>
                 <td>2023.04.30</td>
                 <td>250</td>
                 <td>

@@ -15,6 +15,7 @@
 		<typeAlias type="project.kh.newsecond.shop.model.dto.Follower" alias="Follower" />
 		<typeAlias type="project.kh.newsecond.review.model.dto.Review" alias="Review" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
+		<typeAlias type="project.kh.newsecond.notice.model.dto.Notice" alias="Notice" />
 	</typeAliases>
 	
 	
@@ -23,6 +24,7 @@
 		<mapper resource="/mappers/user-mapper.xml" />
 		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
+		<mapper resource="/mappers/notice-mapper.xml" />
 	</mappers>
 
 

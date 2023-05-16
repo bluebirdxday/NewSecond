@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="NoticeMapper">
+
+   <resultMap type="Notice" id="notice_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="noticeNo" column="NOTICE_NO" />
+      <result property="noticeTitle" column="NOTICE_TITLE" />
+      <result property="noticeContent" column="NOTICE_CONTENT" />
+      <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
+      <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+   </resultMap>
+   
+	<!--공지사항 게시글 조회  -->
+	<select id="selectNoticeList" resultMap="notice_rm">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+	
+	
+	<select id="selectNoticeOneList" resultType="_int">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+   
+   
+   
+      
+      
+</mapper>

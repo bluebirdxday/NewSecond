@@ -12,6 +12,12 @@ public class QnaController {
 		public String qna(){
 			return "qna/qna";
 		}
+		
+		@GetMapping("/qna_check")
+		public String qna_check(){
+			return "qna/qna_check";
+		}
+	
 	
 
 	

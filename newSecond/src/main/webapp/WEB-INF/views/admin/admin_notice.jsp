@@ -35,6 +35,8 @@
         <!-- 선택 숨김,삭제 버튼 -->
         
         <div class="admin_notice_Btn">
+        
+            <button class="admin_notice_write"><a href="\admin\admin_notice_write">글쓰기</a></button>
             <button class="admin_notice_HiddenBtn">선택 숨김</button>
             <button class="admin_notice_DelBtn">선택 삭제</button>
         </div>
@@ -58,7 +60,7 @@
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
                 <td>1</td>
-                <td>뉴세컨마켓 사용 가이드</td>
+                <td><a href="\admin\admin_notice_read">뉴세컨마켓 사용 가이드</a></td>
                 <td>2023.04.20</td>
                 <td>220</td>
                 <td>
@@ -70,10 +72,10 @@
             </tr>
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td>bungae</td>
-                <td>정상</td>
-                <td>2022.10.01</td>
+                <td>2</td>
+                <td>뉴세컨마켓 사용 가이드</td>
+                <td>2023.04.19</td>
+                <td>330</td>
                 <td>
                     <button class="admin_notice_tableBtn">공지 복구</button>
                     </td>

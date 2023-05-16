@@ -168,5 +168,42 @@ WHERE GOODS_NO = 14;
 
 SELECT * FROM "goods_board";
 
+--공지사항 게시글 
+
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지1', '안녕하세요. 관리자1입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지2', '안녕하세요. 관리자2입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지3', '안녕하세요. 관리자3입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지4', '안녕하세요. 관리자4입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지5', '안녕하세요. 관리자5입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지6', '안녕하세요. 관리자6입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지7', '안녕하세요. 관리자7입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지8', '안녕하세요. 관리자8입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지9', '안녕하세요. 관리자9입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지10', '안녕하세요. 관리자10입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지11', '안녕하세요. 관리자11입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+
+
+SELECT * FROM "notice"
+ORDER BY NOTICE_NO DESC;
+
+COMMIT;
+
+SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+FROM "notice"
+WHERE NOTICE_NO = 1
+ORDER BY NOTICE_NO DESC;
+
+
 
 

@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의게시판 확인</title>
+</head>
+<style>
+.qna2_wrap{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.qna2_content{
+    display: block;
+    height: 100px;
+    min-width: 100px;
+    width: 500px;
+    font-size: 30px;
+}
+
+.qna2_btn_wrap{
+position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-25%, -10%);
+  width: 1000px;
+  margin: 50px 50px;
+}
+.qna2_back{
+    color: #005EEE;
+    border: none;
+    background-color: none;
+    text-decoration: none;
+    width: 170px;
+
+}
+.qna2_back:hover{
+    text-decoration: underline;
+    border: none;
+    background-color: none;
+    color: #005EEE;
+}
+.qna2_home{
+    color: #005EEE;
+    border: none;
+    background-color: none;
+    text-decoration: none;
+
+}
+.qna2_home:hover{
+    text-decoration: underline;
+    border: none;
+    background-color: none;
+    color: #005EEE;
+}
+
+
+</style>
+
+<body>
+    
+<div class="qna2_wrap">
+    <div class="qna2_content">문의하신 내용이 접수되었습니다.</div>
+</div>
+<div class="qna2_btn_wrap">
+    <span > <a href="/qna/qna" class="qna2_back">다른 문의사항 신고하기</a></span>
+    <span><a href="/"  class="qna2_home">홈으로 돌아가기</a></span>
+</div>
+</body>
+
+
+</html>

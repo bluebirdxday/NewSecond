@@ -57,7 +57,7 @@
 <!-- 문의하기 버튼 -->
     <form action="" >
       <div id="qna_button_wrap">
-      <button id="qna_button">문의 하기</button>
+     <button id="qna_button"><a href="\qna\qna_check">문의 하기</a></button>
     </div>
     </form>
     

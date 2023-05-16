@@ -21,7 +21,7 @@
     <section class="footer--right" id="footer--right">
         <a href="/qna/qna"><strong>1:1 문의사항</strong></a>
         <a href="#"><strong>FAQ</strong></a>
-        <a href="#"><strong>공지사항</strong></a>
+        <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
     <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
