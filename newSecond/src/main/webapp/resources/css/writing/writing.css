@@ -216,7 +216,6 @@
     font-size: smaller;
 }
 
-
 /* 이미지 추가 버튼 */
 .post--main__ImageContainer {
     display: flex;
@@ -225,7 +224,7 @@
     height: 180px;
     width: 180px;
     margin-right: 10px;
-    border: 3px solid #C2D3EB;
+    border: none;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
@@ -240,6 +239,14 @@
     font-size: 100px;
 }
 
+/* + 버튼 */
+#imagePlus {
+    color: white;
+    font-weight: bold;
+    font-size: 5.5em;
+    padding-bottom: 20px;
+    text-decoration: none;
+}
 
 /* 이미지 스크롤러 */
 .post--main__ImageScroller {
@@ -398,10 +405,50 @@
     
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 .inputCategorySelector > div {
     margin-left: 5px;
     margin-right: 5px;
     border: 3px solid #E3E3E3;
 }
+
+/* 1depth */
+.category--1depth__clothing:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__fashion:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__digital:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__life:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__hobby:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+.category--1depth__other:hover {
+    background-color: #C2D3EB;
+    color: black;
+}
+
+/* 2depth */
+#category--2depth > div:hover {
+    background-color: #2365B9;
+    color: white;
+}
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* -----------------------------DB 연결을 위한 css----------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */

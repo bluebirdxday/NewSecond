@@ -14,3 +14,4 @@ public class WritingController {
 		return "writing/writing";
 	}
 }
+
