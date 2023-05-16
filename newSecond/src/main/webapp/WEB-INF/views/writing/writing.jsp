@@ -15,7 +15,7 @@
     
     <main class="content--post__topMargin">
         <section class="content--post__background">
-        <section class="content--post__topFix">기본정보
+        <section class="content--post__topFix">글쓰기
             <div class="requiredMark">*: 필수 항목</div>
         </section>
 
