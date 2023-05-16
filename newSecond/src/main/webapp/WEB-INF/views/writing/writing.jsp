@@ -36,7 +36,7 @@
             <div class="post--main__inputImage">
                 <div>
                     <span>상품이미지</span><span>*</span>
-                    <span>(0/10)</span>
+                    <span>(0/5)</span>
                 </div>
                 <article>
                     <div class="post--main__ImageContainer">
@@ -44,6 +44,7 @@
                             <a href="#" id="imagePlus">+</a>
                         </div>
                         <div class="post--main__ImageScroller">
+                            <%-- 이 안에 img 형식으로 파일이 담김 --%>
                         </div>
                         </div>
                     </div>

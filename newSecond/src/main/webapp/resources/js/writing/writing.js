@@ -57,3 +57,41 @@ const imagePlus = document.querySelector('#imagePlus');
 imagePlus.addEventListener('click', () => {
     fileInput.click();
 });
+
+/* ------------------------------------------------------------------ */
+
+const imageScroller = document.querySelector('.post--main__ImageScroller');
+
+let imageCount = 0;
+
+/* 파일 5개 제한 업로드 */
+/* 왜 같은 파일이 2번 업로드 될까 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ */
+fileInput.addEventListener('change', (event) => {
+    const files = event.target.files;
+    const filesCount = files.length;
+    for (let i = 0; i < filesCount; i++) {
+        const file = files[i];
+        if (imageCount < 5) {
+            const image = document.createElement('img');
+            const reader = new FileReader();
+            reader.addEventListener('load', (event) => {
+                image.src = event.target.result;
+                imageScroller.appendChild(image);
+                imageCount++;
+                updateImageCount();
+            });
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+function updateImageCount() {
+    const countSpan = document.querySelector('.post--main__inputImage span:nth-child(3)');
+    countSpan.textContent = `(${imageCount}/5)`;
+    if (imageCount >= 5) {
+        imagePlus.removeEventListener('click', handleClick);
+        imagePlus.style.cursor = 'default';
+    }
+}
+
+/* ------------------------------------------------------------------ */
