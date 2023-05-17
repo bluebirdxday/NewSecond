@@ -342,28 +342,17 @@ const hire2 = document.createElement('hire2');
 /* ---------------------------------------------------------------------------- */
 
 /* const imageScroller = document.querySelector('.post--main__ImageScroller'); */
-const images = imageScroller.querySelectorAll('img'); /* 추가되는 이미지들 */
 const title = document.getElementById('title'); /* 제목 */
+const images = imageScroller.querySelectorAll('img'); /* 추가되는 이미지들 */
 const detailText = document.getElementById('detailText'); /* 상세설명 */
 const price = document.getElementById('priceInput'); /* 가격 */
 const quantity = document.getElementById('quantityInput'); /* 수량 */
 const conditions = document.getElementsByName('inputCondition'); /* 컨디션 */
-console.log(price.innerText);
-let selectedCondition;
-for (let i = 0; i < inputConditions.length; i++) {
-    if (inputConditions[i].checked) {
-        selectedCondition = inputConditions[i].value;
-        break;
-    }
-}
-console.log(selectedCondition); // 선택된 라디오 버튼의 값 출력
+/* 카테고리 */
 
+/* ---------------------------------------------------------------------------- */
 
-
-
-const items = document.querySelectorAll('.category--2depth__item');
-items.forEach(item => {
-    item.addEventListener('click', () => {
-        alert('안녕');
-    });
-});
+console.log(title.value);
+console.log(detailText.value);
+console.log(price.value);
+console.log(quantity.value);
