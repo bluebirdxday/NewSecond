@@ -300,16 +300,16 @@
             <div id="tab4" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
                     
-                    <c:if test="${not empty followerList}" >
+                    <%-- <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
                                 <div>
                                     <c:if test="${empty follower.USER_IMG}" >
-                                        <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
+                                        <img src="/resources/src/img/basic_profile.png">  
                                     </c:if>
 
                                     <c:if test="${not empty follower.USER_IMG}" >
-                                        <img src="${follower.USER_IMG}">  <%-- 기본 프로필 이미지 --%>
+                                        <img src="${follower.USER_IMG}">  
                                     </c:if>
                                 </div>
                                 <div>${follower.SHOP_TITLE}</div>
@@ -335,7 +335,7 @@
 
                 <c:if test="${empty followerList}" >
                     <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
-                </c:if>
+                </c:if> --%>
             </div>
         </div>
 
