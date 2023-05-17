@@ -7,19 +7,6 @@
 		
 		<result property="shopTitle" column="SHOP_TITLE" />
 		<result property="shopInfo" column="SHOP_INFO" />
-		
-		<collection property="followerList" select="selectFollowerList"
-			column="USER_NO" javaType="java.util.ArrayList" ofType="Follower"/>
-		<collection property="reviewList" select="selectReviewList"
-			column="USER_NO" javaType="java.util.ArrayList" ofType="Review"/>
-	</resultMap>
-	
-	
-	<resultMap type="Follower" id="follower_rm">
-		<id property="follwingUerNo" column="FOLLOWING_USER_NO"/>
-		<result property="shopTitle" column="SHOP_TITLE"/>
-		<result property="shopInfo" column="SHOP_INFO"/>
-		<result property="userImage" column="USER_IMG"/>
 	</resultMap>
 	
 	
@@ -35,8 +22,9 @@
 	</resultMap>
 	
 	
-	<resultMap type="Following" id="following_rm">
-		<id property="userNo" column="USER_NO"/>
+	<resultMap type="Follow" id="follow_rm">
+		<id property="activeUserNo" column="ACTIVE_USER_NO"/>
+		<id property="passiveUserNo" column="PASSIVE_USER_NO"/>
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="shopInfo" column="SHOP_INFO"/>
 		<result property="userImage" column="USER_IMG"/>
@@ -57,25 +45,6 @@
 		SELECT TRUNC(SYSDATE-ENROLL_DT) OPEN_DAY
 		FROM "users"
 		WHERE USER_NO = #{userNo}
-	</select>
-	
-	<!-- 팔로워 리스트 -->
-	<select id="selectFollowerList" resultMap="follower_rm">
-		SELECT FOLLOWING_USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG 
-		FROM "follow" F
-		JOIN "users" U ON(U.USER_NO = F.USER_NO)
-		JOIN "shop" S ON(FOLLOWING_USER_NO = S.USER_NO)
-		WHERE F.USER_NO = #{userNo}
-	</select>
-	
-	
-	<!-- 특정 유저의 팔로잉 리스트 조회 -->
-	<select id="selectFollowingList" resultMap="following_rm">
-	SELECT F.USER_NO USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG
-	FROM "follow" F
-	JOIN "users" U ON(U.USER_NO = F.USER_NO)
-	JOIN "shop" S ON(U.USER_NO = S.USER_NO) 
-	WHERE FOLLOWING_USER_NO = #{userNo}
 	</select>
 	
 	
@@ -126,7 +95,7 @@
 		WHERE REVIEW_NO = #{reviewNo}
 	</update>
 	
-	
+	<!-- 리뷰 조회 -->
 	<select id="selectReview" resultMap="review_rm">
 		SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVIEW_DT, REVIEW_STARS
 		FROM "reviews" r

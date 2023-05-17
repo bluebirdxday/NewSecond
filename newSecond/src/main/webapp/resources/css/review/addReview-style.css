@@ -49,8 +49,6 @@ a{
 
 /* 후기 등록 버튼 */
 #registerReviewBtn{
-    /* background-color: #C2D3EB; */
-    /* box-shadow: 0 4px 4px 0 #BCBDB3; */
     cursor: pointer;
     width: 200px;
     height: 70px;

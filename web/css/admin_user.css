@@ -1,0 +1,126 @@
+/* 내부 내용 */
+.admin_user_wrap{
+        margin-left: 230px;
+        padding: 50px 50px;
+        height: 1000px;
+    
+    
+}
+/* 상단 제목 바 */
+.admin_user_bar{
+    color: #005eee;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 20px 20px; 
+}
+
+/* 상단 검색창 */
+.admin_user_search{
+    border-radius: 7px;
+    height: 20px;
+    margin: 20px 10px;
+    padding: 1px;
+    border: 1px solid #7c7c7c;
+    width: 500px;
+}
+
+
+/* 상단 검색창 버튼 */
+.admin_user_searchBtn{
+    border-radius: 7px;
+    background-color: #005eeE;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+}
+
+/* 선택창 raidos */
+.admin_user_raidos{
+    border: none;
+    width: 500px;
+    margin-bottom: 10px;
+}
+.admin_user_raidos label{
+    padding: 0 10px;
+}
+
+/* 인원수 결과창 */
+.admin_user_countOne{
+    color: #005eee;
+    font-weight: bold;
+}
+
+.admin_user_result{
+     padding: 0 10px; 
+     margin-bottom: 10px;
+}
+
+/* 테이블 */
+
+
+.admin_user_table{
+    width: 100%;
+}
+
+.admin_user_table:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+th{
+  background-color: #8AB2E2;
+  padding: 5px;
+}
+
+th:first-child{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+th:last-child{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+tbody td{
+    width: 120px;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+tbody td:nth-child(1){
+    width: 10%;
+    padding: 0px;
+}
+tbody td:nth-child(2){
+    width: 10%;
+    padding: 0px;
+}
+
+tbody td:nth-child(6){
+    width: 90px;
+    padding: 0px;
+    margin: 0px;
+}
+
+tbody td:last-child{
+    width: 90px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.admin_user_tableBtn{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+   
+}
+
+
+.admin_user_tableBtn:hover{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+   
+}

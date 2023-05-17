@@ -18,18 +18,25 @@
 <div class="toast-container position-fixed bottom-0 end-0 p-3 top-0 start-50 translate-middle-x">
                                     <%-- text-bg-danger : 빨간색 배경 , text-bg-primary : 파랑색 배경 --%>
 
-    <c:if test="${alertType == 'success'}" >
-        <div id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    </c:if>
 
-    <c:if test="${alertType == 'fail'}" >
-        <div id="liveToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    </c:if>
+        <div id="liveToast" class="toast align-items-center 
+            <c:if test="${alertType == 'fail'}" >
+                text-bg-danger
+            </c:if>
+            <c:if test="${alertType == 'success'}" >
+                text-bg-primary
+            </c:if>
+
+        border-0" role="alert" aria-live="assertive" aria-atomic="true">
+
+
 
         <div class="d-flex">
+
             <div class="toast-body" id="toastBody">
                 ${message}
             </div>
+
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
 
@@ -51,3 +58,7 @@ if (toastTrigger) {
 }
 
 </script>
+<c:if test="${signUpPage}" >
+</c:if>
+
+

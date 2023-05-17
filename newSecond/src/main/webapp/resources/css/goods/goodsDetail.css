@@ -23,17 +23,63 @@
 
 .container--inner__top__left{
     /* border: 1px solid brown; */
-    width: 350px;
+    width: 300px;
     height: 400px;
     display: flex;
     justify-content: start;
+    margin-right: 50px;
 
 }
 
-.container--inner__top__left img{
+.carousel-wrapper{
     width: 300px;
     height: 300px;
+    overflow: hidden;
+}
+
+.carousel-wrapper > .carousel {
+    display: flex;
+    position: relative;
+    transition-duration: 0.3s;
+}
+
+
+.prev{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bolder;
+    border: none;
+    background-color: #d8e2f0;
+    box-shadow:2px 2px 2px #8e8d8d;
+    position: absolute;
+    z-index: 100px;
+    margin-top: 135px;
+    margin-left: 5px;
+    /* transition-duration: 0.2s; */
+}
+.next{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bolder;
+    border: none;
+    background-color: #d8e2f0;
+    box-shadow:2px 2px 2px #c2c2c2;
+    position: absolute;
+    z-index: 100px;
+    margin-left: 265px;
+    margin-top: 135px;
+    /* transition-duration: 0.2s; */
+}
+
+.container--inner__top__left img{
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
     border-radius: 20px;
+    
 }
 
 .container--inner__top__right{
@@ -107,9 +153,9 @@
 
 .container--inner__bottom__shopInfo__folder{
     width: 200px;
-    height: 50px;
+    height: 52px;
     background-color: #FAFCEE;
-    border: 2px solid #2365b9;
+    border: 2px solid #c5c6c7;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     font-size: 1.5em;
@@ -125,7 +171,7 @@
     width: 840px;
     height: 290px;
     background-color: #FAFCEE;
-    border: 2px solid #2365b9;
+    border: 2px solid #c5c6c7;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;

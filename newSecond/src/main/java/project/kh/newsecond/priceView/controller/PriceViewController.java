@@ -11,8 +11,6 @@ public class PriceViewController {
 	@GetMapping("/priceView")
 	public String priceView() {
 		
-		
 		return "priceView/priceView";
 	}
-
 }

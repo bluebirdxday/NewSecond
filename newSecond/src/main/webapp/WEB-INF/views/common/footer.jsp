@@ -22,10 +22,10 @@
     <section class="footer--right" id="footer--right">
         <a href="/qna/qna"><strong>1:1 문의사항</strong></a>
         <a href="#"><strong>FAQ</strong></a>
-        <a href="#"><strong>공지사항</strong></a>
+        <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
-    <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
+    <%-- <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/> --%>
     <c:if test="${not empty loginUser}" >
 		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
 	</c:if>
@@ -35,6 +35,38 @@
 
 <c:if test="${not empty message}" >
     <script>
+        alert('${message}');
+        // toastTrigger.click();
+    </script>
+</c:if>
+
+<c:if test="${empty loginUser}" >
+    <script>
+    document.querySelector('.myMarket').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+        document.getElementById('liveToast').classList.remove('text-bg-primary');
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
         toastTrigger.click();
+    });
+
+    document.getElementById('chattings').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+        document.getElementById('liveToast').classList.remove('text-bg-primary');
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
+        toastTrigger.click();
+    });
+
+    document.getElementById('notification').addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('login').click();
+        document.getElementById('liveToast').classList.remove('text-bg-primary');
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
+        toastTrigger.click();
+    });
     </script>
 </c:if>

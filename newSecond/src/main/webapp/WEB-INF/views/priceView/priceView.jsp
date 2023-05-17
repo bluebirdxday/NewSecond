@@ -27,7 +27,7 @@
                     <div class="priceView--main__leftBox">
                         <div class="priceView--main__searchBox">
                             <div>
-                                <input type="text" placeholder="검색어를 입력하세요"><button type="submit">검색</button>
+                                <input type="text" placeholder="검색어를 입력하세요" maxlength="30"><button type="submit">검색</button>
                             </div>
                         </div>
 
@@ -74,6 +74,17 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <a href="/priceView/priceViewResult">
+        <button>시세조회결과테스트버튼입니다</button>
+    </a>
+    <a href="/chatting/chatting">
+        <button>채팅테스트버튼입니다</button>
+    </a>
+    <a href="/writing/writing">
+        <button>글쓰기테스트버튼입니다</button>
+    </a>
+
     <script src="/resources/js/priceView/priceView.js"></script>
 </body>
 </html>
