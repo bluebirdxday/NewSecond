@@ -45,14 +45,17 @@
                 </div>
 
                 <div>
-                    <c:if test="${userNo==shop.userNo}" >
+                    <c:if test="${loginUserNo==shop.userNo}" >
                         <div class="myshop--info__btn-edit">편집</div>
                     </c:if>
 
-                    <c:if test="${userNo!=shop.userNo}" >
-                        <%-- 팔로우 여부 확인해서 팔로우 or 언팔로우 버튼 보이게 바꾸기 --%>
-                        <button type="button" class="myshop--info__btn-follow">팔로우</button>
-                        <%-- <button type="button" class="myshop--info__btn-follow">언팔로우</button> --%>
+                    <c:if test="${loginUserNo!=shop.userNo}" >
+                        <c:if test="${checkFollow==0}">
+                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo})">팔로우</button>
+                        </c:if>
+                        <c:if test="${checkFollow==1}">
+                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo})">언팔로우</button>
+                        </c:if>
                     </c:if>
                 </div>
             </div>
@@ -71,7 +74,7 @@
             <div class="myshop--info__middle2">
                 <div>
                     <div class="myshop--info__follower">팔로워</div>
-                    <div class="myshop--info__follower-txt">${fn:length(shop.followerList)}명</div>
+                    <div class="myshop--info__follower-txt">${fn:length(followerList)}명</div>
                 </div>
 
                 <div>
@@ -155,8 +158,8 @@
                 <ul>
                     <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
                     <li><a href="#" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
-                    <li><a href="#" rel="tab3">팔로잉 <div>${fn:length(followingList)}</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(shop.followerList)}</div></a></li>
+                    <li><a href="#" rel="tab3">팔로잉 <div>${fn:length(followList)}</div></a></li>
+                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -247,41 +250,47 @@
             <div id="tab3" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
             
-                    <c:if test="${not empty followingList}" >
-                        <c:forEach items="${followingList}" var="following">
+                    <c:if test="${not empty followList}" >
+                        <c:forEach items="${followList}" var="follow">
                             <div class="tab3--container__item">
                                 <div>
-                                        <c:if test="${empty following.userImage}" >
+                                        <c:if test="${empty follow.USER_IMG}" >
                                         <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
                                     </c:if>
 
-                                    <c:if test="${not empty following.userImage}" >
-                                        <img src="${following.userImage}">  <%-- 기본 프로필 이미지 --%>
+                                    <c:if test="${not empty follow.USER_IMG}" >
+                                        <img src="${follow.USER_IMG}"> 
                                     </c:if>
                                 </div>
-                                <div>${following.shopTitle}</div>
+                                <div>${follow.SHOP_TITLE}</div>
                                 <div>
-                                    <c:if test="${empty following.shopInfo}" >
-                                        <div>${following.shopTitle}에 오신것을 환영합니다!</div>
+                                    <c:if test="${empty follow.SHOP_INFO}" >
+                                        <div>${follow.SHOP_TITLE}에 오신것을 환영합니다!</div>
                                     </c:if>
 
-                                    <c:if test="${not empty following.shopInfo}" >
-                                        <div>${following.shopInfo}</div>
+                                    <c:if test="${not empty follow.SHOP_INFO}" >
+                                        <div>${follow.SHOP_INFO}</div>
                                     </c:if>
                                 </div>
                                 <div>
-                                    <a href="/shop/${following.userNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    <form action="/shop/unfollow" method="POST">
-                                        <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
-                                        <input type="hidden" name="unfollowUser" value="${following.userNo}">
-                                    </form>
+                                    <a href="/shop/${follow.PASSIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                    
+                                    <%-- 특정 상점의 팔로잉 탭(상점 주인이 팔로하고 있는 유저들을 내가 팔로하고 있는지 아닌지 확인해서
+                                                팔로중이면 언팔로우 버튼 뜨게 / 팔로하고 있지 않으면 팔로잉 버튼 뜨게) 
+                                                요청할 때 필요한 매개변수 2개 : (로그인 유저 번호, 상점 주인이 팔로하고 있는 유저의 번호) --%>
+
+                                                <%-- 애초에 상점에 접속할 때 상점 주인의 팔로잉, 팔로워 탭의 모든 유저들을 로그인 유저가 
+                                                팔로하고 있는지 아닌지 조회해오기 --%>
+
+
+                                    <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
                                 </div>
                             </div>
                         </c:forEach>
                     </c:if>
                 </div>
 
-                <c:if test="${empty followingList}" >
+                <c:if test="${empty followList}" >
                     <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다.</div>
                 </c:if>
                 
@@ -291,30 +300,30 @@
             <div id="tab4" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
                     
-                    <c:if test="${not empty shop.followerList}" >
-                        <c:forEach items="${shop.followerList}" var="follower">
+                    <c:if test="${not empty followerList}" >
+                        <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
                                 <div>
-                                    <c:if test="${empty follower.userImage}" >
+                                    <c:if test="${empty follower.USER_IMG}" >
                                         <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
                                     </c:if>
 
-                                    <c:if test="${not empty follower.userImage}" >
-                                        <img src="${follower.userImage}">  <%-- 기본 프로필 이미지 --%>
+                                    <c:if test="${not empty follower.USER_IMG}" >
+                                        <img src="${follower.USER_IMG}">  <%-- 기본 프로필 이미지 --%>
                                     </c:if>
                                 </div>
-                                <div>${follower.shopTitle}</div>
+                                <div>${follower.SHOP_TITLE}</div>
                                 <div>
-                                    <c:if test="${empty follower.shopInfo}" >
-                                        <div>${follower.shopTitle}에 오신것을 환영합니다!</div>
+                                    <c:if test="${empty follower.SHOP_INFO}" >
+                                        <div>${follower.SHOP_TITLE}에 오신것을 환영합니다!</div>
                                     </c:if>
 
-                                    <c:if test="${not empty follower.shopInfo}" >
-                                        <div>${follower.shopInfo}</div>
+                                    <c:if test="${not empty follower.SHOP_INFO}" >
+                                        <div>${follower.SHOP_INFO}</div>
                                     </c:if>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follower.follwingUerNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                    <a href="/shop/${follower.ACTIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                     <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
                                 </div>
                             </div>
@@ -324,7 +333,7 @@
 
                 </div>
 
-                <c:if test="${empty shop.followerList}" >
+                <c:if test="${empty followerList}" >
                     <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
                 </c:if>
             </div>

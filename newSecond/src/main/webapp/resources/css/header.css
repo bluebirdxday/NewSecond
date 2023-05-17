@@ -14,17 +14,14 @@ header {
     z-index: 100;
 }
 
-header>section:nth-child(1) {
-    height: 10%;
+a{
+    color: black;
+    text-decoration: none;
 }
 
-header>section:nth-child(2) {
-    height: 60%;
-}
-
-header>section:nth-child(3) {
-    height: 30%;
-}
+header>section:nth-child(1){ height: 10%; }
+header>section:nth-child(2){ height: 60%; }
+header>section:nth-child(3){ height: 30%; }
 
 /* 컨테이너 박스 전체 영역 */
 .header--container__containerbox {
