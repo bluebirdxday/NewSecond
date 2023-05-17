@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+            <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="QnaList" value="${QnaList}"/>
@@ -88,10 +88,10 @@
                     <c:forEach items="${QnaList}" var="qna">
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td>${qna.qndNo}</td>
+                            <td>${qna.qnaNo}</td>
                             <td>${qna.userNo}</td>
                             <td>${qna.qnaType}</td>
-                            <td><a href="\admin\admin_read\${qna.qnaNo}">${qna.qnaTitle}</a></td>
+                            <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
                             <td>${qna.qnaEnrollDate}</td>
                             <td>${qna.qnaCheckFl}</td>
                         </tr>
@@ -104,6 +104,6 @@
 
     </div>
 
-<script src="\resources\js\admin_qna.js"></script>
+<script src="\resources\js\admin\admin_qna.js"></script>
 </body>
 </html>

@@ -176,7 +176,19 @@ WHERE ACTIVE_USER_NO = 4
 AND PASSIVE_USER_NO = 1;
 
 -- 팔로우 리스트 조회
-SELECT FROM "follow"
 
 
 
+--관리자 문의사항 글 읽어오기
+	SELECT QNA_TITLE,QNA_TYPE,USER_NO,
+		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT 
+	FROM "qna"
+	WHERE QNA_NO = 1;
+
+SELECT * FROM "notice";
+
+INSERT INTO "notice"
+VALUES (SEQ_NOTICE_NO.NEXTVAL,'뉴세컨마켓 공지입니다.',
+		'안녕하세요. 관리자입니다.새 공지 올려요.',DEFAULT,10);
+
+COMMIT;

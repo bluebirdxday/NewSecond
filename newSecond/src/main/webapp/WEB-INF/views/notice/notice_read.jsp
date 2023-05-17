@@ -25,25 +25,25 @@
     <table class="notice_read_table" border="1">
             <tr>
                 <th>번호</th>
-                <td>${notice.noticeNo}</td>
+                <td>${Notice.noticeNo}</td>
             </tr>
             <tr>
                 <th>제목</th>
-                <td>${notice.noticeTitle}</td>
+                <td>${Notice.noticeTitle}</td>
             </tr>
             <tr>
                 <th>작성일</th>
-                <td>${notice.noticeEnrollDate}</td>
+                <td>${Notice.noticeEnrollDate}</td>
             </tr>
             <tr>
                 <th>조회수</th>
-                <td>${notice.noticeViewCount}</td>
+                <td>${Notice.noticeViewCount}</td>
             </tr>
         </table>
         
        <!-- 글 읽어 오기 -->
             <div class="notice_read_content">
-                <div>${notice.noticeContent}</div>
+                <div>${Notice.noticeContent}</div>
             </div>
             
     

@@ -106,7 +106,7 @@
     </div>
 
 
-<script src="\resources\js\admin_user.js"></script>
+<script src="\resources\js\admin\admin_user.js"></script>
 
 </body>
 </html>

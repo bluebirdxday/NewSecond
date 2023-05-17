@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.catalina.User;
+
 
 import project.kh.newsecond.admin.model.dto.Admin;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
+import project.kh.newsecond.qna.model.dto.Qna;
 
 public interface AdminService {
 
@@ -32,4 +33,20 @@ public interface AdminService {
 	 */
 	List<HashMap<String, Object>> selectGoodsBoardList();
 
+	Notice selectNoticeOne(int noticeNo);
+
+	/**문의사항 게시글 읽기 조회
+	 * @param qnaNo
+	 * @return
+	 */
+	Qna selectqnaOne(int qnaNo);
+
+	/**공지사항 게시글 삽입
+	 * @param notice
+	 * @return noticeNo
+	 */
+	int noticeInsert(Notice notice);
+
+	
+	
 }

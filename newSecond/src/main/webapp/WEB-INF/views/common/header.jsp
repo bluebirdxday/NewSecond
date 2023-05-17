@@ -12,6 +12,8 @@
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
                     <span> | </span>
                     <span><a href="/user/signUp">회원가입</a></span>
+                    
+                    <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>

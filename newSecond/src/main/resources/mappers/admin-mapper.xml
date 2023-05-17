@@ -33,7 +33,7 @@
    
      <resultMap type="Qna" id="qna_rm">
       <!-- DB의 기본 키(복합키면 여러 개 작성) -->
-      <id property="qndNo" column="QNA_NO" />
+      <id property="qnaNo" column="QNA_NO" />
       
       <!-- DB의 일반 컬럼들 -->
       <result property="userNo" column="USER_NO" />
@@ -74,13 +74,6 @@
 	</select>
 	
 	
-	<!-- 상세 게시글 조회 -->
-	<select id="selectNoticeOneList" resultType="_int">
-	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
-	FROM "notice"
-	WHERE NOTICE_NO = #{noticeNo}
-	</select>
-	
 	<!-- 회원 관리 조회 -->
    <select id="selectUserList" resultType="HashMap" >
    	SELECT USER_NO,USER_EMAIL,
@@ -120,6 +113,35 @@
 		
    </select>
     
-      
+      <!-- 공지사항 게시글 읽어오기 -->
+	<select id="selectNoticeOne" resultMap="notice_rm">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+	<!-- 문의사항 게시글 읽어오기 -->
+	<select id="selectqnaOne" resultMap="qna_rm">
+	SELECT QNA_TITLE,QNA_TYPE,USER_NO,
+		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT 
+	FROM "qna"
+	WHERE QNA_NO = #{qndNo}
+	</select>
+	
+	<!--공지사항 게시글 삽입  -->
+	<insert id="noticeInsert" parameterType="Notice" useGeneratedKeys="true">
+	
+	<selectKey order="BEFORE" resultType="_int" keyProperty="noticeNo">
+		SELECT SEQ_NOTICE_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	
+	INSERT INTO "notice"
+	VALUES (#{noticeNo},
+		#{noticeTitle},
+		#{noticeContent}
+		,DEFAULT,DEFAULT)
+	</insert>
+	
+	
       
 </mapper>

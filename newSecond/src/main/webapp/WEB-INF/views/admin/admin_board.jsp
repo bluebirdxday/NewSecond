@@ -89,6 +89,6 @@
 
     </div>
 
-<script src="\resources\js\admin_board.js"></script>
+<script src="\resources\js\admin\admin_board.js"></script>
 </body>
 </html>
