@@ -17,6 +17,7 @@ main{
     margin-bottom: 40px;
 }
 
+
 /* 키워드 편집 컨테이너 */
 .keywordedit--container{
     margin-top: 40px;
@@ -68,7 +69,7 @@ main{
 
 
 /* 키워드 편집 배너 - 닫기 버튼 */
-.keywordedit--banner__close>img{
+.keywordedit--banner__close>a>img{
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -124,14 +125,16 @@ main{
 
 /* 키워드 추가 추가버튼 */
 .keywordedit--content__add button{
-    width: 90px;
-    height: 40px;
-    border-radius: 5px;
-    background-color: #D9D9D9;
-    font-size: 18px;
-    font-weight: bold;
+    width: 120px;
+    height: 45px;
     border: none;
+    border-radius: 50px;
+    font-weight: bolder;
+    background: #FAFCEE;
+    box-shadow: -3px -3px 7px #eaebe673, 3px 3px 5px rgba(113, 121, 94, 0.288);
+    font-size: 20px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .keywordedit--content__add button:hover {
@@ -140,7 +143,7 @@ main{
 }
 
 /* 등록한 키워드 수 */
-#keywordCount{
+.keywordedit--banner__count>span{
     color: #FF0000;
 }
 

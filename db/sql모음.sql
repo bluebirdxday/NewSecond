@@ -85,3 +85,24 @@ SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVI
 FROM "reviews" r
 JOIN "goods_board" gb USING(GOODS_NO)
 WHERE REVIEW_NO = 8;
+
+
+
+-- 키워드 조회
+SELECT KEYWORD_NO, USER_NO, KEYWORD_TITLE, CREATE_DT  
+FROM "notification_keywords"
+WHERE USER_NO = 1;
+
+
+-- 키워드 삭제 
+DELETE FROM "notification_keywords" 
+WHERE USER_NO = 1
+AND KEYWORD_NO = 1;
+
+SELECT * FROM "goods_board"
+ORDER BY GOODS_NO;
+
+
+
+
+

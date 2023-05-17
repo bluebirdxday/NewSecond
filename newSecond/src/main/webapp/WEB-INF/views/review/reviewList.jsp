@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="reviewNo" value="${review.reviewNo}">
+                                <%-- <input type="hidden" name="reviewNo" value="${review.reviewNo}"> --%>
 
                                 <div>
                                     <button id="modifyReviewBtn" onclick="updateReview(${review.reviewNo})">수정</button>

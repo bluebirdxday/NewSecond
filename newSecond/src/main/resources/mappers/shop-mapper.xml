@@ -126,7 +126,7 @@
 		WHERE REVIEW_NO = #{reviewNo}
 	</update>
 	
-	
+	<!-- 리뷰 조회 -->
 	<select id="selectReview" resultMap="review_rm">
 		SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVIEW_DT, REVIEW_STARS
 		FROM "reviews" r
