@@ -7,6 +7,9 @@
 		
 		<result property="shopTitle" column="SHOP_TITLE" />
 		<result property="shopInfo" column="SHOP_INFO" />
+		
+		<collection property="reviewList" select="selectReviewList"
+			column="USER_NO" javaType="java.util.ArrayList" ofType="Review"/>
 	</resultMap>
 	
 	
@@ -19,6 +22,7 @@
 		<result property="reviewMessage" column="REVIEW_MESSAGE"/>
 		<result property="reviewDate" column="REVIEW_DT"/>
 		<result property="reviewStars" column="REVIEW_STARS"/>
+		
 	</resultMap>
 	
 	

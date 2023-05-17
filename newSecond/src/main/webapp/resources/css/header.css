@@ -15,6 +15,11 @@ header{
     z-index: 100;
 }
 
+a{
+    color: black;
+    text-decoration: none;
+}
+
 header>section:nth-child(1){ height: 10%; }
 header>section:nth-child(2){ height: 60%; }
 header>section:nth-child(3){ height: 30%; }

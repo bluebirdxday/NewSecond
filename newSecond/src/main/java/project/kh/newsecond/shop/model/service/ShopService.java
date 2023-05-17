@@ -1,6 +1,7 @@
 package project.kh.newsecond.shop.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
@@ -28,5 +29,40 @@ public interface ShopService {
 	 * @return openDays
 	 */
 	int selectShopOpenDay(int userNo);
+
+
+	/** 팔로우 리스트 조회
+	 * @param userNo
+	 * @return followList
+	 */
+	List<Follow> selectFollowList(int userNo);
+
+
+	/** 팔로워 리스트 조회
+	 * @param userNo
+	 * @return followerList
+	 */
+	List<Follow> selectFollowerList(int userNo);
+
+
+	/** 팔로 유무 조회(로그인 유저->상점주인)
+	 * @param map
+	 * @return checkFollow
+	 */
+	int checkFollow(Map<String, Integer> map);
+
+
+	/** 상점 팔로우
+	 * @param follow
+	 * @return result
+	 */
+	int follow(Follow follow);
+
+	
+	/** 상점 언팔로우
+	 * @param unfollow
+	 * @return result
+	 */
+	int unFollow(Follow unfollow);
 
 }
