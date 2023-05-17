@@ -33,6 +33,8 @@ public class UserController{
 		
 		User loginUser = service.login(inputUser);
 		
+		System.out.println(loginUser);
+		
 		if(loginUser != null) {
 			
 			model.addAttribute("loginUser", loginUser);

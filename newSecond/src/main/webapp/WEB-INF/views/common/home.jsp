@@ -49,8 +49,7 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
-			</section>
-			
+			</section>	
 
 			<section class="mainPage--goodsContainer1 mt-5">
 				<h4>최근 업데이트된 상품</h4>

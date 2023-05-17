@@ -133,12 +133,13 @@
 
 /* 문의하기 버튼 */
 
+
 #qna_button_wrap {
   width: 500px;
   margin: 10px auto;
 }
 #qna_button{
-   background-color: #005EEE;
+   background-color: #dbdfe6;
    color: white;
    padding: 8px 30px;
    border-radius: 8px;
