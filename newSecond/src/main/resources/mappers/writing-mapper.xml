@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="writingMapper">
+
+	<resultMap type="Shop" id="shop_rm">
+		<id property="userNo" column="USER_NO" />
+		
+		<result property="shopTitle" column="SHOP_TITLE" />
+		<result property="shopInfo" column="SHOP_INFO" />
+		
+		<collection property="followerList" select="selectFollowerList"
+			column="USER_NO" javaType="java.util.ArrayList" ofType="Follower"/>
+		<collection property="reviewList" select="selectReviewList"
+			column="USER_NO" javaType="java.util.ArrayList" ofType="Review"/>
+	</resultMap>
+	
+	<!-- 글쓰기 내용 삽입 -->
+	<insert id="writingInsert">
+		INSERT INTO "goods_board"
+		VALUES(
+			#{goodsNo},
+			#{userNo},
+			#{categoryNo},
+			#{goodsTitle},
+			#{goodsDescr},
+			#{goodsPrice},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 글쓰기 내용 삽입 중 이미지 삽입 -->
+	<insert id="writingImageInsert">
+		INSERT INTO "files"
+		VALUES(
+			#{fileNo},
+			#{goodsNo},
+			#{fileName},
+			#{fileOrder},
+			#{filePath}
+		)
+	</insert>
+	
+		
+</mapper>
