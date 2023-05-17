@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="GoodsBoardList" value="${GoodsBoardList}"/>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_board</title>
-   <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_board.css">
+   <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_board.css">
 </head>
 <body>
 
@@ -57,28 +60,29 @@
             </thead>
             </tr>
             <tbody>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td>110</td>
-                <td><a href="\admin\admin_board_read">나이키 운동화 팔아요</a></td>
-                <td>2023.04.30</td>
-                <td>250</td>
-                <td>
-                <button class="admin_board_tableBtn">블라인드 해제</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td>1100</td>
-                <td>프라이탁 50,000원</td>
-                <td>2023.04.27</td>
-                <td>330</td>
-                <td>
-                    <button class="admin_board_tableBtn">블라인드</button>
-                    </td>
-            </tr>
+
+             <c:choose>
+                <c:when test="${empty GoodsBoardList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+
+                <c:otherwise>
+                    <c:forEach items="${GoodsBoardList}" var="GoodsBoard">
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>${GoodsBoard["GOODS_NO"]}</td>
+                            <td>${GoodsBoard["USER_NO"]}</td>
+                            <td><a href="\admin\board_read\${GoodsBoard.goodsNo}">${GoodsBoard["GOODS_TITLE"]}</a></td>
+                            <td>${GoodsBoard["SELL_ENROLL_DT"]}</td>
+                            <td>${GoodsBoard["VIEW_COUNT"]}</td>
+                            <td><button class="admin_board_tableBtn">${GoodsBoard["GOODS_STATUS"]}</td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </tbody>
         </table>
     </div>

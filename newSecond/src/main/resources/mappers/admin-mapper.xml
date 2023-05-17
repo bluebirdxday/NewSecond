@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="AdminMapper">
+
+   <resultMap type="Notice" id="notice_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="noticeNo" column="NOTICE_NO" />
+      <result property="noticeTitle" column="NOTICE_TITLE" />
+      <result property="noticeContent" column="NOTICE_CONTENT" />
+      <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
+      <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+   </resultMap>
+   
+   <resultMap type="User" id="user_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userEmail" column="USER_EMAIL" />
+      <result property="userPassword" column="USER_PASSWORD" />
+      <result property="userNickname" column="USER_NICKNAME" />
+      <result property="userTel" column="USER_TEL" />
+      <result property="userAddress" column="USER_ADDRESS" />
+      <result property="userImage" column="USER_IMG" />
+      <result property="userStatus" column="USER_STATES" />
+      <result property="enrollDate" column="ENROLL_DT" />
+      <result property="userRole" column="USER_ROLE" />
+   
+   </resultMap>
+   
+     <resultMap type="Qna" id="qna_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="qndNo" column="QNA_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userNo" column="USER_NO" />
+      <result property="qnaType" column="QNA_TYPE" />      
+      <result property="qnaTitle" column="QNA_TITLE" />
+      <result property="qnaContent" column="QNA_CONTENT" />
+      <result property="qnaEnrollDate" column="QNA_ENROLL_DATE" />
+      <result property="qnaDeleteFl" column="QNA_DELETE_FL" />
+      <result property="qnaCheckFl" column="QNA_CHECK_FL" />
+      <result property="qnaCategory" column="QNA_CATEGORY" />
+
+   
+   </resultMap>
+   
+   	<resultMap type="GoodsBoard" id="goodsboard_rm">
+		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
+		<id property="goodsNo" column="GOODS_NO" />
+		
+		<!-- DB의 일반 컬럼들 -->
+		<result property="userNo" column="USER_NO" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="goodsTitle" column="GOODS_TITLE" />
+		<result property="goodsDescr" column="GOODS_DESCR" />
+		<result property="goodsPrice" column="GOODS_PRICE" />
+		<result property="viewCount" column="VIEW_COUNT" />
+		<result property="wishCount" column="WISH_COUNT" />
+		<result property="sellEnrollDate" column="SELL_ENROLL_DT" />
+		<result property="goodsStatus" column="GOODS_STATUS" />
+	</resultMap>
+   
+   
+   
+	<!--공지사항 게시글 조회  -->
+	<select id="selectNoticeList" resultMap="notice_rm">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+	
+	<!-- 상세 게시글 조회 -->
+	<select id="selectNoticeOneList" resultType="_int">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+	<!-- 회원 관리 조회 -->
+   <select id="selectUserList" resultType="HashMap" >
+   	SELECT USER_NO,USER_EMAIL,
+	  CASE 
+	    WHEN USER_STATUS = 'A' THEN '정상'
+	    WHEN USER_STATUS = 'B' THEN '블락'
+	    WHEN USER_STATUS = 'C' THEN '탈퇴'
+	  END AS USER_STATUS
+	  ,ENROLL_DT
+	FROM "users"  
+	ORDER BY USER_NO DESC
+   </select>
+   
+   
+   	<!--문의사항 게시글 조회  -->
+	<select id="selectQnaList" resultMap="qna_rm">
+	SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
+	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
+	,QNA_CHECK_FL
+	FROM "qna"
+	</select>
+   
+    
+  <!--  관리자 게시글 조회-->
+   <select id="selectGoodsBoardList" resultType="HashMap">
+	SELECT GOODS_NO,USER_NO,GOODS_TITLE
+		,TO_CHAR(SELL_ENROLL_DT, 'YYYY-MM-DD') SELL_ENROLL_DT,VIEW_COUNT
+		,CASE
+			WHEN GOODS_STATUS = 'A' THEN '정상'
+			WHEN GOODS_STATUS = 'B' THEN '블라인드'
+			WHEN GOODS_STATUS = 'D' THEN '삭제'
+			WHEN GOODS_STATUS = 'E' THEN '판매완료'
+			WHEN GOODS_STATUS = 'R' THEN '예약중'
+		END AS GOODS_STATUS
+	FROM "goods_board"
+	ORDER BY GOODS_NO DESC
+		
+   </select>
+    
+      
+      
+</mapper>

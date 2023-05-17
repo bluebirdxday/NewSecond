@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="UserList" value="${UserList}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_user</title>
-    <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_user.css">
+    <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_user.css">
 
 </head>
 <body>
@@ -38,6 +40,7 @@
                 <button  class="admin_user_searchBtn">회원 정보 조회</button>
             </span>
         </div>
+
         <div class="admin_user_raidos">
             <span>
             <label ><input type="radio" name="admin_user_raidos" id="all">전체</label>
@@ -69,58 +72,33 @@
             </thead>
             </tr>
             <tbody>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td>bungae</td>
-                <td class="admin_user_states">정상</td>
-                <td>2022.10.01</td>
-                <td>
-                <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
-                </td>
-                <td>
-                <button class="admin_user_tableBtn block" >회원블락</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>2</td>
-                <td>bungae</td>
-                <td class="admin_user_states">블락</td>
-                <td>2022.10.01</td>
-                <td>
-                    <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
-                    </td>
-                    <td>
-                    <button class="admin_user_tableBtn block" >블락해제</button>
-                    </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>3</td>
-                <td>bungae</td>
-                <td class="admin_user_states">탈퇴</td>
-                <td>2022.10.01</td>
-                <td>
-                    <button class="admin_user_tableBtn signOut">강제탈퇴</button>
-                    </td>
-                    <td>
-                    <button class="admin_user_tableBtn block">회원블락</button>
-                    </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>4</td>
-                <td>bungae</td>
-                <td class="admin_user_states">정상</td>
-                <td>2022.10.01</td>
-                <td>
-                    <button class="admin_user_tableBtn signOut">강제탈퇴</button>
-                    </td>
-                    <td>
-                    <button class="admin_user_tableBtn block">회원블락</button>
-                    </td>
-            </tr>
+
+            <c:choose>
+                <c:when test="${empty UserList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${UserList}" var="User">
+                        <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                            <td>${User["USER_NO"]}</td>
+                            <td>${User["USER_EMAIL"]}</td>
+                            <td class="admin_user_states">${User["USER_STATUS"]}</td>
+                            <td>${User["ENROLL_DT"]}</td>
+                          <td>
+                            <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
+                            </td>
+                            <td>
+                            <button class="admin_user_tableBtn block" >회원블락</button>
+                            </td>
+                            </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+            
         </tbody>
         </table>
     </div>

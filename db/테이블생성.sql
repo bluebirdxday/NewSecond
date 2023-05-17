@@ -255,6 +255,8 @@ CREATE TABLE "qna" (
 	"USER_NO"	NUMBER		NOT NULL
 );
 
+
+
 COMMENT ON COLUMN "qna"."QNA_NO" IS '문의번호(SEQ_QNA_NO)';
 
 COMMENT ON COLUMN "qna"."QNA_TITLE" IS '문의 제목';
@@ -541,3 +543,10 @@ INSERT INTO "users"
 
 COMMIT;
 ROLLBACK;
+
+--문의사항 신고유형 컬럼 삽입
+ALTER TABLE "qna" ADD QNA_TYPE VARCHAR(30);
+
+SELECT * FROM "qna";
+
+
