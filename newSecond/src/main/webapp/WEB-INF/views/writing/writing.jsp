@@ -41,7 +41,7 @@
                     <div class="post--main__ImageContainer">
                         <div>
                             <a href="#" id="imagePlus">+</a>
-                            <input type="file" id="fileInput" style="display: none;">
+                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김 --%>
