@@ -34,9 +34,6 @@
 
 <c:if test="${not empty message}" >
     <script>
-        /* alert('${message}'); */
-        const toastElList = document.querySelectorAll('.toast')
-        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
         toastTrigger.click();
     </script>
 </c:if>
