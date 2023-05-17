@@ -104,5 +104,21 @@ ORDER BY GOODS_NO;
 
 
 
+-- 팔로우 기능
+INSERT INTO "follow" VALUES(1, 3);
+
+-- 언팔로우 기능
+DELETE FROM "follow" 
+WHERE ACTIVE_USER_NO = 1
+AND PASSIVE_USER_NO = 5;
+
+-- 팔로우 유무 조회
+SELECT COUNT(*) FROM "follow" 
+WHERE ACTIVE_USER_NO = 4
+AND PASSIVE_USER_NO = 1;
+
+-- 팔로우 리스트 조회
+SELECT FROM "follow"
+
 
 
