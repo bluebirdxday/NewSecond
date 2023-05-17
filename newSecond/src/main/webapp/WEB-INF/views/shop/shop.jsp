@@ -275,11 +275,11 @@
                                 <div>
                                     <a href="/shop/${follow.PASSIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                         <c:if test="${follow.FOLLOW_YOU==0}">
-                                            <button class="tab3--item__btn-follow tab3--item__btn">팔로우</button>
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.PASSIVE_USER_NO}, ${loginUserNo})">팔로우</button>
                                         </c:if>
 
                                         <c:if test="${follow.FOLLOW_YOU==1}" >
-                                            <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.PASSIVE_USER_NO}, ${loginUserNo})">언팔로우</button>
                                         </c:if>
                                 </div>
                             </div>
@@ -322,11 +322,11 @@
                                 <div>
                                     <a href="/shop/${follower.ACTIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                         <c:if test="${follower.FOLLOW_YOU==0}">
-                                            <button class="tab3--item__btn-follow tab3--item__btn">팔로우</button>
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.ACTIVE_USER_NO}, ${loginUserNo})">팔로우</button>
                                         </c:if>
 
                                         <c:if test="${follower.FOLLOW_YOU==1}" >
-                                            <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.ACTIVE_USER_NO}, ${loginUserNo})">언팔로우</button>
                                         </c:if>
                                 </div>
                             </div>
