@@ -5,28 +5,25 @@
 
 <header class="header--container__containerbox">
     <section class="header--container__top">
-        <div></div>
+
+        
         <div>
             <c:choose>
                 <c:when test="${empty loginUser}">
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
-                    <span> | </span>
+                    <span>  </span>
                     <span><a href="/user/signUp">회원가입</a></span>
                 </c:when>
             
                 <c:otherwise>
                     <span class="logout"><a href="/user/logout">로그아웃</a></span>
-                    <span> | </span>
-                    <span class="myPage"><a href="">마이페이지</a></span>
-                    <span> | </span>
-                    <span class="wishList"><a href="/wish/wish">관심상품</a></span>
+                    <span>  </span>
+                    <jsp:include page="/WEB-INF/views/user/mypage/mypageDropdown.jsp"/>
                 
-                
-                <c:if test="${loginUser.userRole == 2}" >
+                <%-- <c:if test="${loginUser.userRole == 2}" >
                     <span> | </span>
                     <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
-
-                </c:if>
+                </c:if> --%>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -39,19 +36,6 @@
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
         </div>
-
-        <%-- 검색창 (수정) --%>
-        <%-- <section>
-            <article class="header--mid__search">
-                <form action="/search/goodsList" method="GET">
-                    <fieldset>
-                    <input type="search" name="query" id="query" placeholder="상품명, @상점명을 입력해주세요.">
-                    <button class="searchBtn"></button>
-                    </fieldset>
-                </form>
-            </article>
-        </section> --%>
-
     
         <form action="/search/goodsList" method="GET">
             <div class="header--mid__serach"><!-- 검색창 -->
@@ -60,7 +44,6 @@
                 <button class="searchBtn"></button>
             </div>
         </form>
-    
 
         <div class="header--right__icons">
                 <span>
