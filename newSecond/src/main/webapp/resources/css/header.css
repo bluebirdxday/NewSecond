@@ -12,7 +12,7 @@ header{
     display: flex;
     height: 150px;
     user-select: none;
-    z-index: 10000;
+    z-index: 100;
 }
 
 header>section:nth-child(1){ height: 10%; }
@@ -190,7 +190,12 @@ header>section:nth-child(3){ height: 30%; }
     font-weight: 700;
 }
 
-.nav--container__menu :last-of-type{
+.nav--container__menu div a{
+    color: black;
+    text-decoration: none;
+}
+
+.nav--container__menu div:last-of-type{
     border-right: 2px solid #E3E3E3;
 }
 

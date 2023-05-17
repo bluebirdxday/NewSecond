@@ -87,6 +87,18 @@ JOIN "goods_board" gb USING(GOODS_NO)
 WHERE REVIEW_NO = 8;
 
 
+-- 다음 회원번호 미리 뽑아오기  ==> 셀렉트 키를 통한 응용
+SELECT SEQ_USER_NO.NEXTVAL FROM DUAL
+
+-- 상점 정보 입력
+INSERT INTO "shop"
+	VALUES(#{userNo},
+			#{userNickname}||'님의 상점',
+			NULL);
+
+-- 서버 커넥션 상태 조회
+SELECT STATUS FROM V$SESSION;
+
 --공지사항 조회 1~10행/11행 조회
 SELECT * FROM(
 	SELECT ROWNUM NUM, N.* FROM(
@@ -134,5 +146,37 @@ SELECT GOODS_NO,USER_NO,GOODS_TITLE
 	END
 FROM "goods_board"
 ORDER BY GOODS_NO DESC;
+-- 키워드 조회
+SELECT KEYWORD_NO, USER_NO, KEYWORD_TITLE, CREATE_DT  
+FROM "notification_keywords"
+WHERE USER_NO = 1;
+
+
+-- 키워드 삭제 
+DELETE FROM "notification_keywords" 
+WHERE USER_NO = 1
+AND KEYWORD_NO = 1;
+
+SELECT * FROM "goods_board"
+ORDER BY GOODS_NO;
+
+
+
+-- 팔로우 기능
+INSERT INTO "follow" VALUES(1, 3);
+
+-- 언팔로우 기능
+DELETE FROM "follow" 
+WHERE ACTIVE_USER_NO = 1
+AND PASSIVE_USER_NO = 5;
+
+-- 팔로우 유무 조회
+SELECT COUNT(*) FROM "follow" 
+WHERE ACTIVE_USER_NO = 4
+AND PASSIVE_USER_NO = 1;
+
+-- 팔로우 리스트 조회
+SELECT FROM "follow"
+
 
 

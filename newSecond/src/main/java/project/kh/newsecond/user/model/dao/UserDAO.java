@@ -24,4 +24,9 @@ public class UserDAO {
 		return sqlSession.insert("userMapper.signUp", inputUser);
 	}
 
+
+	public int insertShopData(User inputUser) {
+		return sqlSession.insert("userMapper.insertShopData", inputUser);
+	}
+
 }

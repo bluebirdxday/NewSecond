@@ -12,7 +12,6 @@
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
                     <span> | </span>
                     <span><a href="/user/signUp">회원가입</a></span>
-                     <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>
@@ -21,8 +20,8 @@
                     <span class="myPage"><a href="">마이페이지</a></span>
                     <span> | </span>
                     <span class="wishList"><a href="/wish/wish">관심상품</a></span>
-                     
-               
+                
+                
                 <c:if test="${loginUser.userRole == 2}" >
                     <span> | </span>
                     <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
@@ -53,7 +52,7 @@
             </article>
         </section> --%>
 
-     
+    
         <form action="/search/goodsList" method="GET">
             <div class="header--mid__serach"><!-- 검색창 -->
                 <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
@@ -61,18 +60,18 @@
                 <button class="searchBtn"></button>
             </div>
         </form>
-     
+    
 
         <div class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
-                        <a href="/">
+                        <a href="/" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
 
                     <c:if test="${not empty loginUser}" >
-                        <a href="/shop/${loginUser.userNo}">
+                        <a href="/shop/${loginUser.userNo}" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
@@ -93,30 +92,11 @@
     </section>
 
     <nav class="nav--container__menu">
-        <div>홈</div>
-        <div>카테고리</div>
-        <div>시세조회</div>
+        <div><a href="#">홈</a></div>
+        <div><a href="#">카테고리</a></div>
+        <div><a href="/priceView/priceView">시세조회</a></div>
     </nav>
     
 </header>
 
-
-<c:if test="${empty loginUser}" >
-    <script>
-    document.querySelector('.myMarket').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('chattings').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('notification').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-    </script>
-</c:if>
 

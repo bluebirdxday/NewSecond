@@ -11,13 +11,13 @@
 	<typeAliases>
 		<typeAlias type="project.kh.newsecond.user.model.dto.User" alias="User" />
 		<typeAlias type="project.kh.newsecond.shop.model.dto.Shop" alias="Shop" />
-		<typeAlias type="project.kh.newsecond.shop.model.dto.Following" alias="Following" />
-		<typeAlias type="project.kh.newsecond.shop.model.dto.Follower" alias="Follower" />
+		<typeAlias type="project.kh.newsecond.shop.model.dto.Follow" alias="Follow" />
 		<typeAlias type="project.kh.newsecond.review.model.dto.Review" alias="Review" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
 		<typeAlias type="project.kh.newsecond.notice.model.dto.Notice" alias="Notice" />
 		<typeAlias type="project.kh.newsecond.admin.model.dto.Admin" alias="Admin" />
 		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
+		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
 	</typeAliases>
 	
 	
@@ -28,6 +28,10 @@
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
 		<mapper resource="/mappers/notice-mapper.xml" />
 		<mapper resource="/mappers/admin-mapper.xml" />
+		<mapper resource="/mappers/notification-mapper.xml" />
+		<mapper resource="/mappers/follow-mapper.xml" />
+		<mapper resource="/mappers/search-mapper.xml" />
+		<mapper resource="/mappers/goods-mapper.xml" />
 	</mappers>
 
 

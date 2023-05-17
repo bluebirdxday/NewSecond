@@ -1,4 +1,4 @@
-package project.kh.newsecond.shop.model.dto;
+package project.kh.newsecond.notification.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +9,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Following {
-
+public class NotificationKeyword {
+	private int keywordNo;
 	private int userNo;
-	private String shopTitle;
-	private String shopInfo;
-	private String userImage;
+	private String keywordTitle;
+	private String createDate;
 }
