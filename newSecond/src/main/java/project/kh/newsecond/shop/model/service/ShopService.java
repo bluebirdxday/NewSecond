@@ -32,17 +32,17 @@ public interface ShopService {
 
 
 	/** 팔로우 리스트 조회
-	 * @param userNo
+	 * @param map
 	 * @return followList
 	 */
-	List<Follow> selectFollowList(int userNo);
+	List<Map<String, Object>> selectFollowList(Map<String, Integer> map);
 
 
 	/** 팔로워 리스트 조회
-	 * @param userNo
+	 * @param map
 	 * @return followerList
 	 */
-	List<Follow> selectFollowerList(int userNo);
+	List<Map<String, Object>> selectFollowerList(Map<String, Integer> map);
 
 
 	/** 팔로 유무 조회(로그인 유저->상점주인)

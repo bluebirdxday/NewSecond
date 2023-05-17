@@ -40,14 +40,14 @@ public class ShopServiceImpl implements ShopService{
 	
 	// 팔로우 리스트 조회
 	@Override
-	public List<Follow> selectFollowList(int userNo) {
-		return dao.selectFollowList(userNo);
+	public List<Map<String, Object>> selectFollowList(Map<String, Integer> map) {
+		return dao.selectFollowList(map);
 	}
 
 	// 팔로워 리스트 조회
 	@Override
-	public List<Follow> selectFollowerList(int userNo) {
-		return dao.selectFollowerList(userNo);
+	public List<Map<String, Object>> selectFollowerList(Map<String, Integer> map) {
+		return dao.selectFollowerList(map);
 	}
 
 	// 팔로 유무 조회(로그인 유저->상점주인)

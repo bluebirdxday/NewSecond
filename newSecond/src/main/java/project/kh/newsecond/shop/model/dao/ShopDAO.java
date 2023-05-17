@@ -37,13 +37,13 @@ public class ShopDAO {
 
 	
 	// 팔로우 리스트 조회
-	public List<Follow> selectFollowList(int userNo) {
-		return sqlSession.selectList("followMapper.selectFollowList", userNo);
+	public List<Map<String, Object>> selectFollowList(Map<String, Integer> map) {
+		return sqlSession.selectList("followMapper.selectFollowList", map);
 	}
 
 	// 팔로워 리스트 조회
-	public List<Follow> selectFollowerList(int userNo) {
-		return sqlSession.selectList("followMapper.selectFollowerList", userNo);
+	public List<Map<String, Object>> selectFollowerList(Map<String, Integer> map) {
+		return sqlSession.selectList("followMapper.selectFollowerList", map);
 	}
 
 
