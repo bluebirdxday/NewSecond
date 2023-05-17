@@ -123,3 +123,22 @@ SELECT * FROM(
 		) N
 )
 WHERE NUM BETWEEN 1 AND 11;
+
+-- 키워드 조회
+SELECT KEYWORD_NO, USER_NO, KEYWORD_TITLE, CREATE_DT  
+FROM "notification_keywords"
+WHERE USER_NO = 1;
+
+
+-- 키워드 삭제 
+DELETE FROM "notification_keywords" 
+WHERE USER_NO = 1
+AND KEYWORD_NO = 1;
+
+SELECT * FROM "goods_board"
+ORDER BY GOODS_NO;
+
+
+
+
+

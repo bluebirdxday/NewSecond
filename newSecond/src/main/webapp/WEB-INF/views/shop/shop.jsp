@@ -45,11 +45,11 @@
                 </div>
 
                 <div>
-                    <c:if test="${loginUser.userNo==shop.userNo}" >
+                    <c:if test="${userNo==shop.userNo}" >
                         <div class="myshop--info__btn-edit">편집</div>
                     </c:if>
 
-                    <c:if test="${loginUser.userNo!=shop.userNo}" >
+                    <c:if test="${userNo!=shop.userNo}" >
                         <%-- 팔로우 여부 확인해서 팔로우 or 언팔로우 버튼 보이게 바꾸기 --%>
                         <button type="button" class="myshop--info__btn-follow">팔로우</button>
                         <%-- <button type="button" class="myshop--info__btn-follow">언팔로우</button> --%>

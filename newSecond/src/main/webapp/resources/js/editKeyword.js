@@ -1,38 +1,48 @@
-// 키워드 추가 버튼 클릭 시
-document.getElementById("addKeyword").addEventListener("click", ()=>{
-    
-    const newDiv = document.createElement("div");
-    const newChildDiv = document.createElement("div");
-    const newChildDiv2 = document.createElement("div");
-    const newChildDiv2Child = document.createElement("img");
-    
-    const inputKeyword = document.querySelector(".keywordedit--input>input");
 
-    newDiv.setAttribute("class", "keywordedit--item");
+// 키워드 수 제한 두기
+const maxKeyword = document.getElementById("maxKeyword");
 
-    newChildDiv.innerText = inputKeyword.value;
-
-    newChildDiv2Child.setAttribute("src", "/resources/src/img/minus-button.png");
-    newChildDiv2Child.setAttribute("class", "keyword--btn__delete");
-    
-    newChildDiv2.appendChild(newChildDiv2Child);
-    
-    newDiv.appendChild(newChildDiv);
-    newDiv.appendChild(newChildDiv2);
-    
-    document.querySelector(".keywordedit--content__list").appendChild(newDiv);
-    
-    inputKeyword.value = "";
-
-    addKeyword();
-    
-});
+if(maxKeyword!=null){
+    maxKeyword.addEventListener("cilck", ()=>{
+        alert("등록할 수 있는 키워드 개수를 초과하였습니다.")
+    });
+}
 
 
-function addKeyword(){
+// //키워드 추가 버튼 클릭 시
+// const addKeyword = document.getElementById("addKeyword");
+
+// addKeyword.addEventListener("click", ()=>{
     
-    const deleteKeywordList = document.querySelectorAll(".keyword--btn__delete");
+//     const newDiv = document.createElement("div");
+//     const newChildDiv = document.createElement("div");
+//     const newChildDiv2 = document.createElement("div");
+//     const newChildDiv2Child = document.createElement("img");
     
+//     const inputKeyword = document.querySelector(".keywordedit--input>input");
+
+//     newDiv.setAttribute("class", "keywordedit--item");
+
+//     newChildDiv.innerText = inputKeyword.value;
+
+//     newChildDiv2Child.setAttribute("src", "/resources/src/img/minus-button.png");
+//     newChildDiv2Child.setAttribute("class", "keyword--btn__delete");
+    
+//     newChildDiv2.appendChild(newChildDiv2Child);
+    
+//     newDiv.appendChild(newChildDiv);
+//     newDiv.appendChild(newChildDiv2);
+    
+//     document.querySelector(".keywordedit--content__list").appendChild(newDiv);
+    
+//     addKeyword();
+    
+// });
+
+
+const deleteKeywordList = document.querySelectorAll(".keyword--btn__delete");
+
+if(deleteKeywordList != null){
     deleteKeywordList.forEach(function(item){
     
         // 키워드 삭제 hover시
@@ -44,10 +54,56 @@ function addKeyword(){
             item.src = "/resources/src/img/minus-button.png"
         });
     
-        // 키워드 삭제 클릭 시
-        item.addEventListener("click", ()=>{
-            item.parentElement.parentElement.remove();
-        });
-    
     });
+}
+
+
+// 키워드 추가 버튼 클릭 시
+const insertKeywordText = document.getElementById("insertKeywordFrm");
+const keyword = document.querySelector('input[name="keyword"]');
+
+insertKeywordText.addEventListener("submit", (e)=>{
+    
+    if(keyword.value.trim().length<2){
+        alert("키워드를 최소 2글자 이상 입력해주세요.");
+        e.preventDefault();
+        keyword.value = "";
+    }
+    
+    if(keyword.value.trim().length>20){
+        alert("키워드는 최대 20글자까지 가능합니다.");
+        e.preventDefault();
+        keyword.value = "";
+    }
+    
+});
+
+
+// 키워드 삭제 버튼 클릭 시
+function deleteKeyword(keywordNo) {
+
+    console.log(userNo);
+    console.log(keywordNo);
+    if(confirm("정말 삭제하시겠습니까?")){
+        fetch("/notification/editKeyword/delete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body:  JSON.stringify({"userNo" : userNo, "keywordNo" : keywordNo})
+            })
+            .then(response => response.text())
+            .then(result => {
+
+                if (result>0) {
+                    alert("키워드가 삭제되었습니다.");
+                    location.reload();
+                } else {
+                    alert("키워드 삭제에 실패하였습니다.");
+                }
+        
+                }
+            ).catch(error => {
+            console.log(error.message);
+            });
+
+    }
 }

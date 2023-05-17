@@ -27,9 +27,7 @@ public class ShopController {
 
 	// 회원 상점 조회
 	@GetMapping("/{userNo}")
-	public String shop(@SessionAttribute(value="loginUser", required=false) User loginUser,
-			@PathVariable("userNo") int userNo,
-			Model model){
+	public String shop( @PathVariable("userNo") int userNo, Model model){
 		
 		
 		Shop shop = service.selectShopInfo(userNo);
@@ -43,7 +41,7 @@ public class ShopController {
 		model.addAttribute("shop", shop);
 		model.addAttribute("goodsBoardList", boardList);
 		model.addAttribute("openDays", openDays);
-		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("userNo", userNo);
 		
 		return "shop/shop";
 	}
