@@ -21,6 +21,9 @@
 		<result property="filePath" column="FILE_PATH" />
 	</resultMap>
 	
+	
+	
+	
 	<!-- 글쓰기 내용 삽입 -->
 	<insert id="writingInsert">
 		INSERT INTO "goods_board"
@@ -49,6 +52,5 @@
 			#{filePath}
 		)
 	</insert>
-	
 		
 </mapper>
