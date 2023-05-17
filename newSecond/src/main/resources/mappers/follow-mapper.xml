@@ -10,6 +10,7 @@
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="shopInfo" column="SHOP_INFO"/>
 		<result property="userImage" column="USER_IMG"/>
+		<result property="followYou" column="FOLLOW_YOU"/>
 	</resultMap>
 	
 
@@ -52,8 +53,10 @@
 		
 		
 		<!-- 팔로우 리스트 조회 -->
-		<select id="selectFollowList" resultType="HashMap">
-			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, USER_IMG, 
+		<select id="selectFollowList" resultMap="follow_rm">
+			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
+						NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
+						NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG, 
 				(SELECT COUNT(*) FROM "follow" 
 				WHERE ACTIVE_USER_NO = #{activeUserNo}
 				AND PASSIVE_USER_NO = f.PASSIVE_USER_NO) FOLLOW_YOU
@@ -65,8 +68,10 @@
 		
 		
 		<!-- 팔로워 리스트 조회 -->
-		<select id="selectFollowerList" resultType="HashMap">
-			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, USER_IMG,
+		<select id="selectFollowerList" resultMap="follow_rm">
+			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
+					NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
+ 					NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG,
 				(SELECT COUNT(*) FROM "follow" 
 				WHERE ACTIVE_USER_NO = #{activeUserNo}
 				AND PASSIVE_USER_NO = f.ACTIVE_USER_NO) FOLLOW_YOU

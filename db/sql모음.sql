@@ -1,5 +1,5 @@
 -- 특정 유저 상점 조회
-SELECT USER_NO, SHOP_TITLE, SHOP_INFO
+SELECT USER_NO, SHOP_TITLE, SHOP_INFO, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
 FROM "shop"
 JOIN "users" USING(USER_NO)
 WHERE USER_NO = 1;
@@ -17,25 +17,10 @@ FROM "users"
 WHERE USER_NO = 1;
 
 
--- 특정 회원 팔로워 리스트
-SELECT FOLLOWING_USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG 
-FROM "follow" F
-JOIN "users" U ON(U.USER_NO = F.USER_NO)
-JOIN "shop" S ON(FOLLOWING_USER_NO = S.USER_NO)
-WHERE F.USER_NO = 1;
-
-
--- 특정 상점 팔로잉 리스트
-SELECT F.USER_NO USER_NO, SHOP_TITLE, SHOP_INFO, U.USER_IMG
-FROM "follow" F
-JOIN "users" U ON(U.USER_NO = F.USER_NO)
-JOIN "shop" S ON(U.USER_NO = S.USER_NO) 
-WHERE FOLLOWING_USER_NO = 6;
-
 
 -- 특정 유저(상점) 거래 후기 조회 (받은 후기)
 SELECT REVIEW_NO, SHOP_TITLE, GOODS_TITLE, REVIEW_MESSAGE,
-		REVIEW_DT, REVIEW_STARS
+		REVIEW_DT, REVIEW_STARS, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
 FROM "reviews" R
 JOIN "users" USING(USER_NO)
 JOIN "shop" USING(USER_NO)
@@ -170,3 +155,14 @@ WHERE ACTIVE_USER_NO = 10;
 
 
 SELECT * FROM "follow";
+
+SELECT * FROM "files";
+UPDATE "files" 
+SET FILE_PATH = '/resources/src/user/';
+
+
+COMMIT;
+
+SELECT USER_NO, SHOP_TITLE, USER_IMG FROM "shop"
+JOIN "users" USING(USER_NO);
+
