@@ -25,18 +25,19 @@
         <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
-    <%-- <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/> --%>
-    <c:if test="${not empty loginUser}" >
-		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
-	</c:if>
+    <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
+
 
 </footer>
 
+<script src="/resources/bootstrap/js/bootstrap.bundle.js"></script>
 
 <c:if test="${not empty message}" >
     <script>
-        alert('${message}');
-        // toastTrigger.click();
+        /* alert('${message}'); */
+        const toastElList = document.querySelectorAll('.toast')
+        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+        toastTrigger.click();
     </script>
 </c:if>
 
