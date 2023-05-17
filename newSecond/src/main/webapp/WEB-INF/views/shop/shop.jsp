@@ -274,16 +274,13 @@
                                 </div>
                                 <div>
                                     <a href="/shop/${follow.PASSIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    
-                                    <%-- 특정 상점의 팔로잉 탭(상점 주인이 팔로하고 있는 유저들을 내가 팔로하고 있는지 아닌지 확인해서
-                                                팔로중이면 언팔로우 버튼 뜨게 / 팔로하고 있지 않으면 팔로잉 버튼 뜨게) 
-                                                요청할 때 필요한 매개변수 2개 : (로그인 유저 번호, 상점 주인이 팔로하고 있는 유저의 번호) --%>
+                                        <c:if test="${follow.FOLLOW_YOU==0}">
+                                            <button class="tab3--item__btn-follow tab3--item__btn">팔로우</button>
+                                        </c:if>
 
-                                                <%-- 애초에 상점에 접속할 때 상점 주인의 팔로잉, 팔로워 탭의 모든 유저들을 로그인 유저가 
-                                                팔로하고 있는지 아닌지 조회해오기 --%>
-
-
-                                    <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                        <c:if test="${follow.FOLLOW_YOU==1}" >
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                        </c:if>
                                 </div>
                             </div>
                         </c:forEach>
@@ -300,7 +297,7 @@
             <div id="tab4" class="myshop--tab__content">
                 <div class="myshop--tab3__gridcontainer">
                     
-                    <%-- <c:if test="${not empty followerList}" >
+                    <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
                                 <div>
@@ -324,7 +321,13 @@
                                 </div>
                                 <div>
                                     <a href="/shop/${follower.ACTIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
+                                        <c:if test="${follower.FOLLOW_YOU==0}">
+                                            <button class="tab3--item__btn-follow tab3--item__btn">팔로우</button>
+                                        </c:if>
+
+                                        <c:if test="${follower.FOLLOW_YOU==1}" >
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                        </c:if>
                                 </div>
                             </div>
                         </c:forEach>
@@ -335,7 +338,7 @@
 
                 <c:if test="${empty followerList}" >
                     <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
-                </c:if> --%>
+                </c:if>
             </div>
         </div>
 
