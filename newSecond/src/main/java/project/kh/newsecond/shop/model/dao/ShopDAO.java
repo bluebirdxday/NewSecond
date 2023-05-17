@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
-import project.kh.newsecond.shop.model.dto.Following;
+import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 @Repository
@@ -33,7 +33,7 @@ public class ShopDAO {
 	}
 
 	// 팔로잉 리스트 조회
-	public List<Following> selectFollowingList(int userNo) {
+	public List<Follow> selectFollowingList(int userNo) {
 		return sqlSession.selectList("shopMapper.selectFollowingList", userNo);
 	}
 
