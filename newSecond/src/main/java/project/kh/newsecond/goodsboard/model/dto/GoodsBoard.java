@@ -23,4 +23,5 @@ public class GoodsBoard {
 	private String sellEnrollDate;
 	private String goodsStatus;
 	
+	
 }

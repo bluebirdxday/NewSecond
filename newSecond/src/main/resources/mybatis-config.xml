@@ -25,6 +25,8 @@
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
 		<mapper resource="/mappers/notification-mapper.xml" />
 		<mapper resource="/mappers/follow-mapper.xml" />
+		<mapper resource="/mappers/search-mapper.xml" />
+		<mapper resource="/mappers/goods-mapper.xml" />
 	</mappers>
 
 
