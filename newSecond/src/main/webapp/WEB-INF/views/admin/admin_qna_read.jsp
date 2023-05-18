@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<c:set var="qna" value="${Qna}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_qnd_detail</title>
-    <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_qna_read.css">
+    <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_qna_read.css">
 </head>
 <body>
 
@@ -36,25 +39,25 @@
     <table class="admin_qna_read_table" border="1">
             <tr>
                 <th>제목</th>
-                <td>사기 당했어요</td>
+                <td>${qna.qnaTitle}</td>
             </tr>
             <tr>
                 <th>문의유형</th>
-                <td>거래신고</td>
+                <td>${qna.qnaType}</td>
             </tr>
             <tr>
                 <th>회원번호</th>
-                <td>010</td>
+                <td>${qna.userNo}</td>
             </tr>
             <tr>
                 <th>작성일</th>
-                <td>2023.05.01</td>
+                <td>${qna.qnaEnrollDate}</td>
             </tr>
         </table>
         
        <!-- 글 읽어 오기 -->
             <div class="admin_qna_read_content">
-                <div>샀는데 가품이에요. 신고 어떻게 하나요?</div>
+                <div>${qna.qnaContent}</div>
             </div>
             
             <!-- 댓글기능 -->
@@ -71,6 +74,6 @@
             </div>
 
    
-            <script src="\resources\js\admin_qna_read.js"></script>
+            <script src="\resources\js\admin\admin_qna_read.js"></script>
 </body>
 </html>

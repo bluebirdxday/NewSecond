@@ -1,7 +1,5 @@
 package project.kh.newsecond.user.controller;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +30,7 @@ public class UserController{
 		
 		
 		User loginUser = service.login(inputUser);
+		
 		
 		System.out.println(loginUser);
 		

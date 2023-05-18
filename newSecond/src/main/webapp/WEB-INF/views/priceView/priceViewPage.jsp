@@ -75,11 +75,14 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <a href="/priceView/priceViewResult">
+    <a href="/priceView/priceResultSee">
         <button>시세조회결과테스트버튼입니다</button>
     </a>
-    <a href="/chatting/chatting">
+    <a href="/chatting/chat">
         <button>채팅테스트버튼입니다</button>
+    </a>
+    <a href="/writing/write">
+        <button>글쓰기테스트버튼입니다</button>
     </a>
 
     <script src="/resources/js/priceView/priceView.js"></script>

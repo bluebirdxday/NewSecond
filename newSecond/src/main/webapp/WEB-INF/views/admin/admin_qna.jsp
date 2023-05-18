@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+            <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="QnaList" value="${QnaList}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_user</title>
-    <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_qna.css">
+    <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_qna.css">
 </head>
 <body>
 
@@ -75,72 +76,34 @@
             </thead>
             </tr>
             <tbody>
-            <!-- <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>번호</td>
-                <td>회원번호</td>
-                <td>신고유형</td>
-                <td>제목</td>
-                <td>작성일</td>
-                <td>
-                <button class="admin_user_tableStatus answer[In]Complete">답변상태</button>
-                </td>
-                <td>
-            </tr> -->
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>4</td>
-                <td>010</td>
-                <td>거래신고</td>
-                <td><a href="\admin\admin_qna_read">사기 당했어요(상세페이지 예시)</a></td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerComplete">답변완료</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>3</td>
-                <td>1100</td>
-                <td>오류/제안</td>
-                <td>오류 났어요</td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerIncomplete">답변 미등록</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>2</td>
-                <td>120</td>
-                <td>채팅/알람</td>
-                <td>채팅 내용 신고할게요</td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerComplete">답변완료</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>1</td>
-                <td>125</td>
-                <td>기타문의</td>
-                <td>로그아웃이 안돼요</td>
-                <td>2023.04.05</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerIncomplete">답변 미등록</span>
-                </td>
-                <td>
-            </tr>
+            <c:choose>
+                <c:when test="${empty QnaList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+
+                <c:otherwise>
+                    <c:forEach items="${QnaList}" var="qna">
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>${qna.qnaNo}</td>
+                            <td>${qna.userNo}</td>
+                            <td>${qna.qnaType}</td>
+                            <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
+                            <td>${qna.qnaEnrollDate}</td>
+                            <td>${qna.qnaCheckFl}</td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </tbody>
         </table>
     </div>
 
     </div>
 
-<script src="\resources\js\admin_qna.js"></script>
+<script src="\resources\js\admin\admin_qna.js"></script>
 </body>
 </html>

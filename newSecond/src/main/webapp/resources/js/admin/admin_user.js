@@ -22,6 +22,21 @@ for(let i=0; i<forcedBlock.length;i++){
     });  
 }
 
+/* 강제 탈퇴 */
+const forcedSignOut = document.getElementsByClassName('signOut');
+
+for(let i=0; i<forcedSignOut.length;i++){
+    forcedSignOut[i].addEventListener('click',()=>{
+        if(nameOfStates[i].innerText == '정상'){
+            forcedSignOut[i].innerText = '강제탙퇴';
+            nameOfStates[i].innerText = '탈퇴' ;
+        }else if(nameOfStates[i].innerText == '탈퇴'){
+            forcedSignOut[i].innerText = '탈퇴해제';
+            nameOfStates[i].innerText = '정상';   
+        }
+    });  
+}
+
 
 /* 체크박스 전체선택 */
 function userSelectAll(userSelectAll)  {
