@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="Notice" value="${NoticeList}"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_notice</title>
-   <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_notice.css">
+   <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_notice.css">
 </head>
 <body>
 
@@ -48,7 +48,8 @@
         <table class="admin_notice_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id=""></th>
+                <th><input type="checkbox" name="" id=""value='selectall
+                'onclick='boardSelectAll(this)''></th>
                 <th >번호</th>
                 <th>제목</th>
                 <th>작성일</th>
@@ -56,39 +57,40 @@
                 <th colspan="2">수정</th>
             </thead>
             </tr>
-            <tbody>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td><a href="\admin\admin_notice_read">뉴세컨마켓 사용 가이드</a></td>
-                <td>2023.04.20</td>
-                <td>220</td>
-                <td>
-                <button class="admin_notice_tableBtn">내용 수정</button>
-                </td>
-                <td>
-                <button class="admin_notice_tableBtn">필독 취소</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>2</td>
-                <td>뉴세컨마켓 사용 가이드</td>
-                <td>2023.04.19</td>
-                <td>330</td>
-                <td>
-                    <button class="admin_notice_tableBtn">공지 복구</button>
-                    </td>
-                    <td>
-                    <button class="admin_notice_tableBtn">필독 등록</button>
-                    </td>
-            </tr>
+            <c:choose>
+                <c:when test="${empty NoticeList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+
+                <c:otherwise>
+                    <c:forEach items="${NoticeList}" var="notice">
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>${notice.noticeNo}</td>
+                            <td><a href='/admin/admin_notice_read/${notice.noticeNo}'>${notice.noticeContent}</a></td>
+                            <td>${notice.noticeEnrollDate}</td>
+                            <td>${notice.noticeViewCount}</td>
+                            <td>
+                            <button class="admin_notice_tableBtn">내용 수정</button>
+                            </td>
+                            <td>
+                            <button class="admin_notice_tableBtn">필독 등록</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+
+            
         </tbody>
         </table>
     </div>
 
     </div>
 
-<script src="\resources\js\admin_notice.js"></script>
+<script src="\resources\js\admin\admin_notice.js"></script>
 </body>
 </html>

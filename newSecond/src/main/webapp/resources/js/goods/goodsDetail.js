@@ -1,3 +1,36 @@
+// 캐러셀
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+const carousel = document.querySelector('.carousel');
+
+let index = 0;
+
+prev.addEventListener('click', () => {
+    if(index === 0) return;
+    index -= 1;
+    carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
+    // carousel.style.transition = 'all 0.5s ease-in-out';
+    // document.querySelector(".img").style.transition = 'all 0.5s ease-in-out'
+    // prev.style.tra
+
+	
+});
+// 마지막 사진 인덱스???
+next.addEventListener('click', () => {
+    if(index === 2) return;
+    index += 1;
+    carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
+});
+
+// function moveSmooth(name){
+//     var location = document.
+// }
+
+
+
+
+
+
 // 좋아요 버튼
 const goodsLike = document.getElementById("goodsLike");
 

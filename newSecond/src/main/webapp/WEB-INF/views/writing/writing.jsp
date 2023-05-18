@@ -29,7 +29,7 @@
                     <span id="textLimit20Result">(0/20)</span>
                 </div>
                 <article>
-                    <input class="textLimit20" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
+                    <input class="textLimit20" id="title" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
                 </article>
             </div>
             <div class="post--main__inputImage">
@@ -41,7 +41,7 @@
                     <div class="post--main__ImageContainer">
                         <div>
                             <a href="#" id="imagePlus">+</a>
-                            <input type="file" id="fileInput" style="display: none;">
+                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김 --%>
@@ -58,6 +58,7 @@
                 <article>
                     <textarea rows="4" cols="50"
                         class="textLimit500"
+                        id="detailText"
                         placeholder="구입 연도, 브랜드, 사용감, 하자 유무 등 판매하고자 하는 상품과 관련된 정보를 포함하여 게시글 내용을 작성해주세요.(500자 이내)"
                         maxlength="500" required></textarea>
                 </article>
@@ -94,6 +95,8 @@
                             <div class="category--1depth__other">기타</div>
                         </div>
                         <div id="category--2depth">
+                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div> 
+                            <%-- ><div id="jewelry2" class="category--2depth__item">시계/주얼리</div> --%>
                         </div>
                     </article>
                 </div>

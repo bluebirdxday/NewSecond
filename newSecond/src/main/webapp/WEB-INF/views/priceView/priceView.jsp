@@ -81,6 +81,9 @@
     <a href="/chatting/chatting">
         <button>채팅테스트버튼입니다</button>
     </a>
+    <a href="/writing/writing">
+        <button>글쓰기테스트버튼입니다</button>
+    </a>
 
     <script src="/resources/js/priceView/priceView.js"></script>
 </body>

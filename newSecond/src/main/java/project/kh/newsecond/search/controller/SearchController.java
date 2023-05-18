@@ -18,5 +18,6 @@ public class SearchController {
 	public String searchGoodsList() {
 		return "goods/searchGoodsList";
 	}
+	
 
 }
