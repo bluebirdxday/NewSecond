@@ -18,7 +18,7 @@
 <div class="toast-container position-fixed bottom-0 end-0 p-3 top-0 start-50 translate-middle-x">
 
         <div id="liveToast" class="toast align-items-center 
-            <c:if test="${alertType == 'fail'}" >
+            <c:if test="${alertType == 'fail'}">
                 text-bg-danger                      <%-- alertType 세션속성이 fail이면 빨간색 배경 --%>
             </c:if>
             <c:if test="${alertType == 'success'}" >
@@ -52,6 +52,11 @@ if (toastTrigger) {
     const toast = new bootstrap.Toast(toastLiveExample);
 
     toast.show();
+
+    setTimeout(function(){
+            toast.hide();
+        }, 2000);
+
     });
 }
 
