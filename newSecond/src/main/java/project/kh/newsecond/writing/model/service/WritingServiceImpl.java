@@ -1,5 +1,6 @@
 package project.kh.newsecond.writing.model.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import project.kh.newsecond.common.utility.Util;
 import project.kh.newsecond.writing.model.dao.WritingDAO;
 import project.kh.newsecond.writing.model.dto.Writing;
 import project.kh.newsecond.writing.model.dto.WritingImage;
@@ -15,90 +17,90 @@ import project.kh.newsecond.writing.model.dto.WritingImage;
 @Service
 public class WritingServiceImpl implements WritingService {
 	
-	@Autowired
-	private WritingDAO dao;
-
-	// °Ô½Ã±Û »ðÀÔ
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
-		
-		// 0. XSS ¹æÁö Ã³¸®
-		// board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
-		// board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-		
-		// 1. WRITING Å×ÀÌºí INSERTÇÏ±â (Á¦¸ñ, ³»¿ë, ÀÛ¼ºÀÚ, °Ô½ÃÆÇÄÚµå)
-		int goodsNo = dao.writingInsert(writing);
-		
-		// 2. °Ô½Ã±Û »ðÀÔ ¼º°ø ½Ã ¾÷·ÎµåµÈ ÀÌ¹ÌÁö°¡ ÀÖ´Ù¸é files Å×ÀÌºí¿¡ »ðÀÔÇÏ´Â DAO È£Ãâ
-		if(goodsNo > 0) { // °Ô½Ã±Û »ðÀÔ ¼º°ø
-			
-			// List<MultipartFile> images
-			// -> ¾÷·ÎµåµÈ ÆÄÀÏÀÌ ´ã±ä °´Ã¼ MultipartFileÀÌ 5°³ Á¸Àç
-			// -> ´Ü ¾÷·ÎµåµÈ ÆÄÀÏÀÌ ¾ø¾îµµ MultipartFile °´Ã¼´Â Á¸Àç
-
-			List<WritingImage> uploadList = new ArrayList<WritingImage>();
-			// images¿¡ ´ã±ä ÆÄÀÏ Áß ½ÇÁ¦ ¾÷·ÎµåµÈ ÆÄÀÏ¸¸ ºÐ·ùÇÏ´Â ÀÛ¾÷
-			for(int i=0; i<images.size(); i++) {
-				
-				if(images.get(i).getSize() > 0) { // i¹øÂ° ¿ä¼Ò¿¡ ¾÷·ÎµåÇÑ ÆÄÀÏÀÌ ÀÖ´Ù¸é
-					
-					WritingImage img = new WritingImage();
-					
-					// img¿¡ ÆÄÀÏ Á¤º¸¸¦ ´ã¾Æ¼­ uploadList¿¡ Ãß°¡
-					img.setImagePath(webPath); // À¥ Á¢±Ù °æ·Î
-					img.setBoardNo(boardNo); // °Ô½Ã±Û ¹øÈ£
-					img.setImageOrder(i); // ÀÌ¹ÌÁö ¼ø¼­
-					
-					String fileName = images.get(i).getOriginalFilename(); // ÆÄÀÏ ¿øº»¸í
-					
-					img.setImageOriginal(fileName); // ¿øº»¸í
-					
-					img.setImageReName( Util.fileRename(fileName) ); // º¯°æ¸í
-					
-					uploadList.add(img);
-				}
-			} // ºÐ·ù for¹® Á¾·á
-			
-			// ºÐ·ù ÀÛ¾÷ ÈÄ uploadList°¡ ºñ¾îÀÖÁö ¾Ê´Â °æ¿ì == ¾÷·ÎµåÇÑ ÆÄÀÏÀÌ ÀÖÀ½
-			if(!uploadList.isEmpty()) {
-				
-				// BOARD_IMG Å×ÀÌºí¿¡ INSERT ÇÏ´Â DAO È£Ãâ
-				int result = dao.insertImageList(uploadList);
-				// result == »ðÀÔµÈ ÇàÀÇ °³¼ö == uploadList.size()
-				
-				// »ðÀÔµÈ ÇàÀÇ °³¼ö¿Í uploadListÀÇ °³¼ö°¡ °°´Ù¸é == ÀüÃ¼ insert ¼º°ø
-				if(result == uploadList.size()) {
-					
-					// ¼­¹ö¿¡ ÆÄÀÏÀ» ÀúÀå(transferTo())
-					
-					// images: ½ÇÁ¦ ÆÄÀÏÀÌ ´ã±ä °´Ã¼ ¸®½ºÆ®(¾÷·Îµå ¾ÈµÈ ÀÎµ¦½º´Â ºóÄ­)
-					// uploadList: ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸(¿øº»¸í, º¯°æ¸í, ¼ø¼­, °æ·Î, °Ô½Ã±Û ¹øÈ£)					
-					// ¼ø¼­ == images ¾÷·ÎµåµÈ ÀÎµ¦½º
-					
-					for(int i=0; i<uploadList.size(); i++) {
-						
-						int index = uploadList.get(i).getImageOrder();
-						
-						// ÆÄÀÏ·Î º¯È¯
-						String rename = uploadList.get(i).getImageReName();
-						images.get(index).transferTo(new File(filePath + rename));
-					}
-					
-				} else { // ÀÏºÎ ¶Ç´Â ÀüÃ¼ insert ½ÇÆÐ -> »ç½Ç»ó ÀüÃ¼ ½ÇÆÐ
-					// ** À¥ ¼­ºñ½º ¼öÇà Áß 1°³¶óµµ ½ÇÆÐÇÏ¸é ÀüÃ¼ ½ÇÆÐ·Î Ãë±Þ **
-					// -> rollback ÇÊ¿ä
-					
-					// @Transactional(rollbackFor = Exception.class) -> ¿¹¿Ü°¡ ¹ß»ýÇØ¾ßÁö¸¸ ·Ñ¹é
-					
-					// [°á·Ð]
-					// ** insert°¡ ÀÏºÎ¶óµµ ½ÇÆÐÇÏ¸é °­Á¦·Î ¿¹¿Ü¸¦ ¹ß»ý½ÃÄÑ ·Ñ¹é½ÃÅ°±â **
-					// -> »ç¿ëÀÚ Á¤ÀÇ ¿¹¿Ü »ý¼º ÇÊ¿ä
-					throw new FileUploadException(); // ¿¹¿Ü °­Á¦ ¹ß»ý
-				}
-			}
-		}
-		
-		return goodsNo;
-	}
+//	@Autowired
+//	private WritingDAO dao;
+//
+//	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	@Transactional(rollbackFor = Exception.class)
+//	@Override
+//	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
+//		
+//		// 0. XSS ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+//		// board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+//		// board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+//		
+//		// 1. WRITING ï¿½ï¿½ï¿½Ìºï¿½ INSERTï¿½Ï±ï¿½ (ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Û¼ï¿½ï¿½ï¿½, ï¿½Ô½ï¿½ï¿½ï¿½ï¿½Úµï¿½)
+//		int goodsNo = dao.writingInsert(writing);
+//		
+//		// 2. ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ files ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DAO È£ï¿½ï¿½
+//		if(goodsNo > 0) { // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//			
+//			// List<MultipartFile> images
+//			// -> ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ MultipartFileï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//			// -> ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îµµ MultipartFile ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//
+//			List<WritingImage> uploadList = new ArrayList<WritingImage>();
+//			// imagesï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ð·ï¿½ï¿½Ï´ï¿½ ï¿½Û¾ï¿½
+//			for(int i=0; i<images.size(); i++) {
+//				
+//				if(images.get(i).getSize() > 0) { // iï¿½ï¿½Â° ï¿½ï¿½Ò¿ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
+//					
+//					WritingImage img = new WritingImage();
+//					
+//					// imgï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ uploadListï¿½ï¿½ ï¿½ß°ï¿½
+//					img.setImagePath(webPath); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//					img.setBoardNo(boardNo); // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£
+//					img.setImageOrder(i); // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//					
+//					String fileName = images.get(i).getOriginalFilename(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//					
+//					img.setImageOriginal(fileName); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//					
+//					img.setImageReName( Util.fileRename(fileName) ); // ï¿½ï¿½ï¿½ï¿½ï¿½
+//					
+//					uploadList.add(img);
+//				}
+//			} // ï¿½Ð·ï¿½ forï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//			
+//			// ï¿½Ð·ï¿½ ï¿½Û¾ï¿½ ï¿½ï¿½ uploadListï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ == ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//			if(!uploadList.isEmpty()) {
+//				
+//				// BOARD_IMG ï¿½ï¿½ï¿½Ìºï¿½ INSERT ï¿½Ï´ï¿½ DAO È£ï¿½ï¿½
+//				int result = dao.insertImageList(uploadList);
+//				// result == ï¿½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ == uploadList.size()
+//				
+//				// ï¿½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ uploadListï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ == ï¿½ï¿½Ã¼ insert ï¿½ï¿½ï¿½ï¿½
+//				if(result == uploadList.size()) {
+//					
+//					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(transferTo())
+//					
+//					// images: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½ï¿½Îµï¿½ ï¿½Èµï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä­)
+//					// uploadList: ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½, ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£)					
+//					// ï¿½ï¿½ï¿½ï¿½ == images ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½
+//					
+//					for(int i=0; i<uploadList.size(); i++) {
+//						
+//						int index = uploadList.get(i).getImageOrder();
+//						
+//						// ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½È¯
+//						String rename = uploadList.get(i).getImageReName();
+//						images.get(index).transferTo(new File(filePath + rename));
+//					}
+//					
+//				} else { // ï¿½Ïºï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½Ã¼ insert ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½Ç»ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+//					// ** ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½Ð·ï¿½ ï¿½ï¿½ï¿½ **
+//					// -> rollback ï¿½Ê¿ï¿½
+//					
+//					// @Transactional(rollbackFor = Exception.class) -> ï¿½ï¿½ï¿½Ü°ï¿½ ï¿½ß»ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½
+//					
+//					// [ï¿½ï¿½ï¿½]
+//					// ** insertï¿½ï¿½ ï¿½ÏºÎ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¸ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½Å°ï¿½ï¿½ **
+//					// -> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+//					throw new FileUploadException(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+//				}
+//			}
+//		}
+//		
+//		return goodsNo;
+//	}
 }
