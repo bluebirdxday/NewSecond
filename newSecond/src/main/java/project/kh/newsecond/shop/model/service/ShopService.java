@@ -35,14 +35,14 @@ public interface ShopService {
 	 * @param map
 	 * @return followList
 	 */
-	List<Map<String, Object>> selectFollowList(Map<String, Integer> map);
+	List<Follow> selectFollowList(Map<String, Integer> map);
 
 
 	/** 팔로워 리스트 조회
 	 * @param map
 	 * @return followerList
 	 */
-	List<Map<String, Object>> selectFollowerList(Map<String, Integer> map);
+	List<Follow> selectFollowerList(Map<String, Integer> map);
 
 
 	/** 팔로 유무 조회(로그인 유저->상점주인)

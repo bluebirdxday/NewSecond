@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_notice_detail</title>
-    <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_notice_write.css">
+    <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_notice_write.css">
     
 </head>
 <body>
@@ -36,20 +36,8 @@
     <!-- 문의사항 테이블 -->
     <table class="admin_notice_write_table" border="1">
             <tr>
-                <th>번호</th>
-                <td>1</td>
-            </tr>
-            <tr>
                 <th>제목</th>
                 <td><input class="admin_notice_writeTitle" autofocus></td>
-            </tr>
-            <tr>
-                <th>작성일</th>
-                <td>2023.04.27</td>
-            </tr>
-            <tr>
-                <th>조회수</th>
-                <td>250</td>
             </tr>
         </table>
         

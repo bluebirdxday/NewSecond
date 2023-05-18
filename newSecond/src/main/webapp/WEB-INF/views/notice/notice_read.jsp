@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="notice" value="${Notice}}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_qnd_detail</title>
  
-    <link rel="stylesheet" href="\resources\css\notice_read.css">
+    <link rel="stylesheet" href="\resources\css\notice\notice_read.css">
 
 </head>
 <body>
@@ -23,26 +25,25 @@
     <table class="notice_read_table" border="1">
             <tr>
                 <th>번호</th>
-                <td>1</td>
+                <td>${Notice.noticeNo}</td>
             </tr>
             <tr>
                 <th>제목</th>
-                <td>뉴세컨마켓 사용 가이드</td>
+                <td>${Notice.noticeTitle}</td>
             </tr>
             <tr>
                 <th>작성일</th>
-                <td>2023.04.27</td>
+                <td>${Notice.noticeEnrollDate}</td>
             </tr>
             <tr>
                 <th>조회수</th>
-                <td>250</td>
+                <td>${Notice.noticeViewCount}</td>
             </tr>
         </table>
         
        <!-- 글 읽어 오기 -->
             <div class="notice_read_content">
-                <div>안녕하세요.<br>
-                    뉴세컨마켓입니다.</div>
+                <div>${Notice.noticeContent}</div>
             </div>
             
     
