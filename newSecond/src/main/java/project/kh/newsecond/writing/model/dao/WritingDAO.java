@@ -29,9 +29,10 @@ public class WritingDAO {
 	/**
 	 * 게시글 이미지 삽입
 	 * @param images
+	 * @param finalImages 
 	 * @return result
 	 */
-	public int writingImageInsert(List<MultipartFile> images) {
+	public int writingImageInsert(List<MultipartFile> images, List<WritingImage> finalImages) {
 		return sqlSession.insert("writingMapper.writingImageInsert", images);
 		// 삽입 성공 시 양수, 실패 시 0 반환
 	};

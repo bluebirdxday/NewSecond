@@ -105,7 +105,7 @@ public class WritingController {
 		String path = "redirect:";
 		
 		if(result > 0) {
-			message = "게시글이 등록 되었습니다.";
+			message = "게시글이 등록되었습니다.";
 			path += "writing/writingPage"; // 성공시 게시글 작성 페이지로 리다이렉트
 		} else {
 			message = "게시글 등록에 실패했습니다.";
@@ -113,6 +113,7 @@ public class WritingController {
 		}
 		
 		return path;
+		// redirect:writing/writingPage
 	}
 }
 
