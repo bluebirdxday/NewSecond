@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="NotificationMapper">
+
+	<resultMap type="NotificationKeyword" id="keword_rm">
+		<id property="keywordNo" column="KEYWORD_NO" />
+		
+		<result property="userNo" column="USER_NO" />
+		<result property="keywordTitle" column="KEYWORD_TITLE" />
+		<result property="createDate" column="CREATE_DT" />
+	</resultMap>
+	
+
+	<!-- 키워드 리스트 조회 -->
+	<select id="selectKeywords" resultMap="keword_rm">
+		SELECT KEYWORD_NO, USER_NO, KEYWORD_TITLE, CREATE_DT  
+		FROM "notification_keywords"
+		WHERE USER_NO = #{userNo}
+		ORDER BY CREATE_DT 
+	</select>		
+	
+	
+	<!-- 키워드 추가 -->
+	<insert id="insertKeyword" parameterType="hashMap">
+		INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, #{userNo}, #{keyword}, DEFAULT)
+	</insert>
+	
+	
+	<!-- 키워드 삭제 -->
+	<delete id="deleteKeyword">
+		DELETE FROM "notification_keywords" 
+		WHERE USER_NO = #{userNo}
+		AND KEYWORD_NO = #{keywordNo}
+	</delete>
+</mapper>

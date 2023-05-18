@@ -1,0 +1,13 @@
+
+.mypage--dropdown__intro {
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none; 
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.dropdown--menu__custom{
+    inset: 0px auto auto 0px !important; 
+}

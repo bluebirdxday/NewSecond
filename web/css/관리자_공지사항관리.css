@@ -1,3 +1,9 @@
+/* 로그아웃 */
+.amdmin_notice_logout{
+    margin-left: 90%;
+}
+
+
 /* 내부 내용 */
 .admin_notice_wrap{
     margin-left: 230px;
@@ -12,6 +18,7 @@ color: #005eee;
 font-weight: bold;
 font-size: 25px;
 margin: 20px 20px; 
+
 }
 
 /* 상단 제목 바 새 공지사항 버튼 */

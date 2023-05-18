@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="writingMapper">
+
+	<resultMap type="User" id="user_rm">
+		<id property="userNo" column="USER_NO" /> <!-- id 태그는 PK 조건 -->
+	</resultMap>
+
+	<resultMap type="Writing" id="writing_rm">
+		<id property="goodsNo" column="GOODS_NO" /> <!-- id 태그는 PK 조건 -->
+		<result property="categoryNo" column="SHOP_TITLE" />
+		<result property="goodsTitle" column="GOODS_TITLE" />
+		<result property="goodsDescr" column="GOODS_DESCR" />
+		<result property="goodsPrice" column="GOODS_PRICE" />
+	</resultMap>
+	
+	<resultMap type="WritingImage" id="writingImage_rm">
+		<id property="fileNo" column="FILE_NO" /> <!-- id 태그는 PK 조건 -->
+		<result property="fileName" column="FILE_NAME" />
+		<result property="fileOrder" column="FILE_ORDER" />
+		<result property="filePath" column="FILE_PATH" />
+	</resultMap>
+	
+	
+	
+	
+	<!-- 글쓰기 내용 삽입 -->
+	<insert id="writingInsert"> <!-- 상품 게시글 입력 -->
+		INSERT INTO "goods_board"
+		VALUES(
+			#{goodsNo},
+			#{userNo},
+			#{categoryNo},
+			#{goodsTitle},
+			#{goodsDescr},
+			#{goodsPrice},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT
+		)
+	</insert>
+	
+	<!-- 글쓰기 내용 삽입 중 이미지 삽입 --> 
+	<insert id="writingImageInsert"> <!-- 파일 테이블 입력 -->
+		INSERT INTO "files"
+		VALUES(
+			#{fileNo},
+			#{goodsNo},
+			#{fileName},
+			#{fileOrder},
+			#{filePath}
+		)
+	</insert>
+		
+</mapper>

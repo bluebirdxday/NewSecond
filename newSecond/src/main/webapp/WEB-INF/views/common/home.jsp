@@ -8,10 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>New Second</title>
 
-	<link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 
 	<link rel="stylesheet" href="/resources/css/mainPage.css">
+
 
 </head>
 <body>
@@ -49,8 +49,7 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
-			</section>
-			
+			</section>	
 
 			<section class="mainPage--goodsContainer1 mt-5">
 				<h4>최근 업데이트된 상품</h4>

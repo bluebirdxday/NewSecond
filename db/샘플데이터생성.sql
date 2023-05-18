@@ -24,10 +24,13 @@ INSERT INTO "users"
 VALUES(SEQ_USER_NO.NEXTVAL, 'user11@gmail.com', 'pass11!', '이철수', '01049019374', '성남시 분당구 백현동', NULL, DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO "users"
 VALUES(SEQ_USER_NO.NEXTVAL, 'user12@gmail.com', 'pass12!', '문십이', '01028371382', '인천광역시 남동구 만수동', NULL, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "users"
+VALUES(SEQ_USER_NO.NEXTVAL, 'admin01@gmail.com', 'admin01!', '어드민', '01012341234', '서울특별시 중구 남대문로 120', NULL, DEFAULT, DEFAULT, 2);
 
 SELECT * FROM "users";
 COMMIT;
 
+ROLLBACK;
 
 
 -- 카테고리 테이블
@@ -165,5 +168,64 @@ WHERE GOODS_NO = 14;
 
 SELECT * FROM "goods_board";
 
+--공지사항 게시글 
+
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지1', '안녕하세요. 관리자1입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지2', '안녕하세요. 관리자2입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지3', '안녕하세요. 관리자3입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지4', '안녕하세요. 관리자4입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지5', '안녕하세요. 관리자5입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지6', '안녕하세요. 관리자6입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지7', '안녕하세요. 관리자7입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지8', '안녕하세요. 관리자8입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지9', '안녕하세요. 관리자9입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지10', '안녕하세요. 관리자10입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
+INSERT INTO "notice"
+VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지11', '안녕하세요. 관리자11입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
 
 
+SELECT * FROM "notice"
+ORDER BY NOTICE_NO DESC;
+
+COMMIT;
+
+SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+FROM "notice"
+WHERE NOTICE_NO = 1
+ORDER BY NOTICE_NO DESC;
+
+SELECT * FROM "qna";
+
+SELECT *
+FROM "qna" ;
+
+SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
+	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD')
+	,QNA_CHECK_FL
+FROM "qna";
+
+SELECT * FROM "goods_board";
+
+SELECT GOODS_NO,USER_NO,GOODS_TITLE
+	,TO_CHAR(SELL_ENROLL_DT, 'YYYY-MM-DD')
+	,GOODS_STATUS
+FROM "goods_board";
+-- 키워드 추가
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '아디다스 삼바', DEFAULT);
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '아이폰14 프로', DEFAULT);
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '에메모가든 백팩', DEFAULT);
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '자바의 정석', DEFAULT);
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '정보처리기사 필기', DEFAULT);
+INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비', DEFAULT);
+
+COMMIT;

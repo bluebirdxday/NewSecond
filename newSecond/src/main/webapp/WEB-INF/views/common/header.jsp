@@ -1,25 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+
 <link rel="stylesheet" href="/resources/css/header.css">
 
 <header class="header--container__containerbox">
     <section class="header--container__top">
-        <div></div>
+
+        
         <div>
             <c:choose>
                 <c:when test="${empty loginUser}">
                     <jsp:include page="/WEB-INF/views/user/login.jsp"/>
-                    <span> | </span>
+                    <span>  </span>
                     <span><a href="/user/signUp">회원가입</a></span>
+                    
+                    <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>
                     <span class="logout"><a href="/user/logout">로그아웃</a></span>
-                    <span> | </span>
-                    <span class="myPage"><a href="">마이페이지</a></span>
-                    <span> | </span>
-                    <span class="wishList"><a href="">관심상품</a></span>
+                    <span>  </span>
+                    <jsp:include page="/WEB-INF/views/user/mypage/mypageDropdown.jsp"/>
+                
                 </c:otherwise>
             </c:choose>
         </div>
@@ -32,19 +36,6 @@
                 <img class="homeLogo" src="/resources/src/img/LOGO.png">
             </a>
         </div>
-
-        <%-- 검색창 (수정) --%>
-        <%-- <section>
-            <article class="header--mid__search">
-                <form action="/search/goodsList" method="GET">
-                    <fieldset>
-                    <input type="search" name="query" id="query" placeholder="상품명, @상점명을 입력해주세요.">
-                    <button class="searchBtn"></button>
-                    </fieldset>
-                </form>
-            </article>
-        </section> --%>
-
     
         <form action="/goods/search/goodsList" method="GET">
             <div class="header--mid__serach"><!-- 검색창 -->
@@ -52,18 +43,17 @@
                 <button class="searchBtn"></button>
             </div>
         </form>
-    
 
         <div class="header--right__icons">
                 <span>
                     <c:if test="${empty loginUser}">
-                        <a href="/">
+                        <a href="/" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
 
                     <c:if test="${not empty loginUser}" >
-                        <a href="/shop/${loginUser.userNo}">
+                        <a href="/shop/${loginUser.userNo}" id="myMarket">
                             <img class="myMarket" src="/resources/src/img/home.png"/>
                         </a>
                     </c:if>
@@ -84,30 +74,11 @@
     </section>
 
     <nav class="nav--container__menu">
-        <div>홈</div>
-        <div>카테고리</div>
-        <div>시세조회</div>
+        <div><a href="#">홈</a></div>
+        <div><a href="#">카테고리</a></div>
+        <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
     
 </header>
 
-
-<c:if test="${empty loginUser}" >
-    <script>
-    document.querySelector('.myMarket').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('chattings').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-
-    document.getElementById('notification').addEventListener('click', e => {
-        e.preventDefault();
-        document.getElementById('login').click();
-    });
-    </script>
-</c:if>
 
