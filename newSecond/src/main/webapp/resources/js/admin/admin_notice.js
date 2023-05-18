@@ -35,3 +35,13 @@ function toggleImportant(event) {
 // 모든 필독 등록 버튼에 클릭 이벤트 리스너 등록
 const buttons = document.querySelectorAll('.admin_notice_tableBtn');
 buttons.forEach(button => button.addEventListener('click', toggleImportant));
+
+/* 체크박스 전체선택 */
+function boardSelectAll(boardSelectAll)  {
+  const checkboxes 
+     = document.querySelectorAll('input[type="checkbox"]');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = boardSelectAll.checked
+  })
+}

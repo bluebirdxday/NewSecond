@@ -45,7 +45,23 @@
 			<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	
+	<error-page>
+		<!--1. 요청주소가 잘못됨
+			2. jsp 경로가 잘못됨
+			3. 프로젝트가 컴파일 안됨  -->
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
 	
 
 </web-app>
