@@ -63,14 +63,28 @@
     font-weight: bold;
 }
 
-/* 검색한 상품 목록들 */
+/* 검색한 상품 목록이 없을 때 */
+/* 수정해야 됨 */
+.container--inner__middle>.noGoodsList{
+    width: auto;
+    height: 300px;
+    margin: 100px;
+    justify-content: center;
+    text-align: center;
+
+}
+
+/* 검색 결과 나타나는 영역 */
 .container--inner__middle{
     width: 1060px;
     /* border: 1px solid red; */
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 70px 0;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 
 .container--inner__middle>div[class*=goods]{
     width: 265px;
@@ -81,7 +95,7 @@
 }
 
 .container--inner__middle img{
-    width: 240px;
+    width: 230px;
     border-radius: 15%;
     /* padding: 15px; */
     display: block;
@@ -110,9 +124,13 @@ transition-duration: 0.2s;
 .container--inner__middle a:hover{color:#2365b9;}
 
 .goods_price{
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.goods_title{
+    font-size: 1.2em;
 }
 
 .container--inner__bottom{

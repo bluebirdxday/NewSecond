@@ -24,7 +24,6 @@
 		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
 		<mapper resource="/mappers/search-mapper.xml" />
-		<mapper resource="/mappers/goods-mapper.xml" />
 	</mappers>
 
 
