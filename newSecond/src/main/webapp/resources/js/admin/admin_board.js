@@ -7,3 +7,5 @@ function boardSelectAll(boardSelectAll)  {
       checkbox.checked = boardSelectAll.checked
     })
   }
+
+  
