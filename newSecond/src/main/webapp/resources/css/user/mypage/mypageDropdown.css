@@ -8,6 +8,18 @@
     font-size: 0.9rem;
 }
 
+mypage--dropdown__intro > span{
+    margin: 0px;
+}
+
 .dropdown--menu__custom{
     inset: 0px auto auto 0px !important; 
 }
+
+
+.mypageDrop--userImage__image{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+

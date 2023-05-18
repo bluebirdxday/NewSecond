@@ -94,10 +94,10 @@ function deleteKeyword(keywordNo) {
             .then(result => {
 
                 if (result>0) {
-                    alert("키워드가 삭제되었습니다.");
                     location.reload();
+                    
                 } else {
-                    alert("키워드 삭제에 실패하였습니다.");
+                    
                 }
         
                 }
@@ -106,4 +106,5 @@ function deleteKeyword(keywordNo) {
             });
 
     }
+    toastTrigger.click();
 }
