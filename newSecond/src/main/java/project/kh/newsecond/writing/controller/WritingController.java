@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestDataValueProcessor;
 
 import project.kh.newsecond.user.model.dto.User;
 import project.kh.newsecond.writing.model.dto.Writing;
@@ -28,14 +30,15 @@ public class WritingController {
 	private WritingService service;
 
 	// 글쓰기 페이지 접속
-	@GetMapping("/writing")
+	@GetMapping("/write")
 	public String writing() {
 		
-		return "writing/writing";
+		return "writing/writingPage";
+		// (/WEB-INF/views/)writing/writingPage(.jsp)
 	}
 	
 	// 게시글 제출
-	@PostMapping("/{goodsNo:[0-9]+}/insert")
+	@PostMapping("/write")
 	public String writingInsert(
 			@ModelAttribute Writing writing,
 			@ModelAttribute WritingImage writingImage,

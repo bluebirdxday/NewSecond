@@ -46,15 +46,15 @@ public class WritingServiceImpl implements WritingService {
 					WritingImage img = new WritingImage();
 					
 					// img에 파일 정보를 담아서 uploadList에 추가
-					img.setImagePath(webPath); // 웹 접근 경로
-					img.setBoardNo(boardNo); // 게시글 번호
-					img.setImageOrder(i); // 이미지 순서
+					img.setFilePath(webPath); // 웹 접근 경로
+					img.setGoodsNo(goodsNo); // 게시글 번호
+					img.setFileOrder(i); // 이미지 순서
 					
 					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
 					
 					img.setImageOriginal(fileName); // 원본명
 					
-					img.setImageReName( Util.fileRename(fileName) ); // 변경명
+					img.setFileReName( Util.fileRename(fileName) ); // 변경명
 					
 					uploadList.add(img);
 				}
@@ -63,8 +63,8 @@ public class WritingServiceImpl implements WritingService {
 			// 분류 작업 후 uploadList가 비어있지 않는 경우 == 업로드한 파일이 있음
 			if(!uploadList.isEmpty()) {
 				
-				// BOARD_IMG 테이블에 INSERT 하는 DAO 호출
-				int result = dao.insertImageList(uploadList);
+				// file 테이블에 INSERT 하는 DAO 호출
+				int result = dao.writingImageInsert(uploadList);
 				// result == 삽입된 행의 개수 == uploadList.size()
 				
 				// 삽입된 행의 개수와 uploadList의 개수가 같다면 == 전체 insert 성공
@@ -78,11 +78,11 @@ public class WritingServiceImpl implements WritingService {
 					
 					for(int i=0; i<uploadList.size(); i++) {
 						
-						int index = uploadList.get(i).getImageOrder();
+						int index = uploadList.get(i).getFileOrder();
 						
 						// 파일로 변환
-						String rename = uploadList.get(i).getImageReName();
-						images.get(index).transferTo(new File(filePath + rename));
+						String rename = uploadList.get(i).getFileRename();
+						images.get(index).transferTo(new Image(filePath + rename));
 					}
 					
 				} else { // 일부 또는 전체 insert 실패 -> 사실상 전체 실패
