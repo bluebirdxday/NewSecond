@@ -100,7 +100,7 @@ public class WritingController {
 		// 4. 서비스 연결: 성공 시 양수 return
 		int result = service.writingInsert(writing, images, webPath, filePath);
 		
-		// 게시글 삽입 성공 시 -> 일단은 게시글 작성 페이지로 리다이렉트
+		// 5. 게시글 삽입 성공 시 -> 일단은 게시글 작성 페이지로 리다이렉트
 		String message = null;
 		String path = "redirect:";
 		
