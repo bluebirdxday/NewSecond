@@ -452,7 +452,7 @@
     font-size: 1.2em;
 }
 #category--2depth > label > input {
-    /* display: none; */
+    display: none;
 }
 
 

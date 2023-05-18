@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<%-- iphone을 검색하였을 때(GET방식) 이 페이지의 주소는 http://localhost/priceView/priceSee/search?keyword=iphone --%>
+
+<%-- URL 속 iphone이라는 keyword를 <%= keyword %>로 사용하기 위한 태그 --%>
+<% String keyword = request.getParameter("keyword"); %>
+
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
@@ -25,7 +30,8 @@
                 <!-- mainFrame -->
                 <div class="priceViewResult--main__box">
                     <div class="priceViewResult--main__SearchBox">
-                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30"><button type="submit">검색</button>
+<%-- URL의 keyword=iphone의 keyword가 value 값으로 기본 입력되어 있음 --%>
+                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30" value="<%= keyword %>"><button type="submit">검색</button>
                     </div>
 
                     <!-- 상하분할 -->
@@ -59,7 +65,8 @@
                         <!--  좌우분할 -->
 
                         <div class="priceViewResult--main__RightBox">
-                            <div>오늘의 아이폰12 시세금액</div>
+<%-- URL의 keyword=iphone의 keyword를 넣음 --%>
+                            <div>오늘의 <%= keyword %> 시세금액</div>
                             <div>
                                 <div>539,600원</div>
                             </div>
@@ -170,6 +177,7 @@
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">
+<%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%>
                 <a href="#"><button>더보기</button></a>
             </section>
         </section>
