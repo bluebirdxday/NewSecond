@@ -25,7 +25,7 @@
 	
 	
 	<!-- 글쓰기 내용 삽입 -->
-	<insert id="writingInsert">
+	<insert id="writingInsert"> <!-- 상품 게시글 입력 -->
 		INSERT INTO "goods_board"
 		VALUES(
 			#{goodsNo},
@@ -41,8 +41,8 @@
 		)
 	</insert>
 	
-	<!-- 글쓰기 내용 삽입 중 이미지 삽입 -->
-	<insert id="writingImageInsert">
+	<!-- 글쓰기 내용 삽입 중 이미지 삽입 --> 
+	<insert id="writingImageInsert"> <!-- 파일 테이블 입력 -->
 		INSERT INTO "files"
 		VALUES(
 			#{fileNo},
