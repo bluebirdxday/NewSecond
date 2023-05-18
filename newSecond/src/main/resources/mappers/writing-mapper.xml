@@ -6,34 +6,35 @@
 		<id property="userNo" column="USER_NO" /> <!-- id 태그는 PK 조건 -->
 	</resultMap>
 
+<!-- Writing 객체와 매핑 -->
 	<resultMap type="Writing" id="writing_rm">
 		<id property="goodsNo" column="GOODS_NO" /> <!-- id 태그는 PK 조건 -->
-		<result property="categoryNo" column="SHOP_TITLE" />
-		<result property="goodsTitle" column="GOODS_TITLE" />
-		<result property="goodsDescr" column="GOODS_DESCR" />
-		<result property="goodsPrice" column="GOODS_PRICE" />
+		<result property="userNo" column="USER_NO" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="title" column="GOODS_TITLE" />
+		<result property="detailText" column="GOODS_DESCR" />
+		<result property="price" column="GOODS_PRICE" />
 	</resultMap>
 	
+<!-- WritingImage 객체와 매핑 -->
 	<resultMap type="WritingImage" id="writingImage_rm">
 		<id property="fileNo" column="FILE_NO" /> <!-- id 태그는 PK 조건 -->
+		<result property="title" column="GOODS_NO" />
 		<result property="fileName" column="FILE_NAME" />
 		<result property="fileOrder" column="FILE_ORDER" />
 		<result property="filePath" column="FILE_PATH" />
 	</resultMap>
 	
-	
-	
-	
 	<!-- 글쓰기 내용 삽입 -->
 	<insert id="writingInsert"> <!-- 상품 게시글 입력 -->
 		INSERT INTO "goods_board"
 		VALUES(
-			#{goodsNo},
+			SEQ_GOODS_NO,
 			#{userNo},
-			#{categoryNo},
-			#{goodsTitle},
-			#{goodsDescr},
-			#{goodsPrice},
+			#{categoryNo}, <!-- 컨트롤러 앞에서 세팅함 -->
+			#{title},
+			#{detailText},
+			#{price},
 			DEFAULT,
 			DEFAULT,
 			DEFAULT,
@@ -45,8 +46,8 @@
 	<insert id="writingImageInsert"> <!-- 파일 테이블 입력 -->
 		INSERT INTO "files"
 		VALUES(
-			#{fileNo},
-			#{goodsNo},
+			SEQ_FILE_NO,
+			#{title},
 			#{fileName},
 			#{fileOrder},
 			#{filePath}

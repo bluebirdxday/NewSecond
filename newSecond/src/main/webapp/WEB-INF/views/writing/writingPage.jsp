@@ -23,7 +23,7 @@
         <!-- main content -->
         <section class="content--post__main">
 
-        <form action="/submit" method="POST" enctype="multipart/form-data"> <%-- form 태그 시작 --%>
+        <form action="/writing/submit" method="POST" enctype="multipart/form-data"> <%-- form 태그 시작 --%>
             
             <div class="post--main__inputTitle">
                 <div>
@@ -31,7 +31,8 @@
                     <span id="textLimit20Result">(0/20)</span>
                 </div>
                 <article>
-                    <input class="textLimit20" id="title" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
+<%-- 제목 name="title" --%>                
+                    <input class="textLimit20" id="title" name="title" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
                 </article>
             </div>
             <div class="post--main__inputImage">
@@ -43,7 +44,8 @@
                     <div class="post--main__ImageContainer">
                         <div>
                             <a href="#" id="imagePlus">+</a>
-                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
+<%-- 이미지  name="Image" --%>
+                            <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*">
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김 --%>
@@ -58,32 +60,37 @@
                     <span id="textLimit500Result">(0/500)</span>
                 </div>
                 <article>
+<%-- 상세 설명 name="detailText" --%>                
                     <textarea rows="4" cols="50"
                         class="textLimit500"
                         id="detailText"
+                        name="detailText"
                         placeholder="구입 연도, 브랜드, 사용감, 하자 유무 등 판매하고자 하는 상품과 관련된 정보를 포함하여 게시글 내용을 작성해주세요.(500자 이내)"
                         maxlength="500" required></textarea>
                 </article>
             </div>
             <div class="post--main__inputPrice">
                 <div>
-                    <label for="priceInput" class="labelTitle">가격</label><span>*</span><input type="number" min="1" placeholder="10000" id="priceInput" required>원
+<%-- 가격 name="price" --%>                
+                    <label for="priceInput" class="labelTitle">가격</label><span>*</span><input type="number" min="1" name="price" placeholder="10000" id="priceInput" required>원
                 </div>
             </div>
             <div class="post--main__inputQuantity">
                 <div>
-                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" placeholder="1" id="quantityInput" required>개
+<%-- 수량 name="quantity" --%>
+                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" name="quantity"  placeholder="1" id="quantityInput" required>개
                 </div>
             </div>
             <div class="post--main__inputCondition">
                 <div>
-                    <label for="inputCondition" class="labelTitle">상태</label><span>*</span>
+                    <label for="condition" class="labelTitle">상태</label><span>*</span>
                     <article class="post--main__inputConditionSelector">
+<%-- 상태 name="condition" --%>                    
                         <label>
-                            <input type="radio" name="inputCondition" required>새상품
+                            <input type="radio" name="condition" value="새상품" required>새상품
                         </label>
                         <label>
-                            <input type="radio" name="inputCondition" required>중고상품
+                            <input type="radio" name="condition" value="중고상품" required>중고상품
                         </label>
                     </article>
                 </div>
@@ -100,6 +107,7 @@
                             <div class="category--1depth__hobby">취미</div>
                             <div class="category--1depth__other">기타</div>
                         </div>
+<%-- 카테고리 name="category2" --%>                        
                         <div id="category--2depth">
                             <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div> 
                         </div>
