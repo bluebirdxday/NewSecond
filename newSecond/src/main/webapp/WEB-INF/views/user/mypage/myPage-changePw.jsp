@@ -11,7 +11,7 @@
 
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-    <div style="margin-top:150px"></div>
+    
 
 
     

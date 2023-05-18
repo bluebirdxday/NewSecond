@@ -22,7 +22,7 @@
                 <c:otherwise>
                     <span class="logout"><a href="/user/logout">로그아웃</a></span>
                     <span>  </span>
-                    <jsp:include page="/WEB-INF/views/user/mypage/mypageDropdown.jsp"/>
+                    <jsp:include page="/WEB-INF/views/user/myPageDropdown.jsp"/>
                 
                 </c:otherwise>
             </c:choose>
