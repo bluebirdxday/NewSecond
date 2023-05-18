@@ -203,3 +203,20 @@ COMMIT;
 SELECT USER_NO, SHOP_TITLE, USER_IMG FROM "shop"
 JOIN "users" USING(USER_NO);
 
+
+--users 이미지열 삭제
+ALTER TABLE "users" DROP COLUMN USER_IMG;
+
+
+-- 오라클 세션 관련 명령어 
+
+-- 오라클 현재 세션 접속 상태 확인
+SELECT STATUS FROM V$SESSION;	
+
+-- 오라클 세션 아이들 타임 확인
+SELECT PROFILE, LIMIT FROM DBA_PROFILES WHERE RESOURCE_NAME = 'IDLE_TIME';
+
+-- 오라클 세션 아이들 타임 30분 제한
+ALTER PROFILE DEFAULT LIMIT IDLE_TIME 30;
+
+
