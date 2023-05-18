@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class WritingImage {
 	private int fileNo;
-	private int title;
+	private int goodsNo;
 	private String fileName;
 	
 	private int fileOrder;

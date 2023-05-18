@@ -96,24 +96,26 @@ public class WritingController {
 		// 3. 업로드된 이미지를 서버에 저장
 		String webPath = "/resources/src/user/${userNo}"; // 기존에 폴더가 없어도 담기나?
 		String filePath = session.getServletContext().getRealPath(webPath);
+		// -> writing, images, webPath, filePath 객체 완성
 		
-		// 4. 서비스 연결: 성공 시 양수 return
+		// 4-1. 서비스 연결: 성공 시 양수 return
 		int result = service.writingInsert(writing, images, webPath, filePath);
+	
 		
-		// 5. 게시글 삽입 성공 시 -> 일단은 게시글 작성 페이지로 리다이렉트
+		// 5. 게시글 삽입 성공 시
 		String message = null;
 		String path = "redirect:";
 		
 		if(result > 0) {
 			message = "게시글이 등록되었습니다.";
-			path += "writing/writingPage"; // 성공시 게시글 작성 페이지로 리다이렉트
+			path += "writing/write"; // 성공시 게시글 작성 페이지로 리다이렉트
 		} else {
 			message = "게시글 등록에 실패했습니다.";
-			path += "writing/writingPage"; // 성공시 게시글 작성 페이지로 리다이렉트
+			path += "chatting/chat"; // 실패시 채팅 페이지로 리다이렉트
 		}
 		
 		return path;
-		// redirect:writing/writingPage
+		// return redirect:writing/write -> 리다이렉트와 그냥 return은 다름!
 	}
 }
 

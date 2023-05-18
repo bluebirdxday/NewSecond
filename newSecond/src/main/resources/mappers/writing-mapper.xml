@@ -42,12 +42,23 @@
 		)
 	</insert>
 	
+	<!-- 글쓰기 내용으로 가장 최근에 삽입된 SEQ_GOODS_NO 값 리턴 -->
+	<select id="seqSelect">
+		SELECT GOODS_NO
+		FROM "goods_board"
+		WHERE ROWNUM = 1
+		AND USER_NO = #{userNo}
+		AND CATEGORY_NO = #{categoryNo}
+		AND GOODS_TITLE = #{title}
+		ORDER BY SELL_ENROLL_DT ASC
+	</select>
+	
 	<!-- 글쓰기 내용 삽입 중 이미지 삽입 --> 
 	<insert id="writingImageInsert"> <!-- 파일 테이블 입력 -->
 		INSERT INTO "files"
 		VALUES(
 			SEQ_FILE_NO,
-			#{title},
+				SEQ_GOODS_NO,
 			#{fileName},
 			#{fileOrder},
 			#{filePath}

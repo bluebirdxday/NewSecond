@@ -17,7 +17,7 @@ public class WritingDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 게시글 삽입
+	 * 1. 게시글 삽입
 	 * @param writing
 	 * @return result
 	 */
@@ -27,7 +27,16 @@ public class WritingDAO {
 	};
 
 	/**
-	 * 게시글 이미지 삽입
+	 * 2. GOODS_NO 가져오기
+	 * @param writing
+	 * @return goodsNo
+	 */
+	public int sqlSelect(Writing writing) {
+		return sqlSession.selectOne("writingMapper.sqlSelect", writing);
+	};
+	
+	/**
+	 * 3. 게시글 이미지 삽입
 	 * @param images
 	 * @param finalImages 
 	 * @return result
@@ -35,5 +44,6 @@ public class WritingDAO {
 	public int writingImageInsert(List<MultipartFile> images, List<WritingImage> finalImages) {
 		return sqlSession.insert("writingMapper.writingImageInsert", images);
 		// 삽입 성공 시 양수, 실패 시 0 반환
-	};
+	}
+
 }
