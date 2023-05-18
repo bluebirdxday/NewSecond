@@ -1,3 +1,4 @@
+/*
 package project.kh.newsecond.writing.model.service;
 
 import java.util.ArrayList;
@@ -102,3 +103,4 @@ public class WritingServiceImpl implements WritingService {
 		return goodsNo;
 	}
 }
+*/

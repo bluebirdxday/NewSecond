@@ -22,10 +22,12 @@
 
         <!-- main content -->
         <section class="content--post__main">
+
+        <form action="/submit" method="POST" enctype="multipart/form-data"> <%-- form 태그 시작 --%>
             
             <div class="post--main__inputTitle">
                 <div>
-                    <span>제목</span><span>*</span>
+                    <label for="title" class="labelTitle">제목</label><span>*</span>
                     <span id="textLimit20Result">(0/20)</span>
                 </div>
                 <article>
@@ -34,7 +36,7 @@
             </div>
             <div class="post--main__inputImage">
                 <div>
-                    <span>상품이미지</span><span>*</span>
+                    <label for="fileInput" class="labelTitle">상품이미지</label><span>*</span>
                     <span>(0/5)</span>
                 </div>
                 <article>
@@ -52,7 +54,7 @@
             </div>
             <div class="post--main__inputDetailText">
                 <div>
-                    <span>상세설명</span><span>*</span>
+                    <label for="detailText" class="labelTitle">상세설명</label><span>*</span>
                     <span id="textLimit500Result">(0/500)</span>
                 </div>
                 <article>
@@ -65,26 +67,30 @@
             </div>
             <div class="post--main__inputPrice">
                 <div>
-                    <span>가격</span><span>*</span><input type="number" min="1" placeholder="10000" id="priceInput" required>원
+                    <label for="priceInput" class="labelTitle">가격</label><span>*</span><input type="number" min="1" placeholder="10000" id="priceInput" required>원
                 </div>
             </div>
             <div class="post--main__inputQuantity">
                 <div>
-                    <span>수량</span><span>*</span><input type="number" min="1" placeholder="1" id="quantityInput" required>개
+                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" placeholder="1" id="quantityInput" required>개
                 </div>
             </div>
             <div class="post--main__inputCondition">
                 <div>
-                    <span>상태</span><span>*</span>
+                    <label for="inputCondition" class="labelTitle">상태</label><span>*</span>
                     <article class="post--main__inputConditionSelector">
-                        <input type="radio" name="inputCondition" required>새상품
-                        <input type="radio" name="inputCondition" required>중고상품
+                        <label>
+                            <input type="radio" name="inputCondition" required>새상품
+                        </label>
+                        <label>
+                            <input type="radio" name="inputCondition" required>중고상품
+                        </label>
                     </article>
                 </div>
             </div>
             <div class="post--main__inputCategory">
                 <div>
-                    <span>카테고리</span><span>*</span>
+                    <label for="category" class="labelTitle">카테고리</label><span>*</span>
                     <article class="inputCategorySelector">
                         <div id="category--1depth">
                             <div class="category--1depth__clothing">의류</div>
@@ -96,7 +102,6 @@
                         </div>
                         <div id="category--2depth">
                             <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div> 
-                            <%-- ><div id="jewelry2" class="category--2depth__item">시계/주얼리</div> --%>
                         </div>
                     </article>
                 </div>
@@ -106,7 +111,11 @@
 
         <aside class="content--post__rightSide"></aside>
 
-        <section class="content--post__bottomFix"><button type="submit">등록하기</button></section>
+        <section class="content--post__bottomFix">
+        <button type="submit">등록하기</button>
+        </section>
+
+    </form>  <%-- form 태그 끝 --%>
     </section>
     </main>
 
