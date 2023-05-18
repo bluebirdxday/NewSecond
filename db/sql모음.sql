@@ -203,3 +203,21 @@ COMMIT;
 SELECT USER_NO, SHOP_TITLE, USER_IMG FROM "shop"
 JOIN "users" USING(USER_NO);
 
+SELECT * FROM "notice";
+
+--공지사항 수정
+UPDATE "notice"SET 
+NOTICE_TITLE = '공지사항1'
+NOTICE_CONTENT = '공지사항1' 
+WHERE NOTICE_NO =23;
+
+--공지사항 삭제
+
+DELETE FROM "notice"
+WHERE NOTICE_NO = '31';
+
+ROLLBACK;
+
+
+
+COMMIT;

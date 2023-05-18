@@ -219,13 +219,5 @@ SELECT * FROM "goods_board";
 SELECT GOODS_NO,USER_NO,GOODS_TITLE
 	,TO_CHAR(SELL_ENROLL_DT, 'YYYY-MM-DD')
 	,GOODS_STATUS
-FROM "goods_board";
--- 키워드 추가
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '아디다스 삼바', DEFAULT);
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '아이폰14 프로', DEFAULT);
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '에메모가든 백팩', DEFAULT);
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '자바의 정석', DEFAULT);
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '정보처리기사 필기', DEFAULT);
-INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비', DEFAULT);
-
-COMMIT;
+FROM "goods_board"
+ORDER BY GOODS_NO DESC;

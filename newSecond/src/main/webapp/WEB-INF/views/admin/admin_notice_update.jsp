@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
 <c:set var="notice" value="${Notice}}"/>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_notice_detail</title>
     <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin\admin_notice_read.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_notice_write.css">
     
 </head>
 <body>
@@ -34,42 +31,36 @@
     <!-- -------------------- -->
 
   <!-- ----------상단 제목---------- -->
-  <div class="admin_notice_read_wrap">
-    <span class="admin_notice_read_bar">공지사항 관리</span>
+    <form action="/admin/admin_notice_update/${noticeNo}" method="POST" 
+        class="notice-update" id="noticeUpdateFrm" >
+
+  <div class="admin_notice_write_wrap">
+    <span class="admin_notice_write_bar">공지사항 관리</span>
  <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->
     <hr>
     <!-- 문의사항 테이블 -->
-    <table class="admin_notice_read_table" border="1">
-            <tr>
-                <th>번호</th>
-                <td>${Notice.noticeNo}</td>
-            </tr>
+    <table class="admin_notice_write_table" border="1">
             <tr>
                 <th>제목</th>
-               <td>${Notice.noticeTitle}</td>
-            </tr>
-            <tr>
-                <th>작성일</th>
-               <td>${Notice.noticeEnrollDate}</td>
-            </tr>
-            <tr>
-                <th>조회수</th>
-                <td>${Notice.noticeViewCount}</td>
+                <td><input class="admin_notice_writeTitle" autofocus name="noticeTitle" value="${Notice.noticeTitle}"></td>
             </tr>
         </table>
         
        <!-- 글 읽어 오기 -->
-            <div class="admin_notice_read_content">
-                 <div>${Notice.noticeContent}</div>
+            <div class="admin_notice_write_content">
+                <textarea class="admin_notice_write_content2" name="noticeContent" id="" cols="3" rows="10">${Notice.noticeContent}</textarea><br>
             </div>
-            
     
-            <div class="admin_notice_read_BtnWrap">
-                <button class="admin_notice_read_Btn"><a href="/admin/admin_notice_update/${Notice.noticeNo}">내용 수정</a></button>
-                <button class="admin_notice_read_Btn"><a href="/admin/admin_notice/${Notice.noticeNo}/delete">삭제</a></button>
+
+    
+            <div class="admin_notice_write_BtnWrap">
+                <button type="submit" class="admin_notice_write_Btn">글 등록</button>
+         <%--        <button class="admin_notice_write_Btn">필독 취소</button> --%>
             </div>
 
-   
+             </div>
+
+   </form>
     
 </body>
 </html>
