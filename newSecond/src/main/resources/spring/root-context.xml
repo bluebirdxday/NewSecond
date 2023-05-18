@@ -12,27 +12,8 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 
-		<!-- 지갑경로 여러개 중 하나 선택하기 -->
-		<!-- 기본 지갑 경로 -->
-		<!-- <property name="url"
-			value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/yunsuel/Wallet_orcl" /> -->
-
-
-		<!-- 지영님 맥북 지갑 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=/Users/jy_green/Desktop/project/tools/semi_wallet/Wallet_orcl" 
-			/> -->
-
-		<!-- 희진님 지갑 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/Users/user/Oracle_JDBC/Wallet_orcl" 
-			/> -->
-
-		<!-- 상준님 학원 컴퓨터 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/dev_tools/SemiProject/Wallet_orcl" 
-			/> -->
-			
-		<!-- 유민님 컴퓨터 경로 -->
 		<property name="url"
-			value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/tools/semi/Wallet_orcl" />
+			value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=/Wallet_orcl" /> 
 
 		<property name="username" value="ADMIN" />
 		<property name="password" value="Kh_yunseul_23" />

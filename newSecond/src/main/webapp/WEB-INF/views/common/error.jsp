@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,11 +33,10 @@
     <div id="error-container">
         <h1>서비스 이용 중 문제가 발생했습니다</h1>
         
-        <span class="error-content-title"> 발생한 예외 : ${e}</span>
         <p>
-            자세한 문제 원인은 이클립스 콘솔을 확인해주세요.
+            자세한 문제 원인 및 해결은 관리자에게 문의해주세요.
         </p>
-        
+
         <div id="btn-area">
             <a href="/">메인 페이지</a>
             

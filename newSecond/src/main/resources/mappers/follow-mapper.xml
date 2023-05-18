@@ -10,6 +10,7 @@
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="shopInfo" column="SHOP_INFO"/>
 		<result property="userImage" column="USER_IMG"/>
+		<result property="followYou" column="FOLLOW_YOU"/>
 	</resultMap>
 	
 
@@ -24,7 +25,7 @@
 		<result property="userImage" column="USER_IMG" />
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
-		<result property="userRole" column="USER_ROLE" />
+		<result property="userRole" column="USER_ROLE"/>
 	</resultMap>
 
 		
@@ -50,7 +51,42 @@
 		</select>
 		
 		
+		
 		<!-- 팔로우 리스트 조회 -->
+		<select id="selectFollowList" resultMap="follow_rm">
+			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
+						NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
+						NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG, 
+				(SELECT COUNT(*) FROM "follow" 
+				WHERE ACTIVE_USER_NO = #{activeUserNo}
+				AND PASSIVE_USER_NO = f.PASSIVE_USER_NO) FOLLOW_YOU
+			FROM "follow" f
+			JOIN "shop" s ON(s.USER_NO = PASSIVE_USER_NO)
+			JOIN "users" u ON(u.USER_NO = PASSIVE_USER_NO)
+			WHERE ACTIVE_USER_NO = #{passiveUserNo}
+		</select>
+		
+		
+		<!-- 팔로워 리스트 조회 -->
+		<select id="selectFollowerList" resultMap="follow_rm">
+			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
+					NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
+ 					NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG,
+				(SELECT COUNT(*) FROM "follow" 
+				WHERE ACTIVE_USER_NO = #{activeUserNo}
+				AND PASSIVE_USER_NO = f.ACTIVE_USER_NO) FOLLOW_YOU
+			FROM "follow" f
+			JOIN "shop" s ON(s.USER_NO = ACTIVE_USER_NO)
+			JOIN "users" u ON(u.USER_NO = ACTIVE_USER_NO)
+			WHERE PASSIVE_USER_NO = #{passiveUserNo}
+		</select>
+		
+		
+		<!-- 탈퇴 시 팔로우 삭제 -->
+		<delete id="deleteUserFollowList">
+			DELETE FROM "follow" WHERE ACTIVE_USER_NO = #{userNo}
+		</delete>
+		
 		
 		
 </mapper>
