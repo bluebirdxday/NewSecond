@@ -1,8 +1,14 @@
 -- 특정 유저 상점 조회
-SELECT USER_NO, SHOP_TITLE, SHOP_INFO, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
+SELECT USER_NO, SHOP_TITLE, 
+		(SELECT COUNT(*)
+		FROM "goods_board"
+		WHERE GOODS_STATUS = 'E'
+		AND USER_NO = 1) SELL_COUNT,
+	NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO, 
+	NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
 FROM "shop"
 JOIN "users" USING(USER_NO)
-WHERE USER_NO = 1;
+WHERE USER_NO = 5;
 
 
 -- 특정 유저 게시글 목록 조회
@@ -38,9 +44,10 @@ AND R.USER_NO = 6;
 
 
 -- 판매 완료 상품 조회
-SELECT *
+SELECT COUNT(*)
 FROM "goods_board"
-WHERE GOODS_STATUS = 'E';
+WHERE GOODS_STATUS = 'E'
+AND USER_NO = 1;
 
 
 -- 구매 확정 시 판매 후기 작성 가능 게시글로 추가
@@ -103,14 +110,14 @@ WHERE ACTIVE_USER_NO = 4
 AND PASSIVE_USER_NO = 1;
 
 -- 팔로우 리스트 조회
-SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, USER_IMG
+SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
 FROM "follow" 
 JOIN "shop" s ON(s.USER_NO = PASSIVE_USER_NO)
 JOIN "users" u ON(u.USER_NO = PASSIVE_USER_NO)
 WHERE ACTIVE_USER_NO = 3;
 
 -- 팔로우 리스트 조회
-SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, USER_IMG, 
+SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG, 
 	(SELECT COUNT(*) FROM "follow" 
 	WHERE ACTIVE_USER_NO = 1
 	AND PASSIVE_USER_NO = f.PASSIVE_USER_NO) FOLLOW_YOU
@@ -121,7 +128,7 @@ WHERE ACTIVE_USER_NO = 3;
 
 
 -- 팔로우 리스트 조회
-SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, USER_IMG, 
+SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, SHOP_INFO, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG, 
 	(SELECT COUNT(*) FROM "follow" 
 	WHERE ACTIVE_USER_NO = #{loginUserNo}
 	AND PASSIVE_USER_NO = #{passiveUserNo}) FOLLOW_YOU
