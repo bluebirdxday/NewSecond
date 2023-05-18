@@ -22,17 +22,17 @@ public class MyPageController {
 
 	@GetMapping("/info")
 	public String info() {
-		return "myPage/myPage-info";
+		return "user/myPage/myPage-info";
 	}
 	
 	@GetMapping("/changePw")
 	public String changePw() {
-		return "myPage/myPage-changePw";
+		return "user/myPage/myPage-changePw";
 	}
 	
 	@GetMapping("/secession")
 	public String secession() {
-		return "myPage/myPage-secession";
+		return "user/myPage/myPage-secession";
 	}
 	
 	

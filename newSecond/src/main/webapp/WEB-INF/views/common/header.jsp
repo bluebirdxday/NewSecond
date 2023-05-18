@@ -12,17 +12,24 @@
         <div>
             <c:choose>
                 <c:when test="${empty loginUser}">
-                    <jsp:include page="/WEB-INF/views/user/login.jsp"/>
-                    <span>  </span>
-                    <span><a href="/user/signUp">회원가입</a></span>
+                    <span class="m-1"><jsp:include page="/WEB-INF/views/user/login.jsp"/></span>
+
+                    <div class="vr m-1"></div>
+
+                    <span class="m-1"><a href="/user/signUp">회원가입</a></span>
                     
-                    <span class="admin_user"><a href="/admin/admin_notice">관리자 페이지</a></span>
+                    <div class="vr m-1"></div>
+
+                    <span class="admin_user m-1"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>
-                    <span class="logout"><a href="/user/logout">로그아웃</a></span>
-                    <span>  </span>
-                    <jsp:include page="/WEB-INF/views/user/myPageDropdown.jsp"/>
+
+                    <span class="logout m-1"><a href="/user/logout">로그아웃</a></span>
+
+                    <div class="vr m-1"></div>
+
+                    <span class="m-1"><jsp:include page="/WEB-INF/views/user/myPageDropdown.jsp"/></span>
                 
                 </c:otherwise>
             </c:choose>

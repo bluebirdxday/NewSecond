@@ -5,7 +5,7 @@
 
 
 
-<footer class="realFooter border-top">
+<footer class="realFooter border-top mt-5">
     <section class="footer--logo">
         <img src="/resources/src/img/LOGO.png" class="footerHomeLogo">
     </section>

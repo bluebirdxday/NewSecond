@@ -10,15 +10,13 @@
 .mainPage--wholeWrapper{
     width: 900px;
     margin: auto;
+    margin-top: 180px;
     position: relative;
-    /* z-index: -2; */
 }
 
 /* 캐러셀 영역 */
 .mainPage--carousel{
-    /* z-index: -5; */
     margin: auto;
-    margin-top: 200px;
     width: 900px;
     height: 30%;
 }

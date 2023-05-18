@@ -2,20 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="/resources/css/user/mypage/mypageDropdown.css">
+<link rel="stylesheet" href="/resources/css/user/myPage/myPageDropdown.css">
 
 <div class="dropdown">
 
     <button class="mypage--dropdown__intro d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="-90,0">
-        <span class="me-1">
 
-                <img class="mypageDrop--userImage__image" src="/resources/src/img/basic_profile.png">
-
-        </span>
-        
         <span class="m-0">
-            ${loginUser.userNickname}
+            ${loginUser.userNickname} 님
         </span>
+
+        <div class="downarror"><%-- 아래 삼각형 --%></div>
     </button>
 
     <ul class="dropdown-menu dropdown--menu__custom">

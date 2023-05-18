@@ -1,0 +1,34 @@
+
+.myPage--wholeWrapper{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 50px auto;
+}
+
+
+/* 옆쪽 메뉴 */
+.myPage--side{
+    width: 25%;
+    border-right: 2px solid #ddd;
+}
+
+/* 옆 - 상단 : 간단 유저 정보 */
+.menu--userInfo{
+    box-sizing: border-box;
+    height: auto;
+}
+
+.menu--userInfo  img{
+    width: 128px;   
+    height: 128px;
+    border-radius: 50%;
+}
+
+
+
+/* 본 내용 */
+.myPage--main{
+    width: 75%;
+    padding: 0 50px;
+}
