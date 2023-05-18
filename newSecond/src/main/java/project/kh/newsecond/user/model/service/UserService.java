@@ -1,5 +1,7 @@
 package project.kh.newsecond.user.model.service;
 
+import java.util.List;
+
 import project.kh.newsecond.user.model.dto.User;
 
 public interface UserService {

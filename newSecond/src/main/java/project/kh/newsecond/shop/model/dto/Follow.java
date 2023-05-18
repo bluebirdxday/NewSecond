@@ -9,10 +9,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Follower {
+public class Follow {
+
+	private int activeUserNo;
+	private int passiveUserNo;
 	
-	private int follwingUerNo;
 	private String shopTitle;
 	private String shopInfo;
 	private String userImage;
+	
+	private int followYou;
+	
 }

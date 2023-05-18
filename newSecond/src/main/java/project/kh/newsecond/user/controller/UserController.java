@@ -1,7 +1,5 @@
 package project.kh.newsecond.user.controller;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +31,9 @@ public class UserController{
 		
 		User loginUser = service.login(inputUser);
 		
+		
+		System.out.println(loginUser);
+		
 		if(loginUser != null) {
 			
 			model.addAttribute("loginUser", loginUser);
@@ -50,8 +51,12 @@ public class UserController{
 	
 	// 로그아웃 -> 세션 만료
 	@GetMapping("/logout")
-	public String logout(SessionStatus status) {
+	public String logout(SessionStatus status,
+						RedirectAttributes ra) {
+		
 		status.setComplete(); 
+		ra.addFlashAttribute("alertType", "success");
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
 		
 		return "redirect:/";
 	}
@@ -62,6 +67,7 @@ public class UserController{
 		return "user/signUp";
 	}
 	
+	// 회원가입 서비스
 	@PostMapping("/signUp")
 	public String signUp(User inputUser
 						,String[] userAddress
@@ -75,20 +81,24 @@ public class UserController{
 		
 		String path = "redirect:";
 		String message = null;
+		String alertType = null;
 		
 		if(result > 0) {
 			path += "/";
 			
+			alertType = "success";
 			message = inputUser.getUserNickname() + "님의 가입을 환영합니다."; 
 		} else {
 			
 			path += "signUp";
 			
-			message = "회원 가입 실패";
+			alertType = "fail";
+			message = "회원 가입 실패, 나중에 다시 시도해주세요";
 			
 		}
 		
-		ra.addAttribute("message", message);
+		ra.addFlashAttribute("alertType", alertType);
+		ra.addFlashAttribute("message", message);
 		
 		
 		
