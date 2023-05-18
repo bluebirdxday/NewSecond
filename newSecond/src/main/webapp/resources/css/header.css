@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url(/resources/src/img/font/Pretendard-Light.woff) format('woff');
+    font-weight: 300;
+    font-style: light;
+}
 
 @font-face {
     font-family: 'Pretendard';
@@ -40,7 +46,7 @@ header {
     display: flex;
     height: 150px;
     user-select: none;
-    z-index: 100;
+    z-index: 1000;
 }
 
 a{

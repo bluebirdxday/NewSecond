@@ -46,8 +46,8 @@ public class ShopController {
 		map.put("activeUserNo", loginUserNo);
 		map.put("passiveUserNo", userNo);
 		
-		List<Map<String, Object>> followList = service.selectFollowList(map); 
-		List<Map<String, Object>> followerList = service.selectFollowerList(map);
+		List<Follow> followList = service.selectFollowList(map); 
+		List<Follow> followerList = service.selectFollowerList(map);
 
 		// loginUser -> userNo 팔로 유무 조회
 		int checkFollow = service.checkFollow(map);

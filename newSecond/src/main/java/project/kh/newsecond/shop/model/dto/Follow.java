@@ -18,5 +18,6 @@ public class Follow {
 	private String shopInfo;
 	private String userImage;
 	
-	private boolean followYou;
+	private int followYou;
+	
 }

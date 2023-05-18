@@ -18,6 +18,10 @@ public class Shop {
 	private String shopTitle;
 	private String shopInfo;
 	
+	private int sellCount;
+	
+	private String userImage;
+	
 	private List<Review> reviewList;
 	
 }
