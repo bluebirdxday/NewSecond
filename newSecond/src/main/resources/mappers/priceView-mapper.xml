@@ -25,12 +25,13 @@
 		<result property="filePath" column="FILE_PATH" />
 	</resultMap>
 	
-	<!-- 시세조회 가격 조회 -->
+	<!-- 1달 내 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
 	<select id="goodsPriceSelect">
-		SELECT GOODS_PRICE
+		SELECT TRUNC(AVG(GOODS_PRICE))
 		FROM "goods_board"
-		WHERE GOODS_TITLE = #{keyword}
-		OR GOODS_DESCR = #{keyword}
+		WHERE (GOODS_TITLE LIKE '%${keyword}%'
+			OR GOODS_DESCR LIKE '%${keyword}%')
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '1' MONTH
 	</select>
 	
 	

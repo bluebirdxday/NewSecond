@@ -18,6 +18,7 @@ public class PriceViewResultController {
 	@Autowired
 	private PriceViewResultService service;
 
+	// 단순 페이지 연결
 	@GetMapping("/priceResultSee")
 	public String priceViewResult() {
 		
@@ -34,7 +35,7 @@ public class PriceViewResultController {
 		
 		int result = service.goodsPriceSelect(keyword);
 		
-	    model.addAttribute("result", result);
+//	    model.addAttribute("result", result);
 		
 		return "priceView/priceViewResultPage";
 	}

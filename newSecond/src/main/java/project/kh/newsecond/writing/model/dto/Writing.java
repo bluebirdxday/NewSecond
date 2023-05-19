@@ -15,7 +15,7 @@ public class Writing {
 	private int userNo;
 	
 	private String title;
-	private List<WritingImage> image; // 이미지 리스트는 images
+	private List<WritingImage> image;
 	private String detailText;
 	private int price;
 	private int quantity;

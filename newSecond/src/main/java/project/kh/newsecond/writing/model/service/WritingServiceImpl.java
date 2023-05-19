@@ -1,5 +1,6 @@
 package project.kh.newsecond.writing.model.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class WritingServiceImpl implements WritingService {
 	// �Խñ� ����
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
+	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {
 		
 		// 0. XSS 처리
 		writing.setTitle(Util.XXSHandling(writing.getTitle()));

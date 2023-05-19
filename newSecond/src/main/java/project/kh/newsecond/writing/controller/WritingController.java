@@ -44,14 +44,20 @@ public class WritingController {
 	// 글쓰기 버튼 제출 클릭시
 	@PostMapping("/submit")
 	public String writingInsert(
-			@ModelAttribute Writing writing,
-			@ModelAttribute WritingImage writingImage,
-			@RequestParam(value="image", required=false) List<MultipartFile> images, // �̹��� ���� ���
+			Writing writing,
+			String title, // test
+			@RequestParam(value="image", required=false) List<MultipartFile> images,
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
 			HttpSession session,
 			Model model
 			) throws IllegalStateException, IOException {
+		
+		// test
+		System.out.println(writing.toString());
+		System.out.println(title);
+		System.out.println(writing.getCategory2());
+		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1); };
 		if(writing.getCategory2().equals("가방"))			{writing.setCategoryNo(2); };
@@ -99,7 +105,6 @@ public class WritingController {
 		
 		// 4-1. service 호출
 		int result = service.writingInsert(writing, images, webPath, filePath);
-	
 		
 		// 5. 결과 리턴
 		String message = null;

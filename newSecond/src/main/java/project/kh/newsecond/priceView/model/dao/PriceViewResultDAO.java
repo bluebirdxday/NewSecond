@@ -12,6 +12,6 @@ public class PriceViewResultDAO {
 	
 	public int goodsPriceSelect(String keyword) {
 		
-		return sqlSession.selectOne("writingMapper.goodsPriceSelect", keyword);
+		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect", keyword);
 	}
 }
