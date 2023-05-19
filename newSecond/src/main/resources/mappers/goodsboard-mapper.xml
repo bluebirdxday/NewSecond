@@ -54,9 +54,28 @@
 			AND FILE_ORDER = 1) THUMBNAIL
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
-		WHERE GOODS_STATUS IN ('A','E','R')
+		WHERE GOODS_STATUS IN ('A','E','C')
 			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 		ORDER BY SELL_ENROLL_DT DESC
+		
+	</select>
+	
+	<!-- 더보기 -->
+	<select id="moreGoods" resultMap="goodsboard_rm">
+	
+	SELECT * FROM(
+			SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM
+			, GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE,
+				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+				WHERE F.GOODS_NO = G.GOODS_NO
+				AND FILE_ORDER = 1) THUMBNAIL
+			FROM "goods_board" G
+			JOIN "shop" USING (USER_NO)
+			WHERE GOODS_STATUS IN ('A','E','C')
+				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+			ORDER BY SELL_ENROLL_DT DESC)
+		WHERE NUM BETWEEN ${startCallNum} AND ${untilNum}
+		ORDER BY NUM
 		
 	</select>
 		

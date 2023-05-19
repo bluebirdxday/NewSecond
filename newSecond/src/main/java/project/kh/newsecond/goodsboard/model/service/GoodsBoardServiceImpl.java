@@ -35,5 +35,10 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		 
 		return map;
 	}
+	 
+	 @Override
+	public List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName) {
+		return dao.moreGoods(numAndSearchName);
+	}
 
 }

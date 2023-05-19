@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
@@ -38,13 +40,14 @@ public class GoodsBoardController {
 	}
 	
 	// 상품 게시글 추가 조회 (더보기)
-	@PostMapping(value="/searchMore", produces="application/json; charset=UTF-8")
-	public List<GoodsBoard> searchMoreGoodsList(String searchName){
-		
-		
-		
-		
-		return null;
+	@PostMapping("/searchMore")
+	@ResponseBody
+	public List<GoodsBoard> searchMoreGoodsList(@RequestBody Map<String, Object> numAndSearchName){
+//		int startCallNum = (int)(numAndSearchName.get("startCallNum"));
+//		int untilNum = (int)(numAndSearchName.get("untilNum"));
+//		String searchName = (String)(numAndSearchName.get("searchName"));
+//		 
+		return service.moreGoods(numAndSearchName);
 	}
 	
 	// 지영
