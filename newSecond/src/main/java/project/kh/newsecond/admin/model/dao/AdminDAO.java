@@ -127,4 +127,14 @@ public class AdminDAO {
 		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNo);
 	}
 
+	public int deleteNoticeList(Map<String, Object> paramMap) {
+		
+		return sqlSession.update("AdminMapper.deleteNoticeList",paramMap);
+	}
+
+	public int userSignOut(Map<String, Object> paramMap) {
+		
+		return sqlSession.update("AdminMapper.userSignOut",paramMap);
+	}
+
 }

@@ -66,7 +66,10 @@ public interface AdminService {
 	 */
 	int noticeListDelete(int noticeNo);
 
-	int deleteNoticeList(int noticeNo);
+
+	int deleteNoticeList(Map<String, Object> paramMap);
+
+	int userSignOut(Map<String, Object> paramMap);
 
 	
 	

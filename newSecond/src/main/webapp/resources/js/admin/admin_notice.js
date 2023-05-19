@@ -47,7 +47,7 @@ function boardSelectAll(boardSelectAll)  {
 }
 
 
-
+let noticeNo;//공지 번호
 
 
 document.getElementById("deleteBtn").addEventListener("click", function() {
@@ -68,13 +68,15 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
 else{
   if (confirm("정말 삭제 하시겠습니까?")) {  
 
+  let noticeNo = {"noticeNo" : noticeNo}
+
     fetch("/adimin_notice/deleteNoticeList", {
       method : "POST",
       headers : {"Content-Type": "application/JSON"},
-      body : selectedItems
-    }).then(resp=> resp.text())
+      body : JSON.stringify()
+    }).then(resp=> resp.text(noticeNo))
     .then(result=>{
-      "/adimin_notice/deleteNoticeList";
+      console.log(result)
     }).catch(err=> console.log(err));
     
   

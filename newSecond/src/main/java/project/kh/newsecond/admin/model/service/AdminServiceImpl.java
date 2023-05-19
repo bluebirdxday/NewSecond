@@ -124,12 +124,20 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int deleteNoticeList(int noticeNo) {
+	public int deleteNoticeList(Map<String, Object> paramMap) {
 	
-		int result = adminDao.deleteNoticeList(noticeNo);
 		
-		return result;
+		
+		return adminDao.deleteNoticeList(paramMap);
 	}
+
+	@Override
+	public int userSignOut(Map<String, Object> paramMap) {
+
+		return adminDao.userSignOut(paramMap);
+	}
+
+
 
 
 	
