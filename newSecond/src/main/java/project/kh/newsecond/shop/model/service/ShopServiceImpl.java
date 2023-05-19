@@ -31,8 +31,8 @@ public class ShopServiceImpl implements ShopService{
 	
 	// 게시글 리스트 조회
 	@Override
-	public List<GoodsBoard> selectGoodsBoardList(int userNo) {
-		return dao.selectGoodsBoardList(userNo);
+	public List<GoodsBoard> selectGoodsBoardList(Map<String, Object> sortMap) {
+		return dao.selectGoodsBoardList(sortMap);
 	}
 
 	// 상점 오픈일 조회
@@ -109,6 +109,14 @@ public class ShopServiceImpl implements ShopService{
 		
 		return result;
 	}
+
+	
+	// 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	@Override
+	public List<GoodsBoard> selectSortGoodsList(GoodsBoard goodsBoard) {
+		return dao.selectSortGoodsList(goodsBoard);
+	}
+
 
 
 

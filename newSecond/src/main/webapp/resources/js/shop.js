@@ -147,8 +147,15 @@ function unFollow(userNo, loginUserNo){
 }
     
 
+
+
+
 // 상점 상품 판매 게시글 예약, 판매완료 
+
 const overlayText = document.querySelectorAll('.overlay-text');
+
+const reserved = document.querySelectorAll('.reserved');
+const soldout = document.querySelectorAll('.soldout');
 
 if(overlayText!=null){
     
@@ -167,9 +174,6 @@ if(overlayText!=null){
     
 }
 
-const reserved = document.querySelectorAll('.reserved');
-const soldout = document.querySelectorAll('.soldout');
-
 if(reserved!=null){
 
     reserved.forEach(e=>{
@@ -184,4 +188,143 @@ if(soldout!=null){
         e.style.webkitTextStroke = '1px #e6ebfd'; // 글자 테두리 색상
         e.style.webkitTextFillColor = '#505bf0'; // 글자 색상
     })
+}
+
+
+
+
+
+
+// 상품 게시글 인기순/높은가격순/낮은가격순으로 조회
+
+sortList.forEach(function(sort) {
+    
+    let sortType = 0;
+
+    sort.addEventListener("click", function() {
+        const popularity = this.classList.contains("by-popularity");
+        const lowprice = this.classList.contains("by-lowprice");
+        const highprice = this.classList.contains("by-highprice");
+
+        if (popularity) sortType = 1;
+        if (lowprice) sortType = 2;
+        if (highprice) sortType = 3;
+
+        selectGoodsList(userNo, sortType);
+
+    });
+    
+});
+
+
+function selectGoodsList(userNo, sortType){
+
+    fetch("/shop/sortGoodsList", {
+        method : "POST",
+        headers : {"Content-Type": "application/json"},
+        body : JSON.stringify({"userNo" : userNo, "sortType" : sortType})
+    })
+    .then(resp=>resp.json())
+    .then(goodsList=>{
+        
+
+        const container = document.querySelector(".myshop--tab1__gridcontainer");
+        container.innerHTML="";
+
+        if(goodsList!=null){
+
+            for(let goods of goodsList){
+
+
+                // 게시글 1개 컨테이너
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("tab1--gridcontainer__item");
+                
+    
+                // 게시글 이미지 컨테이너
+                const itemImgDiv = document.createElement("div");
+                itemImgDiv.classList.add("tab1--item__img");
+                
+                // 게시글 썸네일
+                const itemImg = document.createElement("img");
+                itemImg.setAttribute("src", goods.thumbnail);
+                
+    
+                // 판매완료/판매중 설정
+                if(goods.goodsStatus=='E' || goods.goodsStatus=='C'){
+                    itemImg.setAttribute("style", "filter : brightness(40%);");
+                }
+                
+                const soldoutOrReservedDiv = document.createElement("div");
+    
+                if(goods.goodsStatus=='E'){
+                    soldoutOrReservedDiv.classList.add("overlay-text");
+                    soldoutOrReservedDiv.classList.add("soldout");
+                    soldoutOrReservedDiv.innerText = "Sold Out";
+                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: rgb(80, 91, 240); -webkit-text-stroke: 1px rgb(230, 235, 253); -webkit-text-fill-color: rgb(80, 91, 240);");
+                    
+                    
+                }
+                
+                if(goods.goodsStatus=='C'){
+                    soldoutOrReservedDiv.classList.add("overlay-text");
+                    soldoutOrReservedDiv.classList.add("reserved");
+                    soldoutOrReservedDiv.innerText = "Reserved";
+                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: #C2D3EB; -webkit-text-stroke: 1px #000000); -webkit-text-fill-color: #C2D3EB;");
+                }
+    
+                itemImgDiv.append(itemImg);
+                itemImgDiv.append(soldoutOrReservedDiv);
+
+    
+                // 게시글 정보 div
+                const itemDescDiv = document.createElement("div");
+                itemDescDiv.classList.add("tab1--item__description");
+    
+                
+                const firstDiv = document.createElement("div");
+    
+                // 게시글명
+                if(goods.goodsTitle.length > 10){
+                    firstDiv.innerText = goods.goodsTitle.substr(0, 10) + "...";
+                }else{
+                    firstDiv.innerText = goods.goodsTitle;
+                }
+                
+    
+                const secondDiv = document.createElement("div");
+    
+                // 상품 가격
+                const priceDiv = document.createElement("div");
+                priceDiv.innerText = goods.goodsPrice;  /* 추후 수정 단위별 점찍기 추가 */
+    
+                // 상품 등록시간
+                const enrollDateDiv = document.createElement("div");
+                enrollDateDiv.innerText = goods.sellEnrollDate;
+    
+                secondDiv.append(priceDiv, enrollDateDiv);
+    
+                itemDescDiv.append(firstDiv, secondDiv);
+    
+                itemDiv.append(itemImgDiv, itemDescDiv);
+
+                container.append(itemDiv);
+
+                
+            }
+
+        }else{
+
+            // const emptyDiv = document.createElement("div");
+            // emptyDiv.classList.add("tab--content__empty");
+            // emptyDiv.innerText("현재 판매하고 있는 상품이 없습니다.");w
+            console.log("존재하지 않음");
+        }
+
+        
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+    
 }

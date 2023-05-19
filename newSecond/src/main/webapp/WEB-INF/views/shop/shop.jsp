@@ -154,10 +154,10 @@
             <div id="tab1" class="myshop--tab__content tabs--active">
                 <div class="myshop--tab1__content-top">
                         <ul>
-                            <li class="sort--active"><a href="#" rel="">최신순</a></li>
-                            <li><a href="#" rel="">인기순</a></li>
-                            <li><a href="#" rel="">저가순</a></li>
-                            <li><a href="#" rel="">고가순</a></li>
+                            <li class="sort--active"><a href="/shop/${shop.userNo}">최신순</a></li>
+                            <li class="by-popularity"><a href='javascript:void(0);'>인기순</a></li>
+                            <li class="by-lowprice"><a href='javascript:void(0);'>저가순</a></li>
+                            <li class="by-highprice"><a href='javascript:void(0);'>고가순</a></li>
                         </ul>
                 </div> 
 
@@ -350,6 +350,10 @@
     <a href="/writing/writing">
         <button>글쓰기테스트버튼입니다</button>
     </a>
+
+    <script>
+        const userNo = ${shop.userNo}
+    </script>
 
     <script src="/resources/js/shop.js"></script>
 

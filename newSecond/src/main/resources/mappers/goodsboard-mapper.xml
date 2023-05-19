@@ -21,6 +21,8 @@
 		
 		<result property="shopTitle" column="SHOP_TITLE" />
 		
+		<result property="sortType" column="SORT_TYPE" />
+		
 	</resultMap>
 	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
@@ -54,7 +56,20 @@
 				FROM "goods_board" G
 				WHERE USER_NO = #{userNo}
 				AND GOODS_STATUS NOT IN('D', 'B')
-				ORDER BY GOODS_STATUS, SELL_ENROLL_DT DESC)
+				
+				
+				<!-- 최신순 -->
+				<if test="sortType==0">ORDER BY GOODS_STATUS, SELL_ENROLL_DT DESC</if>	
+				
+				<!-- 인기순 -->
+				<if test="sortType==1">ORDER BY GOODS_STATUS, VIEW_COUNT DESC</if>
+				
+				<!-- 높은 가격순 -->
+				<if test="sortType==2">ORDER BY GOODS_STATUS, GOODS_PRICE</if>
+				
+				<!-- 낮은 가격순 -->
+				<if test="sortType==3">ORDER BY GOODS_STATUS, GOODS_PRICE DESC</if>
+				)
 	</select>
 	
 	

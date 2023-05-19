@@ -46,7 +46,13 @@ public class ShopController {
 		int loginUserNo = loginUser.getUserNo();
 		int openDays = service.selectShopOpenDay(userNo);
 		
-		List<GoodsBoard> boardList = service.selectGoodsBoardList(userNo);
+		Map<String, Object> sortMap = new HashMap<>();
+		sortMap.put("userNo", userNo);
+		sortMap.put("sortType", 0);
+		
+		
+		// 최신순 조회
+		List<GoodsBoard> boardList = service.selectGoodsBoardList(sortMap);
 	
 		Map<String, Integer> map = new HashMap<>();
 		map.put("activeUserNo", loginUserNo);
@@ -117,5 +123,15 @@ public class ShopController {
 		return "redirect:/shop/" + userNo;
 	}
 	
+	
+	// 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	@PostMapping("/sortGoodsList")
+	@ResponseBody
+	public List<GoodsBoard> sortGoodsList(@RequestBody GoodsBoard goodsBoard) {
+		
+		System.out.println(goodsBoard);
+		
+		return service.selectSortGoodsList(goodsBoard);
+	}
 	
 }
