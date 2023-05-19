@@ -1,5 +1,7 @@
 // 검색어 입력 안하고 제출
 const searchForm = document.getElementById("searchForm");
+const searchQuery = document.getElementById("searchQuery");
+// const 
 searchForm.addEventListener("submit",e=>{
     if(searchQuery.value.trim().length==0){
         e.preventDefault();
@@ -10,13 +12,13 @@ searchForm.addEventListener("submit",e=>{
 });
 
 // 검색어 유지
-const searchQuery = document.getElementById("searchQuery");
 
 (()=>{
     const params = new URL(location.href).searchParams;
     const query = params.get("query");
-    if(query != "") searchQuery.value = query;
-    if
+    if(query != "" && 
+    (location.pathname == "/goods/search/goodsList"))
+    searchQuery.value = query;
 })();
 
 
@@ -25,11 +27,11 @@ const searchQuery = document.getElementById("searchQuery");
 // // 상품 12배수 초과하지 않을 때 더보기 버튼 안보이도록
 
 // const more = document.getElementById("viewMoreGoods");
-// const goodsTable = document.getElementById("goodsListTable");
+// const goodsListTable = document.getElementById("goodsListTable");
 
 // more.addEventListener("click", e => {
-//     const addListHtml = "";
-//     const startCallNum = goodsTable.childElementCount;
+//     const addGoodsDiv = "";
+//     const startCallNum = goodsListTable.childElementCount;
 //     // 제출된 검색어
 //     const searchName = new URL(location.href).searchParams.get("query");
 

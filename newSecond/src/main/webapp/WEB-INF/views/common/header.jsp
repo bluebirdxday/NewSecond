@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
-
 <link rel="stylesheet" href="/resources/css/header.css">
 
 <header class="header--container__containerbox">
@@ -78,7 +77,9 @@
         <div><a href="#">카테고리</a></div>
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
+
     
+<script src="/resources/js/goods/searchGoodsList.js"></script>
 </header>
 
 
