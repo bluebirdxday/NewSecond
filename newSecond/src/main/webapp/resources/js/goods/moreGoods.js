@@ -40,7 +40,7 @@ more.addEventListener("click", e => {
                 
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
-                priceDiv.innerHTML = `<fmt:formatNumber value="${goods.goodsPrice}" pattern="##,###,###"/>`;
+                priceDiv.innerHTML = `${goods.goodsPrice.toLocaleString('ko-KR')}`;
                 const titleDiv = document.createElement("div");
                 titleDiv.classList.add("goods_title");
                 titleDiv.innerHTML = `${goods.goodsTitle}`;
