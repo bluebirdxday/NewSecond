@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.priceView.model.dao.PriceViewResultDAO;
+import project.kh.newsecond.priceView.model.dto.PriceViewKeyword;
 
 @Service
 public class PriceViewResultServiceImpl implements PriceViewResultService {
@@ -14,9 +15,9 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int goodsPriceSelect(String keyword) {
+	public int goodsPriceSelect(PriceViewKeyword keywords) {
 		
-		int result = dao.goodsPriceSelect(keyword);
+		int result = dao.goodsPriceSelect(keywords);
 		
 		return result;
 	}

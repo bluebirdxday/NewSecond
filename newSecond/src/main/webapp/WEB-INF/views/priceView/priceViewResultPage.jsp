@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<%-- iphone을 검색하였을 때(GET방식) 이 페이지의 주소는 http://localhost/priceView/priceSee/search?keyword=iphone --%>
+<!-- <%-- iphone을 검색하였을 때(GET방식) 이 페이지의 주소는 http://localhost/priceView/priceSee/search?keyword=iphone --%>
 
 <%-- URL 속 iphone이라는 keyword를 <%= keyword %>로 사용하기 위한 태그 --%>
-<% String keyword = request.getParameter("keyword"); %>
+<% String keyword = request.getParameter("keyword"); %> -->
 
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
@@ -30,7 +30,7 @@
                 <!-- mainFrame -->
                 <div class="priceViewResult--main__box">
                     <div class="priceViewResult--main__SearchBox">
-<%-- URL의 keyword=iphone의 keyword가 value 값으로 기본 입력되어 있음 --%>
+<!-- <%-- URL의 keyword=iphone의 keyword가 value 값으로 기본 입력되어 있음 --%> -->
                         <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30" value="<%= keyword %>" style="font-weight: bold;"><button type="submit">검색</button>
                     </div>
 
@@ -48,10 +48,10 @@
                         <!--  좌우분할 -->
 
                         <div class="priceViewResult--main__RightBox">
-<%-- URL의 keyword=iphone의 keyword를 넣음 --%>
+<!-- <%-- URL의 keyword=iphone의 keyword를 넣음 --%> -->
                             <div>오늘의 <%= keyword %> 시세금액</div>
                             <div>
-<%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>                            
+<!-- <%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>   -->                          
                                 <div> <%= request.getAttribute("result") %> </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">
-<%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%>
+<!-- <%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%> -->
                 <a href="#"><button>더보기</button></a>
             </section>
         </section>

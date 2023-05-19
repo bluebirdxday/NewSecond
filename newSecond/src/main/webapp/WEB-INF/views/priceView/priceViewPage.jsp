@@ -28,7 +28,7 @@
                     <div class="priceView--main__leftBox">
                         <div class="priceView--main__searchBox">
                             <label for="search">
-<%-- 검색어 name="keyword" id="search" --%>                            
+<!-- <%-- 검색어 name="keyword" id="search" --%>   -->                          
                                 <input type="text" placeholder="검색어를 입력하세요" maxlength="30" id="search" name="keyword" id="search"><button type="submit">검색</button>
                             </label>
                         </div>
