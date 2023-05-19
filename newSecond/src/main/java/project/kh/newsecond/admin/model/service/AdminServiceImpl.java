@@ -115,6 +115,23 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	@Override
+	public int noticeListDelete(int noticeNo) {
+		
+		int result = adminDao.noticeListDelete(noticeNo);
+		
+		return result;
+	}
+
+	@Override
+	public int deleteNoticeList(int noticeNo) {
+	
+		int result = adminDao.deleteNoticeList(noticeNo);
+		
+		return result;
+	}
+
+
 	
 	
 

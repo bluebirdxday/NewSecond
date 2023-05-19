@@ -31,18 +31,20 @@
   <form action="/admin/qna_check" method="POST" class="qna_check" id="qnaWriteFrm" >
     <div class="qna_container">
     <div class="qna_dropdown">
-        <button class="qna_dropbtn">
+        <button type="button" class="qna_dropbtn">
           <span class="qna_dropbtn_content">문의 게시판</span>
           <span class="qna_dropbtn_click" style="font-family: Material Icons; font-size : 30px; color :  #005EEE; float:right;"
             onclick="dropdown()">arrow_drop_down</span>
         </button>
         <div class="qna_dropdown-content">
-          <div class="qnaList" onclick="showMenu(this.innerText) name=">거래신고${qna.qnaType}</div>
-          <div class="qnaList" onclick="showMenu(this.innerText) name=${qna.qnaType}">회원/계정</div>
-          <div class="qnaList" onclick="showMenu(this.innerText) name=${qna.qnaType}">오류/제안</div>
-          <div class="qnaList" onclick="showMenu(this.innerText) name=${qna.qnaType}">채팅/알람</div>
+          <div class="qnaList" onclick="showMenu(this.innerText)" >거래신고</div>
+          <div class="qnaList" onclick="showMenu(this.innerText)" >회원/계정</div>
+          <div class="qnaList" onclick="showMenu(this.innerText)" >오류/제안</div>
+          <div class="qnaList" onclick="showMenu(this.innerText)" >채팅/알람</div>
         </div>
       </div>
+
+      <input type="hidden" name="qnaType" value="">
 
       <div class="qna_title">
       문의제목 :${qna.qnaTitle} <input type="text" name="" id="" class="qna_titleInput">

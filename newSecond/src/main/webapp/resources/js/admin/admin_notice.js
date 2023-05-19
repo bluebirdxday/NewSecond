@@ -51,32 +51,34 @@ function boardSelectAll(boardSelectAll)  {
 
 
 document.getElementById("deleteBtn").addEventListener("click", function() {
-  var checkboxes = document.querySelectorAll("#admin_notice_checkbox");
+  var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
+  var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
   var selectedItems = [];
   
   for (var i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      selectedItems.push(checkboxes[i].value);
+      selectedItems.push(checkboxesNo[i].innerText);
     }
   }
   
   if(selectedItems.length==0){
-    alert("선택된 요소가 없습니다.");
+    alert("삭제할 항목을 선택해주세요.");
     return;
   }
+else{
+  if (confirm("정말 삭제 하시겠습니까?")) {  
 
-  if (confirm("정말 삭제 하시겠습니까?")) {        
     fetch("/adimin_notice/deleteNoticeList", {
       method : "POST",
       headers : {"Content-Type": "application/JSON"},
-      body : JSON.stringify(selectedItems)
+      body : selectedItems
     }).then(resp=> resp.text())
     .then(result=>{
-
+      "/adimin_notice/deleteNoticeList";
     }).catch(err=> console.log(err));
     
   
-  }
+  }}
   
   });
   

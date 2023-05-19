@@ -108,7 +108,23 @@ public class AdminDAO {
 		return result;
 	}
 
-	
-	
+
+	public int noticeDelete(Notice notice, Map<String, Object> paramMap) {
+	int result = sqlSession.delete("AdminMapper.noticeDelete",notice);
+		
+		if(result>0)  result = notice.getNoticeNo();
+		
+		return result;
+	}
+
+	public int noticeListDelete(int noticeNo) {
+		
+		return sqlSession.update("AdminMapper.noticeListDelete",noticeNo);
+	}
+
+	public int deleteNoticeList(int noticeNo) {
+		
+		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNo);
+	}
 
 }

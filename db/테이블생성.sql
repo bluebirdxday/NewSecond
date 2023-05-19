@@ -542,7 +542,8 @@ SELECT * FROM "notice";
 
 INSERT INTO "notice"
 VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지', '안녕하세요. 관리자입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT);
-INSERT INTO "users"
+
+ALTER TABLE "notice" ADD NOTICE_FL CHAR(1) DEFAULT 'N' CONSTRAINT NOTICE_CHECK_FL_CHK CHECK(NOTICE_FL IN('N', 'Y'));
 
 
 COMMIT;
@@ -554,3 +555,4 @@ ALTER TABLE "qna" ADD QNA_TYPE VARCHAR(30);
 SELECT * FROM "qna";
 
 
+COMMENT ON COLUMN "goods_board"."QNA_TYPE" IS '게시글 상태(A:거래신고, B:회원/계정 C:오류/제안 D:채팅/알람)';

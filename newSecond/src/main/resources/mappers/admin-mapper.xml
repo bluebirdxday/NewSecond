@@ -139,7 +139,7 @@
 	VALUES (#{noticeNo},
 		#{noticeTitle},
 		#{noticeContent}
-		,DEFAULT,DEFAULT)
+		,DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	
 	
@@ -154,6 +154,12 @@
 	DELETE FROM "notice"
 	WHERE NOTICE_NO = #{noticeNo}
 	</delete>
+	
+	<update id="noticeListDelete">
+	UPDATE "notice" 
+	SET NOTICE_FL = 'Y' 
+	WHERE NOTICE_NO = #{noticeNo}
+	</update>
 	
       
 </mapper>

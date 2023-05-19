@@ -59,6 +59,15 @@ public interface AdminService {
 	 */
 	int noticeDelete(Notice notice);
 
+
+	/** 공지사항 게시글 선택 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int noticeListDelete(int noticeNo);
+
+	int deleteNoticeList(int noticeNo);
+
 	
 	
 }

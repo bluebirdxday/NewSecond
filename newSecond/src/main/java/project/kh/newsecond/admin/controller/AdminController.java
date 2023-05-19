@@ -176,12 +176,24 @@ public class AdminController {
 			}
 		
 		
-		@PostMapping("/adimin_notice/deleteNoticeList")
+		@PostMapping(value="/adimin_notice/deleteNoticeList", produces="application/json; charset=UTF-8")
 		@ResponseBody
-		public String deleteNoticeList(@RequestBody Notice notice ) {
+		public String deleteNoticeList(@RequestBody String[] selectedItems ) {
+			
+			  System.out.println(selectedItems);
+			  
+			  for(int i=0; i<selectedItems.length;i++) {
+			         
+			       int noticeNo = Integer.parseInt(selectedItems[i]);
+			       int result = adminService.deleteNoticeList(noticeNo);
+			       
+			   
+			      }
+			return "admin/admin_notice";
+			  
+			 
 			
 			
-			return null; 
 		}
 		
 		
