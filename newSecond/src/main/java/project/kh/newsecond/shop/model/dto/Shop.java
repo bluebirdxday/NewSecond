@@ -20,8 +20,6 @@ public class Shop {
 	
 	private int sellCount;
 	
-	private String userImage;
-	
 	private List<Review> reviewList;
 	
 }

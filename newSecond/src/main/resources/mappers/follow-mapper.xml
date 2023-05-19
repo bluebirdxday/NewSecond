@@ -9,7 +9,6 @@
 		
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="shopInfo" column="SHOP_INFO"/>
-		<result property="userImage" column="USER_IMG"/>
 		<result property="followYou" column="FOLLOW_YOU"/>
 	</resultMap>
 	
@@ -22,7 +21,6 @@
 		<result property="userNickname" column="USER_NICKNAME" />
 		<result property="userTel" column="USER_TEL" />
 		<result property="userAddress" column="USER_ADDRESS" />
-		<result property="userImage" column="USER_IMG" />
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
 		<result property="userRole" column="USER_ROLE"/>
@@ -56,7 +54,6 @@
 		<select id="selectFollowList" resultMap="follow_rm">
 			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
 						NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
-						NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG, 
 				(SELECT COUNT(*) FROM "follow" 
 				WHERE ACTIVE_USER_NO = #{activeUserNo}
 				AND PASSIVE_USER_NO = f.PASSIVE_USER_NO) FOLLOW_YOU
@@ -71,7 +68,6 @@
 		<select id="selectFollowerList" resultMap="follow_rm">
 			SELECT ACTIVE_USER_NO, PASSIVE_USER_NO, SHOP_TITLE, 
 					NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO,
- 					NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG,
 				(SELECT COUNT(*) FROM "follow" 
 				WHERE ACTIVE_USER_NO = #{activeUserNo}
 				AND PASSIVE_USER_NO = f.ACTIVE_USER_NO) FOLLOW_YOU

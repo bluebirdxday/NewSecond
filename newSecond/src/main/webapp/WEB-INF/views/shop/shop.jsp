@@ -30,7 +30,6 @@
 
         <div class="myshop--profileImage__container">
             <div class="myshop--profileImage__crop">
-                <img src="${shop.userImage}" class="myshop--profileImage__img">
             </div>
         </div>
 
@@ -112,7 +111,6 @@
                     <!-- myPage.js, myPage-info.jsp 파일 참고 -->
                     <div class="myshop--popup__content">
                         <div>
-                            <img src="${shop.userImage}" class="upload">
                             <img src="/resources/src/img/notifications.png" class="changeProfileImg" style="display: none;">
                             <input type="file" class="myshop--popup__profile-edit real-upload" accept="image/*" style="display: none;"> <!-- 내상점 이미지 -->
                         </div>
@@ -238,7 +236,6 @@
                     <c:if test="${not empty followList}" >
                         <c:forEach items="${followList}" var="follow">
                             <div class="tab3--container__item">
-                                <div><img src="${follow.userImage}"> </div>
                                 <div>${follow.shopTitle}</div>
                                 <div>
                                     <div>${follow.shopInfo}</div>
@@ -271,7 +268,6 @@
                     <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
-                                <div><img src="${follower.userImage}"></div>
                                 <div>${follower.shopTitle}</div>
                                 <div>
                                         <div>${follower.shopInfo}</div>
