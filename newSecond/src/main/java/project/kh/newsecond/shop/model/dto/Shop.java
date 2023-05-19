@@ -21,7 +21,6 @@ public class Shop {
 	
 	private int sellCount;
 	
-	
 	private List<Review> reviewList;
 	
 }

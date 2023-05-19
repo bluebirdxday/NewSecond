@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<%-- iphone을 검색하였을 때(GET방식) 이 페이지의 주소는 http://localhost/priceView/priceSee/search?keyword=iphone --%>
+
+<%-- URL 속 iphone이라는 keyword를 <%= keyword %>로 사용하기 위한 태그 --%>
+<% String keyword = request.getParameter("keyword"); %>
+
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
@@ -25,7 +30,8 @@
                 <!-- mainFrame -->
                 <div class="priceViewResult--main__box">
                     <div class="priceViewResult--main__SearchBox">
-                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30"><button type="submit">검색</button>
+<%-- URL의 keyword=iphone의 keyword가 value 값으로 기본 입력되어 있음 --%>
+                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30" value="<%= keyword %>" style="font-weight: bold;"><button type="submit">검색</button>
                     </div>
 
                     <!-- 상하분할 -->
@@ -34,32 +40,16 @@
                         <div class="priceViewResult--main__LeftBox">
                             <div>시세금액</div>
                             <div class="chart">
-                                <svg viewBox="0 0 500 300">
-                                <polyline fill="none" stroke="#ffffff" stroke-width="5"
-                                    points="0,250 100,70 200,100 300,100 400,150" />
-                                <g class="y-axis">
-                                    <line x1="40" y1="0" x2="40" y2="250" stroke="#999" stroke-width="2" />
-                                    <text x="10" y="20">250</text>
-                                    <text x="10" y="70">200</text>
-                                    <text x="10" y="120">150</text>
-                                    <text x="10" y="170">100</text>
-                                    <text x="10" y="220">50</text>
-                                </g>
-                                <g class="x-axis">
-                                    <line x1="0" y1="250" x2="500" y2="250" stroke="#999" stroke-width="2" />
-                                    <text x="80" y="280">3개월 전</text>
-                                    <text x="180" y="280">2개월 전</text>
-                                    <text x="280" y="280">1개월 전</text>
-                                    <text x="380" y="280">오늘</text>
-                                </g>
-                                </svg>
+
+
                             </div>
                         </div>
 
                         <!--  좌우분할 -->
 
                         <div class="priceViewResult--main__RightBox">
-                            <div>오늘의 아이폰12 시세금액</div>
+<%-- URL의 keyword=iphone의 keyword를 넣음 --%>
+                            <div>오늘의 <%= keyword %> 시세금액</div>
                             <div>
                                 <div>539,600원</div>
                             </div>
@@ -170,6 +160,7 @@
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">
+<%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%>
                 <a href="#"><button>더보기</button></a>
             </section>
         </section>

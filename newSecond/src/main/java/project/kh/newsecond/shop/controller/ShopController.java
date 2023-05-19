@@ -91,7 +91,7 @@ public class ShopController {
 	// 상점 편집
 	@PostMapping("/updateShopInfo")
 	public String updateShopInfo(@RequestParam(value="shopNewProfile", required=false) MultipartFile shopNewProfile, Shop shop,
-			 RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
+			RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
 		
 		int userNo = shop.getUserNo();
 		String webPath = "/resources/src/img/profile/" + userNo + "/";

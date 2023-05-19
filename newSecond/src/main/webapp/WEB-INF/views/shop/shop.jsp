@@ -167,9 +167,10 @@
                         <c:forEach items="${goodsBoardList}" var="goods">
                                 
                                 <%-- 상품 상세 페이지로 이동 태그--%>
+
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
-                                            <img src="/resources/src/img/cat.jpg">
+                                            <img src="${goods.thumbnail}">
                                         </div>
                                         <div class="tab1--item__description">
                                             <div> 

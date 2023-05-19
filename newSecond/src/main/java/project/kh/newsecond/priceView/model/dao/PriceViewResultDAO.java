@@ -9,4 +9,9 @@ public class PriceViewResultDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	public int goodsPriceSelect(String keyword) {
+		
+		return sqlSession.selectOne("writingMapper.goodsPriceSelect", keyword);
+	}
 }

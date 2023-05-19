@@ -79,20 +79,29 @@ textarea:focus, input:focus{
 
 /* 이미지 크롭 */
 .myshop--profileImage__crop{
-    width: 230px;
+    width: 220px;
     height: 200px;
-    overflow: hidden;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    position: relative; 
+    
 }
+
+.myshop--profileImage__crop::before {
+    content: "";
+    display: block;
+    padding-top: calc(100% / (220/ 200)); 
+  }
+
 
 /* 내 상점 프로필 사진 */
 .myshop--profileImage__img{
-    max-width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    display: block;
+    object-fit: cover;
 }
 
 /* 내 상점 컨텐츠 상단 (상점명, 접속여부, 팔로우 버튼) */
@@ -148,7 +157,7 @@ textarea:focus, input:focus{
 }
 
 
-/* 상점명, 접속여부 div */
+/* 상점명div */
 .myshop--info__top>div:first-of-type{
     width: 75%;
     margin-top: 10px;
@@ -377,16 +386,24 @@ textarea:focus, input:focus{
 .tab1--item__img{
     width: auto;
     height: 140px;
-    display: flex;
     overflow: hidden;
-    justify-content: center;
-    align-items: center;
+    position: relative; 
 }
+
+.tab1--item__img::before {
+    content: "";
+    display: block;
+    padding-top: calc(100% / (144 / 140)); /* 높이 대비 너비의 비율을 계산하여 적용 */
+  }
 
 /* 상품 탭  리스트 아이템 이미지*/
 .tab1--item__img>img{
-    max-width: 100%;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* 상품 탭 리스트 아이템 상세설명 */
@@ -813,14 +830,22 @@ textarea:focus, input:focus{
     border-radius: 20px;
     cursor: pointer;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; 
 }
 
+.myshop--popup__content>div:nth-of-type(1)::before {
+    content: "";
+    display: block;
+    padding-top: calc(100% / (230 / 210)); /* 높이 대비 너비의 비율을 계산하여 적용 */
+  }
+
 .myshop--popup__content>div:nth-of-type(1)>img{
-    max-height: 100%;
-    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .myshop--popup__content>div:nth-of-type(1)>img:hover{

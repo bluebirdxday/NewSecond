@@ -82,6 +82,32 @@ public class AdminDAO {
 		return result;
 	}
 
+	/**공지사항 게시글 수정
+	 * @param notice
+	 * @return
+	 */
+	public int noticeUpdate(Notice notice) {
+	
+		int result = sqlSession.update("AdminMapper.noticeUpdate",notice);
+		
+		if(result>0) result = notice.getNoticeNo();
+		
+		return result;
+	}
+
+	/**공지사항 게시글 삭제
+	 * @param notice
+	 * @return
+	 */
+	public int noticeDelete(Notice notice) {
+		
+		int result = sqlSession.delete("AdminMapper.noticeDelete",notice);
+		
+		if(result>0) result = notice.getNoticeNo();
+		
+		return result;
+	}
+
 	
 	
 

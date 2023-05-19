@@ -65,8 +65,8 @@
             
     
             <div class="admin_notice_read_BtnWrap">
-                <button class="admin_notice_read_Btn"><a href="\admin\admin_notice_write">내용 수정</a></button>
-                <button class="admin_notice_read_Btn">필독 취소</button>
+                <button class="admin_notice_read_Btn"><a href="/admin/admin_notice_update/${Notice.noticeNo}">내용 수정</a></button>
+                <button class="admin_notice_read_Btn"><a href="/admin/admin_notice/${Notice.noticeNo}/delete">삭제</a></button>
             </div>
 
    

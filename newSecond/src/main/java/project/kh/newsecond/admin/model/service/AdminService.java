@@ -47,6 +47,18 @@ public interface AdminService {
 	 */
 	int noticeInsert(Notice notice);
 
+	/**공지사항 게시글 수정
+	 * @param notice
+	 * @return
+	 */
+	int noticeUpdate(Notice notice);
+
+	/**공지사항 게시글 삭제
+	 * @param notice
+	 * @return
+	 */
+	int noticeDelete(Notice notice);
+
 	
 	
 }
