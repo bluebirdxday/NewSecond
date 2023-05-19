@@ -30,6 +30,7 @@
 
         <div class="myshop--profileImage__container">
             <div class="myshop--profileImage__crop">
+                <img src="${shop.shopProfile}" class="myshop--profileImage__img">
             </div>
         </div>
 
@@ -97,40 +98,43 @@
 
     </section>
 
-    <!-- 편집 팝업 -->
-    <section class="myshop--popup__edit">
-        <div class="myshop--popup__background">
-            <div class="myshop--window">
-                <div class="myshop--popup">
-                    <div class="myshop--popup__top">
-                        <div>내 상점 편집</div>
-                        <img src="/resources/src/img/closePopup.png" class="myshop--popup__btn-close"/>
-                    </div>
+    <form action="/shop/updateShopInfo" method="POST" id="updateShopInfoFrm" enctype="multipart/form-data">
+        <!-- 편집 팝업 -->
+        <section class="myshop--popup__edit">
+            <div class="myshop--popup__background">
+                <div class="myshop--window">
+                    <div class="myshop--popup">
+                        <div class="myshop--popup__top">
+                            <div>내 상점 편집</div>
+                            <img src="/resources/src/img/closePopup.png" class="myshop--popup__btn-close"/>
+                        </div>
 
-                    <!-- form 태그 추가 + 저장버튼 클릭 시 제출 필요 -->
-                    <!-- myPage.js, myPage-info.jsp 파일 참고 -->
-                    <div class="myshop--popup__content">
-                        <div>
-                            <img src="/resources/src/img/notifications.png" class="changeProfileImg" style="display: none;">
-                            <input type="file" class="myshop--popup__profile-edit real-upload" accept="image/*" style="display: none;"> <!-- 내상점 이미지 -->
+                        <div class="myshop--popup__content">
+                            <div>
+                                <img src="${shop.shopProfile}" class="upload">  <%-- 선택한 이미지 --%>
+                                <input type="file" name="shopNewProfile" class="myshop--popup__profile-edit real-upload" 
+                                    accept="image/*" style="display: none;">
+                            </div>
+                            <div>
+                                <input type="text" class="myshop--popup__input-edit" name="shopTitle" value="${shop.shopTitle}" autocomplete="off"> 
+                                <span>(<span id="myshopEditInput">0</span>/20)</span>
+                            </div>
+                            <div>
+                                <textarea name="shopInfo" class="myshop--popup__textarea-edit" cols="35" rows="5" maxlength="50">${shop.shopInfo}</textarea>
+                                <span>(<span id="myshopEditTextArea">0</span>/50)</span>
+                            </div>
+                            <input type="hidden" name="userNo" value="${shop.userNo}">
+                            <div>
+                                <button class="myshop--popup__btn-save">저장</button>
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" class="myshop--popup__input-edit" minlength="3" maxlength="20" value="${shop.shopTitle}"> 
-                            <span>(<span id="myshopEditInput">0</span>/20)</span>
-                        </div>
-                        <div>
-                            <textarea name="" id="" class="myshop--popup__textarea-edit" cols="35" rows="5" maxlength="50">${shop.shopInfo}</textarea>
-                            <span>(<span id="myshopEditTextArea">0</span>/50)</span>
-                        </div>
-                        <div>
-                            <button class="myshop--popup__btn-save">저장</button>
-                        </div>
+                        
+                        
                     </div>
-                    
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 
     
     <section class="myshop--tab">
@@ -161,7 +165,8 @@
                 <div class="myshop--tab1__gridcontainer">
                     <c:if test="${not empty goodsBoardList}" >
                         <c:forEach items="${goodsBoardList}" var="goods">
-                                    <!-- 상품 탭 리스트 아이템(게시글) : 추후에 DB에서 자동으로 로드할 수 있게 기능 구현-->
+                                
+                                <%-- 상품 상세 페이지로 이동 태그--%>
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
                                             <img src="/resources/src/img/cat.jpg">
@@ -184,6 +189,9 @@
                                             </div>
                                         </div>
                                     </div>
+                            
+
+
                         </c:forEach>
                     </c:if>
 
@@ -236,19 +244,20 @@
                     <c:if test="${not empty followList}" >
                         <c:forEach items="${followList}" var="follow">
                             <div class="tab3--container__item">
+                                <div><img src="${follow.shopProfile}"> </div>
                                 <div>${follow.shopTitle}</div>
                                 <div>
                                     <div>${follow.shopInfo}</div>
                                 </div>
                                 <div>
                                     <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                        <c:if test="${follow.followYou==0}">
-                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo})">팔로우</button>
-                                        </c:if>
+                                    <c:if test="${follow.followYou==0}">
+                                        <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo})">팔로우</button>
+                                    </c:if>
 
-                                        <c:if test="${follow.followYou==1}" >
-                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo})">언팔로우</button>
-                                        </c:if>
+                                    <c:if test="${follow.followYou==1}" >
+                                        <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo})">언팔로우</button>
+                                    </c:if>
                                 </div>
                             </div>
                         </c:forEach>
@@ -268,6 +277,7 @@
                     <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
+                                <div><img src="${follower.shopProfile}"></div>
                                 <div>${follower.shopTitle}</div>
                                 <div>
                                         <div>${follower.shopInfo}</div>
@@ -314,6 +324,7 @@
     </a>
 
     <script src="/resources/js/shop.js"></script>
+
     
 </body>
 </html>

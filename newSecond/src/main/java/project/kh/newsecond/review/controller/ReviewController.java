@@ -2,12 +2,12 @@ package project.kh.newsecond.review.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,7 +92,8 @@ public class ReviewController {
 			path = "insert";
 		}
 		
-		ra.addFlashAttribute("addReviewMessage", message);
+		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("alertType", alertType);
 		
 		return path;
 	}
@@ -106,10 +107,42 @@ public class ReviewController {
 	}
 	
 	
+	// 후기 업데이트 페이지로 이동
+	@GetMapping("/reviewList/updateReview/{reviewNo}")
+	public String moveUpdateReview(@PathVariable("reviewNo") int reviewNo, Model model){
+		
+		Review review = service.selectReview(reviewNo);
+		
+		model.addAttribute("review", review);
+		
+		return "review/updateReview";
+	}
+	
+	
 	// 후기 업데이트 
 	@PostMapping("/reviewList/update")
-	public String updateReview() {
-		return null;
+	public String updateReview(Review review, RedirectAttributes ra) {
+		
+		int result = service.updateReview(review);
+		
+		String alertType = null;
+		String message = null;
+		String path = null;
+		
+		if(result>0) {
+			alertType = "success";
+			message = "후기가 수정되었습니다.";
+			path = "redirect:/review/reviewList";
+		}else {
+			alertType = "fail";
+			message = "후기 수정에 실패하였습니다. 다시 시도해주세요.";
+			path = "review/updateReview";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("alertType", alertType);
+		
+		return path;
 	}
 
 }

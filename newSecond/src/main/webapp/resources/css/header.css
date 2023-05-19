@@ -147,7 +147,6 @@ header>section:nth-child(3){ height: 30%; }
 .header--container__top span {
     font-size: 0.9rem;
     white-space: nowrap;
-    margin-left: 10px;
 }
 
 

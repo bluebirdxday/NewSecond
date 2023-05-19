@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 2fr;
     gap: 30px;
     /* place-items: center; */
     /* position: fixed; */
@@ -37,12 +37,13 @@
     font-weight: bolder;
     box-shadow: 5px 5px 5px #dbdee1;
     text-align: center;
-    justify-self: center;
+    justify-self: start;
 }
 
 .selectSort{
-    justify-content: flex-end;
     color: #8f8d8d;
+    justify-self: end;
+
 }
 
 /* 판매 완료 상품 제외 체크박스 */
@@ -58,19 +59,45 @@
 .container--inner__top :not([class="container--inner__top_sort_split"]){
     cursor: pointer;
 }
+
+
 .container--inner__top :not([class="container--inner__top_sort_split"]):checked{
     color: #000;
     font-weight: bold;
 }
 
-/* 검색한 상품 목록들 */
+
+.container--inner__middle_noList{
+    width: 1060px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 70px 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 검색한 상품 목록이 없을 때 */
+.noGoodsList{
+    width: 1060px;
+    height: 300px;
+    margin: 80px;
+    font-size: 1.5em;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 검색 결과 나타나는 영역 */
 .container--inner__middle{
     width: 1060px;
     /* border: 1px solid red; */
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 70px 0 0;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 
 .container--inner__middle>div[class*=goods]{
     width: 265px;
@@ -81,7 +108,10 @@
 }
 
 .container--inner__middle img{
-    width: 240px;
+    width: 210px;
+    height: 210px;
+    overflow: hidden;
+    object-fit: cover;
     border-radius: 15%;
     /* padding: 15px; */
     display: block;
@@ -110,12 +140,17 @@ transition-duration: 0.2s;
 .container--inner__middle a:hover{color:#2365b9;}
 
 .goods_price{
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 10px;
 }
 
+.goods_title{
+    font-size: 1.2em;
+}
+
 .container--inner__bottom{
+    width: 100%;
     height: 100px;
 }
 .more{
@@ -123,7 +158,7 @@ transition-duration: 0.2s;
     font-size: 1.5em;
     font-weight: bold;
     color: #2365b9;
-    border-radius: 40%;
+    border-radius: 50%;
     background-color: #e4ecf3;
     box-shadow: 3px 3px 3px #d5d6d7;
     border: none;

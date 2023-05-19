@@ -14,6 +14,7 @@ import project.kh.newsecond.admin.model.dto.Admin;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
+import project.kh.newsecond.common.utility.*;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -83,16 +84,38 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int noticeInsert(Notice notice) {
 		
-		/*
-		 * notice.setNoticeContent(Util.XSSHandling(notice.getNoticeContent()));
-		 * notice.setNoticeTitle(Util.XSSHandling(notice.getNoticeTitle()));
-		 */
-	
-		int noticeNo = adminDao.noticeInsert(notice);
 		
-		return noticeNo;
+		 notice.setNoticeContent(Util.XXSHandling(notice.getNoticeContent()));
+		 notice.setNoticeTitle(Util.XXSHandling(notice.getNoticeTitle()));
+	
+		int result = adminDao.noticeInsert(notice);
+		
+		return result;
 	}
 
+	/**
+	 *공지사항 게시글 수정
+	 */
+	@Override
+	public int noticeUpdate(Notice notice) {
+
+		int result = adminDao.noticeUpdate(notice);
+		
+		return result;
+	}
+
+	/**
+	 *공지사항 게시글 삭제
+	 */
+	@Override
+	public int noticeDelete(Notice notice) {
+	
+		int result = adminDao.noticeDelete(notice);
+		
+		return result;
+	}
+
+	
 	
 
 }

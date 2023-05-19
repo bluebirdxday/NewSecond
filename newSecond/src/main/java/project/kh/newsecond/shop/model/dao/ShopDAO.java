@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 @Repository
 public class ShopDAO {
@@ -61,6 +62,12 @@ public class ShopDAO {
 	// 상점 언팔로우
 	public int unFollow(Follow unfollow) {
 		return sqlSession.delete("followMapper.unFollow", unfollow);
+	}
+
+
+	// 상점 편집
+	public int updateShopInfo(Shop shop) {
+		return sqlSession.update("shopMapper.updateShopInfo", shop);
 	}
 
 }

@@ -6,13 +6,20 @@
 
 <div class="dropdown">
 
-    <button class="mypage--dropdown__intro" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="-100,0">
-        <span><img src=""></span>${loginUser.userNickname}
+    <button class="mypage--dropdown__intro d-flex justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="-90,0">
+
+        <span class="m-0">
+            ${loginUser.userNickname} 님
+        </span>
+
+        <div class="downarror"><%-- 아래 삼각형 --%></div>
     </button>
 
     <ul class="dropdown-menu dropdown--menu__custom">
 
-        <li><a class="dropdown-item" href="#">마이 페이지</a></li>
+        <li><a class="dropdown-item" href="/myPage/profile">마이 페이지</a></li>
+
+        <li><a class="dropdown-item" href="/shop/${loginUser.userNo}">내 상점</a></li>
 
         <li><a class="dropdown-item" href="#">관심상품</a></li>
 

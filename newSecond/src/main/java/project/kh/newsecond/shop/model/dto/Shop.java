@@ -17,6 +17,7 @@ public class Shop {
 	private int userNo;
 	private String shopTitle;
 	private String shopInfo;
+	private String shopProfile;
 	
 	private int sellCount;
 	

@@ -33,16 +33,15 @@
             <div class="keywordedit--content__add">
             
                 <form action="/notification/editKeyword/insert" method="post" id="insertKeywordFrm">
-                <%-- <form action="#"> --%>
                     <div class="keywordedit--input">
                             <input type="text" placeholder="키워드를 입력해주세요" value=""  name="keyword" size="45" autofocus autocomplete="off">
                     </div>
                     
                         <c:if test="${fn:length(keywordList) == 20}">
-                            <button type="button" id="maxKeyword">추가</button> <!-- 누르면 DB에 키워드 추가 -->
+                            <button type="button" id="maxKeyword">추가</button> 
                         </c:if>
                         <c:if test="${fn:length(keywordList) < 20}">
-                            <button type="submit" id="addKeyword">추가</button> <!-- 누르면 DB에 키워드 추가 -->
+                            <button type="submit" id="addKeyword">추가</button>
                         </c:if>
                 </form>
             </div>
@@ -56,7 +55,6 @@
                         <div>${keyword.keywordTitle}</div>
                         <div><img src="/resources/src/img/minus-button.png" class="keyword--btn__delete"
                                         onclick="deleteKeyword(${keyword.keywordNo})"></div> 
-                        <!-- 누르면 DB에서 키워드 삭제 -->
                     </div>
                 </c:forEach>
             </c:if>
