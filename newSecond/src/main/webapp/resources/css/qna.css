@@ -87,8 +87,21 @@
   display : block;
 }
 
+/* 문의제목 */
+.qna_title{
+  color: #005EEE;
+  border:1px solid #005EEE;
+  border-radius: 3px;
+  margin-top: 10px;
+}
 
+.qna_titleInput{
+  width: 700px;
+  border: none;
+  outline: none;
+}
   
+
 /* -------------문의 내용 쓰는 칸----------------------- */
 
 .qna_content{

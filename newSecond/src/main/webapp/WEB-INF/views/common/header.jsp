@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
-
 <link rel="stylesheet" href="/resources/css/header.css">
 
 <header class="header--container__containerbox">
@@ -44,10 +43,9 @@
             </a>
         </div>
     
-        <form action="/search/goodsList" method="GET">
+        <form action="/goods/search/goodsList" method="GET" id="searchForm">
             <div class="header--mid__serach"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search">
-                <a href="#">
+                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search" name="query" id="searchQuery">
                 <button class="searchBtn"></button>
             </div>
         </form>
@@ -86,6 +84,8 @@
         <div><a href="#">카테고리</a></div>
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
+
     
+<script src="/resources/js/goods/searchGoodsList.js"></script>
 </header>
 

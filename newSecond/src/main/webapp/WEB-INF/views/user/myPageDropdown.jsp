@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="/resources/css/user/myPage/myPageDropdown.css">
+<link rel="stylesheet" href="/resources/css/user/mypage/mypageDropdown.css">
 
 <div class="dropdown">
 

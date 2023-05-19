@@ -16,7 +16,7 @@
 
     <main>
 
-        <form action="/review/updateReview" id="updateReviewForm" method="POST">
+        <form action="/review/reviewList/update" id="updateReviewForm" method="POST">
 
             <section class="writereview--container">
         
@@ -33,14 +33,13 @@
                             <input type="range" name="reviewStars" oninput="drawStar(this)"
                                 value="${review.reviewStars}" step="1" min="0" max="10">
                         </span>
-                        
                     </div>
         
                     <div class="writereview--content__input">
                         <span>구매내역</span>
                         <div class="writereview--text__title">${review.goodsTitle}</div>
                 
-                        <input type="hidden" name="goodsNo" value="${review.goodsNo}">
+                        <input type="hidden" name="reviewNo" value="${review.reviewNo}">
         
                         <div class="writereview--textarea">
                             <textarea name="reviewMessage" cols="103" rows="20" placeholder="자세한 거래 후기를 작성해주세요. 무분별한 비난 및 욕설은 제재를 받으실 수 있습니다." 
@@ -55,6 +54,7 @@
             <section class="writereview--bottom">
                 <button id="registerReviewBtn">등록하기</button>
             </section>
+
             
         </form>
 

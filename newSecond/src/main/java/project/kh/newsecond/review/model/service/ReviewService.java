@@ -5,6 +5,10 @@ import java.util.List;
 
 import project.kh.newsecond.review.model.dto.Review;
 
+/**
+ * @author user
+ *
+ */
 public interface ReviewService {
 
 	/** 작성된 리뷰 리스트 조회
@@ -28,7 +32,7 @@ public interface ReviewService {
 	int insertReview(Review review);
 
 
-	/** 리뷰 삭제
+	/** 후기 삭제
 	 * @param reviewNo
 	 * @return result
 	 */
@@ -40,5 +44,13 @@ public interface ReviewService {
 	 * @return review
 	 */
 	Review selectReview(int reviewNo);
+
+
+	/** 후기 수정
+	 * @param review
+	 * @return  result
+	 */
+	int updateReview(Review review);
+
 
 }

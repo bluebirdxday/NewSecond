@@ -17,7 +17,7 @@ prev.addEventListener('click', () => {
 });
 // 마지막 사진 인덱스???
 next.addEventListener('click', () => {
-    if(index === 2) return;
+    if(index === 파일리스트랭스-1) return;
     index += 1;
     carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
 });
@@ -25,8 +25,6 @@ next.addEventListener('click', () => {
 // function moveSmooth(name){
 //     var location = document.
 // }
-
-
 
 
 

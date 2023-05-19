@@ -37,6 +37,7 @@
 	<!-- email 중복 검사 -->
 	<select id="checkEmail" resultType="int">
 		SELECT COUNT(*) FROM "users"
+		
 		WHERE USER_EMAIL = #{email}
 		AND USER_STATUS = 'A'
 	</select>
