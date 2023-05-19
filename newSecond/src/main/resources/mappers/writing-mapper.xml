@@ -31,7 +31,7 @@
 		VALUES(
 			SEQ_GOODS_NO.NEXTVAL,
 			#{userNo},
-			#{categoryNo}, <!-- 컨트롤러 앞에서 세팅함 -->
+			#{categoryNo},
 			#{title},
 			#{detailText},
 			#{price},
@@ -43,13 +43,13 @@
 	</insert>
 	
 	<!-- 글쓰기 내용으로 가장 최근에 삽입된 SEQ_GOODS_NO 값 리턴 -->
-	<select id="seqSelect">
+	<select id="sqlSelect" resultType="int">
 		SELECT GOODS_NO
 		FROM "goods_board"
 		WHERE ROWNUM = 1
 		AND USER_NO = #{userNo}
-		AND CATEGORY_NO = #{categoryNo}
 		AND GOODS_TITLE = #{title}
+		AND GOODS_DESCR = #{detailText}
 		ORDER BY SELL_ENROLL_DT ASC
 	</select>
 	

@@ -21,7 +21,7 @@ public class WritingServiceImpl implements WritingService {
 	@Autowired
 	private WritingDAO dao;
 
-	// �Խñ� ����
+	// 게시글 등록
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {

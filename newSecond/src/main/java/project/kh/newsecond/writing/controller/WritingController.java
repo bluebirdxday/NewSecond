@@ -45,7 +45,7 @@ public class WritingController {
 	@PostMapping("/submit")
 	public String writingInsert(
 			Writing writing,
-			String title, // test
+			WritingImage writingImage,
 			@RequestParam(value="image", required=false) List<MultipartFile> images,
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
@@ -53,10 +53,6 @@ public class WritingController {
 			Model model
 			) throws IllegalStateException, IOException {
 		
-		// test
-		System.out.println(writing.toString());
-		System.out.println(title);
-		System.out.println(writing.getCategory2());
 		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1); };
@@ -89,14 +85,7 @@ public class WritingController {
 		// -> writing에 userNo, categoryNo + @ 완료
 		
 		// 2. writing 객체에 잘 담겼는지 확인
-		/*
-			System.out.println(writing.getTitle());
-			System.out.println(writing.getDetailText());
-			System.out.println(writing.getPrice());
-			System.out.println(writing.getQuantity());
-			System.out.println(writing.getCondition());
-			System.out.println(writing.getCategory2());
-		*/
+		System.out.println(writing.toString());
 		
 		// 3. webPath, filePath 생성
 		String webPath = "/resources/src/user/${userNo}"; // -> 없는 폴더에도 만들어지나?

@@ -2,6 +2,8 @@ package project.kh.newsecond.writing.model.dto;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +17,7 @@ public class Writing {
 	private int userNo;
 	
 	private String title;
-	private List<WritingImage> image;
+	private List<MultipartFile> image;
 	private String detailText;
 	private int price;
 	private int quantity;
