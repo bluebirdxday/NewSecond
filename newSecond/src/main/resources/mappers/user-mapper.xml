@@ -12,7 +12,6 @@
 		<result property="userNickname" column="USER_NICKNAME" />
 		<result property="userTel" column="USER_TEL" />
 		<result property="userAddress" column="USER_ADDRESS" />
-		<result property="userImage" column="USER_IMG" />
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
 		<result property="userRole" column="USER_ROLE" />
@@ -21,12 +20,14 @@
 	
 	<!-- 로그인 => 정보 얻어오기 -->
 	<select id="login" parameterType="User" resultMap="user_rm" >
+	
 		SELECT USER_NO, USER_EMAIL, USER_NICKNAME, USER_PASSWORD,
-				USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
+				USER_TEL, USER_ADDRESS, USER_ROLE,
 				TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
 		FROM "users"
 		WHERE USER_STATUS = 'A'
 		AND USER_EMAIL = #{userEmail}
+		
 	</select>
 	
 	

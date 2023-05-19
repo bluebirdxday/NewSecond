@@ -36,6 +36,7 @@ sortList.forEach(function(sort){
 });
 
 
+// 편집 버튼 클릭 시
 const popup = document.querySelector(".myshop--popup__background");
 const editShopBtn = document.querySelector(".myshop--info__btn-edit");
 

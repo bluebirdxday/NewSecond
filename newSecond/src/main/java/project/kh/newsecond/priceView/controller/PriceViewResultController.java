@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/priceView")
 public class PriceViewResultController {
 
-	@GetMapping("/priceViewResult")
+	@GetMapping("/priceResultSee")
 	public String priceViewResult() {
 		
-		return "priceView/priceViewResult";
+		return "priceView/priceViewResultPage";
+		// (/WEB-INF/views/)priceView/priceViewResultPage(.jsp)
 	}
 }

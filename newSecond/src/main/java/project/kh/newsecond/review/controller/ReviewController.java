@@ -92,7 +92,8 @@ public class ReviewController {
 			path = "insert";
 		}
 		
-		ra.addFlashAttribute("addReviewMessage", message);
+		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("alertType", alertType);
 		
 		return path;
 	}
