@@ -4,12 +4,14 @@
     width: 1000px;
     min-height: 700px;
     margin: 50px auto;
+    user-select: none;
 }
 
 
 /* 옆쪽 메뉴 */
 .myPage--side{
     width: 25%;
+    padding-right: 10px;
     border-right: 2px solid #ddd;
 }
 
@@ -22,6 +24,7 @@
 .menu--userInfo  img{
     width: 128px;   
     height: 128px;
+    border: 2px solid rgba(0, 0, 0, 0.194);
     border-radius: 50%;
 }
 
@@ -30,5 +33,12 @@
 /* 본 내용 */
 .myPage--main{
     width: 75%;
-    padding: 0 50px;
+    padding: 3rem 50px;
 }
+
+
+
+
+
+/* 회원 탈퇴 파트 */
+

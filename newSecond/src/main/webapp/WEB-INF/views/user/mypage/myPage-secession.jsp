@@ -10,23 +10,28 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
     <div style="margin-top:180px"><%-- spacing to header --%></div>
     
-        <div class="myPage--wholeWrapper">
+
+    <div class="myPage--wholeWrapper">
 
         <%-- .myPage--side --%>
         <jsp:include page="/WEB-INF/views/user/myPage/sideMenu.jsp"/>
 
         <section class="myPage--main">
 
-            <article >
+            <h1 class="ps-3">회원 탈퇴</h1>
+
+            <h4 class="ps-5 mt-2">현재 비밀번호가 일치하는 경우 탈퇴할 수 있습니다.</h4>
+
             
-            </article>
+
+
+
 
         </section>
     
-    </div>
+    </div>  
 
 
 

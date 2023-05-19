@@ -10,9 +10,11 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
     <div style="margin-top:180px"><%-- spacing to header --%></div>
-    
+
+
+
+
     <div class="myPage--wholeWrapper">
 
         <%-- .myPage--side --%>
