@@ -32,9 +32,13 @@
 	<select id="selectGoodsBoardList" resultMap="goodsboard_rm" >
 		SELECT USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
 		VIEW_COUNT, WISH_COUNT, SELL_ENROLL_DT, GOODS_STATUS, 			
-				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" f
+<!-- 				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" f
 					WHERE f.GOODS_NO = g.GOODS_NO
-					AND FILE_ORDER = 1) THUMBNAIL
+					AND FILE_ORDER = 1) THUMBNAIL -->
+					
+			NVL((SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1), '/resources/src/img/basic_profile.png') THUMBNAIL 	<!-- 샘플 데이터 넣기 전 임시방편으로 기본 이미지 지정 -->
 		FROM "goods_board" g
 		WHERE USER_NO = #{userNo}
 		AND GOODS_STATUS NOT IN('D', 'B')

@@ -145,3 +145,43 @@ function unFollow(userNo, loginUserNo){
         })
         .catch(err=>{ console.log(err); })
 }
+    
+
+// 상점 상품 판매 게시글 예약, 판매완료 
+const overlayText = document.querySelectorAll('.overlay-text');
+
+if(overlayText!=null){
+    
+    overlayText.forEach(e=>{
+
+        e.style.position = 'absolute';
+        e.style.top = '50%';
+        e.style.left = '50%';
+        e.style.transform = 'translate(-50%, -50%)';
+        e.style.color = 'white';
+        e.style.fontSize = '30px';
+        e.style.width = '95px';
+        e.style.fontWeight = '900';
+        e.style.textAlign = 'center';
+    })
+    
+}
+
+const reserved = document.querySelectorAll('.reserved');
+const soldout = document.querySelectorAll('.soldout');
+
+if(reserved!=null){
+
+    reserved.forEach(e=>{
+        e.style.webkitTextStroke = '1px black'; // 글자 테두리 색상
+        e.style.webkitTextFillColor = '#C2D3EB'; // 글자 색상
+    })
+}
+
+if(soldout!=null){
+
+    soldout.forEach(e=>{
+        e.style.webkitTextStroke = '1px #e6ebfd'; // 글자 테두리 색상
+        e.style.webkitTextFillColor = '#7E98BC'; // 글자 색상
+    })
+}

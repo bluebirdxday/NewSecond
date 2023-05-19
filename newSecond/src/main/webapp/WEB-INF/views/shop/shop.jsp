@@ -167,10 +167,27 @@
                         <c:forEach items="${goodsBoardList}" var="goods">
                                 
                                 <%-- 상품 상세 페이지로 이동 태그--%>
-
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
-                                            <img src="${goods.thumbnail}">
+                                            <img src="${goods.thumbnail}" 
+                                                    <c:if test="${goods.goodsStatus=='E' || goods.goodsStatus=='C'}"> 
+                                                            style="filter : brightness(40%);"</c:if>
+                                            >
+
+                                            <c:if test="${goods.goodsStatus=='E'}" >
+                                                <div class="overlay-text soldout">
+                                                    Sold Out
+                                                </div>
+                                            </c:if>
+                                            
+
+                                            <c:if test="${goods.goodsStatus=='C'}" >
+                                                <div class="overlay-text reserved">
+                                                    Reserved
+                                                </div>
+                                            </c:if>
+                                            
+
                                         </div>
                                         <div class="tab1--item__description">
                                             <div> 
@@ -190,13 +207,11 @@
                                             </div>
                                         </div>
                                     </div>
-                            
-
 
                         </c:forEach>
                     </c:if>
-
                 </div>
+
                 <c:if test="${empty goodsBoardList}" >
                     <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다.</div>
                 </c:if>
@@ -284,7 +299,11 @@
                                         <div>${follower.shopInfo}</div>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+
+                                    <%-- 팔로워 탭에서 팔로워!=로그인회원인 경우 팔로우/언팔로우 버튼 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo != loginUserNo}" >
+
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                         <c:if test="${follower.followYou==0}">
                                             <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo})">팔로우</button>
                                         </c:if>
@@ -292,6 +311,14 @@
                                         <c:if test="${follower.followYou==1}" >
                                             <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo})">언팔로우</button>
                                         </c:if>
+                                    </c:if>
+
+
+                                    <%-- 팔로워 탭에서 팔로워==로그인회원인 경우 상점가기 버튼만 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo == loginUserNo}" >
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -308,7 +335,7 @@
 
     </section>
 
-    <a href="/review/reviewList">
+    <a href="/writing/write">
         <div class="myshop--btn__fixed-addpost">
             <img src="/resources/src/img/addPost.png">
         </div>

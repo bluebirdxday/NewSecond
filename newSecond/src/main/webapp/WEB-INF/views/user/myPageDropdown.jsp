@@ -15,13 +15,15 @@
         <div class="downarror"><%-- 아래 삼각형 --%></div>
     </button>
 
-    <ul class="dropdown-menu dropdown--menu__custom">
+    <ul class="dropdown-menu dropdown--menu__custom text-center">
 
         <li><a class="dropdown-item" href="/myPage/profile">마이 페이지</a></li>
 
         <li><a class="dropdown-item" href="/shop/${loginUser.userNo}">내 상점</a></li>
 
         <li><a class="dropdown-item" href="#">관심상품</a></li>
+
+        <li><a class="dropdown-item" href="/review/reviewList">후기 작성 내역</a></li>
 
         <c:if test="${loginUser.userRole == 2}">
             <li><a class="dropdown-item" href="/admin/admin_notice">관리자 페이지</a></li>
