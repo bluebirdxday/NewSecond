@@ -21,6 +21,7 @@
 		
 		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
 		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
+		<typeAlias type="project.kh.newsecond.priceView.model.dto.PriceViewKeyword" alias="PriceViewKeyword" />
 	</typeAliases>
 	
 	

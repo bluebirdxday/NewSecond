@@ -8,12 +8,13 @@
 
 <!-- PriceViewKeyword 객체와 매핑 -->
 	<resultMap type="PriceViewKeyword" id="priceViewKeyword_rm">
+		<id property="goodsNo" column="GOODS_NO" /> <!-- id 태그는 PK 조건 -->
 		<result property="title" column="GOODS_TITLE" />
 		<result property="detailText" column="GOODS_DESCR" />
 	</resultMap>
 	
 	<!-- 1달 내 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
-	<select id="goodsPriceSelect">
+	<select id="goodsPriceSelect" resultType="int">
 		SELECT TRUNC(AVG(GOODS_PRICE))
 		FROM "goods_board"
 		WHERE (GOODS_TITLE LIKE '%${title}%'
