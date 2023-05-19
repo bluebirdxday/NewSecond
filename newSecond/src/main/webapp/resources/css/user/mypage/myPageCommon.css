@@ -1,0 +1,44 @@
+
+.myPage--wholeWrapper{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 50px auto;
+    user-select: none;
+}
+
+
+/* 옆쪽 메뉴 */
+.myPage--side{
+    width: 25%;
+    padding-right: 10px;
+    border-right: 2px solid #ddd;
+}
+
+/* 옆 - 상단 : 간단 유저 정보 */
+.menu--userInfo{
+    box-sizing: border-box;
+    height: auto;
+}
+
+.menu--userInfo  img{
+    width: 128px;   
+    height: 128px;
+    border: 2px solid rgba(0, 0, 0, 0.194);
+    border-radius: 50%;
+}
+
+
+
+/* 본 내용 */
+.myPage--main{
+    width: 75%;
+    padding: 3rem 50px;
+}
+
+
+
+
+
+/* 회원 탈퇴 파트 */
+

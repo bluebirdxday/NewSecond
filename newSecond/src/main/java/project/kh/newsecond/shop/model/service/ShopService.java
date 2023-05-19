@@ -1,11 +1,15 @@
 package project.kh.newsecond.shop.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 
 public interface ShopService {
@@ -64,5 +68,15 @@ public interface ShopService {
 	 * @return result
 	 */
 	int unFollow(Follow unfollow);
+
+
+	/** 상점 편집
+	 * @param shop
+	 * @param shopNewProfile
+	 * @param webPath
+	 * @param filePath
+	 * @return
+	 */
+	int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException;
 
 }

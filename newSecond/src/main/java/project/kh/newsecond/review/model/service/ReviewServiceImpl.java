@@ -37,11 +37,11 @@ public class ReviewServiceImpl implements ReviewService{
 	public int insertReview(Review review) {
 		
 		review.setReviewMessage(Util.XXSHandling(review.getReviewMessage()));
-		
+
 		return dao.insertReview(review);
 	}
 
-	// 리뷰 삭제
+	// 후기 삭제
 	@Override
 	public int deleteReview(int reviewNo) {
 		return dao.deleteReview(reviewNo);
@@ -51,5 +51,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public Review selectReview(int reviewNo) {
 		return dao.selectReview(reviewNo);
+	}
+
+
+	// 후기 수정
+	@Transactional(rollbackFor=Exception.class)
+	@Override
+	public int updateReview(Review review) {
+
+		review.setReviewMessage(Util.XXSHandling(review.getReviewMessage()));
+		
+		return dao.updateReview(review);
 	}
 }

@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import project.kh.newsecond.writing.model.dao.WritingDAO;
 import project.kh.newsecond.writing.model.dto.Writing;
 import project.kh.newsecond.writing.model.dto.WritingImage;
+import project.kh.newsecond.common.utility.Util;
+import project.kh.newsecond.common.Exception.*;
 
 @Service
 public class WritingServiceImpl implements WritingService {
@@ -18,87 +20,64 @@ public class WritingServiceImpl implements WritingService {
 	@Autowired
 	private WritingDAO dao;
 
-	// °Ô½Ã±Û »ğÀÔ
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
 		
-		// 0. XSS ¹æÁö Ã³¸®
-		// board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
-		// board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		// 0. XSS ì²˜ë¦¬
+		writing.setTitle(Util.XXSHandling(writing.getTitle()));
+		writing.setDetailText(Util.XXSHandling(writing.getDetailText()));
 		
-		// 1. WRITING Å×ÀÌºí INSERTÇÏ±â (Á¦¸ñ, ³»¿ë, ÀÛ¼ºÀÚ, °Ô½ÃÆÇÄÚµå)
-		int goodsNo = dao.writingInsert(writing);
+		// 1-1. GOODS_BOARD í…Œì´ë¸”ì— insert ì‹œë„
+		int result = dao.writingInsert(writing);
 		
-		// 2. °Ô½Ã±Û »ğÀÔ ¼º°ø ½Ã ¾÷·ÎµåµÈ ÀÌ¹ÌÁö°¡ ÀÖ´Ù¸é files Å×ÀÌºí¿¡ »ğÀÔÇÏ´Â DAO È£Ãâ
-		if(goodsNo > 0) { // °Ô½Ã±Û »ğÀÔ ¼º°ø
+		// 1-2. FILE í…Œì´ë¸”ì— ë„£ì„ goodsNo select ì‹œë„
+		int goodsNo = dao.sqlSelect(writing);
+		
+		// 2. FILE í…Œì´ë¸”ì— insert ì‹œë„
+		if(result > 0) { // GOODS_BOARD í…Œì´ë¸”ì— insert ì„±ê³µ
 			
-			// List<MultipartFile> images
-			// -> ¾÷·ÎµåµÈ ÆÄÀÏÀÌ ´ã±ä °´Ã¼ MultipartFileÀÌ 5°³ Á¸Àç
-			// -> ´Ü ¾÷·ÎµåµÈ ÆÄÀÏÀÌ ¾ø¾îµµ MultipartFile °´Ã¼´Â Á¸Àç
-
-			List<WritingImage> uploadList = new ArrayList<WritingImage>();
-			// images¿¡ ´ã±ä ÆÄÀÏ Áß ½ÇÁ¦ ¾÷·ÎµåµÈ ÆÄÀÏ¸¸ ºĞ·ùÇÏ´Â ÀÛ¾÷
+			List<WritingImage> FinalImages = new ArrayList<WritingImage>();
+			
 			for(int i=0; i<images.size(); i++) {
 				
-				if(images.get(i).getSize() > 0) { // i¹øÂ° ¿ä¼Ò¿¡ ¾÷·ÎµåÇÑ ÆÄÀÏÀÌ ÀÖ´Ù¸é
+				if(images.get(i).getSize() > 0) {
 					
-					WritingImage img = new WritingImage();
+					WritingImage Finalimgs = new WritingImage();
+					String title = writing.getTitle();
 					
-					// img¿¡ ÆÄÀÏ Á¤º¸¸¦ ´ã¾Æ¼­ uploadList¿¡ Ãß°¡
-					img.setFilePath(webPath); // À¥ Á¢±Ù °æ·Î
-					img.setGoodsNo(goodsNo); // °Ô½Ã±Û ¹øÈ£
-					img.setFileOrder(i); // ÀÌ¹ÌÁö ¼ø¼­
+					// Finalimgsì— ë§¤ê°œë³€ìˆ˜ ë‹´ê¸°
+					Finalimgs.setFilePath(webPath); // íŒŒì¼ ê²½ë¡œ ë‹´ê¸°
+					Finalimgs.setGoodsNo(goodsNo); // 1-2ì—ì„œ ë¶ˆëŸ¬ì˜¨ goodsNo ë‹´ê¸°
+					Finalimgs.setFileOrder(i); // íŒŒì¼ ìˆœì„œ ë‹´ê¸°
 					
-					String fileName = images.get(i).getOriginalFilename(); // ÆÄÀÏ ¿øº»¸í
+					String fileName = images.get(i).getOriginalFilename(); // íŒŒì¼ ì›ë³¸ëª…
 					
-					img.setImageOriginal(fileName); // ¿øº»¸í
+					Finalimgs.setFileName(fileName); // ì›ë³¸ëª… ë‹´ê¸°
 					
-					img.setFileReName( Util.fileRename(fileName) ); // º¯°æ¸í
-					
-					uploadList.add(img);
+					FinalImages.add(Finalimgs); // ìµœì¢… ì»¨í…Œì´ë„ˆ FinalImagesì— Finalimgs ë‹´ê¸°
 				}
-			} // ºĞ·ù for¹® Á¾·á
+				
+			} // forë¬¸ ë
 			
-			// ºĞ·ù ÀÛ¾÷ ÈÄ uploadList°¡ ºñ¾îÀÖÁö ¾Ê´Â °æ¿ì == ¾÷·ÎµåÇÑ ÆÄÀÏÀÌ ÀÖÀ½
-			if(!uploadList.isEmpty()) {
+			
+			// dao ì´ë¯¸ì§€ insert ì‹œë„
+			int result2 = dao.writingImageInsert(images, FinalImages);
+			
+			if(result2 == images.size()) { // ì´ë¯¸ì§€ insert ì„±ê³µ
 				
-				// file Å×ÀÌºí¿¡ INSERT ÇÏ´Â DAO È£Ãâ
-				int result = dao.writingImageInsert(uploadList);
-				// result == »ğÀÔµÈ ÇàÀÇ °³¼ö == uploadList.size()
+				// ??
 				
-				// »ğÀÔµÈ ÇàÀÇ °³¼ö¿Í uploadListÀÇ °³¼ö°¡ °°´Ù¸é == ÀüÃ¼ insert ¼º°ø
-				if(result == uploadList.size()) {
-					
-					// ¼­¹ö¿¡ ÆÄÀÏÀ» ÀúÀå(transferTo())
-					
-					// images: ½ÇÁ¦ ÆÄÀÏÀÌ ´ã±ä °´Ã¼ ¸®½ºÆ®(¾÷·Îµå ¾ÈµÈ ÀÎµ¦½º´Â ºóÄ­)
-					// uploadList: ¾÷·ÎµåµÈ ÆÄÀÏÀÇ Á¤º¸(¿øº»¸í, º¯°æ¸í, ¼ø¼­, °æ·Î, °Ô½Ã±Û ¹øÈ£)					
-					// ¼ø¼­ == images ¾÷·ÎµåµÈ ÀÎµ¦½º
-					
-					for(int i=0; i<uploadList.size(); i++) {
-						
-						int index = uploadList.get(i).getFileOrder();
-						
-						// ÆÄÀÏ·Î º¯È¯
-						String rename = uploadList.get(i).getFileRename();
-						images.get(index).transferTo(new Image(filePath + rename));
-					}
-					
-				} else { // ÀÏºÎ ¶Ç´Â ÀüÃ¼ insert ½ÇÆĞ -> »ç½Ç»ó ÀüÃ¼ ½ÇÆĞ
-					// ** À¥ ¼­ºñ½º ¼öÇà Áß 1°³¶óµµ ½ÇÆĞÇÏ¸é ÀüÃ¼ ½ÇÆĞ·Î Ãë±Ş **
-					// -> rollback ÇÊ¿ä
-					
-					// @Transactional(rollbackFor = Exception.class) -> ¿¹¿Ü°¡ ¹ß»ıÇØ¾ßÁö¸¸ ·Ñ¹é
-					
-					// [°á·Ğ]
-					// ** insert°¡ ÀÏºÎ¶óµµ ½ÇÆĞÇÏ¸é °­Á¦·Î ¿¹¿Ü¸¦ ¹ß»ı½ÃÄÑ ·Ñ¹é½ÃÅ°±â **
-					// -> »ç¿ëÀÚ Á¤ÀÇ ¿¹¿Ü »ı¼º ÇÊ¿ä
-					throw new FileUploadException(); // ¿¹¿Ü °­Á¦ ¹ß»ı
-				}
 			}
+			
+			
+		} else { // ì‹¤íŒ¨ì‹œ
+//			throw new Exception(); // ì¶”í›„ ì—ëŸ¬ í˜ì´ì§€ ë¦¬í„´
 		}
-		
-		return goodsNo;
+		return result;
 	}
-}
+}	
+		
+		
+		

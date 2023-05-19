@@ -3,11 +3,11 @@ package project.kh.newsecond.priceView.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.kh.newsecond.priceView.model.dao.PriceViewResultDAO;
+import project.kh.newsecond.priceView.model.dao.PriceViewDAO;
 
 @Service
-public class PriceViewResultImpl implements PriceViewResult {
+public class PriceViewServiceImpl implements PriceViewService {
 
 	@Autowired
-	private PriceViewResultDAO dao;
+	private PriceViewDAO dao;
 }

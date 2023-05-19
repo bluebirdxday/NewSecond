@@ -1,12 +1,16 @@
 package project.kh.newsecond.shop.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import project.kh.newsecond.common.utility.Util;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dao.ShopDAO;
 import project.kh.newsecond.shop.model.dto.Follow;
@@ -72,6 +76,40 @@ public class ShopServiceImpl implements ShopService{
 	public int unFollow(Follow unfollow) {
 		return dao.unFollow(unfollow);
 	}
+
+	
+	// 상점 편집
+	@Override
+	public int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException{
+		
+		String oldShopProfile = shop.getShopProfile();
+		String rename = null;
+		
+		if(shopNewProfile.getSize()>0) {
+			rename = Util.fileRename(shopNewProfile.getOriginalFilename());
+			
+			shop.setShopProfile(webPath + rename);
+			
+		}else {
+			shop.setShopProfile(oldShopProfile);
+		}
+		
+		
+		int result = dao.updateShopInfo(null);
+		
+		if(result>0) {
+			
+			if(rename!=null) {
+				shopNewProfile.transferTo(new File(filePath + rename));
+			}
+			
+		}else {
+			shop.setShopProfile(oldShopProfile);
+		}
+		
+		return result;
+	}
+
 
 
 }

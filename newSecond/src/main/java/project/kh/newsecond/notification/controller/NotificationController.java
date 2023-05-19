@@ -80,7 +80,10 @@ public class NotificationController {
 	// 키워드 삭제
 	@PostMapping("/editKeyword/delete")
 	@ResponseBody
-	public int deleteReview(@RequestBody NotificationKeyword keyword) {
+	public int deleteReview(@RequestBody NotificationKeyword keyword,
+			RedirectAttributes ra) {
+		
+		
 	    return service.deleteKeyword(keyword);
 	}
 	
