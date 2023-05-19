@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<aside class="myPage--side">
+<aside class="myPage--side shadow p-3 mb-5 bg-body rounded" >
 
     <div class="menu--userInfo mt-5 d-flex flex-column justify-content-center align-items-center">
         <a href="/myPage/profile"><img src="/resources/src/img/basic_profile.png"></a>

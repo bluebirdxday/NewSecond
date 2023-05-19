@@ -1,5 +1,4 @@
-
-.myPage--wholeWrapper{
+.myPage--wholeWrapper {
     display: flex;
     width: 1000px;
     min-height: 700px;
@@ -9,20 +8,19 @@
 
 
 /* 옆쪽 메뉴 */
-.myPage--side{
+.myPage--side {
     width: 25%;
-    padding-right: 10px;
     border-right: 2px solid #ddd;
 }
 
 /* 옆 - 상단 : 간단 유저 정보 */
-.menu--userInfo{
+.menu--userInfo {
     box-sizing: border-box;
     height: auto;
 }
 
-.menu--userInfo  img{
-    width: 128px;   
+.menu--userInfo img {
+    width: 128px;
     height: 128px;
     border: 2px solid rgba(0, 0, 0, 0.194);
     border-radius: 50%;
@@ -30,15 +28,126 @@
 
 
 
-/* 본 내용 */
-.myPage--main{
+/* 본 내용(공통) */
+.myPage--main {
     width: 75%;
     padding: 3rem 50px;
 }
 
+.myPage-title {
+    font-size: 2.3rem;
+}
+
+.myPage-subject {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.myPage-row {
+    margin-top: 10px;
+}
+
+.myPage--main__form {
+    width: 500px;
+    margin: auto;
+    margin-top: 40px;
+}
 
 
+/* input에 관한 css */
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    background: none;
+    color: #333;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+.input-group input:focus {
+    outline: none;
+}
+
+.input-group label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #4285f4;
+}
+
+.input-group .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input-group .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.input-group .bar:before,
+.input-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #4285f4;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.input-group .bar:before {
+    left: 50%;
+}
+
+.input-group .bar:after {
+    right: 50%;
+}
+
+.input-group input:focus~.bar:before,
+.input-group input:focus~.bar:after {
+    width: 50%;
+}
 
 
 /* 회원 탈퇴 파트 */
+.secession-terms {
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
 
+    overflow: auto;
+    /* 내용이 요소를 벗어나는 경우 방향에 맞춰서 자동으로 스크롤 추가 */
+
+    font-family: sans-serif;
+    /* 돋움체 */
+    font-size: 14px;
+}

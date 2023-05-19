@@ -20,7 +20,7 @@
         <%-- .myPage--side --%>
         <jsp:include page="/WEB-INF/views/user/mypage/sideMenu.jsp"/>
 
-        <section class="myPage--main">
+        <section class="myPage--main shadow p-3 mb-5 bg-body rounded ms-4">
 
             <article >
             

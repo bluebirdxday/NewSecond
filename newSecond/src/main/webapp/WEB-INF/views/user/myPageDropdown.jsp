@@ -15,7 +15,7 @@
         <div class="downarror"><%-- 아래 삼각형 --%></div>
     </button>
 
-    <ul class="dropdown-menu dropdown--menu__custom">
+    <ul class="dropdown-menu dropdown--menu__custom text-center">
 
         <li><a class="dropdown-item" href="/myPage/profile">마이 페이지</a></li>
 
