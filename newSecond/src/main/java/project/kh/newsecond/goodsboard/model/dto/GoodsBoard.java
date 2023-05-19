@@ -23,5 +23,10 @@ public class GoodsBoard {
 	private String sellEnrollDate;
 	private String goodsStatus;
 	
+	// files 테이블 join
+	private String thumbnail;
+	
+	// shop 테이블 join
+	private String shopTitle;
 	
 }
