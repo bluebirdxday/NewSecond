@@ -15,27 +15,57 @@
 
 
 
-    <div class="myPage--wholeWrapper">
+    
+    <div class="myPage--wholeWrapper ">
 
         <%-- .myPage--side --%>
         <jsp:include page="/WEB-INF/views/user/mypage/sideMenu.jsp"/>
-
+        
         <section class="myPage--main shadow p-3 mb-5 bg-body rounded ms-4">
 
-            <article >
-            
-            </article>
+            <div class="myPage--main__contents ps-5 pt-4">
 
+                <h1 class="myPage-title">내 정보</h1>
+                <div class="myPage-subject">원하는 회원 정보를 수정할 수 있습니다.</div>
+
+                <form action="secession" class="myPage--main__form d-flex flex-column" method="POST" name="myPageFrm" id="secessionFrm">
+
+                    <div class="input-group">
+                        <input type="password" id="userPassword" name="userPassword" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>닉네임</label>
+                    </div>
+
+                    
+                    <div class="input-group mt-5">
+                        <input type="password" id="userPassword" name="userPassword" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>새 비밀번호</label>
+                    </div>
+                    
+                    <div class="input-group mt-5">
+                        <input class="w-50" type="text" name="userAddress" id="userAddress_postcode" placeholder="우편번호"  readonly onfocus="this.blur();">
+                        <button class="w-25 btn btn-primary" type="button" id="addressSearch"readonly >검색</button>
+                        <button type="button" class="d-none" id="valueRecognizer"></button>
+                    </div>
+                    
+                    <div class="input-group mt-5">
+                    <div class="input-container mb-4">
+                    <input type="text" name="userAddress" placeholder="도로명/지번 주소" id="userAddress_address" readonly onfocus="this.blur();">
+                    </div>
+                    
+                    <div class="input-group mt-5">
+                    </div>
+
+                    <button class="btn btn-primary w-50 m-auto mt-4">수정하기</button>
+
+                </form>
+            </div>
         </section>
     
-    </div>
-
-
-
-
-
-
-
+    </div>  
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script>

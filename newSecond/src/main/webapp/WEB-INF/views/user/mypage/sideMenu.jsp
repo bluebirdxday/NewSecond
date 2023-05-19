@@ -5,7 +5,7 @@
 <aside class="myPage--side shadow p-3 mb-5 bg-body rounded" >
 
     <div class="menu--userInfo mt-5 d-flex flex-column justify-content-center align-items-center">
-        <a href="/myPage/profile"><img src="/resources/src/img/basic_profile.png"></a>
+        <a href="/myPage/profile"><img class="shadow-sm" src="/resources/src/img/basic_profile.png"></a>
         <h2 class="mt-2">${loginUser.userNickname}</h2>
         <h3 class="mt-2">${loginUser.userEmail}</h3>
     </div>

@@ -80,11 +80,6 @@
     </div>  
 
 
-
-
-
-
-
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script>
         document.querySelectorAll(".list-group-item")[3].classList.add("active")
