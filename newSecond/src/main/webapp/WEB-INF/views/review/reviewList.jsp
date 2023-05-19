@@ -37,10 +37,8 @@
                                     </div>
                                 </div>
 
-                                <%-- <input type="hidden" name="reviewNo" value="${review.reviewNo}"> --%>
-
                                 <div>
-                                    <button id="modifyReviewBtn" onclick="updateReview(${review.reviewNo})">수정</button>
+                                    <a href="/review/reviewList/updateReview/${review.reviewNo}"><button id="modifyReviewBtn">수정</button></a>
                                     <button id="deleteReviewBtn" onclick="deleteReview(${review.reviewNo})">삭제</button>
                                 </div>
                             </div>

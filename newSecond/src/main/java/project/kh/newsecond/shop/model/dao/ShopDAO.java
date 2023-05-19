@@ -65,8 +65,9 @@ public class ShopDAO {
 	}
 
 
-//	public int updateShopInfo(User loginUser, String shopInfo, String shopTitle) {
-//		return 0;
-//	}
+	// 상점 편집
+	public int updateShopInfo(Shop shop) {
+		return sqlSession.update("shopMapper.updateShopInfo", shop);
+	}
 
 }

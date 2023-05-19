@@ -206,10 +206,14 @@ JOIN "users" USING(USER_NO);
 
 SELECT * FROM "users";
 
-ALTER TABLE "shop" ADD SHOP_PROFILE VARCHAR(400);
+ALTER TABLE "shop" ADD SHOP_PROFILE VARCHAR2(400);
 COMMENT ON COLUMN "shop"."SHOP_PROFILE" IS '상점 프로필';
 
 SELECT * FROM "shop";
 COMMIT;
 
+UPDATE "shop" SET SHOP_PROFILE = NULL;
 
+/* 리뷰 수정 */
+UPDATE "reviews" SET REVIEW_MESSAGE = #{reviewMessage}, REVIEW_STARS = #{reviewStars}
+WHERE REVIEW_NO = #{reviewNo}

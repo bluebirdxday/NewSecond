@@ -40,31 +40,46 @@ sortList.forEach(function(sort){
 const popup = document.querySelector(".myshop--popup__background");
 const editShopBtn = document.querySelector(".myshop--info__btn-edit");
 
+const shopProfile = document.querySelector(".myshop--profileImage__img").getAttribute("src");   /* 상점 프로필 src */
+const shopTitle = document.querySelector(".myshop--info__title").innerText;
+const shopInfo = document.querySelector(".myshop--info__content").innerText;
+
+
 if(editShopBtn!=null){
     
+    const popupShopTitle = document.querySelector(".myshop--popup__input-edit");
+    const popupShopInfo = document.querySelector(".myshop--popup__textarea-edit");
+
     // 내 상점 편집 팝업 열기
     document.querySelector(".myshop--info__btn-edit").addEventListener("click", ()=>{
         popup.classList.toggle("myshop--popup__show");
     
         // 글자수 입력
-        document.getElementById("myshopEditInput").innerText = document.querySelector(".myshop--popup__input-edit").value.length;
-        document.getElementById("myshopEditTextArea").innerText = document.querySelector(".myshop--popup__textarea-edit").value.length;
+        document.getElementById("myshopEditInput").innerText = popupShopTitle.value.length;
+        document.getElementById("myshopEditTextArea").innerText = popupShopInfo.value.length;
         
     });
     
+    const realUpload = document.querySelector(".real-upload");
+    const upload = document.querySelector(".upload");
+
+    // 내상점 닫기 버튼 클릭 시
     document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
         popup.classList.remove("myshop--popup__show");
+
+        upload.setAttribute("src", shopProfile);
+        realUpload.value="";
+        popupShopTitle.value = shopTitle;
+        popupShopInfo.value = shopInfo;
     });
     
+    // 내 상점 저장 버튼 클릭 시
     document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
         popup.classList.remove("myshop--popup__show");
     });
     
     
-    // 내상점 편집 팝업 이미지 
-    const realUpload = document.querySelector(".real-upload");
-    const upload = document.querySelector(".upload");
-    
+    // 내상점 편집 팝업 프로필 이미지
     upload.addEventListener("click", ()=> realUpload.click());
     
     realUpload.addEventListener("change", ()=>{
@@ -77,7 +92,7 @@ if(editShopBtn!=null){
     const inputCount = document.getElementById("myshopEditInput");
     const textAreaCount = document.getElementById("myshopEditTextArea");
     
-    document.querySelector(".myshop--popup__input-edit").addEventListener("input", e=>{
+    popupShopTitle.addEventListener("input", e=>{
         inputCount.innerText = e.target.value.length;
     
         if(e.target.value.length>=20 || e.target.value.length<=2){
@@ -87,7 +102,7 @@ if(editShopBtn!=null){
         }
     });
     
-    document.querySelector(".myshop--popup__textarea-edit").addEventListener("input", e=>{
+    popupShopInfo.addEventListener("input", e=>{
         textAreaCount.innerText = e.target.value.length;
     
         if(e.target.value.length>=50){

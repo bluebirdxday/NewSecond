@@ -19,8 +19,8 @@
 		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
 		
-		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
-		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
+	<!-- 	<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
+		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" /> -->
 	</typeAliases>
 	
 	
@@ -36,7 +36,7 @@
 		<mapper resource="/mappers/search-mapper.xml" />
 		<mapper resource="/mappers/goods-mapper.xml" />
 		
-		<mapper resource="/mappers/writing-mapper.xml" />
+		<!-- <mapper resource="/mappers/writing-mapper.xml" /> -->
 	</mappers>
 
 
