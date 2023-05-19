@@ -296,7 +296,7 @@ function selectGoodsList(userNo, sortType){
     
                 // 상품 가격
                 const priceDiv = document.createElement("div");
-                priceDiv.innerText = goods.goodsPrice;  /* 추후 수정 단위별 점찍기 추가 */
+                priceDiv.innerText = goods.goodsPrice.toLocaleString(); 
     
                 // 상품 등록시간
                 const enrollDateDiv = document.createElement("div");

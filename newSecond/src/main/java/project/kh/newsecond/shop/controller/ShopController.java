@@ -129,8 +129,6 @@ public class ShopController {
 	@ResponseBody
 	public List<GoodsBoard> sortGoodsList(@RequestBody GoodsBoard goodsBoard) {
 		
-		System.out.println(goodsBoard);
-		
 		return service.selectSortGoodsList(goodsBoard);
 	}
 	
