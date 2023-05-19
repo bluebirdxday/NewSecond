@@ -1,5 +1,6 @@
 package project.kh.newsecond.shop.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,33 +89,33 @@ public class ShopController {
 	
 	
 	// 상점 편집
-//	@PostMapping("/updateShopInfo")
-//	public String updateShopInfo(@RequestParam("shopProfile") MultipartFile shopProfile, String shopInfo, String shopTitle,
-//			@SessionAttribute("loginUser") User loginUser, RedirectAttributes ra, HttpSession session) {
-//		
-//		
-//		String webPath = "/resources/src/profile/" + loginUser.getUserNo();
-//		String filePath = session.getServletContext().getRealPath(webPath);
-//		
-//		int result = service.updateShopInfo(shopProfile, shopInfo, shopTitle, webPath, filePath, loginUser);
-//		
-//		String message = null;
-//		String alertType = null;
-//		
-//		if(result>0) {
-//			alertType = "success";
-//			message = "수정 완료";
-//		}else {
-//			alertType = "fail";
-//			message = "수정 실패";
-//		}
-//		
-//		ra.addAttribute("message", message);
-//		ra.addAttribute("alertType", alertType);
-//		
-//		
-//		return "redirect:/shop/shop";
-//	}
+	@PostMapping("/updateShopInfo")
+	public String updateShopInfo(@RequestParam(value="shopNewProfile", required=false) MultipartFile shopNewProfile, Shop shop,
+			 RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
+		
+		int userNo = shop.getUserNo();
+		String webPath = "/resources/src/img/profile/" + userNo + "/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		int result = service.updateShopInfo(shop, shopNewProfile,  webPath, filePath);
+		
+		String message = null;
+		String alertType = null;
+		
+		if(result>0) {
+			alertType = "success";
+			message = "수정 완료";
+		}else {
+			alertType = "fail";
+			message = "수정 실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("alertType", alertType);
+		
+		
+		return "redirect:/shop/" + userNo;
+	}
 	
 	
 }

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Second</title>
-    <link rel="stylesheet" href="/resources/css/user/myPage/myPageCommon.css">
+    <link rel="stylesheet" href="/resources/css/user/mypage/myPageCommon.css">
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -18,7 +18,7 @@
     <div class="myPage--wholeWrapper">
 
         <%-- .myPage--side --%>
-        <jsp:include page="/WEB-INF/views/user/myPage/sideMenu.jsp"/>
+        <jsp:include page="/WEB-INF/views/user/mypage/sideMenu.jsp"/>
 
         <section class="myPage--main">
 

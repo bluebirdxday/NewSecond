@@ -17,22 +17,22 @@ public class MyPageController {
 	/* 페이지 이동 파트(4개)*/
 	@GetMapping("/profile")
 	public String profile() {
-		return "user/myPage/myPage-profile";
+		return "user/mypage/myPage-profile";
 	}
 
 	@GetMapping("/info")
 	public String info() {
-		return "user/myPage/myPage-info";
+		return "user/mypage/myPage-info";
 	}
 	
 	@GetMapping("/changePw")
 	public String changePw() {
-		return "user/myPage/myPage-changePw";
+		return "user/mypage/myPage-changePw";
 	}
 	
 	@GetMapping("/secession")
 	public String secession() {
-		return "user/myPage/myPage-secession";
+		return "user/mypage/myPage-secession";
 	}
 	
 	

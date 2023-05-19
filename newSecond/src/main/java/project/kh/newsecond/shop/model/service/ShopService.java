@@ -1,5 +1,6 @@
 package project.kh.newsecond.shop.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -70,14 +71,12 @@ public interface ShopService {
 
 
 	/** 상점 편집
-	 * @param shopProfile
-	 * @param shopInfo
-	 * @param shopTitle
+	 * @param shop
+	 * @param shopNewProfile
 	 * @param webPath
 	 * @param filePath
-	 * @param loginUser 
 	 * @return
 	 */
-//	int updateShopInfo(MultipartFile shopProfile, String shopInfo, String shopTitle, String webPath, String filePath, User loginUser);
+	int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException;
 
 }
