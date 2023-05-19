@@ -29,8 +29,6 @@ next.addEventListener('click', () => {
 
 
 
-
-
 // 좋아요 버튼
 const goodsLike = document.getElementById("goodsLike");
 

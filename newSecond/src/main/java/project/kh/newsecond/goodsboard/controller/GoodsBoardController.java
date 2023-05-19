@@ -1,7 +1,6 @@
 package project.kh.newsecond.goodsboard.controller;
 
-import java.util.Map;
-
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
 import project.kh.newsecond.user.model.dto.User;
 
@@ -28,7 +29,6 @@ public class GoodsBoardController {
 	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false) String searchName,
 			Model model) {
-		// if로 검색어 있는 경우만 조건 둬야하나?
 		
 		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
@@ -38,6 +38,16 @@ public class GoodsBoardController {
 		return "goods/searchGoodsList";
 	}
 	
+	// 상품 게시글 추가 조회 (더보기)
+	@PostMapping(value="/searchMore", produces="application/json; charset=UTF-8")
+	public List<GoodsBoard> searchMoreGoodsList(String searchName){
+		
+		
+		
+		
+		return null;
+	}
+	
 	// 지영
 	// 상품 게시글 상세 조회
 	@GetMapping("/{goodsTitle}")
@@ -45,8 +55,6 @@ public class GoodsBoardController {
 			@PathVariable("goodsTitle") int goodsTitle,
 			Model model,
 			@SessionAttribute(value="loginUser", required=false) User loginUser) {
-		
-		
 		
 //		GoodsBoard goodsBoard = service.selectGoodsBoard(map);
 		return "/goods/goodsDetail";
