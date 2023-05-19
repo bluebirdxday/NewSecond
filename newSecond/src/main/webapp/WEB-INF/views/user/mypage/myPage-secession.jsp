@@ -65,8 +65,8 @@
                     </pre>
 
                     <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" id="agree">
+                        <label class="form-check-label" for="agree">
                             위 약관에 동의합니다
                         </label>
                     </div>

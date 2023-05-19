@@ -31,7 +31,7 @@
                 <form action="secession" class="myPage--main__form d-flex flex-column" method="POST" name="myPageFrm" id="secessionFrm">
 
                     <div class="input-group">
-                        <input type="text" id="userNickname" name="userNickname" value="dd" required>
+                        <input type="text" id="userNickname" name="userNickname" autocomplete="off" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>닉네임</label>
@@ -39,15 +39,15 @@
 
                     
                     <div class="input-group mt-5">
-                        <input type="password" id="userPassword" name="userPassword" required>
+                        <input type="password" id="userTel" name="userTel" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>새 비밀번호</label>
+                        <label>전화번호</label>
                     </div>
                     
                     <div class="input-group mt-5">
-                        <input class="w-50" type="text" name="userAddress" id="userAddress_postcode" placeholder="우편번호"  readonly onfocus="this.blur();">
-                        <button class="w-25 btn btn-primary" type="button" id="addressSearch"readonly >검색</button>
+                        <input class="w-25" type="text" name="userAddress" id="userAddress_postcode" placeholder="우편번호"  readonly onfocus="this.blur();">
+                        <button class="w-25 btn btn-secondary ms-3 rounded-5" type="button" id="addressSearch">검색</button>
                         <button type="button" class="d-none" id="valueRecognizer"></button>
                     </div>
                     
@@ -56,7 +56,7 @@
                     </div>
                     
                     <div class="input-group mt-5">
-                        <input type="text" id="userAddress_detailAddress" name="userAddress" required>
+                        <input type="text" id="userAddress_detailAddress" name="userAddress" autocomplete="off" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>상세 주소</label>

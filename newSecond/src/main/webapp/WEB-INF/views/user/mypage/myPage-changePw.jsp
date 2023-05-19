@@ -22,9 +22,9 @@
             <div class="myPage--main__contents ps-5 pt-4">
 
                 <h1 class="myPage-title">비밀번호 변경</h1>
-                <div class="myPage-subject">현재 비밀번호가 일치하는 경우 새 비밀번호로 변경할 수 있습니다.</div>
+                <div class="myPage-subject mb-5">현재 비밀번호가 일치하는 경우 새 비밀번호로 변경할 수 있습니다.</div>
 
-                <form action="changePw" class="myPage--main__form d-flex flex-column" method="POST" name="myPageFrm" id="changePwFrm">
+                <form action="changePw" class="myPage--main__form d-flex flex-column mt-5" method="POST" name="myPageFrm" id="changePwFrm">
 
                     <div class="input-group">
                         <input type="password" id="userPassword" name="userPassword" required>
@@ -41,7 +41,7 @@
                         <label>새 비밀번호</label>
                     </div>
                     
-                    <div class="input-group mt-5">
+                    <div class="input-group mt-5 mb-5">
                         <input type="password" id="newUserPasswordConfirm" name="newUserPasswordConfirm" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
