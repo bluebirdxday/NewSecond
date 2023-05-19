@@ -37,6 +37,7 @@
 		
 		<mapper resource="/mappers/writing-mapper.xml" />
 		<mapper resource="/mappers/priceView-mapper.xml" />
+		<mapper resource="/mappers/qna-mapper.xml" />
 	</mappers>
 
 

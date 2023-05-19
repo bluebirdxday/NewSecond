@@ -233,4 +233,38 @@ UPDATE "shop" SET SHOP_PROFILE = NULL;
 
 /* 리뷰 수정 */
 UPDATE "reviews" SET REVIEW_MESSAGE = #{reviewMessage}, REVIEW_STARS = #{reviewStars}
-WHERE REVIEW_NO = #{reviewNo}
+WHERE REVIEW_NO = #{reviewNo};
+
+
+
+SELECT * FROM "notice";
+
+--공지사항 수정
+UPDATE "notice"SET 
+NOTICE_TITLE = '공지사항1'
+NOTICE_CONTENT = '공지사항1' 
+WHERE NOTICE_NO =23;
+
+--공지사항 삭제
+
+DELETE FROM "notice"
+WHERE NOTICE_NO = '31';
+
+ROLLBACK;
+
+
+
+COMMIT;
+
+
+--문의사항 접수
+
+SELECT * FROM "qna";
+
+INSERT INTO "qna"
+VALUES (SEQ_QNA_NO.NEXTVAL,USER_NO,QNA_TITLE,QNA_CONTENT,QNA_ENROLL_DATE,DEFAULT,DEFAULT,'T','거래신고');
+
+INSERT INTO "qna"
+VALUES (SEQ_QNA_NO.NEXTVAL,'1','사기당한듯','사기당한듯..신고할게요',SYSDATE,DEFAULT,DEFAULT,'T','거래신고');
+
+

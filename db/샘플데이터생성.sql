@@ -231,3 +231,5 @@ INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비
 COMMIT;
 
 
+FROM "goods_board"
+ORDER BY GOODS_NO DESC;
