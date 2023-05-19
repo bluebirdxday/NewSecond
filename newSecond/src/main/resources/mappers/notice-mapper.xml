@@ -22,8 +22,8 @@
 	</select>
 	
 	
-	
-	<select id="selectNoticeOneList" resultType="_int">
+	<!-- 공지사항 게시글 읽어오기 -->
+	<select id="selectNoticeOneList" resultMap="notice_rm">
 	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
 	FROM "notice"
 	WHERE NOTICE_NO = #{noticeNo}

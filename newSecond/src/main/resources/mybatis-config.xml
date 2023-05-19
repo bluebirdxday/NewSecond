@@ -14,7 +14,13 @@
 		<typeAlias type="project.kh.newsecond.shop.model.dto.Follow" alias="Follow" />
 		<typeAlias type="project.kh.newsecond.review.model.dto.Review" alias="Review" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
+		<typeAlias type="project.kh.newsecond.notice.model.dto.Notice" alias="Notice" />
+		<typeAlias type="project.kh.newsecond.admin.model.dto.Admin" alias="Admin" />
+		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
+		
+		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
+		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
 	</typeAliases>
 	
 	
@@ -23,10 +29,15 @@
 		<mapper resource="/mappers/user-mapper.xml" />
 		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
+		<mapper resource="/mappers/notice-mapper.xml" />
+		<mapper resource="/mappers/admin-mapper.xml" />
 		<mapper resource="/mappers/notification-mapper.xml" />
 		<mapper resource="/mappers/follow-mapper.xml" />
 		<mapper resource="/mappers/search-mapper.xml" />
-		<mapper resource="/mappers/goods-mapper.xml" />
+		
+		<mapper resource="/mappers/writing-mapper.xml" />
+		<mapper resource="/mappers/priceView-mapper.xml" />
+		<mapper resource="/mappers/qna-mapper.xml" />
 	</mappers>
 
 

@@ -9,8 +9,14 @@
 /* ---------------------------------------------------- */
 
 /* topMargin */
-.content--post__topMargin{
+.content--post__topMargin {
     margin-top: 150px;
+}
+
+/* 라벨 제목 */
+.labelTitle {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 /* 화면 전체 배경 */
@@ -440,10 +446,15 @@
 }
 
 /* 2depth */
-#category--2depth > div:hover {
-    background-color: #2365B9;
-    color: white;
+#category--2depth > label:hover {
+    display: inline;
+    color: #2365B9;
+    font-size: 1.2em;
 }
+#category--2depth > label > input {
+    display: none;
+}
+
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */

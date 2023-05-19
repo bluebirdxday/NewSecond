@@ -1,10 +1,15 @@
 package project.kh.newsecond.shop.model.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 
 public interface ShopService {
@@ -28,5 +33,50 @@ public interface ShopService {
 	 * @return openDays
 	 */
 	int selectShopOpenDay(int userNo);
+
+
+	/** 팔로우 리스트 조회
+	 * @param map
+	 * @return followList
+	 */
+	List<Follow> selectFollowList(Map<String, Integer> map);
+
+
+	/** 팔로워 리스트 조회
+	 * @param map
+	 * @return followerList
+	 */
+	List<Follow> selectFollowerList(Map<String, Integer> map);
+
+
+	/** 팔로 유무 조회(로그인 유저->상점주인)
+	 * @param map
+	 * @return checkFollow
+	 */
+	int checkFollow(Map<String, Integer> map);
+
+
+	/** 상점 팔로우
+	 * @param follow
+	 * @return result
+	 */
+	int follow(Follow follow);
+
+	
+	/** 상점 언팔로우
+	 * @param unfollow
+	 * @return result
+	 */
+	int unFollow(Follow unfollow);
+
+
+	/** 상점 편집
+	 * @param shop
+	 * @param shopNewProfile
+	 * @param webPath
+	 * @param filePath
+	 * @return
+	 */
+	int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException;
 
 }

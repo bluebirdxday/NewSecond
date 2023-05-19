@@ -110,7 +110,7 @@
 
 
 /* 검색창 */
-.priceView--main__searchBox > div {
+.priceView--main__searchBox > label {
     background-color: white;
     border-radius: 40px;
     width: 500px;
@@ -122,14 +122,14 @@
         ". search button ";
     place-items: center;
 }
-.priceView--main__searchBox > div > input {
+.priceView--main__searchBox > label > input {
     grid-area: search;
     height: 50px;
     width: 350px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
-.priceView--main__searchBox > div > button {
+.priceView--main__searchBox > label > button {
     grid-area: button;
     margin-left: 10px;
     padding: 10px 20px 10px 20px;
@@ -138,7 +138,7 @@
     border-radius: 20px;
     border: none;
 }
-.priceView--main__searchBox > div > button:hover {
+.priceView--main__searchBox > label > button:hover {
     box-shadow: 0 0 0 2px black inset;
 }
 input:focus {

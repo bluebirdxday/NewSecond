@@ -36,61 +36,112 @@ sortList.forEach(function(sort){
 });
 
 
+// 편집 버튼 클릭 시
 const popup = document.querySelector(".myshop--popup__background");
+const editShopBtn = document.querySelector(".myshop--info__btn-edit");
 
-// 내 상점 편집 팝업 열기
-document.querySelector(".myshop--info__btn-edit").addEventListener("click", ()=>{
-    popup.classList.toggle("myshop--popup__show");
+const shopProfile = document.querySelector(".myshop--profileImage__img").getAttribute("src");   /* 상점 프로필 src */
+const shopTitle = document.querySelector(".myshop--info__title").innerText;
+const shopInfo = document.querySelector(".myshop--info__content").innerText;
 
-    // 글자수 입력
-    document.getElementById("myshopEditInput").innerText = document.querySelector(".myshop--popup__input-edit").value.length;
-    document.getElementById("myshopEditTextArea").innerText = document.querySelector(".myshop--popup__textarea-edit").value.length;
+
+if(editShopBtn!=null){
     
-});
+    const popupShopTitle = document.querySelector(".myshop--popup__input-edit");
+    const popupShopInfo = document.querySelector(".myshop--popup__textarea-edit");
 
-document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
-    popup.classList.remove("myshop--popup__show");
-});
+    // 내 상점 편집 팝업 열기
+    document.querySelector(".myshop--info__btn-edit").addEventListener("click", ()=>{
+        popup.classList.toggle("myshop--popup__show");
+    
+        // 글자수 입력
+        document.getElementById("myshopEditInput").innerText = popupShopTitle.value.length;
+        document.getElementById("myshopEditTextArea").innerText = popupShopInfo.value.length;
+        
+    });
+    
+    const realUpload = document.querySelector(".real-upload");
+    const upload = document.querySelector(".upload");
 
-document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
-    popup.classList.remove("myshop--popup__show");
-});
+    // 내상점 닫기 버튼 클릭 시
+    document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
+        popup.classList.remove("myshop--popup__show");
+
+        upload.setAttribute("src", shopProfile);
+        realUpload.value="";
+        popupShopTitle.value = shopTitle;
+        popupShopInfo.value = shopInfo;
+    });
+    
+    // 내 상점 저장 버튼 클릭 시
+    document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
+        popup.classList.remove("myshop--popup__show");
+    });
+    
+    
+    // 내상점 편집 팝업 프로필 이미지
+    upload.addEventListener("click", ()=> realUpload.click());
+    
+    realUpload.addEventListener("change", ()=>{
+        const imageSrc = URL.createObjectURL(realUpload.files[0]);
+        upload.src = imageSrc;
+    });
+    
+    
+    // 내상점 팝업 편집 글자수 세기
+    const inputCount = document.getElementById("myshopEditInput");
+    const textAreaCount = document.getElementById("myshopEditTextArea");
+    
+    popupShopTitle.addEventListener("input", e=>{
+        inputCount.innerText = e.target.value.length;
+    
+        if(e.target.value.length>=20 || e.target.value.length<=2){
+            inputCount.classList.add("myshop--edit__error");
+        }else{ 
+            inputCount.classList.remove("myshop--edit__error");
+        }
+    });
+    
+    popupShopInfo.addEventListener("input", e=>{
+        textAreaCount.innerText = e.target.value.length;
+    
+        if(e.target.value.length>=50){
+            textAreaCount.classList.add("myshop--edit__error");
+        }else{ 
+            textAreaCount.classList.remove("myshop--edit__error");
+        }
+    });
+}
 
 
-// 내상점 편집 팝업 이미지 
-const realUpload = document.querySelector(".real-upload");
-const upload = document.querySelector(".upload");
 
-upload.addEventListener("click", ()=> realUpload.click());
+// 상점 팔로우
+function follow(userNo, loginUserNo){
 
-realUpload.addEventListener("change", ()=>{
-    const imageSrc = URL.createObjectURL(realUpload.files[0]);
-    upload.src = imageSrc;
-});
-
-
-// 내상점 팝업 편집 글자수 세기
-const inputCount = document.getElementById("myshopEditInput");
-const textAreaCount = document.getElementById("myshopEditTextArea");
-
-document.querySelector(".myshop--popup__input-edit").addEventListener("input", e=>{
-    inputCount.innerText = e.target.value.length;
-
-    if(e.target.value.length>=20 || e.target.value.length<=2){
-        inputCount.classList.add("myshop--edit__error");
-    }else{ 
-        inputCount.classList.remove("myshop--edit__error");
-    }
-});
-
-document.querySelector(".myshop--popup__textarea-edit").addEventListener("input", e=>{
-    textAreaCount.innerText = e.target.value.length;
-
-    if(e.target.value.length>=50){
-        textAreaCount.classList.add("myshop--edit__error");
-    }else{ 
-        textAreaCount.classList.remove("myshop--edit__error");
-    }
-});
+    fetch("/shop/follow", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify({"passiveUserNo" : userNo, "activeUserNo" : loginUserNo})
+    })
+    .then(resp => resp.text())
+    .then(()=>{
+        location.reload();
+    })
+    .catch(err=>{ console.log(err); })
+}
 
 
+// 상점 언팔로우
+function unFollow(userNo, loginUserNo){
+    
+    fetch("/shop/unFollow", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify({"passiveUserNo" : userNo, "activeUserNo" : loginUserNo})
+        })
+        .then(resp => resp.text())
+        .then(()=>{
+            location.reload();
+        })
+        .catch(err=>{ console.log(err); })
+}

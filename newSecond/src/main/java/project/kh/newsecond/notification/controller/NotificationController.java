@@ -59,14 +59,18 @@ public class NotificationController {
 		
 		int result = service.insertKeyword(map);
 		
+		String alertType = null;
 		String message = null;
 		
 		if(result>0) {
+			alertType = "success";
 			message = "키워드가 추가되었습니다";
 		}else {
+			alertType = "fail";
 			message = "키워드 추가 실패";
 		}
 		
+		ra.addFlashAttribute("alertType", alertType);
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:/notification/editKeyword";
@@ -76,7 +80,10 @@ public class NotificationController {
 	// 키워드 삭제
 	@PostMapping("/editKeyword/delete")
 	@ResponseBody
-	public int deleteReview(@RequestBody NotificationKeyword keyword) {
+	public int deleteReview(@RequestBody NotificationKeyword keyword,
+			RedirectAttributes ra) {
+		
+		
 	    return service.deleteKeyword(keyword);
 	}
 	

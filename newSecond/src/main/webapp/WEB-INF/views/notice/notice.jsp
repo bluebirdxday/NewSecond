@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notice</title>
-    <link rel="stylesheet" href="\resources\css\notice.css">
+    <link rel="stylesheet" href="\resources\css\notice\notice.css">
 
 
      
@@ -52,8 +52,8 @@
                     <c:forEach items="${NoticeList}" var="notice">
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td>${notice.noticeNo}</td>
-                            <td><a href="\notice\notice_read\${notice.noticeNo}">${notice.noticeContent}</a></td>
+                            <td>${notice.noticeNo}</td>   <%-- $%7Bnotice.noticeNo%7D --%>
+                            <td><a href='/notice/notice_read/${notice.noticeNo}'>${notice.noticeContent}</a></td>
                             <td>${notice.noticeEnrollDate}</td>
                             <td>${notice.noticeViewCount}</td>
                         </tr>
