@@ -14,11 +14,7 @@ public class MyPageController {
 	@Autowired 
 	private MyPageService service;
 	
-	/* 페이지 이동 파트(4개)*/
-	@GetMapping("/profile")
-	public String profile() {
-		return "user/mypage/myPage-profile";
-	}
+	/* 페이지 이동 파트(3개)*/
 
 	@GetMapping("/info")
 	public String info() {

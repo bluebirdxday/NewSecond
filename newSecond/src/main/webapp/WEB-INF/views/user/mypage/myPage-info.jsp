@@ -31,7 +31,7 @@
                 <form action="secession" class="myPage--main__form d-flex flex-column" method="POST" name="myPageFrm" id="secessionFrm">
 
                     <div class="input-group">
-                        <input type="password" id="userPassword" name="userPassword" required>
+                        <input type="text" id="userNickname" name="userNickname" value="dd" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>닉네임</label>
@@ -52,11 +52,14 @@
                     </div>
                     
                     <div class="input-group mt-5">
-                    <div class="input-container mb-4">
-                    <input type="text" name="userAddress" placeholder="도로명/지번 주소" id="userAddress_address" readonly onfocus="this.blur();">
+                        <input type="text" name="userAddress" placeholder="도로명/지번 주소" id="userAddress_address" readonly onfocus="this.blur();">
                     </div>
                     
                     <div class="input-group mt-5">
+                        <input type="text" id="userAddress_detailAddress" name="userAddress" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>상세 주소</label>
                     </div>
 
                     <button class="btn btn-primary w-50 m-auto mt-4">수정하기</button>
@@ -69,7 +72,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script>
-        document.querySelectorAll(".list-group-item")[1].classList.add("active")
+        document.querySelectorAll(".list-group-item")[0].classList.add("active")
     </script>
 </body>
 </html>

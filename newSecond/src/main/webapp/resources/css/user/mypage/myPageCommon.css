@@ -88,8 +88,8 @@
     -webkit-transition: 0.2s ease all;
 }
 
-.input-group input:focus~label,
-.input-group input:valid~label {
+.input-group input:focus~label
+, .input-group input:valid~label {
     top: -20px;
     font-size: 14px;
     color: #4285f4;

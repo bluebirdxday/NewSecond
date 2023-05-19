@@ -12,7 +12,6 @@
 
 
     <ul class="list-group list-group-flush mt-5">
-        <a href="/myPage/profile" class="list-group-item list-group-item-action text-center p-2">프로필</a>
         <a href="/myPage/info" class="list-group-item list-group-item-action text-center p-2">내 정보</a>
         <a href="/myPage/changePw" class="list-group-item list-group-item-action text-center p-2">비밀번호 변경</a>
         <a href="/myPage/secession" class="list-group-item list-group-item-action text-center p-2">회원 탈퇴</a>

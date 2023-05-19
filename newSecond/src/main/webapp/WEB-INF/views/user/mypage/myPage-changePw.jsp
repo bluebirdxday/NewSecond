@@ -35,14 +35,14 @@
 
                     
                     <div class="input-group mt-5">
-                        <input type="password" id="userPassword" name="userPassword" required>
+                        <input type="password" id="newUserPassword" name="newUserPassword" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>새 비밀번호</label>
                     </div>
                     
                     <div class="input-group mt-5">
-                        <input type="password" id="userPassword" name="userPassword" required>
+                        <input type="password" id="newUserPasswordConfirm" name="newUserPasswordConfirm" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>새 비밀번호 확인</label>
@@ -58,7 +58,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script>
-        document.querySelectorAll(".list-group-item")[2].classList.add("active")
+        document.querySelectorAll(".list-group-item")[1].classList.add("active")
     </script>
 </body>
 </html>

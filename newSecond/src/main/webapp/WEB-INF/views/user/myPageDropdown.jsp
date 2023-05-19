@@ -17,7 +17,7 @@
 
     <ul class="dropdown-menu dropdown--menu__custom text-center">
 
-        <li><a class="dropdown-item" href="/myPage/profile">마이 페이지</a></li>
+        <li><a class="dropdown-item" href="/myPage/info">마이 페이지</a></li>
 
         <li><a class="dropdown-item" href="/shop/${loginUser.userNo}">내 상점</a></li>
 

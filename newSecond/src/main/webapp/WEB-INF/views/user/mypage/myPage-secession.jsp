@@ -82,7 +82,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script>
-        document.querySelectorAll(".list-group-item")[3].classList.add("active")
+        document.querySelectorAll(".list-group-item")[2].classList.add("active")
     </script>
     <script src="/resources/js/user/myPage.js"></script>
 </body>
