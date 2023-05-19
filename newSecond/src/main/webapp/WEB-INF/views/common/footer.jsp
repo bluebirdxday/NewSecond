@@ -38,6 +38,7 @@
     </script>
 </c:if>
 
+
 <c:if test="${empty loginUser}" >
     <script>
     document.querySelector('.myMarket').addEventListener('click', e => {

@@ -110,8 +110,9 @@ function deleteKeyword(keywordNo) {
             ).catch(error => {
                 console.log(error.message);
             });
+
         }
         
         toastTrigger.click();
-        location.reload();
+        setTimeout(() => location.reload(), 1000);
 }
