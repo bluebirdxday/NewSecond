@@ -17,17 +17,17 @@ public class WritingDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 1. °Ô½Ã±Û »ðÀÔ
+	 * 1.GOODS_BOARD INSERT
 	 * @param writing
 	 * @return result
 	 */
 	public int writingInsert(Writing writing) {
 		return sqlSession.insert("writingMapper.writingInsert", writing);
-		// »ðÀÔ ¼º°ø ½Ã ¾ç¼ö, ½ÇÆÐ ½Ã 0 ¹ÝÈ¯
+		// ì„±ê³µì‹œ 1, ì‹¤íŒ¨ì‹œ 0 ë¦¬í„´
 	};
 
 	/**
-	 * 2. GOODS_NO °¡Á®¿À±â
+	 * 2. GOODS_NO RETURN
 	 * @param writing
 	 * @return goodsNo
 	 */
@@ -36,14 +36,13 @@ public class WritingDAO {
 	};
 	
 	/**
-	 * 3. °Ô½Ã±Û ÀÌ¹ÌÁö »ðÀÔ
+	 * 3. FILES INSERT
 	 * @param images
 	 * @param finalImages 
 	 * @return result
 	 */
 	public int writingImageInsert(List<MultipartFile> images, List<WritingImage> finalImages) {
 		return sqlSession.insert("writingMapper.writingImageInsert", images);
-		// »ðÀÔ ¼º°ø ½Ã ¾ç¼ö, ½ÇÆÐ ½Ã 0 ¹ÝÈ¯
 	}
 
 }

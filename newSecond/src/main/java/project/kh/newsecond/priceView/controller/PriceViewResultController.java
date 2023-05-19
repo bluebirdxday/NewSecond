@@ -1,13 +1,22 @@
 package project.kh.newsecond.priceView.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import project.kh.newsecond.priceView.model.service.PriceViewResultService;
+import project.kh.newsecond.priceView.model.service.PriceViewService;
+import project.kh.newsecond.writing.model.service.WritingService;
+
 @Controller
 @RequestMapping("/priceView")
 public class PriceViewResultController {
+	
+	@Autowired
+	private PriceViewResultService service;
 
 	@GetMapping("/priceResultSee")
 	public String priceViewResult() {
@@ -16,9 +25,16 @@ public class PriceViewResultController {
 		// (/WEB-INF/views/)priceView/priceViewResultPage(.jsp)
 	}
 	
-	// iphone °Ë»ö ½Ã localhost/priceView/priceSee/search?keyword=iphone À¸·Î ÀÌµ¿
+	// iphone ìœ¼ë¡œ ê²€ìƒ‰í•˜ë©´ localhost/priceView/priceSee/search?keyword=iphone ìœ¼ë¡œ ì—°ê²°
 	@GetMapping("/priceSee/search")
-	public String priceViewSearch(@RequestParam("keyword") String keyword) {
+	public String priceViewSearch(
+			@RequestParam("keyword") String keyword,
+			Model model
+			) {
+		
+		int result = service.goodsPriceSelect(keyword);
+		
+	    model.addAttribute("result", result);
 		
 		return "priceView/priceViewResultPage";
 	}

@@ -13,7 +13,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <main>
-        <form action="/search" type="GET">
+        <form action="/priceView/priceSee/search" type="GET">
         <div class="content--priceView__background">
         <section class="content--priceView__top">
             <div class="content--priceView__title">시세조회</div>
@@ -27,12 +27,10 @@
                 <div class="priceView--main__box">
                     <div class="priceView--main__leftBox">
                         <div class="priceView--main__searchBox">
-                            <div>
                             <label for="search">
 <%-- 검색어 name="keyword" id="search" --%>                            
                                 <input type="text" placeholder="검색어를 입력하세요" maxlength="30" id="search" name="keyword" id="search"><button type="submit">검색</button>
                             </label>
-                            </div>
                         </div>
 
                         <!--  -->

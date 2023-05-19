@@ -20,23 +20,23 @@ public class WritingServiceImpl implements WritingService {
 	@Autowired
 	private WritingDAO dao;
 
-	// °Ô½Ã±Û Á¦Ãâ
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
 		
-		// 0. XSS ¹æÁö Ã³¸®
+		// 0. XSS ì²˜ë¦¬
 		writing.setTitle(Util.XXSHandling(writing.getTitle()));
 		writing.setDetailText(Util.XXSHandling(writing.getDetailText()));
 		
-		// 1-1. WRITING Å×ÀÌºí INSERTÇÏ±â
+		// 1-1. GOODS_BOARD í…Œì´ë¸”ì— insert ì‹œë„
 		int result = dao.writingInsert(writing);
 		
-		// 1-2. FILE Å×ÀÌºí¿¡ GOODS_NO¸¦ »ğÀÔÇÏ±â À§ÇÑ GOODS_NO °¡Á®¿À±â
+		// 1-2. FILE í…Œì´ë¸”ì— ë„£ì„ goodsNo select ì‹œë„
 		int goodsNo = dao.sqlSelect(writing);
 		
-		// 2. °Ô½Ã±Û »ğÀÔ ¼º°ø ½Ã ¾÷·ÎµåµÈ ÀÌ¹ÌÁö°¡ ÀÖ´Ù¸é files Å×ÀÌºí¿¡ »ğÀÔÇÏ´Â DAO È£Ãâ
-		if(result > 0) { // ÀÌ¹ÌÁö Á¦¿Ü °Ô½Ã±Û »ğÀÔ ¼º°ø
+		// 2. FILE í…Œì´ë¸”ì— insert ì‹œë„
+		if(result > 0) { // GOODS_BOARD í…Œì´ë¸”ì— insert ì„±ê³µ
 			
 			List<WritingImage> FinalImages = new ArrayList<WritingImage>();
 			
@@ -47,34 +47,33 @@ public class WritingServiceImpl implements WritingService {
 					WritingImage Finalimgs = new WritingImage();
 					String title = writing.getTitle();
 					
-					// Finalimgs¿¡ ÆÄÀÏ Á¤º¸¸¦ ´ã¾Æ¼­ FinalImages¿¡ Ãß°¡
-					Finalimgs.setFilePath(webPath); // À¥ Á¢±Ù °æ·Î
-					Finalimgs.setGoodsNo(goodsNo); // ¸®ÅÏµÈ goodsNo
-					Finalimgs.setFileOrder(i); // ÀÌ¹ÌÁö ¼ø¼­
+					// Finalimgsì— ë§¤ê°œë³€ìˆ˜ ë‹´ê¸°
+					Finalimgs.setFilePath(webPath); // íŒŒì¼ ê²½ë¡œ ë‹´ê¸°
+					Finalimgs.setGoodsNo(goodsNo); // 1-2ì—ì„œ ë¶ˆëŸ¬ì˜¨ goodsNo ë‹´ê¸°
+					Finalimgs.setFileOrder(i); // íŒŒì¼ ìˆœì„œ ë‹´ê¸°
 					
-					String fileName = images.get(i).getOriginalFilename(); // ÆÄÀÏ ¿øº»¸í
+					String fileName = images.get(i).getOriginalFilename(); // íŒŒì¼ ì›ë³¸ëª…
 					
-					Finalimgs.setFileName(fileName); // ¿øº»¸í
+					Finalimgs.setFileName(fileName); // ì›ë³¸ëª… ë‹´ê¸°
 					
-					FinalImages.add(Finalimgs);
-					// -> DB¿¡ ÀÔ·ÂµÇ¾î¾ß ÇÒ Á¤º¸¸¦ ´ãÀº FinalImages °´Ã¼ ¿Ï¼º
+					FinalImages.add(Finalimgs); // ìµœì¢… ì»¨í…Œì´ë„ˆ FinalImagesì— Finalimgs ë‹´ê¸°
 				}
 				
-			} // ºĞ·ù for¹® Á¾·á
+			} // forë¬¸ ë
 			
 			
-			// ÀÌ¹ÌÁö »ğÀÔ ½Ãµµ
+			// dao ì´ë¯¸ì§€ insert ì‹œë„
 			int result2 = dao.writingImageInsert(images, FinalImages);
 			
-			if(result2 == images.size()) { // ¾÷·Îµå ÀÌ¹ÌÁö°¡ 3ÀåÀÌ°í ¸ğµÎ 3Àå ¸ğµÎ »ğÀÔ ¼º°øÇß´Ù¸é
+			if(result2 == images.size()) { // ì´ë¯¸ì§€ insert ì„±ê³µ
 				
-				// µÎ Å×ÀÌºí ¸ğµÎ »ğÀÔ ¼º°ø == ÃÖÁ¾ ¼º°ø
+				// ??
 				
 			}
 			
 			
-		} else { // °Ô½Ã±Û »èÁ¦ ½ÇÆĞ
-//			throw new Exception(); // ¿¹¿Ü °­Á¦ ¹ß»ı -> ³ªÁß¿¡ ¿¹¿Ü ¹ß»ı Å¬·¡½º·Î ¿¬°á
+		} else { // ì‹¤íŒ¨ì‹œ
+//			throw new Exception(); // ì¶”í›„ ì—ëŸ¬ í˜ì´ì§€ ë¦¬í„´
 		}
 		return result;
 	}

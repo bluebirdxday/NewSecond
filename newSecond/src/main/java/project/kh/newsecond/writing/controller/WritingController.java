@@ -31,59 +31,58 @@ public class WritingController {
 	@Autowired
 	private WritingService service;
 
-	// ±Û¾²±â ÆäÀÌÁö Á¢¼Ó
+	// ë‹¨ìˆœ í™”ë©´ ì¶œë ¥
 	@GetMapping("/write")
 	public String writing() {
 		
-		// 1. ·Î±×ÀÎÇØ¾ßÁö¸¸ Á¢¼ÓÇÒ ¼ö ÀÖµµ·Ï ÇÏ°í
-		// 2. ·Î±×ÀÎÀ» ÇÏÁö ¾Ê¾ÒÀ» ¶§´Â ´Ù¸¥ ÆäÀÌÁö·Î µ¹¾Æ°¡±â ±â´É Ãß°¡?
+		// ë¡œê·¸ì¸í•œ ë†ˆë§Œ ê¸€ì“°ê¸° ì²˜ë¦¬: ë¡œê·¸ì¸í•œ ë†ˆë§Œ ê¸€ì“°ê¸° ì´ì „ í˜ì´ì§€ì—ì„œ ì²˜ë¦¬í•˜ë©´ êµ³ì´ ê¸°ëŠ¥ ì—†ì–´ë„ ë¨
 		
 		return "writing/writingPage";
 		// (/WEB-INF/views/)writing/writingPage(.jsp)
 	}
 	
-	// °Ô½Ã±Û Á¦Ãâ: ¿©±â·Î °Ô½Ã±Û ÆäÀÌÁöÀÇ name ÅÂ±×·Î ºÒ·¯¿Â 7°³ÀÇ formÀÌ Á¦ÃâµÊ
+	// ê¸€ì“°ê¸° ë²„íŠ¼ ì œì¶œ í´ë¦­ì‹œ
 	@PostMapping("/submit")
 	public String writingInsert(
 			@ModelAttribute Writing writing,
 			@ModelAttribute WritingImage writingImage,
-			@RequestParam(value="image", required=false) List<MultipartFile> images, // ÀÌ¹ÌÁö ÆÄÀÏ ´ã±è
+			@RequestParam(value="image", required=false) List<MultipartFile> images, // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
 			HttpSession session,
 			Model model
 			) throws IllegalStateException, IOException {
-		// 0. Ä«Å×°í¸® ¹øÈ£ ¼¼ÆÃ: jsp¿¡¼­ innerText¸¦ °¡Á®¿À±â ‹š¹®¿¡ Ä«Å×°í¸® ¹øÈ£¸¦ ¼¼ÆÃÇØ¾ß ÇÔ
-		if(writing.getCategory2().equals("½Å¹ß"))			{writing.setCategoryNo(1); };
-		if(writing.getCategory2().equals("°¡¹æ"))			{writing.setCategoryNo(2); };
-		if(writing.getCategory2().equals("½Ã°è/ÁÖ¾ó¸®"))		{writing.setCategoryNo(3); };
-		if(writing.getCategory2().equals("ÆĞ¼Ç ¾×¼¼¼­¸®"))		{writing.setCategoryNo(4); };
-		if(writing.getCategory2().equals("µğÁöÅĞ/°¡Àü"))		{writing.setCategoryNo(5); };
-		if(writing.getCategory2().equals("½ºÆ÷Ã÷/·¹Àú"))		{writing.setCategoryNo(6); };
-		if(writing.getCategory2().equals("Â÷·®/¿ÀÅä¹ÙÀÌ"))		{writing.setCategoryNo(7); };
-		if(writing.getCategory2().equals("½ºÅ¸±ÂÁî"))			{writing.setCategoryNo(8); };
-		if(writing.getCategory2().equals("Å°´úÆ®"))			{writing.setCategoryNo(9); };
-		if(writing.getCategory2().equals("¿¹¼ú/Èñ±Í/¼öÁıÇ°"))	{writing.setCategoryNo(10); };
-		if(writing.getCategory2().equals("À½¹İ/¾Ç±â"))		{writing.setCategoryNo(11); };
-		if(writing.getCategory2().equals("µµ¼­/Æ¼ÄÏ/¹®±¸"))	{writing.setCategoryNo(12); };
-		if(writing.getCategory2().equals("ºäÆ¼/¹Ì¿ë"))		{writing.setCategoryNo(13); };
-		if(writing.getCategory2().equals("°¡±¸/ÀÎÅ×¸®¾î"))		{writing.setCategoryNo(14); };
-		if(writing.getCategory2().equals("»ıÈ°/ÁÖ¹æ¿ëÇ°"))		{writing.setCategoryNo(15); };
-		if(writing.getCategory2().equals("°ø±¸/»ê¾÷¿ëÇ°"))		{writing.setCategoryNo(16); };
-		if(writing.getCategory2().equals("½ÄÇ°"))			{writing.setCategoryNo(17); };
-		if(writing.getCategory2().equals("À¯¾Æµ¿/Ãâ»ê"))		{writing.setCategoryNo(18); };
-		if(writing.getCategory2().equals("¹İ·Áµ¿¹°¿ëÇ°"))		{writing.setCategoryNo(19); };
-		if(writing.getCategory2().equals("±âÅ¸"))			{writing.setCategoryNo(20); };
-		if(writing.getCategory2().equals("³ª´®"))			{writing.setCategoryNo(21); };
-		if(writing.getCategory2().equals("±¸ÀÎ"))			{writing.setCategoryNo(22); };
-		if(writing.getCategory2().equals("³²¼ºÀÇ·ù"))			{writing.setCategoryNo(23); };
-		if(writing.getCategory2().equals("¿©¼ºÀÇ·ù"))			{writing.setCategoryNo(24); };
+		// 0. innerTextë¡œ ë¶ˆëŸ¬ì˜¨ category2ë¥¼ categoryNoì— ì„¸íŒ…
+		if(writing.getCategory2().equals("ì‹ ë°œ"))			{writing.setCategoryNo(1); };
+		if(writing.getCategory2().equals("ê°€ë°©"))			{writing.setCategoryNo(2); };
+		if(writing.getCategory2().equals("ì‹œê³„/ì£¼ì–¼ë¦¬"))		{writing.setCategoryNo(3); };
+		if(writing.getCategory2().equals("íŒ¨ì…˜ ì•¡ì„¸ì„œë¦¬"))		{writing.setCategoryNo(4); };
+		if(writing.getCategory2().equals("ë””ì§€í„¸/ê°€ì „"))		{writing.setCategoryNo(5); };
+		if(writing.getCategory2().equals("ìŠ¤í¬ì¸ /ë ˆì €"))		{writing.setCategoryNo(6); };
+		if(writing.getCategory2().equals("ì°¨ëŸ‰/ì˜¤í† ë°”ì´"))		{writing.setCategoryNo(7); };
+		if(writing.getCategory2().equals("ìŠ¤íƒ€êµ¿ì¦ˆ"))			{writing.setCategoryNo(8); };
+		if(writing.getCategory2().equals("í‚¤ëœíŠ¸"))			{writing.setCategoryNo(9); };
+		if(writing.getCategory2().equals("ì˜ˆìˆ /í¬ê·€/ìˆ˜ì§‘í’ˆ"))	{writing.setCategoryNo(10); };
+		if(writing.getCategory2().equals("ìŒë°˜/ì•…ê¸°"))		{writing.setCategoryNo(11); };
+		if(writing.getCategory2().equals("ë„ì„œ/í‹°ì¼“/ë¬¸êµ¬"))	{writing.setCategoryNo(12); };
+		if(writing.getCategory2().equals("ë·°í‹°/ë¯¸ìš©"))		{writing.setCategoryNo(13); };
+		if(writing.getCategory2().equals("ê°€êµ¬/ì¸í…Œë¦¬ì–´"))		{writing.setCategoryNo(14); };
+		if(writing.getCategory2().equals("ìƒí™œ/ì£¼ë°©ìš©í’ˆ"))		{writing.setCategoryNo(15); };
+		if(writing.getCategory2().equals("ê³µêµ¬/ì‚°ì—…ìš©í’ˆ"))		{writing.setCategoryNo(16); };
+		if(writing.getCategory2().equals("ì‹í’ˆ"))			{writing.setCategoryNo(17); };
+		if(writing.getCategory2().equals("ìœ ì•„ë™/ì¶œì‚°"))		{writing.setCategoryNo(18); };
+		if(writing.getCategory2().equals("ë°˜ë ¤ë™ë¬¼ìš©í’ˆ"))		{writing.setCategoryNo(19); };
+		if(writing.getCategory2().equals("ê¸°íƒ€"))			{writing.setCategoryNo(20); };
+		if(writing.getCategory2().equals("ë‚˜ëˆ”"))			{writing.setCategoryNo(21); };
+		if(writing.getCategory2().equals("êµ¬ì¸"))			{writing.setCategoryNo(22); };
+		if(writing.getCategory2().equals("ë‚¨ì„±ì˜ë¥˜"))			{writing.setCategoryNo(23); };
+		if(writing.getCategory2().equals("ì—¬ì„±ì˜ë¥˜"))			{writing.setCategoryNo(24); };
 		
-		// 1. ·Î±×ÀÎÇÑ È¸¿ø ¹øÈ£¸¦ ¾ò¾î¿Í writing¿¡ ¼¼ÆÃ
+		// 1. writingì— userNo ì„¸íŒ…
 		writing.setUserNo(loginUser.getUserNo());
-		// -> writing¿¡ userNo, categoryNo + @ ¸ğµÎ ´ã±è
+		// -> writingì— userNo, categoryNo + @ ì™„ë£Œ
 		
-		// 2. ÆäÀÌÁö¿¡¼­ °¡Á®¿Â Á¤º¸·ê writing¿¡ ¼¼ÆÃ (ÀÚµ¿)
+		// 2. writing ê°ì²´ì— ì˜ ë‹´ê²¼ëŠ”ì§€ í™•ì¸
 		/*
 			System.out.println(writing.getTitle());
 			System.out.println(writing.getDetailText());
@@ -93,29 +92,29 @@ public class WritingController {
 			System.out.println(writing.getCategory2());
 		*/
 		
-		// 3. ¾÷·ÎµåµÈ ÀÌ¹ÌÁö¸¦ ¼­¹ö¿¡ ÀúÀå
-		String webPath = "/resources/src/user/${userNo}"; // ±âÁ¸¿¡ Æú´õ°¡ ¾ø¾îµµ ´ã±â³ª?
+		// 3. webPath, filePath ìƒì„±
+		String webPath = "/resources/src/user/${userNo}"; // -> ì—†ëŠ” í´ë”ì—ë„ ë§Œë“¤ì–´ì§€ë‚˜?
 		String filePath = session.getServletContext().getRealPath(webPath);
-		// -> writing, images, webPath, filePath °´Ã¼ ¿Ï¼º
+		// -> writing, images, webPath, filePath
 		
-		// 4-1. ¼­ºñ½º ¿¬°á: ¼º°ø ½Ã ¾ç¼ö return
+		// 4-1. service í˜¸ì¶œ
 		int result = service.writingInsert(writing, images, webPath, filePath);
 	
 		
-		// 5. °Ô½Ã±Û »ğÀÔ ¼º°ø ½Ã
+		// 5. ê²°ê³¼ ë¦¬í„´
 		String message = null;
 		String path = "redirect:";
 		
 		if(result > 0) {
-			message = "°Ô½Ã±ÛÀÌ µî·ÏµÇ¾ú½À´Ï´Ù.";
-			path += "writing/write"; // ¼º°ø½Ã °Ô½Ã±Û ÀÛ¼º ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
+			message = "ê²Œì‹œê¸€ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
+			path += "writing/write"; // ì„±ê³µì‹œ write í™”ë©´ ë¦¬í„´
 		} else {
-			message = "°Ô½Ã±Û µî·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
-			path += "chatting/chat"; // ½ÇÆĞ½Ã Ã¤ÆÃ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
+			message = "ê²Œì‹œê¸€ ë“±ë¡ì— ì‹¤íŒ¨í•˜ì…¨ìŠµë‹ˆë‹¤.";
+			path += "chatting/chat"; // ì‹¤íŒ¨ì‹œ chat í™”ë©´ ë¦¬í„´
 		}
 		
 		return path;
-		// return redirect:writing/write -> ¸®´ÙÀÌ·ºÆ®¿Í ±×³É returnÀº ´Ù¸§!
+		// return redirect:writing/write -> redirectì™€ returnì€ ë‹¤ë¦„ì— ìœ ì˜
 	}
 }
 
