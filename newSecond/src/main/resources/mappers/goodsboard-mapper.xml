@@ -31,18 +31,30 @@
 	<!-- 상품 게시글 목록 조회 -->
 	<select id="selectGoodsBoardList" resultMap="goodsboard_rm" >
 		SELECT USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
-		VIEW_COUNT, WISH_COUNT, SELL_ENROLL_DT, GOODS_STATUS, 			
-<!-- 				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" f
-					WHERE f.GOODS_NO = g.GOODS_NO
-					AND FILE_ORDER = 1) THUMBNAIL -->
-					
-			NVL((SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
-			WHERE F.GOODS_NO = G.GOODS_NO
-			AND FILE_ORDER = 1), '/resources/src/img/basic_profile.png') THUMBNAIL 	<!-- 샘플 데이터 넣기 전 임시방편으로 기본 이미지 지정 -->
-		FROM "goods_board" g
-		WHERE USER_NO = #{userNo}
-		AND GOODS_STATUS NOT IN('D', 'B')
-		ORDER BY GOODS_STATUS, SELL_ENROLL_DT ASC
+				VIEW_COUNT, WISH_COUNT, GOODS_STATUS,
+				
+				<![CDATA[
+		    CASE
+		        WHEN SYSDATE - SELL_ENROLL_DT < 1/24/60 THEN FLOOR((SYSDATE - SELL_ENROLL_DT) * 24 * 60 * 60) || '초 전'
+		        WHEN SYSDATE - SELL_ENROLL_DT < 1/24 THEN FLOOR((SYSDATE - SELL_ENROLL_DT) * 24 * 60) || '분 전'
+		        WHEN SYSDATE - SELL_ENROLL_DT < 1 THEN FLOOR((SYSDATE - SELL_ENROLL_DT) * 24) || '시간 전'
+		        WHEN SYSDATE - SELL_ENROLL_DT < 30 THEN FLOOR(SYSDATE - SELL_ENROLL_DT) || '일 전'
+		        WHEN SYSDATE - SELL_ENROLL_DT < 365 THEN FLOOR((SYSDATE - SELL_ENROLL_DT) / 30) || '달 전'
+		        ELSE FLOOR((SYSDATE - SELL_ENROLL_DT) / 365) || '년 전'
+		    END SELL_ENROLL_DT, 
+		    ]]>
+		    
+		    THUMBNAIL
+		    
+		FROM (SELECT USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
+				VIEW_COUNT, WISH_COUNT, GOODS_STATUS, SELL_ENROLL_DT, 
+				NVL((SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+					WHERE F.GOODS_NO = G.GOODS_NO
+					AND FILE_ORDER = 1), '/resources/src/img/basic_profile.png') THUMBNAIL 
+				FROM "goods_board" G
+				WHERE USER_NO = #{userNo}
+				AND GOODS_STATUS NOT IN('D', 'B')
+				ORDER BY GOODS_STATUS, SELL_ENROLL_DT DESC)
 	</select>
 	
 	

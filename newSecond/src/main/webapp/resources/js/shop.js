@@ -182,6 +182,6 @@ if(soldout!=null){
 
     soldout.forEach(e=>{
         e.style.webkitTextStroke = '1px #e6ebfd'; // 글자 테두리 색상
-        e.style.webkitTextFillColor = '#7E98BC'; // 글자 색상
+        e.style.webkitTextFillColor = '#505bf0'; // 글자 색상
     })
 }

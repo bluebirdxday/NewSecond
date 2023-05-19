@@ -203,7 +203,7 @@
                                             </div>
                                             <div>
                                                 <div><fmt:formatNumber value="${goods.goodsPrice}" type="number"/></div>
-                                                <div>3시간 전</div>
+                                                <div>${goods.sellEnrollDate}</div>
                                             </div>
                                         </div>
                                     </div>
