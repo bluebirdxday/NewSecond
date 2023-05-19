@@ -53,16 +53,31 @@
 		ORDER BY SELL_ENROLL_DT ASC
 	</select>
 	
-	<!-- 글쓰기 내용 삽입 중 이미지 삽입 --> 
-	<insert id="writingImageInsert"> <!-- 파일 테이블 입력 -->
+	<!-- 글쓰기 내용 삽입 중 이미지 삽입1 --> 
+<!-- 	<insert id="writingImageInsert"> 파일 테이블 입력
 		INSERT INTO "files"
 		VALUES(
 			SEQ_FILE_NO,
-				SEQ_GOODS_NO,
+			#{goodsNo},
 			#{fileName},
 			#{fileOrder},
 			#{filePath}
 		)
+	</insert> -->
+	
+	<!-- 글쓰기 내용 삽입 중 이미지 삽입2 -->
+	<insert id="writingImageInsert" parameterType="List">
+		INSERT INTO "files"
+		SELECT SEQ_FILE_NO.NEXTVAL, A.*
+		FROM (
+			<foreach collection="list" item="img" separator=" UNION ALL ">
+				SELECT #{img.goodsNo} GOODS_NO,  
+						#{img.fileName} FILE_NAME,
+						#{img.fileOrder} FILE_ORDER,
+						#{img.filePath} FILE_PATH
+				FROM DUAL
+			</foreach>
+		) A
 	</insert>
 	
 </mapper>

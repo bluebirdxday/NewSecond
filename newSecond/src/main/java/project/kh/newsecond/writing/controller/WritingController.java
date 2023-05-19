@@ -46,7 +46,7 @@ public class WritingController {
 	public String writingInsert(
 			Writing writing,
 			WritingImage writingImage,
-			@RequestParam(value="image", required=false) List<MultipartFile> images,
+			@RequestParam(value="image", required=false) List<MultipartFile> images, // 이미지 객체 생성
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
 			HttpSession session,
@@ -88,7 +88,7 @@ public class WritingController {
 		System.out.println(writing.toString());
 		
 		// 3. webPath, filePath 생성
-		String webPath = "/resources/src/user/${userNo}"; // -> 없는 폴더에도 만들어지나?
+		String webPath = "/resources/src/user/{userNo}"; // -> 없는 폴더에도 만들어지나?
 		String filePath = session.getServletContext().getRealPath(webPath);
 		// -> writing, images, webPath, filePath
 		

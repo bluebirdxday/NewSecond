@@ -1,5 +1,6 @@
 package project.kh.newsecond.writing.model.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,6 @@ public class WritingServiceImpl implements WritingService {
 				if(images.get(i).getSize() > 0) {
 					
 					WritingImage Finalimgs = new WritingImage();
-					String title = writing.getTitle();
 					
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setFilePath(webPath); // 파일 경로 담기
@@ -56,25 +56,31 @@ public class WritingServiceImpl implements WritingService {
 					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
 					
 					Finalimgs.setFileName(fileName); // 원본명 담기
+					Finalimgs.setFileRename( Util.fileRename(fileName) );
 					
 					FinalImages.add(Finalimgs); // 최종 컨테이너 FinalImages에 Finalimgs 담기
+					
 				}
 				
 			} // for문 끝
 			
-			
 			// dao 이미지 insert 시도
-			int result2 = dao.writingImageInsert(images, FinalImages);
+			int result2 = dao.writingImageInsert(FinalImages);
 			
-			if(result2 == images.size()) { // 이미지 insert 성공
+			if(result2 == FinalImages.size()) { // 이미지 insert 성공
 				
-				// ??
+				for(int i=0; i<FinalImages.size(); i++) {
+					
+					int index = FinalImages.get(i).getFileOrder();
+					
+					// 파일로 변환
+					String rename = FinalImages.get(i).getFileRename();
+					images.get(index).transferTo(new File(filePath + rename));
+				}
 				
-			}
-			
-			
-		} else { // 실패시
-//			throw new Exception(); // 추후 에러 페이지 리턴
+			} else {
+				// 예외 던지기
+			} 
 		}
 		return result;
 	}
