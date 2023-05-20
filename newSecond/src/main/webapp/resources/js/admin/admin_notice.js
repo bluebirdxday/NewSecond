@@ -45,3 +45,64 @@ function boardSelectAll(boardSelectAll)  {
     checkbox.checked = boardSelectAll.checked
   })
 }
+
+
+
+
+
+document.getElementById("deleteBtn").addEventListener("click", function() {
+  var checkboxes = document.querySelectorAll("#admin_notice_checkbox");
+  var selectedItems = [];
+  
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      selectedItems.push(checkboxes[i].value);
+    }
+  }
+  
+  if(selectedItems.length==0){
+    alert("선택된 요소가 없습니다.");
+    return;
+  }
+
+  if (confirm("정말 삭제 하시겠습니까?")) {        
+    fetch("/adimin_notice/deleteNoticeList", {
+      method : "POST",
+      headers : {"Content-Type": "application/JSON"},
+      body : JSON.stringify(selectedItems)
+    }).then(resp=> resp.text())
+    .then(result=>{
+
+    }).catch(err=> console.log(err));
+    
+  
+  }
+  
+  });
+  
+
+  /* document.getElementById("deleteBtn").addEventListener("click", function() {
+    var checkboxes = document.querySelectorAll("#admin_notice_checkbox:checked");
+    var selectedItems = [];
+    
+    for (var i = 0; i < checkboxes.length; i++) {
+      selectedItems.push(checkboxes[i].value);
+    }
+    
+    if (checkboxes.length === 0) {
+      alert("선택된 항목이 없습니다.");
+      return;
+    }
+  
+    if (confirm("정말 삭제 하시겠습니까?")) {
+      var deleteUrl = "/admin_notice/delete";
+      
+      // 선택한 항목들의 값을 query string으로 추가하여 deleteUrl에 추가합니다.
+      for (var j = 0; j < selectedItems.length; j++) {
+        deleteUrl += "?itemId=" + selectedItems[j];
+      }
+      
+      location.href = deleteUrl;
+    }
+  }); */
+  

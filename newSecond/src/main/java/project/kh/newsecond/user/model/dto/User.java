@@ -16,7 +16,6 @@ public class User {
 	private String userNickname;
 	private String userTel;
 	private String userAddress;
-	private String userImage;
 	private String userStatus;
 	private String enrollDate;
 	private int userRole;

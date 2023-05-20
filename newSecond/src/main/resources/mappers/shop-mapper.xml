@@ -8,7 +8,7 @@
 		<result property="shopTitle" column="SHOP_TITLE" />
 		<result property="shopInfo" column="SHOP_INFO" />
 		<result property="sellCount" column="SELL_COUNT" />
-		<result property="userImage" column="USER_IMG"/>
+		<result property="shopProfile" column="SHOP_PROFILE"/>
 		
 		<collection property="reviewList" select="selectReviewList"
 			column="USER_NO" javaType="java.util.ArrayList" ofType="Review"/>
@@ -36,11 +36,11 @@
 							WHERE GOODS_STATUS = 'E'
 							AND USER_NO = #{userNo}) SELL_COUNT,
 				NVL(SHOP_INFO, SHOP_TITLE||' 상점에 오신 것을 환영합니다!') SHOP_INFO, 
-				NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
+				NVL(SHOP_PROFILE, '/resources/src/img/basic_profile.png') SHOP_PROFILE
 		FROM "shop"
-		JOIN "users" USING(USER_NO)
 		WHERE USER_NO = #{userNo}
 	</select>
+	
 	
 	<!-- 오픈일 계산 -->
 	<select id="selectShopOpenDay" resultType="_int">
@@ -50,12 +50,19 @@
 	</select>
 	
 	
+	<!-- 상점 편집 -->
+	<update id="updateShopInfo">
+		UPDATE "shop"
+		SET SHOP_INFO = #{shopInfo}, SHOP_TITLE = #{shopTitle}, SHOP_PROFILE = #{shopProfile}
+		WHERE USER_NO = #{userNo}
+	</update>
+	
+	
 	<!-- 특정 유저(상점)의 거래 후기 목록 조회 (받은 후기)-->
 	<select id="selectReviewList" resultMap="review_rm">
 		SELECT REVIEW_NO, SHOP_TITLE, GOODS_TITLE, REVIEW_MESSAGE,
-		REVIEW_DT, REVIEW_STARS, NVL(USER_IMG, '/resources/src/img/basic_profile.png') USER_IMG
+		REVIEW_DT, REVIEW_STARS, NVL(SHOP_PROFILE, '/resources/src/img/basic_profile.png') SHOP_PROFILE
 		FROM "reviews" R
-		JOIN "users" USING(USER_NO)
 		JOIN "shop" USING(USER_NO)
 		JOIN "goods_board" B USING(GOODS_NO)
 		WHERE REVIEW_DEL_FL = 'N'
@@ -97,6 +104,7 @@
 		WHERE REVIEW_NO = #{reviewNo}
 	</update>
 	
+	
 	<!-- 리뷰 조회 -->
 	<select id="selectReview" resultMap="review_rm">
 		SELECT REVIEW_NO, r.USER_NO USER_NO, GOODS_TITLE, GOODS_NO, REVIEW_MESSAGE, REVIEW_DT, REVIEW_STARS
@@ -104,5 +112,12 @@
 		JOIN "goods_board" gb USING(GOODS_NO)
 		WHERE REVIEW_NO = #{reviewNo}
 	</select>
+	
+	
+	<!-- 리뷰 수정 -->
+	<update id="updateReview">
+		UPDATE "reviews" SET REVIEW_MESSAGE = #{reviewMessage}, REVIEW_STARS = #{reviewStars}
+		WHERE REVIEW_NO = #{reviewNo}
+	</update>
 		
 </mapper>

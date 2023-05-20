@@ -11,94 +11,73 @@ import org.springframework.web.multipart.MultipartFile;
 import project.kh.newsecond.writing.model.dao.WritingDAO;
 import project.kh.newsecond.writing.model.dto.Writing;
 import project.kh.newsecond.writing.model.dto.WritingImage;
+import project.kh.newsecond.common.utility.Util;
+import project.kh.newsecond.common.Exception.*;
 
 @Service
 public class WritingServiceImpl implements WritingService {
 	
-//	@Autowired
-//	private WritingDAO dao;
-//
-//	// �Խñ� ����
-//	@Transactional(rollbackFor = Exception.class)
-//	@Override
-//	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
-//		
-//		// 0. XSS ���� ó��
-//		// board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
-//		// board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
-//		
-//		// 1. WRITING ���̺� INSERT�ϱ� (����, ����, �ۼ���, �Խ����ڵ�)
-//		int goodsNo = dao.writingInsert(writing);
-//		
-//		// 2. �Խñ� ���� ���� �� ���ε�� �̹����� �ִٸ� files ���̺� �����ϴ� DAO ȣ��
-//		if(goodsNo > 0) { // �Խñ� ���� ����
-//			
-//			// List<MultipartFile> images
-//			// -> ���ε�� ������ ��� ��ü MultipartFile�� 5�� ����
-//			// -> �� ���ε�� ������ ��� MultipartFile ��ü�� ����
-//
-//			List<WritingImage> uploadList = new ArrayList<WritingImage>();
-//			// images�� ��� ���� �� ���� ���ε�� ���ϸ� �з��ϴ� �۾�
-//			for(int i=0; i<images.size(); i++) {
-//				
-//				if(images.get(i).getSize() > 0) { // i��° ��ҿ� ���ε��� ������ �ִٸ�
-//					
-//					WritingImage img = new WritingImage();
-//					
-//					// img�� ���� ������ ��Ƽ� uploadList�� �߰�
-//					img.setFilePath(webPath); // �� ���� ���
-//					img.setGoodsNo(goodsNo); // �Խñ� ��ȣ
-//					img.setFileOrder(i); // �̹��� ����
-//					
-//					String fileName = images.get(i).getOriginalFilename(); // ���� ������
-//					
-//					img.setImageOriginal(fileName); // ������
-//					
-//					img.setFileReName( Util.fileRename(fileName) ); // �����
-//					
-//					uploadList.add(img);
-//				}
-//			} // �з� for�� ����
-//			
-//			// �з� �۾� �� uploadList�� ������� �ʴ� ��� == ���ε��� ������ ����
-//			if(!uploadList.isEmpty()) {
-//				
-//				// file ���̺� INSERT �ϴ� DAO ȣ��
-//				int result = dao.writingImageInsert(uploadList);
-//				// result == ���Ե� ���� ���� == uploadList.size()
-//				
-//				// ���Ե� ���� ������ uploadList�� ������ ���ٸ� == ��ü insert ����
-//				if(result == uploadList.size()) {
-//					
-//					// ������ ������ ����(transferTo())
-//					
-//					// images: ���� ������ ��� ��ü ����Ʈ(���ε� �ȵ� �ε����� ��ĭ)
-//					// uploadList: ���ε�� ������ ����(������, �����, ����, ���, �Խñ� ��ȣ)					
-//					// ���� == images ���ε�� �ε���
-//					
-//					for(int i=0; i<uploadList.size(); i++) {
-//						
-//						int index = uploadList.get(i).getFileOrder();
-//						
-//						// ���Ϸ� ��ȯ
-//						String rename = uploadList.get(i).getFileRename();
-//						images.get(index).transferTo(new Image(filePath + rename));
-//					}
-//					
-//				} else { // �Ϻ� �Ǵ� ��ü insert ���� -> ��ǻ� ��ü ����
-//					// ** �� ���� ���� �� 1���� �����ϸ� ��ü ���з� ��� **
-//					// -> rollback �ʿ�
-//					
-//					// @Transactional(rollbackFor = Exception.class) -> ���ܰ� �߻��ؾ����� �ѹ�
-//					
-//					// [���]
-//					// ** insert�� �Ϻζ� �����ϸ� ������ ���ܸ� �߻����� �ѹ��Ű�� **
-//					// -> ����� ���� ���� ���� �ʿ�
-//					throw new FileUploadException(); // ���� ���� �߻�
-//				}
-//			}
-//		}
-//		
-//		return goodsNo;
-//	}
-}
+	@Autowired
+	private WritingDAO dao;
+
+	// �Խñ� ����
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) {
+		
+		// 0. XSS 처리
+		writing.setTitle(Util.XXSHandling(writing.getTitle()));
+		writing.setDetailText(Util.XXSHandling(writing.getDetailText()));
+		
+		// 1-1. GOODS_BOARD 테이블에 insert 시도
+		int result = dao.writingInsert(writing);
+		
+		// 1-2. FILE 테이블에 넣을 goodsNo select 시도
+		int goodsNo = dao.sqlSelect(writing);
+		
+		// 2. FILE 테이블에 insert 시도
+		if(result > 0) { // GOODS_BOARD 테이블에 insert 성공
+			
+			List<WritingImage> FinalImages = new ArrayList<WritingImage>();
+			
+			for(int i=0; i<images.size(); i++) {
+				
+				if(images.get(i).getSize() > 0) {
+					
+					WritingImage Finalimgs = new WritingImage();
+					String title = writing.getTitle();
+					
+					// Finalimgs에 매개변수 담기
+					Finalimgs.setFilePath(webPath); // 파일 경로 담기
+					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
+					Finalimgs.setFileOrder(i); // 파일 순서 담기
+					
+					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
+					
+					Finalimgs.setFileName(fileName); // 원본명 담기
+					
+					FinalImages.add(Finalimgs); // 최종 컨테이너 FinalImages에 Finalimgs 담기
+				}
+				
+			} // for문 끝
+			
+			
+			// dao 이미지 insert 시도
+			int result2 = dao.writingImageInsert(images, FinalImages);
+			
+			if(result2 == images.size()) { // 이미지 insert 성공
+				
+				// ??
+				
+			}
+			
+			
+		} else { // 실패시
+//			throw new Exception(); // 추후 에러 페이지 리턴
+		}
+		return result;
+	}
+}	
+		
+		
+		

@@ -21,7 +21,7 @@
    
    
    <dependencies>
-   		
+   
    		<!--Java에서 JSON을 쉽게 다룰 수 있게 해주는 구글 라이브러리  -->
       <!-- GSON 라이브러리 -->
       <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -30,6 +30,13 @@
           <artifactId>gson</artifactId>
           <version>2.9.0</version>
       </dependency>
+      
+      	<!-- 파일 업로드 -->
+	      <dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
    		
    		<!-- Jackson-databind -->
    		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->

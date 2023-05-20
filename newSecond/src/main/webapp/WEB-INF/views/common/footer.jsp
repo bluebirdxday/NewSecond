@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="/resources/css/footer.css">
 
 
-<footer class="realFooter">
+
+<footer class="realFooter border-top mt-5">
     <section class="footer--logo">
         <img src="/resources/src/img/LOGO.png" class="footerHomeLogo">
     </section>

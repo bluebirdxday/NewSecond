@@ -150,22 +150,6 @@
     border-radius: 20px;
 }
 
-
-/* 그래프 */
-.chart {
-    width: 500px;
-    height: 300px;
-    background-color: #f0f0f0;
-
-    width: 400px;
-    height: 150px;
-    place-items: center;
-}
-.x-axis text {
-    font-size: 1.2em;
-    text-anchor: middle;
-}
-
 /* ---------------------------------------------------- */
 
 .priceViewResult--main__RightBox{

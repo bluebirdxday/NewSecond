@@ -1,5 +1,7 @@
 package project.kh.newsecond.writing.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,13 +12,15 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Writing {
-	private int goodsNo;
+	private int userNo;
+	
+	private String title;
+	private List<WritingImage> image; // 이미지 리스트는 images
+	private String detailText;
+	private int price;
+	private int quantity;
+	private String condition;
+	private String category2;
+	
 	private int categoryNo;
-	private String goodsTitle;
-	private String goodsDescr;
-	private int goodsPrice;
-	private int viewCount;
-	private int wishCount;
-	private String date;
-	private char goodsStatus;
 }

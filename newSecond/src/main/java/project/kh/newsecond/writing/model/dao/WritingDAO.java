@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.writing.model.dto.Writing;
 import project.kh.newsecond.writing.model.dto.WritingImage;
@@ -14,26 +15,34 @@ public class WritingDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	/**
-	 * °Ô½Ã±Û »ğÀÔ
+	 * 1.GOODS_BOARD INSERT
+	 * @param writing
+	 * @return result
+	 */
+	public int writingInsert(Writing writing) {
+		return sqlSession.insert("writingMapper.writingInsert", writing);
+		// ì„±ê³µì‹œ 1, ì‹¤íŒ¨ì‹œ 0 ë¦¬í„´
+	};
+
+	/**
+	 * 2. GOODS_NO RETURN
 	 * @param writing
 	 * @return goodsNo
 	 */
-	public int writingInsert(Writing writing) {
-		int result = sqlSession.insert("writingMapper.writingInsert", writing);
-		
-		if(result > 0) result = writing.getGoodsNo(); // »ğÀÔ ¼º°ø
-		
-		return result; // »ğÀÔ ¼º°ø ½Ã goodsNo, ½ÇÆĞ ½Ã 0 ¹İÈ¯
+	public int sqlSelect(Writing writing) {
+		return sqlSession.selectOne("writingMapper.sqlSelect", writing);
 	};
 	
 	/**
-	 * °Ô½Ã±Û ÀÌ¹ÌÁö »ğÀÔ
-	 * @param uploadList
+	 * 3. FILES INSERT
+	 * @param images
+	 * @param finalImages 
 	 * @return result
 	 */
-	public int writingImageInsert(List<WritingImage> uploadList) {
-		return sqlSession.insert("writingMapper.writingImageInsert", uploadList);
-	};
+	public int writingImageInsert(List<MultipartFile> images, List<WritingImage> finalImages) {
+		return sqlSession.insert("writingMapper.writingImageInsert", images);
+	}
+
 }

@@ -13,6 +13,7 @@ public class WritingImage {
 	private int fileNo;
 	private int goodsNo;
 	private String fileName;
+	
 	private int fileOrder;
 	private String filePath;
 }

@@ -38,18 +38,21 @@
         
             <button class="admin_notice_write"><a href="\admin\admin_notice_write">글쓰기</a></button>
             <button class="admin_notice_HiddenBtn">선택 숨김</button>
-            <button class="admin_notice_DelBtn">선택 삭제</button>
+            <button class="admin_notice_DelBtn" id="deleteBtn">선택 삭제</button>
         </div>
 
 
         
         <!-- ----테이블------ -->
+     <form action="/admin/admin_notice_write/update" method="POST" 
+        class="notice-update" id="noticeUpdateFrm" >
+
         <div class="admin_notice_tableWrap">
         <table class="admin_notice_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id=""value='selectall
-                'onclick='boardSelectAll(this)''></th>
+                <th><input type="checkbox" id="admin_notice_checkbox" value='selectall
+                'onclick='boardSelectAll(this)'></th>
                 <th >번호</th>
                 <th>제목</th>
                 <th>작성일</th>
@@ -68,13 +71,13 @@
                 <c:otherwise>
                     <c:forEach items="${NoticeList}" var="notice">
                         <tr>
-                            <td><input type="checkbox" name="" id=""></td>
+                            <td><input type="checkbox" value="${notice.noticeNo}"></td>
                             <td>${notice.noticeNo}</td>
-                            <td><a href='/admin/admin_notice_read/${notice.noticeNo}'>${notice.noticeContent}</a></td>
+                            <td><a href='/admin/admin_notice_read/${notice.noticeNo}'>${notice.noticeTitle}</a></td>
                             <td>${notice.noticeEnrollDate}</td>
                             <td>${notice.noticeViewCount}</td>
                             <td>
-                            <button class="admin_notice_tableBtn">내용 수정</button>
+                            <button type="submit" class="admin_notice_tableBtn" id="updateBtn">내용 수정</button>
                             </td>
                             <td>
                             <button class="admin_notice_tableBtn">필독 등록</button>
@@ -84,6 +87,7 @@
                 </c:otherwise>
             </c:choose>
 
+            </form>
             
         </tbody>
         </table>
