@@ -37,18 +37,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-/* 최근 검색어 검색창 자동 입력 */
-document.addEventListener("DOMContentLoaded", function() {
-    const recentSearchItems = document.querySelectorAll(".priceView--main__recentSearch span");
-
-    recentSearchItems.forEach(function (item) {
-        item.addEventListener("click", function (event) {
-            const searchInput = document.querySelector("#search");
-            const searchText = this.childNodes[0].nodeValue;
-
-            searchInput.value = searchText;
-            event.stopPropagation();
-        });
-    });
-});

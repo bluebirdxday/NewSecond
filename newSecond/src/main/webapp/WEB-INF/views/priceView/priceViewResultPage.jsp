@@ -29,10 +29,12 @@
             <section class="priceViewResult--background">
                 <!-- mainFrame -->
                 <div class="priceViewResult--main__box">
+                <form action="/priceView/priceSee/search" type="GET">
                     <div class="priceViewResult--main__SearchBox">
 <!-- <%-- URL의 keyword=iphone의 keyword가 value 값으로 기본 입력되어 있음 --%> -->
-                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30" value="<%= keyword %>" style="font-weight: bold;"><button type="submit">검색</button>
+                        <input type="text" placeholder="시세를 조회할 상품을 입력하세요." maxlength="30" value="<%= keyword %>" style="font-weight: bold;" name="keyword"><button type="submit">검색</button>
                     </div>
+                </form>
 
                     <!-- 상하분할 -->
 
