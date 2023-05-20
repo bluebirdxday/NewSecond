@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<select id="selectEncPw" parameterType="_int" resultType="string">
+		SELECT USER_PASSWORD
+		FROM "users"
+		WHERE USER_NO = #{userNo}
+	</select>
+
+	<update id="secession" parameterType="_int">
+		UPDATE "users" 
+		SET USER_STATUS = 'D'
+		WHERE USER_NO = #{userNo}
+	</update>	
+	
+
+
+
+</mapper>

@@ -10,9 +10,12 @@ public class MyPageDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public String selectEncPassword(int userNo) {
-		System.out.println(userNo + ": 3");
-		return null;
+	public String selectEncPw(int userNo) {
+		return sqlSession.selectOne("myPageMapper.selectEncPw", userNo);
+	}
+
+	public int secession(int userNo) {
+		return sqlSession.update("myPageMapper.secession", userNo);
 	}
 	
 	

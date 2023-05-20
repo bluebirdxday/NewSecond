@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.kh.newsecond.myPage.model.service.MyPageService;
 import project.kh.newsecond.user.model.dto.User;
 
+@SessionAttributes({"loginUser"})
 @RequestMapping("/myPage")
 @Controller
 public class MyPageController {
@@ -47,15 +49,9 @@ public class MyPageController {
 							,HttpServletResponse resp
 							,RedirectAttributes ra) {
 		
-		System.out.println(loginUser);
-		
 		int userNo = loginUser.getUserNo();
 		
-		System.out.println(userPassword);
-		System.out.println(userNo);
-		
 		int result = service.secession(userNo, userPassword);
-		
 		
 		String path = "redirect:";
 		String message = null;

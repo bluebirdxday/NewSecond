@@ -2,6 +2,7 @@ package project.kh.newsecond.user.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,8 +37,6 @@ public class UserController{
 						,RedirectAttributes ra) {
 		
 		User loginUser = service.login(inputUser);
-		
-		System.out.println(loginUser);
 		
 		if(loginUser != null) {
 			
@@ -72,9 +72,11 @@ public class UserController{
 	// 로그아웃 -> 세션 만료
 	@GetMapping("/logout")
 	public String logout(SessionStatus status,
+						HttpSession session,
 						RedirectAttributes ra) {
 		
-		status.setComplete(); 
+		status.setComplete();
+		
 		ra.addFlashAttribute("alertType", "success");
 		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
 		
