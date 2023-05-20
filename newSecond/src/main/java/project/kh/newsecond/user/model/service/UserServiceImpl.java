@@ -1,6 +1,7 @@
 package project.kh.newsecond.user.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO dao;
 
+	@Autowired 
+	private BCryptPasswordEncoder bcrypt;
+	
+	
+	// 로그인
 	@Override
 	public User login(User inputUser) {
 
@@ -20,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 		if (loginUser != null) {
 
-			if (inputUser.getUserPassword().equals(loginUser.getUserPassword())) {
+			if (bcrypt.matches(inputUser.getUserPassword(),loginUser.getUserPassword())) {
 
 				loginUser.setUserPassword(null);
 
@@ -33,6 +39,8 @@ public class UserServiceImpl implements UserService {
 		return loginUser;
 	}
 	
+	
+	// 가입
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int signUp(User inputUser) {
