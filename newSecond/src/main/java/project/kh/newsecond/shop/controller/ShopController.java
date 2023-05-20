@@ -99,6 +99,11 @@ public class ShopController {
 	public String updateShopInfo(@RequestParam(value="shopNewProfile", required=false) MultipartFile shopNewProfile, Shop shop,
 			RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
 		
+		
+		System.out.println(shop);
+		System.out.println(shopNewProfile);
+		
+		
 		int userNo = shop.getUserNo();
 		String webPath = "/resources/src/img/profile/" + userNo + "/";
 		String filePath = session.getServletContext().getRealPath(webPath);

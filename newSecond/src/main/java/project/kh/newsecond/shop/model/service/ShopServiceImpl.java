@@ -79,8 +79,13 @@ public class ShopServiceImpl implements ShopService{
 
 	
 	// 상점 편집
+	@Transactional(rollbackFor=Exception.class)
 	@Override
 	public int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException{
+		
+		
+		shop.setShopTitle(Util.XXSHandling(shop.getShopTitle()));
+		shop.setShopInfo(Util.XXSHandling(shop.getShopInfo()));
 		
 		String oldShopProfile = shop.getShopProfile();
 		String rename = null;
@@ -89,13 +94,14 @@ public class ShopServiceImpl implements ShopService{
 			rename = Util.fileRename(shopNewProfile.getOriginalFilename());
 			
 			shop.setShopProfile(webPath + rename);
+			System.out.println("상점 편집 :" + shop.getShopProfile());
 			
 		}else {
-			shop.setShopProfile(oldShopProfile);
+			shop.setShopProfile(null);
 		}
 		
 		
-		int result = dao.updateShopInfo(null);
+		int result = dao.updateShopInfo(shop);
 		
 		if(result>0) {
 			

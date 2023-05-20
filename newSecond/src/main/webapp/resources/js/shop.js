@@ -40,12 +40,12 @@ sortList.forEach(function(sort){
 const popup = document.querySelector(".myshop--popup__background");
 const editShopBtn = document.querySelector(".myshop--info__btn-edit");
 
-const shopProfile = document.querySelector(".myshop--profileImage__img").getAttribute("src");   /* 상점 프로필 src */
-const shopTitle = document.querySelector(".myshop--info__title").innerText;
-const shopInfo = document.querySelector(".myshop--info__content").innerText;
-
 
 if(editShopBtn!=null){
+    
+    const shopProfile = document.querySelector(".myshop--profileImage__img").getAttribute("src");   /* 상점 프로필 src */
+    const shopTitle = document.querySelector(".myshop--info__title").innerText;
+    const shopInfo = document.querySelector(".myshop--info__content").innerText;
     
     const popupShopTitle = document.querySelector(".myshop--popup__input-edit");
     const popupShopInfo = document.querySelector(".myshop--popup__textarea-edit");
@@ -60,8 +60,12 @@ if(editShopBtn!=null){
         
     });
     
-    const realUpload = document.querySelector(".real-upload");
-    const upload = document.querySelector(".upload");
+    const realUpload = document.querySelector(".real-upload");  // input 태그
+    const upload = document.querySelector(".upload");   // img 태그
+
+    let initCheck;  // 초기 프로필 이미지 상태 저장
+    let deleteCheck = -1;  // 프로필 이미지 새로 업로드 or 삭제되었음을 나타냄
+    let originalImage;     // 초기 프로필 이미지 파일의 경로 저장
 
     // 내상점 닫기 버튼 클릭 시
     document.querySelector(".myshop--popup__btn-close").addEventListener("click", ()=>{
@@ -75,18 +79,78 @@ if(editShopBtn!=null){
     
     // 내 상점 저장 버튼 클릭 시
     document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
-        popup.classList.remove("myshop--popup__show");
+        // popup.classList.remove("myshop--popup__show");
     });
     
+
+    if(realUpload!=null){
+        
+        originalImage = upload.getAttribute("src");
+        
+        if(originalImage == "/resources/src/img/basic_profile.png"){
+            initCheck = false;
+        }else{
+            initCheck = true;
+        }
+
+    }
     
     // 내상점 편집 팝업 프로필 이미지
     upload.addEventListener("click", ()=> realUpload.click());
     
-    realUpload.addEventListener("change", ()=>{
-        const imageSrc = URL.createObjectURL(realUpload.files[0]);
-        upload.src = imageSrc;
+    realUpload.addEventListener("change", e=>{
+        
+        const maxSize = 1* 1024 * 1024 * 2;
+        const file = e.target.files[0];     // 업로드한 파일의 정보
+
+        if(file==undefined){
+            deleteCheck = -1;   // 취소==파일없음
+            upload.setAttribute("src", originalImage);
+            return;
+        }
+
+        if(file.size>maxSize){
+            document.getElementById('toastBody').innerText = "2MB 이하의 이미지를 선택해주세요";
+            document.getElementById('liveToast').classList.add('text-bg-danger');
+            document.getElementById('liveToast').classList.remove('text-bg-primary');
+            toastTrigger.click();
+
+            realUpload.value="";
+            deleteCheck = -1;   //취소==파일없음
+
+            upload.setAttribute("src", originalImage);
+            return;
+        }
+
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+
+        reader.onload = e =>{
+            const url = e.target.result;
+            upload.setAttribute("src", url);
+            deleteCheck = 1;
+        }
+        
     });
     
+
+    document.getElementById("updateShopInfoFrm").addEventListener("submit", e=>{
+        let flag = true;
+        const curShopTitle = document.querySelector(".myshop--info__title").innerText;
+        const curShopInfo = document.querySelector(".myshop--info__content").innerText;
+
+        if(deleteCheck == 1) flag = false;
+
+        if(initCheck && deleteCheck == 0) flag = false;
+
+        if(flag && (shopTitle===curShopTitle) && (shopInfo===curShopInfo)){
+            e.preventDefault();
+        }
+    });
+
+
     
     // 내상점 팝업 편집 글자수 세기
     const inputCount = document.getElementById("myshopEditInput");
@@ -151,7 +215,6 @@ function unFollow(userNo, loginUserNo){
 
 
 // 상점 상품 판매 게시글 예약, 판매완료 
-
 const overlayText = document.querySelectorAll('.overlay-text');
 
 const reserved = document.querySelectorAll('.reserved');
@@ -196,7 +259,6 @@ if(soldout!=null){
 
 
 // 상품 게시글 인기순/높은가격순/낮은가격순으로 조회
-
 sortList.forEach(function(sort) {
     
     let sortType = 0;
@@ -313,15 +375,9 @@ function selectGoodsList(userNo, sortType){
                 
             }
 
-        }else{
-
-            // const emptyDiv = document.createElement("div");
-            // emptyDiv.classList.add("tab--content__empty");
-            // emptyDiv.innerText("현재 판매하고 있는 상품이 없습니다.");w
-            console.log("존재하지 않음");
         }
 
-        
+    
     })
     .catch(err=>{
         console.log(err);

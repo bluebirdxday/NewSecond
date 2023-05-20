@@ -554,3 +554,8 @@ ALTER TABLE "qna" ADD QNA_TYPE VARCHAR(30);
 SELECT * FROM "qna";
 
 
+
+-- goods_board 체크 제약조건 추가
+ALTER TABLE "goods_board" ADD CONSTRAINT GOODS_STATUS_CHECK_FL_CHK CHECK(GOODS_STATUS IN('A', 'B', 'C', 'D', 'E'));
+COMMIT;
+
