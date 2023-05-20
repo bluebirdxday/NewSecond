@@ -208,6 +208,12 @@ input:focus {
     border-radius: 20px;
     color: white;
 }
+.recentSearch--1floor > span:hover {
+    cursor: pointer;
+}
+.recentSearch--2floor > span:hover {
+    cursor: pointer;
+}
 
 /* 삭제 버튼 */
 .removeBtn {
@@ -253,4 +259,5 @@ input:focus {
     color: white;
     font-weight: bold;
     background-color: #2365B9;
+    cursor: pointer;
 }
