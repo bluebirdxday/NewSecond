@@ -268,3 +268,18 @@ INSERT INTO "qna"
 VALUES (SEQ_QNA_NO.NEXTVAL,'1','사기당한듯','사기당한듯..신고할게요',SYSDATE,DEFAULT,DEFAULT,'T','거래신고');
 
 
+-- 회원 탈퇴 관련
+
+SELECT USER_PASSWORD
+FROM "users"
+WHERE USER_NO = 33
+;
+
+UPDATE "users" 
+SET USER_STATUS = 'A'
+WHERE USER_NO = 33
+;
+
+
+
+

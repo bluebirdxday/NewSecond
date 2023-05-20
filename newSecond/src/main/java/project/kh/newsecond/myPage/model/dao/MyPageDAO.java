@@ -9,5 +9,11 @@ public class MyPageDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+
+	public String selectEncPassword(int userNo) {
+		System.out.println(userNo + ": 3");
+		return null;
+	}
+	
 	
 }

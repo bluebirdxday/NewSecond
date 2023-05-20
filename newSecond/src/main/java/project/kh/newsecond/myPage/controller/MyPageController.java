@@ -1,5 +1,6 @@
 package project.kh.newsecond.myPage.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,48 @@ public class MyPageController {
 							,HttpServletResponse resp
 							,RedirectAttributes ra) {
 		
-		int memberNo = loginUser.getUserNo();
+		System.out.println(loginUser);
+		
+		int userNo = loginUser.getUserNo();
+		
+		System.out.println(userPassword);
+		System.out.println(userNo);
+		
+		int result = service.secession(userNo, userPassword);
 		
 		
+		String path = "redirect:";
+		String message = null;
+		String alertType = null;
 		
+		if(result > 0) {
+			alertType = "success";
+			message = "탈퇴 되었습니다.";
+			
+			path+="/";
+			
+			status.setComplete();
+			
+			Cookie cookie = new Cookie("saveId", "");
+			
+			cookie.setMaxAge(0); 
+			cookie.setPath("/"); 
+			resp.addCookie(cookie); 
+			
+		}
 		
-		return "redirect:secession";
+		else {
+			alertType = "fail";
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			
+			// 	- 회원 탈퇴 페이지로 리다이렉트
+			path += "secession";
+		}
+		
+		ra.addFlashAttribute("alertType", alertType);
+		ra.addFlashAttribute("message", message);
+		
+		return path;
 	}
 }
 
