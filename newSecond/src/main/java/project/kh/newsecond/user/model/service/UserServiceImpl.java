@@ -45,6 +45,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int signUp(User inputUser) {
 		
+		
+		String encPw = bcrypt.encode(inputUser.getUserPassword());
+		
+		inputUser.setUserPassword(encPw);
+		
+		System.out.println(inputUser);
+		
 		int result = dao.signUp(inputUser);
 		
 		if(!(result > 0) ) return result;
