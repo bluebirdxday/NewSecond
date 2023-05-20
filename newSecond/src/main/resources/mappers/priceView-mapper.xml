@@ -15,7 +15,7 @@
 	
 	<!-- 1달 내 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
 	<select id="goodsPriceSelect" resultType="int">
-		SELECT TRUNC(AVG(GOODS_PRICE))
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
 		FROM "goods_board"
 		WHERE (GOODS_TITLE LIKE '%${title}%'
 			OR GOODS_DESCR LIKE '%${detailText}%')
