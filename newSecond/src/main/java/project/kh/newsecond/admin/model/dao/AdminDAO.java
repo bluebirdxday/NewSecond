@@ -122,19 +122,33 @@ public class AdminDAO {
 		return sqlSession.update("AdminMapper.noticeListDelete",noticeNo);
 	}
 
-	public int deleteNoticeList(int noticeNo) {
-		
-		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNo);
-	}
 
-	public int deleteNoticeList(Map<String, Object> paramMap) {
-		
-		return sqlSession.update("AdminMapper.deleteNoticeList",paramMap);
-	}
+	 
 
+	
+	  /**회원 탈퇴
+	 * @param paramMap
+	 * @return
+	 */
 	public int userSignOut(Map<String, Object> paramMap) {
-		
-		return sqlSession.update("AdminMapper.userSignOut",paramMap);
+	  
+	  return sqlSession.update("AdminMapper.userSignOut",paramMap); 
+	  }
+
+	public int deleteNoticeList(int noticeNoInt) {
+	
+		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNoInt); 
 	}
 
+	/**공지사항 조회수 증가
+	 * @param noticeNo
+	 * @return
+	 */
+	public int updateReadCount(int noticeNo) {
+		
+		return sqlSession.update("AdminMapper.updateReadCount",noticeNo); 
+	}
+
+	
 }
+

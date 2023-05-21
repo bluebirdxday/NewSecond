@@ -67,10 +67,27 @@ public interface AdminService {
 	int noticeListDelete(int noticeNo);
 
 
-	int deleteNoticeList(Map<String, Object> paramMap);
 
-	int userSignOut(Map<String, Object> paramMap);
+	/**공지사항 선택 삭제
+	 * @param noticeNo
+	 * @return
+	 */
+	int deleteNoticeList(int noticeNoInt);
+	
+	  /**회원탈퇴 기능
+	 * @param noticeNo
+	 * @return
+	 */
+	int userSignOut(Map<String, Object> noticeNo);
 
+	/**공지사항 조회수 
+	 * @param noticeNo
+	 * @return
+	 */
+	int updateReadCount(int noticeNo);
+
+	
+	 
 	
 	
 }

@@ -16,5 +16,9 @@ public class Notice {
 	private String noticeContent;
 	private String noticeEnrollDate;
 	private int noticeViewCount;
+	public int getUserNo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

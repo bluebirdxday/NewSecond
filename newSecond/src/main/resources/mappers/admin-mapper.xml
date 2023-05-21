@@ -12,6 +12,7 @@
       <result property="noticeContent" column="NOTICE_CONTENT" />
       <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
       <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
    </resultMap>
    
    <resultMap type="User" id="user_rm">
@@ -155,11 +156,25 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</delete>
 	
-	<update id="noticeListDelete">
+ 	<update id="noticeListDelete">
 	UPDATE "notice" 
 	SET NOTICE_FL = 'Y' 
 	WHERE NOTICE_NO = #{noticeNo}
+	</update> 
+	
+	<update id="updateReadCount">
+	UPDATE "notice"
+	SET NOTICE_VIEWCOUNT  = NOTICE_VIEWCOUNT +1
+	WHERE NOTICE_NO = #{notice}
+	
 	</update>
 	
+	
+	<update id="userSignOut">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo};
+	
+	</update>
       
 </mapper>

@@ -123,24 +123,35 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
-	@Override
-	public int deleteNoticeList(Map<String, Object> paramMap) {
+
+
 	
-		
-		
-		return adminDao.deleteNoticeList(paramMap);
+	  /**
+	 *회원탈퇴 기능
+	 */
+	@Override public int userSignOut(Map<String, Object> paramMap) {
+	  
+	  return adminDao.userSignOut(paramMap); 
+	  }
+
+	@Override
+	public int deleteNoticeList(int noticeNoInt) {
+
+		return adminDao.deleteNoticeList(noticeNoInt);
 	}
 
+	/**
+	 *공지사항 조회수 증가
+	 */
 	@Override
-	public int userSignOut(Map<String, Object> paramMap) {
-
-		return adminDao.userSignOut(paramMap);
+	public int updateReadCount(int noticeNo) {
+	
+		return adminDao.updateReadCount(noticeNo);
 	}
-
-
-
-
-	
-	
-
 }
+
+	
+	 
+
+
+
