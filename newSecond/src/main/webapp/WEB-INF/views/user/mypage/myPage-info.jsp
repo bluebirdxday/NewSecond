@@ -39,7 +39,6 @@
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-html="true"
                                 data-bs-title="한글,영어,숫자로만 2~10글자
-                                <div>야호<div>
                                 "
                                 >
                         <span class="highlight"></span>
