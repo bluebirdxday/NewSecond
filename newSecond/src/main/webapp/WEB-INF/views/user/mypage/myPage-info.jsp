@@ -12,9 +12,6 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div style="margin-top:180px"><%-- spacing to header --%></div>
 
-
-
-
     
     <div class="myPage--wholeWrapper ">
 
@@ -74,5 +71,6 @@
     <script>
         document.querySelectorAll(".list-group-item")[0].classList.add("active")
     </script>
+    <script src="/resources/js/user/myPage.js"></script>
 </body>
 </html>
