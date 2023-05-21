@@ -1,8 +1,5 @@
 
 
-
-
-
 // 비밀번호 변경 
 const changePwFrm = document.getElementById("changePwFrm");
 const currentPw = document.getElementById("userPassword");

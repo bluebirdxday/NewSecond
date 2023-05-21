@@ -161,6 +161,20 @@
 }
 
 
+
+/* 내정보 수정 파트 */
+.input-title{
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none; 
+    font-size: 0.9rem;
+    margin-left: 3px;
+    font-size: 14px;
+    color: #4285f4;
+}
+
+
 /* 회원 탈퇴 파트 */
 .secession-terms {
     width: 500px;
