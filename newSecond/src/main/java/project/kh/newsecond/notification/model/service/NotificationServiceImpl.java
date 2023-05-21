@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.kh.newsecond.notification.model.dao.NotificationDAO;
+import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 
 @Service
@@ -33,6 +34,13 @@ public class NotificationServiceImpl implements NotificationService{
 	@Override
 	public int deleteKeyword(NotificationKeyword keyword) {
 		return dao.deleteKeyword(keyword);
+	}
+
+	
+	// 팔로우 알림
+	@Override
+	public int insertNotification(Notification noti) {
+		return dao.insertNotification(noti);
 	}
 
 }

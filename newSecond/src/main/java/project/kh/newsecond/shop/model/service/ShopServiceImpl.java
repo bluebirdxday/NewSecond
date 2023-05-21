@@ -94,10 +94,9 @@ public class ShopServiceImpl implements ShopService{
 			rename = Util.fileRename(shopNewProfile.getOriginalFilename());
 			
 			shop.setShopProfile(webPath + rename);
-			System.out.println("상점 편집 :" + shop.getShopProfile());
 			
 		}else {
-			shop.setShopProfile(null);
+			shop.setShopProfile(oldShopProfile);
 		}
 		
 		

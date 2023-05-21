@@ -559,3 +559,10 @@ SELECT * FROM "qna";
 ALTER TABLE "goods_board" ADD CONSTRAINT GOODS_STATUS_CHECK_FL_CHK CHECK(GOODS_STATUS IN('A', 'B', 'C', 'D', 'E'));
 COMMIT;
 
+--notification 체크 제약조건 추가
+ALTER TABLE "notifications" ADD CONSTRAINT NOTIFICATION_KIND_FL_CHK CHECK(NOTIFICATION_KIND IN('F', 'P', 'L', 'K', 'N'));
+COMMIT;
+
+SELECT * FROM "notifications";
+UPDATE "notifications" SET NOTIFICATION_KIND = 'N';
+

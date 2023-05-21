@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 
 @Repository
@@ -27,8 +28,15 @@ public class NotificationDAO {
 		return sqlSession.insert("NotificationMapper.insertKeyword", map);
 	}
 
+	
+	// 키워드 삭제
 	public int deleteKeyword(NotificationKeyword keyword) {
 		return sqlSession.delete("NotificationMapper.deleteKeyword", keyword);
+	}
+
+	// 팔로우 알림
+	public int insertNotification(Notification noti) {
+		return sqlSession.insert("NotificationMapper.insertNotification", noti);
 	}
 
 }

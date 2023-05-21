@@ -303,3 +303,8 @@ SELECT * FROM(
 SELECT * FROM "goods_board" gb ;
 
 SELECT * FROM "files";
+
+
+SELECT * FROM "notifications";
+
+INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');

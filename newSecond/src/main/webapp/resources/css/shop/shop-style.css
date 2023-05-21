@@ -81,7 +81,7 @@ textarea:focus, input:focus{
 .myshop--profileImage__crop{
     width: 220px;
     height: 200px;
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
     position: relative; 
     

@@ -61,9 +61,6 @@ public class ShopController {
 		List<Follow> followList = service.selectFollowList(map); 
 		List<Follow> followerList = service.selectFollowerList(map);
 
-		// loginUser -> userNo 팔로 유무 조회
-		int checkFollow = service.checkFollow(map);
-		
 		
 		model.addAttribute("shop", shop);
 		model.addAttribute("goodsBoardList", boardList);
@@ -71,7 +68,6 @@ public class ShopController {
 		model.addAttribute("followList", followList);
 		model.addAttribute("followerList", followerList);
 		model.addAttribute("loginUserNo", loginUserNo);
-		model.addAttribute("checkFollow", checkFollow);
 	
 		
 		return "shop/shop";
@@ -94,15 +90,40 @@ public class ShopController {
 	}
 	
 	
+	// 팔로잉/팔로워 리스트 조회
+	@GetMapping("/selectFollowList")
+	@ResponseBody
+	public List<Follow> selectFollowList(@RequestParam("tab") String tab, @RequestParam("shopUserNo") int shopUserNo, @RequestParam("loginUserNo") int loginUserNo){
+		
+		Map<String, Integer> map = new HashMap<>();
+		map.put("activeUserNo", loginUserNo);
+		map.put("passiveUserNo", shopUserNo);
+
+		
+		if(tab.equals("following")) {
+			return service.selectFollowList(map); 
+		}
+		
+		if(tab.equals("follower")) {
+			return service.selectFollowerList(map);
+		}
+		
+		return null;
+	}
+	
+	
 	// 상점 편집
 	@PostMapping("/updateShopInfo")
 	public String updateShopInfo(@RequestParam(value="shopNewProfile", required=false) MultipartFile shopNewProfile, Shop shop,
 			RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
 		
 		
-		System.out.println(shop);
 		System.out.println(shopNewProfile);
 		
+		
+		if(shopNewProfile.getSize()==0) {
+			shop.setShopProfile(service.selectShopInfo(shop.getUserNo()).getShopProfile());
+		}
 		
 		int userNo = shop.getUserNo();
 		String webPath = "/resources/src/img/profile/" + userNo + "/";

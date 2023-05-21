@@ -22,20 +22,6 @@ tabList.forEach(function(tab) {
 });
 
 
-// 탭메뉴 중 상품 컨텐츠 리스트 정렬
-const sortList = document.querySelectorAll(".myshop--tab1__content-top li");
-
-sortList.forEach(function(sort){
-
-    sort.addEventListener("click", function(){
-        sortList.forEach(e=>{
-            e.classList.remove('sort--active');
-        });
-        sort.classList.add('sort--active');
-    });
-});
-
-
 // 편집 버튼 클릭 시
 const popup = document.querySelector(".myshop--popup__background");
 const editShopBtn = document.querySelector(".myshop--info__btn-edit");
@@ -79,7 +65,7 @@ if(editShopBtn!=null){
     
     // 내 상점 저장 버튼 클릭 시
     document.querySelector(".myshop--popup__btn-save").addEventListener("click", ()=>{
-        // popup.classList.remove("myshop--popup__show");
+        popup.classList.remove("myshop--popup__show");
     });
     
 
@@ -138,8 +124,8 @@ if(editShopBtn!=null){
 
     document.getElementById("updateShopInfoFrm").addEventListener("submit", e=>{
         let flag = true;
-        const curShopTitle = document.querySelector(".myshop--info__title").innerText;
-        const curShopInfo = document.querySelector(".myshop--info__content").innerText;
+        const curShopTitle = document.querySelector(".myshop--popup__input-edit").value;
+        const curShopInfo = document.querySelector(".myshop--popup__textarea-edit").value;
 
         if(deleteCheck == 1) flag = false;
 
@@ -180,36 +166,207 @@ if(editShopBtn!=null){
 
 
 // 상점 팔로우
-function follow(userNo, loginUserNo){
-
+function follow(passiveUserNo, loginUserNo, tab){
+    
+    
     fetch("/shop/follow", {
         method : "POST",
         headers : {"Content-Type" : "application/json"},
-        body : JSON.stringify({"passiveUserNo" : userNo, "activeUserNo" : loginUserNo})
+        body : JSON.stringify({"passiveUserNo" : passiveUserNo, "activeUserNo" : loginUserNo})
     })
     .then(resp => resp.text())
     .then(()=>{
-        location.reload();
+        
+        sendFollowNotification(passiveUserNo, loginUserNo);
+
+        return fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
     })
-    .catch(err=>{ console.log(err); })
+    .then(resp=>resp.json())
+    .then((followList)=>{
+    
+        selectFollowList(followList, tab);
+
+        if(userNo==loginUserNo){
+            let followingCount = document.getElementById("followingCount").innerText;
+            followingCount = Number(followingCount) + 1;
+            document.getElementById("followingCount").innerText = followingCount;
+        }
+
+    })
+    .catch(err=>{ console.log(err); });
+
+
+}
+
+
+// 팔로우 알람
+let notificationSock = new SockJS("/notificationSock");
+
+const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
+    
+        var obj = {
+            "senderNo": loginUserNo,
+            "targetNo": passiveUserNo,
+            "notificationMessage": "님께서 회원님을 팔로우하였습니다.",
+            "notificationType": "F"
+        };
+
+        console.log(obj);
+    
+        notificationSock.send(JSON.stringify(obj));
+        
+}
+
+
+
+notificationSock.onmessage = function(e) {
+    // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
+    const msg = JSON.parse(e.data);
+
 }
 
 
 // 상점 언팔로우
-function unFollow(userNo, loginUserNo){
+function unFollow(passiveUserNo, loginUserNo, tab){
     
     fetch("/shop/unFollow", {
-            method : "POST",
-            headers : {"Content-Type" : "application/json"},
-            body : JSON.stringify({"passiveUserNo" : userNo, "activeUserNo" : loginUserNo})
-        })
-        .then(resp => resp.text())
-        .then(()=>{
-            location.reload();
-        })
-        .catch(err=>{ console.log(err); })
-}
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify({"passiveUserNo" : passiveUserNo, "activeUserNo" : loginUserNo})
+    })
+    .then(resp => resp.text())
+    .then(()=>{
+
+        console.log(loginUserNo);
+        
+        return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+    })
+    .then(resp=>resp.json())
+    .then((followList)=>{
+
+        selectFollowList(followList, tab);
+
+        if(userNo==loginUserNo){
+            let followingCount = document.getElementById("followingCount").innerText;
+            followingCount = Number(followingCount) - 1;
+            document.getElementById("followingCount").innerText = followingCount;
+        }
+
+    })
+    .catch(err=>{ console.log(err); });
     
+
+
+}
+
+
+
+
+// 팔로우/언팔로우 탭 (리스트 조회)
+function selectFollowList(followList, tab){
+
+    let tabContainer;
+    
+    if(tab=="following"){
+        tabContainer = document.querySelector(".following_tab");
+    }else{
+        tabContainer = document.querySelector(".follower_tab");
+    }
+
+    tabContainer.innerHTML = "";
+    
+    if(followList != null){
+        
+        
+        for(let follow of followList){
+            
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("tab3--container__item");
+        
+            const firstDiv = document.createElement("div");
+            const profileImg = document.createElement("img");
+            profileImg.setAttribute("src", follow.shopProfile);
+            firstDiv.append(profileImg);
+
+            const secondDiv = document.createElement("div");
+            secondDiv.innerText = follow.shopTitle;
+            
+            const thirdDiv = document.createElement("div");
+            const thirdInnerDiv = document.createElement("div");
+            thirdInnerDiv.innerText = follow.shopInfo;
+            thirdDiv.append(thirdInnerDiv);
+
+            const fourthDiv = document.createElement("div");
+            const aTag = document.createElement("a");
+            const gotoShop = document.createElement("div");
+            const followBtn = document.createElement("button");
+
+            if(tab=="following"){
+                aTag.setAttribute("href", "/shop/" + follow.passiveUserNo);
+            }else{
+                aTag.setAttribute("href", "/shop/" + follow.activeUserNo);
+            }
+            
+            gotoShop.classList.add("tab3--item__btn-gotoshop");
+            gotoShop.classList.add("tab3--item__btn");
+            gotoShop.innerText = "상점가기";
+            
+            aTag.append(gotoShop);
+            
+            followBtn.classList.add("tab3--item__btn");
+
+            if(follow.followYou==0){
+                followBtn.classList.add("tab3--item__btn-follow");
+                followBtn.innerText = "팔로우";
+            }else{
+                followBtn.classList.add("tab3--item__btn-unfollow");
+                followBtn.innerText = "언팔로우";
+            }
+
+            if(tab=="following"){
+                
+                if(follow.followYou==0){
+                    followBtn.setAttribute("onclick", `follow(${follow.passiveUserNo}, ${userNo}, 'following')`);
+                }else{
+                    followBtn.setAttribute("onclick", `unFollow(${follow.passiveUserNo}, ${userNo}, 'following')`);
+                }
+                
+                if(follow.passiveUserNo!=userNo){
+                    fourthDiv.append(aTag, followBtn);
+                }else{
+                    followBtn.setAttribute("style", "width: 160px;");
+                    fourthDiv.append(aTag);
+                }
+                
+            }else{
+
+                if(follow.followYou==0){
+                    followBtn.setAttribute("onclick", `follow(${follow.activeUserNo}, ${userNo}, 'follower')`);
+                }else{
+                    followBtn.setAttribute("onclick", `unFollow(${follow.activeUserNo}, ${userNo}, 'follower')`);
+                }
+
+                if(follow.activeUserNo!=userNo){
+                    fourthDiv.append(aTag, followBtn);
+                }else{
+                    followBtn.setAttribute("style", "width: 160px;");
+                    fourthDiv.append(aTag);
+                }
+
+            }
+            
+            itemDiv.append(firstDiv, secondDiv, thirdDiv, fourthDiv);
+
+            tabContainer.append(itemDiv);
+            
+        }
+        
+    }
+
+
+}    
+
+
 
 
 
@@ -255,7 +412,18 @@ if(soldout!=null){
 
 
 
+// 탭메뉴 중 상품 리스트 정렬 txt 활성화
+const sortList = document.querySelectorAll(".myshop--tab1__content-top li");
 
+sortList.forEach(function(sort){
+
+    sort.addEventListener("click", function(){
+        sortList.forEach(e=>{
+            e.classList.remove('sort--active');
+        });
+        sort.classList.add('sort--active');
+    });
+});
 
 
 // 상품 게시글 인기순/높은가격순/낮은가격순으로 조회
@@ -272,14 +440,14 @@ sortList.forEach(function(sort) {
         if (lowprice) sortType = 2;
         if (highprice) sortType = 3;
 
-        selectGoodsList(userNo, sortType);
+        sortGoodsList(userNo, sortType);
 
     });
     
 });
 
 
-function selectGoodsList(userNo, sortType){
+function sortGoodsList(userNo, sortType){
 
     fetch("/shop/sortGoodsList", {
         method : "POST",
