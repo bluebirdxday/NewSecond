@@ -17,5 +17,20 @@ public interface GoodsBoardService {
 
 	// 상품 게시글 상세 조회
 	GoodsBoard goodsDetail(int goodsNo);
+	
+	
+	/* 메인페이지 - 지환 */
+	
+	// 최근 업데이트된 게시글 목록 5가지
+	List<GoodsBoard> selectRecentGoodsList5();
+	
+	// 로그인 유저 기준 최근 본 상품 5가지
+	/* List<GoodsBoard> selectrecentViewedList5(); */
+	
+	// 조회수 높은 인기 상품 목록 10가지
+	/* List<GoodsBoard> selectMostViewedList10(); */
+	
+	
+	
 
 }

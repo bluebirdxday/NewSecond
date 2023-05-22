@@ -152,5 +152,34 @@
 		ORDER BY FILE_ORDER
 	</select>
 		
+	
+		
+	<!-- 메인페이지 - 지환 -->
+	<!-- 최근 업데이트된 상품 5가지 -->
+	<select id="selectRecentGoodsList5" resultMap="goodsboard_rm">
+		SELECT GOODS_NO, GOODS_TITLE, THUMBNAIL
+		FROM (SELECT ROWNUM NUM, GOODS_NO, GOODS_TITLE, THUMBNAIL
+				FROM (SELECT G.GOODS_NO, G.GOODS_TITLE,
+						(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+						WHERE F.GOODS_NO = G.GOODS_NO
+						AND FILE_ORDER = 1) THUMBNAIL
+				FROM "goods_board" G
+				LEFT JOIN (SELECT * FROM "files"
+							WHERE FILE_ORDER = 1) TF ON (G.GOODS_NO = TF.GOODS_NO) 
+				ORDER BY SELL_ENROLL_DT DESC)RG
+				WHERE NUM <= 5)
+	</select>
+	
+	
+	<!-- 로그인한 유저가 최근에 본 상품 5가지 -->
+	<!-- <select id="selectrecentViewedList5" resultMap="goodsboard_rm">
+	
+	</select> -->
+	
+	
+	<!-- 조회수가 높은 상품 10가지 -->
+	<!-- <select id="selectMostViewedList10" resultMap="goodsboard_rm">
+	
+	</select> -->
 		
 </mapper>

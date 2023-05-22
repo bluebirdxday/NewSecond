@@ -48,6 +48,29 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	public GoodsBoard goodsDetail(int goodsNo) {
 		return dao.goodsDetail(goodsNo);
 	}
+
+	 
+	/* 메인페이지 - 지환 */
+	 
+	// 최근 업데이트된 게시글 목록 5가지
+	@Override
+	public List<GoodsBoard> selectRecentGoodsList5() {
+		return dao.selectRecentGoodsList5();
+	}
+	
+	// 로그인 유저 기준 최근 본 상품 5가지
+	/* @Override */
+	/*public List<GoodsBoard> selectrecentViewedList5() {
+		// TODO Auto-generated method stub
+		return dao.selectrecentViewedList5();
+	}*/
+	
+	// 조회수 높은 인기 상품 목록 10가지
+	/*@Override*/
+	/*public List<GoodsBoard> selectMostViewedList10() {
+		// TODO Auto-generated method stub
+		return dao.selectMostViewedList10();
+	}*/
 	 
 	 
 	 

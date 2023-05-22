@@ -25,3 +25,10 @@
 .mainPage--goodsContainer1{
     margin-top: 50px;
 }
+
+/* 카테고리 타이틀 */
+.mainPage--category__title{
+    font-size: 23px;
+    margin-bottom: 12px;
+    display: block;
+}

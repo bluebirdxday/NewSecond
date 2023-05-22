@@ -56,4 +56,30 @@ public class GoodsBoardDAO {
 	}
 
 
+	
+	/* 메인 페이지 - 지환 */
+	/**	최근 업데이트된 상품 5가지
+	 * @return List
+	 */
+	public List<GoodsBoard> selectRecentGoodsList5() {
+		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsList5");
+	}
+	
+	/** 로그인한 유저가 최근에 본 상품 5가지
+	 * @return
+	 */
+	/*
+	 * public List<GoodsBoard> selectrecentViewedList5() { return
+	 * sqlSession.selectList("goodsBoardMapper.selectrecentViewedList5"); }
+	 */
+
+	/** 조회수가 높은 상품 10가지
+	 * @return
+	 */
+	/*
+	 * public List<GoodsBoard> selectMostViewedList10() { return
+	 * sqlSession.selectList("goodsBoardMapper.selectMostViewedList10"); }
+	 */
+	
+	
 }
