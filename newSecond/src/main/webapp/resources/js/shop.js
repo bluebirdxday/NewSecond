@@ -191,7 +191,19 @@ function follow(passiveUserNo, loginUserNo, tab){
             followingCount = Number(followingCount) + 1;
             document.getElementById("followingCount").innerText = followingCount;
         }
-
+    
+        if(tab=="following")
+            return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+        else
+            return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+        
+    }).then(resp=> resp.json())
+    .then((followList)=>{
+        
+        if(tab=="following")
+            selectFollowList(followList, "follower");
+            else
+            selectFollowList(followList, "following");
     })
     .catch(err=>{ console.log(err); });
 
@@ -256,6 +268,18 @@ function unFollow(passiveUserNo, loginUserNo, tab){
             document.getElementById("followingCount").innerText = followingCount;
         }
 
+        if(tab=="following")
+            return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+        else
+            return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+            
+    }).then(resp=> resp.json())
+    .then((followList)=>{
+        
+        if(tab=="following")
+            selectFollowList(followList, "follower");
+            else
+            selectFollowList(followList, "following");
     })
     .catch(err=>{ console.log(err); });
     
