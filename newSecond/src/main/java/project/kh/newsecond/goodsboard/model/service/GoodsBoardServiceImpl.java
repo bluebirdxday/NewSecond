@@ -35,5 +35,24 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		 
 		return map;
 	}
+	 
+	 // 상품 더보기
+	 @Override
+	public List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName) {
+		return dao.moreGoods(numAndSearchName);
+	}
+	 
+	 
+	 // 상품 게시글 상세 조회
+	 @Override
+	public GoodsBoard goodsDetail(int goodsNo) {
+		return dao.goodsDetail(goodsNo);
+	}
+	 
+	 
+	 
+	 
+	 
+	 
 
 }

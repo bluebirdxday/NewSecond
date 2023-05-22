@@ -22,8 +22,25 @@
 		<result property="shopTitle" column="SHOP_TITLE" />
 		
 		<result property="sortType" column="SORT_TYPE" />
+		<collection property="filesList"
+					select="selectFilesList"
+					column="GOODS_NO"
+					javaType="java.util.ArrayList"
+					ofType="Files" />
 		
 	</resultMap>
+	
+	
+	<!-- Files resultMap -->
+	<resultMap type="Files" id="files_rm">
+		<id property="fileNo" column="FILE_NO"/>
+		
+		<result property="goodsNo" column="GOODS_NO"/>
+		<result property="fileName" column="FILE_NAME"/>
+		<result property="fileOrder" column="FILE_ORDER"/>
+		<result property="filePath" column="FILE_PATH"/>
+	</resultMap>
+	
 	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
 	
@@ -101,8 +118,39 @@
 		ORDER BY SELL_ENROLL_DT DESC
 		
 	</select>
+	
+	<!-- 더보기 -->
+	<select id="moreGoods" resultMap="goodsboard_rm">
+	
+	SELECT * FROM(
+			SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM
+			, GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE,
+				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+				WHERE F.GOODS_NO = G.GOODS_NO
+				AND FILE_ORDER = 1) THUMBNAIL
+			FROM "goods_board" G
+			JOIN "shop" USING (USER_NO)
+			WHERE GOODS_STATUS IN ('A','E','C')
+				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+			ORDER BY SELL_ENROLL_DT DESC)
+			<![CDATA[ WHERE NUM > ${startCallNum} ]]>
+		ORDER BY NUM
 		
+	</select>
 		
+	<!-- 게시글 상세 -->
+	<select id="goodsDetail" resultMap="goodsboard_rm">
+		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
+		FROM "goods_board"
+		WHERE GOODS_NO = ${goodsNo}
+	</select>
+	
+	<!-- 게시글 상세 이미지리스트 조회 -->
+	<select id="selectFilesList" resultMap="files_rm">
+		SELECT *FROM "files" 
+		WHERE GOODS_NO = ${goodsNo}
+		ORDER BY FILE_ORDER
+	</select>
 		
 		
 </mapper>

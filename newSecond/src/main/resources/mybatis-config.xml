@@ -19,6 +19,7 @@
 		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.Notification" alias="Notification" />
+		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Files" alias="Files" />
 		
 		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
 		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
