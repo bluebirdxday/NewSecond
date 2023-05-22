@@ -22,10 +22,10 @@ public class NoticeController {
 		@GetMapping("/notice")
 		public String notice(Model model) {
 			
-			List<Notice> NoticeList = noticeService.selectNoticeList();
+			List<Notice> noticeList = noticeService.selectNoticeList();
 			
-			model.addAttribute("NoticeList",NoticeList);
-			System.out.println(NoticeList);
+			model.addAttribute("noticeList",noticeList);
+			System.out.println(noticeList);
 			
 			return "notice/notice";
 		}

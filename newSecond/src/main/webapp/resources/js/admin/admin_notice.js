@@ -49,23 +49,30 @@ function boardSelectAll(boardSelectAll)  {
 
 
 
-
 document.getElementById("deleteBtn").addEventListener("click", function() {
-  var checkboxes = document.querySelectorAll("#admin_notice_checkbox");
+  var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
+  var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
   var selectedItems = [];
+  var noticeUpdateFrm = document.getElementById("noticeUpdateFrm");
+
   
   for (var i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      selectedItems.push(checkboxes[i].value);
+      selectedItems.push(checkboxesNo[i].innerText);
     }
   }
   
   if(selectedItems.length==0){
-    alert("선택된 요소가 없습니다.");
+    alert("삭제할 항목을 선택해주세요.");
     return;
   }
+else{
+  if (confirm("정말 삭제 하시겠습니까?")) {  
+    
+    noticeUpdateFrm.action = "/adimin_notice/deleteNoticeList"
+    noticeUpdateFrm.submit();
+    
 
-  if (confirm("정말 삭제 하시겠습니까?")) {        
     fetch("/adimin_notice/deleteNoticeList", {
       method : "POST",
       headers : {"Content-Type": "application/JSON"},
@@ -76,8 +83,9 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
     }).catch(err=> console.log(err));
     
   
-  }
-  
+  }}
+
+ 
   });
   
 

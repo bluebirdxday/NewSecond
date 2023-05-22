@@ -19,7 +19,7 @@
 
                 <div class="mb-2">
                     <label for="userEmail" class="form-label">이메일</label>
-                    <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="email@example.com" required autofocus autocomplete="off" />
+                    <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="email@example.com" required autofocus autocomplete="off" value="${cookie.saveId.value}"  />
                 </div>
 
                 <div class="mb-2">
@@ -29,18 +29,16 @@
 
                 <div class="mb-2">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                        <label class="form-check-label" for="dropdownCheck2">
+                        <input type="checkbox" name="saveId" class="form-check-input" id="saveId" 
+                        <c:if test="${not empty cookie.saveId.value}"> checked   </c:if>
+                        >
+                        
+                        <label class="form-check-label" for="saveId">                        
                         아이디 기억하기
                         </label>
                     </div>
                 </div>
             
-            <div class="d-flex justify-content-around mb-3 ">
-                <a href="#">아이디 찾기</a>
-                <a href="#">비밀번호 찾기</a>
-            </div>
-
             <div class="login--submit d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary ">로그인</button>
             </div>
