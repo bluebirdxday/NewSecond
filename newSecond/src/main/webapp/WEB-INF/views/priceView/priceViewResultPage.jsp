@@ -106,7 +106,7 @@
                                             <img src="/resources/src/img/no_image.jpeg">
                                             </c:otherwise>
                                         </c:choose>
-                                        <div>${item.goodsPrice}</div>
+                                        <div>${item.goodsPrice}원</div>
                                         <div>${item.goodsTitle}</div>
                                     </div>
                                 </c:forEach>
