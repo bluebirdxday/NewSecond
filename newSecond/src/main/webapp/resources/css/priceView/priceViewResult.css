@@ -237,10 +237,10 @@
     place-items: center;
     background-color: #D9D9D9;
 }
-.content--priceViewResult__bottomPlus > a {
+.content--priceViewResult__bottomPlus > form {
     grid-area: title;
 }
-.content--priceViewResult__bottomPlus > a > button {
+.content--priceViewResult__bottomPlus > form > button {
     background-color: #C2D3EB;
     border-radius: 50px;
     border: none;
@@ -250,11 +250,11 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
-.content--priceViewResult__bottomPlus > a > button:hover {
+.content--priceViewResult__bottomPlus > form > button:hover {
     color:white;
     background-color: #2365B9;
 }
-.content--priceViewResult__bottomPlus >  a {
+.content--priceViewResult__bottomPlus >  form {
     color: inherit;
     text-decoration: none;
 }
@@ -310,6 +310,7 @@
 .emptyList {
     color: #2365B9;
     place-items: center;
+    padding-top: 300px;
 }
 
 

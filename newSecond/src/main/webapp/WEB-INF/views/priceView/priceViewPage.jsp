@@ -84,13 +84,6 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-<%-- 감춰진 form 태그 2 --%>
-<%--     <div style="display: none;">
-        <form action="/priceView/priceSee/search" method="GET">
-            <label for="search"></label>
-        </form>
-    </div> --%>
-
     <a href="/priceView/priceResultSee">
         <button>시세조회결과테스트버튼입니다</button>
     </a>

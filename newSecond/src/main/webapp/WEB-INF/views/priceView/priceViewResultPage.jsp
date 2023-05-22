@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -45,9 +46,9 @@
                         <div class="priceViewResult--main__LeftBox">
                             <div>시세금액</div>
                             <div class="chart">
-                                    <div id="month1" style="display: none">${result}</div>
-                                    <div id="month2" style="display: none">${result2}</div>
-                                    <div id="month3" style="display: none">${result3}</div>
+                                <div id="month1" style="display: none">${result}</div>
+                                <div id="month2" style="display: none">${result2}</div>
+                                <div id="month3" style="display: none">${result3}</div>
                                 <div class="myChartBox">
                                     <canvas class="myChart" id="myChart"></canvas>
                                 </div>
@@ -58,10 +59,10 @@
 
                         <div class="priceViewResult--main__RightBox">
 <!-- <%-- URL의 keyword=iphone의 keyword를 넣음 --%> -->
-                            <div>한달 내 <%= keyword %> 시세금액</div>
+                            <div>한달 내 ${keyword} 시세금액</div>
                             <div>
 <!-- <%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>   -->                          
-                                <div style="font-style: italic;"> 약 ${result} 원</div>
+                                <div style="font-style: italic;"> 약 <fmt:formatNumber value="${result}" pattern="##,###,###"/> 원</div>
                             </div>
                         </div>
                     </div>
@@ -106,7 +107,7 @@
                                             <img src="/resources/src/img/no_image.jpeg">
                                             </c:otherwise>
                                         </c:choose>
-                                        <div>${item.goodsPrice}원</div>
+                                        <div><fmt:formatNumber value="${item.goodsPrice}" pattern="##,###,###"/>원</div>
                                         <div>${item.goodsTitle}</div>
                                     </div>
                                 </c:forEach>
@@ -121,8 +122,11 @@
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">
-<!-- <%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%> -->
-                <a href="#"><button>더보기</button></a>
+<!-- <%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 form 작성 --%> -->
+            <form action="/goods/search/goodsList" method="GET">
+                <input type="hidden" name="query" value="${param.keyword}" />
+                <button>더보기</button>
+            </form>
             </section>
         </section>
         <!-- bottomFrame -->

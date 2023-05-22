@@ -47,6 +47,10 @@ public class PriceViewResultController {
 		int result2 = service.goodsPriceSelect2(keywords);
 		int result3 = service.goodsPriceSelect3(keywords);
 		
+		if (result == 0) result = 0;
+		if (result2 == 0) result2 = 0;
+		if (result3 == 0) result3 = 0;
+		
 	    model.addAttribute("result", result);
 	    model.addAttribute("result2", result2);
 	    model.addAttribute("result3", result3);

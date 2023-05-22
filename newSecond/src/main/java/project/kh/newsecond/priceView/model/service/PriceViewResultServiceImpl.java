@@ -55,5 +55,4 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 	}
 	
 	
-	
 }
