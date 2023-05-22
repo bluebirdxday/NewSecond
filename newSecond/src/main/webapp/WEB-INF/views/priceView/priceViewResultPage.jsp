@@ -78,13 +78,47 @@
                 <div>최근 등록된 상품</div>
             </section>
 
-            <!--  -->
-
+<!-- form 태그 시작 -->
+            <%--  --%>
+            <form>
             <section class="content--priceViewResult__bottomMain">
                 <aside class="content--aside__bLeft"></aside>
 
                 <section class="priceViewResult--bBackground">
                     <div class="priceViewResult--main__bBox">
+<!--
+                <c:choose>
+                    <%-- 해당 검색 결과 없다면 --%>
+                    <c:when test="${empty searchGoodsList}">
+                        <div class="container--inner__middle_noList">
+                            <div class="noGoodsList">"${param.keyword}"에 해당하는 상품/상점이 없습니다.</div>
+                        </div>
+                    </c:when>
+                        
+                    <%-- 해당 검색 결과 있다면 --%>
+                    <c:otherwise>
+                        <div class="container--inner__middle" id="goodsListTable">
+                            <c:forEach items="${searchGoodsList}" var="searchGoods" begin="0" end="11">
+                            <div class="goods">
+                                <a href="/goods/${searchGoods.goodsTitle}">
+                                <%-- 썸네일 --%>
+                                <c:choose>
+                                    <c:when test="${not empty searchGoods.thumbnail}">
+                                    <img src="${searchGoods.thumbnail}">
+                                    </c:when>
+                                    <c:otherwise>
+                                    <img src="/resources/src/img/no_image.jpeg">
+                                    </c:otherwise>
+                                </c:choose>
+                                <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
+                                <div class="goods_title">${searchGoods.goodsTitle}</div>
+                                </a>
+                            </div>
+                            </c:forEach>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+-->
 
                         <a href="#">
                             <img src="">
@@ -166,7 +200,7 @@
 
                 <aside class="content--aside__bRight"></aside>
             </section>
-
+            </form>
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">

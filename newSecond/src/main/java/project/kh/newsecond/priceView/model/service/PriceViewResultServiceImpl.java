@@ -1,9 +1,14 @@
 package project.kh.newsecond.priceView.model.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.priceView.model.dao.PriceViewResultDAO;
 import project.kh.newsecond.priceView.model.dto.PriceViewKeyword;
 
@@ -38,6 +43,15 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 		int result3 = dao.goodsPriceSelect3(keywords);
 		
 		return result3;
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public List<GoodsBoard> selectSearchKeyword(GoodsBoard goodsBoard) {
+		
+		List<GoodsBoard> searchGoodsList = dao.selectSearchKeyword(goodsBoard);
+		
+		return searchGoodsList;
 	}
 	
 	
