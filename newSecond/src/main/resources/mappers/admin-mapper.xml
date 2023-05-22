@@ -74,8 +74,16 @@
 	ORDER BY NOTICE_NO DESC
 	</select>
 	
-	<!--  특정 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<!--  공지사항 삭제되지 않은 게시글의 수 조회-->	
 	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "notice"
+	WHERE NOTICE_FL = 'N'
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+		<!--  문의사항 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getqnaListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
 	SELECT COUNT(*)
 	FROM "qna"
 	WHERE QNA_DELETE_FL = 'N'

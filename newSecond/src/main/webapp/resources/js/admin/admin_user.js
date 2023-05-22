@@ -27,7 +27,7 @@ const forcedSignOut = document.getElementsByClassName('signOut');
 
 for(let i=0; i<forcedSignOut.length;i++){
     forcedSignOut[i].addEventListener('click',()=>{
-        if(nameOfStates[i].innerText == '정상'){
+        if(nameOfStates[i].innerText == '정상' || nameOfStates[i].innerText == '블락'){
             forcedSignOut[i].innerText = '강제탙퇴';
             nameOfStates[i].innerText = '탈퇴' ;
         }else if(nameOfStates[i].innerText == '탈퇴'){
@@ -50,15 +50,28 @@ function userSelectAll(userSelectAll)  {
 
 
 
-  function adminUserSignOut(){
-
-	fetch("/admin_user/signOut",{
+ document.getElementById("block").addEventListener("click", function() {
+    var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
+    var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
+    var selectedItems = [];
+    var noticeUpdateFrm = document.getElementById("noticeUpdateFrm");
+  
+    
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedItems.push(checkboxesNo[i].innerText);
+      }
+    }
+    if(states == '블락'){
+      fetch("/admin_user/signOut", {
         method : "POST",
-        headers : {"Content-Type": "application/json"},
-        body : JSON.stringify({"USER_NO" : userNo})
-    })
-    .then(resp => resp.text())
-    .then(result => console.log(result))
-    .catch(err => console.log(err));
-
-}
+        headers : {"Content-Type": "application/JSON"},
+        body : JSON.stringify(selectedItems)
+      }).then(resp=> resp.text())
+      .then(result=>{
+  
+      }).catch(err=> console.log(err));
+      
+    }
+    
+    }); 

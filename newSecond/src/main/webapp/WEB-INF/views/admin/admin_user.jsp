@@ -89,10 +89,12 @@
                             <td class="admin_user_states">${User["USER_STATUS"]}</td>
                             <td>${User["ENROLL_DT"]}</td>
                           <td>
-                            <button class="admin_user_tableBtn signOut" >강제탈퇴</button>
+                            <button class="admin_user_tableBtn show" id="signOut">강제탈퇴</button>
+                            <button class="admin_user_tableBtn" id="signOutH">탈퇴해제</button>
                             </td>
                             <td>
-                            <button class="admin_user_tableBtn block" >회원블락</button>
+                            <button class="admin_user_tableBtn block show" id="block">회원블락</button>
+                            <button class="admin_user_tableBtn block" id="blockH">블락해제</button>
                             </td>
                             </tr>
                     </c:forEach>

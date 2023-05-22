@@ -54,12 +54,23 @@ public class AdminServiceImpl implements AdminService {
 
 	
 	/**
-	 *관리자 문의사항 리스트 조회
+	 *관리자 문의사항 리스트 조회 //페이지네이션
 	 */
 	@Override
-	public List<Admin> selectQnaList() {
-	
-		return adminDao.selectQnaList();
+	public Map<String, Object> selectQnaList(int cp) {
+
+		int qnalistCount = adminDao.getqnaListCount();
+		
+		Pagination pagination = new Pagination(qnalistCount, cp);
+		
+		List<Qna> qnaList = adminDao.selectQnaList(pagination);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("qnaList",qnaList);
+		
+		return  map;
 	}
 
 	/**

@@ -277,19 +277,14 @@ public class AdminController {
 	
 	
 
-	// 관리자 문의사항 게시글 조회
+	// 관리자 문의사항 게시글 조회 //페이지네이션
 	@GetMapping("/admin_qna")
-	public String qna(Model model,Qna qna) {
+	public String qna(Model model,Qna qna, @RequestParam(value="cp", required=false, defaultValue="1") int cp){
 
-		
-		List<Admin> QnaList = adminService.selectQnaList();
-
-		String qnaDeleteFl = qna.getQnaDeleteFl();
-		qna.setQnaDeleteFl(qnaDeleteFl);
-		
-		System.out.println(QnaList);
-		
-		model.addAttribute("QnaList", QnaList);
+		  Map<String, Object> map = adminService.selectQnaList(cp);
+		  
+		  model.addAttribute("map", map);
+		 
 		return "admin/admin_qna";
 	}
 
