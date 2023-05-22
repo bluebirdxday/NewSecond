@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration SYSTEM
+"http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
@@ -10,9 +11,21 @@
 		</layout>
 	</appender>
 	
+   <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+       <param name="File" value="C:/logs/runtime.log" />
+       <param name="Append" value="true" />
+       <param name="encoding" value="UTF-8" />
+       <param name="DatePattern" value="'.'yyyy-MM-dd" />
+       <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+      </layout>
+   </appender>
+	
+	
 	<!-- Application Loggers -->
 	<logger name="project.kh.newsecond">
 		<level value="info" />
+		<appender-ref ref="dailyRollingFile" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -34,7 +47,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	
