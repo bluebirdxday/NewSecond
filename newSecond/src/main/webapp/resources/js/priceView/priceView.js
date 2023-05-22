@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const removeBtns = document.getElementsByClassName("removeBtn");
 
     for (let i = 0; i < removeBtns.length; i++) {
-        removeBtns[i].addEventListener("click", function () {
+        removeBtns[i].addEventListener("click", function (event) {
+            event.stopPropagation(); // 이벤트 전파 중지
+
             const span = this.parentNode;
             span.parentNode.removeChild(span);
         });
