@@ -9,7 +9,7 @@ var month3 = document.getElementById("month3").innerText;
 var chartData = {
     labels: ["3개월 전", "2개월 전", "최근 1개월"],
     datasets: [{
-        label: '최근 가격 추이',
+        label: '가격 추이',
         data: [month3, month2, month1],
         borderColor: '#2365B9', // 곡선 색
         backgroundColor: 'white', // 점 색
@@ -56,7 +56,19 @@ var myChart = new Chart(ctx, {
         responsive: true,
         maintainAspectRatio: false, // 차트의 크기를 고정하지 않음
         scales: {
+            x: {
+                /* x축 */
+                grid: {
+                    drawBorder: false, // x축 그리드 라인 제거
+                },
+                ticks: {
+                    color: 'black',
+                    fontWeight: 'bold'
+                }
+            },
             y: {
+                /* y축 */
+                display: false, // y축 값 숨김
                 beginAtZero: false, // y축의 시작점을 0이 아닌 최소값으로 설정
                 grid: {
                     drawBorder: false, // y축 그리드 라인 제거
