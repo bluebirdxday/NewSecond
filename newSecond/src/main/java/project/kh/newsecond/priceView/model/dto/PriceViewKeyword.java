@@ -1,4 +1,4 @@
-package project.kh.newsecond.writing.model.dto;
+package project.kh.newsecond.priceView.model.dto;
 
 import java.util.List;
 
@@ -13,16 +13,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Writing {
-	private int userNo;
-	
+public class PriceViewKeyword {
+
 	private String title;
-	private List<MultipartFile> image;
 	private String detailText;
-	private int price;
-	private int quantity;
-	private String condition;
-	private String category2;
-	
-	private int categoryNo;
 }

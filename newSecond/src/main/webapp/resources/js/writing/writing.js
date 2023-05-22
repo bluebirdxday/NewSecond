@@ -499,18 +499,49 @@ const hire2 = document.createElement('hire2');
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
 
-/* const imageScroller = document.querySelector('.post--main__ImageScroller'); */
-const title = document.getElementById('title'); /* 제목 */
-const images = imageScroller.querySelectorAll('img'); /* 추가되는 이미지들 */
-const detailText = document.getElementById('detailText'); /* 상세설명 */
-const price = document.getElementById('priceInput'); /* 가격 */
-const quantity = document.getElementById('quantityInput'); /* 수량 */
-const conditions = document.getElementsByName('inputCondition'); /* 컨디션 */
-/* 카테고리 */
 
-/* ---------------------------------------------------------------------------- */
+/* form 전송 전 필수입력 값 체크 */
+function validateForm() {
+    var titleInput = document.getElementById("title");
+    var imageInput = document.getElementById("fileInput");
+    var detailTextInput = document.getElementById("detailText");
+    var priceInput = document.getElementById("priceInput");
+    var quantityInput = document.getElementById("quantityInput");
+    
+    var conditionInputs = document.getElementsByName("condition");
+    var category2Inputs = document.getElementsByName("category2");
 
-console.log(title.value);
-console.log(detailText.value);
-console.log(price.value);
-console.log(quantity.value);
+    if (titleInput.value.trim() === "" ||
+        imageInput.value.trim() === "" ||
+        detailTextInput.value.trim() === "" ||
+        priceInput.value.trim() === "" ||
+        quantityInput.value.trim() === "" ||
+        !isConditionSelected(conditionInputs) ||
+        !isCategory2Selected(category2Inputs)) {
+        alert("필수 입력 값을 입력해주세요.");
+        return false; // 폼 전송을 중지
+    }
+    return true; // 폼 전송을 진행
+}
+
+// 상태 선택 여부 확인
+function isConditionSelected(conditionInputs) {
+    for (var i = 0; i < conditionInputs.length; i++) {
+        if (conditionInputs[i].checked) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// 카테고리 선택 여부 확인
+function isCategory2Selected(category2Inputs) {
+    for (var i = 0; i < category2Inputs.length; i++) {
+        if (category2Inputs[i].checked) {
+            return true;
+        }
+    }
+    return false;
+}
+
+

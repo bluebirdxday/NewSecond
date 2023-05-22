@@ -44,14 +44,16 @@ public class WritingController {
 	// 글쓰기 버튼 제출 클릭시
 	@PostMapping("/submit")
 	public String writingInsert(
-			@ModelAttribute Writing writing,
-			@ModelAttribute WritingImage writingImage,
-			@RequestParam(value="image", required=false) List<MultipartFile> images, // �̹��� ���� ���
+			Writing writing,
+			WritingImage writingImage,
+			@RequestParam(value="image", required=false) List<MultipartFile> images, // 이미지 객체 생성
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
 			HttpSession session,
 			Model model
 			) throws IllegalStateException, IOException {
+		
+		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1); };
 		if(writing.getCategory2().equals("가방"))			{writing.setCategoryNo(2); };
@@ -83,23 +85,15 @@ public class WritingController {
 		// -> writing에 userNo, categoryNo + @ 완료
 		
 		// 2. writing 객체에 잘 담겼는지 확인
-		/*
-			System.out.println(writing.getTitle());
-			System.out.println(writing.getDetailText());
-			System.out.println(writing.getPrice());
-			System.out.println(writing.getQuantity());
-			System.out.println(writing.getCondition());
-			System.out.println(writing.getCategory2());
-		*/
+		System.out.println(writing.toString());
 		
 		// 3. webPath, filePath 생성
-		String webPath = "/resources/src/user/${userNo}"; // -> 없는 폴더에도 만들어지나?
+		String webPath = "/resources/src/user/"+writing.getUserNo()+"/"; // -> 없는 폴더에도 만들어지나? -> 잘 담기는 듯 다시 확인
 		String filePath = session.getServletContext().getRealPath(webPath);
-		// -> writing, images, webPath, filePath
+		// -> writing, images, webPath, filePath 객체 완성
 		
 		// 4-1. service 호출
 		int result = service.writingInsert(writing, images, webPath, filePath);
-	
 		
 		// 5. 결과 리턴
 		String message = null;
@@ -107,10 +101,10 @@ public class WritingController {
 		
 		if(result > 0) {
 			message = "게시글이 등록되었습니다.";
-			path += "writing/write"; // 성공시 write 화면 리턴
+			path += "write"; // 성공시 write 화면 리턴
 		} else {
 			message = "게시글 등록에 실패하셨습니다.";
-			path += "chatting/chat"; // 실패시 chat 화면 리턴
+			path += "write"; // 실패시 write 화면 리턴
 		}
 		
 		return path;

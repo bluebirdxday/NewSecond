@@ -421,35 +421,35 @@
 
 /* 1depth */
 .category--1depth__clothing:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__fashion:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__digital:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__life:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__hobby:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__other:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 
 /* 2depth */
 #category--2depth > label:hover {
     display: inline;
     color: #2365B9;
-    font-size: 1.2em;
+    cursor: pointer;
 }
 #category--2depth > label > input {
     display: none;
