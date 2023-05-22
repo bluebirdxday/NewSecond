@@ -543,3 +543,5 @@ function isCategory2Selected(category2Inputs) {
     }
     return false;
 }
+
+
