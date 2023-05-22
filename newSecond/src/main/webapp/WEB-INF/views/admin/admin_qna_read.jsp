@@ -42,6 +42,10 @@
                 <td>${qna.qnaTitle}</td>
             </tr>
             <tr>
+                <th>번호</th>
+                <td>${qna.qnaNo}</td>
+            </tr>
+            <tr>
                 <th>문의유형</th>
                 <td>${qna.qnaType}</td>
             </tr>
@@ -71,6 +75,7 @@
                 <button class="admin_qna_read_Btn">답변 삭제</button>
                 <button class="admin_qna_read_Btn">답변 수정</button>
                 <button class="admin_qna_read_Btn">답변 등록</button>
+                <button class="admin_qna_read_Btn" id="admin_qna_read_delete"><a href="/admin/admin_qna/${qna.qnaNo}/delete">삭제</button>
             </div>
 
    

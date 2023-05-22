@@ -53,7 +53,6 @@
    
    <!-- 다음 회원번호 미리 가져오기 -->
    
-   
    <!-- 회원가입 -->
    <insert id="signUp" parameterType="User">
    
@@ -68,7 +67,7 @@
             #{userNickname},
             #{userTel},
             #{userAddress},
-            NULL, DEFAULT, DEFAULT, DEFAULT
+            DEFAULT, DEFAULT, DEFAULT
             )
    </insert>
    
@@ -78,10 +77,10 @@
          INSERT INTO "shop"
       VALUES	(#{userNo},
                #{userNickname}||'님의 상점',
-               NULL
+               NULL, NULL
                )
    </insert>
    
-      
-      
+
+
 </mapper>

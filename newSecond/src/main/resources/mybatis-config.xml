@@ -18,15 +18,19 @@
 		<typeAlias type="project.kh.newsecond.admin.model.dto.Admin" alias="Admin" />
 		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
+		<typeAlias type="project.kh.newsecond.notification.model.dto.Notification" alias="Notification" />
+		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Files" alias="Files" />
 		
 		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
 		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
+		<typeAlias type="project.kh.newsecond.priceView.model.dto.PriceViewKeyword" alias="PriceViewKeyword" />
 	</typeAliases>
 	
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/user-mapper.xml" />
+		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
 		<mapper resource="/mappers/notice-mapper.xml" />

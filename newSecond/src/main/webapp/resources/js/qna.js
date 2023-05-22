@@ -8,9 +8,10 @@ const qnaHead = document.querySelector('.qna_head');
     document.getElementsByClassName('qnaList').onclick = ()=>{
       showMenu(value);
     };
+    
     qna_dropdown = () => {
       var v = document.querySelector('.qna_dropdown-content');
-      var qna_dropbtn = document.querySelector('.qna_dropbtn')
+      var qna_dropbtn = document.querySelector('.qna_dropbtn');
       v.classList.toggle('show');
       qna_dropbtn.style.borderColor = '#005EEE';
 
@@ -18,16 +19,17 @@ const qnaHead = document.querySelector('.qna_head');
 
     showMenu=(value)=>{
       var qna_dropbtn_content = document.querySelector('.qna_dropbtn_content');
-      var qna_dropbtn_click = document.querySelector('.qna_dropbtn_click');
       var qna_dropbtn = document.querySelector('.qna_dropbtn');
+      const qnaType = document.querySelector("input[name='qnaType']");
 
-     qna_dropbtn_content.innerText = '';
       qna_dropbtn_content.innerText = value;
+      qnaType.value = value;
       qna_dropbtn_content.style.color = '#005EEE';
       qna_dropbtn.style.borderColor = '#005EEE';
       
     }
   }
+
   window.onclick= (e)=>{
     if(!e.target.matches('.qna_dropbtn_click')){
       var qna_dropdowns = document.getElementsByClassName("qna_dropdown-content");

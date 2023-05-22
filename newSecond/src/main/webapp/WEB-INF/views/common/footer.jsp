@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <link rel="stylesheet" href="/resources/css/footer.css">
 
@@ -26,8 +27,8 @@
         <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
+    <jsp:include page="/WEB-INF/views/util/alarmMessage.jsp"/>
     <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
-
 
 </footer>
 
@@ -38,6 +39,8 @@
         toastTrigger.click();
     </script>
 </c:if>
+
+
 
 <c:if test="${empty loginUser}" >
     <script>
@@ -67,5 +70,17 @@
         document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
         toastTrigger.click();
     });
+    </script>
+</c:if>
+
+
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+<c:if test="${not empty alarm}" >
+    <script>
+        alarmTrigger.click();
     </script>
 </c:if>

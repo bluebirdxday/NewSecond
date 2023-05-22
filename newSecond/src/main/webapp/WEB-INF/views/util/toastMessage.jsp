@@ -64,4 +64,3 @@ if (toastTrigger) {
 <c:if test="${signUpPage}" >
 </c:if>
 
-

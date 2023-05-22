@@ -1,5 +1,7 @@
 package project.kh.newsecond.goodsboard.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,4 +31,8 @@ public class GoodsBoard {
 	// shop 테이블 join
 	private String shopTitle;
 	
+	private int sortType;
+	
+	// 이미지 리스트 불러오기
+	private List<Files> filesList;
 }

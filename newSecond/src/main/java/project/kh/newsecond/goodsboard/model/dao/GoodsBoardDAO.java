@@ -1,6 +1,7 @@
 package project.kh.newsecond.goodsboard.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,33 @@ public class GoodsBoardDAO {
 		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", searchName);
 	}
 
-	// 지영
 	/** 검색 상품 목록 조회 
 	 * @param searchName
 	 * @return searchGoodsList
 	 */
 	public List<GoodsBoard> selectSearchGoodsList(String searchName) {
 		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", searchName);
+	}
+
+
+	/** 더보기
+	 * @param startCallNum
+	 * @param untilNum
+	 * @param searchName
+	 * @return moreGoodsList
+	 */
+	public List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName) {
+		
+		return sqlSession.selectList("goodsBoardMapper.moreGoods", numAndSearchName);
+	}
+
+	
+	/** 상품 게시글 상세 조회
+	 * @param goodsTitle
+	 * @return goodsBoard
+	 */
+	public GoodsBoard goodsDetail(int goodsNo) {
+		return sqlSession.selectOne("goodsBoardMapper.goodsDetail", goodsNo);
 	}
 
 

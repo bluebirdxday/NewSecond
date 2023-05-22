@@ -6,32 +6,44 @@
 		<id property="userNo" column="USER_NO" /> <!-- id 태그는 PK 조건 -->
 	</resultMap>
 
-	<!-- Writing 객체와 매핑 -->
-	<resultMap type="Writing" id="writing_rm">
+<!-- PriceViewKeyword 객체와 매핑 -->
+	<resultMap type="PriceViewKeyword" id="priceViewKeyword_rm">
 		<id property="goodsNo" column="GOODS_NO" /> <!-- id 태그는 PK 조건 -->
-		<result property="userNo" column="USER_NO" />
-		<result property="categoryNo" column="CATEGORY_NO" />
 		<result property="title" column="GOODS_TITLE" />
 		<result property="detailText" column="GOODS_DESCR" />
-		<result property="price" column="GOODS_PRICE" />
 	</resultMap>
 	
-	<!-- WritingImage 객체와 매핑 -->
-	<resultMap type="WritingImage" id="writingImage_rm">
-		<id property="fileNo" column="FILE_NO" /> <!-- id 태그는 PK 조건 -->
-		<result property="title" column="GOODS_NO" />
-		<result property="fileName" column="FILE_NAME" />
-		<result property="fileOrder" column="FILE_ORDER" />
-		<result property="filePath" column="FILE_PATH" />
-	</resultMap>
-	
-	<!-- 시세조회 가격 조회 -->
-	<select id="goodsPriceSelect">
-		SELECT GOODS_PRICE
+	<!-- 1달 내 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
+	<select id="goodsPriceSelect" resultType="int">
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
 		FROM "goods_board"
-		WHERE GOODS_TITLE = #{keyword}
-		OR GOODS_DESCR = #{keyword}
+		WHERE (GOODS_TITLE LIKE '%${title}%'
+			OR GOODS_DESCR LIKE '%${detailText}%')
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '1' MONTH
 	</select>
 	
+	<!-- 2개월 전 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
+   	<select id="goodsPriceSelect2" resultType="int">
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
+		FROM "goods_board"
+		WHERE (GOODS_TITLE LIKE '%${title}%'
+		    OR GOODS_DESCR LIKE '%${detailText}%')
+		    <![CDATA[
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '2' MONTH
+		AND SELL_ENROLL_DT < SYSDATE - INTERVAL '1' MONTH
+			]]>
+	</select>
+	
+	<!-- 3개월 전 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
+  	<select id="goodsPriceSelect3" resultType="int">
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
+		FROM "goods_board"
+		WHERE (GOODS_TITLE LIKE '%${title}%'
+		    OR GOODS_DESCR LIKE '%${detailText}%')
+		    <![CDATA[
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '3' MONTH
+		AND SELL_ENROLL_DT < SYSDATE - INTERVAL '2' MONTH
+			]]>
+	</select>
 	
 </mapper>

@@ -10,4 +10,5 @@ public interface QnaService {
 	 */
 	int qnaInsert(Qna qna);
 
+
 }

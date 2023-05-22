@@ -22,10 +22,10 @@ public interface ShopService {
 	
 
 	/** 게시글 리스트 조회
-	 * @param userNo
+	 * @param sortMap
 	 * @return board
 	 */
-	List<GoodsBoard> selectGoodsBoardList(int userNo);
+	List<GoodsBoard> selectGoodsBoardList(Map<String, Object> sortMap);
 
 
 	/** 상점 오픈일 조회
@@ -78,5 +78,12 @@ public interface ShopService {
 	 * @return
 	 */
 	int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException;
+
+
+	/** 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	 * @param goodsBoard
+	 * @return list
+	 */
+	List<GoodsBoard> selectSortGoodsList(GoodsBoard goodsBoard);
 
 }

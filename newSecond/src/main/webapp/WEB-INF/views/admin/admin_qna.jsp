@@ -3,6 +3,9 @@
 
 <c:set var="QnaList" value="${QnaList}"/>
 
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -73,6 +76,7 @@
                 <th>제목</th>
                 <th>작성일</th>
                 <th>답변상태</th>
+                <th>삭제상태</th>
             </thead>
             </tr>
             <tbody>
@@ -94,6 +98,7 @@
                             <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
                             <td>${qna.qnaEnrollDate}</td>
                             <td>${qna.qnaCheckFl}</td>
+                            <td>${qna.qnaDeleteFl}</td>
                         </tr>
                     </c:forEach>
                 </c:otherwise>

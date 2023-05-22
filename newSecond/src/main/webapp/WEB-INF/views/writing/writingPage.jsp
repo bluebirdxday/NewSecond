@@ -13,17 +13,16 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
     <main class="content--post__topMargin">
-        <section class="content--post__background">
+<%-- form 태그 시작 --%>
+    <form action="/writing/submit" method="POST" enctype="multipart/form-data">
+    <section class="content--post__background">
         <section class="content--post__topFix">글쓰기
             <div class="requiredMark">*: 필수 항목</div>
         </section>
 
         <aside class="content--post__leftSide"></aside>
-
         <!-- main content -->
         <section class="content--post__main">
-
-        <form action="/writing/submit" method="POST" enctype="multipart/form-data"> <%-- form 태그 시작 --%>
             
             <div class="post--main__inputTitle">
                 <div>
@@ -44,7 +43,7 @@
                     <div class="post--main__ImageContainer">
                         <div>
                             <a href="#" id="imagePlus">+</a>
-<%-- 이미지  name="Image" --%>
+<%-- 이미지  name="image" --%>
                             <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*">
                         </div>
                         <div class="post--main__ImageScroller">
@@ -109,7 +108,9 @@
                         </div>
 <%-- 카테고리 name="category2" --%>                        
                         <div id="category--2depth">
-                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div> 
+                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div>
+                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류"></label> --%>
+                            <%-- <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
                         </div>
                     </article>
                 </div>
@@ -123,8 +124,9 @@
         <button type="submit">등록하기</button>
         </section>
 
-    </form>  <%-- form 태그 끝 --%>
     </section>
+<%-- form 태그 끝 --%>
+    </form> 
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -12,6 +12,7 @@
       <result property="noticeContent" column="NOTICE_CONTENT" />
       <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
       <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
    </resultMap>
    
    <resultMap type="User" id="user_rm">
@@ -73,6 +74,14 @@
 	ORDER BY NOTICE_NO DESC
 	</select>
 	
+	<!--  특정 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "qna"
+	WHERE QNA_DELETE_FL = 'N'
+	ORDER BY QNA_NO DESC
+	</select>
+	
 	
 	<!-- 회원 관리 조회 -->
    <select id="selectUserList" resultType="HashMap" >
@@ -92,7 +101,7 @@
 	<select id="selectQnaList" resultMap="qna_rm">
 	SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
 	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
-	,QNA_CHECK_FL
+	,QNA_CHECK_FL,QNA_DELETE_FL
 	FROM "qna"
 	</select>
    
@@ -122,8 +131,8 @@
 	
 	<!-- 문의사항 게시글 읽어오기 -->
 	<select id="selectqnaOne" resultMap="qna_rm">
-	SELECT QNA_TITLE,QNA_TYPE,USER_NO,
-		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT 
+	SELECT QNA_NO,QNA_TITLE,QNA_TYPE,USER_NO,
+		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT ,QNA_DELETE_FL
 	FROM "qna"
 	WHERE QNA_NO = #{qndNo}
 	</select>
@@ -139,10 +148,10 @@
 	VALUES (#{noticeNo},
 		#{noticeTitle},
 		#{noticeContent}
-		,DEFAULT,DEFAULT)
+		,DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	
-	
+	<!-- 공지사항 수정 -->
 	<update id="noticeUpdate">
 	UPDATE "notice" SET 
 	NOTICE_TITLE = #{noticeTitle},
@@ -150,10 +159,41 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	
+	<!-- 공지사항 삭제 -->
 	<delete id="noticeDelete">
 	DELETE FROM "notice"
 	WHERE NOTICE_NO = #{noticeNo}
 	</delete>
 	
+	<!--공지사항 선택 삭제 *** -->
+ 	<update id="deleteNoticeList">
+	UPDATE "notice" 
+	SET NOTICE_FL = 'Y' 
+	WHERE NOTICE_NO = #{noticeNo}
+	</update> 
+	
+	<!-- 공지사항 조회수 -->
+	<update id="updateReadCount">
+	UPDATE "notice"
+	SET NOTICE_VIEWCOUNT  = NOTICE_VIEWCOUNT +1
+	WHERE NOTICE_NO = #{notice}
+	
+	</update>
+	
+	
+	<update id="userSignOut">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
+     
+      <!-- 문의사항 삭제하기 -->
+      <update id="qnaDelete">
+      UPDATE "qna" 
+	  SET QNA_DELETE_FL = 'Y' 
+	  WHERE QNA_NO = #{qnaNo}
+      </update>
+      
       
 </mapper>
