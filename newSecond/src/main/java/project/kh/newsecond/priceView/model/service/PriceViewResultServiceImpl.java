@@ -49,9 +49,9 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 	@Override
 	public List<GoodsBoard> selectSearchKeyword(GoodsBoard goodsBoard) {
 		
-		List<GoodsBoard> searchGoodsList = dao.selectSearchKeyword(goodsBoard);
+		List<GoodsBoard> searchList = dao.selectSearchKeyword(goodsBoard);
 		
-		return searchGoodsList;
+		return searchList;
 	}
 	
 	

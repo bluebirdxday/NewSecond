@@ -55,9 +55,9 @@ public class PriceViewResultController {
 	    
 	    goodsBoard.setGoodsTitle(keyword); // 타이틀과 내용 모두 sql에서 처리
 	    
-	    List<GoodsBoard> list = service.selectSearchKeyword(goodsBoard);
+	    List<GoodsBoard> searchList = service.selectSearchKeyword(goodsBoard);
 		
-		model.addAttribute("list", list);
+		model.addAttribute("searchList", searchList);
 		
 		return "priceView/priceViewResultPage";
 	}

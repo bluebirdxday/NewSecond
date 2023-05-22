@@ -66,7 +66,7 @@
 	
 	<!-- 최신 게시글 15개 뿌리기 -->
 	<select id="selectSearchKeyword" resultMap="goodsboard_rm">
-		SELECT GOODS_NO, USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_PRICE, SELL_ENROLL_DT,
+		SELECT GOODS_NO, USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_PRICE,
 		    (SELECT FILE_PATH || USER_NO || '/' || FILE_NAME FROM "files" F
 		     WHERE F.GOODS_NO = G.GOODS_NO
 		       AND FILE_ORDER = 1) AS THUMBNAIL
@@ -75,7 +75,6 @@
 		WHERE GOODS_STATUS IN ('A', 'E', 'R')
 		  AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${goodsTitle}%'
 		ORDER BY SELL_ENROLL_DT ASC
-		FETCH FIRST 15 ROWS ONLY
 	</select>
 	
 </mapper>

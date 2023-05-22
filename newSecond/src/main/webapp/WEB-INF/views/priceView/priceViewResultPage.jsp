@@ -85,117 +85,34 @@
                 <aside class="content--aside__bLeft"></aside>
 
                 <section class="priceViewResult--bBackground">
-                    <div class="priceViewResult--main__bBox">
-<!--
-                <c:choose>
-                    <%-- 해당 검색 결과 없다면 --%>
-                    <c:when test="${empty searchGoodsList}">
-                        <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.keyword}"에 해당하는 상품/상점이 없습니다.</div>
-                        </div>
-                    </c:when>
-                        
-                    <%-- 해당 검색 결과 있다면 --%>
-                    <c:otherwise>
-                        <div class="container--inner__middle" id="goodsListTable">
-                            <c:forEach items="${searchGoodsList}" var="searchGoods" begin="0" end="11">
-                            <div class="goods">
-                                <a href="/goods/${searchGoods.goodsTitle}">
-                                <%-- 썸네일 --%>
-                                <c:choose>
-                                    <c:when test="${not empty searchGoods.thumbnail}">
-                                    <img src="${searchGoods.thumbnail}">
-                                    </c:when>
-                                    <c:otherwise>
-                                    <img src="/resources/src/img/no_image.jpeg">
-                                    </c:otherwise>
-                                </c:choose>
-                                <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
-                                <div class="goods_title">${searchGoods.goodsTitle}</div>
-                                </a>
-                            </div>
-                            </c:forEach>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
--->
 
-                        <a href="#">
-                            <img src="">
-                            <div>120,000원</div>
-                            <div>아이폰12 부품용 싸게 팝니다!</div>
-                        </a>
-                        <a href="#">
-                            <img src="/">
-                            <div>500,000원</div>
-                            <div>아이폰12 싸게 팝니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="">
-                            <div>450,000원</div>
-                            <div>[iPhone12] 아이폰12 128GB 화이트 공기계</div>
-                        </a>
-                        <a href="#">
-                            <img src="">
-                            <div>780,000원</div>
-                            <div>아이폰12 프로 256기가 퍼시픽블루 S급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>480,000원</div>
-                            <div>아이폰 12 64기가 Iphone 12</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>700,000원</div>
-                            <div>아이폰12 프로 맥스 128g 최상급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>470,000원</div>
-                            <div>아이폰12 스페이스그레이</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>650,000원</div>
-                            <div>아이폰 12프로 512기가 퍼시픽 블루 iphone 12 pro</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>700,000원</div>
-                            <div>아이폰12프로 128g iPhone 12 pro 퍼시픽블루 s급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>650,000원</div>
-                            <div>아이폰 12프로 맥스 256GB (iphone 12pro max) 자급제 A급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>500,000원</div>
-                            <div>아이폰12프로(12pro) 실버 128기가 판매합니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>600,000원</div>
-                            <div>아이폰12 프로맥스 골드 (iPhone 12 pro max gold) 256기가</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>580,000원</div>
-                            <div>아이폰 12 풀구성 X,Xs,12프로,13,13프로</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>500,000원</div>
-                            <div>아이폰12 싸게 팝니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>620,000원</div>
-                            <div>[리퍼/미사용]아이폰12pro, 아이폰12프로 256GB 그라파이트</div>
-                        </a>
-                    </div>
+                    <%-- 검색 결과 없을 시 --%>
+                    <c:choose>
+                        <c:when test="${empty searchList}" >
+                            <div class="priceViewResult--main__bBox">
+                                <div class="emptyList">${keyword}에 해당하는 상품/상점이 없습니다.</div>
+                            </div>
+                        </c:when>
+                        <%-- 검색 결과 있을 시 --%>
+                        <c:otherwise>
+                            <div class="priceViewResult--main__bBox">
+                                <c:forEach items="${searchList}" var="item" begin="0" end="14">
+                                    <div class="item">
+                                        <c:choose>
+                                            <c:when test="${not empty item.thumbnail}">
+                                            <img src="${item.thumbnail}" alt="상품 사진">
+                                            </c:when>
+                                            <c:otherwise>
+                                            <img src="/resources/src/img/no_image.jpeg">
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <div>${item.goodsPrice}</div>
+                                        <div>${item.goodsTitle}</div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
 
                 <aside class="content--aside__bRight"></aside>

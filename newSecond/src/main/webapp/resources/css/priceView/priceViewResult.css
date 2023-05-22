@@ -307,9 +307,15 @@
     grid-template-columns: repeat(5, 1fr);
 }
 
+.emptyList {
+    color: #2365B9;
+    place-items: center;
+}
+
 
 /* 개별 상품 박스(15개) */
-.priceViewResult--main__bBox > a {
+/* .priceViewResult--main__bBox > div  */
+.item{
     display: grid;
     grid-template-rows: 160px 1fr 2fr;
     grid-template-areas:
@@ -319,30 +325,29 @@
     place-items: center;
 
     margin: 10px;
-}
-.priceViewResult--main__bBox > a {
+
     color: inherit;
     text-decoration: none;
 
     text-align: center;
 }
-.priceViewResult--main__bBox > a:hover img {
+.item:hover img {
     transform: scale(1.05);
     border: 2px solid #2365B9;
 }
 
 
 /* 이미지, 가격, 제목 */
-.priceViewResult--main__bBox > a > img {
+.item > img {
     grid-area: picture;
     height: 150px;
     width: 150px;
     border-radius: 10px;
 }
-.priceViewResult--main__bBox > a > div:first-child {
+.item > div:first-child {
     grid-area: price;
 }
-.priceViewResult--main__bBox > a > div:last-child {
+.item > div:last-child {
     grid-area: title;
 }
 
