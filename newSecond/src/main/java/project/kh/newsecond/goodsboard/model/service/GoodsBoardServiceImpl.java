@@ -6,10 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.goodsboard.model.dao.GoodsBoardDAO;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
-import project.kh.newsecond.user.model.dto.User;
 
 @Service
 public class GoodsBoardServiceImpl implements GoodsBoardService{
@@ -54,6 +54,23 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	@Override
 	public int goodsLikeChecked(Map<String, Object> map) {
 		return dao.goodsLikeChecked(map);
+	}
+	
+	// 찜 처리 
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int like(Map<String, Integer> likeMap) {
+		int result = 0;
+		if(likeMap.get("check")==0) {
+			result = dao.insertLike(likeMap);
+		}else {
+			result = dao.deleteLike(likeMap);
+		}
+		
+		if(result==0) return -1;
+		
+		int count = dao.countLike(likeMap.get("goodsNo"));
+		return count;
 	}
 	 
 	 

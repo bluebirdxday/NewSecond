@@ -22,4 +22,7 @@ public interface GoodsBoardService {
 	// 기존 찜 여부 확인
 	int goodsLikeChecked(Map<String, Object> map);
 
+	// 찜 처리
+	int like(Map<String, Integer> likeMap);
+
 }

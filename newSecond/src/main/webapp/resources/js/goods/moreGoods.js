@@ -27,22 +27,22 @@ more.addEventListener("click", e => {
                 goodsDiv.classList.add("goods");
                 
                 const a = document.createElement("a");
-                a.setAttribute("href",`/goods/${moreGoodsList[i].goodsNo}`);
+                a.setAttribute("href","/goods/"+moreGoodsList[i].goodsNo);
                 // goodsDiv.append(a);
                 
                 const img  = document.createElement("img");
-                if(`${moreGoodsList[i].thumbnail}`===null){
+                if(moreGoodsList[i].thumbnail== null){
                     img.setAttribute("src","/resources/src/img/no_image.jpeg");
                 }else{
-                    img.setAttribute("src",`${moreGoodsList[i].thumbnail}`);
+                    img.setAttribute("src",moreGoodsList[i].thumbnail);
                 }
                 
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
-                priceDiv.innerHTML = `${moreGoodsList[i].goodsPrice.toLocaleString('ko-KR')}`;
+                priceDiv.innerHTML = moreGoodsList[i].goodsPrice.toLocaleString('ko-KR');
                 const titleDiv = document.createElement("div");
                 titleDiv.classList.add("goods_title");
-                titleDiv.innerHTML = `${moreGoodsList[i].goodsTitle}`;
+                titleDiv.innerHTML = moreGoodsList[i].goodsTitle;
                 
                 goodsListTable.append(goodsDiv);
                 
@@ -55,7 +55,9 @@ more.addEventListener("click", e => {
 
         }else{
             // 오류 없으면 수정
-            alert("없으면 안되는데,,? more버튼이 안보였을텐데..?");
+            document.getElementById('toastBody').innerText = "더 조회할 상품이 없습니다 근데 이거 뜨면 안되는데!";
+            document.getElementById('liveToast').classList.add('text-bg-danger');
+            toastTrigger.click();
         }
 
         if(moreGoodsList.length<=12){

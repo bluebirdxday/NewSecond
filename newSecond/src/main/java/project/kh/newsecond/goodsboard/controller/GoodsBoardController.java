@@ -62,6 +62,7 @@ public class GoodsBoardController {
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
 		String path = null;
 		
+		// 기존 찜 조회
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodsNo", goodsNo);
 		
@@ -79,14 +80,17 @@ public class GoodsBoardController {
 		return "/goods/goodsDetail";
 	}
 	
-	// 상품 이미지 리스트 조회
-	
+	// 찜(좋아요) 증가 
+	@PostMapping("/like")
+	@ResponseBody
+	public int like(@RequestBody Map<String, Integer> likeMap) {
+		System.out.println(likeMap);
+		return service.like(likeMap);
+	}
 	
 	
 	// 조회수 증가
 	
-	
-	// 찜(좋아요) 증가 
 	
 	
 	// 게시글 상세 조회에서 판매자 상정 바로가기

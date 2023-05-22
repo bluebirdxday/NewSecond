@@ -66,5 +66,29 @@ public class GoodsBoardDAO {
 		return sqlSession.selectOne("goodsBoardMapper.goodsLikeChecked", map);
 	}
 
+	/** 찜 등록
+	 * @param likeMap
+	 * @return
+	 */
+	public int insertLike(Map<String, Integer> likeMap) {
+		return sqlSession.insert("goodsBoardMapper.insertLike", likeMap);
+	}
+
+	/** 찜 등록 취소 
+	 * @param likeMap
+	 * @return
+	 */
+	public int deleteLike(Map<String, Integer> likeMap) {
+		return sqlSession.delete("goodsBoardMapper.deleteLike", likeMap);
+	}
+
+	/** 찜 count
+	 * @param integer
+	 * @return
+	 */
+	public int countLike(Integer goodsNo) {
+		return sqlSession.selectOne("goodsBoardMapper.countLike", goodsNo);
+	}
+
 
 }

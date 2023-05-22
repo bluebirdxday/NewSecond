@@ -105,13 +105,25 @@
 }
 
 .container--inner__top__right__viewAndLike *{
-    margin: 5px 3px;
     color: #848383;
+    /* margin-top: 5px;
+    margin-right: 3px; */
 }
 
-.container--inner__top__right__likeHeart img{
+.container--inner__top__right__view{
+    margin-right: 3px;
+}
+.container--inner__top__right__like{
+    margin-top: 0;
+}
+
+#goodsLike{
     margin: 0 0 5px 0;
     width: 15px;
+    cursor: pointer;
+}
+#goodsLike:hover{
+    transition-duration: 0.2s;
 }
 
 .container--inner__top__right__describe{

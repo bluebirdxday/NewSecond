@@ -160,6 +160,24 @@
 		WHERE GOODS_NO = #{goodsNo}
 		AND USER_NO = #{userNo}
 	</select>
+	
+	<!--찜 등록 -->
+	<insert id="insertLike">
+		INSERT INTO "wish_lists" VALUES
+		(SEQ_WISH_NO.NEXTVAL, #{goodsNo}, #{loginUserNo}, DEFAULT)
+	</insert>
+	
+	<!-- 찜 취소 -->
+	<delete id="deleteLike">
+		DELETE FROM "wish_lists"
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{loginUserNo}
+	</delete>
+	
+	<!-- 찜 카운트 -->
+	<select id="countLike" resultType="_int">
+		SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}
+	</select>	
 		
 		
 </mapper>

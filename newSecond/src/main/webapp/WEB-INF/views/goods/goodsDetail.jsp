@@ -53,13 +53,18 @@
                             <div class="container--inner__top__right__viewCount">${goodsBoard.viewCount}&nbsp;&nbsp;&nbsp;</div>
                             <%-- 좋아요 구역 --%>
                             <div class="container--inner__top__right__likeHeart">
-                            <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
-                                <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike">
-                            <%-- 좋아요 눌렀을 때 --%>
+                            
+                                <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
+                                <c:if test="${empty likeChecked}" >
+                                    <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike">
+                                </c:if>
+                                <%-- 좋아요 눌렀을 때 --%>
+                                <c:if test="${not empty likeChecked}" >
                                 <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike">
+                                </c:if>
                             </div>
-                            <label for="goodsLike"><div class="container--inner__top__right__like">찜</div></label>
-                            <div class="container--inner__top__right__likeCount">${goodsBoard.wishCount}</div>
+                            <div class="container--inner__top__right__like">찜</div>
+                            <div class="container--inner__top__right__likeCount" id="wishCount">${goodsBoard.wishCount}</div>
                         </div>
                         <div class="container--inner__top__right__describe">
                             <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
@@ -91,14 +96,11 @@
     <script>
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
-
-        console.log(loginUserNo);
-        console.log(goodsNo);
     </script>
-    <script src="/resources/js/goods/goodsDetail.js"></script>
 
         <!-- footer -->
-        <footer data-include="/web/include/footer.html"></footer>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+        <script src="/resources/js/goods/goodsDetail.js"></script>
     </div>
     
 </body>
