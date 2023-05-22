@@ -19,12 +19,33 @@ var chartData = {
 
 // 차트 생성
 // 최대값과 최소값의 중간값 계산
-var minValue = Math.min(...chartData.datasets[0].data);
-var maxValue = Math.max(...chartData.datasets[0].data);
-var midValue = Math.trunc((minValue + maxValue) / 2, -2);
+const minValue = Math.min(...chartData.datasets[0].data);
+const maxValue = Math.max(...chartData.datasets[0].data);
+const midValue = Math.trunc((minValue + maxValue) / 2, -2);
+const diff = Math.trunc((maxValue - minValue), -2); // 최대값과 최소값의 차이
 
 // 중간 선을 위한 데이터 준비
 var midLineData = Array(chartData.datasets[0].data.length).fill(midValue);
+
+// 최대값과 최소값 차이에 따른 y축 간격 설정
+var stepSize;
+if (diff <= 10000) {
+    stepSize = 2000;
+} else if (diff <= 50000) {
+    stepSize = 10000;
+} else if (diff <= 100000) {
+    stepSize = 20000;
+} else if (diff <= 250000) {
+    stepSize = 50000;
+} else if (diff <= 500000) {
+    stepSize = 100000;
+} else if (diff <= 1000000) {
+    stepSize = 200000;
+} else if (diff <= 10000000) {
+    stepSize = 2000000;
+} else {
+    stepSize = 2000000; // 기타의 경우 2000000
+}
 
 // 차트 생성
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -42,16 +63,16 @@ var myChart = new Chart(ctx, {
                     drawOnChartArea: false // y축 그리드 라인이 차트 영역 내부에 그려지지 않도록 설정
                 },
                 ticks: {
-                    stepSize: 50000 // y축의 간격 설정
+                    stepSize: stepSize // y축의 간격 설정
                 }
             }
         },
         plugins: {
             legend: {
-                display: true // 범례 숨김
+                display: false // 상위 범례 숨김
             },
             tooltip: {
-                enabled: true // 툴팁 숨김
+                enabled: true // 마우스 대면 툴팁 보임
             }
         },
         layout: {
@@ -82,3 +103,4 @@ var myChart = new Chart(ctx, {
 
 
 /* --------------------------------------------------------------- */
+/* 최근 등록된 상품 */
