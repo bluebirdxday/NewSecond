@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 @NoArgsConstructor
 @Getter
@@ -19,4 +20,6 @@ public class Notification {
 	private String sendDate;
 	private String notificationType;
 	
+	private String shopTitle;
+	private String shopProfile;
 }

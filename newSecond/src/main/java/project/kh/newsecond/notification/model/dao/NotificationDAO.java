@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 @Repository
 public class NotificationDAO {
@@ -42,6 +43,12 @@ public class NotificationDAO {
 	// 등록 키워드 개수 조회
 	public int selectKeywordCount(int userNo) {
 		return sqlSession.selectOne("NotificationMapper.selectKeywordCount", userNo);
+	}
+
+	
+	// 상점 정보 조회
+	public Notification selectShopInfo(int senderNo) {
+		return sqlSession.selectOne("NotificationMapper.selectShopInfo", senderNo);
 	}
 
 }

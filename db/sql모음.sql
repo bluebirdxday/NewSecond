@@ -307,6 +307,46 @@ SELECT * FROM "files";
 SELECT * FROM "shop";
 
 
+ROLLBACK;
+
 SELECT * FROM "notifications";
 
+SELECT SYSDATE FROM DUAL;
+
+-- 키워드 개수 조회
+SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = 1;
+
+
+-- (알림 리스트 INSERT 후)알림 조회 + sender 회원의 shop정보
+SELECT FROM "notifications";
+
 INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

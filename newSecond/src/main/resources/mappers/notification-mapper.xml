@@ -17,11 +17,29 @@
 		
 		<result property="targetNo" column="TARGET_NO" />
 		<result property="senderNo" column="SENDER_NO" />
-		<result property="notificationMessage" column="NOTIFICATION_MESSAGE" />
 		<result property="readOrNot" column="READ_OR_NOT" />
 		<result property="sendDate" column="NOTIFICATION_CREATE_DT" />
-		<result property="notificationType" column="NOTIFICATION_KIND" />
+		<result property="notificationType" column="NOTIFICATION_TYPE" />
+		
+		<result property="shopTitle" column="SHOP_TITLE" />
+		<result property="shopProfile" column="SHOP_PROFILE"/>
+		
 	</resultMap>
+		
+	
+	<select id="selectShopInfo" resultMap="notification_rm">
+		SELECT SHOP_TITLE, SHOP_PROFILE
+		FROM "shop"
+		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<!-- 알림 리스트 + SENDER 유저 정보 -->
+	<select id="selectNotificationList" resultMap="notification_rm">
+		SELECT NOTIFICATION_NO, n.USER_NO USER_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, 
+			SHOP_TITLE, SHOP_INFO, SHOP_PROFILE
+		FROM "notifications" n
+		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
+	</select>
 	
 
 	<!-- 키워드 리스트 조회 -->
@@ -50,7 +68,7 @@
 	<!-- 팔로우 알림 추가 -->
 	<insert id="insertNotification">
 		INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 
-			#{targetNo}, '${senderNo}${notificationMessage}', DEFAULT, DEFAULT, 'F')
+			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, 'F')
 	</insert>
 	
 	

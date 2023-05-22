@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import project.kh.newsecond.notification.model.dao.NotificationDAO;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
 public class NotificationServiceImpl implements NotificationService{
@@ -48,6 +49,13 @@ public class NotificationServiceImpl implements NotificationService{
 	@Override
 	public int selectKeywordCount(int userNo) {
 		return dao.selectKeywordCount(userNo);
+	}
+
+
+	// 상점 정보 조회
+	@Override
+	public Notification selectShopInfo(int senderNo) {
+		return dao.selectShopInfo(senderNo);
 	}
 
 }

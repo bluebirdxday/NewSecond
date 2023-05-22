@@ -211,8 +211,6 @@ const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
             "notificationType": "F"
         };
 
-        console.log(obj);
-    
         notificationSock.send(JSON.stringify(obj));
         
 }
@@ -225,7 +223,9 @@ notificationSock.onmessage = function(e) {
 
     console.log(msg);
 
-    document.getElementById('alarmBody').innerText = msg.sendDate;
+    const followMsg = msg.shopTitle + msg.notificationMessage;
+
+    document.getElementById('alarmBody').innerText = followMsg;
     alarmTrigger.click();
 }
 

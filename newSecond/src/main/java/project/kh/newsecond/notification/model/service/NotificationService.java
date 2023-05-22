@@ -5,6 +5,7 @@ import java.util.Map;
 
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 
 public interface NotificationService {
@@ -45,4 +46,11 @@ public interface NotificationService {
 	 * @return keywordCount
 	 */
 	int selectKeywordCount(int userNo);
+
+
+	/** 상점 정보 조회
+	 * @param senderNo
+	 * @return shop
+	 */
+	Notification selectShopInfo(int senderNo);
 }
