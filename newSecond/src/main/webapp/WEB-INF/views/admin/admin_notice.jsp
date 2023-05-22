@@ -51,7 +51,7 @@
         <table class="admin_notice_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" class="admin_notice_checkbox" value='selectall
+                <th><input type="checkbox" class="admin_notice_checkbox_all" value='selectall
                 'onclick='boardSelectAll(this)'></th>
                 <th >번호</th>
                 <th>제목</th>

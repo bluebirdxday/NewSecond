@@ -148,6 +148,15 @@ public class AdminServiceImpl implements AdminService {
 	
 		return adminDao.updateReadCount(noticeNo);
 	}
+
+	/**
+	 *문의사항 선택 삭제하기
+	 */
+	@Override
+	public int qnaDelete(Qna qna) {
+		
+		return adminDao.qnaDelete(qna);
+	}
 }
 
 	

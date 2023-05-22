@@ -228,9 +228,14 @@ public class AdminController {
 		return path;
 
 	}
-	@PostMapping(value = "/admin_notice/delete", produces = "application/json; charset=UTF-8")
+	/** 공지사항 선택 삭제******************<진행중 23.05.22>
+	 * @param selectedItems
+	 * @return
+	 */
+	@PostMapping(value = "/adimin_notice/deleteNoticeList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String deleteNoticeList(@RequestBody List<String> selectedItems) {
+	public String deleteNoticeList(@RequestBody String[] selectedItems) {
+		
 	    System.out.println(selectedItems);
 	    
 	    for (String noticeNo : selectedItems) {
@@ -276,10 +281,16 @@ public class AdminController {
 
 	// 관리자 문의사항 게시글 조회
 	@GetMapping("/admin_qna")
-	public String qna(Model model) {
+	public String qna(Model model,Qna qna) {
 
+		
 		List<Admin> QnaList = adminService.selectQnaList();
 
+		String qnaDeleteFl = qna.getQnaDeleteFl();
+		qna.setQnaDeleteFl(qnaDeleteFl);
+		
+		System.out.println(QnaList);
+		
 		model.addAttribute("QnaList", QnaList);
 		return "admin/admin_qna";
 	}
@@ -289,7 +300,11 @@ public class AdminController {
 	public String qna_read(Model model, @PathVariable("qnaNo") int qnaNo) {
 
 		Qna qna = adminService.selectqnaOne(qnaNo);
-
+		
+		qna.setQnaNo(qnaNo);
+		
+		
+		
 		model.addAttribute("Qna", qna);
 		return "admin/admin_qna_read";
 	}
@@ -302,4 +317,24 @@ public class AdminController {
 		return adminService.userSignOut(paramMap);
 	}
 
+	/** 문의사항 삭제
+	 * @param qna
+	 * @param model
+	 * @param ra
+	 * @param qnaNo
+	 * @return
+	 */
+	@GetMapping("/admin_qna/{qnaNo}/delete")
+	public String qnaDelete(Qna qna, Model model, 
+			@PathVariable("qnaNo") int qnaNo) {
+
+		qnaNo = adminService.qnaDelete(qna);
+		
+		model.addAttribute("Qna", qna);
+		
+		return "admin/admin_qna";
+
+	}
+	
+	
 }

@@ -28,7 +28,7 @@
             <div class="qna_bar">1:1 문의</div>
     </div>  
 <!-- 문의하기 드랍 및 내용  -->
-  <form action="/admin/qna_check" method="POST" class="qna_check" id="qnaWriteFrm" >
+  <form action="/qna/qna_check" method="POST" class="qna_check" id="qnaWriteFrm" >
     <div class="qna_container">
     <div class="qna_dropdown">
         <button type="button" class="qna_dropbtn">
@@ -44,14 +44,14 @@
         </div>
       </div>
 
-      <input type="hidden" name="qnaType" value="">
+      <input type="hidden" name="qnaType" value="${qna.qnaType}">
 
       <div class="qna_title">
-      문의제목 :${qna.qnaTitle} <input type="text" name="" id="" class="qna_titleInput">
+      문의제목 :${qna.qnaTitle} <input type="text" name="qnaTitle" id="" class="qna_titleInput">
       </div>
 
       <div class="qna_content">
-        <textarea name="" id="qna_content" cols="88" rows="20" 
+        <textarea name="qnaContent" id="qna_content" cols="88" rows="20"  
         style="resize: none;" placeholder="  문의내용">${qna.qnaContent}</textarea>
     </div>
     
@@ -60,7 +60,7 @@
 <!-- 문의하기 버튼 -->
  
       <div id="qna_button_wrap">
-     <button type="submit" id="qna_button"><a href="\qna\qna_check">문의 하기</a></button>
+     <button type="submit" id="qna_button">문의 하기</button>
     </div>
     </form>
     

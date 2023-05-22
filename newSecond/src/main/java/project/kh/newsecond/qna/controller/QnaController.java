@@ -34,10 +34,6 @@ public class QnaController {
 		}
 		
 		
-	 
-		
-		
-		
 		/** 문의사항 제출 (insert)
 		 * @param model
 		 * @param qna
@@ -47,29 +43,15 @@ public class QnaController {
 		@PostMapping("/qna_check")
 		public String qna_check(
 				Model model
-				,Qna qna
-				,RedirectAttributes ra
-				,HttpServletRequest request){
+				,Qna qna){
 			
 			String qnaType = qna.getQnaType();
 			int qnaNo = qnaService.qnaInsert(qna);
 			
-			//삽입 성공 시
-			String message = null;
-			String path = "redirect:";
-			if(qnaNo > 0) { //성공시
-				
-				message = "게시글이 등록 되었습니다.";
-				path += "/qna/qna" + "/" + qnaNo;
-				
-			}else {
-				message = "게시글이 등록 실패 되었습니다.";
-				path += "qna";
-			}
-
+		
 			model.addAttribute("Qna",qna);
-			ra.addFlashAttribute("message",message);
-			return path;
+			
+			return "qna/qna_check";
 		
 		}
 		

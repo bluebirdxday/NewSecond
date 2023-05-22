@@ -86,6 +86,12 @@ public interface AdminService {
 	 */
 	int updateReadCount(int noticeNo);
 
+	/** 문의사항 선택삭제하기
+	 * @param qna
+	 * @return
+	 */
+	int qnaDelete(Qna qna);
+
 	
 	 
 	

@@ -47,13 +47,14 @@ function boardSelectAll(boardSelectAll)  {
 }
 
 
-let noticeNo;//공지 번호
 
 
 document.getElementById("deleteBtn").addEventListener("click", function() {
   var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
   var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
   var selectedItems = [];
+  var noticeUpdateFrm = document.getElementById("noticeUpdateFrm");
+
   
   for (var i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
@@ -67,21 +68,24 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
   }
 else{
   if (confirm("정말 삭제 하시겠습니까?")) {  
+    
+    noticeUpdateFrm.action = "/adimin_notice/deleteNoticeList"
+    noticeUpdateFrm.submit();
+    
 
-  let noticeNo = {"noticeNo" : noticeNo}
-
-    fetch("/adimin_notice/deleteNoticeList", {
+    fetch("/admin/adimin_notice/deleteNoticeList", {
       method : "POST",
       headers : {"Content-Type": "application/JSON"},
-      body : JSON.stringify()
-    }).then(resp=> resp.text(noticeNo))
+      body : JSON.stringify(selectedItems)
+    }).then(resp=> resp.text())
     .then(result=>{
-      console.log(result)
+
     }).catch(err=> console.log(err));
     
   
   }}
-  
+
+ 
   });
   
 

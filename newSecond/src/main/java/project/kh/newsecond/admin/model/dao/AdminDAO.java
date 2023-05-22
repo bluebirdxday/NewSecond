@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import project.kh.newsecond.admin.model.dto.Admin;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
+import project.kh.newsecond.qna.model.dto.Qna;
 
 /**
  * @author bfyu0
@@ -147,6 +148,15 @@ public class AdminDAO {
 	public int updateReadCount(int noticeNo) {
 		
 		return sqlSession.update("AdminMapper.updateReadCount",noticeNo); 
+	}
+
+	/**문의사항 선택 삭제하기
+	 * @param qna
+	 * @return
+	 */
+	public int qnaDelete(Qna qna) {
+		
+		return sqlSession.update("AdminMapper.qnaDelete",qna); 
 	}
 
 	

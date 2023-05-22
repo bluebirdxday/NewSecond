@@ -93,7 +93,7 @@
 	<select id="selectQnaList" resultMap="qna_rm">
 	SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
 	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
-	,QNA_CHECK_FL
+	,QNA_CHECK_FL,QNA_DELETE_FL
 	FROM "qna"
 	</select>
    
@@ -123,8 +123,8 @@
 	
 	<!-- 문의사항 게시글 읽어오기 -->
 	<select id="selectqnaOne" resultMap="qna_rm">
-	SELECT QNA_TITLE,QNA_TYPE,USER_NO,
-		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT 
+	SELECT QNA_NO,QNA_TITLE,QNA_TYPE,USER_NO,
+		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT ,QNA_DELETE_FL
 	FROM "qna"
 	WHERE QNA_NO = #{qndNo}
 	</select>
@@ -162,6 +162,7 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</update> 
 	
+	<!-- 공지사항 조회수 -->
 	<update id="updateReadCount">
 	UPDATE "notice"
 	SET NOTICE_VIEWCOUNT  = NOTICE_VIEWCOUNT +1
@@ -173,8 +174,16 @@
 	<update id="userSignOut">
 	UPDATE "users"
 	SET USER_STATUS = 'B'
-	WHERE USER_NO = #{userNo};
+	WHERE USER_NO = #{userNo}
 	
 	</update>
+     
+      <!-- 문의사항 삭제하기 -->
+      <update id="qnaDelete">
+      UPDATE "qna" 
+	  SET QNA_DELETE_FL = 'Y' 
+	  WHERE QNA_NO = #{qnaNo}
+      </update>
+      
       
 </mapper>

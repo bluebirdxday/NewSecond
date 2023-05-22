@@ -556,3 +556,8 @@ SELECT * FROM "qna";
 
 
 COMMENT ON COLUMN "goods_board"."QNA_TYPE" IS '게시글 상태(A:거래신고, B:회원/계정 C:오류/제안 D:채팅/알람)';
+
+UPDATE "qna" 
+SET QNA_DELETE_FL = 'Y' 
+WHERE QNA_NO = '19';
+
