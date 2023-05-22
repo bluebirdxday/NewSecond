@@ -21,7 +21,25 @@
 		
 		<result property="shopTitle" column="SHOP_TITLE" />
 		
+		<collection property="filesList"
+					select="selectFilesList"
+					column="GOODS_NO"
+					javaType="java.util.ArrayList"
+					ofType="Files" />
+		
 	</resultMap>
+	
+	
+	<!-- Files resultMap -->
+	<resultMap type="Files" id="files_rm">
+		<id property="fileNo" column="FILE_NO"/>
+		
+		<result property="goodsNo" column="GOODS_NO"/>
+		<result property="fileName" column="FILE_NAME"/>
+		<result property="fileOrder" column="FILE_ORDER"/>
+		<result property="filePath" column="FILE_PATH"/>
+	</resultMap>
+	
 	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
 	<!-- 상품 게시글 목록 조회 -->
@@ -79,13 +97,19 @@
 		
 	</select>
 		
+	<!-- 게시글 상세 -->
 	<select id="goodsDetail" resultMap="goodsboard_rm">
-		SELECT GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
+		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
 		FROM "goods_board"
 		WHERE GOODS_NO = ${goodsNo}
 	</select>
-		
-		
+	
+	<!-- 게시글 상세 이미지리스트 조회 -->
+	<select id="selectFilesList" resultMap="files_rm">
+		SELECT *FROM "files" 
+		WHERE GOODS_NO = ${goodsNo}
+		ORDER BY FILE_ORDER
+	</select>
 		
 		
 </mapper>

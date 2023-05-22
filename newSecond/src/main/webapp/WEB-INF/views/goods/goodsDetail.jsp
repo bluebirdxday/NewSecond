@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -26,17 +27,23 @@
             <div class="container--inner">
                 <div class="container--inner__top">
                     <div class="container--inner__top__left">
-                        <%-- 캐러셀 --%>
-                        <div class="carousel-wrapper">
-                            <div class="carousel">
-                                <img src="/resources/src/img/freitag/freitag1.jpeg">
-                                <img src="/resources/src/img/freitag/freitag2.png">
-                                <img src="/resources/src/img/freitag/freitag3.jpeg">
-                            </div>
-                        </div>
-                        <button class="prev" type="button" onclick="moveSmooth">&lt</button>
-                        <button class="next" type="button" onclick="moveSmooth">&gt</button>
-
+                        <c:choose>
+                            <c:when test="${fn:length(goodsBoard.filesList)gt 0}">
+                                <%-- 이미지_캐러셀 --%>
+                                <div class="carousel-wrapper">
+                                    <div class="carousel" id="imageList">
+                                        <c:forEach items="${goodsBoard.filesList}" var="file" begin="0" end="${fn:length(goodsBoard.filesList)-1}">
+                                            <img src="${file.filePath}${goodsBoard.userNo}/${file.fileName}">
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <button class="prev" type="button" onclick="moveSmooth">&lt</button>
+                                <button class="next" type="button" onclick="moveSmooth">&gt</button>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="/resources/src/img/no_image.jpeg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="container--inner__top__right">
                         <div class="container--inner__top__right__title">${goodsBoard.goodsTitle}</div>

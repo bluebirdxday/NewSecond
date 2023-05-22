@@ -4,29 +4,21 @@ const next = document.querySelector('.next');
 const carousel = document.querySelector('.carousel');
 
 let index = 0;
+// 둘러싸는 캐러셀의 자식요소 수 -1 = 마지막 인덱스
+const last = document.getElementById("imageList").childElementCount - 1;
 
 prev.addEventListener('click', () => {
     if(index === 0) return;
     index -= 1;
     carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
-    // carousel.style.transition = 'all 0.5s ease-in-out';
-    // document.querySelector(".img").style.transition = 'all 0.5s ease-in-out'
-    // prev.style.tra
-
 	
 });
-// 마지막 사진 인덱스???
+// 마지막 사진 인덱스
 next.addEventListener('click', () => {
-    if(index === 파일리스트랭스-1) return;
+    if(index === last) return;
     index += 1;
     carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
 });
-
-// function moveSmooth(name){
-//     var location = document.
-// }
-
-
 
 
 // 좋아요 버튼

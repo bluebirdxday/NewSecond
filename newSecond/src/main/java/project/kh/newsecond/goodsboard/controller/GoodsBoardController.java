@@ -59,12 +59,15 @@ public class GoodsBoardController {
 			) {
 		
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
+		System.out.println(goodsBoard);
+		
 		model.addAttribute("goodsBoard", goodsBoard);
 		
 		return "/goods/goodsDetail";
 	}
 	
 	// 상품 이미지 리스트 조회
+	
 	
 	
 	// 조회수 증가

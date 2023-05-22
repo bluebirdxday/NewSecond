@@ -31,7 +31,7 @@ more.addEventListener("click", e => {
                 // goodsDiv.append(a);
                 
                 const img  = document.createElement("img");
-                if(!`${moreGoodsList[i].thumbnail}`){
+                if(`${moreGoodsList[i].thumbnail}`===null){
                     img.setAttribute("src","/resources/src/img/no_image.jpeg");
                 }else{
                     img.setAttribute("src",`${moreGoodsList[i].thumbnail}`);
