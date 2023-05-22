@@ -72,7 +72,7 @@
                     <div id="tab2" class="notice--tab__content">
                         
                         <div class="notice--tab2__banner">
-                            <div><img src="/resources/src/img/loudSpeaker.png"> 알림 받고 있는 키워드 <span>0</span>개</div>
+                            <div><img src="/resources/src/img/loudSpeaker.png"> &nbsp;알림 받고 있는 키워드 <span>${keywordCount}</span>개</div>
                             <a href="/notification/editKeyword">편집</a>
                         </div>
 

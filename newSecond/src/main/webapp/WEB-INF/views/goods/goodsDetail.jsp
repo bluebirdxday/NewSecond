@@ -1,14 +1,16 @@
 <!--[서지영] 물품 상세 페이지 - 물품 상세 설명, 사진 여러장, 찜, 조회수, 상점정보(상점 바로가기, 채팅 모달) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%-- 상품게시글 제목 불러오기 --%>
-    <title>물품 상세 페이지</title>
+    <title>${goodsBoard.goodsTitle}</title>
     
     <link rel="stylesheet" href="/resources/src/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/resources/src/bootstrap/css/bootstrap.min.css">
@@ -25,39 +27,43 @@
             <div class="container--inner">
                 <div class="container--inner__top">
                     <div class="container--inner__top__left">
-                    <%-- DB 불러오기 --%>
-                        <%-- 캐러셀 --%>
-                        <div class="carousel-wrapper">
-                            <div class="carousel">
-                                <img src="/resources/src/img/freitag/freitag1.jpeg">
-                                <img src="/resources/src/img/freitag/freitag2.png">
-                                <img src="/resources/src/img/freitag/freitag3.jpeg">
-                            </div>
-                        </div>
-                        <button class="prev" type="button" onclick="moveSmooth">&lt</button>
-                        <button class="next" type="button" onclick="moveSmooth">&gt</button>
-
+                        <c:choose>
+                            <c:when test="${fn:length(goodsBoard.filesList)gt 0}">
+                                <%-- 이미지_캐러셀 --%>
+                                <div class="carousel-wrapper">
+                                    <div class="carousel" id="imageList">
+                                        <c:forEach items="${goodsBoard.filesList}" var="file" begin="0" end="${fn:length(goodsBoard.filesList)-1}">
+                                            <img src="${file.filePath}${goodsBoard.userNo}/${file.fileName}">
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <button class="prev" type="button" onclick="moveSmooth">&lt</button>
+                                <button class="next" type="button" onclick="moveSmooth">&gt</button>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="/resources/src/img/no_image.jpeg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="container--inner__top__right">
-                        <div class="container--inner__top__right__title">프라이탁 하와이파이브오 판매합니다!</div>
-                        <div class="container--inner__top__right__price">180,000원</div>
+                        <div class="container--inner__top__right__title">${goodsBoard.goodsTitle}</div>
+                        <div class="container--inner__top__right__price"><fmt:formatNumber value="${goodsBoard.goodsPrice}" pattern="##,###,###"/></div>
                         <div class="container--inner__top__right__viewAndLike">
                             <div class="container--inner__top__right__view">조회</div>
-                            <div class="container--inner__top__right__viewCount">107&nbsp;&nbsp;&nbsp;</div>
+                            <div class="container--inner__top__right__viewCount">${goodsBoard.viewCount}&nbsp;&nbsp;&nbsp;</div>
                             <%-- 좋아요 구역 --%>
                             <div class="container--inner__top__right__likeHeart">
-                            <%-- js에서 기존 좋아요 여부 확인 시 class명 사용 --%>
                             <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
                                 <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike">
                             <%-- 좋아요 눌렀을 때 --%>
                                 <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike">
                             </div>
                             <label for="goodsLike"><div class="container--inner__top__right__like">찜</div></label>
-                            <div class="container--inner__top__right__likeCount">24</div>
+                            <div class="container--inner__top__right__likeCount">${goodsBoard.wishCount}</div>
                         </div>
                         <div class="container--inner__top__right__describe">
-                            <div class="container--inner__top__right__describeTitle">상세 설명</div>
-                            <div class="container--inner__top__right__describeContent">판매자가 작성한 상품 관련 상세 설명란</div>
+                            <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                            <div class="container--inner__top__right__describeContent">${goodsBoard.goodsDescr}</div>
                         </div>
                     </div>
                 </div>
@@ -81,11 +87,10 @@
                 </div>
             </div>
         </div>
-    <%-- <script src="/resources/js/goods/goodsDetail.js"></script> --%>
     <script src="/resources/js/goods/goodsDetail.js"></script>
 
         <!-- footer -->
-        <div><footer data-include="/web/include/footer.html"></footer></div>
+        <footer data-include="/web/include/footer.html"></footer>
     </div>
     
 </body>

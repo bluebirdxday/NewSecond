@@ -40,10 +40,7 @@ public class ReviewDAO {
 		return sqlSession.selectOne("shopMapper.selectReview", reviewNo);
 	}
 
-	/** 후기 수정
-	 * @param review
-	 * @return result
-	 */
+	// 후기 수정
 	public int updateReview(Review review) {
 		return sqlSession.update("shopMapper.updateReview", review);
 	}

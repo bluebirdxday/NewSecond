@@ -145,8 +145,8 @@
                 <ul>
                     <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
                     <li><a href="#" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
-                    <li><a href="#" rel="tab3">팔로잉 <div>${fn:length(followList)}</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(followerList)}</div></a></li>
+                    <li><a href="#" rel="tab3">팔로잉 <div id="followingCount">${fn:length(followList)}</div></a></li>
+                    <li><a href="#" rel="tab4">팔로워 <div id="followerCount">${fn:length(followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -154,10 +154,10 @@
             <div id="tab1" class="myshop--tab__content tabs--active">
                 <div class="myshop--tab1__content-top">
                         <ul>
-                            <li class="sort--active"><a href="#" rel="">최신순</a></li>
-                            <li><a href="#" rel="">인기순</a></li>
-                            <li><a href="#" rel="">저가순</a></li>
-                            <li><a href="#" rel="">고가순</a></li>
+                            <li class="sort--active"><a href="/shop/${shop.userNo}">최신순</a></li>
+                            <li class="by-popularity"><a href='javascript:void(0);'>인기순</a></li>
+                            <li class="by-lowprice"><a href='javascript:void(0);'>저가순</a></li>
+                            <li class="by-highprice"><a href='javascript:void(0);'>고가순</a></li>
                         </ul>
                 </div> 
 
@@ -166,10 +166,29 @@
                     <c:if test="${not empty goodsBoardList}" >
                         <c:forEach items="${goodsBoardList}" var="goods">
                                 
-                                <%-- 상품 상세 페이지로 이동 태그--%>
+                                <a href="/goods/${goods.goodsNo}">
+                                
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
-                                            <img src="/resources/src/img/cat.jpg">
+                                            <img src="${goods.thumbnail}" 
+                                                    <c:if test="${goods.goodsStatus=='E' || goods.goodsStatus=='C'}"> 
+                                                            style="filter : brightness(40%);"</c:if>
+                                            >
+
+                                            <c:if test="${goods.goodsStatus=='E'}" >
+                                                <div class="overlay-text soldout">
+                                                    Sold Out
+                                                </div>
+                                            </c:if>
+                                            
+
+                                            <c:if test="${goods.goodsStatus=='C'}" >
+                                                <div class="overlay-text reserved">
+                                                    Reserved
+                                                </div>
+                                            </c:if>
+                                            
+
                                         </div>
                                         <div class="tab1--item__description">
                                             <div> 
@@ -185,17 +204,17 @@
                                             </div>
                                             <div>
                                                 <div><fmt:formatNumber value="${goods.goodsPrice}" type="number"/></div>
-                                                <div>3시간 전</div>
+                                                <div>${goods.sellEnrollDate}</div>
                                             </div>
                                         </div>
                                     </div>
-                            
-
+                                
+                                </a>
 
                         </c:forEach>
                     </c:if>
-
                 </div>
+
                 <c:if test="${empty goodsBoardList}" >
                     <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다.</div>
                 </c:if>
@@ -239,7 +258,7 @@
 
             <!-- 팔로잉 탭 -->
             <div id="tab3" class="myshop--tab__content">
-                <div class="myshop--tab3__gridcontainer">
+                <div class="following_tab myshop--tab3__gridcontainer">
             
                     <c:if test="${not empty followList}" >
                         <c:forEach items="${followList}" var="follow">
@@ -250,14 +269,22 @@
                                     <div>${follow.shopInfo}</div>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    <c:if test="${follow.followYou==0}">
-                                        <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo})">팔로우</button>
+
+                                    <c:if test="${follow.passiveUserNo != loginUserNo}" >
+                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                        <c:if test="${follow.followYou==0}">
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">팔로우</button>
+                                        </c:if>
+
+                                        <c:if test="${follow.followYou==1}" >
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">언팔로우</button>
+                                        </c:if>
                                     </c:if>
 
-                                    <c:if test="${follow.followYou==1}" >
-                                        <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo})">언팔로우</button>
+                                    <c:if test="${follow.passiveUserNo == loginUserNo}" >
+                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
                                     </c:if>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -272,7 +299,7 @@
 
             <!-- 팔로워 탭 -->
             <div id="tab4" class="myshop--tab__content">
-                <div class="myshop--tab3__gridcontainer">
+                <div class="follower_tab myshop--tab3__gridcontainer">
                     
                     <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
@@ -283,14 +310,26 @@
                                         <div>${follower.shopInfo}</div>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+
+                                    <%-- 팔로워 탭에서 팔로워!=로그인회원인 경우 팔로우/언팔로우 버튼 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo != loginUserNo}" >
+
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
                                         <c:if test="${follower.followYou==0}">
-                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo})">팔로우</button>
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">팔로우</button>
                                         </c:if>
 
                                         <c:if test="${follower.followYou==1}" >
-                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo})">언팔로우</button>
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">언팔로우</button>
                                         </c:if>
+                                    </c:if>
+
+
+                                    <%-- 팔로워 탭에서 팔로워==로그인회원인 경우 상점가기 버튼만 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo == loginUserNo}" >
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -307,7 +346,7 @@
 
     </section>
 
-    <a href="/review/reviewList">
+    <a href="/writing/write">
         <div class="myshop--btn__fixed-addpost">
             <img src="/resources/src/img/addPost.png">
         </div>
@@ -322,6 +361,12 @@
     <a href="/writing/write">
         <button>글쓰기테스트버튼입니다</button>
     </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+    <script>
+        const userNo = ${shop.userNo}
+    </script>
 
     <script src="/resources/js/shop.js"></script>
 

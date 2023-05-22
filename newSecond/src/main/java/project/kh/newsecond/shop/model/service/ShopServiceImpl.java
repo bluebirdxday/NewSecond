@@ -31,8 +31,8 @@ public class ShopServiceImpl implements ShopService{
 	
 	// 게시글 리스트 조회
 	@Override
-	public List<GoodsBoard> selectGoodsBoardList(int userNo) {
-		return dao.selectGoodsBoardList(userNo);
+	public List<GoodsBoard> selectGoodsBoardList(Map<String, Object> sortMap) {
+		return dao.selectGoodsBoardList(sortMap);
 	}
 
 	// 상점 오픈일 조회
@@ -79,8 +79,13 @@ public class ShopServiceImpl implements ShopService{
 
 	
 	// 상점 편집
+	@Transactional(rollbackFor=Exception.class)
 	@Override
 	public int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException{
+		
+		
+		shop.setShopTitle(Util.XXSHandling(shop.getShopTitle()));
+		shop.setShopInfo(Util.XXSHandling(shop.getShopInfo()));
 		
 		String oldShopProfile = shop.getShopProfile();
 		String rename = null;
@@ -95,7 +100,7 @@ public class ShopServiceImpl implements ShopService{
 		}
 		
 		
-		int result = dao.updateShopInfo(null);
+		int result = dao.updateShopInfo(shop);
 		
 		if(result>0) {
 			
@@ -109,6 +114,14 @@ public class ShopServiceImpl implements ShopService{
 		
 		return result;
 	}
+
+	
+	// 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	@Override
+	public List<GoodsBoard> selectSortGoodsList(GoodsBoard goodsBoard) {
+		return dao.selectSortGoodsList(goodsBoard);
+	}
+
 
 
 

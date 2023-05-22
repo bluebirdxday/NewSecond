@@ -14,9 +14,10 @@ import project.kh.newsecond.qna.model.dto.Qna;
 public interface AdminService {
 
 	/**관리자 공지사항 게시글 리스트 조회
+	 * @param  
 	 * @return
 	 */
-	List<Notice> selectNoticeList();
+	Map<String, Object> selectNoticeList(int cp);
 
 	/**관리자 회원 리스트 조회
 	 * @return
@@ -59,6 +60,41 @@ public interface AdminService {
 	 */
 	int noticeDelete(Notice notice);
 
+
+	/** 공지사항 게시글 선택 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int noticeListDelete(int noticeNo);
+
+
+
+	/**공지사항 선택 삭제
+	 * @param noticeNo
+	 * @return
+	 */
+	int deleteNoticeList(int noticeNoInt);
+	
+	  /**회원탈퇴 기능
+	 * @param noticeNo
+	 * @return
+	 */
+	int userSignOut(Map<String, Object> noticeNo);
+
+	/**공지사항 조회수 
+	 * @param noticeNo
+	 * @return
+	 */
+	int updateReadCount(int noticeNo);
+
+	/** 문의사항 선택삭제하기
+	 * @param qna
+	 * @return
+	 */
+	int qnaDelete(Qna qna);
+
+	
+	 
 	
 	
 }
