@@ -14,9 +14,10 @@ import project.kh.newsecond.qna.model.dto.Qna;
 public interface AdminService {
 
 	/**관리자 공지사항 게시글 리스트 조회
+	 * @param  
 	 * @return
 	 */
-	List<Notice> selectNoticeList();
+	Map<String, Object> selectNoticeList(int cp);
 
 	/**관리자 회원 리스트 조회
 	 * @return

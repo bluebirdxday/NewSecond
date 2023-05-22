@@ -73,7 +73,7 @@ else{
     noticeUpdateFrm.submit();
     
 
-    fetch("/admin/adimin_notice/deleteNoticeList", {
+    fetch("/adimin_notice/deleteNoticeList", {
       method : "POST",
       headers : {"Content-Type": "application/JSON"},
       body : JSON.stringify(selectedItems)

@@ -74,6 +74,14 @@
 	ORDER BY NOTICE_NO DESC
 	</select>
 	
+	<!--  특정 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "qna"
+	WHERE QNA_DELETE_FL = 'N'
+	ORDER BY QNA_NO DESC
+	</select>
+	
 	
 	<!-- 회원 관리 조회 -->
    <select id="selectUserList" resultType="HashMap" >
@@ -143,7 +151,7 @@
 		,DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	
-	
+	<!-- 공지사항 수정 -->
 	<update id="noticeUpdate">
 	UPDATE "notice" SET 
 	NOTICE_TITLE = #{noticeTitle},
@@ -151,12 +159,14 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	
+	<!-- 공지사항 삭제 -->
 	<delete id="noticeDelete">
 	DELETE FROM "notice"
 	WHERE NOTICE_NO = #{noticeNo}
 	</delete>
 	
- 	<update id="noticeListDelete">
+	<!--공지사항 선택 삭제 *** -->
+ 	<update id="deleteNoticeList">
 	UPDATE "notice" 
 	SET NOTICE_FL = 'Y' 
 	WHERE NOTICE_NO = #{noticeNo}

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.admin.model.dao.AdminDAO;
 import project.kh.newsecond.admin.model.dto.Admin;
+import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
@@ -26,9 +27,20 @@ public class AdminServiceImpl implements AdminService {
 	 *관리자 공지사항 게시글 리스트
 	 */
 	@Override
-	public List<Notice> selectNoticeList() {
-
-		return adminDao.selectNoticeList();
+	public Map<String, Object> selectNoticeList(int cp) {
+		
+		int listCount = adminDao.getListCount();
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Notice> noticeList = adminDao.selectNoticeList(pagination);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("noticeList",noticeList);
+		
+		return  map;
 	}
 
 	/**

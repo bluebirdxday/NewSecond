@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.admin.model.dto.Admin;
+import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
@@ -25,13 +26,31 @@ public class AdminDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**관리자 공지사항 게시글 리스트
+	 * @param cp 
 	 * @return
 	 */
-	public List<Notice> selectNoticeList() {
+	public List<Notice> selectNoticeList(Pagination pagination) {
 	
-		return sqlSession.selectList("AdminMapper.selectNoticeList");
-	}
+		int offset = (pagination.getCurrentPage() - 1)
+				* pagination.getLimit();
 
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		
+		
+		return sqlSession.selectList("AdminMapper.selectNoticeList",rowBounds);
+	}
+	
+	/**관리자 공지사항 페이지 수
+	 * @param cp
+	 * @return
+	 */
+	public int getListCount() {
+
+		return  sqlSession.selectOne("AdminMapper.getListCount");
+	}
+	
+	
 	public List<HashMap<String, Object>> selectUserList() {
 
 		return sqlSession.selectList("AdminMapper.selectUserList");
@@ -158,6 +177,10 @@ public class AdminDAO {
 		
 		return sqlSession.update("AdminMapper.qnaDelete",qna); 
 	}
+
+
+
+
 
 	
 }

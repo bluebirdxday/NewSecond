@@ -43,13 +43,15 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
-	// 관리자 공지사항 게시글 조회
+	// 관리자 공지사항 게시글 목록 조회
 	@GetMapping("/admin_notice")
-	public String notice(Model model) {
+	public String notice(Model model
+			, @RequestParam(value="cp", required=false, defaultValue="1") int cp){
 
-		List<Notice> NoticeList = adminService.selectNoticeList();
-
-		model.addAttribute("NoticeList", NoticeList);
+		  Map<String, Object> map = adminService.selectNoticeList(cp);
+		  
+		  model.addAttribute("map", map);
+		 
 
 		return "admin/admin_notice";
 	}
@@ -121,10 +123,6 @@ public class AdminController {
 			
 			}
 			
-		
-		
-		
-
 		model.addAttribute("Notice", notice);
 		return "admin/admin_notice_read";
 	}
