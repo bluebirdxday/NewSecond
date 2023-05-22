@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/priceView/priceViewResult.css">
+<%-- chart.js --%>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <title>New Second</title>
 </head>
 <body>
@@ -42,9 +45,12 @@
                         <div class="priceViewResult--main__LeftBox">
                             <div>시세금액</div>
                             <div class="chart">
-                                한달 내 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
-                                2개월 전 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
-                                3개월 전 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
+                                    <div id="month1" style="display: none">${result}</div>
+                                    <div id="month2" style="display: none">${result2}</div>
+                                    <div id="month3" style="display: none">${result3}</div>
+                                <div class="myChartBox">
+                                    <canvas class="myChart" id="myChart"></canvas>
+                                </div>
                             </div>
                         </div>
 
@@ -55,7 +61,7 @@
                             <div>한달 내 <%= keyword %> 시세금액</div>
                             <div>
 <!-- <%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>   -->                          
-                                <div style="font-style: italic;"> 약 <%= request.getAttribute("result") %> 원</div>
+                                <div style="font-style: italic;"> 약 ${result} 원</div>
                             </div>
                         </div>
                     </div>
@@ -176,6 +182,5 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script src="/resources/js/priceView/priceViewResult.js"></script>
-    
 </body>
 </html>

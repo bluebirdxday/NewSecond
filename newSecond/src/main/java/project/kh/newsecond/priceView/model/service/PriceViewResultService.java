@@ -6,8 +6,8 @@ public interface PriceViewResultService {
 
 	int goodsPriceSelect(PriceViewKeyword keywords);
 
-//	int goodsPriceSelect2(PriceViewKeyword keywords);
-//
-//	int goodsPriceSelect3(PriceViewKeyword keywords);
+	int goodsPriceSelect2(PriceViewKeyword keywords);
+
+	int goodsPriceSelect3(PriceViewKeyword keywords);
 
 }

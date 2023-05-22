@@ -16,11 +16,11 @@ public class PriceViewResultDAO {
 		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect", keywords);
 	}
 
-//	public int goodsPriceSelect2(PriceViewKeyword keywords) {
-//		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect2", keywords);
-//	}
-//
-//	public int goodsPriceSelect3(PriceViewKeyword keywords) {
-//		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect3", keywords);
-//	}
+	public int goodsPriceSelect2(PriceViewKeyword keywords) {
+		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect2", keywords);
+	}
+
+	public int goodsPriceSelect3(PriceViewKeyword keywords) {
+		return sqlSession.selectOne("priceViewMapper.goodsPriceSelect3", keywords);
+	}
 }
