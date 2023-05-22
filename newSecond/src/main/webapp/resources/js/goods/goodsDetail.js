@@ -27,10 +27,10 @@ const goodsLike = document.getElementById("goodsLike");
 goodsLike.addEventListener("click",e=>{
     // 로그인 여부 검사 넣기
     //loginMemberNo 변수 알맞은 걸로 넣기
-    // if(logiMemberNo = ""){
-    //     alert("로그인 후 이용해주세요");
-    //     return;
-    // }
+    if(logiMemberNo = ""){
+        alert("로그인 후 이용해주세요");
+        return;
+    }
 
     let check; // 기존 빈하트:0, 찬하트:1
 

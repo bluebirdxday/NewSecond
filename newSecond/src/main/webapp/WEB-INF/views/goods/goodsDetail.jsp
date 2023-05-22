@@ -87,6 +87,14 @@
                 </div>
             </div>
         </div>
+
+    <script>
+        const loginUserNo = "${loginUser.userNo}";
+        const goodsNo = ${goodsBoard.goodsNo};
+
+        console.log(loginUserNo);
+        console.log(goodsNo);
+    </script>
     <script src="/resources/js/goods/goodsDetail.js"></script>
 
         <!-- footer -->

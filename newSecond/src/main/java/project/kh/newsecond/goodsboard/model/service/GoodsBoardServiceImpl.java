@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import project.kh.newsecond.goodsboard.model.dao.GoodsBoardDAO;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.user.model.dto.User;
 
 @Service
 public class GoodsBoardServiceImpl implements GoodsBoardService{
@@ -47,6 +48,12 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	 @Override
 	public GoodsBoard goodsDetail(int goodsNo) {
 		return dao.goodsDetail(goodsNo);
+	}
+	 
+	// 기존 찜 여부 확인
+	@Override
+	public int goodsLikeChecked(Map<String, Object> map) {
+		return dao.goodsLikeChecked(map);
 	}
 	 
 	 

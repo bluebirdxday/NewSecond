@@ -1,5 +1,6 @@
 package project.kh.newsecond.goodsboard.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.user.model.dto.User;
 
 @Repository
 public class GoodsBoardDAO {
@@ -53,6 +55,15 @@ public class GoodsBoardDAO {
 	 */
 	public GoodsBoard goodsDetail(int goodsNo) {
 		return sqlSession.selectOne("goodsBoardMapper.goodsDetail", goodsNo);
+	}
+
+	/** 찜 여부 확인
+	 * @param goodsNo
+	 * @param loginUser
+	 * @return
+	 */
+	public int goodsLikeChecked(Map<String, Object> map) {
+		return sqlSession.selectOne("goodsBoardMapper.goodsLikeChecked", map);
 	}
 
 

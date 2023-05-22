@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="goodsBoardMapper">
 
+
+	<!-- GoodsBoard resultMap -->
 	<resultMap type="GoodsBoard" id="goodsboard_rm">
 		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
 		<id property="goodsNo" column="GOODS_NO" />
@@ -109,6 +111,13 @@
 		SELECT *FROM "files" 
 		WHERE GOODS_NO = ${goodsNo}
 		ORDER BY FILE_ORDER
+	</select>
+	
+	<!-- 찜 여부 확인 -->
+	<select id="goodsLikeChecked" resultType="_int">
+		SELECT COUNT(*) FROM "wish_lists"
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{userNo}
 	</select>
 		
 		

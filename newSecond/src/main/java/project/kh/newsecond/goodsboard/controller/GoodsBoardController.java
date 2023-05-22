@@ -1,5 +1,6 @@
 package project.kh.newsecond.goodsboard.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,14 +55,26 @@ public class GoodsBoardController {
 	@GetMapping("/{goodsNo}")
 	public String goodsDetail(
 			@PathVariable("goodsNo") int goodsNo,
-			Model model
-//			@SessionAttribute(value="loginUser", required=false) User loginUser
+			Model model,
+			@SessionAttribute(value="loginUser", required=false) User loginUser
 			) {
 		
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
-		System.out.println(goodsBoard);
+		String path = null;
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("goodsNo", goodsNo);
+		
+		if(goodsBoard != null) {
+			if(loginUser != null) {
+				map.put("loginUser", loginUser.getUserNo());
+				int result = service.goodsLikeChecked(map);
+				if(result>0) model.addAttribute("likeChecked","like");
+			}
+		}
 		
 		model.addAttribute("goodsBoard", goodsBoard);
+		model.addAttribute("loginUser", loginUser);
 		
 		return "/goods/goodsDetail";
 	}
