@@ -1,10 +1,10 @@
 /* --------- 내정보 수정 파트 -------*/
 
 //닉네임 수정
-document.getElementById("nicknameCheck").addEventListener("submit",e=>{
+document.getElementById("nicknameCheck").addEventListener("submit", e => {
 
     const userNickname = document.getElementById("userNickname");
-    const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+    const tooltip = bootstrap.Tooltip.getInstance(userNickname);
     const regEx = /^[가-힣\w\d]{2,10}$/;
 
     if(!regEx.test(userNickname.value)){ // 유효성 검사 맞지 않으면
@@ -17,16 +17,21 @@ document.getElementById("nicknameCheck").addEventListener("submit",e=>{
 });
 
 //전화번호 수정
-document.getElementById("TelCheck").addEventListener("click",()=>{
+document.getElementById("TelCheck").addEventListener("submit", e => {
 
+    const userTel = document.getElementById("userTel");
+    const tooltip = bootstrap.Tooltip.getInstance(userTel);
+    const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+
+    if(!regEx.test(userTel.value)){ // 유효성 검사 맞지 않으면
+        tooltip.setContent({'.tooltip-inner': '전화번호 형식이 유효하지 않습니다. 다시 입력해주세요'});
+        userTel.focus(); 
+        e.preventDefault();
+        return;
+    }
 
 });
 
-//주소 수정
-document.getElementById("addressCheck").addEventListener("click",()=>{
-
-
-});
 
 
 /* ----------------------------------*/

@@ -92,9 +92,9 @@ public class MyPageController {
 		return "redirect:/myPage/info";
 	}
 	
-	//
+	// 전화번호 변경
 	
-	//
+	// 주소 변경
 	
 	/* --------------------------------------- */
 	

@@ -49,7 +49,7 @@
 
                     
                     <div class="input-title mt-5">전화번호</div>
-                    <form action="#" method="POST" id="TelCheck">
+                    <form action="/myPage/info/changeTel" method="POST" id="TelCheck">
                         <div class="d-flex align-items-center">
                             <div class="input-group w-50">
                                 <input type="text" id="userTel" name="userTel" value="${loginUser.userTel}" maxlength="11" required
@@ -73,7 +73,7 @@
 
                     <div class="d-flex align-items-center">
 
-                        <form action="#" method="post" class="w-100 d-flex align-items-center" id="addressCheck">
+                        <form action="/myPage/info/changeAddress" method="post" class="w-100 d-flex align-items-center" id="addressCheck">
                             <div class="w-75">
                                 <div class="input-group mt-2 d-flex">
                                     <input class="w-50" type="text" name="userAddress" id="userAddress_postcode" placeholder="우편번호" value="${addr[0]}"  onfocus="this.blur();"
