@@ -21,4 +21,25 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 		
 		return result;
 	}
+
+//	@Transactional(rollbackFor = Exception.class)
+//	@Override
+//	public int goodsPriceSelect2(PriceViewKeyword keywords) {
+//		
+//		int result2 = dao.goodsPriceSelect2(keywords);
+//		
+//		return result2;
+//	}
+//
+//	@Transactional(rollbackFor = Exception.class)
+//	@Override
+//	public int goodsPriceSelect3(PriceViewKeyword keywords) {
+//		
+//		int result3 = dao.goodsPriceSelect3(keywords);
+//		
+//		return result3;
+//	}
+	
+	
+	
 }

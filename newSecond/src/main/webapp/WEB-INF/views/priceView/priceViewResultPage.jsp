@@ -42,8 +42,9 @@
                         <div class="priceViewResult--main__LeftBox">
                             <div>시세금액</div>
                             <div class="chart">
-
-
+                                한달 내 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
+                                2개월 전 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
+                                3개월 전 <%= keyword %> 시세금액: 약 <%= request.getAttribute("result") %> 원 <hr>
                             </div>
                         </div>
 

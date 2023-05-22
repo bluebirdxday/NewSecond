@@ -39,8 +39,12 @@ public class PriceViewResultController {
 		keywords.setTitle(keyword);
 		
 		int result = service.goodsPriceSelect(keywords);
+//		int result2 = service.goodsPriceSelect2(keywords);
+//		int result3 = service.goodsPriceSelect3(keywords);
 		
 	    model.addAttribute("result", result);
+//	    model.addAttribute("result2", result2);
+//	    model.addAttribute("result3", result3);
 		
 		return "priceView/priceViewResultPage";
 	}

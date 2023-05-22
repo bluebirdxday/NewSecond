@@ -22,5 +22,28 @@
 		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '1' MONTH
 	</select>
 	
+	<!-- 2개월 전 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
+<!-- 	<select id="goodsPriceSelect2" resultType="int">
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
+		FROM "goods_board"
+		WHERE (GOODS_TITLE LIKE '%${title}%'
+		    OR GOODS_DESCR LIKE '%${detailText}%')
+		    <![CDATA[
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '2' MONTH
+		AND SELL_ENROLL_DT < SYSDATE - INTERVAL '1' MONTH
+			]]>
+	</select> -->
+	
+	<!-- 3개월 전 제목이나 상세설명에 keyword가 쓰인 상품의 시세조회 가격 조회 -->
+<!-- 	<select id="goodsPriceSelect3" resultType="int">
+		SELECT TRUNC(AVG(GOODS_PRICE), -3)
+		FROM "goods_board"
+		WHERE (GOODS_TITLE LIKE '%${title}%'
+		    OR GOODS_DESCR LIKE '%${detailText}%')
+		    <![CDATA[
+		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '3' MONTH
+		AND SELL_ENROLL_DT < SYSDATE - INTERVAL '2' MONTH
+			]]>
+	</select> -->
 	
 </mapper>
