@@ -23,6 +23,8 @@
 
         <li><a class="dropdown-item" href="#">관심상품</a></li>
 
+        <li><a class="dropdown-item" href="/review/reviewList">후기 작성 내역</a></li>
+
         <c:if test="${loginUser.userRole == 2}">
             <li><a class="dropdown-item" href="/admin/admin_notice">관리자 페이지</a></li>
         </c:if>

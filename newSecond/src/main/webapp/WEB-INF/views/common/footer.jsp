@@ -27,8 +27,8 @@
         <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
+    <jsp:include page="/WEB-INF/views/util/alarmMessage.jsp"/>
     <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
-
 
 </footer>
 
@@ -39,6 +39,8 @@
         toastTrigger.click();
     </script>
 </c:if>
+
+
 
 <c:if test="${empty loginUser}" >
     <script>
@@ -77,3 +79,8 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
+<c:if test="${not empty alarm}" >
+    <script>
+        alarmTrigger.click();
+    </script>
+</c:if>

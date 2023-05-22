@@ -47,3 +47,18 @@ function userSelectAll(userSelectAll)  {
       checkbox.checked = userSelectAll.checked
     })
   }
+
+
+
+  function adminUserSignOut(){
+
+	fetch("/admin_user/signOut",{
+        method : "POST",
+        headers : {"Content-Type": "application/json"},
+        body : JSON.stringify({"USER_NO" : userNo})
+    })
+    .then(resp => resp.text())
+    .then(result => console.log(result))
+    .catch(err => console.log(err));
+
+}

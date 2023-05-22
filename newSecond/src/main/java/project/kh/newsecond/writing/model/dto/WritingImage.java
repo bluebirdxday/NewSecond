@@ -16,4 +16,6 @@ public class WritingImage {
 	
 	private int fileOrder;
 	private String filePath;
+	
+	private String fileRename;
 }

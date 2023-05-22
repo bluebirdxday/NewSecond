@@ -9,37 +9,6 @@ if(maxKeyword!=null){
 }
 
 
-// //키워드 추가 버튼 클릭 시
-// const addKeyword = document.getElementById("addKeyword");
-
-// addKeyword.addEventListener("click", ()=>{
-    
-//     const newDiv = document.createElement("div");
-//     const newChildDiv = document.createElement("div");
-//     const newChildDiv2 = document.createElement("div");
-//     const newChildDiv2Child = document.createElement("img");
-    
-//     const inputKeyword = document.querySelector(".keywordedit--input>input");
-
-//     newDiv.setAttribute("class", "keywordedit--item");
-
-//     newChildDiv.innerText = inputKeyword.value;
-
-//     newChildDiv2Child.setAttribute("src", "/resources/src/img/minus-button.png");
-//     newChildDiv2Child.setAttribute("class", "keyword--btn__delete");
-    
-//     newChildDiv2.appendChild(newChildDiv2Child);
-    
-//     newDiv.appendChild(newChildDiv);
-//     newDiv.appendChild(newChildDiv2);
-    
-//     document.querySelector(".keywordedit--content__list").appendChild(newDiv);
-    
-//     addKeyword();
-    
-// });
-
-
 const deleteKeywordList = document.querySelectorAll(".keyword--btn__delete");
 
 if(deleteKeywordList != null){
@@ -110,8 +79,9 @@ function deleteKeyword(keywordNo) {
             ).catch(error => {
                 console.log(error.message);
             });
+
         }
         
         toastTrigger.click();
-        location.reload();
+        setTimeout(() => location.reload(), 1000);
 }

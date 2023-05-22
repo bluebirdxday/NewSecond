@@ -143,11 +143,31 @@
     font-size: 1.5em;
     font-weight: bold;
 }
-.priceViewResult--main__LeftBox > div:last-child {
+/* ---------------------------------------------------- */
+/* 그래프 박스 위치 */
+.chart {
     height: 200px;
     width: 450px;
     background-color: #C2D3EB;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.myChartBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+    height: 200px;
+    width: 400px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.myChart {
+    display: none;
 }
 
 /* ---------------------------------------------------- */

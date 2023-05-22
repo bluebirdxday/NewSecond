@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.admin.model.dao.AdminDAO;
 import project.kh.newsecond.admin.model.dto.Admin;
+import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
@@ -26,9 +27,20 @@ public class AdminServiceImpl implements AdminService {
 	 *관리자 공지사항 게시글 리스트
 	 */
 	@Override
-	public List<Notice> selectNoticeList() {
-
-		return adminDao.selectNoticeList();
+	public Map<String, Object> selectNoticeList(int cp) {
+		
+		int listCount = adminDao.getListCount();
+		
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		List<Notice> noticeList = adminDao.selectNoticeList(pagination);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("noticeList",noticeList);
+		
+		return  map;
 	}
 
 	/**
@@ -115,7 +127,52 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
-	
-	
+	@Override
+	public int noticeListDelete(int noticeNo) {
+		
+		int result = adminDao.noticeListDelete(noticeNo);
+		
+		return result;
+	}
 
+
+
+	
+	  /**
+	 *회원탈퇴 기능
+	 */
+	@Override public int userSignOut(Map<String, Object> paramMap) {
+	  
+	  return adminDao.userSignOut(paramMap); 
+	  }
+
+	@Override
+	public int deleteNoticeList(int noticeNoInt) {
+
+		return adminDao.deleteNoticeList(noticeNoInt);
+	}
+
+	/**
+	 *공지사항 조회수 증가
+	 */
+	@Override
+	public int updateReadCount(int noticeNo) {
+	
+		return adminDao.updateReadCount(noticeNo);
+	}
+
+	/**
+	 *문의사항 선택 삭제하기
+	 */
+	@Override
+	public int qnaDelete(Qna qna) {
+		
+		return adminDao.qnaDelete(qna);
+	}
 }
+
+	
+	 
+
+
+
