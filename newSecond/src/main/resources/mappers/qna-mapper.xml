@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="QnaMapper">
+<mapper namespace="qnaMapper">
 
       <resultMap type="Qna" id="qna_rm">
       <!-- DB의 기본 키(복합키면 여러 개 작성) -->
@@ -45,14 +45,15 @@
 	INSERT INTO "qna"
 	VALUES 
 	(SEQ_QNA_NO.NEXTVAL
-	,#{userNo}
+	<if test="userNo == 0">	,NULL	</if>
+	<if test="userNo != 0">	,{userNo}	</if>
 	,#{qnaTitle}
 	,#{qnaContent}
 	,SYSDATE
 	,DEFAULT
 	,DEFAULT
-	,DEFAULT
-	,#{qnaType}
+	,'T'
+	,#{qnaType})
 	</insert>
    
    

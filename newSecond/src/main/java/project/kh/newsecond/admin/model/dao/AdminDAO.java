@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.admin.model.dto.Admin;
+import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
+import project.kh.newsecond.qna.model.dto.Qna;
 
 /**
  * @author bfyu0
@@ -24,13 +26,31 @@ public class AdminDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**관리자 공지사항 게시글 리스트
+	 * @param cp 
 	 * @return
 	 */
-	public List<Notice> selectNoticeList() {
+	public List<Notice> selectNoticeList(Pagination pagination) {
 	
-		return sqlSession.selectList("AdminMapper.selectNoticeList");
-	}
+		int offset = (pagination.getCurrentPage() - 1)
+				* pagination.getLimit();
 
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		
+		
+		return sqlSession.selectList("AdminMapper.selectNoticeList",rowBounds);
+	}
+	
+	/**관리자 공지사항 페이지 수
+	 * @param cp
+	 * @return
+	 */
+	public int getListCount() {
+
+		return  sqlSession.selectOne("AdminMapper.getListCount");
+	}
+	
+	
 	public List<HashMap<String, Object>> selectUserList() {
 
 		return sqlSession.selectList("AdminMapper.selectUserList");
@@ -108,7 +128,60 @@ public class AdminDAO {
 		return result;
 	}
 
-	
-	
 
+	public int noticeDelete(Notice notice, Map<String, Object> paramMap) {
+	int result = sqlSession.delete("AdminMapper.noticeDelete",notice);
+		
+		if(result>0)  result = notice.getNoticeNo();
+		
+		return result;
+	}
+
+	public int noticeListDelete(int noticeNo) {
+		
+		return sqlSession.update("AdminMapper.noticeListDelete",noticeNo);
+	}
+
+
+	 
+
+	
+	  /**회원 탈퇴
+	 * @param paramMap
+	 * @return
+	 */
+	public int userSignOut(Map<String, Object> paramMap) {
+	  
+	  return sqlSession.update("AdminMapper.userSignOut",paramMap); 
+	  }
+
+	public int deleteNoticeList(int noticeNoInt) {
+	
+		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNoInt); 
+	}
+
+	/**공지사항 조회수 증가
+	 * @param noticeNo
+	 * @return
+	 */
+	public int updateReadCount(int noticeNo) {
+		
+		return sqlSession.update("AdminMapper.updateReadCount",noticeNo); 
+	}
+
+	/**문의사항 선택 삭제하기
+	 * @param qna
+	 * @return
+	 */
+	public int qnaDelete(Qna qna) {
+		
+		return sqlSession.update("AdminMapper.qnaDelete",qna); 
+	}
+
+
+
+
+
+	
 }
+
