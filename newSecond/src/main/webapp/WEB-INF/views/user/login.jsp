@@ -39,11 +39,6 @@
                     </div>
                 </div>
             
-            <div class="d-flex justify-content-around mb-3 ">
-                <a href="#">아이디 찾기</a>
-                <a href="#">비밀번호 찾기</a>
-            </div>
-
             <div class="login--submit d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary ">로그인</button>
             </div>

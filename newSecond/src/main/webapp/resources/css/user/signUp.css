@@ -42,6 +42,10 @@ body {
     align-items: center;
 }
 
+.btn-close{
+    cursor: pointer;
+}
+
 .signUp-container {  
     width: 500px;
     padding: 30px;
