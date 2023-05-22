@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+/* 최근 검색어 검색창 자동 입력(x 지우고) */
+function addSearchKeyword(element) {
+    var text = element.textContent.trim();
+    var lastIndex = text.lastIndexOf('✖');
+    var keyword = lastIndex !== -1 ? text.substring(0, lastIndex).trim() : text;
+    document.getElementById('search').value = keyword;
+}
+
 /* 모두 지우기 버튼 클릭 시 모두 삭제 */
 document.addEventListener("DOMContentLoaded", function() {
     const removeAllBtn = document.querySelector(".priceView--main__recentSearch button");
