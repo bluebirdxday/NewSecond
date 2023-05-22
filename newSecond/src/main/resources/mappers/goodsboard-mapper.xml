@@ -74,9 +74,15 @@
 			WHERE GOODS_STATUS IN ('A','E','C')
 				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 			ORDER BY SELL_ENROLL_DT DESC)
-		WHERE NUM BETWEEN ${startCallNum} AND ${untilNum}
+			<![CDATA[ WHERE NUM > ${startCallNum} ]]>
 		ORDER BY NUM
 		
+	</select>
+		
+	<select id="goodsDetail" resultMap="goodsboard_rm">
+		SELECT GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
+		FROM "goods_board"
+		WHERE GOODS_NO = ${goodsNo}
 	</select>
 		
 		

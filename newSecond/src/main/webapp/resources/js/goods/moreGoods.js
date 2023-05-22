@@ -6,13 +6,12 @@ const goodsListTable = document.getElementById("goodsListTable");
 
 more.addEventListener("click", e => {
     const addGoodsDiv = "";
-    // 숫자 형태로 보내지나..?
-    const startCallNum = goodsListTable.childElementCount + 1;
-    const untilNum = startCallNum + 11;
+    const startCallNum = goodsListTable.childElementCount;
+    // const untilNum = startCallNum + 11; 몇번까지 (more버튼 구현 위해 startNum~끝까지 조회)
     // 제출된 검색어
     const searchName = new URL(location.href).searchParams.get("query");
 
-    const data = {"startCallNum" : startCallNum, "untilNum" : untilNum, "searchName" : searchName};
+    const data = {"startCallNum" : startCallNum, "searchName" : searchName};
 
     fetch("/goods/searchMore",{
         method : "POST",
@@ -23,27 +22,27 @@ more.addEventListener("click", e => {
     .then(moreGoodsList => {
         if(moreGoodsList.length>0){
             // console.log(moreGoodsList.length);
-            for(var goods of moreGoodsList){
+            for(var i=0; i<moreGoodsList.length; i++){
                 const goodsDiv = document.createElement("div");
                 goodsDiv.classList.add("goods");
                 
                 const a = document.createElement("a");
-                a.setAttribute("href",`/goods/${goods.goodsTitle}`);
+                a.setAttribute("href",`/goods/${moreGoodsList[i].goodsNo}`);
                 // goodsDiv.append(a);
                 
                 const img  = document.createElement("img");
-                if(!`${goods.thumbnail}`){
+                if(!`${moreGoodsList[i].thumbnail}`){
                     img.setAttribute("src","/resources/src/img/no_image.jpeg");
                 }else{
-                    img.setAttribute("src",`${goods.thumbnail}`);
+                    img.setAttribute("src",`${moreGoodsList[i].thumbnail}`);
                 }
                 
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
-                priceDiv.innerHTML = `${goods.goodsPrice.toLocaleString('ko-KR')}`;
+                priceDiv.innerHTML = `${moreGoodsList[i].goodsPrice.toLocaleString('ko-KR')}`;
                 const titleDiv = document.createElement("div");
                 titleDiv.classList.add("goods_title");
-                titleDiv.innerHTML = `${goods.goodsTitle}`;
+                titleDiv.innerHTML = `${moreGoodsList[i].goodsTitle}`;
                 
                 goodsListTable.append(goodsDiv);
                 

@@ -59,7 +59,7 @@
                         <div class="container--inner__middle" id="goodsListTable">
                             <c:forEach items="${searchGoodsList}" var="searchGoods" begin="0" end="11">
                             <div class="goods">
-                                <a href="/goods/${searchGoods.goodsTitle}">
+                                <a href="/goods/${searchGoods.goodsNo}">
                                 <%-- 썸네일 --%>
                                 <c:choose>
                                     <c:when test="${not empty searchGoods.thumbnail}">
@@ -91,11 +91,6 @@
                         </div>
                     </c:otherwise>
                 </c:choose> 
-                <%-- <c:if test="${fn:length(searchGoodsList) gt 12}" >
-                        <div class="container--inner__bottom">
-                            <button class="more" id="viewMoreGoods">MORE</button>
-                        </div>
-                </c:if> --%>
             </div>
 
 

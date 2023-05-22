@@ -50,19 +50,29 @@ public class GoodsBoardController {
 		return service.moreGoods(numAndSearchName);
 	}
 	
-	// 지영
 	// 상품 게시글 상세 조회
-	@GetMapping("/{goodsTitle}")
+	@GetMapping("/{goodsNo}")
 	public String goodsDetail(
-			@PathVariable("goodsTitle") int goodsTitle,
-			Model model,
-			@SessionAttribute(value="loginUser", required=false) User loginUser) {
+			@PathVariable("goodsNo") int goodsNo,
+			Model model
+//			@SessionAttribute(value="loginUser", required=false) User loginUser
+			) {
 		
-//		GoodsBoard goodsBoard = service.selectGoodsBoard(map);
+		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
+		model.addAttribute("goodsBoard", goodsBoard);
+		
 		return "/goods/goodsDetail";
 	}
 	
-	// 지영
+	// 상품 이미지 리스트 조회
+	
+	
+	// 조회수 증가
+	
+	
+	// 찜(좋아요) 증가 
+	
+	
 	// 게시글 상세 조회에서 판매자 상정 바로가기
 	@GetMapping("/goodsDetail/moveShop")
 	public String moveShop() {

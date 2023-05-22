@@ -12,7 +12,10 @@ public interface GoodsBoardService {
 	// 상품 게시글 목록 조회(검색)
 	Map<String, Object> selectSearchGoodsList(String searchName);
 
-	// 상품 더보
+	// 상품 더보기 
 	List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName);
+
+	// 상품 게시글 상세 조회
+	GoodsBoard goodsDetail(int goodsNo);
 
 }
