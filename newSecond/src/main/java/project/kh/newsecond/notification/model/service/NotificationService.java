@@ -37,4 +37,12 @@ public interface NotificationService {
 	 * @return result
 	 */
 	int insertNotification(Notification noti);
+
+
+	
+	/** 키워드 개수 조회
+	 * @param userNo
+	 * @return keywordCount
+	 */
+	int selectKeywordCount(int userNo);
 }

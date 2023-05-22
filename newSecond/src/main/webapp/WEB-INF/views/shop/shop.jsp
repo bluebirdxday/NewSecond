@@ -166,7 +166,8 @@
                     <c:if test="${not empty goodsBoardList}" >
                         <c:forEach items="${goodsBoardList}" var="goods">
                                 
-                                <%-- 상품 상세 페이지로 이동 태그--%>
+                                <a href="/goods/${goods.goodsNo}">
+                                
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
                                             <img src="${goods.thumbnail}" 
@@ -207,6 +208,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                
+                                </a>
 
                         </c:forEach>
                     </c:if>

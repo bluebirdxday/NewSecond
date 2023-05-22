@@ -223,6 +223,10 @@ notificationSock.onmessage = function(e) {
     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
     const msg = JSON.parse(e.data);
 
+    console.log(msg);
+
+    document.getElementById('alarmBody').innerText = msg.sendDate;
+    alarmTrigger.click();
 }
 
 
@@ -465,6 +469,8 @@ function sortGoodsList(userNo, sortType){
 
             for(let goods of goodsList){
 
+                const moveA = document.createElement("a");
+                moveA.setAttribute("href", "/goods/" + goods.goodsNo);
 
                 // 게시글 1개 컨테이너
                 const itemDiv = document.createElement("div");
@@ -538,7 +544,9 @@ function sortGoodsList(userNo, sortType){
     
                 itemDiv.append(itemImgDiv, itemDescDiv);
 
-                container.append(itemDiv);
+                moveA.append(itemDiv);
+
+                container.append(moveA);
 
                 
             }

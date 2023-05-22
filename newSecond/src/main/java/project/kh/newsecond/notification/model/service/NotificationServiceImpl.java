@@ -43,4 +43,11 @@ public class NotificationServiceImpl implements NotificationService{
 		return dao.insertNotification(noti);
 	}
 
+
+	// 등록 키워드 개수 조회
+	@Override
+	public int selectKeywordCount(int userNo) {
+		return dao.selectKeywordCount(userNo);
+	}
+
 }

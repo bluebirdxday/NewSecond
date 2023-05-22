@@ -85,7 +85,9 @@
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
 
-    
 <script src="/resources/js/goods/searchGoodsList.js"></script>
+
 </header>
+
+
 

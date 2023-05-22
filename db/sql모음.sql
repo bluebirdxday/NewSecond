@@ -304,6 +304,8 @@ SELECT * FROM "goods_board" gb ;
 
 SELECT * FROM "files";
 
+SELECT * FROM "shop";
+
 
 SELECT * FROM "notifications";
 

@@ -363,7 +363,7 @@ textarea:focus, input:focus{
 }
 
 /* 상품 탭 리스트 아이템들 */
-.myshop--tab1__gridcontainer>div{
+.myshop--tab1__gridcontainer>a{
     height: 200px;
     margin: 6px;
     /* border: 1px solid black; */
@@ -374,13 +374,13 @@ textarea:focus, input:focus{
 }
 
 /* 상품 탭 리스트 아이템들 마우스 hover 시 */
-.myshop--tab1__gridcontainer>div:hover{
+.myshop--tab1__gridcontainer>a:hover{
     transform: translate(-2px, -2px);
 }
 
 /* 상품 탭  리스트 아이템 사진, 상세설명 비율 */
-.tab1--gridcontainer__item>div:first-of-type{ height: 70%; }
-.tab1--gridcontainer__item>div:last-of-type{ height: 30%; }
+.tab1--gridcontainer__item>a>div:first-of-type{ height: 70%; }
+.tab1--gridcontainer__item>a>div:last-of-type{ height: 30%; }
 
 /* 상품 탭 리스트 아이템 이미지 크롭 */
 .tab1--item__img{

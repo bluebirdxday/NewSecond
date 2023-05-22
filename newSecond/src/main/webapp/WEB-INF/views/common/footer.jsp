@@ -26,8 +26,8 @@
         <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
+    <jsp:include page="/WEB-INF/views/util/alarmMessage.jsp"/>
     <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
-
 
 </footer>
 
@@ -38,6 +38,7 @@
         toastTrigger.click();
     </script>
 </c:if>
+
 
 
 <c:if test="${empty loginUser}" >
@@ -68,5 +69,12 @@
         document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
         toastTrigger.click();
     });
+    </script>
+</c:if>
+
+
+<c:if test="${not empty alarm}" >
+    <script>
+        alarmTrigger.click();
     </script>
 </c:if>

@@ -52,4 +52,11 @@
 		INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 
 			#{targetNo}, '${senderNo}${notificationMessage}', DEFAULT, DEFAULT, 'F')
 	</insert>
+	
+	
+	<!-- 등록 키워드 개수 조회 -->
+	<select id="selectKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = #{userNo}
+	</select>
+	
 </mapper>

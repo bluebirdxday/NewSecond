@@ -31,7 +31,11 @@ public class NotificationController {
 	
 	// 알림 페이지로 이동
 	@GetMapping("/notification")
-	public String notification() {
+	public String notification(@SessionAttribute(value="loginUser", required=false) User loginUser, Model model) {
+		
+		int keywordCount = service.selectKeywordCount(loginUser.getUserNo());
+		model.addAttribute("keywordCount", keywordCount);
+		
 		return "notification/notification";
 	}
 	

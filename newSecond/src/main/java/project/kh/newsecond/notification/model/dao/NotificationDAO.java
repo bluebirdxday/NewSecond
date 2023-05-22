@@ -39,4 +39,9 @@ public class NotificationDAO {
 		return sqlSession.insert("NotificationMapper.insertNotification", noti);
 	}
 
+	// 등록 키워드 개수 조회
+	public int selectKeywordCount(int userNo) {
+		return sqlSession.selectOne("NotificationMapper.selectKeywordCount", userNo);
+	}
+
 }
