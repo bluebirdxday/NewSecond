@@ -7,6 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.myPage.model.dao.MyPageDAO;
 
+/**
+ * @author user1
+ *
+ */
 @Service
 public class MyPageServiceImpl implements MyPageService{
 	
@@ -16,8 +20,20 @@ public class MyPageServiceImpl implements MyPageService{
 	@Autowired 
 	private BCryptPasswordEncoder bcrypt;
 	
+	// 닉네임 중복 체크
+	@Override
+	public int checkNickname(String userNickname) {
+		return dao.checkNickname(userNickname);
+	}
 	
-	
+	// 닉네임 변경
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int changeNickname(int userNo, String userNickname) {
+		return dao.changeNickname(userNo, userNickname);
+	}
+
+
 	// 비밀번호 변경 서비스
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -36,6 +52,8 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return 0;
 	}
+
+
 
 
 	// 유저 탈퇴 서비스

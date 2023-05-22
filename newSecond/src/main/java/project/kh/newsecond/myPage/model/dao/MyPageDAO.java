@@ -12,6 +12,21 @@ public class MyPageDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// 닉네임 중복 체크
+	public int checkNickname(String userNickname) {
+		return sqlSession.selectOne("myPageMapper.checkNickname",userNickname);
+	}
+	
+	// 닉네임 변경
+	public int changeNickname(int userNo, String userNickname) {
+		
+		User user = new User();
+		user.setUserNo(userNo);
+		user.setUserNickname(userNickname);
+		
+		return sqlSession.update("myPageMapper.changeNickname", user);
+	}
+	
 	// DB에 있는 회원의 비밀번호 조회(비밀번호 대조군)
 	public String selectEncPw(int userNo) {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", userNo);
@@ -33,6 +48,12 @@ public class MyPageDAO {
 	public int secession(int userNo) {
 		return sqlSession.update("myPageMapper.secession", userNo);
 	}
+
+
+
+
+
+	
 
 	
 	

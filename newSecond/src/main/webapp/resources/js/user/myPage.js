@@ -1,4 +1,35 @@
+/* --------- 내정보 수정 파트 -------*/
 
+//닉네임 수정
+document.getElementById("nicknameCheck").addEventListener("submit",e=>{
+
+    const userNickname = document.getElementById("userNickname");
+    const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+    const regEx = /^[가-힣\w\d]{2,10}$/;
+
+    if(!regEx.test(userNickname.value)){ // 유효성 검사 맞지 않으면
+        tooltip.setContent({'.tooltip-inner': '닉네임 형태가 맞지 않습니다. <br> 한글,영어,숫자조합의 2~10글자를 입력해주세요'});
+        userNickname.focus(); 
+        e.preventDefault();
+        return;
+    }
+    
+});
+
+//전화번호 수정
+document.getElementById("TelCheck").addEventListener("click",()=>{
+
+
+});
+
+//주소 수정
+document.getElementById("addressCheck").addEventListener("click",()=>{
+
+
+});
+
+
+/* ----------------------------------*/
 
 // 비밀번호 변경 
 const changePwFrm = document.getElementById("changePwFrm");
