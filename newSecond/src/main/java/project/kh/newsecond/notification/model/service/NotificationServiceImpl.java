@@ -58,4 +58,11 @@ public class NotificationServiceImpl implements NotificationService{
 		return dao.selectShopInfo(senderNo);
 	}
 
+
+	// 알림 리스트 조회
+	@Override
+	public List<Notification> selectNotificationList(int userNo) {
+		return dao.selectNotificationList(userNo);
+	}
+
 }

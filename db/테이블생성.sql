@@ -549,8 +549,7 @@ SELECT * FROM "notice";
 
 INSERT INTO "notice"
 VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지', '안녕하세요. 관리자입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT);
-
-ALTER TABLE "notice" ADD NOTICE_FL CHAR(1) DEFAULT 'N' CONSTRAINT NOTICE_CHECK_FL_CHK CHECK(NOTICE_FL IN('N', 'Y'));
+INSERT INTO "users"
 
 
 COMMIT;
@@ -581,16 +580,6 @@ ADD CONSTRAINT NOTIFICATION_KIND_FL_CHK CHECK (NOTIFICATION_TYPE IN ('F', 'P', '
 SELECT * FROM "notifications";
 UPDATE "notifications" SET NOTIFICATION_KIND = 'N';
 
-COMMENT ON COLUMN "goods_board"."QNA_TYPE" IS '게시글 상태(A:거래신고, B:회원/계정 C:오류/제안 D:채팅/알람)';
 
-UPDATE "qna" 
-SET QNA_DELETE_FL = 'Y' 
-WHERE QNA_NO = '19';
-
-SELECT * FROM "notice";
-
-SELECT COUNT(*)
-FROM "qna"
-WHERE QNA_DELETE_FL = 'N'
-ORDER BY QNA_NO DESC;
-;
+ALTER TABLE "notifications" ADD NOTIFICATION_URL VARCHAR2(90);
+COMMENT ON COLUMN "notifications"."NOTIFICATION_URL" IS '연결 주소';

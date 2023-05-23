@@ -85,6 +85,7 @@
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
 
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="/resources/js/goods/searchGoodsList.js"></script>
 
 </header>

@@ -53,4 +53,11 @@ public interface NotificationService {
 	 * @return shop
 	 */
 	Notification selectShopInfo(int senderNo);
+
+
+	/** 알림 리스트 조회
+	 * @param loginUserNo
+	 * @return notificationList
+	 */
+	List<Notification> selectNotificationList(int loginUserNo);
 }

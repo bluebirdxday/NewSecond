@@ -318,28 +318,26 @@ SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = 1;
 
 
 -- (알림 리스트 INSERT 후)알림 조회 + sender 회원의 shop정보
-SELECT FROM "notifications";
-
-INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
-
-
-
+SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, 
+	SHOP_TITLE, SHOP_INFO, SHOP_PROFILE
+FROM "notifications" n
+JOIN "shop" s ON(SENDER_NO=s.USER_NO);
 
 
+INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 5, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
 
+DELETE FROM "notifications"
+WHERE SENDER_NO=1;
 
+COMMIT;
 
+SELECT * FROM "notifications";
 
-
-
-
-
-
-
-
-
-
-
+SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, 
+			SHOP_TITLE, SHOP_INFO, NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE
+		FROM "notifications" n
+		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
+ORDER BY NOTIFICATION_CREATE_DT DESC;
 
 
 
@@ -350,17 +348,19 @@ INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 �
 
 
 
--- 회원 탈퇴 관련
 
-SELECT USER_PASSWORD
-FROM "users"
-WHERE USER_NO = 33
-;
 
-UPDATE "users" 
-SET USER_STATUS = 'D'
-WHERE USER_NO = 33
-;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
