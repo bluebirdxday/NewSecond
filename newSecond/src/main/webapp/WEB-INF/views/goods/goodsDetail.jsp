@@ -103,6 +103,7 @@
     <script>
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
+        const goodsUserNo = ${shop.userNo};
     </script>
 
         <!-- footer -->
