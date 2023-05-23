@@ -75,7 +75,7 @@
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>
 
-				<c:if test="${not empty loginUser}" >
+				<%-- <c:if test="${not empty loginUser}" >
 					<section class="mainPage--goodsContainer2 mt-5">
 
 						<span class="mainPage--imgs__title">최근 본 상품</span>
@@ -99,7 +99,7 @@
 						</div>
 						<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 					</section>
-				</c:if>
+				</c:if> --%>
 
 				<section class="mainPage--goodsContainer3 mt-5">
 
