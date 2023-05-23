@@ -74,8 +74,16 @@
 	ORDER BY NOTICE_NO DESC
 	</select>
 	
-	<!--  특정 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<!--  공지사항 삭제되지 않은 게시글의 수 조회-->	
 	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "notice"
+	WHERE NOTICE_FL = 'N'
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+		<!--  문의사항 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getqnaListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
 	SELECT COUNT(*)
 	FROM "qna"
 	WHERE QNA_DELETE_FL = 'N'
@@ -89,7 +97,7 @@
 	  CASE 
 	    WHEN USER_STATUS = 'A' THEN '정상'
 	    WHEN USER_STATUS = 'B' THEN '블락'
-	    WHEN USER_STATUS = 'C' THEN '탈퇴'
+	    WHEN USER_STATUS = 'D' THEN '탈퇴'
 	  END AS USER_STATUS
 	  ,ENROLL_DT
 	FROM "users"  
@@ -180,10 +188,10 @@
 	
 	</update>
 	
-	
+	<!-- 회원 탈퇴  -->
 	<update id="userSignOut">
 	UPDATE "users"
-	SET USER_STATUS = 'B'
+	SET USER_STATUS = 'D'
 	WHERE USER_NO = #{userNo}
 	
 	</update>
@@ -195,5 +203,13 @@
 	  WHERE QNA_NO = #{qnaNo}
       </update>
       
+      
+      	<!-- 회원 블락  -->
+	<update id="userBlock">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
       
 </mapper>

@@ -19,6 +19,7 @@ public class Notification {
 	private String readOrNot;
 	private String sendDate;
 	private String notificationType;
+	private String notificationURL;
 	
 	private String shopTitle;
 	private String shopProfile;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,11 +44,11 @@
 
                     <div class="priceViewResult--main__bottomBox">
                         <div class="priceViewResult--main__LeftBox">
-                            <div>시세금액</div>
+                            <div>최근 시세금액</div>
                             <div class="chart">
-                                    <div id="month1" style="display: none">${result}</div>
-                                    <div id="month2" style="display: none">${result2}</div>
-                                    <div id="month3" style="display: none">${result3}</div>
+                                <div id="month1" style="display: none">${result}</div>
+                                <div id="month2" style="display: none">${result2}</div>
+                                <div id="month3" style="display: none">${result3}</div>
                                 <div class="myChartBox">
                                     <canvas class="myChart" id="myChart"></canvas>
                                 </div>
@@ -58,10 +59,10 @@
 
                         <div class="priceViewResult--main__RightBox">
 <!-- <%-- URL의 keyword=iphone의 keyword를 넣음 --%> -->
-                            <div>한달 내 <%= keyword %> 시세금액</div>
+                            <div>한달 내 ${param.keyword} 시세금액</div>
                             <div>
 <!-- <%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>   -->                          
-                                <div style="font-style: italic;"> 약 ${result} 원</div>
+                                <div style="font-style: italic;"> 약 <fmt:formatNumber value="${result}" pattern="##,###,###"/> 원</div>
                             </div>
                         </div>
                     </div>
@@ -78,100 +79,54 @@
                 <div>최근 등록된 상품</div>
             </section>
 
-            <!--  -->
-
+<!-- form 태그 시작 -->
+            <%--  --%>
+            <form>
             <section class="content--priceViewResult__bottomMain">
                 <aside class="content--aside__bLeft"></aside>
 
                 <section class="priceViewResult--bBackground">
-                    <div class="priceViewResult--main__bBox">
 
-                        <a href="#">
-                            <img src="">
-                            <div>120,000원</div>
-                            <div>아이폰12 부품용 싸게 팝니다!</div>
-                        </a>
-                        <a href="#">
-                            <img src="/">
-                            <div>500,000원</div>
-                            <div>아이폰12 싸게 팝니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="">
-                            <div>450,000원</div>
-                            <div>[iPhone12] 아이폰12 128GB 화이트 공기계</div>
-                        </a>
-                        <a href="#">
-                            <img src="">
-                            <div>780,000원</div>
-                            <div>아이폰12 프로 256기가 퍼시픽블루 S급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>480,000원</div>
-                            <div>아이폰 12 64기가 Iphone 12</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>700,000원</div>
-                            <div>아이폰12 프로 맥스 128g 최상급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>470,000원</div>
-                            <div>아이폰12 스페이스그레이</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>650,000원</div>
-                            <div>아이폰 12프로 512기가 퍼시픽 블루 iphone 12 pro</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>700,000원</div>
-                            <div>아이폰12프로 128g iPhone 12 pro 퍼시픽블루 s급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>650,000원</div>
-                            <div>아이폰 12프로 맥스 256GB (iphone 12pro max) 자급제 A급</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>500,000원</div>
-                            <div>아이폰12프로(12pro) 실버 128기가 판매합니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>600,000원</div>
-                            <div>아이폰12 프로맥스 골드 (iPhone 12 pro max gold) 256기가</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>580,000원</div>
-                            <div>아이폰 12 풀구성 X,Xs,12프로,13,13프로</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>500,000원</div>
-                            <div>아이폰12 싸게 팝니다</div>
-                        </a>
-                        <a href="#">
-                            <img src="#">
-                            <div>620,000원</div>
-                            <div>[리퍼/미사용]아이폰12pro, 아이폰12프로 256GB 그라파이트</div>
-                        </a>
-                    </div>
+                    <%-- 검색 결과 없을 시 --%>
+                    <c:choose>
+                        <c:when test="${empty searchList}" >
+                            <div class="priceViewResult--main__bBox">
+                                <div class="emptyList">${keyword}에 해당하는 상품/상점이 없습니다.</div>
+                            </div>
+                        </c:when>
+                        <%-- 검색 결과 있을 시 --%>
+                        <c:otherwise>
+                            <div class="priceViewResult--main__bBox">
+                                <c:forEach items="${searchList}" var="item" begin="0" end="14">
+                                    <div class="item">
+                                        <c:choose>
+                                            <c:when test="${not empty item.thumbnail}">
+                                            <img src="${item.thumbnail}" alt="상품 사진">
+                                            </c:when>
+                                            <c:otherwise>
+                                            <img src="/resources/src/img/no_image.jpeg">
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <div><fmt:formatNumber value="${item.goodsPrice}" pattern="##,###,###"/>원</div>
+                                        <div>${item.goodsTitle}</div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
 
                 <aside class="content--aside__bRight"></aside>
             </section>
-
+            </form>
             <!--  -->
 
             <section class="content--priceViewResult__bottomPlus">
-<!-- <%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 href 작성 --%> -->
-                <a href="#"><button>더보기</button></a>
+<!-- <%-- 더보기를 눌렀을 때는 <%= keyword %>으로 검색한 페이지로 이동되도록 form 작성 --%> -->
+            <form action="/goods/search/goodsList" method="GET">
+                <input type="hidden" name="query" value="${param.keyword}" />
+                <button>더보기</button>
+            </form>
             </section>
         </section>
         <!-- bottomFrame -->

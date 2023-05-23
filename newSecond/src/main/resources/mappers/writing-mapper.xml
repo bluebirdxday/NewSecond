@@ -66,8 +66,8 @@
 	</insert> -->
 	
 	<!-- 글쓰기 내용 삽입 중 이미지 삽입2 -->
-	<insert id="writingImageInsert" parameterType="List">
-		INSERT INTO "files"
+	<insert id="writingImageInsert">
+		INSERT INTO "files" (FILE_NO, GOODS_NO, FILE_NAME, FILE_ORDER, FILE_PATH)
 		SELECT SEQ_FILE_NO.NEXTVAL, A.*
 		FROM (
 			<foreach collection="list" item="img" separator=" UNION ALL ">

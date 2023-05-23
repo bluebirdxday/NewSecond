@@ -44,17 +44,18 @@
                     </span>
                 </div>
 
-                <div>
+
+                <div class = "myshop--info__btn-container">
                     <c:if test="${loginUserNo==shop.userNo}" >
                         <div class="myshop--info__btn-edit">편집</div>
                     </c:if>
 
                     <c:if test="${loginUserNo!=shop.userNo}" >
                         <c:if test="${checkFollow==0}">
-                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo})">팔로우</button>
+                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo}, 'shopOwnerFollow')">팔로우</button>
                         </c:if>
                         <c:if test="${checkFollow==1}">
-                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo})">언팔로우</button>
+                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo}, 'shopOwnerUnfollow')">언팔로우</button>
                         </c:if>
                     </c:if>
                 </div>
@@ -143,10 +144,10 @@
             
             <div class="tabs">
                 <ul>
-                    <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
-                    <li><a href="#" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
-                    <li><a href="#" rel="tab3">팔로잉 <div id="followingCount">${fn:length(followList)}</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div id="followerCount">${fn:length(followerList)}</div></a></li>
+                    <li class="tabs--active"><a href="javascript:void(0);" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab3">팔로잉 <div id="followingCount">${fn:length(followList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab4">팔로워 <div id="followerCount">${fn:length(followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -342,6 +343,7 @@
                     <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
                 </c:if>
             </div>
+
         </div>
 
     </section>

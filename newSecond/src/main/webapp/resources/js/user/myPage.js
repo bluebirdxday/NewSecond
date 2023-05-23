@@ -32,6 +32,33 @@ document.getElementById("TelCheck").addEventListener("submit", e => {
 
 });
 
+const userSearch = document.getElementById("addressSearch");
+const userAddressPostcode = document.getElementById("userAddress_postcode");
+const addressMessasge =document.getElementById("addressMessage");
+const valueRecognizer = document.getElementById("valueRecognizer")
+
+userSearch.addEventListener("click", () =>{
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = ''; 
+
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else { 
+                addr = data.jibunAddress;
+            }
+
+            document.getElementById('userAddress_postcode').value = data.zonecode;
+            document.getElementById("userAddress_address").value = addr;
+
+            document.getElementById("userAddress_detailAddress").focus();
+
+            valueRecognizer.click();
+        }
+    }).open();
+
+})
+
 
 
 /* ----------------------------------*/

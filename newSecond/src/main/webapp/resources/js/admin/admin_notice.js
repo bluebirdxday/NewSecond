@@ -50,10 +50,10 @@ function boardSelectAll(boardSelectAll)  {
 
 
 document.getElementById("deleteBtn").addEventListener("click", function() {
-  var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
-  var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
+  var checkboxes = document.getElementsByClassName("admin_user_checkbox");
+  var checkboxesNo = document.getElementsByClassName("admin_user_checkbox_no")
   var selectedItems = [];
-  var noticeUpdateFrm = document.getElementById("noticeUpdateFrm");
+  var noticeUpdateFrm = document.getElementById("userUpdateFrm");
 
   
   for (var i = 0; i < checkboxes.length; i++) {

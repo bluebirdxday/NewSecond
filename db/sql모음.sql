@@ -318,37 +318,26 @@ SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = 1;
 
 
 -- (알림 리스트 INSERT 후)알림 조회 + sender 회원의 shop정보
-SELECT FROM "notifications";
-
-INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
-
-
-
+SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, 
+	SHOP_TITLE, SHOP_INFO, SHOP_PROFILE
+FROM "notifications" n
+JOIN "shop" s ON(SENDER_NO=s.USER_NO);
 
 
+INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 5, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
 
+DELETE FROM "notifications"
+WHERE SENDER_NO=1;
 
+COMMIT;
 
+SELECT * FROM "notifications";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, 
+			SHOP_TITLE, SHOP_INFO, NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE
+		FROM "notifications" n
+		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
+ORDER BY NOTIFICATION_CREATE_DT DESC;
 
 -- 회원 탈퇴 관련
 
@@ -363,5 +352,56 @@ WHERE USER_NO = 33
 ;
 
 
+-- 최근 업데이트된 상품 => ROWBOUND로 5개만 검색
+SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+	(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	WHERE F.GOODS_NO = G.GOODS_NO
+	AND FILE_ORDER = 1) THUMBNAIL
+FROM "goods_board" G
+JOIN "shop" USING (USER_NO);
+
+-- 조회수 기준 상품 조회
+SELECT ROW_NUMBER() OVER (ORDER BY VIEW_COUNT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+	(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	WHERE F.GOODS_NO = G.GOODS_NO
+	AND FILE_ORDER = 1) THUMBNAIL
+FROM "goods_board" G
+JOIN "shop" USING (USER_NO)
+;
+
+SELECT * FROM "goods_board" 
+ORDER BY VIEW_COUNT
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--유저
+SELECT * FROM "users";
+
+UPDATE "users"
+SET USER_STATUS = 'A'
+WHERE USER_NO = '36';
 
 

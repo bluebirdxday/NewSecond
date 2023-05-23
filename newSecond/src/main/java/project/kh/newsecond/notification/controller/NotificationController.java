@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
@@ -33,8 +34,13 @@ public class NotificationController {
 	@GetMapping("/notification")
 	public String notification(@SessionAttribute(value="loginUser", required=false) User loginUser, Model model) {
 		
-		int keywordCount = service.selectKeywordCount(loginUser.getUserNo());
+		int loginUserNo = loginUser.getUserNo();
+		
+		int keywordCount = service.selectKeywordCount(loginUserNo);
+		List<Notification> notificationList = service.selectNotificationList(loginUserNo);
+		
 		model.addAttribute("keywordCount", keywordCount);
+		model.addAttribute("notificationList", notificationList);
 		
 		return "notification/notification";
 	}
