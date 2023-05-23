@@ -25,8 +25,12 @@ next.addEventListener('click', () => {
 const goodsLike = document.getElementById("goodsLike");
 
 goodsLike.addEventListener("click",e=>{
+    if(loginUserNo == goodsUserNo){
+        // e.preventDefault();
+        return;
+    }
+
     if(loginUserNo == ""){
-        console.log(loginUserNo);
         document.getElementById('toastBody').innerText = "로그인 후 이용해주세요!";
         document.getElementById('liveToast').classList.add('text-bg-danger');
         toastTrigger.click();

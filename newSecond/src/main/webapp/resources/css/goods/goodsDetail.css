@@ -58,6 +58,7 @@
     margin-left: 5px;
     /* transition-duration: 0.2s; */
     opacity: 0.6;
+    cursor: pointer;
 }
 .next{
     width: 30px;
@@ -73,6 +74,7 @@
     margin-top: 135px;
     /* transition-duration: 0.2s; */
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .container--inner__top__left img{
@@ -282,7 +284,7 @@
     margin-top: 15px;
     margin-left: 10px;
     color: #848383;
-    /* white-space: pre-wrap; */
+    white-space: pre-wrap;
 }
 
 

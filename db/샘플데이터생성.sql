@@ -196,27 +196,21 @@ VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지10', '안녕하세요. 관�
 INSERT INTO "notice"
 VALUES(SEQ_NOTICE_NO.NEXTVAL, '뉴세컨마켓 공지11', '안녕하세요. 관리자11입니다. 뉴세컨마켓 공지 올립니다.', DEFAULT,DEFAULT);
 
---공지사항
+
 SELECT * FROM "notice"
 ORDER BY NOTICE_NO DESC;
 
 COMMIT;
 
 SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
-FROM UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
+FROM "notice"
 WHERE NOTICE_NO = 1
 ORDER BY NOTICE_NO DESC;
 
 SELECT * FROM "qna";
 
---공지사항 업데이트문
-
-UPDATE "notice" 
-SET NOTICE_FL = 'Y' 
-WHERE NOTICE_NO = '34';
-
---문의사항
-SELECT *FROM "qna" ;
+SELECT *
+FROM "qna" ;
 
 SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
 	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD')
@@ -239,4 +233,29 @@ INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비
 
 COMMIT;
 
+INSERT INTO "shop" VALUES(25,
+               (SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS 
+					FROM DUAL), '안녕하세요, '||(SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0')
+					FROM DUAL)||'에 오신것을 환영합니다!'
+               NULL, NULL
+               );
+              
+              
+INSERT INTO "shop" VALUES (
+    25,
+    (SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS random_string
+     FROM DUAL),
+    (SELECT ('안녕하세요 '||(SELECT random_string FROM
+     (SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS random_string FROM DUAL))||' 상점에 오신 것을 환영합니다!') FROM DUAL),
+    NULL
+);
+              
+SELECT * FROM "shop";
+
+(SELECT ('안녕하세요 '||(SELECT random_string FROM
+     (SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS random_string FROM DUAL))||' 상점에 오신 것을 환영합니다!') FROM DUAL);
+
+
+SELECT LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 6, '0')
+FROM DUAL;
 

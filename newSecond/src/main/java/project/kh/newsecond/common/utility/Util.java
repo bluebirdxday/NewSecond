@@ -14,7 +14,6 @@ public class Util {
 		return content;
 	}
 	
-	
 	// 파일명 변경 메소드
 	public static String fileRename(String originFileName) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");

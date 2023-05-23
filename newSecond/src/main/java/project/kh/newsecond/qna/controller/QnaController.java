@@ -45,11 +45,23 @@ public class QnaController {
 				Model model
 				,Qna qna){
 			
-			String qnaType = qna.getQnaType();
-			int qnaNo = qnaService.qnaInsert(qna);
+			String message = null;
+			String alertType = null;
 			
+			int result = qnaService.qnaInsert(qna);
+			
+			if(result>0) {
+				message = "문의사항이 접수되었습니다.";
+				alertType = "success";
+			}
+			else {
+				message = "문의사항을 접수할 수 없습니다.";
+				alertType = "fail";
+			}
 		
 			model.addAttribute("Qna",qna);
+			model.addAttribute("message", message);
+			model.addAttribute("alertType", alertType);
 			
 			return "qna/qna_check";
 		

@@ -56,10 +56,10 @@
 				
 				<section class="mainPage--goodsContainer1 mt-5">
 
-					<span class="mainPage--category__title">최근 업데이트된 상품</span>
+					<span class="mainPage--imgs__title">최근 업데이트된 상품</span>
 					<div class="row row-cols-5">
 						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
-							<div class="col">
+							<div class="col mainPage--item__container">
 								<a href="/goods/${recentGood.goodsNo}">
 									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${recentGood.thumbnail}" 
@@ -78,7 +78,7 @@
 				<c:if test="${not empty loginUser}" >
 					<section class="mainPage--goodsContainer2 mt-5">
 
-						<span class="mainPage--category__title">최근 본 상품</span>
+						<span class="mainPage--imgs__title">최근 본 상품</span>
 
 						<div class="row row-cols-5 ">
 							<div class="col ">
@@ -103,11 +103,11 @@
 
 				<section class="mainPage--goodsContainer3 mt-5">
 
-					<span class="mainPage--category__title">조회수 높은 인기 상품</span>
+					<span class="mainPage--imgs__title">조회수 높은 인기 상품</span>
 
 					<div class="row row-cols-5">
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
-							<div class="col">
+							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
 									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
@@ -123,7 +123,7 @@
 
 					<div class="row row-cols-5 mt-4">
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
-							<div class="col">
+							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
 									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
