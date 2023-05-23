@@ -60,8 +60,8 @@
 					<div class="row row-cols-5">
 						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
 							<div class="col">
-								<a class="mainPage--item" href="/goods/${recentGood.goodsNo}">
-									<img class="border border-4 rounded-3" 
+								<a href="/goods/${recentGood.goodsNo}">
+									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${recentGood.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -108,8 +108,8 @@
 					<div class="row row-cols-5">
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
 							<div class="col">
-								<a class="mainPage--item" href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3" 
+								<a href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -124,8 +124,8 @@
 					<div class="row row-cols-5 mt-4">
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
 							<div class="col">
-								<a class="mainPage--item" href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3" 
+								<a href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-4 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
