@@ -70,23 +70,15 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 	            noti.setShopTitle(shop.getShopTitle());
 	            noti.setShopProfile(shop.getShopProfile());
 	            
-	            System.out.println("-------------------------------------------------------------------------------------------");
-	            System.out.println("noti : " + noti);
-	            System.out.println("noti : " + noti);
 	            
 	            for(WebSocketSession s : sessions) {
 	                
 	                // 로그인된 회원 정보 중 회원 번호 얻어오기
 	                int loginUserNo = ((User)s.getAttributes().get("loginUser")).getUserNo();
 	                
-	                System.out.println("-------------------------------------------------------------------------------------------");
-	                System.out.println(noti.getTargetNo());
-	                System.out.println("-------------------------------------------------------------------------------------------");
-	                System.out.println(noti.getSenderNo());
 	                
-	                // 로그인 상태인 회원 중 targetNo가 일치하는 회원에게 메세지 전달
+	                // 로그인 상태인 회원 중 targetNo가 일치하는 회원에게 알림 전달
 	                if(loginUserNo == noti.getTargetNo()) {
-	                    
 	                    s.sendMessage(new TextMessage(new Gson().toJson(noti)));
 	                }
 	            }
@@ -94,7 +86,6 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 	        }
 		
 		}
-		
 		
 
 		// - 클라이언트와 연결이 종료되면 실행
