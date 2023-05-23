@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,8 +56,14 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	// 최근 업데이트된 게시글 목록 5가지
 	@Override
 	public List<GoodsBoard> selectRecentGoodsList5() {
-		return dao.selectRecentGoodsList5();
+		
+		
+		List<GoodsBoard> RecentGoodsList5 = dao.selectRecentGoodsList5();
+		
+		return RecentGoodsList5;
 	}
+
+	
 	
 	// 로그인 유저 기준 최근 본 상품 5가지
 	/* @Override */
@@ -66,11 +73,13 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	}*/
 	
 	// 조회수 높은 인기 상품 목록 10가지
-	/*@Override*/
-	/*public List<GoodsBoard> selectMostViewedList10() {
-		// TODO Auto-generated method stub
-		return dao.selectMostViewedList10();
-	}*/
+	@Override
+	public List<GoodsBoard> selectMostViewedList10() {
+		
+		List<GoodsBoard> selectMostViewedList10 = dao.selectMostViewedList10();
+		
+		return selectMostViewedList10;
+	}
 	 
 	 
 	 

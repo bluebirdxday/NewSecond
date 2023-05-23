@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -50,24 +53,24 @@
 						</button>
 					</div>
 				</section>	
-
+				
 				<section class="mainPage--goodsContainer1 mt-5">
 
 					<span class="mainPage--category__title">최근 업데이트된 상품</span>
-
 					<div class="row row-cols-5">
-						<c:forEach items="${recentGoodsList}" var="recentGoods" begin="0" end="4">
-							<a href="/goods/${recentGoods.goodsNo}"
-							data-bs-toggle="tooltip" 
-							data-bs-placement="top" 
-							data-bs-title="${recentGoods.goodsTitle}"
-							>
-								<img src="${recentGoods.thumbnail}">
-							</a>
+						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
+							<div class="col">
+								<a class="mainPage--item" href="/goods/${recentGood.goodsNo}">
+									<img class="border border-4 rounded-3" 
+									src="${recentGood.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${recentGood.goodsTitle}"
+									>
+								</a>
+							</div>
 						</c:forEach>
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
 					</div>
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>
@@ -103,39 +106,35 @@
 					<span class="mainPage--category__title">조회수 높은 인기 상품</span>
 
 					<div class="row row-cols-5">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
+						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
+							<div class="col">
+								<a class="mainPage--item" href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-4 rounded-3" 
+									src="${mostViewed.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${mostViewed.goodsTitle}"
+									>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 
 					<div class="row row-cols-5 mt-4">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
+						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
+							<div class="col">
+								<a class="mainPage--item" href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-4 rounded-3" 
+									src="${mostViewed.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${mostViewed.goodsTitle}"
+									>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>

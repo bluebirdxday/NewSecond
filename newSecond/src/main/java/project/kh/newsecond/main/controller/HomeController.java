@@ -1,5 +1,6 @@
 package project.kh.newsecond.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,27 +15,29 @@ import project.kh.newsecond.user.model.dto.User;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private GoodsBoardService service;
-	
+
 	@RequestMapping("/")
 	public String homeForward(User loginUser, Model model) {
+
+		// 최근 업데이트된 게시글 상품 5가지에 대한 리스트
+		List<GoodsBoard> recentGoodsList5 = service.selectRecentGoodsList5();
+		model.addAttribute("recentGoodsList5", recentGoodsList5);
+
 		
-		List<GoodsBoard> recentGoodsList = service.selectRecentGoodsList5();
-		model.addAttribute(recentGoodsList);
-		/*
-		 * List<GoodsBoard> mostViewedList = service.selectMostViewedList10();
-		 * model.addAttribute(mostViewedList);
-		 */
+		// 조회수 높은 인기 상품 10가지에 대한 리스트
+		List<GoodsBoard> mostViewedList10 = service.selectMostViewedList10();
+		model.addAttribute("mostViewedList10", mostViewedList10);
+		 
+		
 		/*
 		 * if(loginUser != null) { List<GoodsBoard> recentViewedList =
 		 * service.selectrecentViewedList5(); model.addAttribute(recentViewedList); }
 		 */
-		
+
 		return "common/home";
 	}
-	
-	
-	
+
 }

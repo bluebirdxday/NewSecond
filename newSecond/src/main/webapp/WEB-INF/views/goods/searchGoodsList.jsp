@@ -92,7 +92,7 @@
                     </c:otherwise>
                 </c:choose> 
             </div>
-
+            ${searchGoodsList}
 
         </div>
 
