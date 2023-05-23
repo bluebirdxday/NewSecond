@@ -397,4 +397,11 @@ ORDER BY VIEW_COUNT
 
 
 
+--유저
+SELECT * FROM "users";
+
+UPDATE "users"
+SET USER_STATUS = 'A'
+WHERE USER_NO = '36';
+
 
