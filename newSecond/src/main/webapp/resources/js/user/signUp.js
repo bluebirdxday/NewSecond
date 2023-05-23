@@ -200,7 +200,7 @@ userNickname.addEventListener("input", () => {
         nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
         nickMessage.classList.remove("confirm", "error");
 
-        /* checkObj.userNickname = false; */
+        checkObj.userNickname = false;
         userNickname.value="";    
         return;
     }
@@ -218,8 +218,8 @@ userNickname.addEventListener("input", () => {
                 tooltip.setContent({'.tooltip-inner': '<span class="confirm">사용 가능한 닉네임 입니다.</span>'});
                 /* nickMessage.innerText = "사용 가능한 닉네임 입니다";
                 nickMessage.classList.add("confirm");
-                nickMessage.classList.remove("error");
-                checkObj.userNickname = true; */
+                nickMessage.classList.remove("error");*/
+                checkObj.userNickname = true; 
                 
                 
             }else{ // 중복인 경우
