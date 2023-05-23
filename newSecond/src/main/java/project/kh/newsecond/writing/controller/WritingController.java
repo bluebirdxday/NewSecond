@@ -55,15 +55,15 @@ public class WritingController {
 		
 		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
-		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1); };
-		if(writing.getCategory2().equals("가방"))			{writing.setCategoryNo(2); };
-		if(writing.getCategory2().equals("시계/주얼리"))		{writing.setCategoryNo(3); };
-		if(writing.getCategory2().equals("패션 액세서리"))		{writing.setCategoryNo(4); };
-		if(writing.getCategory2().equals("디지털/가전"))		{writing.setCategoryNo(5); };
-		if(writing.getCategory2().equals("스포츠/레저"))		{writing.setCategoryNo(6); };
-		if(writing.getCategory2().equals("차량/오토바이"))		{writing.setCategoryNo(7); };
-		if(writing.getCategory2().equals("스타굿즈"))			{writing.setCategoryNo(8); };
-		if(writing.getCategory2().equals("키덜트"))			{writing.setCategoryNo(9); };
+		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1);  };
+		if(writing.getCategory2().equals("가방"))			{writing.setCategoryNo(2);  };
+		if(writing.getCategory2().equals("시계/주얼리"))		{writing.setCategoryNo(3);  };
+		if(writing.getCategory2().equals("패션 액세서리"))		{writing.setCategoryNo(4);  };
+		if(writing.getCategory2().equals("디지털/가전"))		{writing.setCategoryNo(5);  };
+		if(writing.getCategory2().equals("스포츠/레저"))		{writing.setCategoryNo(6);  };
+		if(writing.getCategory2().equals("차량/오토바이"))		{writing.setCategoryNo(7);  };
+		if(writing.getCategory2().equals("스타굿즈"))			{writing.setCategoryNo(8);  };
+		if(writing.getCategory2().equals("키덜트"))			{writing.setCategoryNo(9);  };
 		if(writing.getCategory2().equals("예술/희귀/수집품"))	{writing.setCategoryNo(10); };
 		if(writing.getCategory2().equals("음반/악기"))		{writing.setCategoryNo(11); };
 		if(writing.getCategory2().equals("도서/티켓/문구"))	{writing.setCategoryNo(12); };

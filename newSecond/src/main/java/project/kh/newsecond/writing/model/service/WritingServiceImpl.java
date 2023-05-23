@@ -63,8 +63,7 @@ public class WritingServiceImpl implements WritingService {
 					Finalimgs.setFileName( fileRenameTemp ); // 파일 원본명 변경
 					
 					// filePath 설정
-					String webPathTemp = webPath + writing.getUserNo() + "/" + fileRenameTemp;
-					Finalimgs.setFilePath(webPathTemp); // 파일 경로 담기
+					Finalimgs.setFilePath(webPath); // 파일 경로 담기
 					
 					FinalImages.add(Finalimgs); // 최종 컨테이너 FinalImages에 Finalimgs 담기
 					
