@@ -15,7 +15,6 @@ if(searchForm!=null){
 }
 
 // 검색어 유지
-
 (()=>{
     const params = new URL(location.href).searchParams;
     const query = params.get("query");
@@ -23,4 +22,10 @@ if(searchForm!=null){
     (location.pathname == "/goods/search/goodsList"))
     searchQuery.value = query;
 })();
+
+// 판매 완료 상품 제외 비동기
+const soldoutCheck = document.getElementById("check1")
+soldoutCheck.addEventListener('change',()=>{
+
+});
 
