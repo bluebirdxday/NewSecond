@@ -42,7 +42,7 @@ public class QnaController {
 		 */
 		@PostMapping("/qna_check")
 		public String qna_check(
-				Model model
+				Model model, RedirectAttributes ra
 				,Qna qna){
 			
 			String message = null;
@@ -60,8 +60,9 @@ public class QnaController {
 			}
 		
 			model.addAttribute("Qna",qna);
-			model.addAttribute("message", message);
-			model.addAttribute("alertType", alertType);
+			
+			ra.addFlashAttribute("message", message);
+			ra.addFlashAttribute("alertType", alertType);
 			
 			return "qna/qna_check";
 		
