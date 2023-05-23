@@ -69,6 +69,7 @@
                                         <img src="/resources/src/img/no_image.jpeg">
                                     </c:otherwise>
                                 </c:choose>
+                                <%-- <div class="soldoutOrReserv"><div class="searchGoodsStatus">예약중</div></div> --%>
                                 <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
                                 <div class="goods_title">${searchGoods.goodsTitle}</div>
                                 </a>

@@ -113,21 +113,45 @@
     overflow: hidden;
     object-fit: cover;
     border-radius: 15%;
-    /* padding: 15px; */
     display: block;
     box-shadow: 5px 7px 5px #c1c1c1;
     /* border: 1px solid red; */
+    position: relative;
 }
 .container--inner__middle img:hover{
-box-shadow: 5px 5px 5px #a09f9f;
-transition-duration: 0.2s;
+    box-shadow: 5px 5px 5px #a09f9f;
+    transition-duration: 0.2s;
+}
+
+/* 예약중/판매 완료 표시 */
+.soldoutOrReserv{
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 15%;
+    background-color: #000;
+    opacity: 0.4;
+}
+
+/* 예약중 / 판매 완료 나누기 */
+.searchGoodsStatus{
+    position: absolute;
+    border-radius: 5%;
+    font-weight: bold;
+    color: white;
+    /* background-color: #df1616; */
+    background-color: #00ba28;
+    text-align: center;
+    font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 상품 가격, 타이틀 */
 .container--inner__middle div[class*=goods_]{
     /* border: 1px solid red; */
     padding: 5px 15px;
-    display: block;
+    display: flex;
 }
 
 .container--inner__middle a{
@@ -143,6 +167,7 @@ transition-duration: 0.2s;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 10px;
+    width: 210px;
 }
 
 .goods_title{
