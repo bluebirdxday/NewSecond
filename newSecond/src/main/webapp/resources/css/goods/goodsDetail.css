@@ -94,17 +94,20 @@
 .container--inner__top__right__title{
     font-size: 1.7em;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__price{
     font-size: 2.0em;
     font-weight: bold;
     padding: 5px 0;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__viewAndLike{
     display: flex;
     height: 28px;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__viewAndLike *{
@@ -245,6 +248,7 @@
     width: 100px;
     height: 40px;
     border-radius: 20px;
+    opacity: 0.9;
 }
 
 .container--inner__bottom__shopInfo__chattingButton{
@@ -258,6 +262,7 @@
     height: 40px;
     border-radius: 20px;
     margin-left: 15px;
+    opacity: 0.9;
 }
 
 .container--inner__bottom__shopInfo__shopDescibe{
