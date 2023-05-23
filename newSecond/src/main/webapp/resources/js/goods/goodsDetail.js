@@ -63,11 +63,12 @@ goodsLike.addEventListener("click",e=>{
             e.target.setAttribute("src","/resources/src/img/heartBefore.png");
         }else{
             e.target.setAttribute("src","/resources/src/img/heartAfter.png");
+            
+            /* 희진 : 관심상품 등록 알림 */
+            sendLikeBoardNotification(goodsUserNo, goodsNo, loginUserNo);
         }
         document.getElementById("wishCount").innerText = count;
 
-        /* 희진 : 관심상품 등록 알림 */
-        // sendLikeBoardNotification(goodsUserNo, goodsNo, loginUserNo);
     })
     .catch(err => {
         console.log("예외가 발생했습니다.");
@@ -88,12 +89,14 @@ let likeInquireNotiSocket = new SockJS("/inquireNotificationSock");
 
 const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
 
-    let notiGoodTitle =  goodsTitle.substr(0, 9) + "...";
+    const goodsTitle = document.getElementById("goodsTitle").value;
+    
+    let notiGoodTitle =  goodsTitle.substr(0, 11) + "...";
 
     var likeGoodsObj = {
         "senderNo" : loginUserNo,
         "targetNo" : goodsUserNo,
-        "notificationMessage" : "님께서 회원님의 [" + notiGoodTitle + "] 상품을 관심상품으로 추가하였습니다.",
+        "notificationMessage" : "님께서 회원님의 [" + notiGoodTitle + "] 상품을 관심상품으로 등록하였습니다.",
         "notificationType" : "L",
         "notificationURL" : "/goods/" + goodsNo
     };

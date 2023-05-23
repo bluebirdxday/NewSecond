@@ -86,6 +86,7 @@
                                     <img src="/resources/src/img/basic_profile.png">
                                 </c:otherwise>
                             </c:choose>
+                            <input type="hidden" value="${goodsBoard.goodsTitle}" id="goodsTitle">
                         </div>
                         <div class="container--inner__bottom__shopInfo__others">
                             <div class="container--inner__bottom__shopInfo__buttons">
@@ -104,9 +105,6 @@
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
         const goodsUserNo = ${shop.userNo};
-
-        /* 희진 : 관심상품 등록 알림 */
-        const goodsTitle = ${goodsBoard.goodsTitle}
     </script>
 
         <!-- footer -->
