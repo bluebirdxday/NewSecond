@@ -109,7 +109,7 @@
                             <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
                             <td>${qna.qnaEnrollDate}</td>
                             <td>${qna.qnaCheckFl}</td>
-                            <td>${qna.qnaDeleteFl}</td>
+                           <td>${qna.qnaDeleteFl}</td> 
                         </tr>
                     </c:forEach>
                 </c:otherwise>

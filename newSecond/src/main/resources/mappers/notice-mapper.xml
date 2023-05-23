@@ -12,6 +12,7 @@
       <result property="noticeContent" column="NOTICE_CONTENT" />
       <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
       <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
    </resultMap>
    
 	<!--공지사항 게시글 조회  -->
