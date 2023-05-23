@@ -7,7 +7,7 @@ countAll.innerText = tableCount-1;
 
 
 /* 강제 블락 */
-const forcedBlock = document.getElementsByClassName('block');
+/* const forcedBlock = document.getElementsByClassName('block');
 const nameOfStates = document.querySelectorAll('.admin_user_states');
 
 for(let i=0; i<forcedBlock.length;i++){
@@ -20,14 +20,14 @@ for(let i=0; i<forcedBlock.length;i++){
             nameOfStates[i].innerText = '정상';   
         }
     });  
-}
+} */
 
 /* 강제 탈퇴 */
-const forcedSignOut = document.getElementsByClassName('signOut');
+/* const forcedSignOut = document.getElementsByClassName('forcedsignOut');
 
 for(let i=0; i<forcedSignOut.length;i++){
     forcedSignOut[i].addEventListener('click',()=>{
-        if(nameOfStates[i].innerText == '정상'){
+        if(nameOfStates[i].innerText == '정상' || nameOfStates[i].innerText == '블락'){
             forcedSignOut[i].innerText = '강제탙퇴';
             nameOfStates[i].innerText = '탈퇴' ;
         }else if(nameOfStates[i].innerText == '탈퇴'){
@@ -36,7 +36,7 @@ for(let i=0; i<forcedSignOut.length;i++){
         }
     });  
 }
-
+ */
 
 /* 체크박스 전체선택 */
 function userSelectAll(userSelectAll)  {
@@ -48,17 +48,106 @@ function userSelectAll(userSelectAll)  {
     })
   }
 
+/* 강제탈퇴를 눌렀을 때 상태가 탈퇴로 바뀌면서 탈퇴 하는 버튼  */
+
+const forcedsignOut =  document.getElementsByClassName("forcedsignOut");
+const states = document.getElementsByClassName("admin_user_states");
+const signOutH = document.getElementsByClassName("signOutH");
 
 
-  function adminUserSignOut(){
 
-	fetch("/admin_user/signOut",{
-        method : "POST",
-        headers : {"Content-Type": "application/json"},
-        body : JSON.stringify({"USER_NO" : userNo})
-    })
-    .then(resp => resp.text())
-    .then(result => console.log(result))
-    .catch(err => console.log(err));
+for(let i=0; i<forcedsignOut.length; i++){
+  forcedsignOut[i].addEventListener(('click'),()=>{
+
+    if (confirm("정말 탈퇴 하시겠습니까?")) {
+
+    if(states[i].innerText == '정상'){
+    states[i].innerText = '탈퇴';
+    forcedsignOut[i].style.display = "none";
+    signOutH[i].style.display = "block";
+    }
+    else return;
+  
+/*     const forcedsignOut = document.getElementById("forcedsignOut"); */
+/*     const signOutH = document.getElementById("signOutH"); */
+    var signOutUserNo = document.getElementsByClassName("signOutUserNo")[i].value;
+    
+    if(forcedsignOut!=null){
+      signOutUser(signOutUserNo);
+    }
+  }
+  });
+
+}
+
+function signOutUser(userNo){
+
+  console.log(userNo);
+
+  fetch("/admin/admin_user/signOut", {
+    method : "POST",
+    headers : {"Content-Type": "application/json"},
+    body : JSON.stringify({"userNo" : userNo})
+  }).then(resp=> resp.text())
+  .then(result=>{
+    console.log(result);
+
+
+  }).catch(err=> console.log(err));
+
+}
+
+/* 체크박스 전체선택 */
+function userSelectAll(userSelectAll)  {
+  const checkboxes 
+     = document.querySelectorAll('input[type="checkbox"]');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = userSelectAll.checked
+  })
+}
+
+/* 회원블락를 눌렀을 때 상태가 탈퇴로 바뀌면서 탈퇴 하는 버튼  */
+
+const block =  document.getElementsByClassName("block");
+const blockH = document.getElementsByClassName("blockH");
+
+
+for(let i=0; i<block.length; i++){
+  block[i].addEventListener(('click'),()=>{
+
+  if (confirm("정말 블락 하시겠습니까?")) {
+
+  if(states[i].innerText == '정상'){
+  states[i].innerText = '블락';
+  block[i].style.display = "none";
+  blockH[i].style.display = "block";
+  }
+  else return;
+
+  var signOutUserNo = document.getElementsByClassName("signOutUserNo")[i].value;
+  
+  if(block!=null){
+    signOutUser(signOutUserNo);
+  }
+}
+});
+
+}
+
+function signOutUser(userNo){
+
+console.log(userNo);
+
+fetch("/admin/admin_user/block", {
+  method : "POST",
+  headers : {"Content-Type": "application/json"},
+  body : JSON.stringify({"userNo" : userNo})
+}).then(resp=> resp.text())
+.then(result=>{
+  console.log(result);
+
+
+}).catch(err=> console.log(err));
 
 }

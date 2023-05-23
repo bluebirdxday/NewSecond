@@ -181,9 +181,9 @@ function follow(passiveUserNo, loginUserNo, tab){
 
         return fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
     })
-    .then(resp=>resp.json())
+    .then(resp=>{resp.json()})
     .then((followList)=>{
-    
+        
         selectFollowList(followList, tab);
 
         if(userNo==loginUserNo){
@@ -194,7 +194,7 @@ function follow(passiveUserNo, loginUserNo, tab){
     
         if(tab=="following")
             return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-        else
+        if(tab=="follower")
             return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
         
     }).then(resp=> resp.json())
@@ -202,10 +202,22 @@ function follow(passiveUserNo, loginUserNo, tab){
         
         if(tab=="following")
             selectFollowList(followList, "follower");
-            else
+        if(tab=="follower")
             selectFollowList(followList, "following");
     })
-    .catch(err=>{ console.log(err); });
+    .catch(()=>{ 
+
+        if(tab=="shopOwnerFollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+        
+        if(tab=="shopOwnerUnfollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+
+    });
 
 
 }
@@ -213,33 +225,42 @@ function follow(passiveUserNo, loginUserNo, tab){
 
 // 팔로우 알람
 let notificationSock = new SockJS("/notificationSock");
+let inquireNotiSocket = new SockJS("/inquireNotificationSock"); 
 
 const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
     
         var obj = {
             "senderNo": loginUserNo,
             "targetNo": passiveUserNo,
-            "notificationMessage": "님께서 회원님을 팔로우하였습니다.",
-            "notificationType": "F"
+            "notificationMessage": "님께서 회원님을 팔로우하였습니다",
+            "notificationType": "F",
+
         };
 
         notificationSock.send(JSON.stringify(obj));
+
+
+        var obj2 = {
+            "targetNo": passiveUserNo
+        }
+
+        inquireNotiSocket.send(JSON.stringify(obj2));
         
 }
 
 
 
-notificationSock.onmessage = function(e) {
-    // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
-    const msg = JSON.parse(e.data);
+// notificationSock.onmessage = function(e) {
+//     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
+//     const msg = JSON.parse(e.data);
 
-    console.log(msg);
+//     console.log(msg);
 
-    const followMsg = msg.shopTitle + msg.notificationMessage;
+//     const followMsg = msg.shopTitle + msg.notificationMessage;
 
-    document.getElementById('alarmBody').innerText = followMsg;
-    alarmTrigger.click();
-}
+//     document.getElementById('alarmBody').innerText = followMsg;
+//     alarmTrigger.click();
+// }
 
 
 // 상점 언팔로우
@@ -253,11 +274,10 @@ function unFollow(passiveUserNo, loginUserNo, tab){
     .then(resp => resp.text())
     .then(()=>{
 
-        console.log(loginUserNo);
-        
         return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
     })
-    .then(resp=>resp.json())
+    .then(resp=>{ resp.json(); 
+    })
     .then((followList)=>{
 
         selectFollowList(followList, tab);
@@ -270,7 +290,7 @@ function unFollow(passiveUserNo, loginUserNo, tab){
 
         if(tab=="following")
             return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-        else
+        if(tab=="follower")
             return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
             
     }).then(resp=> resp.json())
@@ -278,13 +298,21 @@ function unFollow(passiveUserNo, loginUserNo, tab){
         
         if(tab=="following")
             selectFollowList(followList, "follower");
-            else
+        if(tab=="follower")
             selectFollowList(followList, "following");
     })
-    .catch(err=>{ console.log(err); });
+    .catch(()=>{ 
+        if(tab=="shopOwnerFollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+        
+        if(tab=="shopOwnerUnfollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+     });
     
-
-
 }
 
 
@@ -297,7 +325,9 @@ function selectFollowList(followList, tab){
     
     if(tab=="following"){
         tabContainer = document.querySelector(".following_tab");
-    }else{
+    }
+    
+    if(tab=="follower"){
         tabContainer = document.querySelector(".follower_tab");
     }
 
@@ -331,7 +361,8 @@ function selectFollowList(followList, tab){
 
             if(tab=="following"){
                 aTag.setAttribute("href", "/shop/" + follow.passiveUserNo);
-            }else{
+            }
+            if(tab=="follower"){
                 aTag.setAttribute("href", "/shop/" + follow.activeUserNo);
             }
             
@@ -366,7 +397,9 @@ function selectFollowList(followList, tab){
                     fourthDiv.append(aTag);
                 }
                 
-            }else{
+            }
+            
+            if(tab=="follower"){
 
                 if(follow.followYou==0){
                     followBtn.setAttribute("onclick", `follow(${follow.activeUserNo}, ${userNo}, 'follower')`);
@@ -396,6 +429,29 @@ function selectFollowList(followList, tab){
 
 
 
+
+// 상점 주인 팔로우/언팔로우 버튼 클릭
+function changeProfileFollowBtn(tab, loginUserNo){
+
+   const profileContainer = document.querySelector(".myshop--info__btn-container");
+    
+   profileContainer.innerHTML = "";
+   const followButton = document.createElement("button");
+   followButton.setAttribute("type", "button");
+   
+   if(tab=="shopOwnerFollow"){
+        followButton.classList.add("myshop--info__btn-unfollow");
+        followButton.innerText = "언팔로우"
+        followButton.setAttribute("onclick", "unFollow("+userNo + "," + loginUserNo +", 'shopOwnerUnfollow')");
+    }
+    
+    if(tab=="shopOwnerUnfollow"){
+        followButton.classList.add("myshop--info__btn-follow");
+        followButton.innerText = "팔로우"
+        followButton.setAttribute("onclick", "follow("+userNo + "," + loginUserNo +", 'shopOwnerFollow')");
+    }
+    profileContainer.append(followButton);
+}
 
 
 

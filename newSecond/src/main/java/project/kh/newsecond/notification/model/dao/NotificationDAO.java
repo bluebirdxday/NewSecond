@@ -51,4 +51,9 @@ public class NotificationDAO {
 		return sqlSession.selectOne("NotificationMapper.selectShopInfo", senderNo);
 	}
 
+	// 알림 리스트 조회
+	public List<Notification> selectNotificationList(int userNo) {
+		return sqlSession.selectList("NotificationMapper.selectNotificationList", userNo);
+	}
+
 }

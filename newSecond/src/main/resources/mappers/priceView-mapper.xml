@@ -5,6 +5,24 @@
 	<resultMap type="User" id="user_rm">
 		<id property="userNo" column="USER_NO" /> <!-- id 태그는 PK 조건 -->
 	</resultMap>
+	
+<!-- GoodsBoard 객체와 매핑 -->
+	<resultMap type="GoodsBoard" id="goodsboard_rm">
+		<id property="goodsNo" column="GOODS_NO" /> <!-- id 태그는 PK 조건 -->
+		<result property="userNo" column="USER_NO" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="goodsTitle" column="GOODS_TITLE" />
+		<result property="goodsDescr" column="GOODS_DESCR" />
+		<result property="goodsPrice" column="GOODS_PRICE" />
+		<result property="viewCount" column="VIEW_COUNT" />
+		<result property="wishCount" column="WISH_COUNT" />
+		<result property="sellEnrollDate" column="SELL_ENROLL_DT" />
+		<result property="goodsStatus" column="GOODS_STATUS" />
+		
+		<result property="thumbnail" column="THUMBNAIL" />
+		
+		<result property="shopTitle" column="SHOP_TITLE" />
+	</resultMap>
 
 <!-- PriceViewKeyword 객체와 매핑 -->
 	<resultMap type="PriceViewKeyword" id="priceViewKeyword_rm">
@@ -44,6 +62,19 @@
 		AND SELL_ENROLL_DT >= SYSDATE - INTERVAL '3' MONTH
 		AND SELL_ENROLL_DT < SYSDATE - INTERVAL '2' MONTH
 			]]>
+	</select>
+	
+	<!-- 최신 게시글 15개 뿌리기 -->
+	<select id="selectSearchKeyword" resultMap="goodsboard_rm">
+		SELECT GOODS_NO, USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_PRICE,
+		    (SELECT FILE_PATH || USER_NO || '/' || FILE_NAME FROM "files" F
+		     WHERE F.GOODS_NO = G.GOODS_NO
+		       AND FILE_ORDER = 1) AS THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+		WHERE GOODS_STATUS IN ('A', 'E', 'R')
+		  AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${goodsTitle}%'
+		ORDER BY SELL_ENROLL_DT ASC
 	</select>
 	
 </mapper>

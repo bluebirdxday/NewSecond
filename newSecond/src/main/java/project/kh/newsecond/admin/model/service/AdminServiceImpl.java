@@ -54,12 +54,23 @@ public class AdminServiceImpl implements AdminService {
 
 	
 	/**
-	 *관리자 문의사항 리스트 조회
+	 *관리자 문의사항 리스트 조회 //페이지네이션
 	 */
 	@Override
-	public List<Admin> selectQnaList() {
-	
-		return adminDao.selectQnaList();
+	public Map<String, Object> selectQnaList(int cp) {
+
+		int qnalistCount = adminDao.getqnaListCount();
+		
+		Pagination pagination = new Pagination(qnalistCount, cp);
+		
+		List<Qna> qnaList = adminDao.selectQnaList(pagination);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("qnaList",qnaList);
+		
+		return  map;
 	}
 
 	/**
@@ -141,9 +152,9 @@ public class AdminServiceImpl implements AdminService {
 	  /**
 	 *회원탈퇴 기능
 	 */
-	@Override public int userSignOut(Map<String, Object> paramMap) {
+	@Override public int userSignOut(int userNo) {
 	  
-	  return adminDao.userSignOut(paramMap); 
+	  return adminDao.userSignOut(userNo); 
 	  }
 
 	@Override
@@ -168,6 +179,12 @@ public class AdminServiceImpl implements AdminService {
 	public int qnaDelete(Qna qna) {
 		
 		return adminDao.qnaDelete(qna);
+	}
+
+	@Override
+	public int userBlock(int userNo) {
+		// TODO Auto-generated method stub
+		return adminDao.userBlock(userNo);
 	}
 }
 

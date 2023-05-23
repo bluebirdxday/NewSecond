@@ -197,5 +197,35 @@
 		WHERE GOODS_NO = #{goodsNo}
 	</select>
 		
+	
+		
+	<!-- 메인페이지 - 지환 -->
+	<!-- 최근 업데이트된 상품 -->
+	<select id="selectRecentGoodsList" resultMap="goodsboard_rm">
+		SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1) THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+	</select>
+	
+	
+	<!-- 로그인한 유저가 최근에 본 상품 -->
+	<!-- <select id="selectrecentViewedList" resultMap="goodsboard_rm">
+	
+	</select> -->
+	
+	
+	<!-- 조회수가 높은 상품 -->
+	<select id="selectMostViewedList" resultMap="goodsboard_rm">
+		SELECT ROW_NUMBER() OVER (ORDER BY VIEW_COUNT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1) THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+	
+	</select>
 		
 </mapper>
