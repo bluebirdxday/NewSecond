@@ -14,7 +14,7 @@ public class WritingImage {
 	private int goodsNo;
 	private String fileName;
 	
-	private int fileOrder;
+	private int fileOrder; // 1부터 시작하도록 WritingServiceimple에서 설정함
 	private String filePath;
 	
 	private String fileRename;

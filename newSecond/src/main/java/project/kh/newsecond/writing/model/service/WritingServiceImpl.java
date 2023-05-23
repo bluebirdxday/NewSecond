@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,19 +45,26 @@ public class WritingServiceImpl implements WritingService {
 			
 			for(int i=0; i<images.size(); i++) {
 				
-				if(images.get(i).getSize() > 0) {
+				if(images.get(i).getSize() > 0) { // i+1개의 업로드된 파일이 있다는 소리
 					
 					WritingImage Finalimgs = new WritingImage();
 					
+					int order = i + 1; // 파일 순서는 1번부터
+					
 					// Finalimgs에 매개변수 담기
-					Finalimgs.setFilePath(webPath); // 파일 경로 담기
 					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
-					Finalimgs.setFileOrder(i); // 파일 순서 담기
+					Finalimgs.setFileOrder(order); // 파일 순서 담기
+					
 					
 					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
 					
-					Finalimgs.setFileName(fileName); // 원본명 담기
-					Finalimgs.setFileRename( Util.fileRename(fileName) );
+					String fileRenameTemp = Util.fileRename(fileName); // rename 작업
+					
+					Finalimgs.setFileName( fileRenameTemp ); // 파일 원본명 변경
+					
+					// filePath 설정
+					String webPathTemp = webPath + writing.getUserNo() + "/" + fileRenameTemp;
+					Finalimgs.setFilePath(webPathTemp); // 파일 경로 담기
 					
 					FinalImages.add(Finalimgs); // 최종 컨테이너 FinalImages에 Finalimgs 담기
 					
@@ -67,19 +75,20 @@ public class WritingServiceImpl implements WritingService {
 			// dao 이미지 insert 시도
 			int result2 = dao.writingImageInsert(FinalImages);
 			
-			if(result2 == FinalImages.size()) { // 이미지 insert 성공
+			if(result2 == FinalImages.size()) { // 이미지 insert 성공하면 서버에 업로드 시도
 				
 				for(int i=0; i<FinalImages.size(); i++) {
 					
-					int index = FinalImages.get(i).getFileOrder();
+					int tempIndex = FinalImages.get(i).getFileOrder();
+					int index = tempIndex - 1;
 					
 					// 파일로 변환
-					String rename = FinalImages.get(i).getFileRename();
-					images.get(index).transferTo(new File(filePath + rename));
+					String afterRename = FinalImages.get(i).getFileName();
+					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
 				}
 				
 			} else {
-				// 예외 던지기
+				// 예외 강제 발생
 			} 
 		}
 		return result;
