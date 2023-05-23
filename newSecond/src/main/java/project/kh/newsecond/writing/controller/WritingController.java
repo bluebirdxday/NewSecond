@@ -85,25 +85,22 @@ public class WritingController {
 		// -> writing에 userNo, categoryNo + @ 완료
 		
 		// 2. writing 객체에 잘 담겼는지 확인
-		System.out.println(writing.toString());
+		
 		
 		// 3. webPath, filePath 생성
-		String webPath = "/resources/src/user/"+writing.getUserNo()+"/"; // -> 없는 폴더에도 만들어지나? -> 잘 담기는 듯 다시 확인
+		String webPath = "/resources/src/user/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		// -> writing, images, webPath, filePath 객체 완성
 		
-		// 4-1. service 호출
+		// 4. service 호출
 		int result = service.writingInsert(writing, images, webPath, filePath);
 		
 		// 5. 결과 리턴
-		String message = null;
 		String path = "redirect:";
 		
 		if(result > 0) {
-			message = "게시글이 등록되었습니다.";
 			path += "write"; // 성공시 write 화면 리턴
 		} else {
-			message = "게시글 등록에 실패하셨습니다.";
 			path += "write"; // 실패시 write 화면 리턴
 		}
 		

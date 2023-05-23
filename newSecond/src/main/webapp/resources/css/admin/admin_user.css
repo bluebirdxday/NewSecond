@@ -131,3 +131,11 @@ tbody td:last-child{
     background-color: #ccc;
    
 }
+
+#signOutH{
+    display: none;
+}
+
+#blockH{
+    display: none;
+} 

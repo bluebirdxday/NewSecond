@@ -1,5 +1,6 @@
 package project.kh.newsecond.myPage.model.service;
 
+import project.kh.newsecond.user.model.dto.User;
 
 public interface MyPageService {
 	
@@ -9,7 +10,6 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int checkNickname(String userNickname);
-
 	
 	/** 유저 닉네임 변경
 	 * @param userNo
@@ -17,6 +17,19 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int changeNickname(int userNo, String userNickname);
+	
+	/** 유저 전화번호 변경
+	 * @param userNo
+	 * @param userTel
+	 * @return result
+	 */
+	int changeTel(int userNo, String userTel);
+	
+	/** 유저 주소 변경
+	 * @param loginUser
+	 * @return result
+	 */
+	int changeAddress(User loginUser);
 	
 	/** 유저 비밀번호 변경 서비스
 	 * @param userPassword
@@ -33,6 +46,11 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int secession(int userNo, String userPassword);
+
+
+
+
+	
 
 
 

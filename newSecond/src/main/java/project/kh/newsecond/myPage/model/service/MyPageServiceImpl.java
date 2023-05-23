@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.myPage.model.dao.MyPageDAO;
+import project.kh.newsecond.user.model.dto.User;
 
 /**
  * @author user1
@@ -33,6 +34,19 @@ public class MyPageServiceImpl implements MyPageService{
 		return dao.changeNickname(userNo, userNickname);
 	}
 
+	
+	// 전화번호 변경
+	@Override
+	public int changeTel(int userNo, String userTel) {
+		return dao.changeTel(userNo, userTel);
+	}
+	
+	
+	// 주소 변경
+	@Override
+	public int changeAddress(User loginUser) {
+		return dao.changeAddress(loginUser);
+	}
 
 	// 비밀번호 변경 서비스
 	@Transactional(rollbackFor = Exception.class)

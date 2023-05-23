@@ -63,10 +63,10 @@
                                 <%-- 썸네일 --%>
                                 <c:choose>
                                     <c:when test="${not empty searchGoods.thumbnail}">
-                                    <img src="${searchGoods.thumbnail}">
+                                        <img src="${searchGoods.thumbnail}">
                                     </c:when>
                                     <c:otherwise>
-                                    <img src="/resources/src/img/no_image.jpeg">
+                                        <img src="/resources/src/img/no_image.jpeg">
                                     </c:otherwise>
                                 </c:choose>
                                 <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
@@ -80,7 +80,6 @@
                 <!-- 더보기 버튼-->
                 <c:choose>
                     <c:when test="${fn:length(searchGoodsList) gt 12}">
-                    <%--  || (moreGoodsList.size) ge 12} --%>
                         <div class="container--inner__bottom">
                             <button class="more" id="viewMoreGoods">MORE</button>
                         </div>
@@ -92,7 +91,7 @@
                     </c:otherwise>
                 </c:choose> 
             </div>
-
+            ${searchGoodsList}
 
         </div>
 
