@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.user.model.dto.User;
 
 @Repository
@@ -88,6 +89,14 @@ public class GoodsBoardDAO {
 	 */
 	public int countLike(Integer goodsNo) {
 		return sqlSession.selectOne("goodsBoardMapper.countLike", goodsNo);
+	}
+
+	/** 상품 상세 상점 정보
+	 * @param goodsNo
+	 * @return
+	 */
+	public Shop shopInfo(int goodsNo) {
+		return sqlSession.selectOne("goodsBoardMapper.shopInfo", goodsNo);
 	}
 
 

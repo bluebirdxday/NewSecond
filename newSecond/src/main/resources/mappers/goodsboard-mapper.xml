@@ -24,6 +24,7 @@
 		<result property="shopTitle" column="SHOP_TITLE" />
 		
 		<result property="sortType" column="SORT_TYPE" />
+		
 		<collection property="filesList"
 					select="selectFilesList"
 					column="GOODS_NO"
@@ -41,6 +42,14 @@
 		<result property="fileName" column="FILE_NAME"/>
 		<result property="fileOrder" column="FILE_ORDER"/>
 		<result property="filePath" column="FILE_PATH"/>
+	</resultMap>
+	
+	<!-- Shop resultMap -->
+	<resultMap type="Shop" id="shop_rm">
+		<id property="userNo" column="USER_NO"/>
+		<result property="shopTitle" column="SHOP_TITLE"/>
+		<result property="shopInfo" column="SHOP_INFO"/>
+		<result property="shopProfile" column="SHOP_PROFILE"/>
 	</resultMap>
 	
 	
@@ -179,6 +188,14 @@
 	<select id="countLike" resultType="_int">
 		SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}
 	</select>	
+	
+	<!-- 상품 상세 상점 정보 -->
+	<select id="shopInfo" resultMap="shop_rm">
+		SELECT GOODS_NO, USER_NO ,SHOP_TITLE ,SHOP_PROFILE ,SHOP_INFO 
+		FROM "shop" s
+		JOIN "goods_board" g USING (USER_NO)
+		WHERE GOODS_NO = #{goodsNo}
+	</select>
 		
 		
 </mapper>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
+import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.user.model.dto.User;
 
 @Controller
@@ -77,6 +78,11 @@ public class GoodsBoardController {
 		
 		model.addAttribute("goodsBoard", goodsBoard);
 		model.addAttribute("loginUser", loginUser);
+		
+		// 상점 정보
+		// 전달 : 프로필, 유저넘버, 상점이름, 상점 설명 
+		Shop shop = service.shopInfo(goodsNo);
+		model.addAttribute("shop",shop);
 		
 		return "/goods/goodsDetail";
 	}

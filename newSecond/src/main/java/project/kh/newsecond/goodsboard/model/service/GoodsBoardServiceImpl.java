@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.goodsboard.model.dao.GoodsBoardDAO;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
 public class GoodsBoardServiceImpl implements GoodsBoardService{
@@ -71,6 +72,12 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		
 		int count = dao.countLike(likeMap.get("goodsNo"));
 		return count;
+	}
+	
+	// 상품 상세 - 상점 정
+	@Override
+	public Shop shopInfo(int goodsNo) {
+		return dao.shopInfo(goodsNo);
 	}
 	 
 	 
