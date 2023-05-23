@@ -276,8 +276,7 @@ function unFollow(passiveUserNo, loginUserNo, tab){
 
         return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
     })
-    .then(resp=>{ resp.json(); 
-    })
+    .then(resp=>{resp.json()})
     .then((followList)=>{
 
         selectFollowList(followList, tab);
@@ -302,6 +301,7 @@ function unFollow(passiveUserNo, loginUserNo, tab){
             selectFollowList(followList, "following");
     })
     .catch(()=>{ 
+        
         if(tab=="shopOwnerFollow"){
             changeProfileFollowBtn(tab, loginUserNo);
             return;
@@ -467,10 +467,8 @@ if(overlayText!=null){
 
         e.style.position = 'absolute';
         e.style.top = '50%';
-        e.style.left = '50%';
         e.style.transform = 'translate(-50%, -50%)';
         e.style.color = 'white';
-        e.style.fontSize = '30px';
         e.style.width = '95px';
         e.style.fontWeight = '900';
         e.style.textAlign = 'center';
@@ -479,10 +477,11 @@ if(overlayText!=null){
 }
 
 if(reserved!=null){
-
     reserved.forEach(e=>{
         e.style.webkitTextStroke = '1px black'; // 글자 테두리 색상
         e.style.webkitTextFillColor = '#C2D3EB'; // 글자 색상
+        e.style.fontSize = '26px';
+        e.style.left = '44%';
     })
 }
 
@@ -491,6 +490,8 @@ if(soldout!=null){
     soldout.forEach(e=>{
         e.style.webkitTextStroke = '1px #e6ebfd'; // 글자 테두리 색상
         e.style.webkitTextFillColor = '#505bf0'; // 글자 색상
+        e.style.fontSize = '30px';
+        e.style.left = '50%';
     })
 }
 
@@ -586,7 +587,7 @@ function sortGoodsList(userNo, sortType){
                     soldoutOrReservedDiv.classList.add("overlay-text");
                     soldoutOrReservedDiv.classList.add("reserved");
                     soldoutOrReservedDiv.innerText = "Reserved";
-                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: #C2D3EB; -webkit-text-stroke: 1px #000000); -webkit-text-fill-color: #C2D3EB;");
+                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 44%; transform: translate(-50%, -50%); font-size: 26px; width: 95px; font-weight: 900; text-align: center; color: #C2D3EB; -webkit-text-stroke: 1px #000000; -webkit-text-fill-color: #C2D3EB;");
                 }
     
                 itemImgDiv.append(itemImg);

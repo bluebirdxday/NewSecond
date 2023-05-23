@@ -75,7 +75,7 @@ public class ShopController {
 		model.addAttribute("followList", followList);
 		model.addAttribute("followerList", followerList);
 		model.addAttribute("loginUserNo", loginUserNo);
-		model.addAttribute("checkFollow", checkFollow);
+		model.addAttribute("checkFollow", checkFollow);	
 	
 		
 		return "shop/shop";
