@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 public interface GoodsBoardService {
 	
@@ -33,5 +35,14 @@ public interface GoodsBoardService {
 	
 	
 	
+
+	// 기존 찜 여부 확인
+	int goodsLikeChecked(Map<String, Object> map);
+
+	// 찜 처리
+	int like(Map<String, Integer> likeMap);
+
+	// 상품 게시글 - 상점 정보
+	Shop shopInfo(int goodsNo);
 
 }

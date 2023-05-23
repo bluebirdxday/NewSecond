@@ -153,3 +153,71 @@ border: 1px solid #ccc;
 background-color: #ccc;
 
 }
+
+/* pagination */
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    font-weight: bold;
+   
+    color: rgb(77, 37, 223) !important;
+    letter-spacing: 0 !important;
+}
+
+#boardSearch{
+    text-align: center;
+    width: 500px;
+    height: 30px;
+    margin: 30px auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#boardSearch * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#boardSearch select{
+    width: 100px;
+}
+
+#boardSearch input{
+    flex-grow: 1;
+    margin: 0 10px;
+    padding-left: 10px;
+}  
+
+#boardSearch button{
+    
+    width: 100px;
+
+    font-weight: bold;
+    background-color: #005eee;
+    border: none;
+    color: white;
+
+    cursor: pointer;
+    
+
+}

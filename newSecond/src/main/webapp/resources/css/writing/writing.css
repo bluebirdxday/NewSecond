@@ -268,7 +268,6 @@
     border-radius: 20px;
 }
 
-
 /* 스크롤 모양 */
 ::-webkit-scrollbar {
     height: 10px;
@@ -453,6 +452,9 @@
 }
 #category--2depth > label > input {
     display: none;
+}
+#category--2depth > label > input:checked {
+    display: unset;
 }
 
 

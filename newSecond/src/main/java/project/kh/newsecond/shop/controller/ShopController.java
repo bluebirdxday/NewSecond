@@ -46,6 +46,7 @@ public class ShopController {
 		int loginUserNo = loginUser.getUserNo();
 		int openDays = service.selectShopOpenDay(userNo);
 		
+		
 		Map<String, Object> sortMap = new HashMap<>();
 		sortMap.put("userNo", userNo);
 		sortMap.put("sortType", 0);
@@ -54,9 +55,15 @@ public class ShopController {
 		// 최신순 조회
 		List<GoodsBoard> boardList = service.selectGoodsBoardList(sortMap);
 	
+		
+		// userNo 넣고 shopUserNo 넣고 
+				
 		Map<String, Integer> map = new HashMap<>();
 		map.put("activeUserNo", loginUserNo);
 		map.put("passiveUserNo", userNo);
+
+		int checkFollow = service.checkFollow(map);
+				
 		
 		List<Follow> followList = service.selectFollowList(map); 
 		List<Follow> followerList = service.selectFollowerList(map);
@@ -68,6 +75,7 @@ public class ShopController {
 		model.addAttribute("followList", followList);
 		model.addAttribute("followerList", followerList);
 		model.addAttribute("loginUserNo", loginUserNo);
+		model.addAttribute("checkFollow", checkFollow);
 	
 		
 		return "shop/shop";

@@ -1,5 +1,6 @@
 package project.kh.newsecond.goodsboard.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
+import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 @Repository
 public class GoodsBoardDAO {
@@ -54,6 +57,47 @@ public class GoodsBoardDAO {
 	 */
 	public GoodsBoard goodsDetail(int goodsNo) {
 		return sqlSession.selectOne("goodsBoardMapper.goodsDetail", goodsNo);
+	}
+
+	/** 찜 여부 확인
+	 * @param goodsNo
+	 * @param loginUser
+	 * @return
+	 */
+	public int goodsLikeChecked(Map<String, Object> map) {
+		return sqlSession.selectOne("goodsBoardMapper.goodsLikeChecked", map);
+	}
+
+	/** 찜 등록
+	 * @param likeMap
+	 * @return
+	 */
+	public int insertLike(Map<String, Integer> likeMap) {
+		return sqlSession.insert("goodsBoardMapper.insertLike", likeMap);
+	}
+
+	/** 찜 등록 취소 
+	 * @param likeMap
+	 * @return
+	 */
+	public int deleteLike(Map<String, Integer> likeMap) {
+		return sqlSession.delete("goodsBoardMapper.deleteLike", likeMap);
+	}
+
+	/** 찜 count
+	 * @param integer
+	 * @return
+	 */
+	public int countLike(Integer goodsNo) {
+		return sqlSession.selectOne("goodsBoardMapper.countLike", goodsNo);
+	}
+
+	/** 상품 상세 상점 정보
+	 * @param goodsNo
+	 * @return
+	 */
+	public Shop shopInfo(int goodsNo) {
+		return sqlSession.selectOne("goodsBoardMapper.shopInfo", goodsNo);
 	}
 
 
