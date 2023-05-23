@@ -41,10 +41,11 @@
           <div class="qnaList" onclick="showMenu(this.innerText)" >회원/계정</div>
           <div class="qnaList" onclick="showMenu(this.innerText)" >오류/제안</div>
           <div class="qnaList" onclick="showMenu(this.innerText)" >채팅/알람</div>
+          <div class="qnaList" onclick="showMenu(this.innerText)" >기타문의</div>
         </div>
       </div>
 
-      <input type="hidden" name="qnaType" value="${qna.qnaType}">
+      <input type="hidden" name="qnaCategory" value="${qna.qnaCategory}">
 
       <div class="qna_title">
       문의제목 :${qna.qnaTitle} <input type="text" name="qnaTitle" id="" class="qna_titleInput">

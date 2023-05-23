@@ -50,67 +50,67 @@ const imagePlusBtn = document.querySelector('#imagePlus');
 const fileInputContainer = document.querySelector('#fileInputContainer');
 
 imagePlusBtn.addEventListener('click', () => {
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.name = 'image';
-  fileInput.style.display = 'none';
-  fileInput.accept = 'image/*';
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.name = 'image';
+    fileInput.style.display = 'none';
+    fileInput.accept = 'image/*';
 
-  fileInputContainer.appendChild(fileInput);
-  fileInput.click();
+    fileInputContainer.appendChild(fileInput);
+    fileInput.click();
 });
 
 fileInputContainer.addEventListener('change', (event) => {
-  const files = event.target.files;
+    const files = event.target.files;
 
-  if (files && files.length > 0) {
-    const file = files[0];
-    const reader = new FileReader();
+    if (files && files.length > 0) {
+        const file = files[0];
+        const reader = new FileReader();
 
-    reader.onload = () => {
-      const image = document.createElement('img');
-      image.src = reader.result;
-      imageScroller.appendChild(image);
-      enableImageDelete(image);
-    };
+        reader.onload = () => {
+            const image = document.createElement('img');
+            image.src = reader.result;
+            imageScroller.appendChild(image);
+            enableImageDelete(image);
+        };
 
-    reader.readAsDataURL(file);
-    fileCount++;
+        reader.readAsDataURL(file);
+        fileCount++;
 
-    updateImageCount();
-  }
+        updateImageCount();
+    }
 });
 
 function enableImageDelete(image) {
-  image.addEventListener('mouseover', () => {
-    image.style.position = 'relative';
-    image.innerHTML += '<div class="deleteOverlay"></div>';
-  });
+    image.addEventListener('mouseover', () => {
+        image.style.position = 'relative';
+        image.innerHTML += '<div class="deleteOverlay"></div>';
+    });
 
-  image.addEventListener('mouseout', () => {
-    image.style.position = '';
-    image.querySelector('.deleteOverlay').remove();
-  });
+    image.addEventListener('mouseout', () => {
+        image.style.position = '';
+        image.querySelector('.deleteOverlay').remove();
+    });
 
-  image.addEventListener('click', () => {
-    if (confirm('이미지를 삭제하시겠습니까?')) {
-      image.remove();
-      fileCount--;
-      updateImageCount();
-      removeFileInput();
-    }
-  });
+    image.addEventListener('click', () => {
+        if (confirm('이미지를 삭제하시겠습니까?')) {
+            image.remove();
+            fileCount--;
+            updateImageCount();
+            removeFileInput();
+        }
+    });
 }
 
 function removeFileInput() {
-  const fileInput = fileInputContainer.querySelector('input[type=file]');
-  if (fileInput) {
-    fileInputContainer.removeChild(fileInput);
-  }
+    const fileInput = fileInputContainer.querySelector('input[type=file]');
+    if (fileInput) {
+        fileInputContainer.removeChild(fileInput);
+    }
 }
 
 function updateImageCount() {
-  imageCount.textContent = `(${fileCount}/5)`;
+    imageCount.textContent = `(${fileCount}/5)`;
 }
 
 
@@ -601,18 +601,19 @@ submit.addEventListener("click", () =>  {
     var quantityCheck = document.getElementById("quantityInput");
     var conditionCheck = document.getElementsByName("condition");
     var category2Check = document.getElementsByName("category2");
-
+    
     if(titleCheck.value.trim() === "") {
         alert("제목을 입력해주세요.");
         titleCheck.focus();
         return false;
     }
-
-    // if(imageCheck.value.trim() === "") {
-    //     alert("이미지 사진을 1개 이상 첨부해주세요.");
-    //     imageCheck.focus();
-    //     return false;
-    // }
+    
+    var fileInputContainers = document.getElementById('fileInputContainer');
+    var inputTags = fileInputContainers.getElementsByTagName('input');
+    if (inputTags.length === 0) {
+        alert('이미지를 1개 이상 첨부해주세요.');
+        return false;
+    }
     
     if(detailTextCheck.value.trim() === "") {
         alert("상품에 대한 설명을 입력해주세요.");

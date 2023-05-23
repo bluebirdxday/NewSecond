@@ -158,9 +158,9 @@ public class AdminServiceImpl implements AdminService {
 	  }
 
 	@Override
-	public int deleteNoticeList(int noticeNoInt) {
+	public int deleteNoticeList(int noticeNo) {
 
-		return adminDao.deleteNoticeList(noticeNoInt);
+		return adminDao.deleteNoticeList(noticeNo);
 	}
 
 	/**
@@ -183,8 +183,35 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int userBlock(int userNo) {
-		// TODO Auto-generated method stub
+	
 		return adminDao.userBlock(userNo);
+	}
+
+	/**
+	 *관리자 게시글 블락
+	 */
+	@Override
+	public int boardBlind(int goodsNo) {
+		
+		return adminDao.boardBlind(goodsNo);
+	}
+
+	/**
+	 *관리자 게시글 삭제
+	 */
+	@Override
+	public int boardDelete(int goodsNo) {
+	
+		return adminDao.boardDelete(goodsNo);
+	}
+
+	/**
+	 *관리자 문의사항 radio 거래신고
+	 */
+	@Override
+	public List<Qna> radioTrade(String qnaCategory) {
+		
+		return adminDao.radioTrade(qnaCategory);
 	}
 }
 

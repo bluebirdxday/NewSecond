@@ -73,7 +73,7 @@ public interface AdminService {
 	 * @param noticeNo
 	 * @return
 	 */
-	int deleteNoticeList(int noticeNoInt);
+	int deleteNoticeList(int noticeNo);
 	
 	  /**회원탈퇴 기능
 	 * @param noticeNo
@@ -93,7 +93,29 @@ public interface AdminService {
 	 */
 	int qnaDelete(Qna qna);
 
+	/**회원 블락
+	 * @param userNo
+	 * @return
+	 */
 	int userBlock(int userNo);
+
+	/**게시글 블라인드
+	 * @param goodsNo
+	 * @return
+	 */
+	int boardBlind(int goodsNo);
+
+	/**게시글 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	int boardDelete(int goodsNo);
+
+	/**문의사항 raido 거래신고
+	 * @param qnaCategory
+	 * @return
+	 */
+	List<Qna> radioTrade(String qnaCategory);
 
 
 

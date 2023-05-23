@@ -19,7 +19,7 @@ public class QnaDAO {
 	 */
 	public int qnaInsert(Qna qna) {
 		
-		int result = sqlSession.insert("qnaMapper.qnaInsert",qna);
+		int result = sqlSession.insert("qnaMapper.qnaInsert", qna);
 		
 		if(result>0) result = qna.getQnaNo();
  		

@@ -39,12 +39,12 @@
         </div>
         <div class="admin_qna_raidos">
             <span>
-            <label ><input type="radio" name="admin_qna_raidos" id="">전체</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">거래신고</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">회원/계정</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">오류/제안</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">채팅/알람</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">기타문의</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="all">전체</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="trade">거래신고</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="user">회원/계정</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="error">오류/제안</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="chatting">채팅/알람</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="etc">기타문의</label>
          
         </span>
         </div>
@@ -60,11 +60,11 @@
         <table class="admin_qna_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="qna_checkbox" id="" value='selectall'
+                <th><input type="checkbox" name="qna_checkbox" class="checkboxAll" id="" value='selectall'
                     onclick='qnaSelectAll(this)'></th>
                 <th >번호</th>
                 <th>회원번호</th>
-                <th>신고유형</th>
+                <th class="reportType">신고유형</th>
                 <th>제목</th>
                 <th>작성일</th>
                 <th>답변상태</th>
@@ -83,11 +83,11 @@
                 </td>
                 <td>
             </tr> -->
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
+            <tr id="qnaTr">
+                <td><input type="checkbox" name="qna_checkbox" class="checkbox" id=""></td>
                 <td>4</td>
                 <td>010</td>
-                <td>거래신고</td>
+                <td class="reportType">거래신고</td>
                 <td><a href="/web/html/관리자_문의관리_상세페이지예시.html">사기 당했어요(상세페이지 예시)</a></td>
                 <td>2023.04.27</td>
                 <td>
@@ -95,11 +95,11 @@
                 </td>
                 <td>
             </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
+            <tr >
+                <td><input type="checkbox" name="qna_checkbox" class="checkbox" id=""></td>
                 <td>3</td>
                 <td>1100</td>
-                <td>오류/제안</td>
+                <td class="reportType">오류/제안</td>
                 <td>오류 났어요</td>
                 <td>2023.04.27</td>
                 <td>
@@ -108,10 +108,10 @@
                 <td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
+                <td><input type="checkbox" name="qna_checkbox" class="checkbox" id=""></td>
                 <td>2</td>
                 <td>120</td>
-                <td>채팅/알람</td>
+                <td class="reportType">채팅/알람</td>
                 <td>채팅 내용 신고할게요</td>
                 <td>2023.04.27</td>
                 <td>
@@ -120,10 +120,10 @@
                 <td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
+                <td><input type="checkbox" name="qna_checkbox"  class="checkbox" id=""></td>
                 <td>1</td>
                 <td>125</td>
-                <td>기타문의</td>
+                <td class="reportType">기타문의</td>
                 <td>로그아웃이 안돼요</td>
                 <td>2023.04.05</td>
                 <td>

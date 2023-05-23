@@ -68,7 +68,7 @@ public class AdminDAO {
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());	
 		
-		return sqlSession.selectList("AdminMapper.selectQnaList");
+		return sqlSession.selectList("AdminMapper.selectQnaList",rowBounds);
 	}
 	
 	
@@ -173,9 +173,9 @@ public class AdminDAO {
 	  return sqlSession.update("AdminMapper.userSignOut",userNo); 
 	  }
 
-	public int deleteNoticeList(int noticeNoInt) {
+	public int deleteNoticeList(int noticeNo) {
 	
-		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNoInt); 
+		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNo); 
 	}
 
 	/**공지사항 조회수 증가
@@ -199,6 +199,21 @@ public class AdminDAO {
 	public int userBlock(int userNo) {
 		
 		return sqlSession.update("AdminMapper.userBlock",userNo); 
+	}
+
+	public int boardBlind(int goodsNo) {
+	
+		return sqlSession.update("AdminMapper.boardBlind",goodsNo); 
+	}
+
+	public int boardDelete(int goodsNo) {
+	
+		return sqlSession.update("AdminMapper.boardDelete",goodsNo); 
+	}
+
+	public List<Qna> radioTrade(String qnaCategory) {
+		
+		return sqlSession.selectList("AdminMapper.radioTrade",qnaCategory); 
 	}
 
 
