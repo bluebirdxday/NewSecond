@@ -43,38 +43,126 @@ imagePlus.addEventListener('click', (e) => {
 
 /* ------------------------------------------------------------------ */
 
-let imageCount = 0;
+const imageCount = document.querySelector('#imageCount');
+let fileCount = 0;
 
-/* 파일 5개 제한 업로드 */
-fileInput.addEventListener('change', e => {
-    const files = e.target.files;
-    const filesCount = files.length;
+const imagePlusBtn = document.querySelector('#imagePlus');
+const fileInputContainer = document.querySelector('#fileInputContainer');
 
-    for (let i = 0; i < filesCount; i++) {
-        const file = files[i];
-        if (imageCount < 5) {
-            const image = document.createElement('img');
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.addEventListener('load', (event) => {
-                image.src = event.target.result;
-                imageScroller.appendChild(image);
-                imageCount++;
-                updateImageCount();
-            });
-        }
-    }
+imagePlusBtn.addEventListener('click', () => {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.name = 'image';
+  fileInput.style.display = 'none';
+  fileInput.accept = 'image/*';
+
+  fileInputContainer.appendChild(fileInput);
+  fileInput.click();
 });
 
-/* 이미지 개수 카운트 */
-function updateImageCount() {
-    const countSpan = document.querySelector('.post--main__inputImage span:nth-child(3)');
-    countSpan.textContent = `(${imageCount}/5)`;
-    if (imageCount >= 5) {
-        imagePlus.removeEventListener('click', handleClick);
-        imagePlus.style.cursor = 'default';
+fileInputContainer.addEventListener('change', (event) => {
+  const files = event.target.files;
+
+  if (files && files.length > 0) {
+    const file = files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const image = document.createElement('img');
+      image.src = reader.result;
+      imageScroller.appendChild(image);
+      enableImageDelete(image);
+    };
+
+    reader.readAsDataURL(file);
+    fileCount++;
+
+    updateImageCount();
+  }
+});
+
+function enableImageDelete(image) {
+  image.addEventListener('mouseover', () => {
+    image.style.position = 'relative';
+    image.innerHTML += '<div class="deleteOverlay"></div>';
+  });
+
+  image.addEventListener('mouseout', () => {
+    image.style.position = '';
+    image.querySelector('.deleteOverlay').remove();
+  });
+
+  image.addEventListener('click', () => {
+    if (confirm('이미지를 삭제하시겠습니까?')) {
+      image.remove();
+      fileCount--;
+      updateImageCount();
+      removeFileInput();
     }
+  });
 }
+
+function removeFileInput() {
+  const fileInput = fileInputContainer.querySelector('input[type=file]');
+  if (fileInput) {
+    fileInputContainer.removeChild(fileInput);
+  }
+}
+
+function updateImageCount() {
+  imageCount.textContent = `(${fileCount}/5)`;
+}
+
+
+// let imageCount = 0;
+
+// // + 버튼 클릭 시 새로운 input 태그 추가
+// imagePlus.addEventListener('click', () => {
+//     if (imageCount < 5) {
+//         const newInput = document.createElement('input');
+//         newInput.type = 'file';
+//         newInput.name = 'image';
+//         newInput.style.display = 'none';
+//         newInput.accept = 'image/*';
+//         newInput.addEventListener('change', handleFileChange);
+//         document.getElementById('fileInputContainer').appendChild(newInput);
+//         newInput.click();
+//     }
+// });
+
+// // 파일 변경 시 이미지 추가
+// function handleFileChange(e) {
+//     const file = e.target.files[0];
+//     const image = document.createElement('img');
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.addEventListener('load', (event) => {
+//         image.src = event.target.result;
+//         imageScroller.appendChild(image);
+//         imageCount++;
+//         updateImageCount();
+//     });
+// }
+
+// // 이미지 개수 카운트 및 제한
+// function updateImageCount() {
+//     const countSpan = document.querySelector('.post--main__inputImage span:nth-child(3)');
+//     countSpan.textContent = `(${imageCount}/5)`;
+//     if (imageCount >= 5) {
+//         imagePlus.style.cursor = 'default';
+//         // 경고창 띄우기
+//         imagePlus.addEventListener('click', () => {
+//             alert('파일은 최대 5개까지 업로드할 수 있습니다.');
+//         });
+//         imagePlus.removeEventListener('click', handleClick);
+//     }
+// }
+
+// // 페이지 로드 시 기존 이미지 개수 초기화
+// window.addEventListener('load', () => {
+//     imageCount = document.querySelectorAll('.post--main__ImageScroller img').length;
+//     updateImageCount();
+// });
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
@@ -424,7 +512,7 @@ other.addEventListener('click', () => {
     div1.id = 'other2';
     div1.classList.add('category--2depth__item');
     const radio1 = document.createElement('input');
-    radi12.type = 'radio';
+    radio1.type = 'radio';
     radio1.name = 'category2';
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
@@ -432,7 +520,7 @@ other.addEventListener('click', () => {
     const div2 = document.createElement('label');
     div2.textContent = '나눔';
     div2.id = 'share2';
-    divs.classList.add('category--2depth__item');
+    div2.classList.add('category--2depth__item');
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
@@ -456,6 +544,7 @@ other.addEventListener('click', () => {
     depth2Container.appendChild(divline2);
     depth2Container.appendChild(div3);
 });
+
 
 /* 카테고리 2차 선택자 */
 const male2 = document.createElement('male2');
@@ -501,47 +590,83 @@ const hire2 = document.createElement('hire2');
 
 
 /* form 전송 전 필수입력 값 체크 */
-function validateForm() {
-    var titleInput = document.getElementById("title");
-    var imageInput = document.getElementById("fileInput");
-    var detailTextInput = document.getElementById("detailText");
-    var priceInput = document.getElementById("priceInput");
-    var quantityInput = document.getElementById("quantityInput");
+const submit = document.getElementById("submitBtn");
+
+submit.addEventListener("click", () =>  {
+
+    var titleCheck = document.getElementById("title");
+    var imageCheck = document.getElementById("fileInput");
+    var detailTextCheck = document.getElementById("detailText");
+    var priceCheck = document.getElementById("priceInput");
+    var quantityCheck = document.getElementById("quantityInput");
+    var conditionCheck = document.getElementsByName("condition");
+    var category2Check = document.getElementsByName("category2");
+
+    if(titleCheck.value.trim() === "") {
+        alert("제목을 입력해주세요.");
+        titleCheck.focus();
+        return false;
+    }
+
+    // if(imageCheck.value.trim() === "") {
+    //     alert("이미지 사진을 1개 이상 첨부해주세요.");
+    //     imageCheck.focus();
+    //     return false;
+    // }
     
-    var conditionInputs = document.getElementsByName("condition");
-    var category2Inputs = document.getElementsByName("category2");
-
-    if (titleInput.value.trim() === "" ||
-        imageInput.value.trim() === "" ||
-        detailTextInput.value.trim() === "" ||
-        priceInput.value.trim() === "" ||
-        quantityInput.value.trim() === "" ||
-        !isConditionSelected(conditionInputs) ||
-        !isCategory2Selected(category2Inputs)) {
-        alert("필수 입력 값을 입력해주세요.");
-        return false; // 폼 전송을 중지
+    if(detailTextCheck.value.trim() === "") {
+        alert("상품에 대한 설명을 입력해주세요.");
+        detailTextCheck.focus();
+        return false;
     }
-    return true; // 폼 전송을 진행
-}
 
-// 상태 선택 여부 확인
-function isConditionSelected(conditionInputs) {
-    for (var i = 0; i < conditionInputs.length; i++) {
-        if (conditionInputs[i].checked) {
+    if(priceCheck.value.trim() === "") {
+        alert("상품 가격을 입력해주세요.");
+        priceCheck.focus();
+        return false;
+    }
+
+    if(quantityCheck.value.trim() === "") {
+        alert("상품 수량을 입력해주세요.");
+        quantityCheck.focus();
+        return false;
+    }
+
+    if(!isConditionSelected(conditionCheck)) { // 함수
+        alert("상품 상태를 선택해주세요.");
+        conditionCheck.focus();
+        return false;
+    }
+
+    // if(!isCategory2Selected(category2Check)) { // 함수
+    //     alert("상품 카테고리를 선택해주세요.");
+    //     category2Check.focus();
+    //     return false;
+    // }
+
+    return true; // 폼 전송
+
+
+});
+
+// 상태 선택 확인 함수
+function isConditionSelected(conditionCheck) {
+    for (var i = 0; i < conditionCheck.length; i++) {
+        if (conditionCheck[i].checked) {
             return true;
         }
     }
     return false;
 }
 
-// 카테고리 선택 여부 확인
-function isCategory2Selected(category2Inputs) {
-    for (var i = 0; i < category2Inputs.length; i++) {
-        if (category2Inputs[i].checked) {
-            return true;
-        }
-    }
-    return false;
-}
+// 카테고리 선택 확인 함수
+// function isCategory2Selected(category2Check) {
+//     for (var i = 0; i < category2Check.length; i++) {
+//         if (category2Check[i].checked) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 
