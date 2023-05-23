@@ -105,6 +105,7 @@
     /* border: 1px solid black; */
     padding: 0 10px;
     float: left;
+    position: relative;
 }
 
 .container--inner__middle img{
@@ -116,11 +117,16 @@
     display: block;
     box-shadow: 5px 7px 5px #c1c1c1;
     /* border: 1px solid red; */
-    position: relative;
+    position: absolute;
 }
 .container--inner__middle img:hover{
     box-shadow: 5px 5px 5px #a09f9f;
     transition-duration: 0.2s;
+}
+
+.soldout{
+    --bs-blueposition: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: rgb(80, 91, 240); -webkit-text-stroke: 1px rgb(230, 235, 253); -webkit-text-fill-color: rgb(80, 91, 240);
+    --xt-fill-color: rgb(80, 91, 240);
 }
 
 /* 예약중/판매 완료 표시 */

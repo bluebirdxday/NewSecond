@@ -63,7 +63,17 @@
                                 <%-- 썸네일 --%>
                                 <c:choose>
                                     <c:when test="${not empty searchGoods.thumbnail}">
-                                        <img src="${searchGoods.thumbnail}">
+                                        <img src="${searchGoods.thumbnail}" <c:if test="${searchGoods.goodsStatus=='E' || goods.goodsStatus=='C'}">style="filter : brightnes(50%);"</c:if>>
+                                        <c:if test="${searchGoods.goodsStatus=='E'}" >
+                                            <div class="status soldout">
+                                                Sold Out
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${searchGoods.goodsStatus=='C'}" >
+                                            <div class="status reserved">
+                                                Reserved
+                                            </div>
+                                        </c:if>
                                     </c:when>
                                     <c:otherwise>
                                         <img src="/resources/src/img/no_image.jpeg">
@@ -92,7 +102,6 @@
                     </c:otherwise>
                 </c:choose> 
             </div>
-            ${searchGoodsList}
 
         </div>
 
