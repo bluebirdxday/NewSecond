@@ -179,7 +179,7 @@
     width: 200px;
     height: 52px;
     background-color: #FAFCEE;
-    border: 2px solid #c5c6c7;
+    border: 1px solid #c5c6c7;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     font-size: 1.5em;
@@ -187,7 +187,7 @@
     text-align: center;
     line-height: 50px;
     color: #2365b9;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     box-shadow: 5px 5px 5px #c2c2c2;
 }
 
@@ -195,7 +195,7 @@
     width: 840px;
     height: 250px;
     background-color: #FAFCEE;
-    border: 2px solid #c5c6c7;
+    border: 1px solid #c5c6c7;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
@@ -241,16 +241,21 @@
 }
 
 .container--inner__bottom__shopInfo_shopTitleButton{
-    background-color: #c2d3eb;
+    background-color: #d5e3f8;
     font-size: 1.3em;
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
     line-height: 43px;
     box-shadow: 3px 3px 3px #c3c3c3;
     width: auto;
     height: 40px;
     border-radius: 20px;
     padding: 0 15px;
+}
+.container--inner__bottom__shopInfo_shopTitleButton:hover{
+    background-color: #cbdcf5;
+    box-shadow: 3px 3px 3px #b5b4b4;
+    font-weight: bold;
 }
 
 .container--inner__bottom__shopInfo__chattingButton{
@@ -266,10 +271,18 @@
     margin-left: 20px;
 }
 
+.container--inner__bottom__shopInfo__chattingButton:hover{
+    box-shadow: 3px 3px 3px #b5b4b4;
+    background-color: #468ce8;
+    font-weight: bold;
+
+}
+
 .container--inner__bottom__shopInfo__shopDescibe{
     margin-top: 15px;
     margin-left: 10px;
-    white-space: pre-wrap;
+    color: #848383;
+    /* white-space: pre-wrap; */
 }
 
 

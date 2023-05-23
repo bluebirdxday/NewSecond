@@ -80,7 +80,6 @@
                 <!-- 더보기 버튼-->
                 <c:choose>
                     <c:when test="${fn:length(searchGoodsList) gt 12}">
-                    <%--  || (moreGoodsList.size) ge 12} --%>
                         <div class="container--inner__bottom">
                             <button class="more" id="viewMoreGoods">MORE</button>
                         </div>
