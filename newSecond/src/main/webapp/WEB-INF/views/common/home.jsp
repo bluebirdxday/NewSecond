@@ -61,7 +61,7 @@
 						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${recentGood.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${recentGood.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -109,7 +109,7 @@
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -125,7 +125,7 @@
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
