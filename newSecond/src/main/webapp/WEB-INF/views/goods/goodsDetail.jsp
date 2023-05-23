@@ -56,11 +56,11 @@
                             
                                 <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
                                 <c:if test="${empty likeChecked}" >
-                                    <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike">
+                                    <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike like">
                                 </c:if>
                                 <%-- 좋아요 눌렀을 때 --%>
                                 <c:if test="${not empty likeChecked}" >
-                                <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike">
+                                <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike like">
                                 </c:if>
                             </div>
                             <div class="container--inner__top__right__like">찜</div>

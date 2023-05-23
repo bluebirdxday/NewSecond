@@ -142,7 +142,8 @@
 		
 	<!-- 게시글 상세 -->
 	<select id="goodsDetail" resultMap="goodsboard_rm">
-		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
+		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , 
+		 (SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}) WISH_COUNT , GOODS_DESCR 
 		FROM "goods_board"
 		WHERE GOODS_NO = ${goodsNo}
 	</select>

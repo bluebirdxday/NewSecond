@@ -52,9 +52,15 @@ goodsLike.addEventListener("click",e=>{
             console.log("좋아요 처리를 실패했습니다. 다시 시도해주세요.");
             return;
         }
-        e.target.classList.toggle("");
-        e.target.classList.toggle("");
+        e.target.classList.toggle("beforeLike");
+        e.target.classList.toggle("afterLike");
+        if(e.target.classList.contains("beforeLike")){
+            e.target.setAttribute("src","/resources/src/img/heartBefore.png");
+        }else{
+            e.target.setAttribute("src","/resources/src/img/heartAfter.png");
+        }
         document.getElementById("wishCount").innerText = count;
+
     })
     .catch(err => {
         console.log("예외가 발생했습니다.");

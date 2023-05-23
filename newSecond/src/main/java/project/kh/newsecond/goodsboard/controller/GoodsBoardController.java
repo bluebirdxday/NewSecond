@@ -60,6 +60,7 @@ public class GoodsBoardController {
 			) {
 		
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
+		
 		String path = null;
 		
 		// 기존 찜 조회
@@ -68,7 +69,7 @@ public class GoodsBoardController {
 		
 		if(goodsBoard != null) {
 			if(loginUser != null) {
-				map.put("loginUser", loginUser.getUserNo());
+				map.put("userNo", loginUser.getUserNo());
 				int result = service.goodsLikeChecked(map);
 				if(result>0) model.addAttribute("likeChecked","like");
 			}
