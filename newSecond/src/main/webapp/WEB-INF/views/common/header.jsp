@@ -80,12 +80,17 @@
     </section>
 
     <nav class="nav--container__menu">
-        <div><a href="/">홈</a></div>
         <div><a href="#">카테고리</a></div>
+        <div><a href="/">홈</a></div>
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
 
 <script src="/resources/js/goods/searchGoodsList.js"></script>
+
+<script>
+    
+
+</script>
 
 </header>
 

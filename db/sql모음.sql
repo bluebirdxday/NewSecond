@@ -322,34 +322,6 @@ SELECT FROM "notifications";
 
 INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 1, '님께서 회원님을 팔로우하였습니다.', DEFAULT, DEFAULT, 'F');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- 회원 탈퇴 관련
 
 SELECT USER_PASSWORD
@@ -360,6 +332,28 @@ WHERE USER_NO = 33
 UPDATE "users" 
 SET USER_STATUS = 'D'
 WHERE USER_NO = 33
+;
+
+
+-- 최근 업데이트된 상품 => ROWBOUND로 5개만 검색
+SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+	(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	WHERE F.GOODS_NO = G.GOODS_NO
+	AND FILE_ORDER = 1) THUMBNAIL
+FROM "goods_board" G
+JOIN "shop" USING (USER_NO);
+
+-- 조회수 기준 상품 조회
+SELECT ROW_NUMBER() OVER (ORDER BY VIEW_COUNT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+	(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	WHERE F.GOODS_NO = G.GOODS_NO
+	AND FILE_ORDER = 1) THUMBNAIL
+FROM "goods_board" G
+JOIN "shop" USING (USER_NO)
+;
+
+SELECT * FROM "goods_board" 
+ORDER BY VIEW_COUNT
 ;
 
 

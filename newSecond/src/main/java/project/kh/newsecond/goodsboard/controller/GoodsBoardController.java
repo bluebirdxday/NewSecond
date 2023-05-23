@@ -30,7 +30,9 @@ public class GoodsBoardController {
 	// 상품 게시글 목록 조회(검색)
 	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, Model model) {
-	
+		
+		
+		
 		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
 		// 조회 결과
