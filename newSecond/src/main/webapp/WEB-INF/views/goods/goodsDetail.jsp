@@ -104,6 +104,9 @@
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
         const goodsUserNo = ${shop.userNo};
+
+        /* 희진 : 관심상품 등록 알림 */
+        const goodsTitle = ${goodsBoard.goodsTitle}
     </script>
 
         <!-- footer -->
