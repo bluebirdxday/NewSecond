@@ -97,7 +97,7 @@
 	  CASE 
 	    WHEN USER_STATUS = 'A' THEN '정상'
 	    WHEN USER_STATUS = 'B' THEN '블락'
-	    WHEN USER_STATUS = 'C' THEN '탈퇴'
+	    WHEN USER_STATUS = 'D' THEN '탈퇴'
 	  END AS USER_STATUS
 	  ,ENROLL_DT
 	FROM "users"  
@@ -188,10 +188,10 @@
 	
 	</update>
 	
-	
+	<!-- 회원 탈퇴  -->
 	<update id="userSignOut">
 	UPDATE "users"
-	SET USER_STATUS = 'B'
+	SET USER_STATUS = 'D'
 	WHERE USER_NO = #{userNo}
 	
 	</update>
@@ -203,5 +203,13 @@
 	  WHERE QNA_NO = #{qnaNo}
       </update>
       
+      
+      	<!-- 회원 블락  -->
+	<update id="userBlock">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
       
 </mapper>

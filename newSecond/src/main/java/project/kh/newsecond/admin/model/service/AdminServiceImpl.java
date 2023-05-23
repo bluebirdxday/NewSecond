@@ -152,9 +152,9 @@ public class AdminServiceImpl implements AdminService {
 	  /**
 	 *회원탈퇴 기능
 	 */
-	@Override public int userSignOut(Map<String, Object> paramMap) {
+	@Override public int userSignOut(int userNo) {
 	  
-	  return adminDao.userSignOut(paramMap); 
+	  return adminDao.userSignOut(userNo); 
 	  }
 
 	@Override
@@ -179,6 +179,12 @@ public class AdminServiceImpl implements AdminService {
 	public int qnaDelete(Qna qna) {
 		
 		return adminDao.qnaDelete(qna);
+	}
+
+	@Override
+	public int userBlock(int userNo) {
+		// TODO Auto-generated method stub
+		return adminDao.userBlock(userNo);
 	}
 }
 

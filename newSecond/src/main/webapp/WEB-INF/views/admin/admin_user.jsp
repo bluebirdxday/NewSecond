@@ -50,6 +50,7 @@
          
         </span>
         </div>
+        <form action="/admin_user/signOut" method="POST"></form>
     <div class="admin_user_result">
         <span >검색결과 : </span> 
             <span class="admin_user_countOne">3</span>
@@ -62,7 +63,7 @@
         <table class="admin_user_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id="" value='selectall'
+                <th><input type="checkbox" class="admin_user_checkboxAll" name="" id="" value='selectall'
                     onclick='userSelectAll(this)'></th>
                 <th >번호</th>
                 <th>아이디</th>
@@ -83,18 +84,20 @@
                 <c:otherwise>
                     <c:forEach items="${UserList}" var="User">
                         <tr>
-                        <td><input type="checkbox" name="" id=""></td>
-                            <td>${User["USER_NO"]}</td>
+                        <td><input type="checkbox" class="admin_user_checkbox" name="" id=""></td>
+                            <td class="admin_user_checkbox_no">${User["USER_NO"]}</td>
                             <td>${User["USER_EMAIL"]}</td>
                             <td class="admin_user_states">${User["USER_STATUS"]}</td>
                             <td>${User["ENROLL_DT"]}</td>
                           <td>
-                            <button class="admin_user_tableBtn show" id="signOut">강제탈퇴</button>
-                            <button class="admin_user_tableBtn" id="signOutH">탈퇴해제</button>
+
+                          <input type="hidden" value="${User['USER_NO']}" class="signOutUserNo">
+                            <button class="admin_user_tableBtn forcedsignOut show" id="forcedsignOut">강제탈퇴</button>
+                            <button class="admin_user_tableBtn signOutH" id="signOutH">탈퇴해제</button>
                             </td>
                             <td>
                             <button class="admin_user_tableBtn block show" id="block">회원블락</button>
-                            <button class="admin_user_tableBtn block" id="blockH">블락해제</button>
+                            <button class="admin_user_tableBtn blockH" id="blockH">블락해제</button>
                             </td>
                             </tr>
                     </c:forEach>

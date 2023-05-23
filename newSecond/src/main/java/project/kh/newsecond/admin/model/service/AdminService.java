@@ -79,7 +79,7 @@ public interface AdminService {
 	 * @param noticeNo
 	 * @return
 	 */
-	int userSignOut(Map<String, Object> noticeNo);
+	int userSignOut(int userNo);
 
 	/**공지사항 조회수 
 	 * @param noticeNo
@@ -92,6 +92,10 @@ public interface AdminService {
 	 * @return
 	 */
 	int qnaDelete(Qna qna);
+
+	int userBlock(int userNo);
+
+
 
 	
 	 

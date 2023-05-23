@@ -165,12 +165,12 @@ public class AdminDAO {
 
 	
 	  /**회원 탈퇴
-	 * @param paramMap
+	 * @param noticeNoInt
 	 * @return
 	 */
-	public int userSignOut(Map<String, Object> paramMap) {
+	public int userSignOut(int userNo) {
 	  
-	  return sqlSession.update("AdminMapper.userSignOut",paramMap); 
+	  return sqlSession.update("AdminMapper.userSignOut",userNo); 
 	  }
 
 	public int deleteNoticeList(int noticeNoInt) {
@@ -194,6 +194,11 @@ public class AdminDAO {
 	public int qnaDelete(Qna qna) {
 		
 		return sqlSession.update("AdminMapper.qnaDelete",qna); 
+	}
+
+	public int userBlock(int userNo) {
+		
+		return sqlSession.update("AdminMapper.userBlock",userNo); 
 	}
 
 
