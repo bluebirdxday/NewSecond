@@ -1,18 +1,15 @@
-// // document.addEventListener("DOMContentLoaded",()=>{
-//     const searchForm = document.getElementById("searchForm"); //form
-//     const searchQuery = document.getElementById("searchQuery"); //input
-    
-//     // 검색어 입력 안하고 제출
-//     searchForm.addEventListener("submit",e=>{
-//         if(searchQuery.value.trim().length==0){
-//             e.preventDefault();
-//             document.getElementById('toastBody').innerText = "검색어를 입력해주세요!";
-//             document.getElementById('liveToast').classList.add('text-bg-danger');
-//             toastTrigger.click();
-//         }
-//     });
-    
-    
 
+/* 희진 : 알림 */
+let notificationSock = new SockJS("/notificationSock");
 
-// // });
+notificationSock.onmessage = function(e) {
+    // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
+    const msg = JSON.parse(e.data);
+
+    console.log(msg);
+
+    const followMsg = msg.shopTitle + msg.notificationMessage;
+
+    document.getElementById('alarmBody').innerText = followMsg;
+    alarmTrigger.click();
+}
