@@ -53,13 +53,18 @@
                             <div class="container--inner__top__right__viewCount">${goodsBoard.viewCount}&nbsp;&nbsp;&nbsp;</div>
                             <%-- 좋아요 구역 --%>
                             <div class="container--inner__top__right__likeHeart">
-                            <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
-                                <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike">
-                            <%-- 좋아요 눌렀을 때 --%>
-                                <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike">
+                            
+                                <%-- 좋아요 누른 적 없거나ㅡ 로그인 x --%>
+                                <c:if test="${empty likeChecked}" >
+                                    <img src="/resources/src/img/heartBefore.png" id="goodsLike" class="beforeLike like">
+                                </c:if>
+                                <%-- 좋아요 눌렀을 때 --%>
+                                <c:if test="${not empty likeChecked}" >
+                                <img src="/resources/src/img/heartAfter.png" id="goodsLike" class="afterLike like">
+                                </c:if>
                             </div>
-                            <label for="goodsLike"><div class="container--inner__top__right__like">찜</div></label>
-                            <div class="container--inner__top__right__likeCount">${goodsBoard.wishCount}</div>
+                            <div class="container--inner__top__right__like">찜</div>
+                            <div class="container--inner__top__right__likeCount" id="wishCount">${goodsBoard.wishCount}</div>
                         </div>
                         <div class="container--inner__top__right__describe">
                             <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
@@ -72,25 +77,37 @@
                         <div class="container--inner__bottom__shopInfo__folder">상점 정보</div>
                     </div>
                     <div class="container--inner__bottom__shopInfo">
-                        <div class="container--inner__bottom__shopInfo__profile"><img src="/resources/src/img/basic_profile.png"></div>
+                        <div class="container--inner__bottom__shopInfo__profile">
+                            <c:choose>
+                                <c:when test="${not empty shop.shopProfile}">
+                                    <img src="${shop.shopProfile}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/resources/src/img/basic_profile.png">
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                         <div class="container--inner__bottom__shopInfo__others">
                             <div class="container--inner__bottom__shopInfo__buttons">
-                                <!-- 판매자 상점으로 이동, 상점 이름 db 불러오기 -->
-                                <a href="/goods/goodsDetail/moveShop"><div class="container--inner__bottom__shopInfo_shopTitleButton">빅웨이브</div></a>
+                                <a href="/shop/${shop.userNo}"><div title="'${shop.shopTitle}'' 상점 바로가기" class="container--inner__bottom__shopInfo_shopTitleButton">${shop.shopTitle}</div></a>
                                 <!-- 채팅 팝업/사이트 이동 -->
                                 <div class="container--inner__bottom__shopInfo__chattingButton"><a href="#">채팅하기</a></div>
                             </div>
-                            <div class="container--inner__bottom__shopInfo__shopDescibe">
-                                <pre>안녕하세요~!<br>좋은 상품 좋은 가격 많이 구경와주세요!</pre></div>
+                            <div class="container--inner__bottom__shopInfo__shopDescibe">${shop.shopInfo}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <script src="/resources/js/goods/goodsDetail.js"></script>
+
+    <script>
+        const loginUserNo = "${loginUser.userNo}";
+        const goodsNo = ${goodsBoard.goodsNo};
+    </script>
 
         <!-- footer -->
-        <footer data-include="/web/include/footer.html"></footer>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+        <script src="/resources/js/goods/goodsDetail.js"></script>
     </div>
     
 </body>
