@@ -52,8 +52,7 @@
 	,SYSDATE
 	,DEFAULT
 	,DEFAULT
-	,'T'
-	,#{qnaType})
+	,#{qnaCategory})
 	</insert>
    
    

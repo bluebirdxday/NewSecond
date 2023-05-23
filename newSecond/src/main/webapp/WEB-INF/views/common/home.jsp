@@ -61,7 +61,7 @@
 						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${recentGood.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${recentGood.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -75,7 +75,7 @@
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>
 
-				<c:if test="${not empty loginUser}" >
+				<%-- <c:if test="${not empty loginUser}" >
 					<section class="mainPage--goodsContainer2 mt-5">
 
 						<span class="mainPage--imgs__title">최근 본 상품</span>
@@ -99,7 +99,7 @@
 						</div>
 						<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 					</section>
-				</c:if>
+				</c:if> --%>
 
 				<section class="mainPage--goodsContainer3 mt-5">
 
@@ -109,7 +109,7 @@
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 
@@ -125,7 +125,7 @@
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
 							<div class="col mainPage--item__container">
 								<a href="/goods/${mostViewed.goodsNo}">
-									<img class="border border-4 rounded-3 mainPage--item" 
+									<img class="border border-1 rounded-3 mainPage--item" 
 									src="${mostViewed.thumbnail}" 
 									onerror="this.src='/resources/src/img/no_image.jpeg'"
 									data-bs-toggle="tooltip" 

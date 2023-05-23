@@ -14,3 +14,5 @@ function qnaSelectAll(qnaSelectAll)  {
       checkbox.checked = qnaSelectAll.checked
     })
   }
+  
+

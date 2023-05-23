@@ -87,6 +87,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="/resources/js/goods/searchGoodsList.js"></script>
+<script src="/resources/js/header.js"></script>
 
 <script>
     

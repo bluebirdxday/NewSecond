@@ -47,7 +47,21 @@
             </tr>
             <tr>
                 <th>문의유형</th>
-                <td>${qna.qnaType}</td>
+                <c:if test="${qna.qnaCategory=='T'}" >
+                    <td>거래신고</td>
+                </c:if>
+                <c:if test="${qna.qnaCategory=='U'}" >
+                    <td>회원/계정</td>
+                </c:if>
+                <c:if test="${qna.qnaCategory=='E'}" >
+                    <td>오류/제안</td>
+                </c:if>
+                <c:if test="${qna.qnaCategory=='C'}" >
+                    <td>채팅/알람</td>
+                </c:if>
+                 <c:if test="${qna.qnaCategory=='O'}" >
+                                <td>기타문의</td>
+                </c:if>
             </tr>
             <tr>
                 <th>회원번호</th>

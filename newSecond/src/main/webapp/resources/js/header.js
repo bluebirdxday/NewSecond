@@ -1,8 +1,8 @@
 
 /* 희진 : 알림 */
-let notificationSock = new SockJS("/notificationSock");
+let notificationSock2 = new SockJS("/notificationSock");
 
-notificationSock.onmessage = function(e) {
+notificationSock2.onmessage = function(e) {
     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
     const msg = JSON.parse(e.data);
 
