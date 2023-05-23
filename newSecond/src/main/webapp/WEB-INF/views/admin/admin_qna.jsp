@@ -45,13 +45,12 @@
         </div>
         <div class="admin_qna_raidos">
             <span>
-            <label ><input type="radio" name="admin_qna_raidos" id="">전체</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">거래신고</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">회원/계정</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">오류/제안</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">채팅/알람</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">기타문의</label>
-         
+            <label ><input type="radio" name="admin_qna_raidos" id="all" value="all">전체</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="trade" value="T">거래신고</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="U" value="U">회원/계정</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="E" value="E">오류/제안</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="C" value="C">채팅/알람</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="O" value="O">기타문의</label>
         </span>
         </div>
     <div class="admin_qna_result">
@@ -92,7 +91,21 @@
                             <td><input type="checkbox" name="" id=""></td>
                             <td>${qna.qnaNo}</td>
                             <td>${qna.userNo}</td>
-                            <td>${qna.qnaType}</td>
+                             <c:if test="${qna.qnaCategory=='T'}" >
+                                <td>거래신고</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='U'}" >
+                                <td>회원/계정</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='E'}" >
+                                <td>오류/제안</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='C'}" >
+                                <td>채팅/알람</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='O'}" >
+                                <td>기타문의</td>
+                            </c:if>
                             <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
                             <td>${qna.qnaEnrollDate}</td>
                             <td>${qna.qnaCheckFl}</td>
@@ -113,10 +126,10 @@
                 
                     <!-- 첫 페이지로 이동 -->
                     <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
-                    <li><a href="/admin_qna/${qnaNo}?cp=1${sp}">&lt;&lt;</a></li>
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=1${sp}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="/admin_qna/${qnaNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
                
                     <!-- 특정 페이지로 이동 -->
@@ -132,7 +145,7 @@
                         
                             <c:otherwise>
                                 <!-- 현재 페이지를 제외한 나머지 -->
-                                <li><a href="/admin_qna/${qnaNo}?cp=${i}${sp}">${i}</a></li>
+                                <li><a href="/admin/admin_qna/${qnaNo}?cp=${i}${sp}">${i}</a></li>
                             </c:otherwise>
                         </c:choose>
 
@@ -150,10 +163,10 @@
                     <li><a href="#">10</a></li> --%>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
 
                 </ul>
             </div>

@@ -31,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.kh.newsecond.admin.model.dto.Admin;
 import project.kh.newsecond.admin.model.service.AdminService;
+import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
 import project.kh.newsecond.user.model.dto.User;
@@ -226,22 +227,15 @@ public class AdminController {
 		return path;
 
 	}
-	/** 공지사항 선택 삭제******************<진행중 23.05.22>
+	/** 공지사항 선택 삭제
 	 * @param selectedItems
 	 * @return
 	 */
 	@PostMapping(value = "/adimin_notice/deleteNoticeList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String deleteNoticeList(@RequestBody String[] selectedItems) {
+	public int deleteNoticeList(@RequestBody Notice notice) {
 		
-	    System.out.println(selectedItems);
-	    
-	    for (String noticeNo : selectedItems) {
-	        int noticeNoInt = Integer.parseInt(noticeNo);
-	        int result = adminService.deleteNoticeList(noticeNoInt);
-	    }
-	  
-	    return "admin/admin_notice";
+	   return adminService.deleteNoticeList(notice.getNoticeNo());
 	}
 	 
 
@@ -348,6 +342,42 @@ public class AdminController {
 		return "admin/admin_qna";
 
 	}
+	
+	
+	/**상품 게시글 블라인드
+	 * @param user
+	 * @return
+	 */
+	@PostMapping("/admin_board/blind")
+	@ResponseBody
+	public int boardBlind(@RequestBody GoodsBoard goodsBoard) {
+		
+		   
+		 return adminService.boardBlind(goodsBoard.getGoodsNo());
+	}
+	
+	
+	/**상품 게시글 삭제
+	 * @param user
+	 * @return
+	 */
+	@PostMapping("/admin_board/delete")
+	@ResponseBody
+	public int boardDelete(@RequestBody GoodsBoard goodsBoard) {	
+		
+		   
+		 return adminService.boardDelete(goodsBoard.getGoodsNo());
+	}
+	
+	@PostMapping("/admin_qna/radioTrade")
+	@ResponseBody
+	public List<Qna> radioTrade(@RequestBody Qna qna) {	
+		
+		   
+		 return adminService.radioTrade(qna.getQnaCategory());
+	}
+	
+	
 	
 	
 }
