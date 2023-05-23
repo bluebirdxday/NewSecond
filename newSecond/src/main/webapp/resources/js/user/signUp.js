@@ -10,16 +10,20 @@ const checkObj = {
 
 
 const userEmail = document.getElementById("userEmail");
-const emailMessage = document.getElementById("emailMessage");
+/* const emailMessage = document.getElementById("emailMessage"); */
+const tooltipInstance = bootstrap.Tooltip.getInstance(userEmail);
+
 
 userEmail.addEventListener("input", () => {
-
+    
     if(userEmail.value.trim().length == 0){
         userEmail.value = "";
-        
-        emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요.";
+        const tooltip = bootstrap.Tooltip.getInstance(userEmail)
+        tooltip.setContent({'.tooltip-inner': '메일을 받을 수 있는 이메일을 입력해주세요.'});
 
-        emailMessage.classList.remove("confirm", "error");
+/*         emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요.";
+        
+        emailMessage.classList.remove("confirm", "error"); */
         
         checkObj.userEmail = false;
         return;
@@ -36,14 +40,19 @@ userEmail.addEventListener("input", () => {
         .then(count => {
 
             if(count == 0){
-                emailMessage.innerText = "사용 가능한 이메일 입니다";
+                const tooltip = bootstrap.Tooltip.getInstance(userEmail)
+                tooltip.setContent({'.tooltip-inner': '<span class="confirm">사용 가능한 이메일 입니다.</span>'});
+/*                 emailMessage.innerText = "사용 가능한 이메일 입니다";
                 emailMessage.classList.add("confirm"); 
-                emailMessage.classList.remove("error"); 
+                emailMessage.classList.remove("error");  */
+
                 checkObj.userEmail = true; 
             } else{
-                emailMessage.innerText = "이미 사용 중인 이메일 입니다";
+                const tooltip = bootstrap.Tooltip.getInstance(userEmail)
+                tooltip.setContent({'.tooltip-inner': '<span class="error">이미 사용 중인 이메일 입니다.</span>'});
+                /* emailMessage.innerText = "이미 사용 중인 이메일 입니다";
                 emailMessage.classList.add("error");
-                emailMessage.classList.remove("confirm");
+                emailMessage.classList.remove("confirm"); */
                 checkObj.userEmail = false;
                 
             }
@@ -54,9 +63,11 @@ userEmail.addEventListener("input", () => {
         
         
     } else{ 
-        emailMessage.innerText = "이메일 형식이 유효하지 않습니다";
+        const tooltip = bootstrap.Tooltip.getInstance(userEmail);
+        tooltip.setContent({'.tooltip-inner': '<span class="error">이메일 형식이 유효하지 않습니다.</span>'});
+/*         emailMessage.innerText = "이메일 형식이 유효하지 않습니다";
         emailMessage.classList.add("error"); 
-        emailMessage.classList.remove("confirm"); 
+        emailMessage.classList.remove("confirm");  */
         
         checkObj.userEmail = false; 
         
@@ -68,15 +79,19 @@ userEmail.addEventListener("input", () => {
 
 const userPassword = document.getElementById("userPassword");
 const userPasswordConfirm = document.getElementById("userPasswordConfirm");
-const passwordMessage = document.getElementById("passwordMessage");
+/* const passwordMessage = document.getElementById("passwordMessage"); */
 
 userPassword.addEventListener("input", () => {
 
     if(userPassword.value.trim().length == 0){
         userPassword.value = ""; 
 
-        passwordMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
-        passwordMessage.classList.remove("confirm", "error"); 
+        const tooltip = bootstrap.Tooltip.getInstance(userPassword)
+        tooltip.setContent({'.tooltip-inner': '영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.'});
+
+
+/*         passwordMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
+        passwordMessage.classList.remove("confirm", "error");  */
 
         checkObj.userPassword = false;  
         return;
@@ -90,23 +105,32 @@ userPassword.addEventListener("input", () => {
 
         if(userPasswordConfirm.value.trim().length == 0) {
 
-            passwordMessage.innerText = "유효한 비밀번호 형식입니다."
+            const tooltip = bootstrap.Tooltip.getInstance(userPassword)
+            tooltip.setContent({'.tooltip-inner': '<span class="confirm">유효한 비밀번호 형식입니다.</span>'});
+
+            /* passwordMessage.innerText = "유효한 비밀번호 형식입니다."
             passwordMessage.classList.add("confirm");
-            passwordMessage.classList.remove("error");
+            passwordMessage.classList.remove("error"); */
 
         }else{
 
             if(userPassword.value == memberPwConfirm.value) {
-                passwordMessage.innerText = "비밀번호가 일치합니다";
+
+
+                /* passwordMessage.innerText = "비밀번호가 일치합니다";
                 passwordMessage.classList.add("confirm");
-                passwordMessage.classList.remove("error");
+                passwordMessage.classList.remove("error"); */
+
+
                 checkObj.userPasswordConfirm = true;
                 
                 
             } else { 
-                passwordMessage.innerText = "비밀번호가 일치하지 않습니다.";
+
+                /* passwordMessage.innerText = "비밀번호가 일치하지 않습니다.";
                 passwordMessage.classList.add("error");
-                passwordMessage.classList.remove("confirm");
+                passwordMessage.classList.remove("confirm"); */
+
                 checkObj.userPasswordConfirm = false;
             
             }
@@ -114,9 +138,11 @@ userPassword.addEventListener("input", () => {
         
     } else{ 
         
-        passwordMessage.innerText = "비밀번호 형식이 유효하지 않습니다"
+        const tooltip = bootstrap.Tooltip.getInstance(userPasswordConfirm)
+        tooltip.setContent({'.tooltip-inner': '<span class="error">비밀번호가 일치하지 않습니다.</span>'});
+        /*  passwordMessage.innerText = "비밀번호 형식이 유효하지 않습니다"
         passwordMessage.classList.add("error");
-        passwordMessage.classList.remove("confirm");
+        passwordMessage.classList.remove("confirm"); */
 
         checkObj.userPassword = false;
 
@@ -130,16 +156,24 @@ userPasswordConfirm.addEventListener('input', () => {
     if(checkObj.userPassword){
 
         if(userPassword.value == userPasswordConfirm.value) {
-            passwordMessage.innerText = "비밀번호가 일치합니다";
+
+            const tooltip = bootstrap.Tooltip.getInstance(userPasswordConfirm)
+            tooltip.setContent({'.tooltip-inner': '<span class="confirm">비밀번호가 일치합니다.</span>'});
+
+            /* passwordMessage.innerText = "비밀번호가 일치합니다";
             passwordMessage.classList.add("confirm");
-            passwordMessage.classList.remove("error");
+            passwordMessage.classList.remove("error"); */
             checkObj.userPasswordConfirm = true;
             
             
         } else {
-            passwordMessage.innerText = "비밀번호가 일치하지 않습니다.";
+
+            const tooltip = bootstrap.Tooltip.getInstance(userPasswordConfirm)
+            tooltip.setContent({'.tooltip-inner': '<span class="error">비밀번호가 일치하지 않습니다.</span>'});
+
+            /* passwordMessage.innerText = "비밀번호가 일치하지 않습니다.";
             passwordMessage.classList.add("error");
-            passwordMessage.classList.remove("confirm");
+            passwordMessage.classList.remove("confirm"); */
             checkObj.userPasswordConfirm = false;
             
         }
@@ -155,15 +189,18 @@ userPasswordConfirm.addEventListener('input', () => {
 
 
 const userNickname = document.getElementById("userNickname");
-const nickMessage = document.getElementById('nickMessage');
+/* const nickMessage = document.getElementById('nickMessage'); */
 
 userNickname.addEventListener("input", () => {
     
     if(userNickname.value.trim() == ""){
-        nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
 
+        const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+        tooltip.setContent({'.tooltip-inner': '<span>한글,영어,숫자로만 2~10글자.</span>'});
+        nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
         nickMessage.classList.remove("confirm", "error");
-        checkObj.userNickname = false;
+
+        /* checkObj.userNickname = false; */
         userNickname.value="";    
         return;
     }
@@ -177,16 +214,22 @@ userNickname.addEventListener("input", () => {
         .then(resp => resp.text())  // 응답 객체를 text로 파싱(변환)
         .then(count => {
             if(count == 0){ // 중복 아닌 경우
-                nickMessage.innerText = "사용 가능한 닉네임 입니다";
+                const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+                tooltip.setContent({'.tooltip-inner': '<span class="confirm">사용 가능한 닉네임 입니다.</span>'});
+                /* nickMessage.innerText = "사용 가능한 닉네임 입니다";
                 nickMessage.classList.add("confirm");
                 nickMessage.classList.remove("error");
-                checkObj.userNickname = true;
+                checkObj.userNickname = true; */
                 
                 
             }else{ // 중복인 경우
-                nickMessage.innerText = "이미 사용중인 닉네임 입니다";
+
+                const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+                tooltip.setContent({'.tooltip-inner': '<span class="error">이미 사용중인 닉네임 입니다.</span>'});
+
+                /* nickMessage.innerText = "이미 사용중인 닉네임 입니다";
                 nickMessage.classList.add("error");
-                nickMessage.classList.remove("confirm");
+                nickMessage.classList.remove("confirm"); */
                 checkObj.userNickname = false;
 
 
@@ -197,9 +240,12 @@ userNickname.addEventListener("input", () => {
 
         
     } else{ // 무효
-        nickMessage.innerText = "닉네임 형식이 유효하지 않습니다";
+        const tooltip = bootstrap.Tooltip.getInstance(userNickname)
+        tooltip.setContent({'.tooltip-inner': '<span class="error">닉네임 형식이 유효하지 않습니다.</span>'});
+
+        /* nickMessage.innerText = "닉네임 형식이 유효하지 않습니다";
         nickMessage.classList.add("error");
-        nickMessage.classList.remove("confirm");
+        nickMessage.classList.remove("confirm"); */
         checkObj.userNickname = false;
 
 
@@ -211,16 +257,20 @@ userNickname.addEventListener("input", () => {
 
 
 const userTel = document.getElementById("userTel");
-const telMessage = document.getElementById("telMessage");
+/* const telMessage = document.getElementById("telMessage"); */
 
 // 전화번호가 입력되었을 때
 userTel.addEventListener("input", () => {
 
         // 전화번호에 입력이 되지 않은 경우
         if(userTel.value.trim() == ""){
-            telMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
-    
-            telMessage.classList.remove("confirm", "error");
+
+            const tooltip = bootstrap.Tooltip.getInstance(userTel)
+            tooltip.setContent({'.tooltip-inner': '<span class="error">전화번호를 입력해주세요.(- 제외)</span>'});
+
+            /* telMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
+            telMessage.classList.remove("confirm", "error"); */
+
             checkObj.userTel = false;
             userTel.value="";    
             return;
@@ -230,15 +280,23 @@ userTel.addEventListener("input", () => {
         const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
     
         if(regEx.test(userTel.value)){ // 유효
-            telMessage.innerText = "유효한 전화번호 형식입니다";
+
+            const tooltip = bootstrap.Tooltip.getInstance(userTel)
+            tooltip.setContent({'.tooltip-inner': '<span class="confirm">유효한 전화번호 형식입니다.</span>'});
+
+            /* telMessage.innerText = "유효한 전화번호 형식입니다";
             telMessage.classList.add("confirm");
-            telMessage.classList.remove("error");
+            telMessage.classList.remove("error"); */
             checkObj.userTel = true;
             
         } else{ // 무효
-            telMessage.innerText = "전화번호 형식이 유효하지 않습니다";
+
+            const tooltip = bootstrap.Tooltip.getInstance(userTel)
+            tooltip.setContent({'.tooltip-inner': '<span class="error">전화번호 형식이 유효하지 않습니다.</span>'});
+
+            /* telMessage.innerText = "전화번호 형식이 유효하지 않습니다";
             telMessage.classList.add("error");
-            telMessage.classList.remove("confirm");
+            telMessage.classList.remove("confirm"); */
             checkObj.userTel = false;
     
     

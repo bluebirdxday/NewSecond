@@ -28,7 +28,7 @@
                     <div class="priceView--main__leftBox">
                         <div class="priceView--main__searchBox">
                             <label for="search">
-<%-- 검색어 name="keyword" id="search" --%>                            
+<!-- <%-- 검색어 name="keyword" id="search" --%>   -->                          
                                 <input type="text" placeholder="검색어를 입력하세요" maxlength="30" id="search" name="keyword" id="search"><button type="submit">검색</button>
                             </label>
                         </div>
@@ -40,10 +40,16 @@
                                 <div>최근 시세조회한 검색어</div><button type="button">모두 지우기</button>
                             </div>
                             <div>
-                                <span>아이폰</span>
-                                <span>아이패드</span>
-                                <span>아이폰12</span>
-                                <span>아이폰se2</span>
+                                <div class="recentSearch--1floor">
+                                    <span onclick="addSearchKeyword(this)">프라이탁<button class="removeBtn">✖</button></span>
+                                    <span onclick="addSearchKeyword(this)">아이패드<button class="removeBtn">✖</button></span>
+                                    <span onclick="addSearchKeyword(this)">아이폰12<button class="removeBtn">✖</button></span>
+                                    <span onclick="addSearchKeyword(this)">아이폰se2<button class="removeBtn">✖</button></span>
+                                </div>
+                                <div class="recentSearch--2floor">
+                                    <span onclick="addSearchKeyword(this)">나이키가방<button class="removeBtn">✖</button></span>
+                                    <span onclick="addSearchKeyword(this)">뉴발란스신발<button class="removeBtn">✖</button></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +59,7 @@
                     <div class="priceView--main__popularSearch">
                         <span>시세조회 인기검색어</span>
                         <ol>
-                            <li>아이폰14</li>
+                            <li>프라이탁</li>
                             <li>갤럭시S22</li>
                             <li>애플워치4</li>
                             <li>갤럭시버즈</li>

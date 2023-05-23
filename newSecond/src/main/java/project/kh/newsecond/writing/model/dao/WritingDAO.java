@@ -41,8 +41,8 @@ public class WritingDAO {
 	 * @param finalImages 
 	 * @return result
 	 */
-	public int writingImageInsert(List<MultipartFile> images, List<WritingImage> finalImages) {
-		return sqlSession.insert("writingMapper.writingImageInsert", images);
+	public int writingImageInsert(List<WritingImage> FinalImages) {
+		return sqlSession.insert("writingMapper.writingImageInsert", FinalImages);
 	}
 
 }

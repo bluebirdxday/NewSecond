@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
@@ -60,14 +59,14 @@
                         <div class="container--inner__middle" id="goodsListTable">
                             <c:forEach items="${searchGoodsList}" var="searchGoods" begin="0" end="11">
                             <div class="goods">
-                                <a href="/goods/${searchGoods.goodsTitle}">
+                                <a href="/goods/${searchGoods.goodsNo}">
                                 <%-- 썸네일 --%>
                                 <c:choose>
                                     <c:when test="${not empty searchGoods.thumbnail}">
-                                    <img src="${searchGoods.thumbnail}">
+                                        <img src="${searchGoods.thumbnail}">
                                     </c:when>
                                     <c:otherwise>
-                                    <img src="/resources/src/img/no_image.jpeg">
+                                        <img src="/resources/src/img/no_image.jpeg">
                                     </c:otherwise>
                                 </c:choose>
                                 <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
@@ -79,19 +78,27 @@
                     </c:otherwise>
                 </c:choose>
                 <!-- 더보기 버튼-->
-                <c:if test="${not empty searchGoodsList}" >
-                    <div class="container--inner__bottom">
-                        <button class="more" id="viewMoreGoods">MORE</button>
-                    </div>
-                </c:if>
+                <c:choose>
+                    <c:when test="${fn:length(searchGoodsList) gt 12}">
+                        <div class="container--inner__bottom">
+                            <button class="more" id="viewMoreGoods">MORE</button>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="container--inner__bottom" style="display:none">
+                            <button class="more" id="viewMoreGoods">MORE</button>
+                        </div>
+                    </c:otherwise>
+                </c:choose> 
             </div>
-
+            ${searchGoodsList}
 
         </div>
 
         <script src="/resources/js/goods/searchGoodsList.js"></script>
+        <script src="/resources/js/goods/moreGoods.js"></script>
 
-        <%-- <!-- footer --> --%>
+        <!-- footer -->
     </div>
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     

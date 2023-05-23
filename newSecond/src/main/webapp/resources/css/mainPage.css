@@ -25,3 +25,18 @@
 .mainPage--goodsContainer1{
     margin-top: 50px;
 }
+
+/* 카테고리 타이틀 */
+.mainPage--category__title{
+    font-size: 23px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* 메인페이지의 각 아이템에 대한 스타일 */
+.mainPage--item{
+    box-sizing: border-box;
+    padding: 0px;
+    width: 170px;
+    height: 170px;
+}

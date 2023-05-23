@@ -13,17 +13,16 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
     <main class="content--post__topMargin">
-        <section class="content--post__background">
+<%-- form 태그 시작 --%>
+    <form action="/writing/submit" method="POST" enctype="multipart/form-data">
+    <section class="content--post__background">
         <section class="content--post__topFix">글쓰기
             <div class="requiredMark">*: 필수 항목</div>
         </section>
 
         <aside class="content--post__leftSide"></aside>
-
         <!-- main content -->
         <section class="content--post__main">
-
-        <form action="/writing/submit" method="POST" enctype="multipart/form-data"> <%-- form 태그 시작 --%>
             
             <div class="post--main__inputTitle">
                 <div>
@@ -37,19 +36,21 @@
             </div>
             <div class="post--main__inputImage">
                 <div>
-                    <label for="fileInput" class="labelTitle">상품이미지</label><span>*</span>
-                    <span>(0/5)</span>
+                    <label for="fileInput" class="labelTitle">상품이미지</label><span></span>
+                    <span id="imageCount">(0/5)</span>
                 </div>
                 <article>
                     <div class="post--main__ImageContainer">
                         <div>
                             <a href="#" id="imagePlus">+</a>
-<%-- 이미지  name="Image" --%>
-                            <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*">
+<%-- 이미지  name="image" --%>
+                            <div id="fileInputContainer">
+                                <%-- <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*"> --%>
+                            
+                            </div>
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김 --%>
-                        </div>
                         </div>
                     </div>
                 </article>
@@ -65,8 +66,9 @@
                         class="textLimit500"
                         id="detailText"
                         name="detailText"
+                        required
                         placeholder="구입 연도, 브랜드, 사용감, 하자 유무 등 판매하고자 하는 상품과 관련된 정보를 포함하여 게시글 내용을 작성해주세요.(500자 이내)"
-                        maxlength="500" required></textarea>
+                        maxlength="500"></textarea>
                 </article>
             </div>
             <div class="post--main__inputPrice">
@@ -78,7 +80,7 @@
             <div class="post--main__inputQuantity">
                 <div>
 <%-- 수량 name="quantity" --%>
-                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" name="quantity"  placeholder="1" id="quantityInput" required>개
+                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" name="quantity"  placeholder="0" id="quantityInput" required>개
                 </div>
             </div>
             <div class="post--main__inputCondition">
@@ -109,7 +111,9 @@
                         </div>
 <%-- 카테고리 name="category2" --%>                        
                         <div id="category--2depth">
-                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div> 
+                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div>
+                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류"></label>
+                            <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
                         </div>
                     </article>
                 </div>
@@ -120,11 +124,12 @@
         <aside class="content--post__rightSide"></aside>
 
         <section class="content--post__bottomFix">
-        <button type="submit">등록하기</button>
+        <button type="submit" id="submitBtn">등록하기</button>
         </section>
 
-    </form>  <%-- form 태그 끝 --%>
     </section>
+<%-- form 태그 끝 --%>
+    </form> 
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

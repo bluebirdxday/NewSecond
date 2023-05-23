@@ -126,6 +126,15 @@
 			<version>1.4.7</version>
 		</dependency>
 		
+	<!-- Spring WebSocket -->
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-websocket</artifactId>
+         <version>${org.springframework-version}</version>
+      </dependency>
+      
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 		<dependency>
 			<groupId>org.springframework</groupId>

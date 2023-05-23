@@ -97,6 +97,9 @@ INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 1, 9, '산리오 마이�
 INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 3, 2, '프루아 에버백 스몰 꼬냑컬러', '어베백 실착 주번 저한테는 안 어룰려서 판매합니다 얼룩, 이염 있어서 저렴하게 내놓습니다 끈 종류 두가지 모두 같이 판매하고요 더스트백도 같이 드립니다 택배비 미포함', 
 65000, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
+INSERT INTO "goods_board" VALUES(SEQ_GOODS_NO.NEXTVAL, 3, 14, '오투가구 피카 av 장식장 tv', '오투가구 피카 av 장식장 판매합니다 신혼 가구로 안방에서 사용하던 거라 작은 생활 스크래치들과 청소하면서 생긴 다리 스크래치 등 외에 깔끔한 상태이고 안방 tv를 치우면서 안쓰게 되어 내놓아요 직접 가지러 오시거나 용달 부르셔야 됩니다', 
+65000, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
 
 SELECT * FROM "goods_board";
 COMMIT;
@@ -237,5 +240,3 @@ INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비
 COMMIT;
 
 
-FROM "goods_board"
-ORDER BY GOODS_NO DESC;

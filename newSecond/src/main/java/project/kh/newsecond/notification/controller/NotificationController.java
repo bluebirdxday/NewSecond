@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
@@ -31,7 +32,16 @@ public class NotificationController {
 	
 	// 알림 페이지로 이동
 	@GetMapping("/notification")
-	public String notification() {
+	public String notification(@SessionAttribute(value="loginUser", required=false) User loginUser, Model model) {
+		
+		int loginUserNo = loginUser.getUserNo();
+		
+		int keywordCount = service.selectKeywordCount(loginUserNo);
+		List<Notification> notificationList = service.selectNotificationList(loginUserNo);
+		
+		model.addAttribute("keywordCount", keywordCount);
+		model.addAttribute("notificationList", notificationList);
+		
 		return "notification/notification";
 	}
 	
@@ -80,10 +90,7 @@ public class NotificationController {
 	// 키워드 삭제
 	@PostMapping("/editKeyword/delete")
 	@ResponseBody
-	public int deleteReview(@RequestBody NotificationKeyword keyword,
-			RedirectAttributes ra) {
-		
-		
+	public int deleteReview(@RequestBody NotificationKeyword keyword, RedirectAttributes ra) {
 	    return service.deleteKeyword(keyword);
 	}
 	

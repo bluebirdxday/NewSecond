@@ -9,6 +9,7 @@
     <title>New Second</title>
 
     <link rel="stylesheet" href="/resources/css/review/updateReview-style.css">
+
 </head>
 <body>
 
@@ -60,8 +61,6 @@
 
     
     </main>
-    
-
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script src="/resources/js/addReview.js"></script>
 

@@ -45,7 +45,7 @@ a{
 /* 후기 작성 내역 작성한 후기 div */
 .reivew--item{
     border: 1px solid #C6C6C6;
-    box-shadow: 0 4px 4px 0 #BFBFBF;
+    /* box-shadow: 0 4px 4px 0 #BFBFBF; */
     width: 750px;
     margin-bottom: 10px;
     padding: 20px 10px;
