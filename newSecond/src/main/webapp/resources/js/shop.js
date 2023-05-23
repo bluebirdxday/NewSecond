@@ -181,9 +181,10 @@ function follow(passiveUserNo, loginUserNo, tab){
 
         return fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
     })
-    .then(resp=>{resp.json()})
+    .then(resp=>resp.json())
     .then((followList)=>{
-        
+        console.log(followList);
+        if(tab=="following" || tab=="follower")
         selectFollowList(followList, tab);
 
         if(userNo==loginUserNo){
@@ -206,7 +207,7 @@ function follow(passiveUserNo, loginUserNo, tab){
             selectFollowList(followList, "following");
     })
     .catch(()=>{ 
-
+        console.log(111);
         if(tab=="shopOwnerFollow"){
             changeProfileFollowBtn(tab, loginUserNo);
             return;
@@ -272,14 +273,22 @@ function unFollow(passiveUserNo, loginUserNo, tab){
         body : JSON.stringify({"passiveUserNo" : passiveUserNo, "activeUserNo" : loginUserNo})
     })
     .then(resp => resp.text())
-    .then(()=>{
+    .then((result)=>{
 
-        return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-    })
-    .then(resp=>{resp.json()})
+        console.log("unFollow 시 탭 : " +  tab);
+        console.log(loginUserNo);
+        console.log(userNo);
+        console.log("result: " + result);
+
+        if(result>0){
+            return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+        }
+
+    }).then(resp=>resp.json())
     .then((followList)=>{
 
-        selectFollowList(followList, tab);
+        if(tab=="following" || tab=="follower")
+            selectFollowList(followList, tab);
 
         if(userNo==loginUserNo){
             let followingCount = document.getElementById("followingCount").innerText;
@@ -294,14 +303,14 @@ function unFollow(passiveUserNo, loginUserNo, tab){
             
     }).then(resp=> resp.json())
     .then((followList)=>{
-        
+
         if(tab=="following")
             selectFollowList(followList, "follower");
         if(tab=="follower")
             selectFollowList(followList, "following");
     })
     .catch(()=>{ 
-        
+
         if(tab=="shopOwnerFollow"){
             changeProfileFollowBtn(tab, loginUserNo);
             return;

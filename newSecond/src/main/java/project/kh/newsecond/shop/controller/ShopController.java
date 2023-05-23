@@ -99,10 +99,11 @@ public class ShopController {
 	
 	
 	// 팔로잉/팔로워 리스트 조회
-	@GetMapping("/selectFollowList")
+	@GetMapping(value="/selectFollowList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public List<Follow> selectFollowList(@RequestParam("tab") String tab, @RequestParam("shopUserNo") int shopUserNo, @RequestParam("loginUserNo") int loginUserNo){
 		
+
 		Map<String, Integer> map = new HashMap<>();
 		map.put("activeUserNo", loginUserNo);
 		map.put("passiveUserNo", shopUserNo);
