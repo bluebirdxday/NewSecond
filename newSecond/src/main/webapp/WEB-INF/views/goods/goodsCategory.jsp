@@ -8,11 +8,12 @@
     <button type="button" class="" data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
 
     <ul class="dropdown-menu mainpage--category__menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
+
+        <c:forEach items="${categoryList}" var="category" begin="0" end="${fn:length(categoryList)}">
+            <li><a class="dropdown-item" href="#">${category.categoryName}</a></li>
+        </c:forEach>
+    
+
     </ul>
     
 </div>

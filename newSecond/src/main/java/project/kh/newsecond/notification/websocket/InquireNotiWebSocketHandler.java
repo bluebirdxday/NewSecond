@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
-
+// 실시간 알림 리스트 조회를 위한 웹소켓
 public class InquireNotiWebSocketHandler  extends TextWebSocketHandler{
 
     @Autowired
@@ -68,15 +68,13 @@ public class InquireNotiWebSocketHandler  extends TextWebSocketHandler{
                     s.sendMessage(new TextMessage(new Gson().toJson(notificationList)));
                 }
             }
-            
         }
-	
 	}
 	
 	// - 클라이언트와 연결이 종료되면 실행
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		logger.info("Socket 종료");
+		logger.info("InquireNotificationSocket 종료");
 		sessions.remove(session);
 		
 	}

@@ -150,7 +150,7 @@
                     >
                 </div>
 
-                <span class="signUp-message" id="addressMessasge">주소를 입력해주세요</span>
+                <span class="signUp-message" id="addressMessage">주소를 입력해주세요</span>
 
             </div>
             
@@ -181,11 +181,11 @@
         </script>
     </c:if>
 
-    <script>
+<%--     <script>
         
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    </script>
+    </script> --%>
 
 </body>
 </html>

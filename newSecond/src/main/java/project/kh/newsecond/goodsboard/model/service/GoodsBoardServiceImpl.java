@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.goodsboard.model.dao.GoodsBoardDAO;
+import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
 
@@ -82,6 +83,19 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		
 		return selectMostViewedList10;
 	}
+	
+	// 카테고리 리스트
+	@Override
+	public List<Category> selectCategoryList() {
+		
+		List<Category> selectCategoryList = dao.selectCategoryList();
+		
+		return selectCategoryList;
+	}
+	
+	
+	
+	
 	 
 	// 기존 찜 여부 확인
 	@Override
@@ -89,6 +103,8 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return dao.goodsLikeChecked(map);
 	}
 	
+	
+
 	// 찜 처리 
 	@Transactional(rollbackFor = Exception.class)
 	@Override

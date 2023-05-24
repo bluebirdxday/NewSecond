@@ -46,6 +46,34 @@ public class MyPageController {
 	/* ---------- 상세 페이지 로직 ----------- */
 	
 	/* ------------ 내정보 ------------------- */
+	// 이미지 변경 -> 내 상점으로 가게해서 편집을 누르게 해야한다.
+	@GetMapping("/info/img-edit")
+	public String imgEdit(String edit, @SessionAttribute(value = "loginUser", required = false) User loginUser
+							,RedirectAttributes ra) {
+		
+		if(loginUser == null) {
+			
+			String alertType = "fail";
+			String message = "로그인 후 이용가능합니다";
+			
+			ra.addFlashAttribute("alertType", alertType);
+			ra.addFlashAttribute("message", message);
+			
+			
+			return "redirect:/";
+			
+		}
+		
+		
+		int userNo = loginUser.getUserNo();
+		
+		
+		ra.addFlashAttribute("edit", edit);
+		
+		
+		return "redirect:/shop/"+ userNo;
+		
+	}
 	
 	// 닉네임 변경
 	@PostMapping("/info/changeNickname")

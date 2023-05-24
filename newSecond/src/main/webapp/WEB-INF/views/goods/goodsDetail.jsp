@@ -67,7 +67,17 @@
                             <div class="container--inner__top__right__likeCount" id="wishCount">${goodsBoard.wishCount}</div>
                         </div>
                         <div class="container--inner__top__right__describe">
-                            <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                        <c:choose>
+                            <c:when test="${loginUser.userNo==shop.userNo}">
+                                <div class="container--inner__top__right__describeTitleAndNav">
+                                    <div class="container--inner__top__right__ifDescribeTitle">&nbsp;상세 설명</div>
+                                    <div class="container--inner__top__right__nav"><a href="#"><img src="/resources/src/img/menu.png"></a></div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                            </c:otherwise>
+                        </c:choose>
                             <div class="container--inner__top__right__describeContent">${goodsBoard.goodsDescr}</div>
                         </div>
                     </div>
@@ -86,10 +96,13 @@
                                     <img src="/resources/src/img/basic_profile.png">
                                 </c:otherwise>
                             </c:choose>
+                            <input type="hidden" value="${goodsBoard.goodsTitle}" id="goodsTitle">
                         </div>
                         <div class="container--inner__bottom__shopInfo__others">
                             <div class="container--inner__bottom__shopInfo__buttons">
-                                <a href="/shop/${shop.userNo}"><div title="'${shop.shopTitle}'' 상점 바로가기" class="container--inner__bottom__shopInfo_shopTitleButton">${shop.shopTitle}</div></a>
+                                <a href="/shop/${shop.userNo}"><div data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title='"${shop.shopTitle} 상점 바로가기"' class="container--inner__bottom__shopInfo_shopTitleButton">${shop.shopTitle}</div></a>
                                 <!-- 채팅 팝업/사이트 이동 -->
                                 <div class="container--inner__bottom__shopInfo__chattingButton"><a href="#">채팅하기</a></div>
                             </div>
