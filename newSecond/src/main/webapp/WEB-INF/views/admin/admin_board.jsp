@@ -75,7 +75,7 @@
                             <td><input type="checkbox" class="admin_board_checkbox" name="" id=""></td>
                             <td class="admin_board_checkbox_no">${GoodsBoard["GOODS_NO"]}</td>
                             <td>${GoodsBoard["USER_NO"]}</td>
-                            <td><a href="/goods/${GoodsBoard["GOODS_NO"]}">${GoodsBoard["GOODS_TITLE"]}</a></td>
+                            <td><a href="/goods/${GoodsBoard['GOODS_NO']}">${GoodsBoard["GOODS_TITLE"]}</a></td>
                             <td>${GoodsBoard["SELL_ENROLL_DT"]}</td>
                             <td>${GoodsBoard["VIEW_COUNT"]}</td>
                             <td><button class="admin_board_tableBtn">${GoodsBoard["GOODS_STATUS"]}</td>

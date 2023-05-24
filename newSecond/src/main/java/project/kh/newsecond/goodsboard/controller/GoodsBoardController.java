@@ -1,8 +1,16 @@
 package project.kh.newsecond.goodsboard.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
 import project.kh.newsecond.shop.model.dto.Shop;
@@ -56,8 +65,10 @@ public class GoodsBoardController {
 	public String goodsDetail(
 			@PathVariable("goodsNo") int goodsNo,
 			Model model,
-			@SessionAttribute(value="loginUser", required=false) User loginUser
-			) {
+			@SessionAttribute(value="loginUser", required=false) User loginUser,
+			HttpServletRequest req, // 조회수
+			HttpServletResponse resp
+			) throws ParseException {
 		
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
 		
@@ -73,13 +84,46 @@ public class GoodsBoardController {
 				int result = service.goodsLikeChecked(map);
 				if(result>0) model.addAttribute("likeChecked","like");
 			}
+			// 조회수
+			if(loginUser==null || loginUser.getUserNo()!=goodsBoard.getUserNo()) {
+				Cookie c = null;
+				Cookie[] cookies = req.getCookies();
+				if(cookies!=null) {
+					for(Cookie cookie : cookies) {
+						if(cookie.getName().equals("readGoodsNo")) {
+							c = cookie;
+							break;
+						}
+					}
+				}
+				int result = 0;
+				if(c==null) {
+					c = new Cookie("readGoodsNo","|"+goodsNo+"|");
+					result = service.updateViewCount(goodsNo);
+				}else {
+					if(c.getValue().indexOf("|"+goodsNo+"|")==-1) {
+						c.setValue(c.getValue()+"|"+goodsNo+"|");
+						result = service.updateViewCount(goodsNo);
+					}
+				}
+				if(result>0) { // 조회 수 증가 성공하면 쿠키 적용 경로, 수명 지
+					goodsBoard.setViewCount(goodsBoard.getViewCount()+1);
+					c.setPath("/"); // /이하 경로 요청 시 쿠키 서버로 전달
+					Calendar cal = Calendar.getInstance();
+					cal.add(cal.DATE, 1);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					Date a = new Date();
+					Date temp = new Date(cal.getTimeInMillis());
+					Date b = sdf.parse(sdf.format(temp));
+					long diff = (b.getTime()-a.getTime())/1000;
+					c.setMaxAge((int)diff);
+					resp.addCookie(c);
+				}
+			}
 		}
-		
 		model.addAttribute("goodsBoard", goodsBoard);
 		model.addAttribute("loginUser", loginUser);
-		
 		// 상점 정보
-		// 전달 : 프로필, 유저넘버, 상점이름, 상점 설명 
 		Shop shop = service.shopInfo(goodsNo);
 		model.addAttribute("shop",shop);
 		
@@ -94,11 +138,6 @@ public class GoodsBoardController {
 		return service.like(likeMap);
 	}
 	
-	
-	// 조회수 증가
-	
-	
-	
 	// 게시글 상세 조회에서 판매자 상정 바로가기
 	@GetMapping("/goodsDetail/moveShop")
 	public String moveShop() {
@@ -107,5 +146,46 @@ public class GoodsBoardController {
 	
 	
 	
+	
+	
+	/* 지환 - 카테고리 조회 */
+	
+	// 상품 게시글 카테고리 별조회
+	@GetMapping("/category/{categoryNo:[0-9]+}")
+	public String selectCategoryGoodsList(@PathVariable("categoryNo") int categoryNo,
+											@SessionAttribute(value="categoryList", required = false) List<Category> category,
+											Model model
+											) {
+		
+		String categoryName = category.get(categoryNo-1).getCategoryName();
+		
+		List<GoodsBoard> categoryGoodsList = service.selectCategoryGoodsList(categoryNo);
+		
+		model.addAttribute("categoryNo", categoryNo);
+		model.addAttribute("categoryName", categoryName);
+		model.addAttribute("categoryGoodsList", categoryGoodsList);
+		
+		return "goods/selectCategoryGoodsList";
+	}
+	
+	// 카테고리 상품 게시글 추가 조회 (더보기)
+	@PostMapping("/categoryMore")
+	@ResponseBody
+	public List<GoodsBoard> searchCategoryGoodsList(@RequestBody Map<String, Object> numAndCategoryCode){
 
+		return service.moreCategoryGoods(numAndCategoryCode);
+	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+

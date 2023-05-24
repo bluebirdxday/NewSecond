@@ -440,6 +440,36 @@ textarea:focus, input:focus{
     margin-top: 2px;
 }
 
+
+.soldout{
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-size: 30px; 
+    width: 95px;
+    font-weight: 900; 
+    text-align: center; 
+    color: rgb(80, 91, 240); 
+    -webkit-text-stroke: 1px rgb(230, 235, 253); 
+    -webkit-text-fill-color: rgb(80, 91, 240);
+}
+
+
+.reserved{
+    position: absolute; 
+    top: 50%; 
+    left: 44%; 
+    transform: translate(-50%, -50%); 
+    font-size: 26px; 
+    width: 95px; 
+    font-weight: 900; 
+    text-align: center; 
+    color: #fafcee; 
+    -webkit-text-stroke: 1px #000000; 
+    -webkit-text-fill-color: #fafcee;
+}
+
 /* ---------------------------------------------------------------------------- */
 
 
