@@ -58,9 +58,10 @@ public class WritingServiceImpl implements WritingService {
 					
 					// 파일 순서 1번 자리 강제 배정(상준)
 					orderList[i] = order;
-					if(orderList[0] != 1) { // order 1이 씹혔다면
+					if(orderList[0] != 1) { // order 1이 씹혔다면 order 1 강제 배정
 						order = 1;
 					}
+					// 파일 순서 1번 자리 강제 배정(상준)
 					
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
