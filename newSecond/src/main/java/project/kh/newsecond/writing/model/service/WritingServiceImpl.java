@@ -40,6 +40,9 @@ public class WritingServiceImpl implements WritingService {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		// 1-3. 파일 순서 1번 자리 강제배정을 위한 5자리 배열 생성
+		int[] orderList = new int[5];
+		
 		// 2. FILE 테이블에 insert 시도
 		if(result > 0) { // GOODS_BOARD 테이블에 insert 성공
 			
@@ -52,6 +55,12 @@ public class WritingServiceImpl implements WritingService {
 					WritingImage Finalimgs = new WritingImage();
 					
 					int order = i + 1; // 파일 순서는 1번부터
+					
+					// 파일 순서 1번 자리 강제 배정(상준)
+					orderList[i] = order;
+					if(orderList[0] != 1) { // order 1이 씹혔다면
+						order = 1;
+					}
 					
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
