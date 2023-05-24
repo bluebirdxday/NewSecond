@@ -34,8 +34,8 @@
         <hr>
         <div >
             <span>
-            <form action="/admin_user/search" method="get">
-                <input class="admin_user_search" type="text" name="search" id="" >
+            <form action="/admin/admin_user/search" method="get">
+                <input class="admin_user_search" type="text" name="search" id="" >${param.search}
             </span>
             <span>
                 <button  class="admin_user_searchBtn">회원 정보 조회</button>
@@ -49,10 +49,10 @@
             <label ><input type="radio" name="admin_user_raidos" id="normal">정상</label>
             <label ><input type="radio" name="admin_user_raidos" id="block">블락</label>
             <label ><input type="radio" name="admin_user_raidos" id="signOut">탈퇴</label>
-         
+   
+ 
         </span>
         </div>
-        <form action="/admin_user/signOut" method="POST"></form>
     <div class="admin_user_result">
         <span >검색결과 : </span> 
             <span class="admin_user_countOne">3</span>
@@ -76,23 +76,23 @@
             </tr>
             <tbody>
             <c:choose>
-                <c:when test="${empty UserList}">
+                <c:when test="${empty userSelectList}">
                 <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
                 <tr>
                     <th colspan="6">목록이 존재하지 않습니다.</th>
                 </tr>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${UserList}" var="User">
+                    <c:forEach items="${userSelectList}" var="User">
                         <tr>
                         <td><input type="checkbox" class="admin_user_checkbox" name="" id=""></td>
-                            <td class="admin_user_checkbox_no">${User["USER_NO"]}</td>
-                            <td>${User["USER_EMAIL"]}</td>
-                            <td class="admin_user_states">${User["USER_STATUS"]}</td>
-                            <td>${User["ENROLL_DT"]}</td>
+                            <td class="admin_user_checkbox_no">${User.userNo}</td>
+                            <td>${User.userEmail}</td>
+                            <td class="admin_user_states">${User.userStatus}</td>
+                            <td>${User.enrollDate}</td>
                           <td>
 
-                          <input type="hidden" value="${User['USER_NO']}" class="signOutUserNo">
+                          <input type="hidden" value="${User.userNo}" class="signOutUserNo">
                             <button class="admin_user_tableBtn forcedsignOut show" id="forcedsignOut">강제탈퇴</button>
                             <button class="admin_user_tableBtn signOutH" id="signOutH">탈퇴해제</button>
                             </td>

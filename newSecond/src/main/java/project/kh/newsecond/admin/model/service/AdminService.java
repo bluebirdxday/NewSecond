@@ -117,6 +117,12 @@ public interface AdminService {
 	 */
 	List<Qna> radioTrade(String qnaCategory);
 
+	/**관리자 회원 검색 기능
+	 * @param searchKeyword
+	 * @return
+	 */
+	Map<String, Object> userSelectList(String searchKeyword);
+
 
 
 	

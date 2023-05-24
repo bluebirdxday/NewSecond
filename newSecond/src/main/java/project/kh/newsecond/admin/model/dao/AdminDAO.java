@@ -14,6 +14,7 @@ import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
+import project.kh.newsecond.user.model.dto.User;
 
 /**
  * @author bfyu0
@@ -215,6 +216,11 @@ public class AdminDAO {
 	public List<Qna> radioTrade(String qnaCategory) {
 		
 		return sqlSession.selectList("AdminMapper.radioTrade",qnaCategory); 
+	}
+
+	public List<User> userSelectList(String searchKeyword) {
+		
+		return sqlSession.selectList("AdminMapper.userSelectList",searchKeyword); 
 	}
 
 

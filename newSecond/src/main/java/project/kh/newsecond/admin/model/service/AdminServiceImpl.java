@@ -15,6 +15,7 @@ import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
+import project.kh.newsecond.user.model.dto.User;
 import project.kh.newsecond.common.utility.*;
 
 @Service
@@ -212,6 +213,25 @@ public class AdminServiceImpl implements AdminService {
 	public List<Qna> radioTrade(String qnaCategory) {
 		
 		return adminDao.radioTrade(qnaCategory);
+	}
+
+	/**
+	 *
+	 */
+	@Override
+	public Map<String, Object> userSelectList(String searchKeyword) {
+		
+		
+		
+		List<User> userSelectList = adminDao.userSelectList(searchKeyword);
+		 
+		 Map<String, Object> map = new HashMap<>();
+		 
+		 map.put("userSelectList", userSelectList);
+	
+		
+		
+		return map;
 	}
 }
 

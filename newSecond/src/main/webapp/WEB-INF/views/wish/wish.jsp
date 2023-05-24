@@ -49,10 +49,10 @@
                 onerror="this.src='/resources/src/img/no_image.jpeg'"
 				data-bs-toggle="tooltip" 
 				data-bs-placement="top" 
-				data-bs-title="${wishlist.goodsTitle}"alt="">
-                    <input type="checkbox" class="wish_checkbox">
-                    </a>
+				data-bs-title="${wishlist.goodsTitle}">
+                    <input type="checkbox" class="wish_checkbox"> </a>
                 </label>
+            
                 <div class="wish_info">${wishlist.goodsTitle}</div>
             </div>
         </c:forEach>

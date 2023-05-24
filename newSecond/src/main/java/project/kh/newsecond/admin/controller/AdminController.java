@@ -377,6 +377,17 @@ public class AdminController {
 		 return adminService.radioTrade(qna.getQnaCategory());
 	}
 	
+	@GetMapping("/admin_user/search")
+	public String userSelectList(@RequestParam(value="search", required=false)String searchKeyword,Model model){
+		
+		Map<String, Object> map = adminService.userSelectList(searchKeyword);
+		
+		System.out.println(map);
+	
+		model.addAttribute("map", map);
+		
+		return "admin/admin_userSearch" ; 
+	}
 	
 	
 	

@@ -28,7 +28,7 @@ function qnaSelectAll(qnaSelectAll)  {
        if ( trade.checked == true ) {
 
 const qnaCategory =  trade.value;
-  
+
   fetch("/admin/admin_qna/radioTrade", {
     method : "POST",
     headers : {"Content-Type": "application/json"},
@@ -42,8 +42,8 @@ const qnaCategory =  trade.value;
 
     function selectQnaList(result)
 
-      const qnaTable = document.getElementsByClassName("admin_qna_tableWrap");
-      qnaTable = "";
+      const qnaTable = document.querySelectorAll(".admin_qna_tableWrap");
+      qnaTable.style.display="none";
     
     
 

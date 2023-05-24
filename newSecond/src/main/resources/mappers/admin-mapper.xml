@@ -232,5 +232,15 @@
 	SELECT * FROM "qna"
 	WHERE QNA_CATEGORY = 'T'
 	</select>
+	
+	
+	<select id="userSelectList" resultMap="user_rm" >
+	SELECT USER_NO,USER_EMAIL,USER_STATUS,ENROLL_DT
+	FROM "users"
+	WHERE "USER_EMAIL" LIKE '%${searchKeyword}%'
+	   OR "USER_NO" LIKE '%${searchKeyword}%'
+	   OR "USER_NICKNAME" LIKE '%${searchKeyword}%'
+	</select>
+	
       
 </mapper>
