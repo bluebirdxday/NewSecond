@@ -33,8 +33,6 @@ public class GoodsBoardController {
 	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, Model model) {
 		
-		
-		
 		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
 		// 조회 결과
@@ -47,10 +45,7 @@ public class GoodsBoardController {
 	@PostMapping("/searchMore")
 	@ResponseBody
 	public List<GoodsBoard> searchMoreGoodsList(@RequestBody Map<String, Object> numAndSearchName){
-//		int startCallNum = (int)(numAndSearchName.get("startCallNum"));
-//		int untilNum = (int)(numAndSearchName.get("untilNum"));
-//		String searchName = (String)(numAndSearchName.get("searchName"));
-//		 
+
 		return service.moreGoods(numAndSearchName);
 	}
 	
