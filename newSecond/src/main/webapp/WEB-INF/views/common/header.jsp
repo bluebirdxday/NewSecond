@@ -80,7 +80,7 @@
     </section>
 
     <nav class="nav--container__menu">
-        <jsp:include page="/WEB-INF/views/goods/goodsCategory.jsp"/>
+        <jsp:include page="/WEB-INF/views/goods/goodsCategoryDropdown.jsp"/>
         <div><a href="/">홈</a></div>
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
@@ -89,12 +89,17 @@
 <script src="/resources/js/goods/searchGoodsList.js"></script>
 <script src="/resources/js/header.js"></script>
 
-<script>
-    
-
-</script>
 
 </header>
 
 
 
+<c:if test="${requestScope['javax.servlet.forward.request_uri'] ne '/'}" >
+
+    <c:if test="${empty categoryList}" >
+        <script>
+            location.href='/'
+        </script>
+    </c:if>
+
+</c:if>
