@@ -86,6 +86,7 @@
                                     <img src="/resources/src/img/basic_profile.png">
                                 </c:otherwise>
                             </c:choose>
+                            <input type="hidden" value="${goodsBoard.goodsTitle}" id="goodsTitle">
                         </div>
                         <div class="container--inner__bottom__shopInfo__others">
                             <div class="container--inner__bottom__shopInfo__buttons">

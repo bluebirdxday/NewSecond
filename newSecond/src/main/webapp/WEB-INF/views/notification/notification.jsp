@@ -30,15 +30,14 @@
             <!-- 활동 알림 탭 -->
             <div id="tab1" class="notice--tab__content notice--tabs__active">
                 
-                    <c:forEach items="${notificationList}" var="notification">
+                <c:forEach items="${notificationList}" var="notification">
                         
+                    <a href="${notification.notificationURL}">
                         <c:if test="${notification.readOrNot=='N'}" >
-                            <a href="${notification.notificationURL}">
                                 <div class="notice--tab1__item notice--new">  <%-- 아직 회원이 알림을 읽지 않은 상태라면 notice--new 클래스 추가  --%>
                         </c:if>
 
                         <c:if test="${notification.readOrNot=='Y'}" >
-                            <a href="${notification.notificationURL}">
                                 <div class="notice--tab1__item">
                         </c:if>
 
@@ -96,7 +95,7 @@
                             </div>
                         </a>
 
-                    </c:forEach>
+                </c:forEach>
                 
 
 
