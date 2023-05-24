@@ -110,6 +110,10 @@
         <!-- footer -->
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/goods/goodsDetail.js"></script>
+
+        <c:if test="${}" >
+
+        </c:if>
     </div>
     
 </body>
