@@ -149,5 +149,14 @@ public class GoodsBoardDAO {
 		return sqlSession.selectList("goodsBoardMapper.moreCategoryGoods", numAndCategoryCode);
 	}
 
+ 
+	/** 조회수 증가
+	 * @param goodsNo
+	 * @return
+	 */
+	public int updateViewCount(int goodsNo) {
+		return sqlSession.update("goodsBoardMapper.updateViewCount",goodsNo);
+	}
+
 	
 }

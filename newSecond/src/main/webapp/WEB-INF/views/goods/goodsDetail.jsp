@@ -70,12 +70,25 @@
                         <c:choose>
                             <c:when test="${loginUser.userNo==shop.userNo}">
                                 <div class="container--inner__top__right__describeTitleAndNav">
-                                    <div class="container--inner__top__right__ifDescribeTitle">&nbsp;상세 설명</div>
-                                    <div class="container--inner__top__right__nav"><a href="#"><img src="/resources/src/img/menu.png"></a></div>
+                                    <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                                    <%-- 수정/삭제 nav --%>
+                                    <div class="container--inner__top__right__nav">
+                                        <label for="navMenu"><img src="/resources/src/img/menu.png"></label>
+                                        <input type="checkbox" id="navMenu">
+                                        <div class="modifyAndDelete">
+                                            <a href="/myGoods/modify">수정</a>
+                                            <a href="/myGoods/delete">삭제</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                                <div class="container--inner__top__right__describeTitleAndQna">
+                                    <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
+                                    <div class="container--inner__top__right__qna"><a href="/qna/qna" data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="무분별한 신고는 제재 대상이 될 수 있습니다."><img src="/resources/src/img/siren.png"></a></div>
+                                </div>
                             </c:otherwise>
                         </c:choose>
                             <div class="container--inner__top__right__describeContent">${goodsBoard.goodsDescr}</div>

@@ -254,6 +254,7 @@
 		ORDER BY SELL_ENROLL_DT DESC
 	</select>
 	
+	
 	<!-- 카테고리 리스트 더보기 -->
 	<select id="moreCategoryGoods" resultMap="goodsboard_rm">
 	
@@ -273,6 +274,17 @@
 		
 		
 	</select>
+
+
+
+	<!-- 조회수 증가 -->
+	<update id="updateViewCount">
+		UPDATE "goods_board" SET
+		VIEW_COUNT  = VIEW_COUNT +1
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
+		
+	
 		
 		
 </mapper>

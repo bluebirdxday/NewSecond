@@ -51,7 +51,7 @@
                     <%-- 해당 검색 결과 없다면 --%>
                     <c:when test="${empty searchGoodsList}">
                         <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.query}"에 해당하는 상품/상점이 없습니다.</div>
+                            <div class="noGoodsList">"${param.query}"에 해당하는 상품이 없습니다.</div>
                         </div>
                     </c:when>
                         
