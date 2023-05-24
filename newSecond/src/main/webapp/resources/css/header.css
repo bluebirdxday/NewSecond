@@ -289,5 +289,25 @@ header>section:nth-child(3){ height: 30%; }
 
 .mainpage--category__menu{
     width: 230px;
+    height: 400px;
+    overflow-y: overlay;
 }
 
+
+.mainpage--category__menu::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+    
+.mainpage--category__menu::-webkit-scrollbar-thumb {
+    outline: none;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    /* box-shadow 색상은 지정 안했을 경우 기본적으로 color 값을 따라감 */
+    box-shadow: inset 6px 6px 0;
+}
+    
+.mainpage--category__menu::-webkit-scrollbar-track {
+    box-shadow: none;
+    background-color: transparent;
+}
