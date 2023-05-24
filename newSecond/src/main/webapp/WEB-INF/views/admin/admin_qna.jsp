@@ -43,7 +43,8 @@
                 <button  class="admin_qna_searchBtn">문의조회</button>
             </span>
         </div>
-        <div class="admin_qna_raidos">
+        <form action="" name="myRadio">
+        <div class="admin_qna_raidosWrap">
             <span>
             <label ><input type="radio" name="admin_qna_raidos" id="all" value="all">전체</label>
             <label ><input type="radio" name="admin_qna_raidos" id="trade" value="T">거래신고</label>
@@ -52,6 +53,7 @@
             <label ><input type="radio" name="admin_qna_raidos" id="chatting" value="C">채팅/알람</label>
             <label ><input type="radio" name="admin_qna_raidos" id="etc" value="O">기타문의</label>
         </span>
+        </form>
         </div>
     <div class="admin_qna_result">
         <span >검색결과 : </span> 

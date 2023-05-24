@@ -318,10 +318,22 @@ public class AdminController {
 	@PostMapping("/admin_user/block")
 	@ResponseBody
 	public int userBlock(@RequestBody User user) {
-		
-		 System.out.println(user);
+	
 		   
 		 return adminService.userBlock(user.getUserNo());
+	}
+	/**회원블락해제
+	 * @param paramMap
+	 * @return
+	 */
+	
+	@PostMapping("/admin_user/blockH")
+	@ResponseBody
+	public int userBlockH(@RequestBody User user) {
+		
+		System.out.println(user);
+		
+		return adminService.userBlockH(user.getUserNo());
 	}
 
 	/** 문의사항 삭제
@@ -377,6 +389,17 @@ public class AdminController {
 		 return adminService.radioTrade(qna.getQnaCategory());
 	}
 	
+	@GetMapping("/admin_user/search")
+	public String userSelectList(@RequestParam(value="search", required=false)String searchKeyword,Model model){
+		
+		Map<String, Object> map = adminService.userSelectList(searchKeyword);
+		
+		System.out.println(map);
+	
+		model.addAttribute("map", map);
+		
+		return "admin/admin_userSearch" ; 
+	}
 	
 	
 	

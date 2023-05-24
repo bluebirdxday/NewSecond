@@ -130,10 +130,17 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return count;
 	}
 	
-	// 상품 상세 - 상점 정
+	// 상품 상세 - 상점 정보
 	@Override
 	public Shop shopInfo(int goodsNo) {
 		return dao.shopInfo(goodsNo);
+	}
+	
+	// 조회수 증가 
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int updateViewCount(int goodsNo) {
+		return dao.updateViewCount(goodsNo);
 	}
 
 	
