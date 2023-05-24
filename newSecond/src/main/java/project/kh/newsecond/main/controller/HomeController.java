@@ -26,8 +26,8 @@ public class HomeController {
 	public String homeForward(User loginUser, Model model, HttpSession session) {
 
 		// 최근 업데이트된 게시글 상품 5가지에 대한 리스트
-		List<GoodsBoard> recentGoodsList5 = service.selectRecentGoodsList5();
-		model.addAttribute("recentGoodsList5", recentGoodsList5);
+		List<GoodsBoard> recentGoodsList10 = service.selectRecentGoodsList10();
+		model.addAttribute("recentGoodsList10", recentGoodsList10);
 
 		
 		// 조회수 높은 인기 상품 10가지에 대한 리스트
@@ -40,10 +40,6 @@ public class HomeController {
 		
 		session.setAttribute("categoryList", CaterogyList);
 		
-		/*
-		 * if(loginUser != null) { List<GoodsBoard> recentViewedList =
-		 * service.selectrecentViewedList5(); model.addAttribute(recentViewedList); }
-		 */
 
 		return "common/home";
 	}

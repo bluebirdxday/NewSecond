@@ -108,9 +108,9 @@ public class GoodsBoardDAO {
 	 * @param rowBounds 
 	 * @return List
 	 */
-	public List<GoodsBoard> selectRecentGoodsList5() {
+	public List<GoodsBoard> selectRecentGoodsList10() {
 		
-		RowBounds rowBounds = new RowBounds(0, 5);
+		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsList", null ,rowBounds);
 	}
 
