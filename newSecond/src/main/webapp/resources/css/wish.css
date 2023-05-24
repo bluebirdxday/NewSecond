@@ -10,9 +10,16 @@
   }
   
   .wish_bar{
+    background-color: #C2D3EB;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas: ". title title . . . . . . .";
+    place-items: center;
       margin: 10px 10px;
       font-size: 30px;
-      font-style: italic;  
+    color: #2365B9;
+    font-weight: bold;
   }
 
   /* ---------------조회 서비스---------- */

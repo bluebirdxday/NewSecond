@@ -73,7 +73,6 @@
             </thead>
             </tr>
             <tbody>
-
             <c:choose>
                 <c:when test="${empty UserList}">
                 <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>

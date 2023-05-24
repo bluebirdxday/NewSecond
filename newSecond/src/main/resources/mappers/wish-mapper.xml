@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wishMapper">
+
+
+	<resultMap type="Wish" id="wish_rm">
+	<id property = "wishNo" column="WISH_NO"/>
+	<result property ="goodsNo" column="GOODS_NO"/>
+	<result property ="userNo" column="USER_NO"/>
+	<result property ="wishDate" column="WISH_DT"/>
+	
+	</resultMap>
+
+      <resultMap type="Notice" id="notice_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="noticeNo" column="NOTICE_NO" />
+      <result property="noticeTitle" column="NOTICE_TITLE" />
+      <result property="noticeContent" column="NOTICE_CONTENT" />
+      <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
+      <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
+   </resultMap>
+   
+   <resultMap type="User" id="user_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userEmail" column="USER_EMAIL" />
+      <result property="userPassword" column="USER_PASSWORD" />
+      <result property="userNickname" column="USER_NICKNAME" />
+      <result property="userTel" column="USER_TEL" />
+      <result property="userAddress" column="USER_ADDRESS" />
+      <result property="userImage" column="USER_IMG" />
+      <result property="userStatus" column="USER_STATES" />
+      <result property="enrollDate" column="ENROLL_DT" />
+      <result property="userRole" column="USER_ROLE" />
+   
+   </resultMap>
+   
+     <resultMap type="Qna" id="qna_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="qnaNo" column="QNA_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userNo" column="USER_NO" />
+      <result property="qnaType" column="QNA_TYPE" />      
+      <result property="qnaTitle" column="QNA_TITLE" />
+      <result property="qnaContent" column="QNA_CONTENT" />
+      <result property="qnaEnrollDate" column="QNA_ENROLL_DATE" />
+      <result property="qnaDeleteFl" column="QNA_DELETE_FL" />
+      <result property="qnaCheckFl" column="QNA_CHECK_FL" />
+      <result property="qnaCategory" column="QNA_CATEGORY" />
+
+   
+   </resultMap>
+   
+   	<resultMap type="GoodsBoard" id="goodsboard_rm">
+		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
+		<id property="goodsNo" column="GOODS_NO" />
+		
+		<!-- DB의 일반 컬럼들 -->
+		<result property="userNo" column="USER_NO" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="goodsTitle" column="GOODS_TITLE" />
+		<result property="goodsDescr" column="GOODS_DESCR" />
+		<result property="goodsPrice" column="GOODS_PRICE" />
+		<result property="viewCount" column="VIEW_COUNT" />
+		<result property="wishCount" column="WISH_COUNT" />
+		<result property="sellEnrollDate" column="SELL_ENROLL_DT" />
+		<result property="goodsStatus" column="GOODS_STATUS" />
+	</resultMap>
+   
+   
+   <select id="wishSelectList" resultMap="wish_rm">
+   SELECT * FROM "wish_lists"
+   WHERE USER_NO = #{userNo}
+   </select>
+
+   	<!-- 관심상품페이지 - 유민 -->
+	<!-- 최근 업데이트된 상품 -->
+	<select id="wishList" resultMap="wish_rm">
+		SELECT WISH_NO,W.GOODS_NO,USER_NO,
+	    (SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	     WHERE F.GOODS_NO = W.GOODS_NO
+	     AND FILE_ORDER = 1) THUMBNAIL
+		FROM "wish_lists" W
+		WHERE USER_NO = #{userNo}
+		</select>
+	
+      
+      
+</mapper>

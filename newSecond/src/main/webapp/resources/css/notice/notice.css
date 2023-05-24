@@ -81,18 +81,14 @@ text-align: center;
 padding: 10px 10px;
 }
 
-tbody td:nth-child(1){
-    width: 10px;
-    padding: 0px;
-    }
 
-tbody td:nth-child(2){
+tbody td:nth-child(1){
         width: 10px;
         padding: 0px;
  }
 
  
-tbody td:nth-child(3){
+tbody td:nth-child(2){
     width: 500px;
     padding: 0px;
 }

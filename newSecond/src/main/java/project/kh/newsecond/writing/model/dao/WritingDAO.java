@@ -45,4 +45,14 @@ public class WritingDAO {
 		return sqlSession.insert("writingMapper.writingImageInsert", FinalImages);
 	}
 
+	
+	
+	/** 키워드 알림 추가 (희진)
+	 * @param goodsNo
+	 * @return result
+	 */
+	public int insertKeywordNotification(int goodsNo) {
+		return sqlSession.insert("NotificationMapper.insertKeywordNotification", goodsNo);
+	}
+
 }
