@@ -209,6 +209,13 @@
 	UPDATE "users"
 	SET USER_STATUS = 'B'
 	WHERE USER_NO = #{userNo}
+	</update>
+	
+      	<!-- 회원 블락 해제-->
+	<update id="userBlockH">
+	UPDATE "users"
+	SET USER_STATUS = 'A'
+	WHERE USER_NO = #{userNo}
 	
 	</update>
 	

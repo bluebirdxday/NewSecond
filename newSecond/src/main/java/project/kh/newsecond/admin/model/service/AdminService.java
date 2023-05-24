@@ -98,6 +98,13 @@ public interface AdminService {
 	 * @return
 	 */
 	int userBlock(int userNo);
+	
+	/**회원 블락 해제
+	 * @param userNo
+	 * @return
+	 */
+	int userBlockH(int userNo);
+
 
 	/**게시글 블라인드
 	 * @param goodsNo
@@ -123,6 +130,7 @@ public interface AdminService {
 	 */
 	Map<String, Object> userSelectList(String searchKeyword);
 
+	
 
 
 	

@@ -303,6 +303,12 @@ SELECT *
 FROM "files" 
 WHERE GOODS_NO = '222';
 
+SELECT *
+FROM "users";
+
+UPDATE "users"
+SET USER_STATUS ='A'
+WHERE USER_NO='36';
 
 
 

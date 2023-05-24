@@ -318,10 +318,22 @@ public class AdminController {
 	@PostMapping("/admin_user/block")
 	@ResponseBody
 	public int userBlock(@RequestBody User user) {
-		
-		 System.out.println(user);
+	
 		   
 		 return adminService.userBlock(user.getUserNo());
+	}
+	/**회원블락해제
+	 * @param paramMap
+	 * @return
+	 */
+	
+	@PostMapping("/admin_user/blockH")
+	@ResponseBody
+	public int userBlockH(@RequestBody User user) {
+		
+		System.out.println(user);
+		
+		return adminService.userBlockH(user.getUserNo());
 	}
 
 	/** 문의사항 삭제

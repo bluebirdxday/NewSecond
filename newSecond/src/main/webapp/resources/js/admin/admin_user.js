@@ -151,3 +151,44 @@ fetch("/admin/admin_user/block", {
 }).catch(err=> console.log(err));
 
 }
+
+
+
+for(let i=0; i<block.length; i++){
+  blockH[i].addEventListener(('click'),()=>{
+
+  if (confirm("블락해제 하시겠습니까?")) {
+
+  if(states[i].innerText == '블락'){
+  states[i].innerText = '정상';
+  blockH[i].style.display = "none";
+  block[i].style.display = "block";
+  }
+  else return;
+
+  var signOutUserNo = document.getElementsByClassName("signOutUserNo")[i].value;
+  
+  if(block!=null){
+    signOutHUser(signOutUserNo);
+  }
+}
+});
+
+}
+
+function signOutHUser(userNo){
+
+console.log(userNo);
+
+fetch("/admin/admin_user/blockH", {
+  method : "POST",
+  headers : {"Content-Type": "application/json"},
+  body : JSON.stringify({"userNo" : userNo})
+}).then(resp=> resp.text())
+.then(result=>{
+  console.log(result);
+
+
+}).catch(err=> console.log(err));
+
+}

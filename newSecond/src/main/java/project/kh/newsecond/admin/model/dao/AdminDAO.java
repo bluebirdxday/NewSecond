@@ -198,11 +198,24 @@ public class AdminDAO {
 		return sqlSession.update("AdminMapper.qnaDelete",qna); 
 	}
 
+	/**회원 블락
+	 * @param userNo
+	 * @return
+	 */
 	public int userBlock(int userNo) {
 		
 		return sqlSession.update("AdminMapper.userBlock",userNo); 
 	}
 
+	/**회원 블락 해제
+	 * @param userNo
+	 * @return
+	 */
+	public int userBlockH(int userNo) {
+		
+		return sqlSession.update("AdminMapper.userBlockH",userNo); 
+	}
+	
 	public int boardBlind(int goodsNo) {
 	
 		return sqlSession.update("AdminMapper.boardBlind",goodsNo); 
@@ -222,6 +235,8 @@ public class AdminDAO {
 		
 		return sqlSession.selectList("AdminMapper.userSelectList",searchKeyword); 
 	}
+
+
 
 
 
