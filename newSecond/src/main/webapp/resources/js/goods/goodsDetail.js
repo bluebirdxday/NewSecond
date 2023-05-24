@@ -56,12 +56,16 @@ goodsLike.addEventListener("click",e=>{
             console.log("좋아요 처리를 실패했습니다. 다시 시도해주세요.");
             return;
         }
+
         e.target.classList.toggle("beforeLike");
         e.target.classList.toggle("afterLike");
         if(e.target.classList.contains("beforeLike")){
             e.target.setAttribute("src","/resources/src/img/heartBefore.png");
         }else{
             e.target.setAttribute("src","/resources/src/img/heartAfter.png");
+            
+            /* 희진 : 관심상품 등록 알림 */
+            sendLikeBoardNotification(goodsUserNo, goodsNo, loginUserNo);
         }
         document.getElementById("wishCount").innerText = count;
 
@@ -72,3 +76,37 @@ goodsLike.addEventListener("click",e=>{
     })
 
 });
+
+
+
+
+
+
+/* 희진 : 관심상품 등록 알림 */
+// 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
+let likeNofiticationSock = new SockJS("/notificationSock");
+let likeInquireNotiSocket = new SockJS("/inquireNotificationSock"); 
+
+const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
+
+    const goodsTitle = document.getElementById("goodsTitle").value;
+    
+    let notiGoodTitle =  goodsTitle.substr(0, 11) + "...";
+
+    var likeGoodsObj = {
+        "senderNo" : loginUserNo,
+        "targetNo" : goodsUserNo,
+        "notificationMessage" : "님께서 회원님의 [" + notiGoodTitle + "] 상품을 관심상품으로 등록하였습니다.",
+        "notificationType" : "L",
+        "notificationURL" : "/goods/" + goodsNo
+    };
+
+    likeNofiticationSock.send(JSON.stringify(likeGoodsObj));
+
+    var likeGoodsObj2 = {
+        "targetNo" : goodsUserNo
+    }
+
+    likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
+
+}

@@ -31,7 +31,7 @@ public class NoticeController {
 		}
 
 			
-			@GetMapping("notice_read/{noticeNo}")
+			@GetMapping("/notice_read/{noticeNo}")
 			public String notice_read(Model model
 					, @PathVariable("noticeNo") int noticeNo) {
 				

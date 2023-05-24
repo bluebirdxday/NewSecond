@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.user.model.dto.User;
@@ -121,6 +122,7 @@ public class GoodsBoardDAO {
 		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectMostViewedList", null ,rowBounds);
 	}
+
 	
 	/** 로그인한 유저가 최근에 본 상품 5가지
 	 * @return 
@@ -129,6 +131,15 @@ public class GoodsBoardDAO {
 	 * public List<GoodsBoard> selectrecentViewedList5() { return
 	 * sqlSession.selectList("goodsBoardMapper.selectrecentViewedList5"); }
 	 */
+	
+	
+	
+	/** 카테고리 리스트 조회
+	 * @return
+	 */
+	public List<Category> selectCategoryList() {
+		return sqlSession.selectList("goodsBoardMapper.selectCategoryList");
+	}
 
 	
 }

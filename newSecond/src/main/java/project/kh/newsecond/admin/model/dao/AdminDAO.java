@@ -34,11 +34,12 @@ public class AdminDAO {
 		int offset = (pagination.getCurrentPage() - 1)
 				* pagination.getLimit();
 
+		
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
 		
 		
-		return sqlSession.selectList("AdminMapper.selectNoticeList");
+		return sqlSession.selectList("AdminMapper.selectNoticeList",null,rowBounds);
 	}
 	
 	/**관리자 공지사항 페이지 수
@@ -56,7 +57,7 @@ public class AdminDAO {
 		return sqlSession.selectList("AdminMapper.selectUserList");
 	}
 
-	/**관리자 문의사항 게시글 리스트
+	/**관리자 문의사항 게시글 리스트//페이지네이션
 	 * @return
 	 */
 	public List<Qna> selectQnaList(Pagination pagination) {
@@ -68,7 +69,7 @@ public class AdminDAO {
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());	
 		
-		return sqlSession.selectList("AdminMapper.selectQnaList",rowBounds);
+		return sqlSession.selectList("AdminMapper.selectQnaList",null,rowBounds);
 	}
 	
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
@@ -23,6 +24,7 @@ import project.kh.newsecond.user.model.dto.User;
 
 @Controller
 @RequestMapping("/goods")
+@SessionAttributes({"loginUser"})
 public class GoodsBoardController {
 	
 	@Autowired

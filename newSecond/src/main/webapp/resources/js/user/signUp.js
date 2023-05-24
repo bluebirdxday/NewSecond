@@ -114,7 +114,7 @@ userPassword.addEventListener("input", () => {
 
         }else{
 
-            if(userPassword.value == memberPwConfirm.value) {
+            if(userPassword.value == userPwConfirm.value) {
 
 
                 passwordMessage.innerText = "비밀번호가 일치합니다";
@@ -306,7 +306,7 @@ userTel.addEventListener("input", () => {
 
 const userSearch = document.getElementById("addressSearch");
 const userAddressPostcode = document.getElementById("userAddress_postcode");
-const addressMessasge =document.getElementById("addressMessage");
+const addressMessage = document.getElementById("addressMessage");
 const valueRecognizer = document.getElementById("valueRecognizer")
 
 userSearch.addEventListener("click", () =>{
@@ -334,10 +334,10 @@ userSearch.addEventListener("click", () =>{
 
 valueRecognizer.addEventListener("click", () => {
     if(userAddressPostcode.value != ""){
-        addressMessasge.classList.add("d-none");
+        addressMessage.classList.add("d-none");
         checkObj.userAddress = true;
     }else{
-        addressMessasge.classList.remove("d-none");
+        addressMessage.classList.remove("d-none");
         checkObj.userAddress = false;
     }
 });

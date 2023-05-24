@@ -233,12 +233,7 @@ INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비
 
 COMMIT;
 
-INSERT INTO "shop" VALUES(25,
-               (SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS 
-					FROM DUAL), '안녕하세요, '||(SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0')
-					FROM DUAL)||'에 오신것을 환영합니다!'
-               NULL, NULL
-               );
+
               
               
 INSERT INTO "shop" VALUES (
@@ -258,4 +253,6 @@ SELECT * FROM "shop";
 
 SELECT LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 6, '0')
 FROM DUAL;
+
+SELECT * FROM "notifications";
 

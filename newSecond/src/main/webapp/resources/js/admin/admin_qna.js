@@ -38,14 +38,19 @@ const qnaCategory =  trade.value;
     console.log(result);
     console.log(qnaCategory);
 
-    selectQnaList(result);
+    selectQnaList(result)
+
+    function selectQnaList(result)
+
+      const qnaTable = document.getElementsByClassName("admin_qna_tableWrap");
+      qnaTable = "";
+    
+    
+
 
   }).catch(err=> console.log(err));
+
 } } });
 
 
-function selectQnaList(result){
 
-  
-
-}

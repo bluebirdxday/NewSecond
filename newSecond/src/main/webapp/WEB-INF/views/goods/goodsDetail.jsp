@@ -109,6 +109,7 @@
                                     <img src="/resources/src/img/basic_profile.png">
                                 </c:otherwise>
                             </c:choose>
+                            <input type="hidden" value="${goodsBoard.goodsTitle}" id="goodsTitle">
                         </div>
                         <div class="container--inner__bottom__shopInfo__others">
                             <div class="container--inner__bottom__shopInfo__buttons">
@@ -134,6 +135,7 @@
         <!-- footer -->
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/goods/goodsDetail.js"></script>
+
     </div>
     
 </body>
