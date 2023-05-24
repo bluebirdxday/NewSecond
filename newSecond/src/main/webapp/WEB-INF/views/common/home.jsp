@@ -25,32 +25,36 @@
 
 			<div class="mainPage--wholeWrapper">
 
-				<section class="mainPage--carousel" style="color:black; ">
-					<div id="carouselExampleIndicators" class="carousel slide mainPage--carousel__container" data-bs-ride="true">
+				<section class="mainPage--carousel">
+					<div id="carouselIndicators" class="carousel slide mainPage--carousel__container" data-bs-ride="carousel" data-bs-interval="10000">
+
 						<div class="carousel-indicators">
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+							<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+							<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 						</div>
+
 						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img src="https://dummyimage.com/900x280/000/fff" class="d-block w-100" alt="...">
+							<div class="carousel-item active mainPage--carousel__item">
+								<img src="/resources/src/img/mainCarousel/carousel-1.png" class="d-block w-100" >
+								<div class="carousel-caption d-none d-md-block">
+									<p>뉴세컨드의 바다에 오신걸 환영합니다!</p>
+								</div>
 							</div>
-							<div class="carousel-item">
-								<img src="https://dummyimage.com/900x280/000/fff" class="d-block w-100" alt="...">
+							<div class="carousel-item mainPage--carousel__item ">
+								<img src="/resources/src/img/mainCarousel/carousel-4.png" class="d-block w-100" style="transform: translateY(-100px)">
+								<div class="carousel-caption d-none d-md-block">
+									<p>쓰던것을 새롭게! 당신의 물건들을 걸어두세요!</p>
+								</div>
 							</div>
-							<div class="carousel-item">
-								<img src="https://dummyimage.com/900x280/000/fff" class="d-block w-100" alt="...">
+							<div class="carousel-item mainPage--carousel__item">
+								<img src="/resources/src/img/mainCarousel/carousel-11.png" class="d-block w-100" style="transform: translateY(-100px)"" >
+								<div class="carousel-caption d-none d-md-block">
+									<p>뉴세컨드와 함께! 당신의 여름을 상상해보세요!</p>
+								</div>
 							</div>
 						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
+
 					</div>
 				</section>	
 				
