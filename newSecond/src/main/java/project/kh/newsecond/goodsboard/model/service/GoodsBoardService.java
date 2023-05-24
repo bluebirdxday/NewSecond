@@ -3,6 +3,7 @@ package project.kh.newsecond.goodsboard.model.service;
 import java.util.List;
 import java.util.Map;
 
+import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.user.model.dto.User;
@@ -32,7 +33,8 @@ public interface GoodsBoardService {
 	// 로그인 유저 기준 최근 본 상품 5가지
 	/* List<GoodsBoard> selectrecentViewedList5(); */
 	
-	
+	// 카테고리 리스트
+	List<Category> selectCategoryList();
 	
 	
 
@@ -44,6 +46,8 @@ public interface GoodsBoardService {
 
 	// 상품 게시글 - 상점 정보
 	Shop shopInfo(int goodsNo);
+	
+	
 
 
 }

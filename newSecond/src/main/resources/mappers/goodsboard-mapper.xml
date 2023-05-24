@@ -53,6 +53,13 @@
 	</resultMap>
 	
 	
+	<!-- Category resultMap -->
+	<resultMap type="Category" id="category_rm">
+		<id property="categoryNo" column="CATEGORY_NO" />
+		<id property="categoryName" column="CATEGORY_NAME" />
+		
+	</resultMap>
+	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
 	
 	<resultMap type="Wish" id="wish_rm">
@@ -233,8 +240,14 @@
 			AND FILE_ORDER = 1) THUMBNAIL
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
-	
 	</select>
+	
+	<!-- 카테고리 리스트 -->
+	<select id="selectCategoryList" resultMap="category_rm">
+		SELECT CATEGORY_NO, CATEGORY_NAME
+		FROM "categories"
+	</select>
+	
 		
 	
 		

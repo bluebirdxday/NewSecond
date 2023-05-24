@@ -256,8 +256,92 @@ ROLLBACK;
 
 COMMIT;
 
+SELECT * FROM "users";
 
 --문의사항 접수
+
+
+-- 키워드 포함
+-- 포함되어 있지 않으면 0
+SELECT (SELECT INSTR(GOODS_TITLE, '햄토리', 1) FROM DUAL) AS COUNT
+FROM "goods_board"
+WHERE GOODS_NO = 3;
+
+
+
+-- REGEXP_LIKE, LISTAGG 함수 이용
+SELECT GOODS_NO, GOODS_TITLE, USER_NO 
+FROM "goods_board"
+WHERE REGEXP_LIKE(GOODS_TITLE, 
+   (SELECT LISTAGG(KEYWORD_TITLE,'|') WITHIN GROUP(ORDER BY KEYWORD_TITLE) A FROM "notification_keywords")
+);
+
+-- EXISTS, REGEXP_LIKE, 상관 서브쿼리 이용
+SELECT GOODS_NO, GOODS_TITLE FROM "goods_board"
+WHERE EXISTS (SELECT 1 FROM "notification_keywords" WHERE REGEXP_LIKE("goods_board".GOODS_TITLE, KEYWORD_TITLE))
+;
+
+SELECT g.GOODS_NO, g.GOODS_TITLE, nk.KEYWORD_TITLE
+FROM "goods_board" g
+WHERE EXISTS (
+  SELECT 1
+  FROM "notification_keywords" nk
+  WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+);
+
+SELECT g.GOODS_NO, g.GOODS_TITLE, nk.KEYWORD_TITLE
+FROM goods_board g
+WHERE EXISTS (
+  SELECT 1
+  FROM notification_keywords nk
+  WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+) nk;
+
+SELECT * FROM "goods_board";
+
+
+
+
+
+-- senderNo == targetNo 인 경우에는 제외
+SELECT g.GOODS_NO, g.GOODS_TITLE, nk.KEYWORD_TITLE, nk.USER_NO TARGET_NO, g.USER_NO SENEDER_NO
+FROM "goods_board" g, "notification_keywords" nk
+WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+AND g.USER_NO != nk.USER_NO
+AND GOODS_NO = 13;
+
+SELECT nk.USER_NO TARGET_NO, g.USER_NO SENEDER_NO, g.GOODS_NO || '^^' || g.GOODS_TITLE || '^^' || nk.KEYWORD_TITLE NOTIFICATION_MESSAGE, 
+		'/goods/'||GOODS_NO NOTIFICATION_URL
+FROM "goods_board" g, "notification_keywords" nk
+WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+AND g.USER_NO != nk.USER_NO
+AND GOODS_NO = 13;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 SELECT * FROM "qna";
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
@@ -23,6 +24,7 @@ import project.kh.newsecond.user.model.dto.User;
 
 @Controller
 @RequestMapping("/goods")
+@SessionAttributes({"loginUser"})
 public class GoodsBoardController {
 	
 	@Autowired
@@ -32,8 +34,6 @@ public class GoodsBoardController {
 	// 상품 게시글 목록 조회(검색)
 	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, Model model) {
-		
-		
 		
 		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
@@ -47,10 +47,7 @@ public class GoodsBoardController {
 	@PostMapping("/searchMore")
 	@ResponseBody
 	public List<GoodsBoard> searchMoreGoodsList(@RequestBody Map<String, Object> numAndSearchName){
-//		int startCallNum = (int)(numAndSearchName.get("startCallNum"));
-//		int untilNum = (int)(numAndSearchName.get("untilNum"));
-//		String searchName = (String)(numAndSearchName.get("searchName"));
-//		 
+
 		return service.moreGoods(numAndSearchName);
 	}
 	
