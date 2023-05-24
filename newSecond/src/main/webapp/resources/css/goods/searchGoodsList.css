@@ -105,6 +105,9 @@
     /* border: 1px solid black; */
     padding: 0 10px;
     float: left;
+}
+
+.goods{
     position: relative;
 }
 
@@ -117,41 +120,36 @@
     display: block;
     box-shadow: 5px 7px 5px #c1c1c1;
     /* border: 1px solid red; */
-    position: absolute;
+    /* position: absolute; */
 }
 .container--inner__middle img:hover{
     box-shadow: 5px 5px 5px #a09f9f;
     transition-duration: 0.2s;
 }
 
-.soldout{
-    --bs-blueposition: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: rgb(80, 91, 240); -webkit-text-stroke: 1px rgb(230, 235, 253); -webkit-text-fill-color: rgb(80, 91, 240);
-    --xt-fill-color: rgb(80, 91, 240);
-}
-
-/* 예약중/판매 완료 표시 */
-.soldoutOrReserv{
+.status{
     position: absolute;
-    width: 210px;
-    height: 210px;
-    border-radius: 15%;
-    background-color: #000;
-    opacity: 0.4;
-}
-
-/* 예약중 / 판매 완료 나누기 */
-.searchGoodsStatus{
-    position: absolute;
-    border-radius: 5%;
-    font-weight: bold;
-    color: white;
-    /* background-color: #df1616; */
-    background-color: #00ba28;
-    text-align: center;
+    top: 15px;
+    right: 23%;
     font-size: 1.2em;
-    justify-content: center;
-    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 7px;
+    padding: 0 5px;
 }
+
+.soldout{
+    background-color: #cc0202;
+    
+}
+.reserved{
+    background-color: #0fc42a;
+
+}
+
+/* --bs-blueposition: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: rgb(80, 91, 240); -webkit-text-stroke: 1px rgb(230, 235, 253); -webkit-text-fill-color: rgb(80, 91, 240);
+--xt-fill-color: rgb(80, 91, 240); */
+
 
 /* 상품 가격, 타이틀 */
 .container--inner__middle div[class*=goods_]{
