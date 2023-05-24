@@ -360,9 +360,6 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <a href="/writing/write">
-        <button>글쓰기테스트버튼입니다</button>
-    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 

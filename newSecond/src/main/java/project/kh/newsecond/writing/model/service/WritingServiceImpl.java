@@ -57,7 +57,6 @@ public class WritingServiceImpl implements WritingService {
 					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
 					Finalimgs.setFileOrder(order); // 파일 순서 담기
 					
-					
 					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
 					
 					String fileRenameTemp = Util.fileRename(fileName); // rename 작업

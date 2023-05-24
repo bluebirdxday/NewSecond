@@ -27,11 +27,11 @@
             <div class="post--main__inputTitle">
                 <div>
                     <label for="title" class="labelTitle">제목</label><span>*</span>
-                    <span id="textLimit20Result">(0/20)</span>
+                    <span id="textLimit50Result">(0/50)</span>
                 </div>
                 <article>
 <%-- 제목 name="title" --%>                
-                    <input class="textLimit20" id="title" name="title" type="text" placeholder="제목을 입력해주세요." maxlength="20" required>
+                    <input class="textLimit50" id="title" name="title" type="text" placeholder="제목을 입력해주세요." maxlength="50" required>
                 </article>
             </div>
             <div class="post--main__inputImage">
@@ -45,12 +45,12 @@
                             <a href="#" id="imagePlus">+</a>
 <%-- 이미지  name="image" --%>
                             <div id="fileInputContainer">
-                                <%-- <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*"> --%>
-                            
+                                <%-- <input type="file" name="image" accept="image/*" data-id="NI" style="display: none;"> --%>
                             </div>
                         </div>
                         <div class="post--main__ImageScroller">
-                            <%-- 이 안에 img 형식으로 파일이 담김 --%>
+                            <%-- 이 안에 img 형식으로 파일이 담김(미리보기) --%>
+                            <%-- <img src="325r4325r4" data-id="NI"> --%>
                         </div>
                     </div>
                 </article>
@@ -113,7 +113,7 @@
                         <div id="category--2depth">
                             <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div>
                             <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류"></label>
-                            <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
+                                <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
                         </div>
                     </article>
                 </div>
