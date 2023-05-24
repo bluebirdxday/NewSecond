@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import project.kh.newsecond.goodsboard.model.dao.GoodsBoardDAO;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 @Service
 public class GoodsBoardServiceImpl implements GoodsBoardService{
@@ -111,7 +112,8 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	public Shop shopInfo(int goodsNo) {
 		return dao.shopInfo(goodsNo);
 	}
-	 
+
+	
 	 
 	 
 	 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.user.model.dto.User;
 import project.kh.newsecond.wish.model.dao.WishDAO;
 import project.kh.newsecond.wish.model.dto.Wish;
@@ -15,9 +16,11 @@ public class WishServiceImpl implements WishService {
 	private WishDAO wishDao;
 
 	@Override
-	public List<Wish> wishSelectList(User user) {
+	public List<Wish> wishList(int userNo) {
 		
-		return wishDao.wishSelectList(user);
+		return wishDao.wishList(userNo);
 	}
+
+	
 
 }

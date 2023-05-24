@@ -55,6 +55,14 @@
 	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
 	
+	<resultMap type="Wish" id="wish_rm">
+	<id property = "wishNo" column="WISH_NO"/>
+	<result property ="goodsNo" column="GOODS_NO"/>
+	<result property ="userNo" column="USER_NO"/>
+	<result property ="wishDate" column="WISH_DT"/>
+	
+	</resultMap>
+	
 	
 	
 	<!-- 희진 : 상점 내 특정 유저 게시글 목록 -->
@@ -227,5 +235,8 @@
 		JOIN "shop" USING (USER_NO)
 	
 	</select>
+		
+	
+		
 		
 </mapper>

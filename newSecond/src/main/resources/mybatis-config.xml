@@ -24,6 +24,7 @@
 		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
 		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
 		<typeAlias type="project.kh.newsecond.priceView.model.dto.PriceViewKeyword" alias="PriceViewKeyword" />
+		<typeAlias type="project.kh.newsecond.wish.model.dto.Wish" alias="Wish" />
 	</typeAliases>
 	
 	
@@ -42,6 +43,7 @@
 		<mapper resource="/mappers/writing-mapper.xml" />
 		<mapper resource="/mappers/priceView-mapper.xml" />
 		<mapper resource="/mappers/qna-mapper.xml" />
+		<mapper resource="/mappers/wish-mapper.xml" />
 	</mappers>
 
 

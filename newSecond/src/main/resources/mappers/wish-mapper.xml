@@ -80,7 +80,17 @@
    WHERE USER_NO = #{userNo}
    </select>
 
-   
+   	<!-- 관심상품페이지 - 유민 -->
+	<!-- 최근 업데이트된 상품 -->
+	<select id="wishList" resultMap="wish_rm">
+		SELECT WISH_NO,W.GOODS_NO,USER_NO,
+	    (SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+	     WHERE F.GOODS_NO = W.GOODS_NO
+	     AND FILE_ORDER = 1) THUMBNAIL
+		FROM "wish_lists" W
+		WHERE USER_NO = #{userNo}
+		</select>
+	
       
       
 </mapper>

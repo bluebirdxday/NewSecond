@@ -45,4 +45,5 @@ public interface GoodsBoardService {
 	// 상품 게시글 - 상점 정보
 	Shop shopInfo(int goodsNo);
 
+
 }
