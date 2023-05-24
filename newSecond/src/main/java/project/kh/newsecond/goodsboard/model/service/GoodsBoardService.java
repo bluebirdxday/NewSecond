@@ -46,6 +46,9 @@ public interface GoodsBoardService {
 
 	// 상품 게시글 - 상점 정보
 	Shop shopInfo(int goodsNo);
+
+	// 조회수 증가
+	int updateViewCount(int goodsNo);
 	
 	
 

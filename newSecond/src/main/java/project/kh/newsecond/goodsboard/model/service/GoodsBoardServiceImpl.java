@@ -66,8 +66,6 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		
 		return RecentGoodsList5;
 	}
-
-	
 	
 	// 로그인 유저 기준 최근 본 상품 5가지
 	/* @Override */
@@ -94,18 +92,12 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return selectCategoryList;
 	}
 	
-	
-	
-	
-	 
 	// 기존 찜 여부 확인
 	@Override
 	public int goodsLikeChecked(Map<String, Object> map) {
 		return dao.goodsLikeChecked(map);
 	}
 	
-	
-
 	// 찜 처리 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -123,10 +115,17 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return count;
 	}
 	
-	// 상품 상세 - 상점 정
+	// 상품 상세 - 상점 정보
 	@Override
 	public Shop shopInfo(int goodsNo) {
 		return dao.shopInfo(goodsNo);
+	}
+	
+	// 조회수 증가 
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int updateViewCount(int goodsNo) {
+		return dao.updateViewCount(goodsNo);
 	}
 
 	

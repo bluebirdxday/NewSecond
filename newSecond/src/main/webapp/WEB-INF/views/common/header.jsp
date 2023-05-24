@@ -45,7 +45,7 @@
     
         <form action="/goods/search/goodsList" method="GET" id="searchForm">
             <div class="header--mid__serach"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search" name="query" id="searchQuery" autocomplete="off">
+                <input type="text" placeholder="어떤 상품을 찾으시나요?" class="search" name="query" id="searchQuery" autocomplete="off">
                 <button class="searchBtn"></button>
             </div>
         </form>

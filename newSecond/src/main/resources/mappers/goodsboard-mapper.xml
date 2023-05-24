@@ -248,6 +248,13 @@
 		FROM "categories"
 	</select>
 	
+	
+	<!-- 조회수 증가 -->
+	<update id="updateViewCount">
+		UPDATE "goods_board" SET
+		VIEW_COUNT  = VIEW_COUNT +1
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
 		
 	
 		
