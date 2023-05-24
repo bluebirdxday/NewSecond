@@ -194,8 +194,8 @@
                                         <div class="tab1--item__description">
                                             <div> 
                                             <c:choose>
-                                                <c:when test="${fn:length(goods.goodsTitle) > 10}">
-                                                    ${fn:substring(goods.goodsTitle, 0, 10)}...
+                                                <c:when test="${fn:length(goods.goodsTitle) > 9}">
+                                                    ${fn:substring(goods.goodsTitle, 0, 9)}...
                                                 </c:when>
                                                 
                                                 <c:otherwise>
