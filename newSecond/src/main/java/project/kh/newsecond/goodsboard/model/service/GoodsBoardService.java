@@ -6,7 +6,6 @@ import java.util.Map;
 import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
-import project.kh.newsecond.user.model.dto.User;
 
 public interface GoodsBoardService {
 	
@@ -36,6 +35,9 @@ public interface GoodsBoardService {
 	// 카테고리 리스트
 	List<Category> selectCategoryList();
 	
+	// 카테고리에 해당되는 상품 리스트
+	List<GoodsBoard> selectCategoryGoodsList(int categoryNo);
+	
 	
 
 	// 기존 찜 여부 확인
@@ -46,6 +48,7 @@ public interface GoodsBoardService {
 
 	// 상품 게시글 - 상점 정보
 	Shop shopInfo(int goodsNo);
+	
 	
 	
 

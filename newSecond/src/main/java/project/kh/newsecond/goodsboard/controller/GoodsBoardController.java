@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.GoodsBoardService;
 import project.kh.newsecond.shop.model.dto.Shop;
@@ -106,6 +107,28 @@ public class GoodsBoardController {
 	}
 	
 	
+	
+	
+	
+	/* 지환 - 카테고리 조회 */
+	
+	// 상품 게시글 카테고리 별조회
+	@GetMapping("/category/{categoryNo:[0-9]+}")
+	public String selectCategoryGoodsList(@PathVariable("categoryNo") int categoryNo,
+											@SessionAttribute(value="categoryList", required = false) List<Category> category,
+											Model model
+											) {
+		
+		String categoryName = category.get(categoryNo-1).getCategoryName();
+		
+		List<GoodsBoard> categoryGoodsList = service.selectCategoryGoodsList(categoryNo);
+		
+		model.addAttribute("categoryName", categoryName);
+		model.addAttribute("categoryGoodsList", categoryGoodsList);
+		
+		
+		return "goods/selectCategoryGoodsList";
+	}
 	
 
 }

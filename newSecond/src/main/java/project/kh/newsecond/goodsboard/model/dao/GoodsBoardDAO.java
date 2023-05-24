@@ -104,7 +104,7 @@ public class GoodsBoardDAO {
 
 	
 	/* 메인 페이지 - 지환 */
-	/**	최근 업데이트된 상품 5가지
+	/**	최근 업데이트된 상품 10가지
 	 * @param rowBounds 
 	 * @return List
 	 */
@@ -124,21 +124,21 @@ public class GoodsBoardDAO {
 	}
 
 	
-	/** 로그인한 유저가 최근에 본 상품 5가지
-	 * @return 
-	 */
-	/*
-	 * public List<GoodsBoard> selectrecentViewedList5() { return
-	 * sqlSession.selectList("goodsBoardMapper.selectrecentViewedList5"); }
-	 */
-	
-	
 	
 	/** 카테고리 리스트 조회
 	 * @return
 	 */
 	public List<Category> selectCategoryList() {
 		return sqlSession.selectList("goodsBoardMapper.selectCategoryList");
+	}
+	
+	
+	/** 카테고리에 해당되는 상품 리스트
+	 * @param categoryNo
+	 * @return List
+	 */
+	public List<GoodsBoard> selectCategoryGoodsList(int categoryNo) {
+		return sqlSession.selectList("goodsBoardMapper.selectCategoryGoodsList", categoryNo);
 	}
 
 	
