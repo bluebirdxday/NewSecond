@@ -14,6 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Writing {
+	private int goodsNo;
 	private int userNo;
 	
 	private String title;

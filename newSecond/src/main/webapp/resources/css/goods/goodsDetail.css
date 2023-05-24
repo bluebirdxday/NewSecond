@@ -57,6 +57,8 @@
     margin-top: 135px;
     margin-left: 5px;
     /* transition-duration: 0.2s; */
+    opacity: 0.6;
+    cursor: pointer;
 }
 .next{
     width: 30px;
@@ -71,6 +73,8 @@
     margin-left: 265px;
     margin-top: 135px;
     /* transition-duration: 0.2s; */
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 .container--inner__top__left img{
@@ -92,39 +96,76 @@
 .container--inner__top__right__title{
     font-size: 1.7em;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__price{
     font-size: 2.0em;
     font-weight: bold;
     padding: 5px 0;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__viewAndLike{
     display: flex;
+    height: 28px;
+    margin-left: 10px;
 }
 
 .container--inner__top__right__viewAndLike *{
-    margin: 5px 3px;
     color: #848383;
+    font-size: 1.2em;
+    margin-top: 2px;
 }
 
-.container--inner__top__right__likeHeart img{
-    margin: 0 0 5px 0;
-    width: 15px;
+.container--inner__top__right__view{
+    margin-right: 5px;
+}
+.container--inner__top__right__like{
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+.like{
+    margin: 2px 5px 0 0;
+    width: 19px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.like:hover{
+    /* width: 21px;
+    margin-right: 0; */
+    transform: scale(1.2);
 }
 
 .container--inner__top__right__describe{
     margin: 10px 0;
     width: 400px;
     height: 170px;
-    background-color: #d8e1ee;
+    background-color: #dee7f5;
     box-shadow: 5px 5px 5px #d6d5d5;
     border-radius: 20px;
     overflow: auto;
     padding: 20px;
 }
 
+.container--inner__top__right__describeTitleAndNav{
+    display: flex;
+    width: 360px;
+}
+.container--inner__top__right__ifDescribeTitle{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2365b9;
+    width: 330px;
+}
+.container--inner__top__right__nav{
+    justify-content: end;
+}
+.container--inner__top__right__nav img{
+    max-width: 20px;
+    max-height: 20px;
+}
 .container--inner__top__right__describeTitle{
     font-size: 1.2em;
     font-weight: bold;
@@ -133,6 +174,7 @@
 
 .container--inner__top__right__describeContent{
     margin: 10px 0;
+    white-space: pre-wrap;
 }
 
 .container--inner__bottom{
@@ -146,6 +188,7 @@
     height: 350px;
 }
 
+
 .container--inner__bottom__shopInfo__folder__outer{
     width: 840px;
     height: 50px;
@@ -156,7 +199,7 @@
     width: 200px;
     height: 52px;
     background-color: #FAFCEE;
-    border: 2px solid #c5c6c7;
+    border: 1px solid #c5c6c7;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     font-size: 1.5em;
@@ -164,15 +207,15 @@
     text-align: center;
     line-height: 50px;
     color: #2365b9;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     box-shadow: 5px 5px 5px #c2c2c2;
 }
 
 .container--inner__bottom__shopInfo{
     width: 840px;
-    height: 290px;
+    height: 250px;
     background-color: #FAFCEE;
-    border: 2px solid #c5c6c7;
+    border: 1px solid #c5c6c7;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border-top-right-radius: 30px;
@@ -209,6 +252,7 @@
     height: 50px;
     display: flex;
     justify-content: start;
+    margin-top: 15px;
 }
 
 .container--inner__bottom__shopInfo__buttons a{
@@ -217,19 +261,25 @@
 }
 
 .container--inner__bottom__shopInfo_shopTitleButton{
-    background-color: #c2d3eb;
+    background-color: #d5e3f8;
     font-size: 1.3em;
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
     line-height: 43px;
     box-shadow: 3px 3px 3px #c3c3c3;
-    width: 100px;
+    width: auto;
     height: 40px;
     border-radius: 20px;
+    padding: 0 15px;
+}
+.container--inner__bottom__shopInfo_shopTitleButton:hover{
+    background-color: #cbdcf5;
+    box-shadow: 3px 3px 3px #b5b4b4;
+    font-weight: bold;
 }
 
 .container--inner__bottom__shopInfo__chattingButton{
-    background-color: #518fdf;
+    background-color: #5999eb;
     font-size: 1.3em;
     font-weight: bold;
     text-align: center;
@@ -238,12 +288,21 @@
     width: 100px;
     height: 40px;
     border-radius: 20px;
-    margin-left: 15px;
+    margin-left: 20px;
+}
+
+.container--inner__bottom__shopInfo__chattingButton:hover{
+    box-shadow: 3px 3px 3px #b5b4b4;
+    background-color: #468ce8;
+    font-weight: bold;
+
 }
 
 .container--inner__bottom__shopInfo__shopDescibe{
     margin-top: 15px;
     margin-left: 10px;
+    color: #848383;
+    white-space: pre-wrap;
 }
 
 

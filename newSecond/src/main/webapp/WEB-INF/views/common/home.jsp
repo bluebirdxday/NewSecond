@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -50,87 +53,88 @@
 						</button>
 					</div>
 				</section>	
-
+				
 				<section class="mainPage--goodsContainer1 mt-5">
-					<h4>최근 업데이트된 상품</h4>
-					<div class="row">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
+
+					<span class="mainPage--imgs__title">최근 업데이트된 상품</span>
+					<div class="row row-cols-5">
+						<c:forEach items="${recentGoodsList5}" var="recentGood" begin="0" end="4">
+							<div class="col mainPage--item__container">
+								<a href="/goods/${recentGood.goodsNo}">
+									<img class="border border-1 rounded-3 mainPage--item" 
+									src="${recentGood.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${recentGood.goodsTitle}"
+									>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>
-				<section class="mainPage--goodsContainer2 mt-5">
-					<h4>최근 본 상품</h4>
-					<div class="row">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+
+				<%-- <c:if test="${not empty loginUser}" >
+					<section class="mainPage--goodsContainer2 mt-5">
+
+						<span class="mainPage--imgs__title">최근 본 상품</span>
+
+						<div class="row row-cols-5 ">
+							<div class="col ">
+								<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+							</div>
+							<div class="col">
+								<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+							</div>
+							<div class="col">
+								<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+							</div>
+							<div class="col">
+								<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+							</div>
+							<div class="col">
+								<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
+							</div>
 						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-					</div>
-					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
-				</section>
+						<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
+					</section>
+				</c:if> --%>
 
 				<section class="mainPage--goodsContainer3 mt-5">
-					<h4>조회수 높은 인기 상품</h4>
 
-					<div class="row">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
+					<span class="mainPage--imgs__title">조회수 높은 인기 상품</span>
+
+					<div class="row row-cols-5">
+						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
+							<div class="col mainPage--item__container">
+								<a href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-1 rounded-3 mainPage--item" 
+									src="${mostViewed.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${mostViewed.goodsTitle}"
+									>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 
-					<div class="row mt-4">
-						<div class="col ">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
-						<div class="col">
-							<img src="https://dummyimage.com/170x170/000/fff" class="d-block w-100 rounded-4">
-						</div>
+					<div class="row row-cols-5 mt-4">
+						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="5" end="9">
+							<div class="col mainPage--item__container">
+								<a href="/goods/${mostViewed.goodsNo}">
+									<img class="border border-1 rounded-3 mainPage--item" 
+									src="${mostViewed.thumbnail}" 
+									onerror="this.src='/resources/src/img/no_image.jpeg'"
+									data-bs-toggle="tooltip" 
+									data-bs-placement="top" 
+									data-bs-title="${mostViewed.goodsTitle}"
+									>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
 				</section>

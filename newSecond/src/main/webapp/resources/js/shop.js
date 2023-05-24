@@ -183,7 +183,8 @@ function follow(passiveUserNo, loginUserNo, tab){
     })
     .then(resp=>resp.json())
     .then((followList)=>{
-    
+        console.log(followList);
+        if(tab=="following" || tab=="follower")
         selectFollowList(followList, tab);
 
         if(userNo==loginUserNo){
@@ -194,7 +195,7 @@ function follow(passiveUserNo, loginUserNo, tab){
     
         if(tab=="following")
             return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-        else
+        if(tab=="follower")
             return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
         
     }).then(resp=> resp.json())
@@ -202,43 +203,51 @@ function follow(passiveUserNo, loginUserNo, tab){
         
         if(tab=="following")
             selectFollowList(followList, "follower");
-            else
+        if(tab=="follower")
             selectFollowList(followList, "following");
     })
-    .catch(err=>{ console.log(err); });
+    .catch(()=>{ 
+        console.log(111);
+        if(tab=="shopOwnerFollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+        
+        if(tab=="shopOwnerUnfollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+
+    });
 
 
 }
 
-
+// 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
 // 팔로우 알람
 let notificationSock = new SockJS("/notificationSock");
+let inquireNotiSocket = new SockJS("/inquireNotificationSock"); 
 
 const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
     
-        var obj = {
+        var followObj = {
             "senderNo": loginUserNo,
             "targetNo": passiveUserNo,
-            "notificationMessage": "님께서 회원님을 팔로우하였습니다.",
-            "notificationType": "F"
+            "notificationMessage": "님께서 회원님을 팔로우하였습니다",
+            "notificationType": "F",
+            "notificationURL" : "/shop/" + loginUserNo
+
         };
 
-        notificationSock.send(JSON.stringify(obj));
+        notificationSock.send(JSON.stringify(followObj));
+
+
+        var followObj2 = {
+            "targetNo": passiveUserNo
+        }
+
+        inquireNotiSocket.send(JSON.stringify(followObj2));
         
-}
-
-
-
-notificationSock.onmessage = function(e) {
-    // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
-    const msg = JSON.parse(e.data);
-
-    console.log(msg);
-
-    const followMsg = msg.shopTitle + msg.notificationMessage;
-
-    document.getElementById('alarmBody').innerText = followMsg;
-    alarmTrigger.click();
 }
 
 
@@ -251,16 +260,22 @@ function unFollow(passiveUserNo, loginUserNo, tab){
         body : JSON.stringify({"passiveUserNo" : passiveUserNo, "activeUserNo" : loginUserNo})
     })
     .then(resp => resp.text())
-    .then(()=>{
+    .then((result)=>{
 
+        console.log("unFollow 시 탭 : " +  tab);
         console.log(loginUserNo);
-        
-        return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-    })
-    .then(resp=>resp.json())
+        console.log(userNo);
+        console.log("result: " + result);
+
+        if(result>0){
+            return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
+        }
+
+    }).then(resp=>resp.json())
     .then((followList)=>{
 
-        selectFollowList(followList, tab);
+        if(tab=="following" || tab=="follower")
+            selectFollowList(followList, tab);
 
         if(userNo==loginUserNo){
             let followingCount = document.getElementById("followingCount").innerText;
@@ -270,21 +285,30 @@ function unFollow(passiveUserNo, loginUserNo, tab){
 
         if(tab=="following")
             return  fetch(`/shop/selectFollowList?tab=follower&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
-        else
+        if(tab=="follower")
             return  fetch(`/shop/selectFollowList?tab=following&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
             
     }).then(resp=> resp.json())
     .then((followList)=>{
-        
+
         if(tab=="following")
             selectFollowList(followList, "follower");
-            else
+        if(tab=="follower")
             selectFollowList(followList, "following");
     })
-    .catch(err=>{ console.log(err); });
+    .catch(()=>{ 
+
+        if(tab=="shopOwnerFollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+        
+        if(tab=="shopOwnerUnfollow"){
+            changeProfileFollowBtn(tab, loginUserNo);
+            return;
+        }
+     });
     
-
-
 }
 
 
@@ -297,7 +321,9 @@ function selectFollowList(followList, tab){
     
     if(tab=="following"){
         tabContainer = document.querySelector(".following_tab");
-    }else{
+    }
+    
+    if(tab=="follower"){
         tabContainer = document.querySelector(".follower_tab");
     }
 
@@ -331,7 +357,8 @@ function selectFollowList(followList, tab){
 
             if(tab=="following"){
                 aTag.setAttribute("href", "/shop/" + follow.passiveUserNo);
-            }else{
+            }
+            if(tab=="follower"){
                 aTag.setAttribute("href", "/shop/" + follow.activeUserNo);
             }
             
@@ -366,7 +393,9 @@ function selectFollowList(followList, tab){
                     fourthDiv.append(aTag);
                 }
                 
-            }else{
+            }
+            
+            if(tab=="follower"){
 
                 if(follow.followYou==0){
                     followBtn.setAttribute("onclick", `follow(${follow.activeUserNo}, ${userNo}, 'follower')`);
@@ -397,6 +426,29 @@ function selectFollowList(followList, tab){
 
 
 
+// 상점 주인 팔로우/언팔로우 버튼 클릭
+function changeProfileFollowBtn(tab, loginUserNo){
+
+   const profileContainer = document.querySelector(".myshop--info__btn-container");
+    
+   profileContainer.innerHTML = "";
+   const followButton = document.createElement("button");
+   followButton.setAttribute("type", "button");
+   
+   if(tab=="shopOwnerFollow"){
+        followButton.classList.add("myshop--info__btn-unfollow");
+        followButton.innerText = "언팔로우"
+        followButton.setAttribute("onclick", "unFollow("+userNo + "," + loginUserNo +", 'shopOwnerUnfollow')");
+    }
+    
+    if(tab=="shopOwnerUnfollow"){
+        followButton.classList.add("myshop--info__btn-follow");
+        followButton.innerText = "팔로우"
+        followButton.setAttribute("onclick", "follow("+userNo + "," + loginUserNo +", 'shopOwnerFollow')");
+    }
+    profileContainer.append(followButton);
+}
+
 
 
 // 상점 상품 판매 게시글 예약, 판매완료 
@@ -411,10 +463,8 @@ if(overlayText!=null){
 
         e.style.position = 'absolute';
         e.style.top = '50%';
-        e.style.left = '50%';
         e.style.transform = 'translate(-50%, -50%)';
         e.style.color = 'white';
-        e.style.fontSize = '30px';
         e.style.width = '95px';
         e.style.fontWeight = '900';
         e.style.textAlign = 'center';
@@ -423,10 +473,11 @@ if(overlayText!=null){
 }
 
 if(reserved!=null){
-
     reserved.forEach(e=>{
         e.style.webkitTextStroke = '1px black'; // 글자 테두리 색상
         e.style.webkitTextFillColor = '#C2D3EB'; // 글자 색상
+        e.style.fontSize = '26px';
+        e.style.left = '44%';
     })
 }
 
@@ -435,6 +486,8 @@ if(soldout!=null){
     soldout.forEach(e=>{
         e.style.webkitTextStroke = '1px #e6ebfd'; // 글자 테두리 색상
         e.style.webkitTextFillColor = '#505bf0'; // 글자 색상
+        e.style.fontSize = '30px';
+        e.style.left = '50%';
     })
 }
 
@@ -530,7 +583,7 @@ function sortGoodsList(userNo, sortType){
                     soldoutOrReservedDiv.classList.add("overlay-text");
                     soldoutOrReservedDiv.classList.add("reserved");
                     soldoutOrReservedDiv.innerText = "Reserved";
-                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: #C2D3EB; -webkit-text-stroke: 1px #000000); -webkit-text-fill-color: #C2D3EB;");
+                    soldoutOrReservedDiv.setAttribute("style", "position: absolute; top: 50%; left: 44%; transform: translate(-50%, -50%); font-size: 26px; width: 95px; font-weight: 900; text-align: center; color: #C2D3EB; -webkit-text-stroke: 1px #000000; -webkit-text-fill-color: #C2D3EB;");
                 }
     
                 itemImgDiv.append(itemImg);

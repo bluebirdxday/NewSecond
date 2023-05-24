@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="pagination" value="${map.pagination}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -38,11 +39,10 @@
         <div class="admin_notice_Btn">
         
             <button class="admin_notice_write"><a href="\admin\admin_notice_write">글쓰기</a></button>
-            <button class="admin_notice_HiddenBtn">선택 숨김</button>
             <button class="admin_notice_DelBtn" id="deleteBtn">선택 삭제</button>
         </div>
 
-
+  
         
         <!-- ----테이블------ -->
      <form action="/admin/admin_notice_write/update" method="POST" 
@@ -58,6 +58,7 @@
                 <th>제목</th>
                 <th>작성일</th>
                 <th>조회수</th>
+                <th>삭제여부</th>
                 <th colspan="2">수정</th>
             </thead>
             </tr>
@@ -77,8 +78,9 @@
                             <td><a href='/admin/admin_notice_read/${notice.noticeNo}'>${notice.noticeTitle}</a></td>
                             <td>${notice.noticeEnrollDate}</td>
                             <td>${notice.noticeViewCount}</td>
+                            <td>${notice.noticeFl}</td>
                             <td>
-                            <button type="submit" class="admin_notice_tableBtn" id="updateBtn">내용 수정</button>
+                            <button type="submit" class="admin_notice_tableBtn" id="updateBtn"><a href="/admin/admin_notice_update/${notice.noticeNo}">내용 수정</a></button>
                             </td>
                             <td>
                             <button type="button" class="admin_notice_tableBtn">필독 등록</button>

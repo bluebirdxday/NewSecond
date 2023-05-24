@@ -42,14 +42,27 @@ public class QnaController {
 		 */
 		@PostMapping("/qna_check")
 		public String qna_check(
-				Model model
+				Model model, RedirectAttributes ra
 				,Qna qna){
 			
-			String qnaType = qna.getQnaType();
-			int qnaNo = qnaService.qnaInsert(qna);
+			String message = null;
+			String alertType = null;
 			
+			int result = qnaService.qnaInsert(qna);
+			
+			if(result>0) {
+				message = "문의사항이 접수되었습니다.";
+				alertType = "success";
+			}
+			else {
+				message = "문의사항을 접수할 수 없습니다.";
+				alertType = "fail";
+			}
 		
 			model.addAttribute("Qna",qna);
+			
+			ra.addFlashAttribute("message", message);
+			ra.addFlashAttribute("alertType", alertType);
 			
 			return "qna/qna_check";
 		

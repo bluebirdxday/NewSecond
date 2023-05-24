@@ -7,17 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import project.kh.newsecond.common.utility.Util;
 import project.kh.newsecond.writing.model.dao.WritingDAO;
 import project.kh.newsecond.writing.model.dto.Writing;
 import project.kh.newsecond.writing.model.dto.WritingImage;
-import project.kh.newsecond.common.utility.Util;
-import project.kh.newsecond.common.Exception.*;
 
 @Service
 public class WritingServiceImpl implements WritingService {
@@ -88,7 +86,9 @@ public class WritingServiceImpl implements WritingService {
 					// 파일로 변환
 					String afterRename = FinalImages.get(i).getFileName();
 					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
+				
 				}
+				
 				
 			} else {
 				// 예외 강제 발생

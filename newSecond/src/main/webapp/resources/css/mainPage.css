@@ -25,3 +25,50 @@
 .mainPage--goodsContainer1{
     margin-top: 50px;
 }
+
+/* 메인 뷰 이미지 타이틀 */
+.mainPage--imgs__title{
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    display: block;
+    box-sizing: border-box;
+    
+}
+
+/* 메인페이지의 각 아이템에 대한 스타일 */
+.mainPage--item{
+    width: 160px;
+    height: 160px;
+}
+
+/* .mainPage--item__container{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative; 
+}
+
+.mainPage--item::before{
+    content: "";
+    display: block;
+    padding-top: calc(100% / (300 / 200));
+}
+
+.mainPage--item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
+
+
+
+
+
+
+
+
+

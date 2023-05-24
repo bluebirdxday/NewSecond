@@ -38,8 +38,8 @@
         <!-- 선택 숨김,삭제 버튼 -->
         
         <div class="admin_board_Btn">
-            <button class="admin_board_HiddenBtn">블라인드</button>
-            <button class="admin_board_DelBtn">선택 삭제</button>
+            <button class="admin_board_HiddenBtn" id="hiddenBtn">블라인드</button>
+            <button class="admin_board_DelBtn" id="delBtn">선택 삭제</button>
         </div>
 
 
@@ -49,7 +49,7 @@
         <table class="admin_board_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id="" value='selectall'
+                <th><input type="checkbox" class="admin_board_checkboxAll" name="" id="" value='selectall'
                     onclick='boardSelectAll(this)'></th>
                 <th>번호</th>
                 <th>회원번호</th>
@@ -72,10 +72,10 @@
                 <c:otherwise>
                     <c:forEach items="${GoodsBoardList}" var="GoodsBoard">
                         <tr>
-                            <td><input type="checkbox" name="" id=""></td>
-                            <td>${GoodsBoard["GOODS_NO"]}</td>
+                            <td><input type="checkbox" class="admin_board_checkbox" name="" id=""></td>
+                            <td class="admin_board_checkbox_no">${GoodsBoard["GOODS_NO"]}</td>
                             <td>${GoodsBoard["USER_NO"]}</td>
-                            <td><a href="\admin\board_read\${GoodsBoard.goodsNo}">${GoodsBoard["GOODS_TITLE"]}</a></td>
+                            <td><a href="/goods/${GoodsBoard["GOODS_NO"]}">${GoodsBoard["GOODS_TITLE"]}</a></td>
                             <td>${GoodsBoard["SELL_ENROLL_DT"]}</td>
                             <td>${GoodsBoard["VIEW_COUNT"]}</td>
                             <td><button class="admin_board_tableBtn">${GoodsBoard["GOODS_STATUS"]}</td>

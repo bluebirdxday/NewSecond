@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="goodsBoardMapper">
 
+
+	<!-- GoodsBoard resultMap -->
 	<resultMap type="GoodsBoard" id="goodsboard_rm">
 		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
 		<id property="goodsNo" column="GOODS_NO" />
@@ -22,6 +24,7 @@
 		<result property="shopTitle" column="SHOP_TITLE" />
 		
 		<result property="sortType" column="SORT_TYPE" />
+		
 		<collection property="filesList"
 					select="selectFilesList"
 					column="GOODS_NO"
@@ -41,15 +44,38 @@
 		<result property="filePath" column="FILE_PATH"/>
 	</resultMap>
 	
+	<!-- Shop resultMap -->
+	<resultMap type="Shop" id="shop_rm">
+		<id property="userNo" column="USER_NO"/>
+		<result property="shopTitle" column="SHOP_TITLE"/>
+		<result property="shopInfo" column="SHOP_INFO"/>
+		<result property="shopProfile" column="SHOP_PROFILE"/>
+	</resultMap>
+	
+	
+	<!-- Category resultMap -->
+	<resultMap type="Category" id="category_rm">
+		<id property="categoryNo" column="CATEGORY_NO" />
+		<id property="categoryName" column="CATEGORY_NAME" />
+		
+	</resultMap>
 	
 	<!-- 유민 : (관리자 페이지 - 게시글 관리) -->
+	
+	<resultMap type="Wish" id="wish_rm">
+	<id property = "wishNo" column="WISH_NO"/>
+	<result property ="goodsNo" column="GOODS_NO"/>
+	<result property ="userNo" column="USER_NO"/>
+	<result property ="wishDate" column="WISH_DT"/>
+	
+	</resultMap>
 	
 	
 	
 	<!-- 희진 : 상점 내 특정 유저 게시글 목록 -->
 	<!-- 상품 게시글 목록 조회 -->
 	<select id="selectGoodsBoardList" resultMap="goodsboard_rm" >
-		SELECT USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
+		SELECT GOODS_NO, USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
 				VIEW_COUNT, WISH_COUNT, GOODS_STATUS,
 				
 				<![CDATA[
@@ -65,7 +91,7 @@
 		    
 		    THUMBNAIL
 		    
-		FROM (SELECT USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
+		FROM (SELECT G.GOODS_NO GOODS_NO, USER_NO, CATEGORY_NO, GOODS_TITLE, GOODS_DESCR, GOODS_PRICE, 
 				VIEW_COUNT, WISH_COUNT, GOODS_STATUS, SELL_ENROLL_DT, 
 				NVL((SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
 					WHERE F.GOODS_NO = G.GOODS_NO
@@ -97,7 +123,7 @@
 		SELECT COUNT(*)
 		FROM "goods_board"
 		JOIN "shop" USING (USER_NO)
-		WHERE GOODS_STATUS IN ('A','E','R')
+		WHERE GOODS_STATUS IN ('A','E','C')
 			AND ((GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 			OR SHOP_TITLE LIKE '%${searchName}%')
 		ORDER BY SELL_ENROLL_DT DESC
@@ -107,7 +133,7 @@
 	<!-- 검색 상품 목록 조회 -->
 	<select id="selectSearchGoodsList" resultMap="goodsboard_rm">
 	
-		SELECT GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE,
+		SELECT GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE, GOODS_STATUS,
 			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
 			WHERE F.GOODS_NO = G.GOODS_NO
 			AND FILE_ORDER = 1) THUMBNAIL
@@ -124,7 +150,7 @@
 	
 	SELECT * FROM(
 			SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM
-			, GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE,
+			, GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE, GOODS_STATUS,
 				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
 				WHERE F.GOODS_NO = G.GOODS_NO
 				AND FILE_ORDER = 1) THUMBNAIL
@@ -140,7 +166,8 @@
 		
 	<!-- 게시글 상세 -->
 	<select id="goodsDetail" resultMap="goodsboard_rm">
-		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , WISH_COUNT , GOODS_DESCR 
+		SELECT USER_NO, GOODS_NO, GOODS_TITLE , GOODS_PRICE , VIEW_COUNT , GOODS_STATUS,
+		 (SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}) WISH_COUNT , GOODS_DESCR 
 		FROM "goods_board"
 		WHERE GOODS_NO = ${goodsNo}
 	</select>
@@ -151,6 +178,78 @@
 		WHERE GOODS_NO = ${goodsNo}
 		ORDER BY FILE_ORDER
 	</select>
+	
+	<!-- 찜 여부 확인 -->
+	<select id="goodsLikeChecked" resultType="_int">
+		SELECT COUNT(*) FROM "wish_lists"
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{userNo}
+	</select>
+	
+	<!--찜 등록 -->
+	<insert id="insertLike">
+		INSERT INTO "wish_lists" VALUES
+		(SEQ_WISH_NO.NEXTVAL, #{goodsNo}, #{loginUserNo}, DEFAULT)
+	</insert>
+	
+	<!-- 찜 취소 -->
+	<delete id="deleteLike">
+		DELETE FROM "wish_lists"
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{loginUserNo}
+	</delete>
+	
+	<!-- 찜 카운트 -->
+	<select id="countLike" resultType="_int">
+		SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}
+	</select>	
+	
+	<!-- 상품 상세 상점 정보 -->
+	<select id="shopInfo" resultMap="shop_rm">
+		SELECT GOODS_NO, USER_NO ,SHOP_TITLE ,SHOP_PROFILE ,SHOP_INFO 
+		FROM "shop" s
+		JOIN "goods_board" g USING (USER_NO)
+		WHERE GOODS_NO = #{goodsNo}
+	</select>
+		
+	
+		
+	<!-- 메인페이지 - 지환 -->
+	<!-- 최근 업데이트된 상품 -->
+	<select id="selectRecentGoodsList" resultMap="goodsboard_rm">
+		SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1) THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+	</select>
+	
+	
+	<!-- 로그인한 유저가 최근에 본 상품 -->
+	<!-- <select id="selectrecentViewedList" resultMap="goodsboard_rm">
+	
+	</select> -->
+	
+	
+	<!-- 조회수가 높은 상품 -->
+	<select id="selectMostViewedList" resultMap="goodsboard_rm">
+		SELECT ROW_NUMBER() OVER (ORDER BY VIEW_COUNT DESC) AS NUM, GOODS_NO , GOODS_TITLE ,
+			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1) THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+	</select>
+	
+	<!-- 카테고리 리스트 -->
+	<select id="selectCategoryList" resultMap="category_rm">
+		SELECT CATEGORY_NO, CATEGORY_NAME
+		FROM "categories"
+	</select>
+	
+		
+	
 		
 		
 </mapper>

@@ -15,6 +15,7 @@
     <title>${param.query} 검색 결과</title>
     
     <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
+    <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 
 </head>
 <body style="overflow: auto;">
@@ -63,12 +64,23 @@
                                 <%-- 썸네일 --%>
                                 <c:choose>
                                     <c:when test="${not empty searchGoods.thumbnail}">
-                                    <img src="${searchGoods.thumbnail}">
+                                        <img src="${searchGoods.thumbnail}" 
+                                        >
                                     </c:when>
                                     <c:otherwise>
-                                    <img src="/resources/src/img/no_image.jpeg">
+                                        <img src="/resources/src/img/no_image.jpeg">
                                     </c:otherwise>
                                 </c:choose>
+                                <c:if test="${searchGoods.goodsStatus=='E'}" >
+                                    <div class="status soldout">
+                                        Sold Out
+                                    </div>
+                                </c:if>
+                                <c:if test="${searchGoods.goodsStatus=='C'}" >
+                                    <div class="status reserved">
+                                        Reserved
+                                    </div>
+                                </c:if>
                                 <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
                                 <div class="goods_title">${searchGoods.goodsTitle}</div>
                                 </a>
@@ -80,7 +92,6 @@
                 <!-- 더보기 버튼-->
                 <c:choose>
                     <c:when test="${fn:length(searchGoodsList) gt 12}">
-                    <%--  || (moreGoodsList.size) ge 12} --%>
                         <div class="container--inner__bottom">
                             <button class="more" id="viewMoreGoods">MORE</button>
                         </div>
@@ -92,7 +103,6 @@
                     </c:otherwise>
                 </c:choose> 
             </div>
-
 
         </div>
 

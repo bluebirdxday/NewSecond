@@ -1,8 +1,6 @@
             <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<c:set var="QnaList" value="${QnaList}"/>
-
+<c:set var="pagination" value="${map.pagination}"/>
 
 
 
@@ -47,13 +45,12 @@
         </div>
         <div class="admin_qna_raidos">
             <span>
-            <label ><input type="radio" name="admin_qna_raidos" id="">전체</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">거래신고</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">회원/계정</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">오류/제안</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">채팅/알람</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">기타문의</label>
-         
+            <label ><input type="radio" name="admin_qna_raidos" id="all" value="all">전체</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="trade" value="T">거래신고</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="user" value="U">회원/계정</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="erroe" value="E">오류/제안</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="chatting" value="C">채팅/알람</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="etc" value="O">기타문의</label>
         </span>
         </div>
     <div class="admin_qna_result">
@@ -81,7 +78,7 @@
             </tr>
             <tbody>
             <c:choose>
-                <c:when test="${empty QnaList}">
+                <c:when test="${empty map.qnaList}">
                 <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
                 <tr>
                     <th colspan="6">목록이 존재하지 않습니다.</th>
@@ -89,16 +86,30 @@
                 </c:when>
 
                 <c:otherwise>
-                    <c:forEach items="${QnaList}" var="qna">
+                    <c:forEach items="${map.qnaList}" var="qna">
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
                             <td>${qna.qnaNo}</td>
                             <td>${qna.userNo}</td>
-                            <td>${qna.qnaType}</td>
+                             <c:if test="${qna.qnaCategory=='T'}" >
+                                <td>거래신고</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='U'}" >
+                                <td>회원/계정</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='E'}" >
+                                <td>오류/제안</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='C'}" >
+                                <td>채팅/알람</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='O'}" >
+                                <td>기타문의</td>
+                            </c:if>
                             <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
                             <td>${qna.qnaEnrollDate}</td>
                             <td>${qna.qnaCheckFl}</td>
-                            <td>${qna.qnaDeleteFl}</td>
+                           <td>${qna.qnaDeleteFl}</td> 
                         </tr>
                     </c:forEach>
                 </c:otherwise>
@@ -109,6 +120,56 @@
 
     </div>
 
+<div class="pagination-area">
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=1${sp}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <!-- 현재 보고있는 페이지 -->
+                                <li><a class="current">${i}</a></li>
+
+                            </c:when>
+                        
+                            <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/admin/admin_qna/${qnaNo}?cp=${i}${sp}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+
+
+                    
+                    <%-- <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li> --%>
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+                </ul>
+            </div>
 <script src="\resources\js\admin\admin_qna.js"></script>
 </body>
 </html>

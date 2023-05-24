@@ -27,6 +27,23 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changeNickname", user);
 	}
 	
+	// 전화번호 변경
+	public int changeTel(int userNo, String userTel) {
+		
+		User user = new User();
+		user.setUserNo(userNo);
+		user.setUserTel(userTel);
+		
+		return sqlSession.update("myPageMapper.changeTel", user);
+	}
+	
+	
+	// 주소 변경
+	public int changeAddress(User loginUser) {
+		return sqlSession.update("myPageMapper.changeAddress", loginUser);
+	}
+
+	
 	// DB에 있는 회원의 비밀번호 조회(비밀번호 대조군)
 	public String selectEncPw(int userNo) {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", userNo);
@@ -48,6 +65,8 @@ public class MyPageDAO {
 	public int secession(int userNo) {
 		return sqlSession.update("myPageMapper.secession", userNo);
 	}
+
+
 
 
 

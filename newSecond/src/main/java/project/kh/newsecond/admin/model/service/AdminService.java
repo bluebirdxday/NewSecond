@@ -24,10 +24,10 @@ public interface AdminService {
 	 */
 	List<HashMap<String, Object>> selectUserList();
 
-	/**관리자 QNA 리스트 조회
+	/**관리자 QNA 리스트 조회 //페이지네이션
 	 * @return
 	 */
-	List<Admin> selectQnaList();
+	Map<String, Object> selectQnaList(int cp);
 
 	/**관리자 게시글 리스트 조회
 	 * @return
@@ -73,13 +73,13 @@ public interface AdminService {
 	 * @param noticeNo
 	 * @return
 	 */
-	int deleteNoticeList(int noticeNoInt);
+	int deleteNoticeList(int noticeNo);
 	
 	  /**회원탈퇴 기능
 	 * @param noticeNo
 	 * @return
 	 */
-	int userSignOut(Map<String, Object> noticeNo);
+	int userSignOut(int userNo);
 
 	/**공지사항 조회수 
 	 * @param noticeNo
@@ -92,6 +92,32 @@ public interface AdminService {
 	 * @return
 	 */
 	int qnaDelete(Qna qna);
+
+	/**회원 블락
+	 * @param userNo
+	 * @return
+	 */
+	int userBlock(int userNo);
+
+	/**게시글 블라인드
+	 * @param goodsNo
+	 * @return
+	 */
+	int boardBlind(int goodsNo);
+
+	/**게시글 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	int boardDelete(int goodsNo);
+
+	/**문의사항 raido 거래신고
+	 * @param qnaCategory
+	 * @return
+	 */
+	List<Qna> radioTrade(String qnaCategory);
+
+
 
 	
 	 

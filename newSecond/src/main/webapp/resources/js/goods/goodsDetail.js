@@ -25,37 +25,50 @@ next.addEventListener('click', () => {
 const goodsLike = document.getElementById("goodsLike");
 
 goodsLike.addEventListener("click",e=>{
-    // 로그인 여부 검사 넣기
-    //loginMemberNo 변수 알맞은 걸로 넣기
-    // if(logiMemberNo = ""){
-    //     alert("로그인 후 이용해주세요");
-    //     return;
-    // }
+    if(loginUserNo == goodsUserNo){
+        // e.preventDefault();
+        return;
+    }
 
-    let check; // 기존 빈하트:0, 찬하트:1
-
+    if(loginUserNo == ""){
+        document.getElementById('toastBody').innerText = "로그인 후 이용해주세요!";
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        toastTrigger.click();
+        return;
+    }
+    let check; // 기존 찜x:0, 찜:1
     if(e.target.classList.contains("beforeLike")){
         check = 0;
     } else {
         check = 1;
     }
-
     // ajax
-    // boardNo, loginMemberNo 알맞은 변수로 바꾸기
-    //const data = {"boardNo": boardNo, "memberNo": loginMemberNo, "check": check};
-
-    fetch("/goodsDetail/like", {
+    const data = {"goodsNo": goodsNo, "loginUserNo": loginUserNo, "check": check};
+    fetch("/goods/like", {
         method : "POST",
         headers : {"Content-Type" : "application/json"},
         body : JSON.stringify(data)
     })
     .then(response => response.text())
     .then(count => {
-        console.log("count : " + count);
+        // console.log("count : " + count);
         if(count == -1){
             console.log("좋아요 처리를 실패했습니다. 다시 시도해주세요.");
             return;
         }
+
+        e.target.classList.toggle("beforeLike");
+        e.target.classList.toggle("afterLike");
+        if(e.target.classList.contains("beforeLike")){
+            e.target.setAttribute("src","/resources/src/img/heartBefore.png");
+        }else{
+            e.target.setAttribute("src","/resources/src/img/heartAfter.png");
+            
+            /* 희진 : 관심상품 등록 알림 */
+            sendLikeBoardNotification(goodsUserNo, goodsNo, loginUserNo);
+        }
+        document.getElementById("wishCount").innerText = count;
+
     })
     .catch(err => {
         console.log("예외가 발생했습니다.");
@@ -63,3 +76,37 @@ goodsLike.addEventListener("click",e=>{
     })
 
 });
+
+
+
+
+
+
+/* 희진 : 관심상품 등록 알림 */
+// 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
+let likeNofiticationSock = new SockJS("/notificationSock");
+let likeInquireNotiSocket = new SockJS("/inquireNotificationSock"); 
+
+const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
+
+    const goodsTitle = document.getElementById("goodsTitle").value;
+    
+    let notiGoodTitle =  goodsTitle.substr(0, 11) + "...";
+
+    var likeGoodsObj = {
+        "senderNo" : loginUserNo,
+        "targetNo" : goodsUserNo,
+        "notificationMessage" : "님께서 회원님의 [" + notiGoodTitle + "] 상품을 관심상품으로 등록하였습니다.",
+        "notificationType" : "L",
+        "notificationURL" : "/goods/" + goodsNo
+    };
+
+    likeNofiticationSock.send(JSON.stringify(likeGoodsObj));
+
+    var likeGoodsObj2 = {
+        "targetNo" : goodsUserNo
+    }
+
+    likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
+
+}

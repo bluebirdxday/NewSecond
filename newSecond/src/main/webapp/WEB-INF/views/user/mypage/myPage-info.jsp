@@ -105,7 +105,7 @@
                             </div>
 
                             <div>
-                                <button class="input--userInfo__editIconWrap ms-2" id="addressCheck">
+                                <button class="input--userInfo__editIconWrap ms-2">
                                     <i class="fa-solid fa-pen fa-1.5x input--userInfo__editIcon"></i>
                                 </button>    
                             </div>
@@ -121,6 +121,7 @@
     </div>  
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
         document.querySelectorAll(".list-group-item")[0].classList.add("active")
     </script>

@@ -49,9 +49,9 @@ function boardSelectAll(boardSelectAll)  {
 
 
 
-document.getElementById("deleteBtn").addEventListener("click", function() {
-  var checkboxes = document.getElementsByClassName("admin_notice_checkbox");
-  var checkboxesNo = document.getElementsByClassName("admin_notice_checkbox_no")
+/* document.getElementById("deleteBtn").addEventListener("click", function() {
+  var checkboxes = document.getElementsByClassName("admin_user_checkbox");
+  var checkboxesNo = document.getElementsByClassName("admin_user_checkbox_no")
   var selectedItems = [];
   var noticeUpdateFrm = document.getElementById("noticeUpdateFrm");
 
@@ -61,7 +61,7 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
       selectedItems.push(checkboxesNo[i].innerText);
     }
   }
-  
+
   if(selectedItems.length==0){
     alert("삭제할 항목을 선택해주세요.");
     return;
@@ -69,48 +69,59 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
 else{
   if (confirm("정말 삭제 하시겠습니까?")) {  
     
-    noticeUpdateFrm.action = "/adimin_notice/deleteNoticeList"
+    noticeUpdateFrm.action = "/admin/adimin_notice/deleteNoticeList"
     noticeUpdateFrm.submit();
     
 
-    fetch("/adimin_notice/deleteNoticeList", {
+    fetch("/admin/adimin_notice/deleteNoticeList", {
       method : "POST",
-      headers : {"Content-Type": "application/JSON"},
+      headers : {"Content-Type": "application/json"},
       body : JSON.stringify(selectedItems)
     }).then(resp=> resp.text())
     .then(result=>{
+      console.log(result);
 
     }).catch(err=> console.log(err));
     
   
-  }}
+  }} */
 
  
-  });
+ /*  }); */
+  
+/* 선택하여 삭제하기 */
+  const delBtn = document.getElementById("deleteBtn");
+  const checkbox = document.getElementsByClassName("admin_notice_checkbox");
+  const checkboxNo = document.getElementsByClassName("admin_notice_checkbox_no");
+
+  delBtn.addEventListener(('click'),()=>{
+
+  if (confirm("정말 삭제 하시겠습니까?")) {
+    for(let i=0; i<checkbox.length; i++){
+      if (checkbox[i].checked) {
+   var noticeNo = document.getElementsByClassName("admin_notice_checkbox_no")[i].innerText
+  
+} if(checkbox!=null){
+noticeDelete(noticeNo);
+}
+}
+}else return;
+
+});
+
+function noticeDelete(noticeNo){
+
   
 
-  /* document.getElementById("deleteBtn").addEventListener("click", function() {
-    var checkboxes = document.querySelectorAll("#admin_notice_checkbox:checked");
-    var selectedItems = [];
-    
-    for (var i = 0; i < checkboxes.length; i++) {
-      selectedItems.push(checkboxes[i].value);
-    }
-    
-    if (checkboxes.length === 0) {
-      alert("선택된 항목이 없습니다.");
-      return;
-    }
-  
-    if (confirm("정말 삭제 하시겠습니까?")) {
-      var deleteUrl = "/admin_notice/delete";
-      
-      // 선택한 항목들의 값을 query string으로 추가하여 deleteUrl에 추가합니다.
-      for (var j = 0; j < selectedItems.length; j++) {
-        deleteUrl += "?itemId=" + selectedItems[j];
-      }
-      
-      location.href = deleteUrl;
-    }
-  }); */
-  
+  fetch("/admin/adimin_notice/deleteNoticeList", {
+    method : "POST",
+    headers : {"Content-Type": "application/json"},
+    body : JSON.stringify({"noticeNo" : noticeNo})
+  }).then(resp=> resp.text())
+  .then(result=>{
+    console.log(result);
+    console.log(noticeNo);
+
+  }).catch(err=> console.log(err));
+
+}

@@ -46,6 +46,34 @@ public class MyPageController {
 	/* ---------- 상세 페이지 로직 ----------- */
 	
 	/* ------------ 내정보 ------------------- */
+	// 이미지 변경 -> 내 상점으로 가게해서 편집을 누르게 해야한다.
+	@GetMapping("/info/img-edit")
+	public String imgEdit(String edit, @SessionAttribute(value = "loginUser", required = false) User loginUser
+							,RedirectAttributes ra) {
+		
+		if(loginUser == null) {
+			
+			String alertType = "fail";
+			String message = "로그인 후 이용가능합니다";
+			
+			ra.addFlashAttribute("alertType", alertType);
+			ra.addFlashAttribute("message", message);
+			
+			
+			return "redirect:/";
+			
+		}
+		
+		
+		int userNo = loginUser.getUserNo();
+		
+		
+		ra.addFlashAttribute("edit", edit);
+		
+		
+		return "redirect:/shop/"+ userNo;
+		
+	}
 	
 	// 닉네임 변경
 	@PostMapping("/info/changeNickname")
@@ -93,8 +121,75 @@ public class MyPageController {
 	}
 	
 	// 전화번호 변경
+	@PostMapping("/info/changeTel")
+	public String changeTel(String userTel
+							,Model model
+							,@SessionAttribute("loginUser") User loginUser
+							,RedirectAttributes ra) {
+		
+		int userNo = loginUser.getUserNo();
+		
+		int result = service.changeTel(userNo, userTel);
+		
+		String alertType = null;
+		String message = null;
+		
+		if(result > 0) {
+			
+			loginUser.setUserTel(userTel);
+			model.addAttribute("loginUser", loginUser);
+			alertType = "success";
+			message = "전화번호가 변경되었습니다.";
+			
+		}else {
+			
+			alertType = "fail";
+			message = "전화번호 변경에 실패했습니다. 다시 시도해주세요";
+			
+		}
+		
+		ra.addFlashAttribute("alertType", alertType);
+		ra.addFlashAttribute("message", message);
+		
+		
+		return "redirect:/myPage/info";
+	}
 	
 	// 주소 변경
+	@PostMapping("/info/changeAddress")
+	public String changeTel(String[] userAddress
+							,Model model
+							,@SessionAttribute("loginUser") User loginUser
+							,RedirectAttributes ra) {
+		
+		String addr = String.join("^^^", userAddress);
+		loginUser.setUserAddress(addr);
+		
+		int result = service.changeAddress(loginUser);
+		
+		String alertType = null;
+		String message = null;
+		
+		if(result > 0) {
+			
+			loginUser.setUserAddress(addr);
+			model.addAttribute("loginUser", loginUser);
+			alertType = "success";
+			message = "주소가 변경되었습니다.";
+			
+		}else {
+			
+			alertType = "fail";
+			message = "주소 변경에 실패했습니다. 다시 시도해주세요";
+			
+		}
+		
+		ra.addFlashAttribute("alertType", alertType);
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:/myPage/info";
+	}
+	
 	
 	/* --------------------------------------- */
 	

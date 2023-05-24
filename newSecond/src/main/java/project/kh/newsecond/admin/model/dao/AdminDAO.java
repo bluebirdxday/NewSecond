@@ -34,11 +34,12 @@ public class AdminDAO {
 		int offset = (pagination.getCurrentPage() - 1)
 				* pagination.getLimit();
 
+		
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
 		
 		
-		return sqlSession.selectList("AdminMapper.selectNoticeList",rowBounds);
+		return sqlSession.selectList("AdminMapper.selectNoticeList",null,rowBounds);
 	}
 	
 	/**관리자 공지사항 페이지 수
@@ -56,13 +57,31 @@ public class AdminDAO {
 		return sqlSession.selectList("AdminMapper.selectUserList");
 	}
 
-	/**관리자 문의사항 게시글 리스트
+	/**관리자 문의사항 게시글 리스트//페이지네이션
 	 * @return
 	 */
-	public List<Admin> selectQnaList() {
+	public List<Qna> selectQnaList(Pagination pagination) {
 		
-		return sqlSession.selectList("AdminMapper.selectQnaList");
+
+		int offset = (pagination.getCurrentPage() - 1)
+				* pagination.getLimit();
+
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());	
+		
+		return sqlSession.selectList("AdminMapper.selectQnaList",null,rowBounds);
 	}
+	
+	
+	/**관리자 문의사항 페이지 수
+	 * @param cp
+	 * @return
+	 */
+	public int getqnaListCount() {
+
+		return  sqlSession.selectOne("AdminMapper.getqnaListCount");
+	}
+	
 
 	/**관리자 게시글 리스트 조회
 	 * @return
@@ -147,17 +166,17 @@ public class AdminDAO {
 
 	
 	  /**회원 탈퇴
-	 * @param paramMap
+	 * @param noticeNoInt
 	 * @return
 	 */
-	public int userSignOut(Map<String, Object> paramMap) {
+	public int userSignOut(int userNo) {
 	  
-	  return sqlSession.update("AdminMapper.userSignOut",paramMap); 
+	  return sqlSession.update("AdminMapper.userSignOut",userNo); 
 	  }
 
-	public int deleteNoticeList(int noticeNoInt) {
+	public int deleteNoticeList(int noticeNo) {
 	
-		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNoInt); 
+		return sqlSession.update("AdminMapper.deleteNoticeList",noticeNo); 
 	}
 
 	/**공지사항 조회수 증가
@@ -176,6 +195,26 @@ public class AdminDAO {
 	public int qnaDelete(Qna qna) {
 		
 		return sqlSession.update("AdminMapper.qnaDelete",qna); 
+	}
+
+	public int userBlock(int userNo) {
+		
+		return sqlSession.update("AdminMapper.userBlock",userNo); 
+	}
+
+	public int boardBlind(int goodsNo) {
+	
+		return sqlSession.update("AdminMapper.boardBlind",goodsNo); 
+	}
+
+	public int boardDelete(int goodsNo) {
+	
+		return sqlSession.update("AdminMapper.boardDelete",goodsNo); 
+	}
+
+	public List<Qna> radioTrade(String qnaCategory) {
+		
+		return sqlSession.selectList("AdminMapper.radioTrade",qnaCategory); 
 	}
 
 

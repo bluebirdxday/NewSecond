@@ -69,13 +69,21 @@
    
 	<!--공지사항 게시글 조회  -->
 	<select id="selectNoticeList" resultMap="notice_rm">
-	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT,NOTICE_FL
 	FROM "notice"
 	ORDER BY NOTICE_NO DESC
 	</select>
 	
-	<!--  특정 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<!--  공지사항 삭제되지 않은 게시글의 수 조회-->	
 	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "notice"
+	WHERE NOTICE_FL = 'N'
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+		<!--  문의사항 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getqnaListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
 	SELECT COUNT(*)
 	FROM "qna"
 	WHERE QNA_DELETE_FL = 'N'
@@ -89,7 +97,7 @@
 	  CASE 
 	    WHEN USER_STATUS = 'A' THEN '정상'
 	    WHEN USER_STATUS = 'B' THEN '블락'
-	    WHEN USER_STATUS = 'C' THEN '탈퇴'
+	    WHEN USER_STATUS = 'D' THEN '탈퇴'
 	  END AS USER_STATUS
 	  ,ENROLL_DT
 	FROM "users"  
@@ -99,7 +107,7 @@
    
    	<!--문의사항 게시글 조회  -->
 	<select id="selectQnaList" resultMap="qna_rm">
-	SELECT QNA_NO,USER_NO,QNA_TYPE,QNA_TITLE,QNA_CONTENT
+	SELECT QNA_NO,USER_NO,QNA_TITLE,QNA_CONTENT,QNA_CATEGORY
 	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
 	,QNA_CHECK_FL,QNA_DELETE_FL
 	FROM "qna"
@@ -131,7 +139,7 @@
 	
 	<!-- 문의사항 게시글 읽어오기 -->
 	<select id="selectqnaOne" resultMap="qna_rm">
-	SELECT QNA_NO,QNA_TITLE,QNA_TYPE,USER_NO,
+	SELECT QNA_NO,QNA_TITLE,USER_NO,QNA_CATEGORY,
 		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT ,QNA_DELETE_FL
 	FROM "qna"
 	WHERE QNA_NO = #{qndNo}
@@ -180,10 +188,10 @@
 	
 	</update>
 	
-	
+	<!-- 회원 탈퇴  -->
 	<update id="userSignOut">
 	UPDATE "users"
-	SET USER_STATUS = 'B'
+	SET USER_STATUS = 'D'
 	WHERE USER_NO = #{userNo}
 	
 	</update>
@@ -195,5 +203,34 @@
 	  WHERE QNA_NO = #{qnaNo}
       </update>
       
+      
+      	<!-- 회원 블락  -->
+	<update id="userBlock">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
+	
+	<!-- 게시글 블라인드  -->
+	<update id="boardBlind">
+	UPDATE "goods_board"
+	SET GOODS_STATUS = 'B'
+	WHERE GOODS_NO =#{goodsNo}
+	</update>
+	
+	
+		<!-- 게시글 삭제  -->
+	<update id="boardDelete">
+	UPDATE "goods_board"
+	SET GOODS_STATUS = 'D'
+	WHERE GOODS_NO =#{goodsNo}
+	</update>
+	
+	
+	<select id="radioTrade" resultMap="qna_rm">
+	SELECT * FROM "qna"
+	WHERE QNA_CATEGORY = 'T'
+	</select>
       
 </mapper>

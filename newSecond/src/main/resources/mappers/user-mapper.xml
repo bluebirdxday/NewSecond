@@ -74,12 +74,17 @@
    
    <!-- 회원의 상점(프로필) 기본정보 입력 -->
    <insert id="insertShopData" parameterType="User">
-         INSERT INTO "shop"
-      VALUES	(#{userNo},
-               #{userNickname}||'님의 상점',
-               NULL, NULL
-               )
-   </insert>
+	  <selectKey keyProperty="randomString" resultType="String" order="BEFORE">
+	    SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS randomString FROM DUAL
+	  </selectKey>
+	  INSERT INTO "shop"
+	  VALUES (
+	    #{userNo},
+	    #{randomString},
+	    '안녕하세요 ' || #{randomString} || ' 상점에 오신 것을 환영합니다!', DEFAULT
+	  )
+	</insert>
+   
    
 
 

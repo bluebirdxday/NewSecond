@@ -21,41 +21,61 @@ more.addEventListener("click", e => {
     .then(resp => resp.json())
     .then(moreGoodsList => {
         if(moreGoodsList.length>0){
-            // console.log(moreGoodsList.length);
             for(var i=0; i<moreGoodsList.length; i++){
                 const goodsDiv = document.createElement("div");
                 goodsDiv.classList.add("goods");
+                goodsListTable.append(goodsDiv);
                 
                 const a = document.createElement("a");
-                a.setAttribute("href",`/goods/${moreGoodsList[i].goodsNo}`);
-                // goodsDiv.append(a);
+                a.setAttribute("href","/goods/"+moreGoodsList[i].goodsNo);
                 
                 const img  = document.createElement("img");
-                if(`${moreGoodsList[i].thumbnail}`===null){
+                if(moreGoodsList[i].thumbnail== null){
                     img.setAttribute("src","/resources/src/img/no_image.jpeg");
                 }else{
-                    img.setAttribute("src",`${moreGoodsList[i].thumbnail}`);
+                    img.setAttribute("src",moreGoodsList[i].thumbnail);
+                }
+                a.append(img);
+
+                // console.log(moreGoodsList[i].goodsStatus);
+
+                if(moreGoodsList[i].goodsStatus=='E'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("soldout");
+                    statusDiv.innerText = "Sold Out";
+                    a.append(statusDiv);
+                }else if(moreGoodsList[i].goodsStatus=='C'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("reserved");
+                    statusDiv.innerText = "Reserved";
+                    a.append(statusDiv);
                 }
                 
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
-                priceDiv.innerHTML = `${moreGoodsList[i].goodsPrice.toLocaleString('ko-KR')}`;
+                priceDiv.innerHTML = moreGoodsList[i].goodsPrice.toLocaleString('ko-KR');
                 const titleDiv = document.createElement("div");
                 titleDiv.classList.add("goods_title");
-                titleDiv.innerHTML = `${moreGoodsList[i].goodsTitle}`;
+                titleDiv.innerHTML = moreGoodsList[i].goodsTitle;
                 
-                goodsListTable.append(goodsDiv);
                 
-                a.append(img);
                 a.append(priceDiv);
                 a.append(titleDiv);
+                // a.append(img);
+                // a.append(statusDiv);
+                // a.append(priceDiv);
+                // a.append(titleDiv);
 
                 goodsDiv.append(a);
             }
 
         }else{
             // 오류 없으면 수정
-            alert("없으면 안되는데,,? more버튼이 안보였을텐데..?");
+            document.getElementById('toastBody').innerText = "더 조회할 상품이 없습니다 근데 이거 뜨면 안되는데!";
+            document.getElementById('liveToast').classList.add('text-bg-danger');
+            toastTrigger.click();
         }
 
         if(moreGoodsList.length<=12){

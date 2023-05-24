@@ -20,10 +20,14 @@
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.Notification" alias="Notification" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Files" alias="Files" />
+		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Category" alias="Category"/>
 		
 		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
 		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
 		<typeAlias type="project.kh.newsecond.priceView.model.dto.PriceViewKeyword" alias="PriceViewKeyword" />
+		
+		
+		<typeAlias type="project.kh.newsecond.wish.model.dto.Wish" alias="Wish" />
 	</typeAliases>
 	
 	
@@ -42,6 +46,7 @@
 		<mapper resource="/mappers/writing-mapper.xml" />
 		<mapper resource="/mappers/priceView-mapper.xml" />
 		<mapper resource="/mappers/qna-mapper.xml" />
+		<mapper resource="/mappers/wish-mapper.xml" />
 	</mappers>
 
 
