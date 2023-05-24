@@ -3,7 +3,9 @@ package project.kh.newsecond.writing.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class WritingServiceImpl implements WritingService {
 	// 게시글 등록
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {
+	public Map<String, Object> writingInsert(Writing writing, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {
 		
 		// 0. XSS 처리
 		writing.setTitle(Util.XXSHandling(writing.getTitle()));
@@ -35,6 +37,8 @@ public class WritingServiceImpl implements WritingService {
 		
 		// 1-2. FILE 테이블에 넣을 goodsNo select 시도
 		int goodsNo = dao.sqlSelect(writing);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 2. FILE 테이블에 insert 시도
 		if(result > 0) { // GOODS_BOARD 테이블에 insert 성공
@@ -89,9 +93,14 @@ public class WritingServiceImpl implements WritingService {
 			} else {
 				// 예외 강제 발생
 			} 
+			
+			
+			
+			map.put("result", result);
+			map.put("goodsNo", goodsNo);
+			
 		}
-		
-		return result;
+		return map;
 	}
 }	
 		
