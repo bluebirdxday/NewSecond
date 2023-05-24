@@ -6,7 +6,7 @@
 <aside class="myPage--side shadow p-3 mb-5 bg-body rounded" >
 
     <div class="menu--userInfo mt-5 d-flex flex-column justify-content-center align-items-center">
-        <a class="position-relative" href="/myPage/profile">
+        <a class="position-relative" href="/myPage/info/img-edit?edit='y'">
             <img src="/resources/src/img/basic_profile.png">
             <div class="menu--userInfo__editIconWrap">
                 <i class="fa-solid fa-pen fa-1.5x menu--userInfo__editIcon"></i>
@@ -25,3 +25,4 @@
     
     
 </aside>
+

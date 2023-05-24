@@ -47,7 +47,7 @@
 
                 <div class = "myshop--info__btn-container">
                     <c:if test="${loginUserNo==shop.userNo}" >
-                        <div class="myshop--info__btn-edit">편집</div>
+                        <div class="myshop--info__btn-edit" id="img-edit">편집</div>
                     </c:if>
 
                     <c:if test="${loginUserNo!=shop.userNo}" >
@@ -372,6 +372,12 @@
 
     <script src="/resources/js/shop.js"></script>
 
+
+    <c:if test="${not empty edit}">
+        <script>
+            document.querySelector(".myshop--popup__background").classList.add("myshop--popup__show");
+        </script>
+    </c:if>
     
 </body>
 </html>

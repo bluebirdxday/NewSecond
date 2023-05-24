@@ -105,7 +105,7 @@
                             </div>
 
                             <div>
-                                <button class="input--userInfo__editIconWrap ms-2" id="addressCheck">
+                                <button class="input--userInfo__editIconWrap ms-2">
                                     <i class="fa-solid fa-pen fa-1.5x input--userInfo__editIcon"></i>
                                 </button>    
                             </div>

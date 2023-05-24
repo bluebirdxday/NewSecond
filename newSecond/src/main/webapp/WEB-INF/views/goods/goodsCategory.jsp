@@ -12,7 +12,7 @@
         <c:forEach items="${categoryList}" var="category" begin="0" end="${fn:length(categoryList)}">
             <li><a class="dropdown-item" href="#">${category.categoryName}</a></li>
         </c:forEach>
-
+    
 
     </ul>
     
