@@ -91,7 +91,7 @@ const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
 
     const goodsTitle = document.getElementById("goodsTitle").value;
     
-    let notiGoodTitle =  goodsTitle.substr(0, 11) + "...";
+    let notiGoodTitle =  goodsTitle.substr(0, 13) + "...";
 
     var likeGoodsObj = {
         "senderNo" : loginUserNo,
@@ -109,4 +109,23 @@ const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
 
     likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
 
+}
+
+
+/* 희진 : 키워드 알림 */
+const uploadComplete = document.getElementById("uploadComplete");
+if(uploadComplete!=null){
+
+    // 라이브 알림 보내기
+    fetch("/notification/selectKeywordNotiList?goodsNo=" + goodsNo)
+    .then(resp=>resp.json())
+    .then(keywordNotiList=>{
+        // 작성한 쪽에서 확인
+        console.log(keywordNotiList);
+        likeNofiticationSock.send(JSON.stringify(keywordNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
+
+    // 알림 insert
 }

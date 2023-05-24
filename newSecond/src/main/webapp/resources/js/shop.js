@@ -262,11 +262,6 @@ function unFollow(passiveUserNo, loginUserNo, tab){
     .then(resp => resp.text())
     .then((result)=>{
 
-        console.log("unFollow 시 탭 : " +  tab);
-        console.log(loginUserNo);
-        console.log(userNo);
-        console.log("result: " + result);
-
         if(result>0){
             return  fetch(`/shop/selectFollowList?tab=${tab}&shopUserNo=${userNo}&loginUserNo=${loginUserNo}`);
         }

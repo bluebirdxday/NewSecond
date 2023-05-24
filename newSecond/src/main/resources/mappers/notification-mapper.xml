@@ -37,13 +37,26 @@
 	
 	<!-- 알림 리스트 + SENDER 유저 정보 -->
 	<select id="selectNotificationList" resultMap="notification_rm">
-		SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, 
-			NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, SHOP_TITLE, 
-			NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, NOTIFICATION_URL
-		FROM "notifications" n
-		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
-		WHERE n.USER_NO = #{loginUserNo}
-		ORDER BY NOTIFICATION_CREATE_DT DESC
+	SELECT NOTIFICATION_NO, TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, 
+		<![CDATA[
+		    CASE
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1/24/60 THEN '방금 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1/24 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) * 24 * 60) || '분 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) * 24) || '시간 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 30 THEN FLOOR(SYSDATE - NOTIFICATION_CREATE_DT) || '일 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 365 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) / 30) || '달 전'
+		        ELSE FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) / 365) || '년 전'
+		    END NOTIFICATION_CREATE_DT, 
+	     ]]>
+		
+		NOTIFICATION_TYPE, SHOP_TITLE, SHOP_PROFILE, NOTIFICATION_URL
+	FROM (SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, SHOP_TITLE,
+				NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, NOTIFICATION_URL 
+				FROM "notifications" n
+				JOIN "shop" s ON(SENDER_NO=s.USER_NO)
+				WHERE n.USER_NO = #{userNo}
+				ORDER BY NOTIFICATION_CREATE_DT DESC)
+	WHERE NOTIFICATION_TYPE NOT IN ('K')
 	</select>
 	
 
@@ -73,13 +86,24 @@
 	<!-- 팔로우 알림 추가 -->
 	<insert id="insertNotification">
 		INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 
-			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, 'F', #{notificationURL})
+			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, #{notificationType}, #{notificationURL})
 	</insert>
 	
 	
 	<!-- 등록 키워드 개수 조회 -->
 	<select id="selectKeywordCount" resultType="_int">
 		SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = #{userNo}
+	</select>
+	
+	
+	<select id="selectKeywordNotiList" resultMap="notification_rm">
+		SELECT nk.USER_NO TARGET_NO, g.USER_NO SENDER_NO, 
+				 nk.KEYWORD_TITLE || '^^' || g.GOODS_TITLE NOTIFICATION_MESSAGE, 
+				'/goods/'||GOODS_NO NOTIFICATION_URL, 'K' NOTIFICATION_TYPE 
+		FROM "goods_board" g, "notification_keywords" nk
+		WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+		AND g.USER_NO != nk.USER_NO
+		AND GOODS_NO = ${goodsNo}
 	</select>
 	
 </mapper>

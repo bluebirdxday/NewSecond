@@ -44,4 +44,5 @@ window.addEventListener('unload', function() {
     // 현재 페이지에 존재하는 리스트 전달 후 readOrNot = "Y"로 update
 
     fetch('/notification/updateReadOrNot')
+
 });

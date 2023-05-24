@@ -87,7 +87,7 @@
 
             <div class="myshop--info__bottom">
                 <div class="myshop--info__btn-report">
-                    <a href="#">
+                    <a href="/qna/qna">
                         <img src="/resources/src/img/siren.png">
                         <div>신고하기</div>
                     </a>

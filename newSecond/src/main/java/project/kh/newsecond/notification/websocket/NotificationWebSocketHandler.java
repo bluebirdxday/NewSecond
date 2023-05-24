@@ -1,9 +1,11 @@
 package project.kh.newsecond.notification.websocket;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -15,12 +17,13 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.service.NotificationService;
-import project.kh.newsecond.shop.model.dto.Shop;
 import project.kh.newsecond.user.model.dto.User;
 
 // 실시간 알림 토스트 처리를 위한 웹소켓
@@ -51,43 +54,56 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 		protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 			
 			// 자바스크립트에서 넘어온 msg
-			String msg = message.getPayload();	
+			String payload = message.getPayload();	
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			
-			Notification noti = objectMapper.readValue(msg, Notification.class);
+//			Notification noti = objectMapper.readValue(msg, Notification.class);
 			
-			
-			int result = service.insertNotification(noti);
-
-	        if(result > 0 ) {
-	        	
-
-	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	            noti.setSendDate(sdf.format(new Date()));
-	            
-	            Notification shop = service.selectShopInfo(noti.getSenderNo());
-	            
-	            noti.setShopTitle(shop.getShopTitle());
-	            noti.setShopProfile(shop.getShopProfile());
-	            
-	            
-	            for(WebSocketSession s : sessions) {
-	                
-	                // 로그인된 회원 정보 중 회원 번호 얻어오기
-	                int loginUserNo = ((User)s.getAttributes().get("loginUser")).getUserNo();
-	                
-	                
-	                // 로그인 상태인 회원 중 targetNo가 일치하는 회원에게 알림 전달
-	                if(loginUserNo == noti.getTargetNo()) {
-	                    s.sendMessage(new TextMessage(new Gson().toJson(noti)));
-	                }
-	            }
-	            
+		    JsonNode jsonNode = objectMapper.readTree(payload);
+		    
+	        if (jsonNode.isArray()) {
+	        	// 배열로 간주
+	            List<Notification> notifications = objectMapper.readValue(payload, new TypeReference<List<Notification>>() {});
+	            processNotifications(notifications);
+	        } else {
+	        	// 단일 객체로 간주
+	            Notification notification = objectMapper.readValue(payload, Notification.class);
+	            processNotification(notification);
 	        }
-		
+		    
 		}
 		
+		
+		private void processNotifications(List<Notification> notifications) throws Exception {
+	        for (Notification notification : notifications) {
+	            processNotification(notification);
+	        }
+	    }
+		
+	    private void processNotification(Notification notification) throws Exception {
+	        int result = service.insertNotification(notification);
+
+	        if (result > 0) {
+	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	            notification.setSendDate(sdf.format(new Date()));
+
+	            Notification shop = service.selectShopInfo(notification.getSenderNo());
+
+	            notification.setShopTitle(shop.getShopTitle());
+	            notification.setShopProfile(shop.getShopProfile());
+
+	            for (WebSocketSession session : sessions) {
+	                int loginUserNo = ((User) session.getAttributes().get("loginUser")).getUserNo();
+
+	                //로그인 세션 정보를 가져와서 targetNo와 일치하는 회원에게 전송
+	                if (loginUserNo == notification.getTargetNo()) {
+	                    // 비동기적으로 메시지 전송
+	                    session.sendMessage(new TextMessage(new Gson().toJson(notification)));
+	                }
+	            }
+	        }
+	    }
 
 		// - 클라이언트와 연결이 종료되면 실행
 		@Override

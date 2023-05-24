@@ -60,4 +60,11 @@ public interface NotificationService {
 	 * @return notificationList
 	 */
 	List<Notification> selectNotificationList(int loginUserNo);
+
+
+	/** 키워드 알림을 위한 리스트 조회
+	 * @param goodsNo
+	 * @return keywordNotiList
+	 */
+	List<Notification> selectKeywordNotiList(int goodsNo);
 }
