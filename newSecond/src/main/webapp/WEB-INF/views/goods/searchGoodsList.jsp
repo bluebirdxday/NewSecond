@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${param.query} 검색 결과</title>
     
-    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
 
 </head>
 <body style="overflow: auto;">

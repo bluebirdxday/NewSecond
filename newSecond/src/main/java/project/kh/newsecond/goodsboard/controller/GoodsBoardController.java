@@ -123,12 +123,31 @@ public class GoodsBoardController {
 		
 		List<GoodsBoard> categoryGoodsList = service.selectCategoryGoodsList(categoryNo);
 		
+		model.addAttribute("categoryNo", categoryNo);
 		model.addAttribute("categoryName", categoryName);
 		model.addAttribute("categoryGoodsList", categoryGoodsList);
-		
 		
 		return "goods/selectCategoryGoodsList";
 	}
 	
+	// 카테고리 상품 게시글 추가 조회 (더보기)
+	@PostMapping("/categoryMore")
+	@ResponseBody
+	public List<GoodsBoard> searchCategoryGoodsList(@RequestBody Map<String, Object> numAndCategoryCode){
 
+		return service.moreCategoryGoods(numAndCategoryCode);
+	}
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+

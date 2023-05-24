@@ -25,7 +25,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String homeForward(User loginUser, Model model, HttpSession session) {
 
-		// 최근 업데이트된 게시글 상품 5가지에 대한 리스트
+		// 최근 업데이트된 게시글 상품 10가지에 대한 리스트
 		List<GoodsBoard> recentGoodsList10 = service.selectRecentGoodsList10();
 		model.addAttribute("recentGoodsList10", recentGoodsList10);
 

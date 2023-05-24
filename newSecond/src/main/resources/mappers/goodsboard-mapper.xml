@@ -254,6 +254,25 @@
 		ORDER BY SELL_ENROLL_DT DESC
 	</select>
 	
+	<!-- 카테고리 리스트 더보기 -->
+	<select id="moreCategoryGoods" resultMap="goodsboard_rm">
+	
+	SELECT * FROM(
+			SELECT ROW_NUMBER() OVER (ORDER BY SELL_ENROLL_DT DESC) AS NUM
+			, GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE, GOODS_STATUS,
+				(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+				WHERE F.GOODS_NO = G.GOODS_NO
+				AND FILE_ORDER = 1) THUMBNAIL
+			FROM "goods_board" G
+			JOIN "shop" USING (USER_NO)
+			WHERE GOODS_STATUS IN ('A','E','C')
+				AND  CATEGORY_NO = ${categoryCode}
+			ORDER BY SELL_ENROLL_DT DESC)
+			<![CDATA[ WHERE NUM > ${startCallNum} ]]>
+		ORDER BY NUM
+		
+		
+	</select>
 		
 		
 </mapper>

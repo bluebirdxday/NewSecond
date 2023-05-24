@@ -38,6 +38,8 @@ public interface GoodsBoardService {
 	// 카테고리에 해당되는 상품 리스트
 	List<GoodsBoard> selectCategoryGoodsList(int categoryNo);
 	
+	// 카테고리 상품 리스트 더 보기
+	List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode);
 	
 
 	// 기존 찜 여부 확인
@@ -48,6 +50,8 @@ public interface GoodsBoardService {
 
 	// 상품 게시글 - 상점 정보
 	Shop shopInfo(int goodsNo);
+	
+	
 	
 	
 	

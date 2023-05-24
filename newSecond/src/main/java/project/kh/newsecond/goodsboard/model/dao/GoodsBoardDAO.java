@@ -141,5 +141,13 @@ public class GoodsBoardDAO {
 		return sqlSession.selectList("goodsBoardMapper.selectCategoryGoodsList", categoryNo);
 	}
 
+	/** 카테고리 리스트 더보기
+	 * @param numAndCategoryName
+	 * @return List
+	 */
+	public List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode) {
+		return sqlSession.selectList("goodsBoardMapper.moreCategoryGoods", numAndCategoryCode);
+	}
+
 	
 }

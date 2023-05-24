@@ -86,7 +86,6 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return selectCategoryList;
 	}
 	
-	
 	// 카테고리에 해당되는 상품 리스트
 	@Override
 	public List<GoodsBoard> selectCategoryGoodsList(int categoryNo) {
@@ -95,6 +94,14 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		
 		return CategoryGoodsList;
 	}
+	
+	// 카테고리 상품 리스트 더 보기
+	@Override
+	public List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode) {
+		return dao.moreCategoryGoods(numAndCategoryCode);
+	}
+	
+	
 
 	// 기존 찜 여부 확인
 	@Override
@@ -102,6 +109,8 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return dao.goodsLikeChecked(map);
 	}
 	
+	
+
 	
 
 	// 찜 처리 

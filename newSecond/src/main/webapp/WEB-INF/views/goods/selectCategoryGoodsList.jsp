@@ -13,10 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     
-    <link rel="stylesheet" href="/resources/css/goods/selectCategoryGoodsList.css">
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/goods/selectCategoryGoodsList.css">
 
 </head>
+
+
+
+
 <body style="overflow: auto;">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <!-- content 내용 부분 -->
@@ -100,8 +104,12 @@
 
         </div>
 
-        <script src="/resources/js/goods/searchGoodsList.js"></script>
-        <script src="/resources/js/goods/moreGoods.js"></script>
+
+        <script>
+            const categoryCode = ${categoryNo};
+        </script>
+        
+        <script src="/resources/js/goods/moreCategoryGoods.js"></script>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
