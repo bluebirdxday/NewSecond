@@ -24,8 +24,8 @@ if(searchForm!=null){
 })();
 
 // 판매 완료 상품 제외 비동기
-const soldoutCheck = document.getElementById("check1")
-soldoutCheck.addEventListener('change',()=>{
+// const soldoutCheck = document.getElementById("check1")
+// soldoutCheck.addEventListener('change',()=>{
 
-});
+// });
 

@@ -6,6 +6,7 @@
 <c:set var="notice" value="${Notice}}"/>
 
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

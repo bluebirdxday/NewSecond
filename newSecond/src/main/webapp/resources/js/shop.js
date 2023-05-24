@@ -223,45 +223,32 @@ function follow(passiveUserNo, loginUserNo, tab){
 
 }
 
-
+// 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
 // 팔로우 알람
 let notificationSock = new SockJS("/notificationSock");
 let inquireNotiSocket = new SockJS("/inquireNotificationSock"); 
 
 const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
     
-        var obj = {
+        var followObj = {
             "senderNo": loginUserNo,
             "targetNo": passiveUserNo,
             "notificationMessage": "님께서 회원님을 팔로우하였습니다",
             "notificationType": "F",
+            "notificationURL" : "/shop/" + loginUserNo
 
         };
 
-        notificationSock.send(JSON.stringify(obj));
+        notificationSock.send(JSON.stringify(followObj));
 
 
-        var obj2 = {
+        var followObj2 = {
             "targetNo": passiveUserNo
         }
 
-        inquireNotiSocket.send(JSON.stringify(obj2));
+        inquireNotiSocket.send(JSON.stringify(followObj2));
         
 }
-
-
-
-// notificationSock.onmessage = function(e) {
-//     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 obj 변수에 저장.
-//     const msg = JSON.parse(e.data);
-
-//     console.log(msg);
-
-//     const followMsg = msg.shopTitle + msg.notificationMessage;
-
-//     document.getElementById('alarmBody').innerText = followMsg;
-//     alarmTrigger.click();
-// }
 
 
 // 상점 언팔로우

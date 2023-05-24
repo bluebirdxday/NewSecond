@@ -21,20 +21,36 @@ more.addEventListener("click", e => {
     .then(resp => resp.json())
     .then(moreGoodsList => {
         if(moreGoodsList.length>0){
-            // console.log(moreGoodsList.length);
             for(var i=0; i<moreGoodsList.length; i++){
                 const goodsDiv = document.createElement("div");
                 goodsDiv.classList.add("goods");
+                goodsListTable.append(goodsDiv);
                 
                 const a = document.createElement("a");
                 a.setAttribute("href","/goods/"+moreGoodsList[i].goodsNo);
-                // goodsDiv.append(a);
                 
                 const img  = document.createElement("img");
                 if(moreGoodsList[i].thumbnail== null){
                     img.setAttribute("src","/resources/src/img/no_image.jpeg");
                 }else{
                     img.setAttribute("src",moreGoodsList[i].thumbnail);
+                }
+                a.append(img);
+
+                // console.log(moreGoodsList[i].goodsStatus);
+
+                if(moreGoodsList[i].goodsStatus=='E'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("soldout");
+                    statusDiv.innerText = "Sold Out";
+                    a.append(statusDiv);
+                }else if(moreGoodsList[i].goodsStatus=='C'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("reserved");
+                    statusDiv.innerText = "Reserved";
+                    a.append(statusDiv);
                 }
                 
                 const priceDiv = document.createElement("div");
@@ -44,11 +60,13 @@ more.addEventListener("click", e => {
                 titleDiv.classList.add("goods_title");
                 titleDiv.innerHTML = moreGoodsList[i].goodsTitle;
                 
-                goodsListTable.append(goodsDiv);
                 
-                a.append(img);
                 a.append(priceDiv);
                 a.append(titleDiv);
+                // a.append(img);
+                // a.append(statusDiv);
+                // a.append(priceDiv);
+                // a.append(titleDiv);
 
                 goodsDiv.append(a);
             }

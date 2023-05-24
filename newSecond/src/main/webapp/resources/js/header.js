@@ -1,5 +1,5 @@
 
-/* 희진 : 알림 */
+/* 희진 : 팔로우 알림 */
 let notificationSock2 = new SockJS("/notificationSock");
 
 notificationSock2.onmessage = function(e) {

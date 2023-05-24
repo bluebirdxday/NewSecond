@@ -17,7 +17,7 @@ const textareaDiv = document.querySelector(".writereview--textarea");
 
 
 // textarea 포커스
-textarea.addEventListener('focus', ()=>{
+textarea.addEventListener('input', ()=>{
     // textarea의 값이 비어있는지 확인
     if (textarea.value.trim() !== '') {
         textareaDiv.style.border = "2px solid #E3E3E3";

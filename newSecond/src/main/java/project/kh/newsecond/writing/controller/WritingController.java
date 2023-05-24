@@ -1,7 +1,9 @@
 package project.kh.newsecond.writing.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -93,13 +95,22 @@ public class WritingController {
 		// -> writing, images, webPath, filePath 객체 완성
 		
 		// 4. service 호출
-		int result = service.writingInsert(writing, images, webPath, filePath);
+		Map<String, Object> resultService = service.writingInsert(writing, images, webPath, filePath);
 		
 		// 5. 결과 리턴
 		String path = "redirect:";
+		/* "redirect:/goods/{goodsNo}" */
+		
+		// 6. map 꺼내기
+		int result = (int) resultService.get("result");
+		int goodsNo = (int) resultService.get("goodsNo");
+		
+		// 7. result, goodsNo 담기
+		model.addAttribute("goodsNo", goodsNo);
+		model.addAttribute("uploadComplete", "ok");
 		
 		if(result > 0) {
-			path += "write"; // 성공시 write 화면 리턴
+			path += "/goods/" + goodsNo; // 성공시 write 화면 리턴
 		} else {
 			path += "write"; // 실패시 write 화면 리턴
 		}

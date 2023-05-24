@@ -39,15 +39,7 @@
 	<select id="selectNotificationList" resultMap="notification_rm">
 		SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, 
 			NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, SHOP_TITLE, 
-			NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE,
-			
-			<![CDATA[
-				  CASE 
-		        		WHEN NOTIFICATION_TYPE='F' THEN '/shop/' || SENDER_NO
-		       			
-		    	END
-			 ]]>
-			NOTIFICATION_URL
+			NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, NOTIFICATION_URL
 		FROM "notifications" n
 		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
 		WHERE n.USER_NO = #{loginUserNo}
@@ -81,7 +73,7 @@
 	<!-- 팔로우 알림 추가 -->
 	<insert id="insertNotification">
 		INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 
-			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, 'F', NULL)
+			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, 'F', #{notificationURL})
 	</insert>
 	
 	

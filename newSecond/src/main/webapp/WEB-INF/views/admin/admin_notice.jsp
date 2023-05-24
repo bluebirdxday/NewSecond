@@ -42,7 +42,7 @@
             <button class="admin_notice_DelBtn" id="deleteBtn">선택 삭제</button>
         </div>
 
-
+  
         
         <!-- ----테이블------ -->
      <form action="/admin/admin_notice_write/update" method="POST" 

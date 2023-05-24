@@ -123,7 +123,6 @@ public class GoodsBoardDAO {
 		return sqlSession.selectList("goodsBoardMapper.selectMostViewedList", null ,rowBounds);
 	}
 
-
 	
 	/** 로그인한 유저가 최근에 본 상품 5가지
 	 * @return 
