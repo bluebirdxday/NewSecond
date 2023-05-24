@@ -53,6 +53,7 @@ function boardSelectAll(boardSelectAll)  {
 
   delBtn.addEventListener(('click'),()=>{
 
+    
   if (confirm("정말 블라인드 하시겠습니까?")) {
     for(let i=0; i<checkboxA.length; i++){
       if (checkboxA[i].checked) {
