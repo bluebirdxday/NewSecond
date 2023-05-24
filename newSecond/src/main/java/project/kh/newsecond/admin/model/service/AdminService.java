@@ -98,6 +98,13 @@ public interface AdminService {
 	 * @return
 	 */
 	int userBlock(int userNo);
+	
+	/**회원 블락 해제
+	 * @param userNo
+	 * @return
+	 */
+	int userBlockH(int userNo);
+
 
 	/**게시글 블라인드
 	 * @param goodsNo
@@ -117,6 +124,13 @@ public interface AdminService {
 	 */
 	List<Qna> radioTrade(String qnaCategory);
 
+	/**관리자 회원 검색 기능
+	 * @param searchKeyword
+	 * @return
+	 */
+	Map<String, Object> userSelectList(String searchKeyword);
+
+	
 
 
 	

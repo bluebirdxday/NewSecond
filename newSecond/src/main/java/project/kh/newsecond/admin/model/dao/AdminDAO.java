@@ -14,6 +14,7 @@ import project.kh.newsecond.admin.model.dto.Pagination;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.notice.model.dto.Notice;
 import project.kh.newsecond.qna.model.dto.Qna;
+import project.kh.newsecond.user.model.dto.User;
 
 /**
  * @author bfyu0
@@ -197,11 +198,24 @@ public class AdminDAO {
 		return sqlSession.update("AdminMapper.qnaDelete",qna); 
 	}
 
+	/**회원 블락
+	 * @param userNo
+	 * @return
+	 */
 	public int userBlock(int userNo) {
 		
 		return sqlSession.update("AdminMapper.userBlock",userNo); 
 	}
 
+	/**회원 블락 해제
+	 * @param userNo
+	 * @return
+	 */
+	public int userBlockH(int userNo) {
+		
+		return sqlSession.update("AdminMapper.userBlockH",userNo); 
+	}
+	
 	public int boardBlind(int goodsNo) {
 	
 		return sqlSession.update("AdminMapper.boardBlind",goodsNo); 
@@ -216,6 +230,13 @@ public class AdminDAO {
 		
 		return sqlSession.selectList("AdminMapper.radioTrade",qnaCategory); 
 	}
+
+	public List<User> userSelectList(String searchKeyword) {
+		
+		return sqlSession.selectList("AdminMapper.userSelectList",searchKeyword); 
+	}
+
+
 
 
 

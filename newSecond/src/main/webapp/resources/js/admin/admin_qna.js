@@ -28,7 +28,7 @@ function qnaSelectAll(qnaSelectAll)  {
        if ( trade.checked == true ) {
 
 const qnaCategory =  trade.value;
-  
+
   fetch("/admin/admin_qna/radioTrade", {
     method : "POST",
     headers : {"Content-Type": "application/json"},
@@ -42,8 +42,8 @@ const qnaCategory =  trade.value;
 
     function selectQnaList(result)
 
-      const qnaTable = document.getElementsByClassName("admin_qna_tableWrap");
-      qnaTable = "";
+      const qnaTable = document.querySelectorAll(".admin_qna_tableWrap");
+      qnaTable.style.display="none";
     
     
 
@@ -54,3 +54,60 @@ const qnaCategory =  trade.value;
 
 
 
+/* 테스트 */
+const trade = document.getElementById("trade");
+
+trade.addEventListener(('click'),()=>{
+
+
+boxChecked();
+
+  function boxChecked ( ) {
+    var trade = document. getElementById ( "trade" ) ;
+     if ( trade.checked == true ) {
+
+const qnaCategory =  trade.value;
+
+fetch("/admin/admin_qna/radioTrade", {
+  method : "POST",
+  headers : {"Content-Type": "application/json"},
+  body : JSON.stringify({"qnaCategory" : qnaCategory})
+}).then(resp=> resp.text())
+.then(result=>{
+  console.log(result);
+  console.log(qnaCategory);
+
+  selectQnaList(result)
+
+  function selectQnaList(result)
+
+    const qnaTable = document.querySelectorAll(".admin_qna_tableWrap");
+    qnaTable.style.display="none";
+  
+  
+
+
+}).catch(err=> console.log(err));
+
+} } });
+
+function myFunc() {
+
+  const radio = document.getElementsByClassName("admin_qna_raidos")
+  var str = "";
+
+  for(var i=0; i<cardLen; i++) {
+    if(myform.card[i].checked) {
+      str += myform.card[i].value + "/";
+    }
+  }
+  document.getElementById("demo").innerHTML = str;
+}
+function cardCheck(sel) {
+  if(sel.checked) {
+    alert("선택한 카드는? " + sel.value);
+  }
+  else {
+    alert(sel.value + " 선택을 해제하셨군요..")
+  }
+}
