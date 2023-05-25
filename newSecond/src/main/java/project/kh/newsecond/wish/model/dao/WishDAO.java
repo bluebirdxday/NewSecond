@@ -18,10 +18,10 @@ public class WishDAO {
 	private SqlSessionTemplate sqlSession;
 
 
-	public List<Wish> wishList(int userNo) {
+	public List<GoodsBoard> wishList(int wishUserNo) {
 		
 
-		return sqlSession.selectList("wishMapper.wishList", userNo);
+		return sqlSession.selectList("wishMapper.wishList", wishUserNo);
 	}
 	
 }

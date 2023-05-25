@@ -26,17 +26,16 @@ public class GoodsBoardDAO {
 	 * @param searchName
 	 * @return searchGoodsCount
 	 */
-	public int searchGoodsCount(String searchName) {
-		
-		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", searchName);
+	public int searchGoodsCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", paramMap);
 	}
 
 	/** 검색 상품 목록 조회 
 	 * @param searchName
 	 * @return searchGoodsList
 	 */
-	public List<GoodsBoard> selectSearchGoodsList(String searchName) {
-		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", searchName);
+	public List<GoodsBoard> selectSearchGoodsList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", paramMap);
 	}
 
 
@@ -113,6 +112,22 @@ public class GoodsBoardDAO {
 		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsList", null ,rowBounds);
 	}
+	
+	/** 최근 업데이트된 상품(All)
+	 * @return
+	 */
+	public List<GoodsBoard> selectRecentGoodsListAll() {
+		
+		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsListAll");
+	}
+	
+	/** 최근 업데이트된 상품(All) 더보기 버튼
+	 * @return
+	 */
+	public List<GoodsBoard> moreRecentGoodsListAll(Map<String, Object> numAndCategoryCode) {
+		
+		return sqlSession.selectList("goodsBoardMapper.moreRecentGoodsListAll", numAndCategoryCode);
+	}
 
 	/** 조회수가 높은 상품 10가지
 	 * @return
@@ -122,8 +137,26 @@ public class GoodsBoardDAO {
 		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectMostViewedList", null ,rowBounds);
 	}
+	
+	/** 조회수가 높은 상품(All)
+	 * @return
+	 */
+	public List<GoodsBoard> selectMostViewedListAll() {
+		
+		return sqlSession.selectList("goodsBoardMapper.selectMostViewedListAll");
+	}
+	
+	/** 조회수가 높은 상품(All) 더보기 버튼
+	 * @return
+	 */
+	public List<GoodsBoard> moreMostViewedListAll(Map<String, Object> numAndCategoryCode) {
+		
+		
+		return sqlSession.selectList("goodsBoardMapper.moreMostViewedListAll", numAndCategoryCode);
+	}
 
 	
+	/* 카테고리 조회 - 지환 */
 	
 	/** 카테고리 리스트 조회
 	 * @return

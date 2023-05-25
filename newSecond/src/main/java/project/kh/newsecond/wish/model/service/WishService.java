@@ -9,7 +9,7 @@ import project.kh.newsecond.wish.model.dto.Wish;
 public interface WishService {
 
 	
-	List<Wish> wishList(int userNo);
+	List<GoodsBoard> wishList(int wishUserNo);
 
 
 	

@@ -25,13 +25,13 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	// 지영
 	// 상품 게시글 목록 조회(검색)
 	 @Override
-	public Map<String, Object> selectSearchGoodsList(String searchName) {
+	public Map<String, Object> selectSearchGoodsList(Map<String, Object> paramMap) {
 		 
 		 // 검색 조건 일치하는 삭제x 특정 상품게시글 count
-		 int searchGoodsCount = dao.searchGoodsCount(searchName);
+		 int searchGoodsCount = dao.searchGoodsCount(paramMap);
 		 
 		 // 검색 상품 목록 조회 
-		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(searchName);
+		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(paramMap);
 		 
 		 Map<String, Object> map = new HashMap<>();
 		 
@@ -67,6 +67,23 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return RecentGoodsList10;
 	}
 	
+	// 최근 업데이트된 게시글 목록 불러오기
+	public List<GoodsBoard> selectRecentGoodsListAll() {
+		
+		
+		List<GoodsBoard> selectRecentGoodsListAll = dao.selectRecentGoodsListAll();
+		
+		return selectRecentGoodsListAll;
+	}
+	
+	// 최근 업데이트된 게시글 목록 불러오기 more 버튼
+	public List<GoodsBoard> moreRecentGoodsListAll(Map<String, Object> numAndCategoryCode) {
+		
+		List<GoodsBoard> moreRecentGoodsListAll = dao.moreRecentGoodsListAll(numAndCategoryCode);
+		
+		return moreRecentGoodsListAll;
+	}
+	
 	
 	// 조회수 높은 인기 상품 목록 10가지
 	@Override
@@ -76,6 +93,26 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		
 		return selectMostViewedList10;
 	}
+	
+	// 조회수 높은 인기 상품 목록 불러오기
+	@Override
+	public List<GoodsBoard> selectMostViewedListAll() {
+		
+		List<GoodsBoard> selectRecentGoodsListAll = dao.selectMostViewedListAll();
+		
+		return selectRecentGoodsListAll;
+	}
+	
+	// 조회수 높은 인기 상품 목록 불러오기 more 버튼
+	@Override
+	public List<GoodsBoard> moreMostViewedListAll(Map<String, Object> numAndCategoryCode) {
+		
+		List<GoodsBoard> moreMostViewedListAll = dao.moreMostViewedListAll(numAndCategoryCode);
+		
+		return moreMostViewedListAll;
+	}
+	
+	/* 카테고리 조회 - 지환 */
 	
 	// 카테고리 리스트
 	@Override
