@@ -1,5 +1,6 @@
 package project.kh.newsecond.goodsboard.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -46,7 +47,7 @@ public class myGoodsController {
 			List<Files> filesList,
 			@RequestParam(value="image", required=false) List<MultipartFile> images, // 이미지 객체 생성
 			Model model
-			) {
+			) throws IllegalStateException, IOException {
 		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(goodsBoard.getCategory2().equals("신발"))			{goodsBoard.setCategoryNo(1);  };
@@ -81,7 +82,7 @@ public class myGoodsController {
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
 		// 3. service에 전달해서 result 받기 *************
-		int result = service.myGoodsModify(goodsBoard, filesList);
+		int result = service.myGoodsModify(goodsBoard, images, webPath, filePath);
 		
 		String path = "redirect:";
 		
