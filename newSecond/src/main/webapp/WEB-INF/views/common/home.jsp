@@ -44,11 +44,11 @@
 							<div class="carousel-item mainPage--carousel__item ">
 								<img src="/resources/src/img/mainCarousel/carousel-4.png" class="d-block w-100" style="transform: translateY(-100px)">
 								<div class="carousel-caption d-none d-md-block">
-									<p>쓰던것을 새롭게! 당신의 물건들을 걸어두세요!</p>
+									<p>당신의 물건들을 진열장에 걸어두세요!</p>
 								</div>
 							</div>
 							<div class="carousel-item mainPage--carousel__item">
-								<img src="/resources/src/img/mainCarousel/carousel-11.png" class="d-block w-100" style="transform: translateY(-100px)"" >
+								<img src="/resources/src/img/mainCarousel/carousel-9.png" class="d-block w-100" style="transform: translateY(-100px)"" >
 								<div class="carousel-caption d-none d-md-block">
 									<p>뉴세컨드와 함께! 당신의 여름을 상상해보세요!</p>
 								</div>
@@ -94,10 +94,12 @@
 						</c:forEach>
 					</div>
 
-					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
+					<a class="btn btn-outline-secondary w-100 mt-2" href="/goods/category/100"> 전체보기 </a>
+
+
 				</section>
 
-				<section class="mainPage--goodsContainer3 mt-5">
+				<section class="mainPage--goodsContainer3 mt-5 mb-5">
 
 					<span class="mainPage--imgs__title">조회수 높은 인기 상품</span>
 
@@ -132,7 +134,7 @@
 							</div>
 						</c:forEach>
 					</div>
-					<button type="button" class="btn btn-outline-secondary w-100 mt-3"> 전체보기 </button>
+					<a class="btn btn-outline-secondary w-100 mt-2" href="/goods/category/200"> 전체보기 </a>
 				</section>
 
 		</div>
