@@ -93,13 +93,20 @@ public class WritingServiceImpl implements WritingService {
 					int tempIndex = FinalImages.get(i).getFileOrder();
 					int index = tempIndex - 1;
 					
+					String afterRename = FinalImages.get(i).getFileName();
 					// 글 올리기 전에 폴더가 없다면 폴더 미리 만드는 코드 추가
-					
+					String userFolderPath = filePath + writing.getUserNo() + "/";
+					File userFolder = new File(userFolderPath);
+
+					if (!userFolder.exists()) {
+					    userFolder.mkdirs(); // 필요한 모든 상위 디렉토리를 생성합니다.
+					}
+
+					images.get(index).transferTo(new File(userFolderPath + afterRename));
 					
 					
 					// 파일로 변환
-					String afterRename = FinalImages.get(i).getFileName();
-					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
+//					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
 				
 				}
 				
