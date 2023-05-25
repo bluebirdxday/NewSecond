@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${param.query} 검색 결과</title>
     
-    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
 
 </head>
 <body style="overflow: auto;">
@@ -51,7 +51,7 @@
                     <%-- 해당 검색 결과 없다면 --%>
                     <c:when test="${empty searchGoodsList}">
                         <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.query}"에 해당하는 상품/상점이 없습니다.</div>
+                            <div class="noGoodsList">"${param.query}"에 해당하는 상품이 없습니다.</div>
                         </div>
                     </c:when>
                         

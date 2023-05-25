@@ -105,10 +105,9 @@ public class WritingController {
 		int goodsNo = (int) resultService.get("goodsNo");
 		
 		// 7. result, goodsNo 담기
-		ra.addFlashAttribute("goodsNo", goodsNo);
 		
 		if(result > 0) {
-			ra.addFlashAttribute("uploadComplete", "ok");
+			session.setAttribute("uploadComplete", "ok");
 			path += "/goods/" + goodsNo; // 성공시 write 화면 리턴
 		} else {
 			path += "write"; // 실패시 write 화면 리턴

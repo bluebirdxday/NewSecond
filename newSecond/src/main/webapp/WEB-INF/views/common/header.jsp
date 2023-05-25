@@ -45,7 +45,7 @@
     
         <form action="/goods/search/goodsList" method="GET" id="searchForm">
             <div class="header--mid__serach"><!-- 검색창 -->
-                <input type="text" placeholder="상품명, @상점명을 입력해주세요." class="search" name="query" id="searchQuery" autocomplete="off">
+                <input type="text" placeholder="어떤 상품을 찾으시나요?" class="search" name="query" id="searchQuery" autocomplete="off">
                 <button class="searchBtn"></button>
             </div>
         </form>
@@ -80,7 +80,7 @@
     </section>
 
     <nav class="nav--container__menu">
-        <jsp:include page="/WEB-INF/views/goods/goodsCategory.jsp"/>
+        <jsp:include page="/WEB-INF/views/goods/goodsCategoryDropdown.jsp"/>
         <div><a href="/">홈</a></div>
         <div><a href="/priceView/priceSee">시세조회</a></div>
     </nav>
@@ -89,12 +89,17 @@
 <script src="/resources/js/goods/searchGoodsList.js"></script>
 <script src="/resources/js/header.js"></script>
 
-<script>
-    
-
-</script>
 
 </header>
 
 
 
+<c:if test="${requestScope['javax.servlet.forward.request_uri'] ne '/'}" >
+
+    <c:if test="${empty categoryList}" >
+        <script>
+            location.href='/'
+        </script>
+    </c:if>
+
+</c:if>

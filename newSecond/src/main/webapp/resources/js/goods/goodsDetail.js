@@ -84,11 +84,11 @@ goodsLike.addEventListener("click",e=>{
 
 /* 희진 : 관심상품 등록 알림 */
 // 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
-let likeNofiticationSock = new SockJS("/notificationSock");
-let likeInquireNotiSocket = new SockJS("/inquireNotificationSock"); 
-
 const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
-
+    
+    let likeNofiticationSock = new SockJS("/notificationSock");
+    let likeInquireNotiSocket = new SockJS("/inquireNotificationSock"); 
+    
     const goodsTitle = document.getElementById("goodsTitle").value;
     
     let notiGoodTitle =  goodsTitle.substr(0, 13) + "...";
@@ -103,29 +103,28 @@ const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
 
     likeNofiticationSock.send(JSON.stringify(likeGoodsObj));
 
-    var likeGoodsObj2 = {
-        "targetNo" : goodsUserNo
-    }
+    // var likeGoodsObj2 = {
+    //     "targetNo" : goodsUserNo
+    // }
 
-    likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
+    // likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
 
 }
 
 
 /* 희진 : 키워드 알림 */
-const uploadComplete = document.getElementById("uploadComplete");
-if(uploadComplete!=null){
+const uploadComplete = document.getElementById("uploadComplete").value;
+if(uploadComplete!=''){
+
+    let likeNofiticationSock = new SockJS("/notificationSock");
 
     // 라이브 알림 보내기
     fetch("/notification/selectKeywordNotiList?goodsNo=" + goodsNo)
     .then(resp=>resp.json())
     .then(keywordNotiList=>{
-        // 작성한 쪽에서 확인
-        console.log(keywordNotiList);
         likeNofiticationSock.send(JSON.stringify(keywordNotiList));
     }).catch(err=>{
         console.log(err);
     })
 
-    // 알림 insert
 }

@@ -58,8 +58,6 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			
-//			Notification noti = objectMapper.readValue(msg, Notification.class);
-			
 		    JsonNode jsonNode = objectMapper.readTree(payload);
 		    
 	        if (jsonNode.isArray()) {

@@ -6,10 +6,7 @@ notificationSock2.onmessage = function(e) {
     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 msg 변수에 저장.
     const msg = JSON.parse(e.data);
 
-    let liveMessage = msg.shopTitle + msg.notificationMessage;
-
-    // 키워드 알림 받는 쪽에서 확인
-    console.log(msg.notificationType);
+    let liveMessage;
 
     if(msg.notificationType=="F"){
         liveMessage = msg.shopTitle + msg.notificationMessage;
@@ -18,8 +15,6 @@ notificationSock2.onmessage = function(e) {
 
     if(msg.notificationType=="K"){
         const words = msg.notificationMessage.split('^^');
-        console.log('키워드 알림 : ' + msg);
-        console.log(msg.notificationMessage);
 /*         liveMessage = "<strong>[" + words[0] +"]</strong>   " +  words[1] +  "<br/> 설정하신 키워드의 새로운 글이 게시되었습니다.";
         document.getElementById('alarmBody').innerHTML = liveMessage; */
         liveMessage = "[" + words[0] +"]     " +  words[1] +  "\n설정하신 키워드의 새로운 글이 게시되었습니다.";

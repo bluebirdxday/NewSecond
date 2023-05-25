@@ -267,6 +267,10 @@
     border: 3px solid #C2D3EB;
     border-radius: 20px;
 }
+.post--main__ImageScroller > img:hover {
+    border: 3px solid red;
+    cursor: pointer;
+}
 
 /* 스크롤 모양 */
 ::-webkit-scrollbar {

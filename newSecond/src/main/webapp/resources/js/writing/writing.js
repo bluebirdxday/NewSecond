@@ -1,20 +1,28 @@
-const textLimit20 = document.querySelector(".textLimit20");
+const imagePlusBtn = document.querySelector('#imagePlus');
+const fileInputContainer = document.querySelector('#fileInputContainer');
+const imageCount = document.querySelector('#imageCount');
+const textLimit50 = document.querySelector(".textLimit50");
 const textLimit500 = document.querySelector(".textLimit500");
-const textLimit20Result = document.querySelector('#textLimit20Result');
+const textLimit50Result = document.querySelector('#textLimit50Result');
 const textLimit500Result = document.querySelector('#textLimit500Result');
 const fileInput = document.querySelector('#fileInput');
 const imageContainer = document.querySelector('.post--main__ImageScroller');
-const imagePlus = document.querySelector('#imagePlus');
 const imageBtn = document.querySelector('.post--main__ImageContainer > div:first-child');
 const imageScroller = document.querySelector('.post--main__ImageScroller');
 
 /* ------------------------------------------------------------------ */
 
-/* 제목 20자 제한 */
-textLimit20.addEventListener('input', () => {
-    const inputText = textLimit20.value;
+
+/* 제목 50자 제한 */
+textLimit50.addEventListener('input', () => {
+    const inputText = textLimit50.value;
     const textLength = inputText.length;
-    textLimit20Result.textContent = '(' + textLength + '/20)';
+    textLimit50Result.textContent = '(' + textLength + '/50)';
+    if (textLength >= 50) {
+        textLimit50Result.style.color = 'red';
+    } else {
+        textLimit50Result.style.color = '';
+    }
 });
 
 /* 상세내용 500자 제한 */
@@ -22,44 +30,56 @@ textLimit500.addEventListener('input', () => {
     const inputText = textLimit500.value;
     const textLength = inputText.length;
     textLimit500Result.textContent = '(' + textLength + '/500)';
+    if (textLength >= 500) {
+        textLimit500Result.style.color = 'red';
+    } else {
+        textLimit500Result.style.color = '';
+    }
 });
 
-/* ------------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -----------------------------이미지 관련 JS------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 
 /* 이미지 파일 업로드 */
-imagePlus.addEventListener('mouseover', () => {
+imagePlusBtn.addEventListener('mouseover', () => {
     imageBtn.style.backgroundColor = '#2365B9';
 });
 
-imagePlus.addEventListener('mouseout', () => {
+imagePlusBtn.addEventListener('mouseout', () => {
     imageBtn.style.backgroundColor = '#C2D3EB';
 });
 
-/* +버튼을 눌렀을 떄 파일 업로드 */
-imagePlus.addEventListener('click', (e) => {
+/* +버튼을 눌렀을 떄 input 생성 후 클릭 */
+imagePlusBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    fileInput.click();
-});
-
-/* ------------------------------------------------------------------ */
-
-const imageCount = document.querySelector('#imageCount');
-let fileCount = 0;
-
-const imagePlusBtn = document.querySelector('#imagePlus');
-const fileInputContainer = document.querySelector('#fileInputContainer');
-
-imagePlusBtn.addEventListener('click', () => {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.name = 'image';
     fileInput.style.display = 'none';
     fileInput.accept = 'image/*';
-
+    const dataId = generateDataId(); // 난수 함수 호출
+    fileInput.setAttribute('data-id', dataId); // data-id 속성 추가
     fileInputContainer.appendChild(fileInput);
     fileInput.click();
 });
 
+/* input 식별을 위한 AA 난수 생성기 */
+function generateDataId() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const randomIndex1 = Math.floor(Math.random() * characters.length);
+    const randomIndex2 = Math.floor(Math.random() * characters.length);
+    const dataId = characters[randomIndex1] + characters[randomIndex2];
+    return dataId;
+}
+
+let fileCount = 0;
+
+/* input 생성 후 업로드되면 미리보기 생성 */
 fileInputContainer.addEventListener('change', (event) => {
     const files = event.target.files;
 
@@ -69,100 +89,47 @@ fileInputContainer.addEventListener('change', (event) => {
 
         reader.onload = () => {
             const image = document.createElement('img');
+            const dataId = event.target.getAttribute('data-id'); // input의 data-id 값 가져오기
             image.src = reader.result;
+            image.dataset.id = dataId; // img에 data-id 속성 추가
             imageScroller.appendChild(image);
-            enableImageDelete(image);
+            enableImageDelete(image); // 삭제 함수 호출
         };
 
         reader.readAsDataURL(file);
         fileCount++;
 
-        updateImageCount();
+        updateImageCount(); // 함수 호출
     }
 });
 
+/* 이미지 삭제 함수 */
 function enableImageDelete(image) {
-    image.addEventListener('mouseover', () => {
-        image.style.position = 'relative';
-        image.innerHTML += '<div class="deleteOverlay"></div>';
-    });
-
-    image.addEventListener('mouseout', () => {
-        image.style.position = '';
-        image.querySelector('.deleteOverlay').remove();
-    });
 
     image.addEventListener('click', () => {
         if (confirm('이미지를 삭제하시겠습니까?')) {
+            const dataId = image.dataset.id; // img data-id 가져오기
             image.remove();
             fileCount--;
             updateImageCount();
-            removeFileInput();
+            removeFileInput(dataId); // input 삭제 함수 호출 시 img 태그의 data-id를 전달
         }
     });
 }
 
-function removeFileInput() {
-    const fileInput = fileInputContainer.querySelector('input[type=file]');
+/* 이미지 삭제 후 업로드 파일 삭제 함수 */
+function removeFileInput(dataId) {
+    const fileInput = fileInputContainer.querySelector(`input[data-id="${dataId}"]`);
+    // 해당 data-id를 가진 input 태그 선택
     if (fileInput) {
         fileInputContainer.removeChild(fileInput);
     }
 }
 
+/* 이미지 카운트 함수 */
 function updateImageCount() {
     imageCount.textContent = `(${fileCount}/5)`;
 }
-
-
-// let imageCount = 0;
-
-// // + 버튼 클릭 시 새로운 input 태그 추가
-// imagePlus.addEventListener('click', () => {
-//     if (imageCount < 5) {
-//         const newInput = document.createElement('input');
-//         newInput.type = 'file';
-//         newInput.name = 'image';
-//         newInput.style.display = 'none';
-//         newInput.accept = 'image/*';
-//         newInput.addEventListener('change', handleFileChange);
-//         document.getElementById('fileInputContainer').appendChild(newInput);
-//         newInput.click();
-//     }
-// });
-
-// // 파일 변경 시 이미지 추가
-// function handleFileChange(e) {
-//     const file = e.target.files[0];
-//     const image = document.createElement('img');
-//     const reader = new FileReader();
-//     reader.readAsDataURL(file);
-//     reader.addEventListener('load', (event) => {
-//         image.src = event.target.result;
-//         imageScroller.appendChild(image);
-//         imageCount++;
-//         updateImageCount();
-//     });
-// }
-
-// // 이미지 개수 카운트 및 제한
-// function updateImageCount() {
-//     const countSpan = document.querySelector('.post--main__inputImage span:nth-child(3)');
-//     countSpan.textContent = `(${imageCount}/5)`;
-//     if (imageCount >= 5) {
-//         imagePlus.style.cursor = 'default';
-//         // 경고창 띄우기
-//         imagePlus.addEventListener('click', () => {
-//             alert('파일은 최대 5개까지 업로드할 수 있습니다.');
-//         });
-//         imagePlus.removeEventListener('click', handleClick);
-//     }
-// }
-
-// // 페이지 로드 시 기존 이미지 개수 초기화
-// window.addEventListener('load', () => {
-//     imageCount = document.querySelectorAll('.post--main__ImageScroller img').length;
-//     updateImageCount();
-// });
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
@@ -196,21 +163,6 @@ clothing.addEventListener('click', () => {
     while (depth2Container.firstChild) {
         depth2Container.removeChild(depth2Container.firstChild);
     }
-
-/*     const div0 = document.createElement('div');
-    div0.textContent = '남성의류';
-    div0.id = 'male2';
-    div0.classList.add('category--2depth__item');
-    const label0 = document.createElement('label');
-    label0.for = "male2Radio"
-    const radio0 = document.createElement('input');
-    radio0.type = 'radio';
-    radio0.name = 'category2';
-    radio0.id = "male2Radio";
- */
-
-
-
 
     const div1 = document.createElement('label');
     div1.textContent = '남성의류';
