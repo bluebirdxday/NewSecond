@@ -87,7 +87,7 @@
 
             <div class="myshop--info__bottom">
                 <div class="myshop--info__btn-report">
-                    <a href="#">
+                    <a href="/qna/qna">
                         <img src="/resources/src/img/siren.png">
                         <div>신고하기</div>
                     </a>
@@ -217,7 +217,7 @@
                 </div>
 
                 <c:if test="${empty goodsBoardList}" >
-                    <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다.</div>
+                    <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다</div>
                 </c:if>
 
             </div>
@@ -250,7 +250,7 @@
                     </c:if>
 
                     <c:if test="${empty shop.reviewList}" >
-                        <div class="tab--content__empty">현재 후기가 존재하지 않습니다.</div>
+                        <div class="tab--content__empty">현재 후기가 존재하지 않습니다</div>
                     </c:if>
 
                 </div>
@@ -293,7 +293,7 @@
                 </div>
 
                 <c:if test="${empty followList}" >
-                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다.</div>
+                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다</div>
                 </c:if>
                 
             </div>
@@ -340,7 +340,7 @@
                 </div>
 
                 <c:if test="${empty followerList}" >
-                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
+                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다</div>
                 </c:if>
             </div>
 

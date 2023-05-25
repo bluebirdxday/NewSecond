@@ -4,6 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+
+<c:if test="${not empty uploadComplete}">
+    <c:set var="uploadComplete" value="${uploadComplete}"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -128,23 +133,26 @@
                                 <div class="container--inner__bottom__shopInfo__chattingButton"><a href="#">채팅하기</a></div>
                             </div>
                             <div class="container--inner__bottom__shopInfo__shopDescibe">${shop.shopInfo}</div>
+                            
+                            <input type="hidden" id="uploadComplete" value="${uploadComplete}">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+    <c:remove var="uploadComplete"/>
     <script>
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
         const goodsUserNo = ${shop.userNo};
     </script>
 
-        <!-- footer -->
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/goods/goodsDetail.js"></script>
 
     </div>
+
     
 </body>
 </html>

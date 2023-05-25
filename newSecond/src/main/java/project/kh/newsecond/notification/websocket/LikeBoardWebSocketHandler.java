@@ -27,7 +27,7 @@ import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
 
 // 실시간 알림 토스트 처리를 위한 웹소켓
-public class NotificationWebSocketHandler extends TextWebSocketHandler{
+public class LikeBoardWebSocketHandler extends TextWebSocketHandler{
     
 		
 	    @Autowired

@@ -36,9 +36,11 @@ goodsLike.addEventListener("click",e=>{
         toastTrigger.click();
         return;
     }
+
     let check; // 기존 찜x:0, 찜:1
     if(e.target.classList.contains("beforeLike")){
         check = 0;
+        
     } else {
         check = 1;
     }
@@ -56,42 +58,40 @@ goodsLike.addEventListener("click",e=>{
             console.log("좋아요 처리를 실패했습니다. 다시 시도해주세요.");
             return;
         }
-
+        
         e.target.classList.toggle("beforeLike");
         e.target.classList.toggle("afterLike");
+        
         if(e.target.classList.contains("beforeLike")){
             e.target.setAttribute("src","/resources/src/img/heartBefore.png");
         }else{
             e.target.setAttribute("src","/resources/src/img/heartAfter.png");
-            
-            /* 희진 : 관심상품 등록 알림 */
             sendLikeBoardNotification(goodsUserNo, goodsNo, loginUserNo);
+            
         }
         document.getElementById("wishCount").innerText = count;
-
+        
     })
     .catch(err => {
         console.log("예외가 발생했습니다.");
         console.log(err);
     })
-
+    
 });
 
 
 
 
 
+let notificationSock = new SockJS("/notificationSock");
 
 /* 희진 : 관심상품 등록 알림 */
 // 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
-let likeNofiticationSock = new SockJS("/notificationSock");
-let likeInquireNotiSocket = new SockJS("/inquireNotificationSock"); 
-
 const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
-
+    
     const goodsTitle = document.getElementById("goodsTitle").value;
     
-    let notiGoodTitle =  goodsTitle.substr(0, 11) + "...";
+    let notiGoodTitle =  goodsTitle.substr(0, 13) + "...";
 
     var likeGoodsObj = {
         "senderNo" : loginUserNo,
@@ -101,13 +101,35 @@ const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
         "notificationURL" : "/goods/" + goodsNo
     };
 
-    likeNofiticationSock.send(JSON.stringify(likeGoodsObj));
+    notificationSock.send(JSON.stringify(likeGoodsObj));
 
-    var likeGoodsObj2 = {
-        "targetNo" : goodsUserNo
-    }
+}
 
-    likeInquireNotiSocket.send(JSON.stringify(likeGoodsObj2));
+
+/* 희진 : 키워드 알림 */
+const uploadComplete = document.getElementById("uploadComplete").value;
+if(uploadComplete!=''){
+
+    let likeNofiticationSock = new SockJS("/notificationSock");
+
+    // 키워드 라이브 알림 보내기
+    fetch("/notification/selectKeywordNotiList?goodsNo=" + goodsNo + "&goodsUserNo=" + goodsUserNo)
+    .then(resp=>resp.json())
+    .then(keywordNotiList=>{
+        likeNofiticationSock.send(JSON.stringify(keywordNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
+
+    // 상점을 팔로하고 있는 유저들에게 알림 전달
+    fetch("/notification/selectNewPostNotification?userNo="+ goodsUserNo + "&goodsNo=" + goodsNo)
+    .then(resp=>resp.json())
+    .then(newPostNotiList=>{
+        console.log("goodsDetail :" + newPostNotiList);
+        likeNofiticationSock.send(JSON.stringify(newPostNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
 
 }
 
