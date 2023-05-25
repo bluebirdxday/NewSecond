@@ -81,17 +81,21 @@ public class ReviewController {
 		String alertType = null;
 		String message = null;
 		String path = "redirect:";
+		Review addedReview = null;
 		
 		if(result>0) {
 			alertType = "success";
 			message = "후기가 등록되었습니다.";
 			path += "/review/reviewList";
+			addedReview = service.selectReivewByGoodsNo(goodsNo);
 		}else {
 			alertType = "fail";
 			message = "후기 등록에 실패하였습니다. 다시 시도해주세요.";
 			path = "insert";
 		}
 		
+		
+		ra.addFlashAttribute("addedReview", addedReview);
 		ra.addFlashAttribute("message", message);
 		ra.addFlashAttribute("alertType", alertType);
 		

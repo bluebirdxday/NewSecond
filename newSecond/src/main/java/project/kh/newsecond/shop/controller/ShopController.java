@@ -135,7 +135,7 @@ public class ShopController {
 		}
 		
 		int userNo = shop.getUserNo();
-		String webPath = "/resources/src/img/profile/" + userNo + "/";
+		String webPath = "/resources/src/img/profile";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
 		int result = service.updateShopInfo(shop, shopNewProfile,  webPath, filePath);

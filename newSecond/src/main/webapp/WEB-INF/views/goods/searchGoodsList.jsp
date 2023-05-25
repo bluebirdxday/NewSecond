@@ -7,7 +7,6 @@
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
 <%-- <c:set var="sortedGoodsList" value="${}"/> --%>
-<% List<String> dataList = (List<String>) request.getAttribute("dataList"); %>
 
 <!DOCTYPE html>
 <html lang="ko">
