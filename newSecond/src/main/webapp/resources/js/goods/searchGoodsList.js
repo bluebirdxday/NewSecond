@@ -77,7 +77,6 @@ function callSortedGoods(obj){
                 titleDiv.classList.add("goods_title");
                 titleDiv.innerHTML = sortedGoodsList[i].goodsTitle;
                 
-                
                 a.append(priceDiv);
                 a.append(titleDiv);
 
