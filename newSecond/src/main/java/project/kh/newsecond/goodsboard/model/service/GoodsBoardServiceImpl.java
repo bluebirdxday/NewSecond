@@ -25,13 +25,13 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	// 지영
 	// 상품 게시글 목록 조회(검색)
 	 @Override
-	public Map<String, Object> selectSearchGoodsList(Map<String, Object> paramMap) {
+	public Map<String, Object> selectSearchGoodsList(String searchName) {
 		 
 		 // 검색 조건 일치하는 삭제x 특정 상품게시글 count
-		 int searchGoodsCount = dao.searchGoodsCount(paramMap);
+		 int searchGoodsCount = dao.searchGoodsCount(searchName);
 		 
 		 // 검색 상품 목록 조회 
-		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(paramMap);
+		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(searchName);
 		 
 		 Map<String, Object> map = new HashMap<>();
 		 
@@ -178,6 +178,11 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	@Override
 	public int updateViewCount(int goodsNo) {
 		return dao.updateViewCount(goodsNo);
+	}
+	
+	@Override
+	public List<GoodsBoard> selectSortedList(Map<String, String> map) {
+		return dao.selectSortedList(map);
 	}
 
 	

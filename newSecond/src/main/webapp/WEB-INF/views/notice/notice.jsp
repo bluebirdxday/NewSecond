@@ -19,49 +19,52 @@
    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
-    <div class="notice_wrap">
-        <span class="notice_bar">공지사항</span>
-     <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->
-        <hr>
+    <main>
+        <div class="notice_wrap">
+            <span class="notice_bar">공지사항</span>
+        <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->
+            <hr>
 
-        <!-- ----테이블------ -->
-        <div class="notice_tableWrap">
-        <table class="notice_table" style="border-collapse: collapse;">
-            <thead>
-            <tr>
-             
-                <th >번호</th>
-                <th>제목</th>
-                <th>작성일</th>
-                <th>조회수</th>
-            </thead>
-            </tr>
-            <tbody>
-            <c:choose>
-                <c:when test="${empty noticeList}">
-                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+            <!-- ----테이블------ -->
+            <div class="notice_tableWrap">
+            <table class="notice_table" style="border-collapse: collapse;">
+                <thead>
                 <tr>
-                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                
+
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </thead>
                 </tr>
-                </c:when>
+                <tbody>
+                <c:choose>
+                    <c:when test="${empty noticeList}">
+                    <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                    <tr>
+                        <th colspan="6">목록이 존재하지 않습니다.</th>
+                    </tr>
+                    </c:when>
 
-                <c:otherwise>
-                    <c:forEach items="${noticeList}" var="notice">
-                        <tr>
-                         
-                            <td>${notice.noticeNo}</td>   <%-- $%7Bnotice.noticeNo%7D --%>
-                            <td><a href='/notice/notice_read/${notice.noticeNo}'>${notice.noticeTitle}</a></td>
-                            <td>${notice.noticeEnrollDate}</td>
-                            <td>${notice.noticeViewCount}</td>
-                        </tr>
-                    </c:forEach>
-                </c:otherwise>
-            </c:choose>
-        </tbody>
-        </table>
-    </div>
+                    <c:otherwise>
+                        <c:forEach items="${noticeList}" var="notice">
+                            <tr>
+                            
+                            
+                                <td><a href='/notice/notice_read/${notice.noticeNo}'>${notice.noticeTitle}</a></td>
+                                <td>${notice.noticeEnrollDate}</td>
+                                <td>${notice.noticeViewCount}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+            </table>
+        </div>
 
-    </div>
+        </div>
+    
+    </main>
 
       <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
