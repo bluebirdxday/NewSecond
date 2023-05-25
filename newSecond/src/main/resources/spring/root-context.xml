@@ -24,10 +24,10 @@
         <!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/Users/user/Oracle_JDBC/Wallet_orcl"/> -->
 
         <!-- 상준님 학원 컴퓨터 경로 -->
-        <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/dev_tools/SemiProject/Wallet_orcl" />
+       <!--  <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/dev_tools/SemiProject/Wallet_orcl" /> -->
 
 		<!-- 유민님 학원 컴퓨터 지갑 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/tools/semi/Wallet_orcl" /> -->
+		 <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/tools/semi/Wallet_orcl" />
 
 		<property name="username" value="ADMIN" />
 		<property name="password" value="Kh_yunseul_23" />
