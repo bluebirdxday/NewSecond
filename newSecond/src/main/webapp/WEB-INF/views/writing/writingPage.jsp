@@ -45,7 +45,7 @@
                             <a href="#" id="imagePlus">+</a>
 <%-- 이미지  name="image" --%>
                             <div id="fileInputContainer">
-                                <%-- <input type="file" name="image" accept="image/*" data-id="NI" style="display: none;"> --%>
+                               <%-- <input type="file" name="image" accept="image/*" data-id="NI" style="display: none;"> --%>
                             </div>
                         </div>
                         <div class="post--main__ImageScroller">
