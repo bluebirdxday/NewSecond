@@ -33,7 +33,7 @@
                         <%-- <c:set var="query" scope="application" value="${param.query}"/> --%>
                     </c:if>
                     <!-- 판매완료상품제외 -->
-                    <div><input type="checkbox" class="soldoutExcept" id="check1">
+                    <div><input type="checkbox" class="soldoutExcept" name="check1">
                         <label for="check1"> 판매 완료 상품 제외</label>
                     </div>
                     <!-- 기능별 조회 -->

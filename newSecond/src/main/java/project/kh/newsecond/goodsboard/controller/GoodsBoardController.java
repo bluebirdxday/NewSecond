@@ -59,6 +59,14 @@ public class GoodsBoardController {
 		return service.moreGoods(numAndSearchName);
 	}
 	
+	// 상품 게시글 목록 판매완료 제외 조회
+	
+	
+	
+	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
+	
+	
+	
 	// 상품 게시글 상세 조회
 	@GetMapping("/{goodsNo}")
 	public String goodsDetail(
