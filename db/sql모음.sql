@@ -531,7 +531,7 @@ WHERE SHOP_TITLE = '떡볶이먹고싶다';
 
 SELECT * FROM "users";
 
-UPDATE ""
+UPDATE "users"
 SET USER_STATUS ='A'
 WHERE USER_NO='36';
 

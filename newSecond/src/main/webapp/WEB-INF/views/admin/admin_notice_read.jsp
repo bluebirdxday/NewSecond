@@ -20,7 +20,9 @@
 </head>
 <body>
 
-    <ul class="admin_ul">
+    <main>
+
+        <ul class="admin_ul">
         <a href="/">
             <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
         </a>
@@ -69,6 +71,10 @@
                 <button class="admin_notice_read_Btn"><a href="/admin/admin_notice_update/${Notice.noticeNo}">내용 수정</a></button>
                 <button class="admin_notice_read_Btn"><a href="/admin/admin_notice/${Notice.noticeNo}/delete">삭제</a></button>
             </div>
+    
+    
+    </main>
+    
 
    
     
