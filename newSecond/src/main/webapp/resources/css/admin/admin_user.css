@@ -57,6 +57,11 @@
     font-weight: bold;
 }
 
+#checkboxCount{
+    color: #005eee;
+    font-weight: bold;
+}
+
 .admin_user_result{
      padding: 0 10px; 
      margin-bottom: 10px;

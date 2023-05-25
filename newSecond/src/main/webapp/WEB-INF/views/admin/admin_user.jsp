@@ -18,7 +18,7 @@
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+             <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
         <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
         <li class="admin_list"><a class="admid_user" href="\admin\admin_user">회원 관리</a></li>
@@ -55,7 +55,7 @@
         <form action="/admin_user/signOut" method="POST"></form>
     <div class="admin_user_result">
         <span >검색결과 : </span> 
-            <span class="admin_user_countOne">3</span>
+            <span id="checkboxCount">0</span>
             <span>/ 총</span>
             <span class="admin_user_countAll">3</span>
             <span>명</span>
@@ -82,7 +82,7 @@
                     <th colspan="6">목록이 존재하지 않습니다.</th>
                 </tr>
 
-                ${userMap.userList}
+           
                 </c:when>
                 <c:otherwise>
                     <c:forEach items="${userMap.userList}" var="user">
@@ -100,8 +100,13 @@
                             <button class="admin_user_tableBtn signOutH" id="signOutH">탈퇴해제</button>
                             </td>
                             <td>
+                           
+                   
+                           
                             <button class="admin_user_tableBtn block show" id="block">회원블락</button>
                             <button class="admin_user_tableBtn blockH" id="blockH">블락해제</button>
+               
+                          
                             </td>
                             </tr>
                     </c:forEach>

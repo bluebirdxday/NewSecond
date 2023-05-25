@@ -55,7 +55,7 @@ const qnaCategory =  trade.value;
 
 
 /* 테스트 */
-const trade = document.getElementById("trade");
+
 
 trade.addEventListener(('click'),()=>{
 
@@ -91,23 +91,37 @@ fetch("/admin/admin_qna/radioTrade", {
 
 } } });
 
-function myFunc() {
 
-  const radio = document.getElementsByClassName("admin_qna_raidos")
-  var str = "";
 
-  for(var i=0; i<cardLen; i++) {
-    if(myform.card[i].checked) {
-      str += myform.card[i].value + "/";
-    }
+function qnaSelectAll(checkbox) {
+  var checkboxes = document.getElementsByClassName('admin_qna_checkbox');
+  var count = 0;
+
+  for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = checkbox.checked;
   }
-  document.getElementById("demo").innerHTML = str;
+
+  if (checkbox.checked) {
+      count = checkboxes.length;
+  }
+
+  document.getElementById('checkboxCount').innerText = count;
 }
-function cardCheck(sel) {
-  if(sel.checked) {
-    alert("선택한 카드는? " + sel.value);
+
+function updateCheckboxCount() {
+  var checkboxes = document.getElementsByClassName('admin_qna_checkbox');
+  var count = 0;
+
+  for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+          count++;
+      }
   }
-  else {
-    alert(sel.value + " 선택을 해제하셨군요..")
-  }
+
+  document.getElementById('checkboxCount').innerText = count;
+}
+
+var checkboxElements = document.getElementsByClassName('admin_qna_checkbox');
+for (var i = 0; i < checkboxElements.length; i++) {
+  checkboxElements[i].addEventListener('change', updateCheckboxCount);
 }

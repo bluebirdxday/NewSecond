@@ -64,7 +64,7 @@ for(let i=0; i<forcedsignOut.length; i++){
     if(states[i].innerText == '정상'){
     states[i].innerText = '탈퇴';
     forcedsignOut[i].style.display = "none";
-    signOutH[i].style.display = "block";
+    signOutH[i].style.display = "inline-block";
     }
     else return;
   
@@ -121,7 +121,7 @@ for(let i=0; i<block.length; i++){
   if(states[i].innerText == '정상'){
   states[i].innerText = '블락';
   block[i].style.display = "none";
-  blockH[i].style.display = "block";
+  blockH[i].style.display = "inline-block";
   blockH[i].style.margin = "0px";
 
   }
@@ -164,7 +164,7 @@ for(let i=0; i<block.length; i++){
   if(states[i].innerText == '블락'){
   states[i].innerText = '정상';
   blockH[i].style.display = "none";
-  block[i].style.display = "block";
+  block[i].style.display = "inline-block";
   block[i].style.margin = "0px";
 
   }
@@ -195,4 +195,54 @@ fetch("/admin/admin_user/blockH", {
 
 }).catch(err=> console.log(err));
 
+}
+
+//글자 수
+const countOne = document.querySelector(".admin_user_countOne");
+const checkbox = document.getElementsByClassName("admin_user_checkbox");
+
+
+for(let i=0; i<checkbox.lenght; i++){
+
+const checkedbox = document.getElementsByClassName("admin_user_checkbox")[i].checked;
+
+if(checkedbox[i] == true){
+countOne.innerText = checkedbox.length
+}
+
+}
+
+function userSelectAll(checkbox) {
+  var checkboxes = document.getElementsByClassName('admin_user_checkbox');
+  var count = 0;
+
+  for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = checkbox.checked;
+  }
+
+  if (checkbox.checked) {
+      count = checkboxes.length;
+  }
+
+  document.getElementById('checkboxCount').innerText = count;
+}
+
+function updateCheckboxCount() {
+  var checkboxes = document.getElementsByClassName('admin_user_checkbox');
+  var count = 0;
+
+  for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+          count++;
+      }
+  }
+
+  document.getElementById('checkboxCount').innerText = count;
+  document.getElementById('checkboxCount').style.color= '#005eee';
+  document.getElementById('checkboxCount').style.fontWeight = 'bold';
+}
+
+var checkboxElements = document.getElementsByClassName('admin_user_checkbox');
+for (var i = 0; i < checkboxElements.length; i++) {
+  checkboxElements[i].addEventListener('change', updateCheckboxCount);
 }
