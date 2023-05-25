@@ -59,20 +59,14 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	 
 	// 최근 업데이트된 게시글 목록 5가지
 	@Override
-	public List<GoodsBoard> selectRecentGoodsList5() {
+	public List<GoodsBoard> selectRecentGoodsList10() {
 		
 		
-		List<GoodsBoard> RecentGoodsList5 = dao.selectRecentGoodsList5();
+		List<GoodsBoard> RecentGoodsList10 = dao.selectRecentGoodsList10();
 		
-		return RecentGoodsList5;
+		return RecentGoodsList10;
 	}
 	
-	// 로그인 유저 기준 최근 본 상품 5가지
-	/* @Override */
-	/*public List<GoodsBoard> selectrecentViewedList5() {
-		// TODO Auto-generated method stub
-		return dao.selectrecentViewedList5();
-	}*/
 	
 	// 조회수 높은 인기 상품 목록 10가지
 	@Override
@@ -92,12 +86,33 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return selectCategoryList;
 	}
 	
+	// 카테고리에 해당되는 상품 리스트
+	@Override
+	public List<GoodsBoard> selectCategoryGoodsList(int categoryNo) {
+		
+		List<GoodsBoard> CategoryGoodsList = dao.selectCategoryGoodsList(categoryNo);
+		
+		return CategoryGoodsList;
+	}
+	
+	// 카테고리 상품 리스트 더 보기
+	@Override
+	public List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode) {
+		return dao.moreCategoryGoods(numAndCategoryCode);
+	}
+	
+	
+
 	// 기존 찜 여부 확인
 	@Override
 	public int goodsLikeChecked(Map<String, Object> map) {
 		return dao.goodsLikeChecked(map);
 	}
 	
+	
+
+	
+
 	// 찜 처리 
 	@Transactional(rollbackFor = Exception.class)
 	@Override

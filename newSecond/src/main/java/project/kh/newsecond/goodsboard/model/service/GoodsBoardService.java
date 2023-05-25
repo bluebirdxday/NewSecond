@@ -6,7 +6,6 @@ import java.util.Map;
 import project.kh.newsecond.goodsboard.model.dto.Category;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Shop;
-import project.kh.newsecond.user.model.dto.User;
 
 public interface GoodsBoardService {
 	
@@ -25,7 +24,7 @@ public interface GoodsBoardService {
 	/* 메인페이지 - 지환 */
 	
 	// 최근 업데이트된 게시글 상품 5가지
-	List<GoodsBoard> selectRecentGoodsList5();
+	List<GoodsBoard> selectRecentGoodsList10();
 
 	// 조회수 높은 인기 상품 목록 10가지
 	List<GoodsBoard> selectMostViewedList10();
@@ -36,6 +35,11 @@ public interface GoodsBoardService {
 	// 카테고리 리스트
 	List<Category> selectCategoryList();
 	
+	// 카테고리에 해당되는 상품 리스트
+	List<GoodsBoard> selectCategoryGoodsList(int categoryNo);
+	
+	// 카테고리 상품 리스트 더 보기
+	List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode);
 	
 
 	// 기존 찜 여부 확인
@@ -49,6 +53,9 @@ public interface GoodsBoardService {
 
 	// 조회수 증가
 	int updateViewCount(int goodsNo);
+	
+	
+	
 	
 	
 

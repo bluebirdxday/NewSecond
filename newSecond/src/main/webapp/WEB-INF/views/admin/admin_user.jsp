@@ -34,11 +34,13 @@
         <hr>
         <div >
             <span>
-                <input class="admin_user_search" type="text" name="" id="">
+            <form action="/admin_user/search" method="get">
+                <input class="admin_user_search" type="text" name="search" id="" >
             </span>
             <span>
                 <button  class="admin_user_searchBtn">회원 정보 조회</button>
             </span>
+           
         </div>
 
         <div class="admin_user_raidos">
@@ -108,7 +110,7 @@
     </div>
 
     </div>
-
+ </form>
 
 <script src="\resources\js\admin\admin_user.js"></script>
 

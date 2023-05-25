@@ -30,6 +30,7 @@
             <!-- 활동 알림 탭 -->
             <div id="tab1" class="notice--tab__content notice--tabs__active">
                 
+                
                 <c:forEach items="${notificationList}" var="notification">
                         
                     <a href="${notification.notificationURL}">

@@ -2,6 +2,8 @@
 .qna_bar_container{
   width: auto;
   background-color:#8ab2e24b;
+  color: #2365B9;
+  font-weight: bold;
   margin-top: 160px;
 }
 
