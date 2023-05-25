@@ -223,6 +223,7 @@
 			AND FILE_ORDER = 1) THUMBNAIL
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
+		WHERE GOODS_STATUS IN ('A','E','C')
 	</select>
 	
 	<!-- 최근 업데이트된 상품(ALL) -->
@@ -261,6 +262,7 @@
 			AND FILE_ORDER = 1) THUMBNAIL
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
+		WHERE GOODS_STATUS IN ('A','E','C')
 	</select>
 	
 	<!-- 조회수가 높은 상품(ALL) -->
