@@ -52,8 +52,6 @@ public class GoodsBoardController {
 
 		return "goods/searchGoodsList";
 	}
-<<<<<<< HEAD
-	
 	
 	@ResponseBody
 	@GetMapping("/search/goodsList/{listSort}")
@@ -68,9 +66,6 @@ public class GoodsBoardController {
 	
 	
 	
-=======
-
->>>>>>> f6b1d7aa3936fa928c8ab423846a4f4b9a34ede4
 	// 상품 게시글 추가 조회 (더보기)
 	@PostMapping("/searchMore")
 	@ResponseBody
@@ -167,14 +162,6 @@ public class GoodsBoardController {
 	public String moveShop() {
 		return "/shop/shop";
 	}
-<<<<<<< HEAD
-	
-	
-
-	
-=======
-
->>>>>>> f6b1d7aa3936fa928c8ab423846a4f4b9a34ede4
 	/* 지환 - 카테고리 조회 */
 
 	// 상품 게시글 카테고리 별조회
