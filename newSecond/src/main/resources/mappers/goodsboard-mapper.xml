@@ -284,6 +284,29 @@
 		WHERE GOODS_NO = #{goodsNo}
 	</update>
 		
+		
+		
+	<!-- 상준: 게시글 삭제 -->
+	<update id="myGoodsDelete">
+		UPDATE "goods_board"
+		SET GOODS_STATUS = 'D'
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
+	
+	<!-- 상준: 게시글 수정 -->
+	<update id="myGoodsModify">
+		UPDATE "goods_board"
+		SET GOODS_TITLE = #{goodsTitle},
+			GOODS_DESCR = #{goodsDescr},
+			GOODS_PRICE = #{goodsPrice}
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{userNo}
+	</update>
+	
+	<!-- 상준: 게시글 이미지 수정 -->
+	<update id="myGoodsImageModify">
+	
+	</update>
 	
 		
 		

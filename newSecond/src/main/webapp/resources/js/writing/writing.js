@@ -171,6 +171,7 @@ clothing.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -181,6 +182,7 @@ clothing.addEventListener('click', () => {
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
+    radio2.required = true; // required 속성 추가
     radio2.value = div2.textContent;
     div2.appendChild(radio2);
 
@@ -203,6 +205,7 @@ fashion.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -213,6 +216,7 @@ fashion.addEventListener('click', () => {
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
+    radio2.required = true; // required 속성 추가
     radio2.value = div2.textContent;
     div2.appendChild(radio2);
 
@@ -223,6 +227,7 @@ fashion.addEventListener('click', () => {
     const radio3 = document.createElement('input');
     radio3.type = 'radio';
     radio3.name = 'category2';
+    radio3.required = true; // required 속성 추가
     radio3.value = div3.textContent;
     div3.appendChild(radio3);
 
@@ -233,6 +238,7 @@ fashion.addEventListener('click', () => {
     const radio4 = document.createElement('input');
     radio4.type = 'radio';
     radio4.name = 'category2';
+    radio4.required = true; // required 속성 추가
     radio4.value = div4.textContent;
     div4.appendChild(radio4);
 
@@ -259,6 +265,7 @@ digital.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -281,6 +288,7 @@ hobby.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -293,6 +301,7 @@ hobby.addEventListener('click', () => {
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
+    radio2.required = true; // required 속성 추가
     radio2.value = div2.textContent;
     div2.appendChild(radio2);
 
@@ -303,6 +312,7 @@ hobby.addEventListener('click', () => {
     const radio3 = document.createElement('input');
     radio3.type = 'radio';
     radio3.name = 'category2';
+    radio3.required = true; // required 속성 추가
     radio3.value = div3.textContent;
     div3.appendChild(radio3);
 
@@ -313,6 +323,7 @@ hobby.addEventListener('click', () => {
     const radio4 = document.createElement('input');
     radio4.type = 'radio';
     radio4.name = 'category2';
+    radio4.required = true; // required 속성 추가
     radio4.value = div4.textContent;
     div4.appendChild(radio4);
 
@@ -323,6 +334,7 @@ hobby.addEventListener('click', () => {
     const radio5 = document.createElement('input');
     radio5.type = 'radio';
     radio5.name = 'category2';
+    radio5.required = true; // required 속성 추가
     radio5.value = div5.textContent;
     div5.appendChild(radio5);
     
@@ -350,6 +362,7 @@ life.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -360,6 +373,7 @@ life.addEventListener('click', () => {
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
+    radio2.required = true; // required 속성 추가
     radio2.value = div2.textContent;
     div2.appendChild(radio2);
 
@@ -370,6 +384,7 @@ life.addEventListener('click', () => {
     const radio3 = document.createElement('input');
     radio3.type = 'radio';
     radio3.name = 'category2';
+    radio3.required = true; // required 속성 추가
     radio3.value = div3.textContent;
     div3.appendChild(radio3);
 
@@ -380,6 +395,7 @@ life.addEventListener('click', () => {
     const radio4 = document.createElement('input');
     radio4.type = 'radio';
     radio4.name = 'category2';
+    radio4.required = true; // required 속성 추가
     radio4.value = div4.textContent;
     div4.appendChild(radio4);
 
@@ -390,6 +406,7 @@ life.addEventListener('click', () => {
     const radio5 = document.createElement('input');
     radio5.type = 'radio';
     radio5.name = 'category2';
+    radio5.required = true; // required 속성 추가
     radio5.value = div5.textContent;
     div5.appendChild(radio5);
 
@@ -400,6 +417,7 @@ life.addEventListener('click', () => {
     const radio6 = document.createElement('input');
     radio6.type = 'radio';
     radio6.name = 'category2';
+    radio6.required = true; // required 속성 추가
     radio6.value = div6.textContent;
     div6.appendChild(radio6);
 
@@ -410,6 +428,7 @@ life.addEventListener('click', () => {
     const radio7 = document.createElement('input');
     radio7.type = 'radio';
     radio7.name = 'category2';
+    radio7.required = true; // required 속성 추가
     radio7.value = div7.textContent;
     div7.appendChild(radio7);
 
@@ -420,6 +439,7 @@ life.addEventListener('click', () => {
     const radio8 = document.createElement('input');
     radio8.type = 'radio';
     radio8.name = 'category2';
+    radio8.required = true; // required 속성 추가
     radio8.value = div8.textContent;
     div8.appendChild(radio8);
 
@@ -430,6 +450,7 @@ life.addEventListener('click', () => {
     const radio9 = document.createElement('input');
     radio9.type = 'radio';
     radio9.name = 'category2';
+    radio9.required = true; // required 속성 추가
     radio9.value = div9.textContent;
     div9.appendChild(radio9);
 
@@ -466,6 +487,7 @@ other.addEventListener('click', () => {
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'category2';
+    radio1.required = true; // required 속성 추가
     radio1.value = div1.textContent;
     div1.appendChild(radio1);
 
@@ -476,6 +498,7 @@ other.addEventListener('click', () => {
     const radio2 = document.createElement('input');
     radio2.type = 'radio';
     radio2.name = 'category2';
+    radio2.required = true; // required 속성 추가
     radio2.value = div2.textContent;
     div2.appendChild(radio2);
 
@@ -486,6 +509,7 @@ other.addEventListener('click', () => {
     const radio3 = document.createElement('input');
     radio3.type = 'radio';
     radio3.name = 'category2';
+    radio3.required = true; // required 속성 추가
     radio3.value = div3.textContent;
     div3.appendChild(radio3);
 
@@ -560,13 +584,6 @@ submit.addEventListener("click", () =>  {
         return false;
     }
     
-    var fileInputContainers = document.getElementById('fileInputContainer');
-    var inputTags = fileInputContainers.getElementsByTagName('input');
-    if (inputTags.length === 0) {
-        alert('이미지를 1개 이상 첨부해주세요.');
-        return false;
-    }
-    
     if(detailTextCheck.value.trim() === "") {
         alert("상품에 대한 설명을 입력해주세요.");
         detailTextCheck.focus();
@@ -579,47 +596,8 @@ submit.addEventListener("click", () =>  {
         return false;
     }
 
-    if(quantityCheck.value.trim() === "") {
-        alert("상품 수량을 입력해주세요.");
-        quantityCheck.focus();
-        return false;
-    }
-
-    if(!isConditionSelected(conditionCheck)) { // 함수
-        alert("상품 상태를 선택해주세요.");
-        conditionCheck.focus();
-        return false;
-    }
-
-    // if(!isCategory2Selected(category2Check)) { // 함수
-    //     alert("상품 카테고리를 선택해주세요.");
-    //     category2Check.focus();
-    //     return false;
-    // }
-
     return true; // 폼 전송
 
 
 });
-
-// 상태 선택 확인 함수
-function isConditionSelected(conditionCheck) {
-    for (var i = 0; i < conditionCheck.length; i++) {
-        if (conditionCheck[i].checked) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// 카테고리 선택 확인 함수
-// function isCategory2Selected(category2Check) {
-//     for (var i = 0; i < category2Check.length; i++) {
-//         if (category2Check[i].checked) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-
 

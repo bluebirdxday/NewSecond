@@ -110,7 +110,7 @@ public class WritingController {
 		model.addAttribute("uploadComplete", "ok");
 		
 		if(result > 0) {
-			path += "/goods/" + goodsNo; // 성공시 write 화면 리턴
+			path += "/goods/" + goodsNo; // 성공시 등록 화면 리턴
 		} else {
 			path += "write"; // 실패시 write 화면 리턴
 		}
