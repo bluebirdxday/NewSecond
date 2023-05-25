@@ -6,13 +6,15 @@
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
+<c:set var="paramQuery" value="${param.query}"/>
+<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}">
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${param.query} 검색 결과</title>
+    <title>${query} 검색 결과</title>
     
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
@@ -28,8 +30,8 @@
             <div class="container--inner">
                 <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
                 <div class="container--inner__top">
-                    <c:if test="${not empty param.query}" >
-                        <div class="searchNameCount">${param.query} (${searchGoodsCount}건)</div>
+                    <c:if test="${not empty query}" >
+                        <div class="searchNameCount">query.replace() (${searchGoodsCount}건)</div>
                         <%-- <c:set var="query" scope="application" value="${param.query}"/> --%>
                     </c:if>
                     <!-- 판매완료상품제외 -->

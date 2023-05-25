@@ -125,13 +125,16 @@ if(uploadComplete!=''){
     fetch("/notification/selectNewPostNotification?userNo="+ goodsUserNo + "&goodsNo=" + goodsNo)
     .then(resp=>resp.json())
     .then(newPostNotiList=>{
-        console.log("goodsDetail :" + newPostNotiList);
         likeNofiticationSock.send(JSON.stringify(newPostNotiList));
     }).catch(err=>{
         console.log(err);
     })
 
 }
+
+
+
+
 
 /* 상준 작성 */// -> 왜 삭제는 되는데 confrim 창이 뜨지 않을까? 나중에 실험해보자!
 

@@ -119,5 +119,12 @@
 		UPDATE "reviews" SET REVIEW_MESSAGE = #{reviewMessage}, REVIEW_STARS = #{reviewStars}
 		WHERE REVIEW_NO = #{reviewNo}
 	</update>
+	
+	
+	<!-- 후기 작성 시 알림을 위한 리뷰 정보 조회 -->
+	<select id="selectReivewByGoodsNo" resultMap="review_rm">
+	SELECT * FROM "reviews"
+	WHERE GOODS_NO = ${goodsNo}
+	</select>
 		
 </mapper>

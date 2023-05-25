@@ -104,6 +104,7 @@ public class NotificationController {
 	}
 	
 	
+	// 리뷰 작성 알림
 	@GetMapping("/selectNewPostNotification")
 	@ResponseBody
 	public List<Notification> selectNewPostNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo){

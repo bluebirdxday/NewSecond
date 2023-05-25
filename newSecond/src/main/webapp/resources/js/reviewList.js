@@ -29,3 +29,20 @@ function deleteReview(reviewNo) {
 
     toastTrigger.click();
 }
+
+
+/* 리뷰 작성 알림 */
+// if(addedReview==null){
+
+//     let addReviewNotiSock = new SockJS("/notificationSock");
+
+//     // 작성된 리뷰 (loginUserNo의 주인: senderNo , goodsNo의 주인: targetNo)
+//     fetch("/notification/addReviewNotification?senderNo="+ addedReview.userNo + "&goodsNo=" + addedReview.goodsNo)
+//     .then(resp=>resp.json())
+//     .then(newReviewNotiList=>{
+//         likeNofiticationSock.send(JSON.stringify(newPostNotiList));
+//     }).catch(err=>{
+//         console.log(err);
+//     })
+
+// }
