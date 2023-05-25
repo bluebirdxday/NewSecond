@@ -39,11 +39,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 			// 3. FILES 테이블 UPDATE 시도
 			for(int i=0; i<images.size(); i++) {
 				
-<<<<<<< HEAD
 				if(!filesList.get(i).equals(null)) {
-=======
-				if(images.get(i).getSize() > 0) {
->>>>>>> origin/상준
 					
 					Files Finalimgs = new Files();
 					
@@ -60,11 +56,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setFileOrder(order); // 파일 순서 담기
 					
-<<<<<<< HEAD
 					String fileName = filesList.get(i).getFileName(); // 파일 원본명
-=======
-					String fileName = images.get(i).getOriginalFilename(); // 파일 원본명
->>>>>>> origin/상준
 					
 					String fileRenameTemp = Util.fileRename(fileName); // rename 작업
 					
@@ -105,11 +97,6 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 	}
 	
 	
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> origin/상준
 	// 게시글 삭제
 	public int myGoodsDelete(GoodsBoard goodsBoard) {
 		

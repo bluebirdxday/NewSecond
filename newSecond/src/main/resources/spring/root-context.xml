@@ -1,4 +1,4 @@
-`<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -14,7 +14,7 @@
 
         <!-- 지갑경로 여러개 중 하나 선택하기 -->
         <!-- 기본 지갑 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_medium?TNS_ADMIN=C:/yunsuel/Wallet_orcl" /> -->
+		<property name="url" value="jdbc:oracle:thin:@orcl_medium?TNS_ADMIN=C:/yunsuel/Wallet_orcl" />
             
         <!-- 지영님 맥북 지갑 경로 -->
         <!-- <property name="url" value="jdbc:oracle:thin:@orcl_medium?TNS_ADMIN=/Users/jy_green/Desktop/project/tools/semi_wallet/Wallet_orcl"  /> -->
