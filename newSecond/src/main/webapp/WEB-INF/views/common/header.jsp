@@ -18,8 +18,6 @@
                     <span class="m-1"><a href="/user/signUp">회원가입</a></span>
                     
                     <div class="vr m-1"></div>
-
-                    <span class="admin_user m-1"><a href="/admin/admin_notice">관리자 페이지</a></span>
                 </c:when>
             
                 <c:otherwise>

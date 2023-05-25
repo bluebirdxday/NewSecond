@@ -18,7 +18,6 @@ import project.kh.newsecond.wish.model.service.WishService;
 
 
 @Controller
-@RequestMapping("/wish")
 @SessionAttributes({"loginUser"})
 public class WishController {
 
@@ -33,12 +32,10 @@ public class WishController {
 			@SessionAttribute(value="loginUser", required=false) User loginUser,
 			Wish wish, Model model){
 		
-			int userNo = loginUser.getUserNo();
-			List<Wish> wishList = wishService.wishList(userNo);
+			int wishUserNo = loginUser.getUserNo();
+			List<GoodsBoard> wishList = wishService.wishList(wishUserNo);
 			model.addAttribute("wishList", wishList);
 		
-			System.out.println(userNo);
-		 	System.out.println(wishList);
 		
 		return "wish/wish";
 	

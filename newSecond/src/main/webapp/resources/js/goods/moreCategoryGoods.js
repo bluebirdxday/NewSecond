@@ -23,7 +23,7 @@ more.addEventListener("click", e => {
     .then(resp => resp.json())
     .then(moreGoodsList => {
         if(moreGoodsList.length>0){
-            for(var i=0; i<moreGoodsList.length; i++){
+            for(var i=0; i<12; i++){
                 const goodsDiv = document.createElement("div");
                 goodsDiv.classList.add("goods");
                 goodsListTable.append(goodsDiv);

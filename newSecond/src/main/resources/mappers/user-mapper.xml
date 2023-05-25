@@ -71,6 +71,9 @@
             )
    </insert>
    
+   <sql id="">
+   
+   </sql>
    
    <!-- 회원의 상점(프로필) 기본정보 입력 -->
    <insert id="insertShopData" parameterType="User">

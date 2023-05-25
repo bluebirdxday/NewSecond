@@ -82,15 +82,15 @@
 
    	<!-- 관심상품페이지 - 유민 -->
 	<!-- 최근 업데이트된 상품 -->
-	<select id="wishList" resultMap="wish_rm">
-		SELECT ROW_NUMBER() OVER (ORDER BY WISH_NO DESC) AS NUM,WISH_NO,W.GOODS_NO,USER_NO,
-	    (SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
-	     WHERE F.GOODS_NO = W.GOODS_NO
-	     AND FILE_ORDER = 1) THUMBNAIL
+	<select id="wishList" resultMap="goodsboard_rm">
+		SELECT ROW_NUMBER() OVER (ORDER BY WISH_NO DESC) AS NUM, W.GOODS_NO, G.GOODS_TITLE,
+			(SELECT FILE_PATH||G.USER_NO||'/'||FILE_NAME FROM "files" F
+			 WHERE F.GOODS_NO = G.GOODS_NO
+			 AND FILE_ORDER = 1) THUMBNAIL
 		FROM "wish_lists" W
-		WHERE USER_NO = #{userNo}
-      
-		</select>
+		LEFT JOIN "goods_board" G ON (W.GOODS_NO = G.GOODS_NO)
+		WHERE W.USER_NO = ${wishUserNo}
+	</select>
 	
 	
 	
