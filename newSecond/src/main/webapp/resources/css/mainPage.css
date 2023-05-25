@@ -19,7 +19,25 @@
     margin: auto;
     width: 900px;
     height: 30%;
+    font-weight: 900;
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+.mainPage--carousel__item{
+    width: 900px;
+    height: 280px;
+    position: relative;
+}
+
+.mainPage--carousel__item img{
+    position: absolute;
+}
+
+.carousel-caption{
+    color: #fafcee !important;
+}
+
 
 /* 첫번째 상품 소개 페이지(최근 업데이트 상품) */
 .mainPage--goodsContainer1{

@@ -51,8 +51,7 @@ public class WritingController {
 			@RequestParam(value="image", required=false) List<MultipartFile> images, // 이미지 객체 생성
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
-			HttpSession session,
-			Model model
+			HttpSession session
 			) throws IllegalStateException, IOException {
 		
 		
@@ -106,10 +105,9 @@ public class WritingController {
 		int goodsNo = (int) resultService.get("goodsNo");
 		
 		// 7. result, goodsNo 담기
-		model.addAttribute("goodsNo", goodsNo);
-		model.addAttribute("uploadComplete", "ok");
 		
 		if(result > 0) {
+			session.setAttribute("uploadComplete", "ok");
 			path += "/goods/" + goodsNo; // 성공시 write 화면 리턴
 		} else {
 			path += "write"; // 실패시 write 화면 리턴

@@ -21,6 +21,7 @@ public class Notification {
 	private String notificationType;
 	private String notificationURL;
 	
+	private String thumbnail;
 	private String shopTitle;
 	private String shopProfile;
 }

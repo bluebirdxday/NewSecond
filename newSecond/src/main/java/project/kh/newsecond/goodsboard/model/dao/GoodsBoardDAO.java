@@ -120,6 +120,22 @@ public class GoodsBoardDAO {
 		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsList", null ,rowBounds);
 	}
+	
+	/** 최근 업데이트된 상품(All)
+	 * @return
+	 */
+	public List<GoodsBoard> selectRecentGoodsListAll() {
+		
+		return sqlSession.selectList("goodsBoardMapper.selectRecentGoodsListAll");
+	}
+	
+	/** 최근 업데이트된 상품(All) 더보기 버튼
+	 * @return
+	 */
+	public List<GoodsBoard> moreRecentGoodsListAll(Map<String, Object> numAndCategoryCode) {
+		
+		return sqlSession.selectList("goodsBoardMapper.moreRecentGoodsListAll", numAndCategoryCode);
+	}
 
 	/** 조회수가 높은 상품 10가지
 	 * @return
@@ -129,8 +145,26 @@ public class GoodsBoardDAO {
 		RowBounds rowBounds = new RowBounds(0, 10);
 		return sqlSession.selectList("goodsBoardMapper.selectMostViewedList", null ,rowBounds);
 	}
+	
+	/** 조회수가 높은 상품(All)
+	 * @return
+	 */
+	public List<GoodsBoard> selectMostViewedListAll() {
+		
+		return sqlSession.selectList("goodsBoardMapper.selectMostViewedListAll");
+	}
+	
+	/** 조회수가 높은 상품(All) 더보기 버튼
+	 * @return
+	 */
+	public List<GoodsBoard> moreMostViewedListAll(Map<String, Object> numAndCategoryCode) {
+		
+		
+		return sqlSession.selectList("goodsBoardMapper.moreMostViewedListAll", numAndCategoryCode);
+	}
 
 	
+	/* 카테고리 조회 - 지환 */
 	
 	/** 카테고리 리스트 조회
 	 * @return
