@@ -50,7 +50,7 @@
 
                                     <div class="notice--tab1__item-second" style="font-size:18px;">
                                         <%-- 팔로우/관심상품 등록 알림 --%>
-                                        <c:if test="${notification.notificationType!='N'}">
+                                        <c:if test="${notification.notificationType!='N' && notification.notificationType!='P' }">
                                                 <strong>${notification.shopTitle}</strong>${notification.notificationMessage}
                                         </c:if>
 
@@ -58,8 +58,16 @@
                                         <c:if test="${notification.notificationType=='N'}">
 
                                             <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
-                                                [${keywordArr[0]}]<br><br>
+                                                [ ${keywordArr[0]} ]<br><br>
                                                 <strong>${notification.shopTitle}</strong>${keywordArr[1]}
+                                        </c:if>
+
+
+                                        <%-- 후기 작성 알림 --%>
+                                        <c:if test="${notification.notificationType=='P'}">
+                                            <c:set var="keywordArr2" value="${fn:split(notification.notificationMessage, '^^')}"/>
+                                                <strong>[ ${keywordArr2[0]} ]</strong><br>
+                                                ${keywordArr2[1]}
                                         </c:if>
                                     </div>
 

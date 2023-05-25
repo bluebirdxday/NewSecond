@@ -99,8 +99,7 @@
 	
 	<!-- 리뷰 삭제 -->
 	<update id="deleteReview">
-		UPDATE "reviews"
-		SET REVIEW_DEL_FL = 'Y'
+		DELETE FROM  "reviews"
 		WHERE REVIEW_NO = #{reviewNo}
 	</update>
 	

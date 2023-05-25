@@ -559,10 +559,22 @@ WHERE GOODS_NO BETWEEN 263 AND 274;
 DELETE FROM "files"
 WHERE GOODS_NO BETWEEN 263 AND 274;
 
--- 리뷰 작성 알림
-/*SELECT , (USER_NO FROM "goods_board" WHERE GOODS_NO = 10) TARGET_NO;*/
+
+SELECT * FROM "shop";
+
+SELECT 2 SENDER_NO, USER_NO TARGET_NO, '[' || GOODS_TITLE || ']' || '에 새로운 후기가 등록되었습니다.' NOTIFICATION_MESSAGE, 'P' NOTIFICATION_TYPE, 
+	'/shop/' || USER_NO NOTIFICATION_URL
+FROM "goods_board" 
+WHERE GOODS_NO = 1;
 
 
-SELECT * FROM "reviews"
-WHERE GOODS_NO = 10;
+SELECT * FROM "reviews";
+COMMIT;
+
+SELECT * FROM "goods_board" gb WHERE GOODS_TITLE = '나이키 후드집업 M';
+
+SELECT * FROM "users" u WHERE USER_NO = 9;
+
+DELETE FROM "reviews" r WHERE REVIEW_NO = 10;
+
 

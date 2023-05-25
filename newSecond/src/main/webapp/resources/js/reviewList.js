@@ -32,17 +32,22 @@ function deleteReview(reviewNo) {
 
 
 /* 리뷰 작성 알림 */
-// if(addedReview==null){
+const reviewUserNo = document.getElementById("reviewUserNo").value;
+const reviewGoodsNo = document.getElementById("reviewGoodsNo").value;
 
-//     let addReviewNotiSock = new SockJS("/notificationSock");
+if(reviewUserNo!='' && reviewGoodsNo!=''){
 
-//     // 작성된 리뷰 (loginUserNo의 주인: senderNo , goodsNo의 주인: targetNo)
-//     fetch("/notification/addReviewNotification?senderNo="+ addedReview.userNo + "&goodsNo=" + addedReview.goodsNo)
-//     .then(resp=>resp.json())
-//     .then(newReviewNotiList=>{
-//         likeNofiticationSock.send(JSON.stringify(newPostNotiList));
-//     }).catch(err=>{
-//         console.log(err);
-//     })
+    console.log(reviewUserNo);
+    console.log(reviewGoodsNo);
+    let addReviewNotiSock = new SockJS("/notificationSock");
 
-// }
+    // 작성된 리뷰 (loginUserNo의 주인: senderNo , goodsNo의 주인: targetNo)
+    fetch("/notification/addReviewNotification?userNo="+ reviewUserNo + "&goodsNo=" + reviewGoodsNo)
+    .then(resp=>resp.json())
+    .then(newReviewNotiList=>{
+        addReviewNotiSock.send(JSON.stringify(newReviewNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
+
+}

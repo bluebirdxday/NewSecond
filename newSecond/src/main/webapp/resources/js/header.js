@@ -9,13 +9,14 @@ notificationSock2.onmessage = function(e) {
 
     let liveMessage;
 
-
+    // 팔로우 알림, 관심상품 등록 알림
     if(msg.notificationType=="F" || msg.notificationType=="L"){
         
         liveMessage = msg.shopTitle + msg.notificationMessage;
         document.getElementById('alarmBody').innerText = liveMessage;
     }
 
+    // 키워드 알림
     if(msg.notificationType=="K"){
         const words = msg.notificationMessage.split('^^');
 /*         liveMessage = "<strong>[" + words[0] +"]</strong>   " +  words[1] +  "<br/> 설정하신 키워드의 새로운 글이 게시되었습니다.";
@@ -24,10 +25,21 @@ notificationSock2.onmessage = function(e) {
         document.getElementById('alarmBody').innerText= liveMessage;
     }
 
+    
+    // 새글 작성 알림
     if(msg.notificationType=="N"){
         const words = msg.notificationMessage.split('^^');
         liveMessage = "[" + words[0] +"]     " +  "\n" +  msg.shopTitle + words[1] ;
         document.getElementById('alarmBody').innerText= liveMessage;
     }
+    
+
+    // 후기 작성 알림
+    if(msg.notificationType=="P"){
+        const words = msg.notificationMessage.split('^^');
+        liveMessage = "[" + words[0] +"]     " +  "\n" + words[1] ;
+        document.getElementById('alarmBody').innerText= liveMessage;
+    }
+
     alarmTrigger.click();
 }

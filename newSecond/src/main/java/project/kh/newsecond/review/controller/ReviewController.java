@@ -95,7 +95,8 @@ public class ReviewController {
 		}
 		
 		
-		ra.addFlashAttribute("addedReview", addedReview);
+		ra.addFlashAttribute("reviewGoodsNo", addedReview.getGoodsNo());
+		ra.addFlashAttribute("reviewUserNo", addedReview.getUserNo());
 		ra.addFlashAttribute("message", message);
 		ra.addFlashAttribute("alertType", alertType);
 		
