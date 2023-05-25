@@ -41,10 +41,16 @@ public class GoodsBoardController {
 	
 	// 지영
 	// 상품 게시글 목록 조회(검색)
-	@GetMapping("/search/goodsList")
-	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, Model model) {
+	@GetMapping("/search/goodsList/{listSort}")
+	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
+			Model model, @PathVariable("listSort") String listSort) {
 		
-		Map<String, Object> map = service.selectSearchGoodsList(searchName);
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("searchName", searchName);
+		paramMap.put("listSort", listSort);
+		
+		Map<String, Object> map = new HashMap<>();
+		map = service.selectSearchGoodsList(paramMap);
 		
 		// 조회 결과
 		model.addAttribute("map", map);

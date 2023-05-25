@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     /* place-items: center; */
     /* position: fixed; */
@@ -46,14 +46,18 @@
 
 }
 
+[name="listSort"]:checked + .listSort{
+    color: #2365b9;
+}
+
 /* 판매 완료 상품 제외 체크박스 */
-.soldoutExcept + label{
+/* .soldoutExcept + label{
     width: auto;
     height: 27px;
     display: inline-block;
     cursor: pointer;
     border-radius: 15%;
-}
+} */
 
 /* 최신순,낮은가격순,높은가격순,인기순 */
 .container--inner__top :not([class="container--inner__top_sort_split"]){
@@ -97,7 +101,6 @@
     display: flex;
     flex-wrap: wrap;
 }
-
 
 .container--inner__middle>div[class*=goods]{
     width: 265px;
