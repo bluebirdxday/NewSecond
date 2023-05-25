@@ -239,25 +239,30 @@ public class AdminController {
 	}
 	 
 
-	// 관리자 회원 관리 조회
+	// 관리자 회원 관리 조회 //페이지네이션
 	@GetMapping("/admin_user")
-	public String admin_user(Model model) {
+	public String admin_user(Model model, @RequestParam(value="cp", required=false, defaultValue="1") int cp) {
 
-		List<HashMap<String, Object>> UserList = adminService.selectUserList();
+		Map<String, Object> userMap = adminService.selectUserList(cp);
 
-		model.addAttribute("UserList", UserList);
+		model.addAttribute("userMap", userMap);
+		
 
 		return "admin/admin_user";
 
 	}
 
-	// 관리자 게시글 리스트 조회
+	// 관리자 게시글 리스트 조회 //페이지네이션
 	@GetMapping("/admin_board")
-	public String board(Model model) {
+	public String board(Model model, @RequestParam(value="cp", required=false, defaultValue="1") int cp){
 
-		List<HashMap<String, Object>> GoodsBoardList = adminService.selectGoodsBoardList();
+		
+		Map<String, Object> boardMap = adminService.selectGoodsBoardList(cp);
 
-		model.addAttribute("GoodsBoardList", GoodsBoardList);
+		model.addAttribute("boardMap", boardMap);
+		
+		System.out.println(boardMap);
+		
 
 		return "admin/admin_board";
 	}

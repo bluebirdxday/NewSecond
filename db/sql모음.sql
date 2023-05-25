@@ -531,7 +531,7 @@ WHERE SHOP_TITLE = '떡볶이먹고싶다';
 
 SELECT * FROM "users";
 
-UPDATE "users"
+UPDATE ""
 SET USER_STATUS ='A'
 WHERE USER_NO='36';
 
@@ -541,14 +541,8 @@ SELECT * FROM "users";
 SELECT * FROM "goods_board";
 SELECT * FROM "follow";
 
--- 팔로우한 상점 새글 알림
-SELECT f.ACTIVE_USER_NO TARGET_NO, f.PASSIVE_USER_NO SENDER_NO, SHOP_TITLE, 
-		NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, 'N' NOTIFICATION_TITLE,
-		(SELECT GOODS_TITLE FROM "goods_board" WHERE GOODS_NO = 1) || '^^님께서 새로운 상품을 게시하였습니다.' NOTIFICATION_MESSAGE, 
-		'/goods/'||GOODS_NO NOTIFICATION_URL
-FROM "follow" f
-JOIN "shop" s ON(s.USER_NO = f.PASSIVE_USER_NO)
-WHERE f.PASSIVE_USER_NO = 2;
+	SELECT COUNT(*) 
+	FROM "goods_board"
+	ORDER BY GOODS_NO  DESC;
 
-SELECT * FROM "notifications";
 

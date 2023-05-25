@@ -53,9 +53,26 @@ public class AdminDAO {
 	}
 	
 	
-	public List<HashMap<String, Object>> selectUserList() {
+	/**관리자 회원관리 페이지수
+	 * @return
+	 */
+	public int userListCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("AdminMapper.userListCount");
+	}
+	
+	/**회원관리 조회 리스트
+	 * @return
+	 */
+	public List<User> selectUserList(Pagination pagination) {
 
-		return sqlSession.selectList("AdminMapper.selectUserList");
+		int offset = (pagination.getCurrentPage() - 1)
+				* pagination.getLimit();
+
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());	
+		
+		return sqlSession.selectList("AdminMapper.selectUserList",null,rowBounds);
 	}
 
 	/**관리자 문의사항 게시글 리스트//페이지네이션
@@ -84,12 +101,30 @@ public class AdminDAO {
 	}
 	
 
+	/**관리자 게시글 수 조회
+	 * @return
+	 */
+	public int boardlistCount() {
+		
+		return sqlSession.selectOne("AdminMapper.boardlistCount");
+	}
+
+	
 	/**관리자 게시글 리스트 조회
 	 * @return
 	 */
-	public List<HashMap<String, Object>> selectGoodsBoardList() {
+	public List<GoodsBoard> selectGoodsBoardList(Pagination pagination) {
 	
-		return sqlSession.selectList("AdminMapper.selectGoodsBoardList");
+		int offset = (pagination.getCurrentPage() - 1)
+				* pagination.getLimit();
+
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());	
+		
+		return sqlSession.selectList("AdminMapper.selectGoodsBoardList",null,rowBounds);
+		
+		
+		
 	}
 
 	/**관리자 공지사항 게시글 읽기 조회
@@ -235,6 +270,8 @@ public class AdminDAO {
 		
 		return sqlSession.selectList("AdminMapper.userSelectList",searchKeyword); 
 	}
+
+
 
 
 
