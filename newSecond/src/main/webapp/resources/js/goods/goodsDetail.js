@@ -135,17 +135,17 @@ if(uploadComplete!=''){
 
 /* 상준 작성 */// -> 왜 삭제는 되는데 confrim 창이 뜨지 않을까? 나중에 실험해보자!
 
-// 삭제 confirm
-const deleteBtn = document.getElementById("deleteBtn");
-deleteBtn.addEventListener('click', e => {
-    e.preventDefault(); // 링크의 기본 동작인 이동을 취소
+// // 삭제 confirm
+// const deleteBtn = document.getElementById("deleteBtn");
+// deleteBtn.addEventListener('click', e => {
+//     e.preventDefault(); // 링크의 기본 동작인 이동을 취소
     
-    const confirmed = confirm('정말 삭제하시겠습니까?');
-    if (confirmed) {
-        const href = this.getAttribute('href');
-        window.location.href = href; // 수정 링크로 이동
-    }
-});
+//     const confirmed = confirm('정말 삭제하시겠습니까?');
+//     if (confirmed) {
+//         const href = this.getAttribute('href');
+//         window.location.href = href; // 수정 링크로 이동
+//     }
+// });
 
 // 수정 form 태그 연결
 document.getElementById('modifyBtn').addEventListener('click', e => {
