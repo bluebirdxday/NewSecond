@@ -37,7 +37,7 @@ public class WritingController {
 	@GetMapping("/write")
 	public String writing() {
 		
-		// 로그인한 놈만 글쓰기 처리: 로그인한 놈만 글쓰기 이전 페이지에서 처리하면 굳이 기능 없어도 됨
+		// 로그인한 사람만 글쓰기 처리: 로그인한 놈만 글쓰기 이전 페이지에서 처리하면 굳이 기능 없어도 됨
 		
 		return "writing/writingPage";
 		// (/WEB-INF/views/)writing/writingPage(.jsp)
