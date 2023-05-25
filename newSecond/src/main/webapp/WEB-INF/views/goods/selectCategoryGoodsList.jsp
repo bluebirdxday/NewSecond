@@ -4,34 +4,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
-<c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
+
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${param.query} 검색 결과</title>
+    <title></title>
     
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
+    <link rel="stylesheet" href="/resources/css/goods/selectCategoryGoodsList.css">
 
 </head>
+
+
+
+
 <body style="overflow: auto;">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    <div>
-        <!-- header -->
-        <!-- content 내용 부분 -->
+    <!-- content 내용 부분 -->
         <div class="container--outer">
             <!--  -->
             <div class="container--inner">
                 <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
                 <div class="container--inner__top">
-                    <c:if test="${not empty param.query}" >
-                        <div class="searchNameCount">${param.query} (${searchGoodsCount}건)</div>
-                        <%-- <c:set var="query" scope="application" value="${param.query}"/> --%>
-                    </c:if>
+                        <div class="searchNameCount">${categoryName}</div>
                     <!-- 판매완료상품제외 -->
                     <div><input type="checkbox" class="soldoutExcept" id="check1">
                         <label for="check1"> 판매 완료 상품 제외</label>
@@ -49,40 +47,40 @@
                 </div>
                 <c:choose>
                     <%-- 해당 검색 결과 없다면 --%>
-                    <c:when test="${empty searchGoodsList}">
+                    <c:when test="${empty categoryGoodsList}">
                         <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.query}"에 해당하는 상품이 없습니다.</div>
+                            <div class="noGoodsList">카테고리에 있는 상품이 없습니다.</div>
                         </div>
                     </c:when>
                         
                     <%-- 해당 검색 결과 있다면 --%>
                     <c:otherwise>
                         <div class="container--inner__middle" id="goodsListTable">
-                            <c:forEach items="${searchGoodsList}" var="searchGoods" begin="0" end="11">
+                            <c:forEach items="${categoryGoodsList}" var="Goods" begin="0" end="11">
                             <div class="goods">
-                                <a href="/goods/${searchGoods.goodsNo}">
+                                <a href="/goods/${Goods.goodsNo}">
                                 <%-- 썸네일 --%>
                                 <c:choose>
-                                    <c:when test="${not empty searchGoods.thumbnail}">
-                                        <img src="${searchGoods.thumbnail}" 
+                                    <c:when test="${not empty Goods.thumbnail}">
+                                        <img src="${Goods.thumbnail}" 
                                         >
                                     </c:when>
                                     <c:otherwise>
                                         <img src="/resources/src/img/no_image.jpeg">
                                     </c:otherwise>
                                 </c:choose>
-                                <c:if test="${searchGoods.goodsStatus=='E'}" >
+                                <c:if test="${Goods.goodsStatus=='E'}" >
                                     <div class="status soldout">
                                         Sold Out
                                     </div>
                                 </c:if>
-                                <c:if test="${searchGoods.goodsStatus=='C'}" >
+                                <c:if test="${Goods.goodsStatus=='C'}" >
                                     <div class="status reserved">
                                         Reserved
                                     </div>
                                 </c:if>
-                                <div class="goods_price"><fmt:formatNumber value="${searchGoods.goodsPrice}" pattern="##,###,###"/></div>
-                                <div class="goods_title">${searchGoods.goodsTitle}</div>
+                                <div class="goods_price"><fmt:formatNumber value="${Goods.goodsPrice}" pattern="##,###,###"/></div>
+                                <div class="goods_title">${Goods.goodsTitle}</div>
                                 </a>
                             </div>
                             </c:forEach>
@@ -91,7 +89,7 @@
                 </c:choose>
                 <!-- 더보기 버튼-->
                 <c:choose>
-                    <c:when test="${fn:length(searchGoodsList) gt 12}">
+                    <c:when test="${fn:length(categoryGoodsList) gt 12}">
                         <div class="container--inner__bottom">
                             <button class="more" id="viewMoreGoods">MORE</button>
                         </div>
@@ -106,12 +104,14 @@
 
         </div>
 
-        <script src="/resources/js/goods/searchGoodsList.js"></script>
-        <script src="/resources/js/goods/moreGoods.js"></script>
 
-        <!-- footer -->
-    </div>
-        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+        <script>
+            const categoryCode = ${categoryNo};
+        </script>
+        
+        <script src="/resources/js/goods/moreCategoryGoods.js"></script>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
 </body>
 </html>
