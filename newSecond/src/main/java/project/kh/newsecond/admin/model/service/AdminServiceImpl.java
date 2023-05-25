@@ -48,9 +48,22 @@ public class AdminServiceImpl implements AdminService {
 	 *관리자 회원 리스트 조회
 	 */
 	@Override
-	public List<HashMap<String, Object>> selectUserList() {
+	public Map<String, Object> selectUserList(int cp) {
 	
-		return adminDao.selectUserList();
+		int userlistCount = adminDao.userListCount();
+		
+		Pagination pagination = new Pagination(userlistCount, cp);
+		
+		
+		List<User> userList = adminDao.selectUserList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("userList",userList);
+		
+		
+		
+		return map;
 	}
 
 	
@@ -78,9 +91,22 @@ public class AdminServiceImpl implements AdminService {
 	 *관리자 게시글 리스트 조회
 	 */
 	@Override
-	public List<HashMap<String, Object>> selectGoodsBoardList() {
+	public Map<String, Object> selectGoodsBoardList(int cp) {
 	
-		return adminDao.selectGoodsBoardList();
+		int boardlistCount = adminDao.boardlistCount();
+		
+		Pagination pagination = new Pagination(boardlistCount, cp);
+		
+		
+		List<GoodsBoard> boardList = adminDao.selectGoodsBoardList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("boardList",boardList);
+		
+		
+		
+		return map;
 	}
 
 	/**

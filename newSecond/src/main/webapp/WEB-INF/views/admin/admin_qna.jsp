@@ -128,10 +128,10 @@
                 
                     <!-- 첫 페이지로 이동 -->
                     <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=1${sp}">&lt;&lt;</a></li>
+                    <li><a href="/admin/admin/admin_qna?cp=1${sp}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                    <li><a href="/admin/admin/admin_qna?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
                
                     <!-- 특정 페이지로 이동 -->
@@ -147,7 +147,7 @@
                         
                             <c:otherwise>
                                 <!-- 현재 페이지를 제외한 나머지 -->
-                                <li><a href="/admin/admin_qna/${qnaNo}?cp=${i}${sp}">${i}</a></li>
+                                <li><a href="/admin/admin/admin_qna?cp=${i}${sp}">${i}</a></li>
                             </c:otherwise>
                         </c:choose>
 
@@ -165,10 +165,10 @@
                     <li><a href="#">10</a></li> --%>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
 
                 </ul>
             </div>

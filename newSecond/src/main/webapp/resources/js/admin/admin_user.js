@@ -122,6 +122,8 @@ for(let i=0; i<block.length; i++){
   states[i].innerText = '블락';
   block[i].style.display = "none";
   blockH[i].style.display = "block";
+  blockH[i].style.margin = "0px";
+
   }
   else return;
 
@@ -163,6 +165,8 @@ for(let i=0; i<block.length; i++){
   states[i].innerText = '정상';
   blockH[i].style.display = "none";
   block[i].style.display = "block";
+  block[i].style.margin = "0px";
+
   }
   else return;
 

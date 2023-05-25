@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="UserList" value="${UserList}"/>
+<c:set var="pagination" value="${userMap.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -76,23 +76,26 @@
             </tr>
             <tbody>
             <c:choose>
-                <c:when test="${empty UserList}">
+                <c:when test="${empty userMap.userList}">
                 <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
                 <tr>
                     <th colspan="6">목록이 존재하지 않습니다.</th>
                 </tr>
+
+                ${userMap.userList}
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${UserList}" var="User">
+                    <c:forEach items="${userMap.userList}" var="user">
                         <tr>
                         <td><input type="checkbox" class="admin_user_checkbox" name="" id=""></td>
-                            <td class="admin_user_checkbox_no">${User["USER_NO"]}</td>
-                            <td>${User["USER_EMAIL"]}</td>
-                            <td class="admin_user_states">${User["USER_STATUS"]}</td>
-                            <td>${User["ENROLL_DT"]}</td>
+                            <td class="admin_user_checkbox_no">${user["USER_NO"]}</td>
+                            <td>${user["USER_EMAIL"]}</td>
+                            <td class="admin_user_states">${user["USER_STATUS"]}</td>
+                            <td>${user["ENROLL_DT"]}</td>
                           <td>
 
-                          <input type="hidden" value="${User['USER_NO']}" class="signOutUserNo">
+                   
+                          <input type="hidden" value="${user['USER_NO']}" class="signOutUserNo">
                             <button class="admin_user_tableBtn forcedsignOut show" id="forcedsignOut">강제탈퇴</button>
                             <button class="admin_user_tableBtn signOutH" id="signOutH">탈퇴해제</button>
                             </td>
@@ -111,6 +114,49 @@
 
     </div>
  </form>
+
+ <div class="pagination-area">
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
+                    <li><a href="/admin/admin_user?cp=1${sp}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/admin/admin_user?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <!-- 현재 보고있는 페이지 -->
+                                <li><a class="current">${i}</a></li>
+
+                            </c:when>
+                        
+                            <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/admin/admin_user?cp=${i}${sp}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+             
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/admin/admin_user/?cp=${i}">&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/admin/admin_user?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+                </ul>
+            </div>
+             <%-- <input type="text" name="cp" value="${param.cp}"> --%>
+       </c:forEach>
+
 
 <script src="\resources\js\admin\admin_user.js"></script>
 

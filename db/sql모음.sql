@@ -306,9 +306,13 @@ WHERE GOODS_NO = '222';
 SELECT *
 FROM "users";
 
-UPDATE "users"
+UPDATE ""
 SET USER_STATUS ='A'
 WHERE USER_NO='36';
 
+
+	SELECT COUNT(*) 
+	FROM "goods_board"
+	ORDER BY GOODS_NO  DESC;
 
 
