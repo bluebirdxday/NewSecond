@@ -14,9 +14,9 @@
     
     <main class="content--post__topMargin">
 <%-- form 태그 시작 --%>
-    <form action="/writing/submit" method="POST" enctype="multipart/form-data">
+    <form action="/myGoods/modifySubmit" method="POST" enctype="multipart/form-data">
     <section class="content--post__background">
-        <section class="content--post__topFix">글쓰기
+        <section class="content--post__topFix">게시글 수정
             <div class="requiredMark">*: 필수 항목</div>
         </section>
 
@@ -31,7 +31,7 @@
                 </div>
                 <article>
 <%-- 제목 name="title" --%>                
-                    <input class="textLimit50" id="title" name="title" type="text" placeholder="제목을 입력해주세요." maxlength="50" required>
+                    <input class="textLimit50" id="title" name="title" type="text" placeholder="제목을 입력해주세요." maxlength="50" value="${goodsBoard.goodsTitle}" required>
                 </article>
             </div>
             <div class="post--main__inputImage">
@@ -51,7 +51,6 @@
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김(미리보기) --%>
                             <%-- <img src="325r4325r4" data-id="NI"> --%>
-                            <%-- <img src="기본 이미지" onerror="this.src='/resources/src/img/no_image.jpeg'"/> --%>
                         </div>
                     </div>
                 </article>
@@ -69,13 +68,13 @@
                         name="detailText"
                         required
                         placeholder="구입 연도, 브랜드, 사용감, 하자 유무 등 판매하고자 하는 상품과 관련된 정보를 포함하여 게시글 내용을 작성해주세요.(500자 이내)"
-                        maxlength="500"></textarea>
+                        maxlength="500">${goodsBoard.goodsDescr}</textarea>
                 </article>
             </div>
             <div class="post--main__inputPrice">
                 <div>
 <%-- 가격 name="price" --%>                
-                    <label for="priceInput" class="labelTitle">가격</label><span>*</span><input type="number" min="1" name="price" placeholder="10000" id="priceInput" required>원
+                    <label for="priceInput" class="labelTitle">가격</label><span>*</span><input type="number" min="1" name="price" placeholder="10000" id="priceInput" value="${goodsBoard.goodsPrice}" required>원
                 </div>
             </div>
             <div class="post--main__inputQuantity">
@@ -112,9 +111,9 @@
                         </div>
 <%-- 카테고리 name="category2" --%>                        
                         <div id="category--2depth">
-                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.<input type="radio" name="category2" disabled required></div>
-                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류" required></label>
-                                <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류" required></label> --%>
+                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div>
+                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류"></label>
+                                <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
                         </div>
                     </article>
                 </div>

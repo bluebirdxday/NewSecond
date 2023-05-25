@@ -76,8 +76,16 @@
                                         <label for="navMenu"><img src="/resources/src/img/menu.png"></label>
                                         <input type="checkbox" id="navMenu">
                                         <div class="modifyAndDelete">
-                                            <a href="/myGoods/modify">수정</a>
-                                            <a href="/myGoods/delete">삭제</a>
+                                            <form id="modifyForm" action="/myGoods/modify" method="POST">
+                                                <input type="hidden" name="goodsTitle" value="${goodsBoard.goodsTitle}">
+                                                <input type="hidden" name="goodsPrice" value="${goodsBoard.goodsPrice}">
+                                                <input type="hidden" name="image" value="${goodsBoard.filesList}">
+                                                <input type="hidden" name="goodsDescr" value="${goodsBoard.goodsDescr}">
+                                                <input type="hidden" name="goodsNo" value="${goodsNo}">
+                                                <input type="hidden" name="userId" value="${shop.userNo}">
+                                            </form>
+                                            <a href="#" id="modifyBtn">수정</a>
+                                            <a href="/myGoods/delete?goodsNo=${goodsNo}&userNo=${shop.userNo}" id="deleteBtn">삭제</a>
                                         </div>
                                     </div>
                                 </div>
