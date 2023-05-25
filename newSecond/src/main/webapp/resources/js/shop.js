@@ -207,7 +207,6 @@ function follow(passiveUserNo, loginUserNo, tab){
             selectFollowList(followList, "following");
     })
     .catch(()=>{ 
-        console.log(111);
         if(tab=="shopOwnerFollow"){
             changeProfileFollowBtn(tab, loginUserNo);
             return;

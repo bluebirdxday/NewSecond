@@ -74,7 +74,7 @@
                 </c:if>
                 
                 <c:if test="${empty notificationList}" >
-                    <div class="emptyNotification">현재 활동 알림이 없습니다.</div>
+                    <div class="emptyNotification">현재 활동 알림이 없습니다</div>
                 </c:if>
 
 
@@ -155,8 +155,12 @@
 
                             </c:forEach>
                         </c:if>
+
+                        <c:if test="${empty notificationList}" >
+                            <div class="emptyNotification">현재 키워드 알림이 없습니다</div>
+                        </c:if>
                         
-                        <div class="notice--tab2__item">
+                        <%-- <div class="notice--tab2__item">
                             <div class="notice--tab2__item-first">
                                 <img src="/resources/src/img/blackimg.jpg">
                             </div>
@@ -165,7 +169,7 @@
                                 <div>게시글 제목</div>
                             </div>
                             <div class="notice--tab2__item-third">1시간 전</div>
-                        </div>
+                        </div> --%>
 
 
                                             <%-- <c:if test="${notification.notificationType=='K'}" >

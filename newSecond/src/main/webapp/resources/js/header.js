@@ -1,6 +1,7 @@
 
 /* 희진 : 팔로우 알림 + 키워드 알림 */
 let notificationSock2 = new SockJS("/notificationSock");
+let likeBoardNotificationSock2 = new SockJS("/likeBoardNotificationSock");
 
 notificationSock2.onmessage = function(e) {
     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 msg 변수에 저장.
@@ -8,7 +9,11 @@ notificationSock2.onmessage = function(e) {
 
     let liveMessage;
 
-    if(msg.notificationType=="F"){
+    console.log(msg);
+    console.log(msg.notificationType);
+
+    if(msg.notificationType=="F" || msg.notificationType=="L"){
+        
         liveMessage = msg.shopTitle + msg.notificationMessage;
         document.getElementById('alarmBody').innerText = liveMessage;
     }
@@ -29,3 +34,21 @@ notificationSock2.onmessage = function(e) {
     alarmTrigger.click();
 }
 
+
+// likeBoardNotificationSock2.onmessage = function(e){
+    
+//     const msg = JSON.parse(e.data);
+    
+//     let liveMessage;
+    
+//     console.log(msg);
+//     console.log(msg.notificationType);
+    
+//     if(msg.notificationType=="L"){
+        
+//         liveMessage = msg.shopTitle + msg.notificationMessage;
+//         document.getElementById('alarmBody').innerText = liveMessage;
+//     }
+    
+//     alarmTrigger.click();
+// }
