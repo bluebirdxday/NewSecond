@@ -23,7 +23,7 @@ more.addEventListener("click", e => {
     .then(resp => resp.json())
     .then(moreGoodsList => {
         if(moreGoodsList.length>0){
-            for(var i=0; i<moreGoodsList.length; i++){
+            for(var i=0; i<12; i++){
                 const goodsDiv = document.createElement("div");
                 goodsDiv.classList.add("goods");
                 goodsListTable.append(goodsDiv);
@@ -72,19 +72,15 @@ more.addEventListener("click", e => {
 
                 goodsDiv.append(a);
             }
-
-        }else{
-            // 오류 없으면 수정
-            document.getElementById('toastBody').innerText = "더 조회할 상품이 없습니다";
-            document.getElementById('liveToast').classList.add('text-bg-danger');
-            toastTrigger.click();
         }
-
-        if(moreGoodsList.length<=12){
+        
+        if(moreGoodsList.length == 12 ) {
             const moreButton = document.getElementById("viewMoreGoods");
-            moreButton.setAttribute("style","display:none");
+            moreButton.style.display="none";
         }
-    })
-    .catch(err=>console.log(err));
+
+    }).catch(err=>{const moreButton = document.getElementById("viewMoreGoods");
+                moreButton.style.display="none";});
 
 });
+

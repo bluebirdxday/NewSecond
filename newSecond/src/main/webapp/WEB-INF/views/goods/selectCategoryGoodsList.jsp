@@ -63,6 +63,7 @@
                                 <c:choose>
                                     <c:when test="${not empty Goods.thumbnail}">
                                         <img src="${Goods.thumbnail}" 
+                                        onerror="this.src='/resources/src/img/no_image.jpeg'"
                                         >
                                     </c:when>
                                     <c:otherwise>
