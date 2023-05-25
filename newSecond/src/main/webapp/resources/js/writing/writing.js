@@ -571,12 +571,8 @@ const submit = document.getElementById("submitBtn");
 submit.addEventListener("click", (e) =>  {
 
     var titleCheck = document.getElementById("title");
-    var imageCheck = document.getElementById("fileInput");
     var detailTextCheck = document.getElementById("detailText");
     var priceCheck = document.getElementById("priceInput");
-    var quantityCheck = document.getElementById("quantityInput");
-    var conditionCheck = document.getElementsByName("condition");
-    var category2Check = document.getElementsByName("category2");
     
     if(titleCheck.value.trim() === "") {
         alert("제목을 입력해주세요.");
@@ -595,7 +591,6 @@ submit.addEventListener("click", (e) =>  {
         priceCheck.focus();
         return false;
     }
-
 
     /* 최종 제출 방지 */
 
