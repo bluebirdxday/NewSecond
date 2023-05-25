@@ -393,8 +393,17 @@
 	
 	<!-- 상준: 게시글 이미지 수정 -->
 	<update id="myGoodsImageModify">
-	
+		UPDATE "files"
+		<foreach collection="list" item="img" separator=" UNION ALL ">
+			SET FILE_NO = SEQ_FILE_NO.NEXTVAL,
+				FILE_NAME = #{img.fileName},
+				FILE_ORDER = #{img.fileOrder},
+				FILE_PATH = #{img.filePath}
+			FROM DUAL
+		</foreach>
+		WHERE GOODS_NO = #{goodsNo}
 	</update>
+		
 	
 		
 		
