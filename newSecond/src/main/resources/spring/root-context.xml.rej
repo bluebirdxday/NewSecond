@@ -1,0 +1,11 @@
+diff a/newSecond/src/main/resources/spring/root-context.xml b/newSecond/src/main/resources/spring/root-context.xml	(rejected hunks)
+@@ -33,6 +33,9 @@
+ 		<!-- 유민님 학원 컴퓨터 지갑 경로 -->
+ 		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/tools/semi/Wallet_orcl" /> -->
+ 
++
++	   <property name="url" value="jdbc:oracle:thin:@(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g169b588428e47f_orcl_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))" />
++
+ 		<property name="username" value="ADMIN" />
+ 		<property name="password" value="Kh_yunseul_23" />
+ 

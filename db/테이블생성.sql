@@ -583,3 +583,9 @@ UPDATE "notifications" SET NOTIFICATION_KIND = 'N';
 
 ALTER TABLE "notifications" ADD NOTIFICATION_URL VARCHAR2(90);
 COMMENT ON COLUMN "notifications"."NOTIFICATION_URL" IS '연결 주소';
+
+ALTER TABLE "notifications" ADD THUMB_NAIL VARCHAR2(100);
+
+COMMENT ON COLUMN "notifications"."THUMB_NAIL" IS '키워드 알림의 경우 썸네일';
+
+

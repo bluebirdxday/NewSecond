@@ -63,4 +63,11 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.updateReview(review);
 	}
+
+
+	// 알림을 위한 후기 조회
+	@Override
+	public Review selectReivewByGoodsNo(int goodsNo) {
+		return dao.selectReivewByGoodsNo(goodsNo);
+	}
 }

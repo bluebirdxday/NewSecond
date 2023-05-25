@@ -74,6 +74,13 @@
     
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+    <script>
+        const addedReview = ${addedReview};
+    </script>
+
     <script src="/resources/js/reviewList.js"></script>
 
 
