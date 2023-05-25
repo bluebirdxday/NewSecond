@@ -179,6 +179,8 @@ textarea:focus, input:focus{
 .myshop--info__title{
     font-size: 20px;
     font-weight: 700;
+    white-space: nowrap;
+    margin: 0 10px 0 70px
 }
 
 /* 내상점 콘텐츠 소개글 */

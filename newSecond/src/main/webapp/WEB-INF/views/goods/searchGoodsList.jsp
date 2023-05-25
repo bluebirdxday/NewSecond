@@ -37,13 +37,27 @@
                     <%-- <div><input type="checkbox" class="soldoutExcept" id="check1" onclick="soldOutCheck()">
                         <label for="check1"> 판매 완료 상품 제외</label>
                     </div> --%>
+                    
                     <!-- 기능별 조회 -->
-                    <div class="selectSort" id="selectSort">
-                        <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
-                        <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
-                        <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
-                        <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
-                    </div>
+                    
+                    <c:choose>
+                        <c:when test="${not empty searchGoodsList}">
+                            <div class="selectSort" id="selectSort">
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="selectSort" id="selectSort" style="display:none">
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <c:choose>
                     <%-- 해당 검색 결과 없다면 --%>

@@ -22,6 +22,7 @@
  <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->
     <hr>
     <!-- 문의사항 테이블 -->
+    <div class="notice_read_tablewrap">
     <table class="notice_read_table" border="1">
             <tr>
                 <th>번호</th>
@@ -45,7 +46,7 @@
             <div class="notice_read_content">
                 <div>${Notice.noticeContent}</div>
             </div>
-            
+            </div>
     
    
     
