@@ -6,6 +6,7 @@
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
+<c:set var="query" value="${param.query}"/>
 
 <!DOCTYPE html>
 <html lang="ko">

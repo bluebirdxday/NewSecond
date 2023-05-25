@@ -45,6 +45,9 @@ public class GoodsBoardController {
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
 			Model model) {
 		
+		searchName.replaceAll("<[^>]*>", "");
+		System.out.println(searchName);
+		
 		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
 		// 조회 결과
@@ -53,6 +56,7 @@ public class GoodsBoardController {
 		return "goods/searchGoodsList";
 	}
 	
+	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
 	@ResponseBody
 	@GetMapping("/search/goodsList/{listSort}")
 	public List<GoodsBoard> selectSortedList(@PathVariable("listSort") String listSort,
@@ -73,13 +77,6 @@ public class GoodsBoardController {
 
 		return service.moreGoods(numAndSearchName);
 	}
-	
-	// 상품 게시글 목록 판매완료 제외 조회
-	
-	
-	
-	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
-	
 	
 	
 	// 상품 게시글 상세 조회
