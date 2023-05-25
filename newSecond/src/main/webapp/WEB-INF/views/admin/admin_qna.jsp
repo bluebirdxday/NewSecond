@@ -30,7 +30,7 @@
 
     <!-- -------------------- -->
 
-    <span class="amdmin_qna_logout">로그아웃</span>
+    <span class="amdmin_qna_logout"><a href="/user/logout">로그아웃</a></span>
 
     <div class="admin_qna_wrap">
         <div class="admin_qna_bar">문의관리</div>

@@ -27,7 +27,7 @@
     </ul>
 
     <!-- -------------------- -->
-  
+      <span class="amdmin_user_logout"><a href="/user/logout">로그아웃</a></span>
 
     <div class="admin_user_wrap">
         <div class="admin_user_bar">회원관리</div>
