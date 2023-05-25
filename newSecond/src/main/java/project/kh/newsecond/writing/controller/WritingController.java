@@ -54,7 +54,6 @@ public class WritingController {
 			HttpSession session
 			) throws IllegalStateException, IOException {
 		
-		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1);  };
 		if(writing.getCategory2().equals("가방"))			{writing.setCategoryNo(2);  };
