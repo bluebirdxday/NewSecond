@@ -137,15 +137,12 @@ public class ShopController {
 			RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
 		
 		
-		System.out.println(shopNewProfile);
-		
-		
 		if(shopNewProfile.getSize()==0) {
 			shop.setShopProfile(service.selectShopInfo(shop.getUserNo()).getShopProfile());
 		}
 		
 		int userNo = shop.getUserNo();
-		String webPath = "/resources/src/img/profile";
+		String webPath = "/resources/src/img/profile/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
 		int result = service.updateShopInfo(shop, shopNewProfile,  webPath, filePath);
