@@ -11,48 +11,31 @@ const reviewStars = document.querySelector("input[name='reviewStars']");
 const goodsTitle = document.querySelector("input[name='goodsTitle']");
 const reviewMessage = document.querySelector("textarea[name='reviewMessage']");
 
+const textarea = document.querySelector(".writereview--textarea>textarea");
+const textareaDiv = document.querySelector(".writereview--textarea");
+
+
+
+// textarea 포커스
+textarea.addEventListener('input', ()=>{
+    // textarea의 값이 비어있는지 확인
+    if (textarea.value.trim() !== '') {
+        textareaDiv.style.border = "2px solid #E3E3E3";
+        textarea.style.backgroundColor = "#ffffff";
+        textareaDiv.style.backgroundColor = "#ffffff";
+    } else {
+      // 값이 없을 경우 배경 색상을 초기화
+    textarea.style.backgroundColor = '';
+    textareaDiv.style.backgroundColor = '';
+    textareaDiv.style.border = 'none';
+    }
+});
 
 
 if(reviewForm != null){  
     
     window.onload=()=>{
     
-        // textarea 포커스in
-        const textarea = document.querySelector(".writereview--textarea>textarea");
-        const textareaDiv = document.querySelector(".writereview--textarea");
-        
-        // textarea 값이 변경될 때마다 checkTextarea 함수를 호출합니다.
-        textarea.addEventListener('input', ()=>{
-            // textarea의 값이 비어있는지 확인합니다.
-            if (textarea.value.trim() !== '') {
-                textareaDiv.style.border = "2px solid #E3E3E3";
-                textarea.style.backgroundColor = "#ffffff";
-                textareaDiv.style.backgroundColor = "#ffffff";
-            } else {
-              // 값이 없을 경우 배경 색상을 초기화합니다.
-            textarea.style.backgroundColor = '';
-            textareaDiv.style.backgroundColor = '';
-            textareaDiv.style.border = 'none';
-            }
-        });
-
-        // textarea.addEventListener("focusin", ()=>{
-        //     textareaDiv.style.border = "2px solid #E3E3E3";
-        //     textarea.style.backgroundColor = "#ffffff";
-        //     textareaDiv.style.backgroundColor = "#ffffff";
-            
-        // });
-        
-        // textarea.addEventListener("focusout", ()=>{
-        //     textareaDiv.style.border = "none";
-            
-        //     if(textarea.innerText==""){
-        //         textarea.style.backgroundColor = "#F0F0F0";
-        //         textareaDiv.style.backgroundColor = "#F0F0F0";
-        //     }
-        // });
-        
-        
         // 후기 작성 가능 리스트 드롭다운
         document.querySelector(".writereview--dropdown__btn").addEventListener("click", ()=>{
             dropdown();
@@ -159,31 +142,27 @@ if(updateReviewForm != null){
 
     updateReviewForm.addEventListener("submit", e=>{
 
-        // 리뷰 별점 미작성 시
-        if(reviewStars.value.trim()==""){
-            alert("별점을 입력해주세요.");
-            e.preventDefault();
-            return;
-        }
-
-        // 구매내역 미선택 시
-        if(goodsTitle.value.trim()==""){
-            alert("후기를 작성하고자 하는 구매내역을 선택해주세요.");
-            e.preventDefault();
-            return;
-        }
-
         // 상세 후기 미작성 시
         if(reviewMessage.value.trim()==""){
-            alert("상세후기를 작성해주세요.");
+            document.getElementById('liveToast').classList.remove('text-bg-primary');
+            document.getElementById('liveToast').classList.add('text-bg-danger');
+            document.getElementById('toastBody').innerText = "상세후기를 작성해주세요";
+            toastTrigger.click();
+
             reviewMessage.focus();
             e.preventDefault();
             return;
         }
 
+        if(reviewMessage.value.trim().length>200){
+            alert("후기는 200자를 초과할 수 없습니다.");
+            message = "후기는 200자를 초과할 수 없습니다";
+            alertType = "fail";
+            reviewMessage.focus();
+            e.preventDefault();
+        }
+
     });
-
-
     
 
 }

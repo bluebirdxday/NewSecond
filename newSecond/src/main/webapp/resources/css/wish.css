@@ -1,19 +1,33 @@
 
+.wishPage--wholeContainer{
+  width: 1080px;
+  margin: auto;
+}
+
+
 /* -------------------- */
 
 /* 상단 제목 */
 .wish_bar_container{
-    width: auto;
-    background-color:#8ab2e24b;
-    margin-top: 160px;
-    
-  }
+  width: auto;
   
-  .wish_bar{
-      margin: 10px 10px;
-      font-size: 30px;
-      font-style: italic;  
-  }
+}
+  
+.wish_bar{
+  margin-top: 160px;
+  background-color: #C2D3EB;
+  height: 100px;
+  display: grid;
+  grid-template-areas: ". . title title . . . . . .";
+  place-items: center;
+}
+
+.wish_bar--title{
+  grid-area: title;
+  color: #2365B9;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
   /* ---------------조회 서비스---------- */
 /* 선택삭제 및 조회서비스 전체 div */
@@ -71,7 +85,7 @@
 
 }  
 
- img{
+.wish_imgDiv img{
     width: 200px;
     height: 200px; 
     padding: 0;
@@ -92,10 +106,10 @@
 }
 
 /* ------------------이미지 체크박스-------------------- */
- .wish_checkbox{
-     position: absolute; 
-     top: 0px; 
-     right: 0px;
+.wish_checkbox{
+    position: absolute; 
+    top: 0px; 
+    right: 0px;
 }
 
 /* 체크박스 레벨 */

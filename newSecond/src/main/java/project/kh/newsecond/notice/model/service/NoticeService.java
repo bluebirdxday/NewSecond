@@ -10,7 +10,7 @@ public interface NoticeService {
 
 	List<Notice> selectNoticeList();
 
-	List<Notice> selectNoticeOneList(int noticeNo);
+	Notice selectNoticeOneList(int noticeNo);
 
 
 

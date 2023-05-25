@@ -13,10 +13,11 @@ public class SearchController {
 	
 	@Autowired
 	private SearchService service;
+//	
+//	@GetMapping("/goodsList")
+//	public String searchGoodsList() {
+//		return "goods/searchGoodsList";
+//	}
 	
-	@GetMapping("/goodsList")
-	public String searchGoodsList() {
-		return "goods/searchGoodsList";
-	}
 
 }

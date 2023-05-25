@@ -14,17 +14,39 @@
 		<typeAlias type="project.kh.newsecond.shop.model.dto.Follow" alias="Follow" />
 		<typeAlias type="project.kh.newsecond.review.model.dto.Review" alias="Review" />
 		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.GoodsBoard" alias="GoodsBoard" />
+		<typeAlias type="project.kh.newsecond.notice.model.dto.Notice" alias="Notice" />
+		<typeAlias type="project.kh.newsecond.admin.model.dto.Admin" alias="Admin" />
+		<typeAlias type="project.kh.newsecond.qna.model.dto.Qna" alias="Qna" />
 		<typeAlias type="project.kh.newsecond.notification.model.dto.NotificationKeyword" alias="NotificationKeyword" />
+		<typeAlias type="project.kh.newsecond.notification.model.dto.Notification" alias="Notification" />
+		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Files" alias="Files" />
+		<typeAlias type="project.kh.newsecond.goodsboard.model.dto.Category" alias="Category"/>
+		
+		<typeAlias type="project.kh.newsecond.writing.model.dto.Writing" alias="Writing" />
+		<typeAlias type="project.kh.newsecond.writing.model.dto.WritingImage" alias="WritingImage" />
+		<typeAlias type="project.kh.newsecond.priceView.model.dto.PriceViewKeyword" alias="PriceViewKeyword" />
+		
+		
+		<typeAlias type="project.kh.newsecond.wish.model.dto.Wish" alias="Wish" />
 	</typeAliases>
 	
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/user-mapper.xml" />
+		<mapper resource="/mappers/myPage-mapper.xml" />
 		<mapper resource="/mappers/shop-mapper.xml" />
 		<mapper resource="/mappers/goodsboard-mapper.xml" />
+		<mapper resource="/mappers/notice-mapper.xml" />
+		<mapper resource="/mappers/admin-mapper.xml" />
 		<mapper resource="/mappers/notification-mapper.xml" />
 		<mapper resource="/mappers/follow-mapper.xml" />
+		<mapper resource="/mappers/search-mapper.xml" />
+		
+		<mapper resource="/mappers/writing-mapper.xml" />
+		<mapper resource="/mappers/priceView-mapper.xml" />
+		<mapper resource="/mappers/qna-mapper.xml" />
+		<mapper resource="/mappers/wish-mapper.xml" />
 	</mappers>
 
 

@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+            <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="pagination" value="${map.pagination}"/>
+
 
 
 <!DOCTYPE html>
@@ -9,14 +11,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_user</title>
-    <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_qna.css">
+    <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_qna.css">
 </head>
 <body>
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+              <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
     
            <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
@@ -41,20 +43,21 @@
                 <button  class="admin_qna_searchBtn">문의조회</button>
             </span>
         </div>
-        <div class="admin_qna_raidos">
+        <form action="" name="myRadio">
+        <div class="admin_qna_raidosWrap">
             <span>
-            <label ><input type="radio" name="admin_qna_raidos" id="">전체</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">거래신고</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">회원/계정</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">오류/제안</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">채팅/알람</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="">기타문의</label>
-         
+            <label ><input type="radio" name="admin_qna_raidos" id="all" value="all">전체</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="trade" value="T">거래신고</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="user" value="U">회원/계정</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="erroe" value="E">오류/제안</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="chatting" value="C">채팅/알람</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="etc" value="O">기타문의</label>
         </span>
+        </form>
         </div>
     <div class="admin_qna_result">
         <span >검색결과 : </span> 
-            <span class="admin_qna_counttOne">4</span>
+             <span id="checkboxCount">0</span>
             <span>/ 총</span>
             <span class="admin_qna_countAll">4</span>
             <span>건</span>
@@ -63,8 +66,8 @@
         <div class="admin_qna_tableWrap">
         <table class="admin_qna_table" style="border-collapse: collapse;">
             <thead>
-            <tr >
-                <th><input type="checkbox" name="qna_checkbox" id="" value='selectall'
+            <tr>
+                <th><input type="checkbox" name="qna_checkbox"  class="admin_qna_checkboxAll" id="" value='selectall'
                     onclick='qnaSelectAll(this)'></th>
                 <th >번호</th>
                 <th>회원번호</th>
@@ -72,75 +75,94 @@
                 <th>제목</th>
                 <th>작성일</th>
                 <th>답변상태</th>
+                <th>삭제상태</th>
             </thead>
             </tr>
             <tbody>
-            <!-- <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>번호</td>
-                <td>회원번호</td>
-                <td>신고유형</td>
-                <td>제목</td>
-                <td>작성일</td>
-                <td>
-                <button class="admin_user_tableStatus answer[In]Complete">답변상태</button>
-                </td>
-                <td>
-            </tr> -->
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>4</td>
-                <td>010</td>
-                <td>거래신고</td>
-                <td><a href="\admin\admin_qna_read">사기 당했어요(상세페이지 예시)</a></td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerComplete">답변완료</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>3</td>
-                <td>1100</td>
-                <td>오류/제안</td>
-                <td>오류 났어요</td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerIncomplete">답변 미등록</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>2</td>
-                <td>120</td>
-                <td>채팅/알람</td>
-                <td>채팅 내용 신고할게요</td>
-                <td>2023.04.27</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerComplete">답변완료</span>
-                </td>
-                <td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="qna_checkbox" id=""></td>
-                <td>1</td>
-                <td>125</td>
-                <td>기타문의</td>
-                <td>로그아웃이 안돼요</td>
-                <td>2023.04.05</td>
-                <td>
-                    <span class="admin_qna_tableStatus answerIncomplete">답변 미등록</span>
-                </td>
-                <td>
-            </tr>
+            <c:choose>
+                <c:when test="${empty map.qnaList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+
+                <c:otherwise>
+                    <c:forEach items="${map.qnaList}" var="qna">
+                        <tr>
+                            <td><input type="checkbox"class="admin_qna_checkbox"name="" id=""></td>
+                            <td>${qna.qnaNo}</td>
+                            <td>${qna.userNo}</td>
+                             <c:if test="${qna.qnaCategory=='T'}" >
+                                <td>거래신고</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='U'}" >
+                                <td>회원/계정</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='E'}" >
+                                <td>오류/제안</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='C'}" >
+                                <td>채팅/알람</td>
+                            </c:if>
+                            <c:if test="${qna.qnaCategory=='O'}" >
+                                <td>기타문의</td>
+                            </c:if>
+                            <td><a href='/admin/admin_qna_read/${qna.qnaNo}'>${qna.qnaTitle}</a></td>
+                            <td>${qna.qnaEnrollDate}</td>
+                            <td>${qna.qnaCheckFl}</td>
+                           <td>${qna.qnaDeleteFl}</td> 
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </tbody>
         </table>
     </div>
 
     </div>
 
-<script src="\resources\js\admin_qna.js"></script>
+<div class="pagination-area">
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
+                    <li><a href="/admin/admin/admin_qna?cp=1${sp}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/admin/admin/admin_qna?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <!-- 현재 보고있는 페이지 -->
+                                <li><a class="current">${i}</a></li>
+
+                            </c:when>
+                        
+                            <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/admin/admin/admin_qna?cp=${i}${sp}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+
+
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+                </ul>
+            </div>
+<script src="\resources\js\admin\admin_qna.js"></script>
 </body>
 </html>

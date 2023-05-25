@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <link rel="stylesheet" href="/resources/css/footer.css">
 
 
-<footer class="realFooter">
+
+<footer class="realFooter border-top mt-5">
     <section class="footer--logo">
         <img src="/resources/src/img/LOGO.png" class="footerHomeLogo">
     </section>
@@ -25,20 +27,20 @@
         <a href="/notice/notice"><strong>공지사항</strong></a>
     </section>
 
-    <%-- <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/> --%>
-    <c:if test="${not empty loginUser}" >
-		<script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
-	</c:if>
+    <jsp:include page="/WEB-INF/views/util/alarmMessage.jsp"/>
+    <jsp:include page="/WEB-INF/views/util/toastMessage.jsp"/>
 
 </footer>
 
+<script src="/resources/bootstrap/js/bootstrap.bundle.js"></script>
 
 <c:if test="${not empty message}" >
     <script>
-        alert('${message}');
-        // toastTrigger.click();
+        toastTrigger.click();
     </script>
 </c:if>
+
+
 
 <c:if test="${empty loginUser}" >
     <script>
@@ -68,5 +70,17 @@
         document.getElementById('toastBody').innerText = "로그인 후 이용가능합니다";
         toastTrigger.click();
     });
+    </script>
+</c:if>
+
+
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+<c:if test="${not empty alarm}" >
+    <script>
+        alarmTrigger.click();
     </script>
 </c:if>

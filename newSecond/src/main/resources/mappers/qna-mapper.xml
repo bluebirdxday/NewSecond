@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="qnaMapper">
+
+      <resultMap type="Qna" id="qna_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="qnaNo" column="QNA_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userNo" column="USER_NO" />
+      <result property="qnaType" column="QNA_TYPE" />      
+      <result property="qnaTitle" column="QNA_TITLE" />
+      <result property="qnaContent" column="QNA_CONTENT" />
+      <result property="qnaEnrollDate" column="QNA_ENROLL_DATE" />
+      <result property="qnaDeleteFl" column="QNA_DELETE_FL" />
+      <result property="qnaCheckFl" column="QNA_CHECK_FL" />
+      <result property="qnaCategory" column="QNA_CATEGORY" />
+
+   
+   </resultMap>
+   
+     <resultMap type="User" id="user_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userEmail" column="USER_EMAIL" />
+      <result property="userPassword" column="USER_PASSWORD" />
+      <result property="userNickname" column="USER_NICKNAME" />
+      <result property="userTel" column="USER_TEL" />
+      <result property="userAddress" column="USER_ADDRESS" />
+      <result property="userImage" column="USER_IMG" />
+      <result property="userStatus" column="USER_STATES" />
+      <result property="enrollDate" column="ENROLL_DT" />
+      <result property="userRole" column="USER_ROLE" />
+   
+   </resultMap>
+   
+	<insert id="qnaInsert" parameterType="Qna" useGeneratedKeys="true">
+	
+	<selectKey order="BEFORE" resultType="_int" keyProperty="qnaNo">
+		SELECT SEQ_QNA_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	
+	INSERT INTO "qna"
+	VALUES 
+	(SEQ_QNA_NO.NEXTVAL
+	<if test="userNo == 0">	,NULL	</if>
+	<if test="userNo != 0">	,{userNo}	</if>
+	,#{qnaTitle}
+	,#{qnaContent}
+	,SYSDATE
+	,DEFAULT
+	,DEFAULT
+	,#{qnaCategory})
+	</insert>
+   
+   
+   
+      
+      
+</mapper>

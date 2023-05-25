@@ -8,9 +8,10 @@ const qnaHead = document.querySelector('.qna_head');
     document.getElementsByClassName('qnaList').onclick = ()=>{
       showMenu(value);
     };
+    
     qna_dropdown = () => {
       var v = document.querySelector('.qna_dropdown-content');
-      var qna_dropbtn = document.querySelector('.qna_dropbtn')
+      var qna_dropbtn = document.querySelector('.qna_dropbtn');
       v.classList.toggle('show');
       qna_dropbtn.style.borderColor = '#005EEE';
 
@@ -18,16 +19,36 @@ const qnaHead = document.querySelector('.qna_head');
 
     showMenu=(value)=>{
       var qna_dropbtn_content = document.querySelector('.qna_dropbtn_content');
-      var qna_dropbtn_click = document.querySelector('.qna_dropbtn_click');
       var qna_dropbtn = document.querySelector('.qna_dropbtn');
+      const qnaCategory = document.querySelector("input[name='qnaCategory']");
 
-     qna_dropbtn_content.innerText = '';
       qna_dropbtn_content.innerText = value;
+     
+      if(value=="거래신고"){
+        qnaCategory.value = 'T';
+      }
+      
+      if(value=="회원/계정"){
+        qnaCategory.value = 'U';
+      }
+
+      if(value=="오류/제안"){
+        qnaCategory.value = 'E';
+      }
+      
+      if(value=="채팅/알람"){
+        qnaCategory.value = 'C';
+      }
+      if(value=="기타문의"){
+        qnaCategory.value = 'O';
+      }
+
       qna_dropbtn_content.style.color = '#005EEE';
       qna_dropbtn.style.borderColor = '#005EEE';
       
     }
   }
+
   window.onclick= (e)=>{
     if(!e.target.matches('.qna_dropbtn_click')){
       var qna_dropdowns = document.getElementsByClassName("qna_dropdown-content");
@@ -65,3 +86,5 @@ const qnaHead = document.querySelector('.qna_head');
       modal.style.display = "none";
     }
   }    */
+
+  

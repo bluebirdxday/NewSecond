@@ -9,37 +9,6 @@ if(maxKeyword!=null){
 }
 
 
-// //키워드 추가 버튼 클릭 시
-// const addKeyword = document.getElementById("addKeyword");
-
-// addKeyword.addEventListener("click", ()=>{
-    
-//     const newDiv = document.createElement("div");
-//     const newChildDiv = document.createElement("div");
-//     const newChildDiv2 = document.createElement("div");
-//     const newChildDiv2Child = document.createElement("img");
-    
-//     const inputKeyword = document.querySelector(".keywordedit--input>input");
-
-//     newDiv.setAttribute("class", "keywordedit--item");
-
-//     newChildDiv.innerText = inputKeyword.value;
-
-//     newChildDiv2Child.setAttribute("src", "/resources/src/img/minus-button.png");
-//     newChildDiv2Child.setAttribute("class", "keyword--btn__delete");
-    
-//     newChildDiv2.appendChild(newChildDiv2Child);
-    
-//     newDiv.appendChild(newChildDiv);
-//     newDiv.appendChild(newChildDiv2);
-    
-//     document.querySelector(".keywordedit--content__list").appendChild(newDiv);
-    
-//     addKeyword();
-    
-// });
-
-
 const deleteKeywordList = document.querySelectorAll(".keyword--btn__delete");
 
 if(deleteKeywordList != null){
@@ -65,16 +34,22 @@ const keyword = document.querySelector('input[name="keyword"]');
 insertKeywordText.addEventListener("submit", (e)=>{
     
     if(keyword.value.trim().length<2){
-        alert("키워드를 최소 2글자 이상 입력해주세요.");
+        document.getElementById('toastBody').innerText = "키워드를 최소 2글자 이상 입력해주세요.";
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        document.getElementById('liveToast').classList.remove('text-bg-primary');
         e.preventDefault();
         keyword.value = "";
     }
     
     if(keyword.value.trim().length>20){
-        alert("키워드는 최대 20글자까지 가능합니다.");
+        document.getElementById('toastBody').innerText = "키워드는 최대 20글자까지 가능합니다.";
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        document.getElementById('liveToast').classList.remove('text-bg-primary');
         e.preventDefault();
         keyword.value = "";
     }
+
+    toastTrigger.click();
     
 });
 
@@ -82,8 +57,6 @@ insertKeywordText.addEventListener("submit", (e)=>{
 // 키워드 삭제 버튼 클릭 시
 function deleteKeyword(keywordNo) {
 
-    console.log(userNo);
-    console.log(keywordNo);
     if(confirm("정말 삭제하시겠습니까?")){
         fetch("/notification/editKeyword/delete", {
             method: "POST",
@@ -94,16 +67,21 @@ function deleteKeyword(keywordNo) {
             .then(result => {
 
                 if (result>0) {
-                    alert("키워드가 삭제되었습니다.");
-                    location.reload();
+                    document.getElementById('toastBody').innerText = "키워드가 삭제되었습니다.";
+                    document.getElementById('liveToast').classList.add('text-bg-primary');
+                    document.getElementById('liveToast').classList.remove('text-bg-danger');
                 } else {
-                    alert("키워드 삭제에 실패하였습니다.");
+                    document.getElementById('toastBody').innerText = "키워드가 삭제에 실패하였습니다.";
+                    document.getElementById('liveToast').classList.add('text-bg-danger');
+                    document.getElementById('liveToast').classList.remove('text-bg-primary');
                 }
-        
-                }
+            }
             ).catch(error => {
-            console.log(error.message);
+                console.log(error.message);
             });
 
-    }
+        }
+        
+        toastTrigger.click();
+        setTimeout(() => location.reload(), 1000);
 }

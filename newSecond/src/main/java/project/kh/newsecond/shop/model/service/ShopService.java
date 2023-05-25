@@ -1,11 +1,15 @@
 package project.kh.newsecond.shop.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 
 public interface ShopService {
@@ -18,10 +22,10 @@ public interface ShopService {
 	
 
 	/** 게시글 리스트 조회
-	 * @param userNo
+	 * @param sortMap
 	 * @return board
 	 */
-	List<GoodsBoard> selectGoodsBoardList(int userNo);
+	List<GoodsBoard> selectGoodsBoardList(Map<String, Object> sortMap);
 
 
 	/** 상점 오픈일 조회
@@ -35,14 +39,14 @@ public interface ShopService {
 	 * @param map
 	 * @return followList
 	 */
-	List<Map<String, Object>> selectFollowList(Map<String, Integer> map);
+	List<Follow> selectFollowList(Map<String, Integer> map);
 
 
 	/** 팔로워 리스트 조회
 	 * @param map
 	 * @return followerList
 	 */
-	List<Map<String, Object>> selectFollowerList(Map<String, Integer> map);
+	List<Follow> selectFollowerList(Map<String, Integer> map);
 
 
 	/** 팔로 유무 조회(로그인 유저->상점주인)
@@ -64,5 +68,22 @@ public interface ShopService {
 	 * @return result
 	 */
 	int unFollow(Follow unfollow);
+
+
+	/** 상점 편집
+	 * @param shop
+	 * @param shopNewProfile
+	 * @param webPath
+	 * @param filePath
+	 * @return
+	 */
+	int updateShopInfo(Shop shop, MultipartFile shopNewProfile, String webPath, String filePath) throws IllegalStateException, IOException;
+
+
+	/** 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	 * @param goodsBoard
+	 * @return list
+	 */
+	List<GoodsBoard> selectSortGoodsList(GoodsBoard goodsBoard);
 
 }

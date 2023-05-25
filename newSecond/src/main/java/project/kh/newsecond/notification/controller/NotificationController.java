@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
@@ -31,7 +33,16 @@ public class NotificationController {
 	
 	// 알림 페이지로 이동
 	@GetMapping("/notification")
-	public String notification() {
+	public String notification(@SessionAttribute(value="loginUser", required=false) User loginUser, Model model) {
+		
+		int loginUserNo = loginUser.getUserNo();
+		
+		int keywordCount = service.selectKeywordCount(loginUserNo);
+		List<Notification> notificationList = service.selectNotificationList(loginUserNo);
+		
+		model.addAttribute("keywordCount", keywordCount);
+		model.addAttribute("notificationList", notificationList);
+		
 		return "notification/notification";
 	}
 	
@@ -59,14 +70,18 @@ public class NotificationController {
 		
 		int result = service.insertKeyword(map);
 		
+		String alertType = null;
 		String message = null;
 		
 		if(result>0) {
+			alertType = "success";
 			message = "키워드가 추가되었습니다";
 		}else {
+			alertType = "fail";
 			message = "키워드 추가 실패";
 		}
 		
+		ra.addFlashAttribute("alertType", alertType);
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:/notification/editKeyword";
@@ -76,10 +91,29 @@ public class NotificationController {
 	// 키워드 삭제
 	@PostMapping("/editKeyword/delete")
 	@ResponseBody
-	public int deleteReview(@RequestBody NotificationKeyword keyword) {
+	public int deleteReview(@RequestBody NotificationKeyword keyword, RedirectAttributes ra) {
 	    return service.deleteKeyword(keyword);
 	}
 	
+	
+	// 키워드 알림을 위한 리스트 조회
+	@GetMapping("/selectKeywordNotiList")
+	@ResponseBody
+	public List<Notification> selectKeywordNotiList(@RequestParam("goodsNo") int goodsNo){
+		return service.selectKeywordNotiList(goodsNo);
+	}
+	
+	
+	@GetMapping("/selectNewPostNotification")
+	@ResponseBody
+	public List<Notification> selectNewPostNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo){
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", userNo);
+		map.put("goodsNo", goodsNo);
+		
+		return service.selectNewPostNotification(map);
+	}
 	
 	
 }

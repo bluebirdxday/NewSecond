@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="pagination" value="${map.pagination}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,14 +10,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admid_notice</title>
-   <link rel="stylesheet" href="\resources\css\adminSide.css">
-    <link rel="stylesheet" href="\resources\css\admin_notice.css">
+   <link rel="stylesheet" href="\resources\css\admin\adminSide.css">
+    <link rel="stylesheet" href="\resources\css\admin\admin_notice.css">
 </head>
 <body>
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+            <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
      
         <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
@@ -37,58 +39,118 @@
         <div class="admin_notice_Btn">
         
             <button class="admin_notice_write"><a href="\admin\admin_notice_write">글쓰기</a></button>
-            <button class="admin_notice_HiddenBtn">선택 숨김</button>
-            <button class="admin_notice_DelBtn">선택 삭제</button>
+            <button class="admin_notice_DelBtn" id="deleteBtn">선택 삭제</button>
         </div>
 
-
+  
         
         <!-- ----테이블------ -->
+     <form action="/admin/admin_notice_write/update" method="POST" 
+        class="notice-update" id="noticeUpdateFrm" >
+
         <div class="admin_notice_tableWrap">
         <table class="admin_notice_table" style="border-collapse: collapse;">
             <thead>
             <tr >
-                <th><input type="checkbox" name="" id=""></th>
+                <th><input type="checkbox" class="admin_notice_checkbox_all" value='selectall
+                'onclick='boardSelectAll(this)'></th>
                 <th >번호</th>
                 <th>제목</th>
                 <th>작성일</th>
                 <th>조회수</th>
+                <th>삭제여부</th>
                 <th colspan="2">수정</th>
             </thead>
             </tr>
-            <tbody>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>1</td>
-                <td><a href="\admin\admin_notice_read">뉴세컨마켓 사용 가이드</a></td>
-                <td>2023.04.20</td>
-                <td>220</td>
-                <td>
-                <button class="admin_notice_tableBtn">내용 수정</button>
-                </td>
-                <td>
-                <button class="admin_notice_tableBtn">필독 취소</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>2</td>
-                <td>뉴세컨마켓 사용 가이드</td>
-                <td>2023.04.19</td>
-                <td>330</td>
-                <td>
-                    <button class="admin_notice_tableBtn">공지 복구</button>
-                    </td>
-                    <td>
-                    <button class="admin_notice_tableBtn">필독 등록</button>
-                    </td>
-            </tr>
+            <c:choose>
+                <c:when test="${empty map.noticeList}">
+                <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
+                <tr>
+                    <th colspan="6">목록이 존재하지 않습니다.</th>
+                </tr>
+                </c:when>
+
+                <c:otherwise>
+                    <c:forEach items="${map.noticeList}" var="notice">
+                        <tr>
+                            <td><input type="checkbox" class="admin_notice_checkbox" value="${notice.noticeNo}"></td>
+                            <td class="admin_notice_checkbox_no">${notice.noticeNo}</td>
+                            <td><a href='/admin/admin_notice_read/${notice.noticeNo}'>${notice.noticeTitle}</a></td>
+                            <td>${notice.noticeEnrollDate}</td>
+                            <td>${notice.noticeViewCount}</td>
+                            <td>${notice.noticeFl}</td>
+                            <td>
+                            <button type="submit" class="admin_notice_tableBtn" id="updateBtn"><a href="/admin/admin_notice_update/${notice.noticeNo}">내용 수정</a></button>
+                            </td>
+                            <td>
+                            <button type="button" class="admin_notice_tableBtn">필독 등록</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+
+            </form>
+            
         </tbody>
         </table>
     </div>
 
     </div>
 
-<script src="\resources\js\admin_notice.js"></script>
+
+      <div class="pagination-area">
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
+                    <li><a href="/admin/admin_notice?cp=1${sp}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/admin/admin_notice?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <!-- 현재 보고있는 페이지 -->
+                                <li><a class="current">${i}</a></li>
+
+                            </c:when>
+                        
+                            <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/admin/admin_notice?cp=${i}${sp}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+
+
+                    
+                    <%-- <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li> --%>
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/admin/admin_notice?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/admin/admin_notice?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+                </ul>
+            </div>
+
+
+<script src="\resources\js\admin\admin_notice.js"></script>
 </body>
 </html>

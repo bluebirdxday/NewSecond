@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     /* place-items: center; */
     /* position: fixed; */
@@ -37,39 +37,69 @@
     font-weight: bolder;
     box-shadow: 5px 5px 5px #dbdee1;
     text-align: center;
-    justify-self: center;
+    justify-self: start;
 }
 
 .selectSort{
-    justify-content: flex-end;
     color: #8f8d8d;
+    justify-self: end;
+
+}
+
+[name="listSort"]:checked + .listSort{
+    color: #2365b9;
 }
 
 /* 판매 완료 상품 제외 체크박스 */
-.soldoutExcept + label{
+/* .soldoutExcept + label{
     width: auto;
     height: 27px;
     display: inline-block;
     cursor: pointer;
     border-radius: 15%;
-}
+} */
 
 /* 최신순,낮은가격순,높은가격순,인기순 */
 .container--inner__top :not([class="container--inner__top_sort_split"]){
     cursor: pointer;
 }
+
+
 .container--inner__top :not([class="container--inner__top_sort_split"]):checked{
     color: #000;
     font-weight: bold;
 }
 
-/* 검색한 상품 목록들 */
+
+.container--inner__middle_noList{
+    width: 1060px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 70px 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 검색한 상품 목록이 없을 때 */
+.noGoodsList{
+    width: 1060px;
+    height: 300px;
+    margin: 80px;
+    font-size: 1.5em;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 검색 결과 나타나는 영역 */
 .container--inner__middle{
     width: 1060px;
     /* border: 1px solid red; */
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 70px 0 0;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .container--inner__middle>div[class*=goods]{
@@ -80,24 +110,55 @@
     float: left;
 }
 
+.goods{
+    position: relative;
+}
+
 .container--inner__middle img{
-    width: 240px;
+    width: 210px;
+    height: 210px;
+    overflow: hidden;
+    object-fit: cover;
     border-radius: 15%;
-    /* padding: 15px; */
     display: block;
     box-shadow: 5px 7px 5px #c1c1c1;
     /* border: 1px solid red; */
+    /* position: absolute; */
 }
 .container--inner__middle img:hover{
-box-shadow: 5px 5px 5px #a09f9f;
-transition-duration: 0.2s;
+    box-shadow: 5px 5px 5px #a09f9f;
+    transition-duration: 0.2s;
 }
+
+.status{
+    position: absolute;
+    top: 15px;
+    right: 23%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 7px;
+    padding: 0 5px;
+}
+
+.soldout{
+    background-color: #cc0202;
+    
+}
+.reserved{
+    background-color: #0fc42a;
+
+}
+
+/* --bs-blueposition: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px; width: 95px; font-weight: 900; text-align: center; color: rgb(80, 91, 240); -webkit-text-stroke: 1px rgb(230, 235, 253); -webkit-text-fill-color: rgb(80, 91, 240);
+--xt-fill-color: rgb(80, 91, 240); */
+
 
 /* 상품 가격, 타이틀 */
 .container--inner__middle div[class*=goods_]{
     /* border: 1px solid red; */
     padding: 5px 15px;
-    display: block;
+    display: flex;
 }
 
 .container--inner__middle a{
@@ -110,12 +171,18 @@ transition-duration: 0.2s;
 .container--inner__middle a:hover{color:#2365b9;}
 
 .goods_price{
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 10px;
+    width: 210px;
+}
+
+.goods_title{
+    font-size: 1.2em;
 }
 
 .container--inner__bottom{
+    width: 100%;
     height: 100px;
 }
 .more{
@@ -123,7 +190,7 @@ transition-duration: 0.2s;
     font-size: 1.5em;
     font-weight: bold;
     color: #2365b9;
-    border-radius: 40%;
+    border-radius: 50%;
     background-color: #e4ecf3;
     box-shadow: 3px 3px 3px #d5d6d7;
     border: none;

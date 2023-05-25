@@ -9,8 +9,14 @@
 /* ---------------------------------------------------- */
 
 /* topMargin */
-.content--post__topMargin{
+.content--post__topMargin {
     margin-top: 150px;
+}
+
+/* 라벨 제목 */
+.labelTitle {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 /* 화면 전체 배경 */
@@ -261,7 +267,10 @@
     border: 3px solid #C2D3EB;
     border-radius: 20px;
 }
-
+.post--main__ImageScroller > img:hover {
+    border: 3px solid red;
+    cursor: pointer;
+}
 
 /* 스크롤 모양 */
 ::-webkit-scrollbar {
@@ -415,35 +424,43 @@
 
 /* 1depth */
 .category--1depth__clothing:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__fashion:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__digital:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__life:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__hobby:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 .category--1depth__other:hover {
-    background-color: #C2D3EB;
-    color: black;
+    color: #2365B9;
+    cursor: pointer;
 }
 
 /* 2depth */
-#category--2depth > div:hover {
-    background-color: #2365B9;
-    color: white;
+#category--2depth > label:hover {
+    display: inline;
+    color: #2365B9;
+    cursor: pointer;
 }
+#category--2depth > label > input {
+    display: none;
+}
+#category--2depth > label > input:checked {
+    display: unset;
+}
+
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */

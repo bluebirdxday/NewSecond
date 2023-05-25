@@ -12,6 +12,7 @@
       <result property="noticeContent" column="NOTICE_CONTENT" />
       <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
       <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
    </resultMap>
    
 	<!--공지사항 게시글 조회  -->
@@ -22,8 +23,8 @@
 	</select>
 	
 	
-	
-	<select id="selectNoticeOneList" resultType="_int">
+	<!-- 공지사항 게시글 읽어오기 -->
+	<select id="selectNoticeOneList" resultMap="notice_rm">
 	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
 	FROM "notice"
 	WHERE NOTICE_NO = #{noticeNo}

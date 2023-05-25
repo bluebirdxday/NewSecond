@@ -6,7 +6,11 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/root-context.xml</param-value>
+		<param-value>
+		classpath:spring/root-context.xml
+		classpath:spring/spring-security.xml
+		</param-value>
+		
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -45,7 +49,23 @@
 			<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	
+	<error-page>
+		<!--1. 요청주소가 잘못됨
+			2. jsp 경로가 잘못됨
+			3. 프로젝트가 컴파일 안됨  -->
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/common/error.jsp</location>
+	</error-page>
 	
 
 </web-app>

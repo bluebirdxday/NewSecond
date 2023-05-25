@@ -25,12 +25,12 @@ public class ReviewDAO {
 		return sqlSession.selectList("shopMapper.selectCanWriteReviewList", userNo);
 	}
 
-	// 리뷰 등록
+	// 후기 등록
 	public int insertReview(Review review) {
 		return sqlSession.insert("shopMapper.insertReview", review);
 	}
 
-	// 리뷰 삭제
+	// 후기 삭제
 	public int deleteReview(int reviewNo) {
 		return sqlSession.update("shopMapper.deleteReview", reviewNo);
 	}
@@ -38,6 +38,11 @@ public class ReviewDAO {
 	// 특정 후기 조회
 	public Review selectReview(int reviewNo) {
 		return sqlSession.selectOne("shopMapper.selectReview", reviewNo);
+	}
+
+	// 후기 수정
+	public int updateReview(Review review) {
+		return sqlSession.update("shopMapper.updateReview", review);
 	}
 	
 	

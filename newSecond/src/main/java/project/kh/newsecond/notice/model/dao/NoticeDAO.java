@@ -23,9 +23,9 @@ public class NoticeDAO {
 		return sqlSession.selectList("NoticeMapper.selectNoticeList");
 	}
 
-	public List<Notice> selectNoticeOneList(int noticeNo) {
+	public Notice selectNoticeOneList(int noticeNo) {
 		
-		return sqlSession.selectList("NoticeMapper.selectNoticeOneList",noticeNo);
+		return sqlSession.selectOne("NoticeMapper.selectNoticeOneList",noticeNo);
 	}
 
 

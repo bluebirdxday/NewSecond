@@ -15,6 +15,11 @@ public class Notice {
 	private String noticeTitle;
 	private String noticeContent;
 	private String noticeEnrollDate;
+	private String noticeFl;
 	private int noticeViewCount;
+	public int getUserNo() {
+		
+		return 0;
+	}
 	
 }

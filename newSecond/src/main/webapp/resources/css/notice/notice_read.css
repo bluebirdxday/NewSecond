@@ -1,0 +1,69 @@
+/* 내부 내용 */
+.notice_read_wrap{
+
+    padding: 50px 50px;
+    height: 1000px;
+    margin-top: 160px;
+
+}
+/* 상단 제목 바 */
+.notice_read_bar{
+color: #005eee;
+font-weight: bold;
+font-size: 25px;
+margin: 20px 20px; 
+}
+
+/* 테이블 */
+.notice_read_table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #8AB2E2;
+    caption-side: top; 
+    float: inherit;
+
+}
+
+
+th{
+    width: 10%;
+    background-color: #8AB2E2;
+    padding: 5px;
+}
+
+/* 문의 내용 */
+.notice_read_content{
+    display: block;
+    border: 1px solid black;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* 문의 댓글 */
+.notice_read_comment{
+    display: block;
+    border: 1px solid #8AB2E2;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #8AB2E2;
+  
+}
+
+/* 문의 버튼 */
+.notice_read_BtnWrap{
+    display: flex;
+    justify-content: end;
+   
+}
+
+.notice_read_Btn{
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: #ccc;
+    padding: 5px 5px;
+
+}

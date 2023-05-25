@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="AdminMapper">
+
+   <resultMap type="Notice" id="notice_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="noticeNo" column="NOTICE_NO" />
+      <result property="noticeTitle" column="NOTICE_TITLE" />
+      <result property="noticeContent" column="NOTICE_CONTENT" />
+      <result property="noticeEnrollDate" column="NOTICE_ENROLL_DATE" />
+      <result property="noticeViewCount" column="NOTICE_VIEWCOUNT" />
+      <result property="noticeFl" column="NOTICE_FL" />
+   </resultMap>
+   
+   <resultMap type="User" id="user_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="userNo" column="USER_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userEmail" column="USER_EMAIL" />
+      <result property="userPassword" column="USER_PASSWORD" />
+      <result property="userNickname" column="USER_NICKNAME" />
+      <result property="userTel" column="USER_TEL" />
+      <result property="userAddress" column="USER_ADDRESS" />
+      <result property="userImage" column="USER_IMG" />
+      <result property="userStatus" column="USER_STATES" />
+      <result property="enrollDate" column="ENROLL_DT" />
+      <result property="userRole" column="USER_ROLE" />
+   
+   </resultMap>
+   
+     <resultMap type="Qna" id="qna_rm">
+      <!-- DB의 기본 키(복합키면 여러 개 작성) -->
+      <id property="qnaNo" column="QNA_NO" />
+      
+      <!-- DB의 일반 컬럼들 -->
+      <result property="userNo" column="USER_NO" />
+      <result property="qnaType" column="QNA_TYPE" />      
+      <result property="qnaTitle" column="QNA_TITLE" />
+      <result property="qnaContent" column="QNA_CONTENT" />
+      <result property="qnaEnrollDate" column="QNA_ENROLL_DATE" />
+      <result property="qnaDeleteFl" column="QNA_DELETE_FL" />
+      <result property="qnaCheckFl" column="QNA_CHECK_FL" />
+      <result property="qnaCategory" column="QNA_CATEGORY" />
+
+   
+   </resultMap>
+   
+   	<resultMap type="GoodsBoard" id="goodsboard_rm">
+		<!-- DB의 기본 키(복합키면 여러 개 작성) -->
+		<id property="goodsNo" column="GOODS_NO" />
+		
+		<!-- DB의 일반 컬럼들 -->
+		<result property="userNo" column="USER_NO" />
+		<result property="categoryNo" column="CATEGORY_NO" />
+		<result property="goodsTitle" column="GOODS_TITLE" />
+		<result property="goodsDescr" column="GOODS_DESCR" />
+		<result property="goodsPrice" column="GOODS_PRICE" />
+		<result property="viewCount" column="VIEW_COUNT" />
+		<result property="wishCount" column="WISH_COUNT" />
+		<result property="sellEnrollDate" column="SELL_ENROLL_DT" />
+		<result property="goodsStatus" column="GOODS_STATUS" />
+	</resultMap>
+   
+   
+   
+	<!--공지사항 게시글 조회  -->
+	<select id="selectNoticeList" resultMap="notice_rm">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT,NOTICE_FL
+	FROM "notice"
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+	<!--  공지사항 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "notice"
+	WHERE NOTICE_FL = 'N'
+	ORDER BY NOTICE_NO DESC
+	</select>
+	
+		<!--  문의사항 게시판의 삭제되지 않은 게시글의 수 조회-->	
+	<select id="getqnaListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+	SELECT COUNT(*)
+	FROM "qna"
+	WHERE QNA_DELETE_FL = 'N'
+	ORDER BY QNA_NO DESC
+	</select>
+	
+	<!-- 회원 수 조회 -->
+		<select id="userListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+		SELECT COUNT(*)
+		FROM "users"
+		ORDER BY USER_NO DESC
+		</select>
+	
+	
+	
+	
+	<!-- 회원 관리 조회 -->
+   <select id="selectUserList" resultType="HashMap" >
+   	SELECT USER_NO,USER_EMAIL,
+	  CASE 
+	    WHEN USER_STATUS = 'A' THEN '정상'
+	    WHEN USER_STATUS = 'B' THEN '블락'
+	    WHEN USER_STATUS = 'D' THEN '탈퇴'
+	  END AS USER_STATUS
+	  ,ENROLL_DT
+	FROM "users"  
+	ORDER BY USER_NO DESC
+   </select>
+   
+   
+   
+  
+   
+   	<!--문의사항 게시글 조회  -->
+	<select id="selectQnaList" resultMap="qna_rm">
+	SELECT QNA_NO,USER_NO,QNA_TITLE,QNA_CONTENT,QNA_CATEGORY
+	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
+	,QNA_CHECK_FL,QNA_DELETE_FL
+	FROM "qna"
+	ORDER BY QNA_NO DESC
+	</select>
+   
+    
+    <select id="boardlistCount" resultType="_int">
+    SELECT COUNT(*) 
+	FROM "goods_board"
+    </select>
+    
+    
+    
+  <!--  관리자 게시글 조회-->
+   <select id="selectGoodsBoardList" resultType="HashMap">
+	SELECT GOODS_NO,USER_NO,GOODS_TITLE
+		,TO_CHAR(SELL_ENROLL_DT, 'YYYY-MM-DD') SELL_ENROLL_DT,VIEW_COUNT
+		,CASE
+			WHEN GOODS_STATUS = 'A' THEN '정상'
+			WHEN GOODS_STATUS = 'B' THEN '블라인드'
+			WHEN GOODS_STATUS = 'D' THEN '삭제'
+			WHEN GOODS_STATUS = 'E' THEN '판매완료'
+			WHEN GOODS_STATUS = 'R' THEN '예약중'
+		END AS GOODS_STATUS
+	FROM "goods_board"
+	ORDER BY GOODS_NO DESC
+		
+   </select>
+    
+      <!-- 공지사항 게시글 읽어오기 -->
+	<select id="selectNoticeOne" resultMap="notice_rm">
+	SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+	<!-- 문의사항 게시글 읽어오기 -->
+	<select id="selectqnaOne" resultMap="qna_rm">
+	SELECT QNA_NO,QNA_TITLE,USER_NO,QNA_CATEGORY,
+		TO_CHAR(QNA_ENROLL_DATE,'YYYY-MM-DD') QNA_ENROLL_DATE, QNA_CONTENT ,QNA_DELETE_FL
+	FROM "qna"
+	WHERE QNA_NO = #{qndNo}
+	</select>
+	
+	<!--공지사항 게시글 삽입  -->
+	<insert id="noticeInsert" parameterType="Notice" useGeneratedKeys="true">
+	
+	<selectKey order="BEFORE" resultType="_int" keyProperty="noticeNo">
+		SELECT SEQ_NOTICE_NO.NEXTVAL FROM DUAL
+	</selectKey>
+	
+	INSERT INTO "notice"
+	VALUES (#{noticeNo},
+		#{noticeTitle},
+		#{noticeContent}
+		,DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="noticeUpdate">
+	UPDATE "notice" SET 
+	NOTICE_TITLE = #{noticeTitle},
+	NOTICE_CONTENT = #{noticeContent} 
+	WHERE NOTICE_NO = #{noticeNo}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete">
+	DELETE FROM "notice"
+	WHERE NOTICE_NO = #{noticeNo}
+	</delete>
+	
+	<!--공지사항 선택 삭제 *** -->
+ 	<update id="deleteNoticeList">
+	UPDATE "notice" 
+	SET NOTICE_FL = 'Y' 
+	WHERE NOTICE_NO = #{noticeNo}
+	</update> 
+	
+	<!-- 공지사항 조회수 -->
+	<update id="updateReadCount">
+	UPDATE "notice"
+	SET NOTICE_VIEWCOUNT  = NOTICE_VIEWCOUNT +1
+	WHERE NOTICE_NO = #{notice}
+	
+	</update>
+	
+	<!-- 회원 탈퇴  -->
+	<update id="userSignOut">
+	UPDATE "users"
+	SET USER_STATUS = 'D'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
+     
+      <!-- 문의사항 삭제하기 -->
+      <update id="qnaDelete">
+      UPDATE "qna" 
+	  SET QNA_DELETE_FL = 'Y' 
+	  WHERE QNA_NO = #{qnaNo}
+      </update>
+      
+      
+      	<!-- 회원 블락  -->
+	<update id="userBlock">
+	UPDATE "users"
+	SET USER_STATUS = 'B'
+	WHERE USER_NO = #{userNo}
+	</update>
+	
+      	<!-- 회원 블락 해제-->
+	<update id="userBlockH">
+	UPDATE "users"
+	SET USER_STATUS = 'A'
+	WHERE USER_NO = #{userNo}
+	
+	</update>
+	
+	<!-- 게시글 블라인드  -->
+	<update id="boardBlind">
+	UPDATE "goods_board"
+	SET GOODS_STATUS = 'B'
+	WHERE GOODS_NO =#{goodsNo}
+	</update>
+	
+	
+		<!-- 게시글 삭제  -->
+	<update id="boardDelete">
+	UPDATE "goods_board"
+	SET GOODS_STATUS = 'D'
+	WHERE GOODS_NO =#{goodsNo}
+	</update>
+	
+	
+	<select id="radioTrade" resultMap="qna_rm">
+	SELECT * FROM "qna"
+	WHERE QNA_CATEGORY = 'T'
+	</select>
+	
+	
+	<select id="userSelectList" resultMap="user_rm" >
+	SELECT USER_NO,USER_EMAIL,USER_STATUS,ENROLL_DT
+	FROM "users"
+	WHERE "USER_EMAIL" LIKE '%${searchKeyword}%'
+	   OR "USER_NO" LIKE '%${searchKeyword}%'
+	   OR "USER_NICKNAME" LIKE '%${searchKeyword}%'
+	</select>
+	
+      
+</mapper>

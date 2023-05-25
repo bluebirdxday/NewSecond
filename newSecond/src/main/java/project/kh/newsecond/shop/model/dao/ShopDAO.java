@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.shop.model.dto.Follow;
 import project.kh.newsecond.shop.model.dto.Shop;
+import project.kh.newsecond.user.model.dto.User;
 
 @Repository
 public class ShopDAO {
@@ -25,8 +26,8 @@ public class ShopDAO {
 	
 	
 	// 게시글 리스트 조회
-	public List<GoodsBoard> selectGoodsBoardList(int userNo) {
-		return sqlSession.selectList("goodsBoardMapper.selectGoodsBoardList", userNo);
+	public List<GoodsBoard> selectGoodsBoardList(Map<String, Object> sortMap) {
+		return sqlSession.selectList("goodsBoardMapper.selectGoodsBoardList", sortMap);
 	}
 
 	
@@ -37,12 +38,12 @@ public class ShopDAO {
 
 	
 	// 팔로우 리스트 조회
-	public List<Map<String, Object>> selectFollowList(Map<String, Integer> map) {
+	public List<Follow> selectFollowList(Map<String, Integer> map) {
 		return sqlSession.selectList("followMapper.selectFollowList", map);
 	}
 
 	// 팔로워 리스트 조회
-	public List<Map<String, Object>> selectFollowerList(Map<String, Integer> map) {
+	public List<Follow> selectFollowerList(Map<String, Integer> map) {
 		return sqlSession.selectList("followMapper.selectFollowerList", map);
 	}
 
@@ -61,6 +62,18 @@ public class ShopDAO {
 	// 상점 언팔로우
 	public int unFollow(Follow unfollow) {
 		return sqlSession.delete("followMapper.unFollow", unfollow);
+	}
+
+
+	// 상점 편집
+	public int updateShopInfo(Shop shop) {
+		return sqlSession.update("shopMapper.updateShopInfo", shop);
+	}
+
+
+	// 상품 게시글 리스트 조회 (인기순/낮은 가격순/ 높은 가격순)
+	public List<GoodsBoard> selectSortGoodsList(GoodsBoard goodsBoard) {
+		return sqlSession.selectList("goodsBoardMapper.selectGoodsBoardList", goodsBoard);
 	}
 
 }

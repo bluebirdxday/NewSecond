@@ -11,8 +11,8 @@
 		<result property="userPassword" column="USER_PASSWORD" />
 		<result property="userNickname" column="USER_NICKNAME" />
 		<result property="userTel" column="USER_TEL" />
+		<result property="randomString" column="RANDOM_STRING" />
 		<result property="userAddress" column="USER_ADDRESS" />
-		<result property="userImage" column="USER_IMG" />
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
 		<result property="userRole" column="USER_ROLE" />
@@ -21,12 +21,14 @@
 	
 	<!-- 로그인 => 정보 얻어오기 -->
 	<select id="login" parameterType="User" resultMap="user_rm" >
+	
 		SELECT USER_NO, USER_EMAIL, USER_NICKNAME, USER_PASSWORD,
-				USER_TEL, USER_ADDRESS, USER_IMG, USER_ROLE,
+				USER_TEL, USER_ADDRESS, USER_ROLE,
 				TO_CHAR(ENROLL_DT, 'YYYY"년" MM "월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DT
 		FROM "users"
 		WHERE USER_STATUS = 'A'
 		AND USER_EMAIL = #{userEmail}
+		
 	</select>
 	
 	
@@ -36,6 +38,7 @@
 	<!-- email 중복 검사 -->
 	<select id="checkEmail" resultType="int">
 		SELECT COUNT(*) FROM "users"
+		
 		WHERE USER_EMAIL = #{email}
 		AND USER_STATUS = 'A'
 	</select>
@@ -51,7 +54,6 @@
    
    <!-- 다음 회원번호 미리 가져오기 -->
    
-   
    <!-- 회원가입 -->
    <insert id="signUp" parameterType="User">
    
@@ -66,20 +68,28 @@
             #{userNickname},
             #{userTel},
             #{userAddress},
-            NULL, DEFAULT, DEFAULT, DEFAULT
+            DEFAULT, DEFAULT, DEFAULT
             )
    </insert>
    
+   <sql id="">
+   
+   </sql>
    
    <!-- 회원의 상점(프로필) 기본정보 입력 -->
    <insert id="insertShopData" parameterType="User">
-         INSERT INTO "shop"
-      VALUES	(#{userNo},
-               #{userNickname}||'님의 상점',
-               NULL
-               )
-   </insert>
+	  <selectKey keyProperty="randomString" resultType="String" order="BEFORE">
+	    SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS RANDOM_STRING FROM DUAL
+	  </selectKey>
+	  INSERT INTO "shop"
+	  VALUES (
+	    #{userNo},
+	    #{randomString},
+	    '안녕하세요 ' || #{randomString} || ' 상점에 오신 것을 환영합니다!', DEFAULT
+	  )
+	</insert>
    
-      
-      
+   
+
+
 </mapper>

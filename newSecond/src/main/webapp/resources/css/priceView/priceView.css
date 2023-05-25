@@ -110,7 +110,7 @@
 
 
 /* 검색창 */
-.priceView--main__searchBox > div {
+.priceView--main__searchBox > label {
     background-color: white;
     border-radius: 40px;
     width: 500px;
@@ -122,14 +122,14 @@
         ". search button ";
     place-items: center;
 }
-.priceView--main__searchBox > div > input {
+.priceView--main__searchBox > label > input {
     grid-area: search;
     height: 50px;
     width: 350px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
-.priceView--main__searchBox > div > button {
+.priceView--main__searchBox > label > button {
     grid-area: button;
     margin-left: 10px;
     padding: 10px 20px 10px 20px;
@@ -138,7 +138,7 @@
     border-radius: 20px;
     border: none;
 }
-.priceView--main__searchBox > div > button:hover {
+.priceView--main__searchBox > label > button:hover {
     box-shadow: 0 0 0 2px black inset;
 }
 input:focus {
@@ -169,43 +169,66 @@ input:focus {
     border: none;
 }
 .priceView--main__recentSearch > div:first-child > button:hover {
+    background-color: red;
     box-shadow: 0 0 0 2px black inset; /* 안쪽으로 border 주기 */
 }
 
 /* ---------------------------------------------------- */
 
-.priceView--main__recentSearch > div:last-child {
+.priceView--main__recentSearch > div:nth-child(2) {
     background-color: white;
     height: 140px;
     width: 560px;
     border-radius: 20px;
 
     display: flex;
+    flex-direction: column;
     padding: 10px 20px 10px 20px;
 }
-.priceView--main__recentSearch > div:last-child > span {
-    padding: 10px;
-    margin: 5px;
+.recentSearch--1floor, .recentSearch--2floor {
+    height: 60px;
+    display: flex;
+    place-items: center;
+    max-width: 520px;
+    overflow: auto;
+}
+.recentSearch--1floor > span {
     background-color: #2365B9;
-    height: 40px;
-    color:white;
-    border-radius: 10px;
-
-    text-align: center;
-    justify-content: center;
+    font-size: 1.0em;
+    padding: 10px 10px 10px 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    color: white;
 }
-.priceView--main__recentSearch > div:nth-child(2) > span:hover {
-    box-shadow: 0 0 0 2px black inset; /* 안쪽으로 border 주기 */
+.recentSearch--2floor > span {
+    background-color: #2365B9;
+    font-size: 1.0em;
+    padding: 10px 10px 10px 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    color: white;
 }
-.priceView--main__recentSearch > div:nth-child(2) > span:after {
-    content: "\00d7";
-    font-size: 1.5em;
-    line-height: 10px;
+.recentSearch--1floor > span:hover {
+    cursor: pointer;
+}
+.recentSearch--2floor > span:hover {
+    cursor: pointer;
+}
 
+/* 삭제 버튼 */
+.removeBtn {
+    width: 10px;
     padding-left: 5px;
-    padding-top: 5px;
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
-
+.removeBtn:hover {
+    color:red;
+}
 
 /* ---------------------------------------------------- */
 
@@ -236,4 +259,5 @@ input:focus {
     color: white;
     font-weight: bold;
     background-color: #2365B9;
+    cursor: pointer;
 }

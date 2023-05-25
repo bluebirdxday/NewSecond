@@ -30,7 +30,7 @@
 
         <div class="myshop--profileImage__container">
             <div class="myshop--profileImage__crop">
-                <img src="/resources/src/img/myshop_profile.png" class="myshop--profileImage__img">
+                <img src="${shop.shopProfile}" class="myshop--profileImage__img">
             </div>
         </div>
 
@@ -44,17 +44,18 @@
                     </span>
                 </div>
 
-                <div>
+
+                <div class = "myshop--info__btn-container">
                     <c:if test="${loginUserNo==shop.userNo}" >
-                        <div class="myshop--info__btn-edit">편집</div>
+                        <div class="myshop--info__btn-edit" id="img-edit">편집</div>
                     </c:if>
 
                     <c:if test="${loginUserNo!=shop.userNo}" >
                         <c:if test="${checkFollow==0}">
-                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo})">팔로우</button>
+                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo}, 'shopOwnerFollow')">팔로우</button>
                         </c:if>
                         <c:if test="${checkFollow==1}">
-                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo})">언팔로우</button>
+                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo}, 'shopOwnerUnfollow')">언팔로우</button>
                         </c:if>
                     </c:if>
                 </div>
@@ -62,13 +63,8 @@
 
             <div class="myshop--info__middle1">
                 <div class="myshop--info__content">
-                        <c:if test="${empty shop.shopInfo}" >
-                            ${shop.shopTitle}에 오신것을 환영합니다!
-                        </c:if>
-                        
-                        <c:if test="${not empty shop.shopInfo}">
-                            ${shop.shopInfo}
-                        </c:if></div>
+                    ${shop.shopInfo}
+                </div>
             </div>
 
             <div class="myshop--info__middle2">
@@ -82,26 +78,16 @@
                     <div class="myshop--info__openday-txt">${openDays}일 전</div>
                 </div>
 
-
-
-                <c:set var="sellCount" value="0"/>
-                <c:if test="${not empty goodsBoardList}" >
-                    <c:forEach items="${goodsBoardList}" var="goods">
-                        <c:if test="${goods.goodsStatus == 'E'}">
-                            <c:set var="sellCount" value="${sellCount + 1}"/>    
-                        </c:if>
-                    </c:forEach>
-                </c:if>
                 <div>
                     <div class="myshop--info__sellcount">판매건수</div>
-                    <div class="myshop--info__sellcount-txt">${sellCount}회</div>
+                    <div class="myshop--info__sellcount-txt">${shop.sellCount}회</div>
                 </div>
 
             </div>
 
             <div class="myshop--info__bottom">
                 <div class="myshop--info__btn-report">
-                    <a href="#">
+                    <a href="/qna/qna">
                         <img src="/resources/src/img/siren.png">
                         <div>신고하기</div>
                     </a>
@@ -113,41 +99,43 @@
 
     </section>
 
-    <!-- 편집 팝업 -->
-    <section class="myshop--popup__edit">
-        <div class="myshop--popup__background">
-            <div class="myshop--window">
-                <div class="myshop--popup">
-                    <div class="myshop--popup__top">
-                        <div>내 상점 편집</div>
-                        <img src="/resources/src/img/closePopup.png" class="myshop--popup__btn-close"/>
-                    </div>
+    <form action="/shop/updateShopInfo" method="POST" id="updateShopInfoFrm" enctype="multipart/form-data">
+        <!-- 편집 팝업 -->
+        <section class="myshop--popup__edit">
+            <div class="myshop--popup__background">
+                <div class="myshop--window">
+                    <div class="myshop--popup">
+                        <div class="myshop--popup__top">
+                            <div>내 상점 편집</div>
+                            <img src="/resources/src/img/closePopup.png" class="myshop--popup__btn-close"/>
+                        </div>
 
-                    <!-- form 태그 추가 + 저장버튼 클릭 시 제출 필요 -->
-                    <!-- myPage.js, myPage-info.jsp 파일 참고 -->
-                    <div class="myshop--popup__content">
-                        <div>
-                            <img src="/resources/src/img/myshop_profile.png" class="upload">
-                            <img src="/resources/src/img/notifications.png" class="changeProfileImg" style="display: none;">
-                            <input type="file" class="myshop--popup__profile-edit real-upload" accept="image/*" style="display: none;"> <!-- 내상점 이미지 -->
+                        <div class="myshop--popup__content">
+                            <div>
+                                <img src="${shop.shopProfile}" class="upload">  <%-- 선택한 이미지 --%>
+                                <input type="file" name="shopNewProfile" class="myshop--popup__profile-edit real-upload" 
+                                    accept="image/*" style="display: none;">
+                            </div>
+                            <div>
+                                <input type="text" class="myshop--popup__input-edit" name="shopTitle" value="${shop.shopTitle}" autocomplete="off"> 
+                                <span>(<span id="myshopEditInput">0</span>/20)</span>
+                            </div>
+                            <div>
+                                <textarea name="shopInfo" class="myshop--popup__textarea-edit" cols="35" rows="5" maxlength="50">${shop.shopInfo}</textarea>
+                                <span>(<span id="myshopEditTextArea">0</span>/50)</span>
+                            </div>
+                            <input type="hidden" name="userNo" value="${shop.userNo}">
+                            <div>
+                                <button class="myshop--popup__btn-save">저장</button>
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" class="myshop--popup__input-edit" minlength="3" maxlength="20" value="상점명"> 
-                            <span>(<span id="myshopEditInput">0</span>/20)</span>
-                        </div>
-                        <div>
-                            <textarea name="" id="" class="myshop--popup__textarea-edit" cols="35" rows="5" maxlength="50">상점소개</textarea>
-                            <span>(<span id="myshopEditTextArea">0</span>/50)</span>
-                        </div>
-                        <div>
-                            <button class="myshop--popup__btn-save">저장</button>
-                        </div>
+                        
+                        
                     </div>
-                    
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 
     
     <section class="myshop--tab">
@@ -156,10 +144,10 @@
             
             <div class="tabs">
                 <ul>
-                    <li class="tabs--active"><a href="#" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
-                    <li><a href="#" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
-                    <li><a href="#" rel="tab3">팔로잉 <div>${fn:length(followList)}</div></a></li>
-                    <li><a href="#" rel="tab4">팔로워 <div>${fn:length(followerList)}</div></a></li>
+                    <li class="tabs--active"><a href="javascript:void(0);" rel="tab1">상품 <div>${fn:length(goodsBoardList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab2">후기 <div>${fn:length(shop.reviewList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab3">팔로잉 <div id="followingCount">${fn:length(followList)}</div></a></li>
+                    <li><a href="javascript:void(0);" rel="tab4">팔로워 <div id="followerCount">${fn:length(followerList)}</div></a></li>
                 </ul>
             </div>
             
@@ -167,10 +155,10 @@
             <div id="tab1" class="myshop--tab__content tabs--active">
                 <div class="myshop--tab1__content-top">
                         <ul>
-                            <li class="sort--active"><a href="#" rel="">최신순</a></li>
-                            <li><a href="#" rel="">인기순</a></li>
-                            <li><a href="#" rel="">저가순</a></li>
-                            <li><a href="#" rel="">고가순</a></li>
+                            <li class="sort--active"><a href="/shop/${shop.userNo}">최신순</a></li>
+                            <li class="by-popularity"><a href='javascript:void(0);'>인기순</a></li>
+                            <li class="by-lowprice"><a href='javascript:void(0);'>저가순</a></li>
+                            <li class="by-highprice"><a href='javascript:void(0);'>고가순</a></li>
                         </ul>
                 </div> 
 
@@ -178,16 +166,36 @@
                 <div class="myshop--tab1__gridcontainer">
                     <c:if test="${not empty goodsBoardList}" >
                         <c:forEach items="${goodsBoardList}" var="goods">
-                                    <!-- 상품 탭 리스트 아이템(게시글) : 추후에 DB에서 자동으로 로드할 수 있게 기능 구현-->
+                                
+                                <a href="/goods/${goods.goodsNo}">
+                                
                                     <div class="tab1--gridcontainer__item">
                                         <div class="tab1--item__img">
-                                            <img src="/resources/src/img/cat.jpg">
+                                            <img src="${goods.thumbnail}" 
+                                                    <c:if test="${goods.goodsStatus=='E' || goods.goodsStatus=='C'}"> 
+                                                            style="filter : brightness(40%);"</c:if>
+                                            >
+
+                                            <c:if test="${goods.goodsStatus=='E'}" >
+                                                <div class="overlay-text soldout">
+                                                    Sold Out
+                                                </div>
+                                            </c:if>
+                                            
+
+                                            <c:if test="${goods.goodsStatus=='C'}" >
+                                                <div class="overlay-text reserved">
+                                                    Reserved
+                                                </div>
+                                            </c:if>
+                                            
+
                                         </div>
                                         <div class="tab1--item__description">
                                             <div> 
                                             <c:choose>
-                                                <c:when test="${fn:length(goods.goodsTitle) > 10}">
-                                                    ${fn:substring(goods.goodsTitle, 0, 10)}...
+                                                <c:when test="${fn:length(goods.goodsTitle) > 9}">
+                                                    ${fn:substring(goods.goodsTitle, 0, 9)}...
                                                 </c:when>
                                                 
                                                 <c:otherwise>
@@ -197,16 +205,19 @@
                                             </div>
                                             <div>
                                                 <div><fmt:formatNumber value="${goods.goodsPrice}" type="number"/></div>
-                                                <div>3시간 전</div>
+                                                <div>${goods.sellEnrollDate}</div>
                                             </div>
                                         </div>
                                     </div>
+                                
+                                </a>
+
                         </c:forEach>
                     </c:if>
-
                 </div>
+
                 <c:if test="${empty goodsBoardList}" >
-                    <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다.</div>
+                    <div class="tab--content__empty">현재 판매하고 있는 상품이 없습니다</div>
                 </c:if>
 
             </div>
@@ -239,7 +250,7 @@
                     </c:if>
 
                     <c:if test="${empty shop.reviewList}" >
-                        <div class="tab--content__empty">현재 후기가 존재하지 않습니다.</div>
+                        <div class="tab--content__empty">현재 후기가 존재하지 않습니다</div>
                     </c:if>
 
                 </div>
@@ -248,42 +259,33 @@
 
             <!-- 팔로잉 탭 -->
             <div id="tab3" class="myshop--tab__content">
-                <div class="myshop--tab3__gridcontainer">
+                <div class="following_tab myshop--tab3__gridcontainer">
             
                     <c:if test="${not empty followList}" >
                         <c:forEach items="${followList}" var="follow">
                             <div class="tab3--container__item">
+                                <div><img src="${follow.shopProfile}"> </div>
+                                <div>${follow.shopTitle}</div>
                                 <div>
-                                        <c:if test="${empty follow.USER_IMG}" >
-                                        <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
-                                    </c:if>
-
-                                    <c:if test="${not empty follow.USER_IMG}" >
-                                        <img src="${follow.USER_IMG}"> 
-                                    </c:if>
-                                </div>
-                                <div>${follow.SHOP_TITLE}</div>
-                                <div>
-                                    <c:if test="${empty follow.SHOP_INFO}" >
-                                        <div>${follow.SHOP_TITLE}에 오신것을 환영합니다!</div>
-                                    </c:if>
-
-                                    <c:if test="${not empty follow.SHOP_INFO}" >
-                                        <div>${follow.SHOP_INFO}</div>
-                                    </c:if>
+                                    <div>${follow.shopInfo}</div>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follow.PASSIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    
-                                    <%-- 특정 상점의 팔로잉 탭(상점 주인이 팔로하고 있는 유저들을 내가 팔로하고 있는지 아닌지 확인해서
-                                                팔로중이면 언팔로우 버튼 뜨게 / 팔로하고 있지 않으면 팔로잉 버튼 뜨게) 
-                                                요청할 때 필요한 매개변수 2개 : (로그인 유저 번호, 상점 주인이 팔로하고 있는 유저의 번호) --%>
 
-                                                <%-- 애초에 상점에 접속할 때 상점 주인의 팔로잉, 팔로워 탭의 모든 유저들을 로그인 유저가 
-                                                팔로하고 있는지 아닌지 조회해오기 --%>
+                                    <c:if test="${follow.passiveUserNo != loginUserNo}" >
+                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                        <c:if test="${follow.followYou==0}">
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">팔로우</button>
+                                        </c:if>
 
+                                        <c:if test="${follow.followYou==1}" >
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">언팔로우</button>
+                                        </c:if>
+                                    </c:if>
 
-                                    <button class="tab3--item__btn-unfollow tab3--item__btn">언팔로우</button>
+                                    <c:if test="${follow.passiveUserNo == loginUserNo}" >
+                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -291,40 +293,44 @@
                 </div>
 
                 <c:if test="${empty followList}" >
-                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다.</div>
+                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다</div>
                 </c:if>
                 
             </div>
 
             <!-- 팔로워 탭 -->
             <div id="tab4" class="myshop--tab__content">
-                <div class="myshop--tab3__gridcontainer">
+                <div class="follower_tab myshop--tab3__gridcontainer">
                     
                     <c:if test="${not empty followerList}" >
                         <c:forEach items="${followerList}" var="follower">
                             <div class="tab3--container__item">
+                                <div><img src="${follower.shopProfile}"></div>
+                                <div>${follower.shopTitle}</div>
                                 <div>
-                                    <c:if test="${empty follower.USER_IMG}" >
-                                        <img src="/resources/src/img/basic_profile.png">  <%-- 기본 프로필 이미지 --%>
-                                    </c:if>
-
-                                    <c:if test="${not empty follower.USER_IMG}" >
-                                        <img src="${follower.USER_IMG}">  <%-- 기본 프로필 이미지 --%>
-                                    </c:if>
-                                </div>
-                                <div>${follower.SHOP_TITLE}</div>
-                                <div>
-                                    <c:if test="${empty follower.SHOP_INFO}" >
-                                        <div>${follower.SHOP_TITLE}에 오신것을 환영합니다!</div>
-                                    </c:if>
-
-                                    <c:if test="${not empty follower.SHOP_INFO}" >
-                                        <div>${follower.SHOP_INFO}</div>
-                                    </c:if>
+                                        <div>${follower.shopInfo}</div>
                                 </div>
                                 <div>
-                                    <a href="/shop/${follower.ACTIVE_USER_NO}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
-                                    <div class="tab3--item__btn-follow tab3--item__btn">팔로우</div>
+
+                                    <%-- 팔로워 탭에서 팔로워!=로그인회원인 경우 팔로우/언팔로우 버튼 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo != loginUserNo}" >
+
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                        <c:if test="${follower.followYou==0}">
+                                            <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">팔로우</button>
+                                        </c:if>
+
+                                        <c:if test="${follower.followYou==1}" >
+                                            <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">언팔로우</button>
+                                        </c:if>
+                                    </c:if>
+
+
+                                    <%-- 팔로워 탭에서 팔로워==로그인회원인 경우 상점가기 버튼만 보이도록 --%>
+                                    <c:if test="${follower.activeUserNo == loginUserNo}" >
+                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -334,14 +340,15 @@
                 </div>
 
                 <c:if test="${empty followerList}" >
-                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다.</div>
+                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다</div>
                 </c:if>
             </div>
+
         </div>
 
     </section>
 
-    <a href="/review/reviewList">
+    <a href="/writing/write">
         <div class="myshop--btn__fixed-addpost">
             <img src="/resources/src/img/addPost.png">
         </div>
@@ -353,11 +360,21 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <a href="/writing/writing">
-        <button>글쓰기테스트버튼입니다</button>
-    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+    <script>
+        const userNo = ${shop.userNo}
+    </script>
 
     <script src="/resources/js/shop.js"></script>
+
+
+    <c:if test="${not empty edit}">
+        <script>
+            document.querySelector(".myshop--popup__background").classList.add("myshop--popup__show");
+        </script>
+    </c:if>
     
 </body>
 </html>

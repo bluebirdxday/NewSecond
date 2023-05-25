@@ -2,6 +2,8 @@
 .qna_bar_container{
   width: auto;
   background-color:#8ab2e24b;
+  color: #2365B9;
+  font-weight: bold;
   margin-top: 160px;
 }
 
@@ -87,8 +89,21 @@
   display : block;
 }
 
+/* 문의제목 */
+.qna_title{
+  color: #005EEE;
+  border:1px solid #005EEE;
+  border-radius: 3px;
+  margin-top: 10px;
+}
 
+.qna_titleInput{
+  width: 700px;
+  border: none;
+  outline: none;
+}
   
+
 /* -------------문의 내용 쓰는 칸----------------------- */
 
 .qna_content{
@@ -139,7 +154,7 @@
   margin: 10px auto;
 }
 #qna_button{
-   background-color: #dbdfe6;
+   background-color:#005EEE;
    color: white;
    padding: 8px 30px;
    border-radius: 8px;
