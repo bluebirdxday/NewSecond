@@ -568,7 +568,7 @@ const hire2 = document.createElement('hire2');
 /* form 전송 전 필수입력 값 체크 */
 const submit = document.getElementById("submitBtn");
 
-submit.addEventListener("click", () =>  {
+submit.addEventListener("click", (e) =>  {
 
     var titleCheck = document.getElementById("title");
     var imageCheck = document.getElementById("fileInput");
@@ -596,8 +596,18 @@ submit.addEventListener("click", () =>  {
         return false;
     }
 
-    return true; // 폼 전송
 
+    /* 최종 제출 방지 */
+
+    if( // 제출 방지
+        titleCheck.value.trim() === "" ||
+        detailTextCheck.value.trim() === "" ||
+        priceCheck.value.trim() === ""
+    ) {
+        e.preventDefault();
+    }
+
+    return true; // 폼 전송
 
 });
 
