@@ -27,24 +27,74 @@ if(searchForm!=null){
 const listsortList = document.getElementsByName("listSort");
 
 function callSortedGoods(obj){
-    // console.log(obj.value);
-    fetch("/goods/search/goodsList?listSort" + obj.value)
-    .then(resp=>resp.json())
+    console.log(obj.value);
+    fetch("/goods/search/goodsList/" + obj.value)
+    .then(resp => resp.json())
     .then(sortedGoodsList => {
+        clg(sortedGoodsList);
+        clg("uu");
         if(sortedGoodsList.length>0){
-            searchGoodsList = sortedGoodsList;
-        }else{
-            // 오류 없으면 수정
-            document.getElementById('toastBody').innerText = "상품 정렬에 실패했습니다ㅠㅠ";
-            document.getElementById('liveToast').classList.add('text-bg-danger');
-            toastTrigger.click();
-        }
+            document.getElementById("goodsListTable").innerHTML = "";
+            for(var i=0; i<12; i++){
+                const goodsListTable = document.createElement("div");
+                goodsListTable.classList.add("container--inner__middle");
+                goodsListTable.setAttribute("id","goodsListTable");
+                const goodsDiv = document.createElement("div");
+                goodsDiv.classList.add("goods");
+                goodsListTable.append(goodsDiv);
+                
+                const a = document.createElement("a");
+                a.setAttribute("href","/goods/"+sortedGoodsList[i].goodsNo);
+                
+                const img  = document.createElement("img");
+                if(sortedGoodsList[i].thumbnail== null){
+                    img.setAttribute("src","/resources/src/img/no_image.jpeg");
+                }else{
+                    img.setAttribute("src",sortedGoodsList[i].thumbnail);
+                }
+                a.append(img);
+
+                // console.log(sortedGoodsList[i].goodsStatus);
+
+                if(sortedGoodsList[i].goodsStatus=='E'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("soldout");
+                    statusDiv.innerText = "Sold Out";
+                    a.append(statusDiv);
+                }else if(sortedGoodsList[i].goodsStatus=='C'){
+                    const statusDiv = document.createElement("div");
+                    statusDiv.classList.add("status");
+                    statusDiv.classList.add("reserved");
+                    statusDiv.innerText = "Reserved";
+                    a.append(statusDiv);
+                }
+                
+                const priceDiv = document.createElement("div");
+                priceDiv.classList.add("goods_price");
+                priceDiv.innerHTML = sortedGoodsList[i].goodsPrice.toLocaleString('ko-KR');
+                const titleDiv = document.createElement("div");
+                titleDiv.classList.add("goods_title");
+                titleDiv.innerHTML = sortedGoodsList[i].goodsTitle;
+                
+                
+                a.append(priceDiv);
+                a.append(titleDiv);
+
+                goodsDiv.append(a);
+                document.getElementById("goodsListTable").append(goods);
+            }
+        }if(moreGoodsList.length == 12 ){
+            const moreButton = document.getElementById("viewMoreGoods");
+            moreButton.style.display="none";
+        };
     })
-    .catch(err=>console.log(err));
+    .catch(err=>{
+        const moreButton = document.getElementById("viewMoreGoods");
+        moreButton.setAttribute("style","display:none");
+    });
+
 }
-
-
-
 
 // 판매 완료 상품 제외 비동기
 // searchGoodsList 불러온 상품 리스트
