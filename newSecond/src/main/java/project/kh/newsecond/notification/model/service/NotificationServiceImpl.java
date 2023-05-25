@@ -72,4 +72,11 @@ public class NotificationServiceImpl implements NotificationService{
 		return dao.selectKeywordNotiList(goodsNo);
 	}
 
+
+	// 팔로우한 상점 새글 알림
+	@Override
+	public List<Notification> selectNewPostNotification(Map<String, Object> map) {
+		return dao.selectNewPostNotification(map);
+	}
+
 }

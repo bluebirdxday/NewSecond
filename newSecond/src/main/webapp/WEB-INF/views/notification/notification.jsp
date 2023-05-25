@@ -49,7 +49,18 @@
                                     </div>
 
                                     <div class="notice--tab1__item-second" style="font-size:18px;">
-                                        <strong>${notification.shopTitle}</strong>${notification.notificationMessage}
+                                        <%-- 팔로우/관심상품 등록 알림 --%>
+                                        <c:if test="${notification.notificationType!='N'}">
+                                                <strong>${notification.shopTitle}</strong>${notification.notificationMessage}
+                                        </c:if>
+
+                                        <%-- 팔로우한 상점 새글 알림 --%>
+                                        <c:if test="${notification.notificationType=='N'}">
+
+                                            <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
+                                                [${keywordArr[0]}]<br><br>
+                                                <strong>${notification.shopTitle}</strong>${keywordArr[1]}
+                                        </c:if>
                                     </div>
 
                                     <div class="notice--tab1__item-third">${notification.sendDate}</div>

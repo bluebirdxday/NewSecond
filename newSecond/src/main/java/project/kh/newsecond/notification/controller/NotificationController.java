@@ -104,4 +104,16 @@ public class NotificationController {
 	}
 	
 	
+	@GetMapping("/selectNewPostNotification")
+	@ResponseBody
+	public List<Notification> selectNewPostNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo){
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", userNo);
+		map.put("goodsNo", goodsNo);
+		
+		return service.selectNewPostNotification(map);
+	}
+	
+	
 }

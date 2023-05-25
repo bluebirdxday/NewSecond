@@ -21,6 +21,11 @@ notificationSock2.onmessage = function(e) {
         document.getElementById('alarmBody').innerText= liveMessage;
     }
 
+    if(msg.notificationType=="N"){
+        const words = msg.notificationMessage.split('^^');
+        liveMessage = "[" + words[0] +"]     " +  "\n" +  msg.shopTitle + words[1] ;
+        document.getElementById('alarmBody').innerText= liveMessage;
+    }
     alarmTrigger.click();
 }
 

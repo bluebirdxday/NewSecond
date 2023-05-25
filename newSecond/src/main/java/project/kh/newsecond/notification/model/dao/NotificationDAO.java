@@ -61,4 +61,9 @@ public class NotificationDAO {
 		return sqlSession.selectList("NotificationMapper.selectKeywordNotiList", goodsNo);
 	}
 
+	// 팔로우한 상점 새글 알림
+	public List<Notification> selectNewPostNotification(Map<String, Object> map) {
+		return sqlSession.selectList("NotificationMapper.selectNewPostNotification", map);
+	}
+
 }

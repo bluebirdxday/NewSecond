@@ -8,6 +8,10 @@ import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 
+/**
+ * @author user
+ *
+ */
 public interface NotificationService {
 
 
@@ -67,4 +71,11 @@ public interface NotificationService {
 	 * @return keywordNotiList
 	 */
 	List<Notification> selectKeywordNotiList(int goodsNo);
+
+
+	/** 팔로우한 상점 새글 알림
+	 * @param map
+	 * @return newPostNotiList
+	 */
+	List<Notification> selectNewPostNotification(Map<String, Object> map);
 }

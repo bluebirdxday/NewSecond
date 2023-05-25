@@ -127,4 +127,14 @@ if(uploadComplete!=''){
         console.log(err);
     })
 
+    // 상점을 팔로하고 있는 유저들에게 알림 전달
+    fetch("/notification/selectNewPostNotification?userNo="+ goodsUserNo + "&goodsNo=" + goodsNo)
+    .then(resp=>resp.json())
+    .then(newPostNotiList=>{
+        console.log("goodsDetail :" + newPostNotiList);
+        likeNofiticationSock.send(JSON.stringify(newPostNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
+
 }
