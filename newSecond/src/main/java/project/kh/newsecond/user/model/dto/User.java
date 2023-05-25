@@ -19,4 +19,6 @@ public class User {
 	private String userStatus;
 	private String enrollDate;
 	private int userRole;
+	
+	private String randomString;
 }

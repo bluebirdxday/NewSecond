@@ -56,4 +56,14 @@ public class NotificationDAO {
 		return sqlSession.selectList("NotificationMapper.selectNotificationList", userNo);
 	}
 
+	// 키워드 알림을 위한 리스트 조회
+	public List<Notification> selectKeywordNotiList(int goodsNo) {
+		return sqlSession.selectList("NotificationMapper.selectKeywordNotiList", goodsNo);
+	}
+
+	// 팔로우한 상점 새글 알림
+	public List<Notification> selectNewPostNotification(Map<String, Object> map) {
+		return sqlSession.selectList("NotificationMapper.selectNewPostNotification", map);
+	}
+
 }

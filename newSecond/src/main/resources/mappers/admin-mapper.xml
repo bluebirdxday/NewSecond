@@ -90,6 +90,15 @@
 	ORDER BY QNA_NO DESC
 	</select>
 	
+	<!-- 회원 수 조회 -->
+		<select id="userListCount" resultType="_int"> <!-- select는 resultType 꼭 써야됨 -->
+		SELECT COUNT(*)
+		FROM "users"
+		ORDER BY USER_NO DESC
+		</select>
+	
+	
+	
 	
 	<!-- 회원 관리 조회 -->
    <select id="selectUserList" resultType="HashMap" >
@@ -105,14 +114,25 @@
    </select>
    
    
+   
+  
+   
    	<!--문의사항 게시글 조회  -->
 	<select id="selectQnaList" resultMap="qna_rm">
 	SELECT QNA_NO,USER_NO,QNA_TITLE,QNA_CONTENT,QNA_CATEGORY
 	,TO_CHAR(QNA_ENROLL_DATE, 'YYYY-MM-DD') AS QNA_ENROLL_DATE
 	,QNA_CHECK_FL,QNA_DELETE_FL
 	FROM "qna"
+	ORDER BY QNA_NO DESC
 	</select>
    
+    
+    <select id="boardlistCount" resultType="_int">
+    SELECT COUNT(*) 
+	FROM "goods_board"
+    </select>
+    
+    
     
   <!--  관리자 게시글 조회-->
    <select id="selectGoodsBoardList" resultType="HashMap">

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="GoodsBoardList" value="${GoodsBoardList}"/>
 
+<c:set var="pagination" value="${boardMap.pagination}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,7 +18,7 @@
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+             <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
     
         <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
@@ -60,9 +60,8 @@
             </thead>
             </tr>
             <tbody>
-
              <c:choose>
-                <c:when test="${empty GoodsBoardList}">
+                <c:when test="${empty boardMap.boardList}">
                 <%-- 조회된 게시글 목록이 비어있구나 null인 경우 --%>
                 <tr>
                     <th colspan="6">목록이 존재하지 않습니다.</th>
@@ -70,15 +69,15 @@
                 </c:when>
 
                 <c:otherwise>
-                    <c:forEach items="${GoodsBoardList}" var="GoodsBoard">
+                    <c:forEach items="${boardMap.boardList}" var="goodsBoard">
                         <tr>
                             <td><input type="checkbox" class="admin_board_checkbox" name="" id=""></td>
-                            <td class="admin_board_checkbox_no">${GoodsBoard["GOODS_NO"]}</td>
-                            <td>${GoodsBoard["USER_NO"]}</td>
-                            <td><a href="/goods/${GoodsBoard['GOODS_NO']}">${GoodsBoard["GOODS_TITLE"]}</a></td>
-                            <td>${GoodsBoard["SELL_ENROLL_DT"]}</td>
-                            <td>${GoodsBoard["VIEW_COUNT"]}</td>
-                            <td><button class="admin_board_tableBtn">${GoodsBoard["GOODS_STATUS"]}</td>
+                            <td class="admin_board_checkbox_no">${goodsBoard["GOODS_NO"]}</td>
+                            <td>${goodsBoard["USER_NO"]}</td>
+                            <td><a href="/goods/${goodsBoard['GOODS_NO']}">${goodsBoard["GOODS_TITLE"]}</a></td>
+                            <td>${goodsBoard["SELL_ENROLL_DT"]}</td>
+                            <td>${goodsBoard["VIEW_COUNT"]}</td>
+                            <td><button class="admin_board_tableBtn">${goodsBoard["GOODS_STATUS"]}</td>
                         </tr>
                     </c:forEach>
                 </c:otherwise>
@@ -88,6 +87,49 @@
     </div>
 
     </div>
+
+    <div class="pagination-area">
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
+                    <li><a href="/admin/admin_board?cp=1${sp}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/admin/admin_board?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+
+               
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}"
+                            end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <!-- 현재 보고있는 페이지 -->
+                                <li><a class="current">${i}</a></li>
+
+                            </c:when>
+                        
+                            <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/admin/admin_board?cp=${i}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+
+
+                    
+                   <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/admin/admin_board?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/admin/admin_board?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                  
+            </div>
+
+
 
 <script src="\resources\js\admin\admin_board.js"></script>
 </body>

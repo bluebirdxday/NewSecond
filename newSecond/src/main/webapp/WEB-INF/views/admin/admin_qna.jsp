@@ -18,7 +18,7 @@
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+              <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
     
            <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>
@@ -57,7 +57,7 @@
         </div>
     <div class="admin_qna_result">
         <span >검색결과 : </span> 
-            <span class="admin_qna_counttOne">4</span>
+             <span id="checkboxCount">0</span>
             <span>/ 총</span>
             <span class="admin_qna_countAll">4</span>
             <span>건</span>
@@ -66,8 +66,8 @@
         <div class="admin_qna_tableWrap">
         <table class="admin_qna_table" style="border-collapse: collapse;">
             <thead>
-            <tr >
-                <th><input type="checkbox" name="qna_checkbox" id="" value='selectall'
+            <tr>
+                <th><input type="checkbox" name="qna_checkbox"  class="admin_qna_checkboxAll" id="" value='selectall'
                     onclick='qnaSelectAll(this)'></th>
                 <th >번호</th>
                 <th>회원번호</th>
@@ -90,7 +90,7 @@
                 <c:otherwise>
                     <c:forEach items="${map.qnaList}" var="qna">
                         <tr>
-                            <td><input type="checkbox" name="" id=""></td>
+                            <td><input type="checkbox"class="admin_qna_checkbox"name="" id=""></td>
                             <td>${qna.qnaNo}</td>
                             <td>${qna.userNo}</td>
                              <c:if test="${qna.qnaCategory=='T'}" >
@@ -128,10 +128,10 @@
                 
                     <!-- 첫 페이지로 이동 -->
                     <%-- <li><a href="${boardCode}?cp=1">&lt;&lt;</a></li> --%>
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=1${sp}">&lt;&lt;</a></li>
+                    <li><a href="/admin/admin/admin_qna?cp=1${sp}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.prevPage}${sp}">&lt;</a></li>
+                    <li><a href="/admin/admin/admin_qna?cp=${pagination.prevPage}${sp}">&lt;</a></li>
 
                
                     <!-- 특정 페이지로 이동 -->
@@ -147,7 +147,7 @@
                         
                             <c:otherwise>
                                 <!-- 현재 페이지를 제외한 나머지 -->
-                                <li><a href="/admin/admin_qna/${qnaNo}?cp=${i}${sp}">${i}</a></li>
+                                <li><a href="/admin/admin/admin_qna?cp=${i}${sp}">${i}</a></li>
                             </c:otherwise>
                         </c:choose>
 
@@ -155,20 +155,11 @@
 
 
                     
-                    <%-- <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li> --%>
-                    
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.nextPage}${sp}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
+                    <li><a href="/admin/admin/admin_qna/${qnaNo}?cp=${pagination.maxPage}${sp}">&gt;&gt;</a></li>
 
                 </ul>
             </div>

@@ -16,9 +16,9 @@ public class WishServiceImpl implements WishService {
 	private WishDAO wishDao;
 
 	@Override
-	public List<Wish> wishList(int userNo) {
+	public List<GoodsBoard> wishList(int wishUserNo) {
 		
-		return wishDao.wishList(userNo);
+		return wishDao.wishList(wishUserNo);
 	}
 
 	

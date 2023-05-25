@@ -4,6 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+
+<c:if test="${not empty uploadComplete}">
+    <c:set var="uploadComplete" value="${uploadComplete}"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -76,8 +81,16 @@
                                         <label for="navMenu"><img src="/resources/src/img/menu.png"></label>
                                         <input type="checkbox" id="navMenu">
                                         <div class="modifyAndDelete">
-                                            <a href="/myGoods/modify">수정</a>
-                                            <a href="/myGoods/delete">삭제</a>
+                                            <form id="modifyForm" action="/myGoods/modify" method="POST">
+                                                <input type="hidden" name="goodsTitle" value="${goodsBoard.goodsTitle}">
+                                                <input type="hidden" name="goodsPrice" value="${goodsBoard.goodsPrice}">
+                                                <input type="hidden" name="image" value="${goodsBoard.filesList}">
+                                                <input type="hidden" name="goodsDescr" value="${goodsBoard.goodsDescr}">
+                                                <input type="hidden" name="goodsNo" value="${goodsNo}">
+                                                <input type="hidden" name="userId" value="${shop.userNo}">
+                                            </form>
+                                            <a href="#" id="modifyBtn">수정</a>
+                                            <a href="/myGoods/delete?goodsNo=${goodsNo}&userNo=${shop.userNo}" id="deleteBtn">삭제</a>
                                         </div>
                                     </div>
                                 </div>
@@ -120,23 +133,26 @@
                                 <div class="container--inner__bottom__shopInfo__chattingButton"><a href="#">채팅하기</a></div>
                             </div>
                             <div class="container--inner__bottom__shopInfo__shopDescibe">${shop.shopInfo}</div>
+                            
+                            <input type="hidden" id="uploadComplete" value="${uploadComplete}">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+    <c:remove var="uploadComplete"/>
     <script>
         const loginUserNo = "${loginUser.userNo}";
         const goodsNo = ${goodsBoard.goodsNo};
         const goodsUserNo = ${shop.userNo};
     </script>
 
-        <!-- footer -->
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/goods/goodsDetail.js"></script>
 
     </div>
+
     
 </body>
 </html>
