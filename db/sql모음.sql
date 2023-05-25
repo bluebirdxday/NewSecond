@@ -457,8 +457,12 @@ SELECT * FROM "notifications";
 
 -- 키워드 알림도 INSERT 해줘야됨, 그전애!!! 키워드 알림 보내기 성공 후에 구현해야돼...
 -- 키워드 알림 리스트 받아오기
-SELECT * FROM "notifications"
-WHERE NOTIFICATION_TYPE = 'K';
+UPDATE "notifications" 
+SET NOTIFICATION_TYPE = 'K'
+WHERE NOTIFICATION_MESSAGE LIKE '%^^%';
+COMMIT;
+
+
 
 
 
