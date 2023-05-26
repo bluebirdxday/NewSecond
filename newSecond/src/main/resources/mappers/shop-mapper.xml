@@ -21,6 +21,7 @@
 		<result property="goodsNo" column="GOODS_NO"/>
 		<result property="shopTitle" column="SHOP_TITLE"/>
 		<result property="goodsTitle" column="GOODS_TITLE"/>
+		<result property="shopProfile" column="SHOP_PROFILE"/>
 		<result property="reviewMessage" column="REVIEW_MESSAGE"/>
 		<result property="reviewDate" column="REVIEW_DT"/>
 		<result property="reviewStars" column="REVIEW_STARS"/>

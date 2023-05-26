@@ -569,6 +569,13 @@ WHERE GOODS_NO = 1;
 
 
 SELECT * FROM "reviews";
+SELECT * FROM "transaction_list";
+
+SELECT tl.USER_NO buyer, gb.USER_NO seller FROM "transaction_list" tl
+JOIN "goods_board" gb
+WHERE 
+
+
 COMMIT;
 
 SELECT * FROM "goods_board" gb WHERE GOODS_TITLE = '나이키 후드집업 M';

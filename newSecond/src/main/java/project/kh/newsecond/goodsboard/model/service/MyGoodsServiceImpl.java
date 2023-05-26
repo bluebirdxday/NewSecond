@@ -92,7 +92,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 			}
 			
 		
-		
+		}
 		return result;
 	}
 	
