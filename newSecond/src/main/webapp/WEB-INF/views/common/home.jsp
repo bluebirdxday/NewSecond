@@ -99,6 +99,8 @@
 
 				</section>
 
+				
+
 				<section class="mainPage--goodsContainer3 mt-5 mb-5">
 
 					<span class="mainPage--imgs__title">조회수 높은 인기 상품</span>
@@ -137,9 +139,25 @@
 					<a class="btn btn-outline-secondary w-100 mt-2" href="/goods/category/200"> 전체보기 </a>
 				</section>
 
+			<c:if test="${not empty loginUser}" >
+				<a href="/writing/write">
+					<div class="myshop--btn__fixed-addpost">
+						<img src="/resources/src/img/addPost.png">
+					</div>
+				</a>
+			</c:if>
+
 		</div>
 
+
+	
+
+
+
+
 	</main>
+
+
 
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
