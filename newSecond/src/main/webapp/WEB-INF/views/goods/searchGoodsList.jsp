@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${query} 검색 결과</title>
+    <%-- ${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')} --%>
     
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
@@ -30,9 +31,8 @@
             <div class="container--inner">
                 <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
                 <div class="container--inner__top">
-                    <c:if test="${not empty query}" >
-                        <div class="searchNameCount">query.replace() (${searchGoodsCount}건)</div>
-                        <%-- <c:set var="query" scope="application" value="${param.query}"/> --%>
+                    <c:if test="${not empty param.query}" >
+                        <div class="searchNameCount">${query} (${searchGoodsCount}건)</div>
                     </c:if>
                     <!-- 판매완료상품제외 -->
                     <%-- <div><input type="checkbox" class="soldoutExcept" id="check1" onclick="soldOutCheck()">
@@ -64,7 +64,7 @@
                     <%-- 해당 검색 결과 없다면 --%>
                     <c:when test="${empty searchGoodsList}">
                         <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.query}"에 해당하는 상품이 없습니다.</div>
+                            <div class="noGoodsList">"${query}"에 해당하는 상품이 없습니다.</div>
                         </div>
                     </c:when>
                         
@@ -121,6 +121,7 @@
 
         <script>
             const searchGoodsList = ${searchGoodsList}
+            const cleanQuery = ${query}
         </script>
         <script src="/resources/js/goods/searchGoodsList.js"></script>
         <script src="/resources/js/goods/moreGoods.js"></script>
