@@ -584,3 +584,10 @@ SELECT * FROM "reviews"
 WHERE GOODS_NO = 10;
 
 >>>>>>> 9c22c547ab56d6a2d5dbc6e6a55a9038bfa9cc87
+
+
+SELECT * FROM "qna";
+
+UPDATE "qna"
+SET QNA_DELETE_FL
+WHERE QNA_NO ='61';
