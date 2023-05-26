@@ -31,9 +31,9 @@
                 <div class="container--inner__top">
                         <div class="searchNameCount">${categoryName}</div>
                     <!-- 판매완료상품제외 -->
-                    <div><input type="checkbox" class="soldoutExcept" id="check1">
+                    <%-- <div><input type="checkbox" class="soldoutExcept" id="check1">
                         <label for="check1"> 판매 완료 상품 제외</label>
-                    </div>
+                    </div> --%>
                     <!-- 기능별 조회 -->
                     <div class="selectSort">
                         <span id="selecSortRecent">최신순</span>
