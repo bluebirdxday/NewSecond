@@ -102,10 +102,10 @@
                             <td>
                            
                    
-                           
+                          
                             <button class="admin_user_tableBtn block show" id="block">회원블락</button>
                             <button class="admin_user_tableBtn blockH" id="blockH">블락해제</button>
-               
+                        
                           
                             </td>
                             </tr>

@@ -554,7 +554,6 @@ SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,TO_CHAR(NOTICE_ENROLL_DATE, 'YYYY-M
 	WHERE NOTICE_FL = 'Y'
 	ORDER BY NOTICE_NO DESC;
 
-<<<<<<< HEAD
 UPDATE "notice" 
 SET NOTICE_FL = 'N'
 WHERE NOTICE_NO ='10';
@@ -566,7 +565,6 @@ SELECT * FROM "goods_board";
 UPDATE "goods_board"
 SET GOODS_STATUS ='A'
 WHERE GOODS_NO ='279';
-=======
 SELECT * FROM "goods_board"
 ORDER BY GOODS_NO DESC;
 
@@ -576,30 +574,14 @@ WHERE GOODS_NO BETWEEN 263 AND 274;
 DELETE FROM "files"
 WHERE GOODS_NO BETWEEN 263 AND 274;
 
-
-SELECT * FROM "shop";
-
-SELECT 2 SENDER_NO, USER_NO TARGET_NO, '[' || GOODS_TITLE || ']' || '에 새로운 후기가 등록되었습니다.' NOTIFICATION_MESSAGE, 'P' NOTIFICATION_TYPE, 
-	'/shop/' || USER_NO NOTIFICATION_URL
-FROM "goods_board" 
-WHERE GOODS_NO = 1;
+-- 리뷰 작성 알림
+/*SELECT , (USER_NO FROM "goods_board" WHERE GOODS_NO = 10) TARGET_NO;*/
 
 
-SELECT * FROM "reviews";
-SELECT * FROM "transaction_list";
-
-SELECT tl.USER_NO buyer, gb.USER_NO seller FROM "transaction_list" tl
-JOIN "goods_board" gb
-WHERE 
+SELECT * FROM "reviews"
+WHERE GOODS_NO = 10;
 
 
-COMMIT;
-
-SELECT * FROM "goods_board" gb WHERE GOODS_TITLE = '나이키 후드집업 M';
-
-SELECT * FROM "users" u WHERE USER_NO = 9;
-
-DELETE FROM "reviews" r WHERE REVIEW_NO = 10;
 
 
 UPDATE "notifications" 
@@ -612,3 +594,8 @@ SELECT * FROM "qna";
 UPDATE "qna"
 SET QNA_DELETE_FL
 WHERE QNA_NO ='61';
+SELECT * FROM "goods_board" gb ;
+
+UPDATE  "goods_board" 
+SET GOODS_STATUS = 'A'
+WHERE  GOODS_NO ='292';

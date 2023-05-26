@@ -75,6 +75,10 @@ for(let i=0; i<forcedsignOut.length; i++){
     if(forcedsignOut!=null){
       signOutUser(signOutUserNo);
     }
+
+/* 블락시 블락해제 */
+
+
   }
   });
 
@@ -96,6 +100,8 @@ function signOutUser(userNo){
   }).catch(err=> console.log(err));
 
 }
+
+
 
 /* 체크박스 전체선택 */
 function userSelectAll(userSelectAll)  {
@@ -245,4 +251,14 @@ function updateCheckboxCount() {
 var checkboxElements = document.getElementsByClassName('admin_user_checkbox');
 for (var i = 0; i < checkboxElements.length; i++) {
   checkboxElements[i].addEventListener('change', updateCheckboxCount);
+}
+
+
+
+for(let i=0; i<states.length;i++){
+
+  if(states[i].innerText == '블락'){
+    block[i].style.display = 'none'
+    blockH[i] .style.display = 'inline-block';
+}
 }
