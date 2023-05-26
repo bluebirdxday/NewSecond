@@ -28,8 +28,8 @@
     </ul>
 
     <!-- ----------상단 제목---------- -->
-    <span class="amdmin_board_logout">로그아웃</span>
-
+      <span class="amdmin_board_logout"><a href="/user/logout">로그아웃</a></span>
+    
     <div class="admin_board_wrap">
         <span class="admin_board_bar">게시글 관리</span>
      <!--        <span class="admin_notice_barBtn">새 공지사항</span>  -->

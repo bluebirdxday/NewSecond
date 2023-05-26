@@ -1,11 +1,13 @@
 package project.kh.newsecond.goodsboard.model.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.common.utility.Util;
 import project.kh.newsecond.goodsboard.model.dao.MyGoodsDAO;
@@ -19,7 +21,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 	private MyGoodsDAO dao;
 	
 	// 게시글 수정
-	public int myGoodsModify(GoodsBoard goodsBoard, List<Files> filesList) {
+	public int myGoodsModify(GoodsBoard goodsBoard, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {
 		
 		// 0. XSS 처리
 		goodsBoard.setGoodsTitle(Util.XXSHandling(goodsBoard.getGoodsTitle()));
@@ -35,7 +37,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 			List<Files> FinalImages = new ArrayList<Files>();
 			
 			// 3. FILES 테이블 UPDATE 시도
-			for(int i=0; i<filesList.size(); i++) {
+			for(int i=0; i<images.size(); i++) {
 				
 				if(!filesList.get(i).equals(null)) {
 					
@@ -80,7 +82,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 					
 					// 파일로 변환
 					String afterRename = FinalImages.get(i).getFileName();
-					filesList.get(index).transferTo(new File(filePath + goodsBoard.getUserNo() + "/" afterRename));
+					images.get(index).transferTo(new File(filePath + goodsBoard.getUserNo() + "/" + afterRename));
 					
 				}
 				
@@ -90,7 +92,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 			}
 			
 		
-		
+		}
 		return result;
 	}
 	
