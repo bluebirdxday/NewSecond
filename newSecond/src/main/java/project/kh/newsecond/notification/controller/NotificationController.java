@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.notification.model.service.NotificationService;
+import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.user.model.dto.User;
 
 @Controller
@@ -104,7 +104,7 @@ public class NotificationController {
 	}
 	
 	
-	// 리뷰 작성 알림
+	// 새글 작성 알림
 	@GetMapping("/selectNewPostNotification")
 	@ResponseBody
 	public List<Notification> selectNewPostNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo){
@@ -114,6 +114,19 @@ public class NotificationController {
 		map.put("goodsNo", goodsNo);
 		
 		return service.selectNewPostNotification(map);
+	}
+	
+	
+	// 후기 작성 알림
+	@GetMapping("/addReviewNotification")
+	@ResponseBody
+	public Notification addReviewNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo) {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", userNo);
+		map.put("goodsNo", goodsNo);
+		
+		return service.addReviewNotification(map);
 	}
 	
 	

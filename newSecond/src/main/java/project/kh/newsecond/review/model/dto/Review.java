@@ -17,5 +17,6 @@ public class Review {
 	private String goodsTitle;
 	private String reviewMessage;
 	private String reviewDate;
+	private String shopProfile;
 	private int reviewStars;
 }

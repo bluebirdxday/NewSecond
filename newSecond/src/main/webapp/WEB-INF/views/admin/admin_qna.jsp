@@ -30,7 +30,7 @@
 
     <!-- -------------------- -->
 
-    <span class="amdmin_qna_logout">로그아웃</span>
+    <span class="amdmin_qna_logout"><a href="/user/logout">로그아웃</a></span>
 
     <div class="admin_qna_wrap">
         <div class="admin_qna_bar">문의관리</div>
@@ -49,7 +49,7 @@
             <label ><input type="radio" name="admin_qna_raidos" id="all" value="all">전체</label>
             <label ><input type="radio" name="admin_qna_raidos" id="trade" value="T">거래신고</label>
             <label ><input type="radio" name="admin_qna_raidos" id="user" value="U">회원/계정</label>
-            <label ><input type="radio" name="admin_qna_raidos" id="erroe" value="E">오류/제안</label>
+            <label ><input type="radio" name="admin_qna_raidos" id="error" value="E">오류/제안</label>
             <label ><input type="radio" name="admin_qna_raidos" id="chatting" value="C">채팅/알람</label>
             <label ><input type="radio" name="admin_qna_raidos" id="etc" value="O">기타문의</label>
         </span>
