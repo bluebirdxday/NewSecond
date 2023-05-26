@@ -77,7 +77,7 @@ fetch("/admin/admin_qna/radioTrade", {
 
   function selectQnaList(result)
 
-    const qnaTable = document.querySelectorAll(".admin_qna_tableWrap");
+    const qnaTable = document.querySelector(".admin_qna_tableWrap");
     qnaTable.style.display="none";
   
   
@@ -85,7 +85,7 @@ fetch("/admin/admin_qna/radioTrade", {
 
 }).catch(err=> console.log(err));
 
-} } });
+} } );
 
 
 
@@ -112,5 +112,4 @@ function filterPosts() {
     }
   }
 }
-
 
