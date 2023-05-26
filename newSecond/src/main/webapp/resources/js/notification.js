@@ -39,10 +39,22 @@ window.addEventListener('DOMContentLoaded', function()
 
 
 // 페이지 이동이 일어났을 때
-window.addEventListener('unload', function() {
-    // inquireNotiSocket.close();
-    // 현재 페이지에 존재하는 리스트 전달 후 readOrNot = "Y"로 update
+// window.addEventListener('unload', function() {
+//     // inquireNotiSocket.close();
+//     // 현재 페이지에 존재하는 리스트 전달 후 readOrNot = "Y"로 update
+//     const userNo = document.getElementById("notiUserNo");
 
-    fetch('/notification/updateReadOrNot')
+//     fetch('/notification/updateReadOrNot' ,{
+//         method : "POST",
+//         headers : {"Content-Type" : "application/json"},
+//         body : userNo
+//     })
+//     .then(resp=>resp.text())
+//     .then((result)=>{
 
-});
+//     })
+//     .catch(err=>{
+//         console.log(err);
+//     })
+
+// });

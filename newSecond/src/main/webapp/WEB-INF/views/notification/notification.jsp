@@ -79,6 +79,8 @@
                             
 
                     </c:forEach>
+
+                    <input type="hidden" id="notiUserNo"  value="${notification.userNo}">
                 </c:if>
                 
                 <c:if test="${empty notificationList}" >

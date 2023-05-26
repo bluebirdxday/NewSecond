@@ -80,7 +80,15 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 	    }
 		
 	    private void processNotification(Notification notification) throws Exception {
-	        int result = service.insertNotification(notification);
+	    	
+	    	int existCheck = service.selectExistNotification(notification);
+	    	
+	    	System.out.println(existCheck);
+	    	System.out.println(notification);
+	    	
+	    	
+	    	int result = service.insertNotification(notification, existCheck);
+	    	
 
 	        if (result > 0) {
 	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

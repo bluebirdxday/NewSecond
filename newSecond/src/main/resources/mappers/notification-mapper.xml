@@ -133,4 +133,34 @@
 		WHERE GOODS_NO = #{goodsNo}
 	</select>
 	
+	
+	<!-- 알림 읽음 처리 -->
+	<update id="updateReadOrNot">
+		UPDATE "notifications" 
+		SET READ_OR_NOT = 'Y'
+		WHERE NOTIFICATION_NO IN 
+			(SELECT NOTIFICATION_NO FROM "notifications" WHERE READ_OR_NOT = 'N' AND USER_NO = ${userNo})
+	</update>
+	
+	
+	<!-- 알림 중복 여부 판단 -->
+	<select id="selectExistNotification" resultType="int">
+		SELECT COUNT(*)
+		FROM "notifications"
+		WHERE USER_NO = #{targetNo}
+		AND SENDER_NO = #{senderNo}
+		AND NOTIFICATION_MESSAGE = #{notificationMessage}
+		AND NOTIFICATION_TYPE = #{notificationType}
+	</select>
+	
+	
+	<!-- 이전 알림 삭제 -->
+	<delete id="deleteNotification">
+		DELETE FROM "notifications"
+		WHERE USER_NO = #{targetNo}
+		AND SENDER_NO = #{senderNo}
+		AND NOTIFICATION_MESSAGE = #{notificationMessage}
+		AND NOTIFICATION_TYPE = #{notificationType}
+	</delete>
+	
 </mapper>

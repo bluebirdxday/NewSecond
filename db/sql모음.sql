@@ -602,8 +602,10 @@ SELECT * FROM "users" u WHERE USER_NO = 9;
 DELETE FROM "reviews" r WHERE REVIEW_NO = 10;
 
 
->>>>>>> 9c22c547ab56d6a2d5dbc6e6a55a9038bfa9cc87
-
+UPDATE "notifications" 
+SET READ_OR_NOT = 'Y'
+WHERE NOTIFICATION_NO IN 
+	(SELECT NOTIFICATION_NO FROM "notifications" WHERE READ_OR_NOT = 'N' AND USER_NO = ${userNo})
 
 SELECT * FROM "qna";
 

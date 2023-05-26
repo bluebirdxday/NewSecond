@@ -72,4 +72,19 @@ public class NotificationDAO {
 		return sqlSession.selectOne("NotificationMapper.addReviewNotification", map);
 	}
 
+	// 알림 읽음 업데이트
+	public int updateReadOrNot(int userNo) {
+		return sqlSession.update("NotificationMapper.updateReadOrNot", userNo);
+	}
+
+	// 알림 중복 체크
+	public int selectExistNotification(Notification notification) {
+		return sqlSession.selectOne("NotificationMapper.selectExistNotification" , notification);
+	}
+
+	// 알림 중복 시 이전 알림 삭제
+	public int deleteNotification(Notification noti) {
+		return sqlSession.delete("NotificationMapper.deleteNotification", noti);
+	}
+
 }

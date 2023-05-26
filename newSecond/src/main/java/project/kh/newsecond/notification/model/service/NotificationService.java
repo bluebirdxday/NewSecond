@@ -40,9 +40,10 @@ public interface NotificationService {
 
 	/** 팔로우 알림
 	 * @param noti
+	 * @param existCheck 
 	 * @return result
 	 */
-	int insertNotification(Notification noti);
+	int insertNotification(Notification noti, int existCheck);
 
 
 	
@@ -86,4 +87,19 @@ public interface NotificationService {
 	 * @return review
 	 */
 	Notification addReviewNotification(Map<String, Object> map);
+
+
+	/** 알림 읽음 업데이트
+	 * @param userNo
+	 * @return result
+	 */
+	int updateReadOrNot(int userNo);
+
+
+	
+	/** 알림 중복 체크
+	 * @param notification
+	 * @return existResult
+	 */
+	int selectExistNotification(Notification notification);
 }

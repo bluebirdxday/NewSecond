@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.notification.model.dao.NotificationDAO;
 import project.kh.newsecond.notification.model.dto.Notification;
@@ -39,9 +40,15 @@ public class NotificationServiceImpl implements NotificationService{
 	}
 
 	
-	// 팔로우 알림
+	// 알림 삽입
 	@Override
-	public int insertNotification(Notification noti) {
+	@Transactional(rollbackFor=Exception.class)
+	public int insertNotification(Notification noti,  int existCheck) {
+		
+		if(existCheck>0) {
+			dao.deleteNotification(noti);
+		}
+		
 		return dao.insertNotification(noti);
 	}
 
@@ -85,6 +92,20 @@ public class NotificationServiceImpl implements NotificationService{
 	@Override
 	public Notification addReviewNotification(Map<String, Object> map) {
 		return dao.addReviewNotification(map);
+	}
+
+
+	// 알림 읽음 업데이트
+	@Override
+	public int updateReadOrNot(int userNo) {
+		return dao.updateReadOrNot(userNo);
+	}
+
+
+	// 알림 중복 체크
+	@Override
+	public int selectExistNotification(Notification notification) {
+		return dao.selectExistNotification(notification);
 	}
 
 }

@@ -11,7 +11,6 @@ notificationSock2.onmessage = function(e) {
 
     // 팔로우 알림, 관심상품 등록 알림
     if(msg.notificationType=="F" || msg.notificationType=="L"){
-        
         liveMessage = msg.shopTitle + msg.notificationMessage;
         document.getElementById('alarmBody').innerText = liveMessage;
     }
