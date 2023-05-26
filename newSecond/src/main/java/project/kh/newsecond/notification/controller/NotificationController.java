@@ -129,5 +129,12 @@ public class NotificationController {
 		return service.addReviewNotification(map);
 	}
 	
+	// 알림 읽음 업데이트
+	@PostMapping("/updateReadOrNot")
+	@ResponseBody
+	public int updateReadOrNot(int userNo) {
+		return service.updateReadOrNot(userNo);
+	}
+	
 	
 }
