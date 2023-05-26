@@ -202,3 +202,30 @@
     box-shadow: 3px 3px 3px #bbbdbd;
     transition-duration: 0.2s;
 }
+
+
+/* 내상점 내 포스팅(새 게시글 작성) 버튼 */
+.myshop--btn__fixed-addpost{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 100%;
+    box-shadow: 0 4px 4px #CECECE;
+
+    background: #ffffff;
+    background: linear-gradient(rgb(241, 247, 255) 10%, rgb(222, 235, 253) 40% 60%, rgb(241, 247, 255) 90%);
+    border: none;
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: inset 0 -5px 5px #c1c9d3;
+    text-align: center;
+    line-height: 80px;
+}
+
+/* 내상점 내 포스팅 버튼 속 + 이미지 */
+.myshop--btn__fixed-addpost>img{
+    width: 60%;   
+    height: 60%;
+}

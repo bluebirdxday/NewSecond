@@ -103,6 +103,15 @@
                 </c:choose> 
             </div>
 
+            <c:if test="${not empty loginUser}" >
+				<a href="/writing/write">
+					<div class="myshop--btn__fixed-addpost">
+						<img src="/resources/src/img/addPost.png">
+					</div>
+				</a>
+			</c:if>
+
+
         </div>
 
 
