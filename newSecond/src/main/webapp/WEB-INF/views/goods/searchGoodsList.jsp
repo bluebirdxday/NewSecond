@@ -7,7 +7,7 @@
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
 <c:set var="paramQuery" value="${param.query}"/>
-<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}">
+<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
