@@ -124,8 +124,8 @@
 		FROM "goods_board"
 		JOIN "shop" USING (USER_NO)
 		WHERE GOODS_STATUS IN ('A','E','C')
-			AND ((GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
-			OR SHOP_TITLE LIKE '%${searchName}%')
+			AND ((GOODS_TITLE || GOODS_DESCR) LIKE '%${query}%'
+			OR SHOP_TITLE LIKE '%${query}%')
 		ORDER BY SELL_ENROLL_DT DESC
 		
 	</select>
@@ -141,7 +141,7 @@
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
 		WHERE GOODS_STATUS IN ('A','E','C')
-			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${query}%'
 		ORDER BY SELL_ENROLL_DT DESC
 		
 	</select>
@@ -157,7 +157,7 @@
 		FROM "goods_board" G
 		JOIN "shop" USING (USER_NO)
 		WHERE GOODS_STATUS IN ('A','E','C')
-			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${query}%'
 		
 		<!-- 조건에 따라 조회 -->
 		<choose>
@@ -189,7 +189,7 @@
 			FROM "goods_board" G
 			JOIN "shop" USING (USER_NO)
 			WHERE GOODS_STATUS IN ('A','E','C')
-				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${query}%'
 			ORDER BY SELL_ENROLL_DT DESC)
 			<![CDATA[ WHERE NUM > ${startCallNum} ]]>
 		ORDER BY NUM
