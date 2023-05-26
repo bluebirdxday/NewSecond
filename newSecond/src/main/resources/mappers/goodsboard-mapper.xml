@@ -189,7 +189,7 @@
 			FROM "goods_board" G
 			JOIN "shop" USING (USER_NO)
 			WHERE GOODS_STATUS IN ('A','E','C')
-				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${query}%'
+				AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 			ORDER BY SELL_ENROLL_DT DESC)
 			<![CDATA[ WHERE NUM > ${startCallNum} ]]>
 		ORDER BY NUM
