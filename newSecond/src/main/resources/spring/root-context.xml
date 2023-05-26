@@ -12,35 +12,20 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 
-        <!-- 지갑경로 여러개 중 하나 선택하기 -->
-        <!-- 기본 지갑 경로 -->
-		<property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/yunsuel/Wallet_orcl" />
-            
-        <!-- 지영님 맥북 지갑 경로 -->
-        <!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=/Users/jy_green/Desktop/project/tools/semi_wallet/Wallet_orcl" 
-            /> -->
-
-        <!-- 희진님 지갑 경로 -->
-        <!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/Users/user/Oracle_JDBC/Wallet_orcl"/> -->
-
-        <!-- 상준님 학원 컴퓨터 경로 -->
-        <!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/dev_tools/SemiProject/Wallet_orcl" /> -->
-
-		<!-- 유민님 학원 컴퓨터 지갑 경로 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@orcl_high?TNS_ADMIN=C:/tools/semi/Wallet_orcl" /> -->
-
-		<property name="username" value="ADMIN" />
-		<property name="password" value="Kh_yunseul_23" />
+        <property name="url" value="jdbc:oracle:thin:@115.90.212.22:10000:ORCL"/>
+		
+		<property name="username" value='"yunsuel"' />
+		<property name="password" value="password123" />
 
 		<!-- defaultAutoCommit: SQL 수행 후 자동 COMMIT 설정. (기본값 : true) -->
 		<property name="defaultAutoCommit" value="false" />
 
 		<!-- 커넥션 풀 설정 -->
-		<property name="initialSize" value="0" /> <!-- 초기 커넥션 수, 기본 0 -->
-		<property name="maxTotal" value="8" /> <!-- 최대 커넥션 수, 기본 8 -->
-		<property name="maxIdle" value="8" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최대 수, 기본 8 -->
-		<property name="minIdle" value="0" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최소 수, 기본 0 -->
-		<property name="maxWaitMillis" value="60000" /> <!-- 예외 발생 전 커넥션이 반환 될 떄 까지 대기하는 최대 시간(ms), 기본 -1(무기한) -->
+		<property name="initialSize" value="10" /> <!-- 초기 커넥션 수, 기본 0 -->
+		<property name="maxTotal" value="500" /> <!-- 최대 커넥션 수, 기본 8 -->
+		<property name="maxIdle" value="100" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최대 수, 기본 8 -->
+		<property name="minIdle" value="10" /> <!-- 유휴 상태로 존재할 수 있는 커넥션 최소 수, 기본 0 -->
+		<property name="maxWaitMillis" value="50000" /> <!-- 예외 발생 전 커넥션이 반환 될 떄 까지 대기하는 최대 시간(ms), 기본 -1(무기한) -->
 	</bean>
 
 
@@ -68,9 +53,9 @@
 
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	       <property name="maxUploadSize" value="104857600"/>
-	       <property name="maxUploadSizePerFile" value="104857600"/>
-	       <property name="maxInMemorySize" value="104857600"/>
-	   </bean>
+		<property name="maxUploadSize" value="104857600"/>
+		<property name="maxUploadSizePerFile" value="104857600"/>
+		<property name="maxInMemorySize" value="104857600"/>
+	</bean>
 
 </beans>

@@ -1,17 +1,18 @@
 package project.kh.newsecond.goodsboard.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import project.kh.newsecond.common.utility.Util;
 import project.kh.newsecond.goodsboard.model.dao.MyGoodsDAO;
 import project.kh.newsecond.goodsboard.model.dto.Files;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
-import project.kh.newsecond.writing.model.dao.WritingDAO;
-import project.kh.newsecond.writing.model.dto.WritingImage;
 
 @Service
 public class MyGoodsServiceImpl implements MyGoodsService {
@@ -20,12 +21,11 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 	private MyGoodsDAO dao;
 	
 	// 게시글 수정
-	public int myGoodsModify(GoodsBoard goodsBoard, List<Files> filesList) {
+	public int myGoodsModify(GoodsBoard goodsBoard, List<MultipartFile> images, String webPath, String filePath) throws IllegalStateException, IOException {
 		
 		// 0. XSS 처리
 		goodsBoard.setGoodsTitle(Util.XXSHandling(goodsBoard.getGoodsTitle()));
 		goodsBoard.setGoodsDescr(Util.XXSHandling(goodsBoard.getGoodsDescr()));
-		
 		// 1. GOODS_BOARD 테이블 UPDATE 시도
 		int result = dao.myGoodsModify(goodsBoard);
 		
@@ -37,9 +37,9 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 			List<Files> FinalImages = new ArrayList<Files>();
 			
 			// 3. FILES 테이블 UPDATE 시도
-			for(int i=0; i<filesList.size(); i++) {
+			for(int i=0; i<images.size(); i++) {
 				
-				if(filesList.get(i).getSize() > 0) {
+				if(!FinalImages.get(i).equals(null)) {
 					
 					Files Finalimgs = new Files();
 					
@@ -56,7 +56,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setFileOrder(order); // 파일 순서 담기
 					
-					String fileName = filesList.get(i).getOriginalFilename(); // 파일 원본명
+					String fileName = FinalImages.get(i).getFileName(); // 파일 원본명
 					
 					String fileRenameTemp = Util.fileRename(fileName); // rename 작업
 					
@@ -82,17 +82,20 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 					
 					// 파일로 변환
 					String afterRename = FinalImages.get(i).getFileName();
-					filesList.get(index).transferTo(new File(filePath + goodsBoard.getUserNo() + "/" afterRename));
+					images.get(index).transferTo(new File(filePath + goodsBoard.getUserNo() + "/" + afterRename));
 					
 				}
+				
+				
 			} else {
 				// 예외 강제 발생
 			}
 			
-		}
 		
+		}
 		return result;
 	}
+	
 	
 	// 게시글 삭제
 	public int myGoodsDelete(GoodsBoard goodsBoard) {
@@ -101,6 +104,7 @@ public class MyGoodsServiceImpl implements MyGoodsService {
 		
 		return result;
 	}
+
 
 
 }

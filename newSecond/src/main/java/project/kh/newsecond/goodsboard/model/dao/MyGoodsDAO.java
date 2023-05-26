@@ -14,6 +14,11 @@ public class MyGoodsDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	// 게시글 삭제
+	public int myGoodsDelete(GoodsBoard goodsBoard) {
+		return sqlSession.update("goodsBoardMapper.myGoodsDelete", goodsBoard);
+	}
 
 	// 게시글 수정
 	public int myGoodsModify(GoodsBoard goodsBoard) {
@@ -23,11 +28,6 @@ public class MyGoodsDAO {
 	// 게시글 수정 후 이미지 삽입 시도
 	public int myGoodsImageModify(List<Files> FinalImages) {
 		return sqlSession.update("goodsBoardMapper.myGoodsImageModify", FinalImages);
-	}
-
-	// 게시글 삭제
-	public int myGoodsDelete(GoodsBoard goodsBoard) {
-		return sqlSession.update("goodsBoardMapper.myGoodsDelete", goodsBoard);
 	}
 
 	

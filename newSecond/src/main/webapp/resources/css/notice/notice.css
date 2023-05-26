@@ -1,12 +1,18 @@
 
+main{
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 170px;
+    margin-bottom: 100px;
+}
 
 /* 내부 내용 */
 .notice_wrap{
-    padding: 50px 50px;
-    height: 1000px;
-    margin-top: 160px;
-
-
+    margin-top: 50px;
 }
 /* 상단 제목 바 */
 .notice_bar{
@@ -15,6 +21,11 @@ font-weight: bold;
 font-size: 25px;
 margin: 20px 20px; 
 
+}
+
+.notice_tableWrap{
+    display: grid;
+  place-items: center;
 }
 
 /* 상단 제목 바 새 공지사항 버튼 */
@@ -79,27 +90,26 @@ tbody td{
 width: 120px;
 text-align: center;
 padding: 10px 10px;
+table-layout: fixed;
+height: 40px;
 }
 
 
+
 tbody td:nth-child(1){
-        width: 10px;
+        width: 800px;
         padding: 0px;
  }
 
  
 tbody td:nth-child(2){
-    width: 500px;
+    width: 200px;
     padding: 0px;
 }
 
-tbody td:nth-child(6){
-width: 90px;
-padding: 0px;
-}
 
 tbody td:last-child{
-width: 90px;
+width: 120px;
 padding: 0px;
 }
 

@@ -53,4 +53,12 @@ public interface ReviewService {
 	int updateReview(Review review);
 
 
+	
+	/** 후기 조회 goodsNo로
+	 * @param goodsNo
+	 * @return review
+	 */
+	Review selectReivewByGoodsNo(int goodsNo);
+
+
 }

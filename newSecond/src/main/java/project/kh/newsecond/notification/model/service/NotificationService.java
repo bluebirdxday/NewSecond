@@ -5,6 +5,7 @@ import java.util.Map;
 
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 
@@ -78,4 +79,11 @@ public interface NotificationService {
 	 * @return newPostNotiList
 	 */
 	List<Notification> selectNewPostNotification(Map<String, Object> map);
+
+
+	/** 후기 알림
+	 * @param map
+	 * @return review
+	 */
+	Notification addReviewNotification(Map<String, Object> map);
 }

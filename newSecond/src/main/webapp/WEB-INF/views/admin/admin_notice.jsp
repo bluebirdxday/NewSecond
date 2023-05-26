@@ -27,7 +27,7 @@
     </ul>
 
     <!-- ----------상단 제목---------- -->
-    <span class="amdmin_notice_logout">로그아웃</span>
+    <span class="amdmin_notice_logout"><a href="/user/logout">로그아웃</a></span>
 
     <div class="admin_notice_wrap">
         <span class="admin_notice_bar">공지사항 관리</span>

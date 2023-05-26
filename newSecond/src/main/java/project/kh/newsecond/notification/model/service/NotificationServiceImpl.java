@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import project.kh.newsecond.notification.model.dao.NotificationDAO;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
@@ -77,6 +78,13 @@ public class NotificationServiceImpl implements NotificationService{
 	@Override
 	public List<Notification> selectNewPostNotification(Map<String, Object> map) {
 		return dao.selectNewPostNotification(map);
+	}
+
+
+	// 후기 작성 알림
+	@Override
+	public Notification addReviewNotification(Map<String, Object> map) {
+		return dao.addReviewNotification(map);
 	}
 
 }

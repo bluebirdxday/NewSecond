@@ -356,7 +356,7 @@ public class AdminController {
 		
 		model.addAttribute("Qna", qna);
 		
-		return "admin/admin_qna";
+		return "redirect:/admin/admin_qna";
 
 	}
 	

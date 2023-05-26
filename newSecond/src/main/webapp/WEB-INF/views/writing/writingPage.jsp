@@ -81,7 +81,7 @@
             <div class="post--main__inputQuantity">
                 <div>
 <%-- 수량 name="quantity" --%>
-                    <label for="quantityInput" class="labelTitle">수량</label><span></span><input type="number" min="1" name="quantity"  placeholder="1" id="quantityInput">개
+                    <label for="quantityInput" class="labelTitle">수량</label><span></span><input type="number" min="1" name="quantity" placeholder="1" value="1" id="quantityInput">개
                 </div>
             </div>
             <div class="post--main__inputCondition">

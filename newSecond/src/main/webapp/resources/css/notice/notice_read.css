@@ -14,9 +14,19 @@ font-size: 25px;
 margin: 20px 20px; 
 }
 
+/* 테이블, 글 내용 wrap */
+.notice_read_tablewrap{
+
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /* 테이블 */
 .notice_read_table{
-    width: 100%;
+    width: 1200px;
     border-collapse: collapse;
     border: 1px solid #8AB2E2;
     caption-side: top; 
@@ -31,14 +41,18 @@ th{
     padding: 5px;
 }
 
+
+
 /* 문의 내용 */
-.notice_read_content{
-    display: block;
+
+
+.notice_read_content > div{
+    white-space: pre;
     border: 1px solid black;
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    margin: 20px 0;
+    padding: 50px;
+    font-size: 16px;
+    width: 1200px;
+    word-break: break-all;
 }
 
 /* 문의 댓글 */

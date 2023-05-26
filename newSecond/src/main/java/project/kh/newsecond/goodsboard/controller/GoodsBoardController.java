@@ -41,23 +41,35 @@ public class GoodsBoardController {
 
 	// 지영
 	// 상품 게시글 목록 조회(검색)
-	@GetMapping("/search/goodsList/{listSort}")
+	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
-			Model model, @PathVariable("listSort") String listSort) {
+			Model model) {
 		
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("searchName", searchName);
-		paramMap.put("listSort", listSort);
+		searchName.replaceAll("<[^>]*>", "");
+		System.out.println(searchName);
 		
-		Map<String, Object> map = new HashMap<>();
-		map = service.selectSearchGoodsList(paramMap);
+		Map<String, Object> map = service.selectSearchGoodsList(searchName);
 		
 		// 조회 결과
 		model.addAttribute("map", map);
 
 		return "goods/searchGoodsList";
 	}
-
+	
+	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
+	@ResponseBody
+	@GetMapping("/search/goodsList/{listSort}")
+	public List<GoodsBoard> selectSortedList(@PathVariable("listSort") String listSort,
+			@RequestParam(value="query", required=false)String searchName){
+		Map<String, String> map = new HashMap<>();
+		map.put("listSort", listSort);
+		map.put("searchName", searchName);
+		
+		return service.selectSortedList(map);
+	}
+	
+	
+	
 	// 상품 게시글 추가 조회 (더보기)
 	@PostMapping("/searchMore")
 	@ResponseBody
@@ -65,13 +77,6 @@ public class GoodsBoardController {
 
 		return service.moreGoods(numAndSearchName);
 	}
-	
-	// 상품 게시글 목록 판매완료 제외 조회
-	
-	
-	
-	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
-	
 	
 	
 	// 상품 게시글 상세 조회
@@ -154,7 +159,6 @@ public class GoodsBoardController {
 	public String moveShop() {
 		return "/shop/shop";
 	}
-
 	/* 지환 - 카테고리 조회 */
 
 	// 상품 게시글 카테고리 별조회
