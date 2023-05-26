@@ -70,10 +70,14 @@
 
             </section>
 
+        <input type="hidden" id="reviewGoodsNo" value="${reviewGoodsNo}">
+        <input type="hidden" id="reviewUserNo" value="${reviewUserNo}">
     </main>
     
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="/resources/js/reviewList.js"></script>
 
 

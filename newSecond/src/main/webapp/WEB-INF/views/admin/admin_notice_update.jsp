@@ -18,7 +18,7 @@
 
     <ul class="admin_ul">
         <a href="/">
-            <img src="../src/img/LOGO.png" alt="로고" id="homeLogo">
+           <img class="homeLogo" src="/resources/src/img/LOGO.png">
         </a>
    
         <li class="admin_list"><a class="admid_notice" href="\admin\admin_notice">공지사항 관리</a></li>

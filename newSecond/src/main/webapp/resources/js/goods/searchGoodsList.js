@@ -4,6 +4,7 @@ const searchQuery = document.getElementById("searchQuery");
 // const 
 if(searchForm!=null){
     searchForm.addEventListener("submit",e=>{
+        
         if(searchQuery.value.trim().length==0){
             e.preventDefault();
             document.getElementById('toastBody').innerText = "검색어를 입력해주세요!";
