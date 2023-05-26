@@ -28,11 +28,11 @@ if(searchForm!=null){
 const listsortList = document.getElementsByName("listSort");
 
 function callSortedGoods(obj, query){
-    console.log(obj.value);
-    fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&searchName=" + query)
+    fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&query=" + query)
     .then(resp => resp.json())
     .then(sortedGoodsList => {
-        // console.log(query);
+        console.log(obj.value);
+        console.log(query);
         // console.log(sortedGoodsList);
         const goodsListTable = document.getElementById("goodsListTable");
 
