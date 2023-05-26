@@ -549,7 +549,24 @@ DELETE FROM "notifications" n
 WHERE NOTIFICATION_NO = 103;
 COMMIT;
 
+SELECT NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT,TO_CHAR(NOTICE_ENROLL_DATE, 'YYYY-MM-DD') AS NOTICE_ENROLL_DATE,NOTICE_VIEWCOUNT
+	FROM "notice"
+	WHERE NOTICE_FL = 'Y'
+	ORDER BY NOTICE_NO DESC;
 
+<<<<<<< HEAD
+UPDATE "notice" 
+SET NOTICE_FL = 'N'
+WHERE NOTICE_NO ='10';
+
+SELECT * FROM "qna";
+
+SELECT * FROM "goods_board";
+
+UPDATE "goods_board"
+SET GOODS_STATUS ='A'
+WHERE GOODS_NO ='279';
+=======
 SELECT * FROM "goods_board"
 ORDER BY GOODS_NO DESC;
 
@@ -569,6 +586,13 @@ WHERE GOODS_NO = 1;
 
 
 SELECT * FROM "reviews";
+SELECT * FROM "transaction_list";
+
+SELECT tl.USER_NO buyer, gb.USER_NO seller FROM "transaction_list" tl
+JOIN "goods_board" gb
+WHERE 
+
+
 COMMIT;
 
 SELECT * FROM "goods_board" gb WHERE GOODS_TITLE = '나이키 후드집업 M';
@@ -578,3 +602,11 @@ SELECT * FROM "users" u WHERE USER_NO = 9;
 DELETE FROM "reviews" r WHERE REVIEW_NO = 10;
 
 
+>>>>>>> 9c22c547ab56d6a2d5dbc6e6a55a9038bfa9cc87
+
+
+SELECT * FROM "qna";
+
+UPDATE "qna"
+SET QNA_DELETE_FL
+WHERE QNA_NO ='61';

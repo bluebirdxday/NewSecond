@@ -57,14 +57,10 @@ const qnaCategory =  trade.value;
 /* 테스트 */
 
 
-trade.addEventListener(('click'),()=>{
+trade.addEventListener(('click'),function boxChecked(){
 
-
-boxChecked();
-
-  function boxChecked ( ) {
     var trade = document. getElementById ( "trade" ) ;
-     if ( trade.checked == true ) {
+     if (trade.checked) {
 
 const qnaCategory =  trade.value;
 
@@ -93,35 +89,28 @@ fetch("/admin/admin_qna/radioTrade", {
 
 
 
-function qnaSelectAll(checkbox) {
-  var checkboxes = document.getElementsByClassName('admin_qna_checkbox');
-  var count = 0;
+// Get the radio buttons and attach an event listener to them
+const radioButtons = document.getElementsByName('admin_qna_raidos');
+radioButtons.forEach(function(radioButton) {
+  radioButton.addEventListener('change', filterPosts);
+});
 
-  for (var i = 0; i < checkboxes.length; i++) {
-      checkboxes[i].checked = checkbox.checked;
+// Function to filter and show posts based on the selected radio button
+function filterPosts() {
+  const selectedValue = document.querySelector('input[name="admin_qna_raidos"]:checked').value;
+  const posts =document.querySelectorAll(".admin_qna_tableWrap");
+
+  // Loop through all the posts and show/hide them based on the selected radio button
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    const status = post.getAttribute('data-status');
+
+    if (selectedValue === 'all' || selectedValue === status) {
+      post.style.display = 'block'; // Show the post
+    } else {
+      post.style.display = 'none'; // Hide the post
+    }
   }
-
-  if (checkbox.checked) {
-      count = checkboxes.length;
-  }
-
-  document.getElementById('checkboxCount').innerText = count;
 }
 
-function updateCheckboxCount() {
-  var checkboxes = document.getElementsByClassName('admin_qna_checkbox');
-  var count = 0;
 
-  for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-          count++;
-      }
-  }
-
-  document.getElementById('checkboxCount').innerText = count;
-}
-
-var checkboxElements = document.getElementsByClassName('admin_qna_checkbox');
-for (var i = 0; i < checkboxElements.length; i++) {
-  checkboxElements[i].addEventListener('change', updateCheckboxCount);
-}

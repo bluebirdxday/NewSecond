@@ -236,7 +236,7 @@
                         <c:forEach items="${shop.reviewList}" var="review">
                                 <div class="tab2--container__item">
                                     <div class="tab2--item__detail">
-                                        <div class="tab2--item__img"><img src="/resources/src/img/basic_profile.png"></div>
+                                        <div class="tab2--item__img"><img src="${review.shopProfile}"></div>
                                         <div>
                                             <div>
                                                 <div class="tab2--item__username">${review.shopTitle}</div>
@@ -367,11 +367,13 @@
 
     </section>
 
-    <a href="/writing/write">
-        <div class="myshop--btn__fixed-addpost">
-            <img src="/resources/src/img/addPost.png">
-        </div>
-    </a>
+   <c:if test="${loginUserNo==shop.userNo}" >
+        <a href="/writing/write">
+            <div class="myshop--btn__fixed-addpost">
+                <img src="/resources/src/img/addPost.png">
+            </div>
+        </a>
+    </c:if>
 
 
     
