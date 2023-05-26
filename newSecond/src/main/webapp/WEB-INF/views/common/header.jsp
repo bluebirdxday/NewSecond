@@ -68,10 +68,20 @@
                         <img class="chattings" src="/resources/src/img/message.png"/>
                     </a>
                 </span>
+
+
                 <span>
-                    <a href="/notification/notification" id="notification">
-                        <img class="notifications" src="/resources/src/img/notifications.png"/>
-                    </a>
+                    <c:if test="${empty loginUser}">
+                        <a href="/" id="notification">
+                            <img class="notifications" src="/resources/src/img/notifications.png"/>
+                        </a>
+                    </c:if>
+
+                    <c:if test="${not empty loginUser}" >
+                        <a href="/notification/notification" id="notification">
+                            <img class="notifications" src="/resources/src/img/notifications.png"/>
+                        </a>
+                    </c:if>
                 </span>
             </div>
         
