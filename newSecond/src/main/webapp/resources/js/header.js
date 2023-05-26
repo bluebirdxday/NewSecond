@@ -9,8 +9,6 @@ notificationSock2.onmessage = function(e) {
 
     let liveMessage;
 
-    console.log(msg);
-    console.log(msg.notificationType);
 
     if(msg.notificationType=="F" || msg.notificationType=="L"){
         
@@ -33,22 +31,3 @@ notificationSock2.onmessage = function(e) {
     }
     alarmTrigger.click();
 }
-
-
-// likeBoardNotificationSock2.onmessage = function(e){
-    
-//     const msg = JSON.parse(e.data);
-    
-//     let liveMessage;
-    
-//     console.log(msg);
-//     console.log(msg.notificationType);
-    
-//     if(msg.notificationType=="L"){
-        
-//         liveMessage = msg.shopTitle + msg.notificationMessage;
-//         document.getElementById('alarmBody').innerText = liveMessage;
-//     }
-    
-//     alarmTrigger.click();
-// }

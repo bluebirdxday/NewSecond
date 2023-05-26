@@ -44,6 +44,11 @@ public class ReviewDAO {
 	public int updateReview(Review review) {
 		return sqlSession.update("shopMapper.updateReview", review);
 	}
+
+	// 알림을 위한 후기 조회
+	public Review selectReivewByGoodsNo(int goodsNo) {
+		return sqlSession.selectOne("shopMapper.selectReivewByGoodsNo", goodsNo);
+	}
 	
 	
 }
