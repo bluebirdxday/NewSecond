@@ -54,9 +54,17 @@ imagePlusBtn.addEventListener('mouseout', () => {
     imageBtn.style.backgroundColor = '#C2D3EB';
 });
 
-/* +버튼을 눌렀을 떄 input 생성 후 클릭 */
+/* +버튼을 눌렀을 때 input 생성 후 클릭 */
 imagePlusBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    const fileInputContainer = document.getElementById('fileInputContainer');
+    const imageScroller = document.querySelector('.post--main__ImageScroller');
+
+    // 이미지 개수 체크
+    if (imageScroller.childElementCount >= 5) {
+        return; // 이미지가 5개 이상이면 함수 종료
+    }
+
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.name = 'image';
@@ -67,6 +75,13 @@ imagePlusBtn.addEventListener('click', (e) => {
     fileInputContainer.appendChild(fileInput);
     fileInput.click();
 });
+
+// 이미지 개수 체크 함수
+function checkImageCount() {
+    const imageScroller = document.querySelector('.post--main__ImageScroller');
+    const imageCount = imageScroller.childElementCount;
+    return imageCount >= 5;
+}
 
 /* input 식별을 위한 AA 난수 생성기 */
 function generateDataId() {
@@ -105,7 +120,6 @@ fileInputContainer.addEventListener('change', (event) => {
 
 /* 이미지 삭제 함수 */
 function enableImageDelete(image) {
-
     image.addEventListener('click', () => {
         if (confirm('이미지를 삭제하시겠습니까?')) {
             const dataId = image.dataset.id; // img data-id 가져오기
@@ -128,8 +142,24 @@ function removeFileInput(dataId) {
 
 /* 이미지 카운트 함수 */
 function updateImageCount() {
+    const imageCount = document.getElementById('imageCount');
     imageCount.textContent = `(${fileCount}/5)`;
+
+    const imagePlusBtn = document.getElementById('imagePlus');
+    // 이미지 개수가 5개 이상인 경우 + 버튼을 비활성화
+    if (fileCount >= 5) {
+        imagePlusBtn.style.pointerEvents = 'none';
+        imagePlusBtn.style.opacity = '0.5';
+    } else {
+        imagePlusBtn.style.pointerEvents = 'auto';
+        imagePlusBtn.style.opacity = '1';
+    }
 }
+
+// 페이지 로드 시 이미지 개수 체크하여 + 버튼 상태 설정
+window.addEventListener('load', () => {
+    updateImageCount();
+});
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
