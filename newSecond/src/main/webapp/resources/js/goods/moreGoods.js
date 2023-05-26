@@ -37,8 +37,6 @@ more.addEventListener("click", e => {
                 }
                 a.append(img);
 
-                // console.log(moreGoodsList[i].goodsStatus);
-
                 if(moreGoodsList[i].goodsStatus=='E'){
                     const statusDiv = document.createElement("div");
                     statusDiv.classList.add("status");
@@ -52,7 +50,6 @@ more.addEventListener("click", e => {
                     statusDiv.innerText = "Reserved";
                     a.append(statusDiv);
                 }
-                
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
                 priceDiv.innerHTML = moreGoodsList[i].goodsPrice.toLocaleString('ko-KR');
@@ -60,13 +57,8 @@ more.addEventListener("click", e => {
                 titleDiv.classList.add("goods_title");
                 titleDiv.innerHTML = moreGoodsList[i].goodsTitle;
                 
-                
                 a.append(priceDiv);
                 a.append(titleDiv);
-                // a.append(img);
-                // a.append(statusDiv);
-                // a.append(priceDiv);
-                // a.append(titleDiv);
 
                 goodsDiv.append(a);
             }

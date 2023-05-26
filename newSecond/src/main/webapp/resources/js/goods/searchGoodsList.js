@@ -25,7 +25,6 @@ if(searchForm!=null){
 })();
 
 // 기능별 조회 (최신순/낮은가격순/높은가격순/인기순)
-const listsortList = document.getElementsByName("listSort");
 
 function callSortedGoods(obj, query){
     fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&query=" + query)
