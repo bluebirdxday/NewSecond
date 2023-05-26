@@ -1,3 +1,4 @@
+// 지영
 // 캐러셀
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
@@ -20,7 +21,19 @@ next.addEventListener('click', () => {
     carousel.style.transform = `translate3d(-${300*index}px,0,0)`;
 });
 
+// 신고버튼 미로그인 시
+const siren = document.getElementById("siren");
+siren.addEventListener('click',e=>{
+    if(loginUserNo == ""){
+        document.getElementById('toastBody').innerText = "로그인 후 이용해주세요!";
+        document.getElementById('liveToast').classList.add('text-bg-danger');
+        toastTrigger.click();
+        e.preventDefault();
+        return;
+    }
+});
 
+// 지영
 // 좋아요 버튼
 const goodsLike = document.getElementById("goodsLike");
 

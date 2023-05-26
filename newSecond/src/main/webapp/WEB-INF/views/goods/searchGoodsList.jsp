@@ -6,8 +6,6 @@
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
-<c:set var="paramQuery" value="${param.query}"/>
-<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,7 +13,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${query} 검색 결과</title>
-    <%-- ${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')} --%>
     
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">

@@ -98,9 +98,12 @@
                             <c:otherwise>
                                 <div class="container--inner__top__right__describeTitleAndQna">
                                     <div class="container--inner__top__right__describeTitle">&nbsp;상세 설명</div>
-                                    <div class="container--inner__top__right__qna"><a href="/qna/qna" data-bs-toggle="tooltip" 
-									data-bs-placement="top" 
-									data-bs-title="무분별한 신고는 제재 대상이 될 수 있습니다."><img src="/resources/src/img/siren.png"></a></div>
+                                    <div class="container--inner__top__right__qna">
+                                        <a href="/qna/qna" data-bs-toggle="tooltip" 
+                                        data-bs-placement="top" 
+                                        data-bs-title="무분별한 신고는 제재 대상이 될 수 있습니다.">
+                                        <img src="/resources/src/img/siren.png" id="siren"></a>
+                                    </div>
                                 </div>
                             </c:otherwise>
                         </c:choose>

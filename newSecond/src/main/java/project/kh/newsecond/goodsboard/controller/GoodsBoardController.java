@@ -42,9 +42,9 @@ public class GoodsBoardController {
 	// 지영
 	// 상품 게시글 목록 조회(검색)
 	@GetMapping("/search/goodsList")
-	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String query, 
+	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
 			Model model) {
-		
+		String query = searchName.replaceAll("<[^>]*>", "");
 		Map<String, Object> map = service.selectSearchGoodsList(query);
 		map.put("query", query);
 		
@@ -59,10 +59,7 @@ public class GoodsBoardController {
 	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
 	@ResponseBody
 	@GetMapping(value="/search/sortGoodsList", produces = "application/json; charset=UTF-8")
-	public List<GoodsBoard> selectSortedList(String listSort, String searchName){
-		System.out.println(listSort);
-		String query = searchName.replaceAll("<[^>]*>", "");
-		System.out.println(query);
+	public List<GoodsBoard> selectSortedList(String listSort, String query){
 		
 		Map<String, String> map = new HashMap<>();
 		map.put("listSort", listSort);
