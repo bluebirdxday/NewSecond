@@ -14,13 +14,13 @@
 }
 
 .container--inner__top{
-    margin: 0 50px;
+    margin: 0 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     /* place-items: center; */
     /* position: fixed; */
