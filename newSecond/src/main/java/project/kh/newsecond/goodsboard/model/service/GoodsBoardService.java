@@ -13,6 +13,9 @@ public interface GoodsBoardService {
 	// 지영
 	// 상품 게시글 목록 조회(검색)
 	Map<String, Object> selectSearchGoodsList(String query);
+	
+	// 조건별 상품 리스트 조회
+	List<GoodsBoard> selectSortedList(Map<String, String> map);
 
 	// 상품 더보기 
 	List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName);
@@ -66,8 +69,6 @@ public interface GoodsBoardService {
 	// 조회수 증가
 	int updateViewCount(int goodsNo);
 
-	// 조건별 상품 리스트 조
-	List<GoodsBoard> selectSortedList(Map<String, String> map);
 	
 	
 	

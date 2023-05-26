@@ -46,7 +46,6 @@ public class GoodsBoardController {
 			Model model) {
 		String query = searchName.replaceAll("<[^>]*>", "");
 		Map<String, Object> map = service.selectSearchGoodsList(query);
-		map.put("query", query);
 		
 		// 조회 결과
 		model.addAttribute("map", map);
@@ -65,7 +64,7 @@ public class GoodsBoardController {
 		map.put("listSort", listSort);
 		map.put("query", query);
 		
-		System.out.println(service.selectSortedList(map));
+//		System.out.println(service.selectSortedList(map));
 		
 		return service.selectSortedList(map);
 	}

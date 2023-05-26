@@ -41,6 +41,12 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return map;
 	}
 	 
+	 // 조건별 조회
+	 @Override
+	 public List<GoodsBoard> selectSortedList(Map<String, String> map) {
+		 return dao.selectSortedList(map);
+	 }
+	 
 	 // 상품 더보기
 	 @Override
 	public List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName) {
@@ -180,10 +186,6 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return dao.updateViewCount(goodsNo);
 	}
 	
-	@Override
-	public List<GoodsBoard> selectSortedList(Map<String, String> map) {
-		return dao.selectSortedList(map);
-	}
 
 	
 	 

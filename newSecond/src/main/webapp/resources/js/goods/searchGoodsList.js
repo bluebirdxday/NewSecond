@@ -32,8 +32,8 @@ function callSortedGoods(obj, query){
     fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&searchName=" + query)
     .then(resp => resp.json())
     .then(sortedGoodsList => {
-        console.log(query);
-        console.log(sortedGoodsList);
+        // console.log(query);
+        // console.log(sortedGoodsList);
         const goodsListTable = document.getElementById("goodsListTable");
 
         if(sortedGoodsList.length>0){
