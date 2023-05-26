@@ -26,16 +26,16 @@ public class GoodsBoardDAO {
 	 * @param searchName
 	 * @return searchGoodsCount
 	 */
-	public int searchGoodsCount(String searchName) {
-		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", searchName);
+	public int searchGoodsCount(String query) {
+		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", query);
 	}
 
 	/** 검색 상품 목록 조회 
 	 * @param searchName
 	 * @return searchGoodsList
 	 */
-	public List<GoodsBoard> selectSearchGoodsList(String searchName) {
-		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", searchName);
+	public List<GoodsBoard> selectSearchGoodsList(String query) {
+		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", query);
 	}
 
 	

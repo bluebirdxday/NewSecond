@@ -25,13 +25,13 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	// 지영
 	// 상품 게시글 목록 조회(검색)
 	 @Override
-	public Map<String, Object> selectSearchGoodsList(String searchName) {
+	public Map<String, Object> selectSearchGoodsList(String query) {
 		 
 		 // 검색 조건 일치하는 삭제x 특정 상품게시글 count
-		 int searchGoodsCount = dao.searchGoodsCount(searchName);
+		 int searchGoodsCount = dao.searchGoodsCount(query);
 		 
 		 // 검색 상품 목록 조회 
-		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(searchName);
+		 List<GoodsBoard> searchGoodsList = dao.selectSearchGoodsList(query);
 		 
 		 Map<String, Object> map = new HashMap<>();
 		 

@@ -45,13 +45,13 @@ public class GoodsBoardController {
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
 			Model model) {
 		
-		searchName.replaceAll("<[^>]*>", "");
-		System.out.println(searchName);
-		
-		Map<String, Object> map = service.selectSearchGoodsList(searchName);
+		String query = searchName.replaceAll("<[^>]*>", "");
+		Map<String, Object> map = service.selectSearchGoodsList(query);
+		map.put("query", query);
 		
 		// 조회 결과
 		model.addAttribute("map", map);
+		model.addAttribute("query", query);
 
 		return "goods/searchGoodsList";
 	}
@@ -61,9 +61,10 @@ public class GoodsBoardController {
 	@GetMapping("/search/goodsList/{listSort}")
 	public List<GoodsBoard> selectSortedList(@PathVariable("listSort") String listSort,
 			@RequestParam(value="query", required=false)String searchName){
+		String query = searchName.replaceAll("<[^>]*>", "");
 		Map<String, String> map = new HashMap<>();
 		map.put("listSort", listSort);
-		map.put("searchName", searchName);
+		map.put("query", query);
 		
 		return service.selectSortedList(map);
 	}
