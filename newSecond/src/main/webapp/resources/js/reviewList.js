@@ -29,3 +29,25 @@ function deleteReview(reviewNo) {
 
     toastTrigger.click();
 }
+
+
+/* 리뷰 작성 알림 */
+const reviewUserNo = document.getElementById("reviewUserNo").value;
+const reviewGoodsNo = document.getElementById("reviewGoodsNo").value;
+
+if(reviewUserNo!='' && reviewGoodsNo!=''){
+
+    console.log(reviewUserNo);
+    console.log(reviewGoodsNo);
+    let addReviewNotiSock = new SockJS("/notificationSock");
+
+    // 작성된 리뷰 (loginUserNo의 주인: senderNo , goodsNo의 주인: targetNo)
+    fetch("/notification/addReviewNotification?userNo="+ reviewUserNo + "&goodsNo=" + reviewGoodsNo)
+    .then(resp=>resp.json())
+    .then(newReviewNotiList=>{
+        addReviewNotiSock.send(JSON.stringify(newReviewNotiList));
+    }).catch(err=>{
+        console.log(err);
+    })
+
+}

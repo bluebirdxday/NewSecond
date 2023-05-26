@@ -22,7 +22,7 @@ public interface AdminService {
 	/**관리자 회원 리스트 조회
 	 * @return
 	 */
-	List<HashMap<String, Object>> selectUserList();
+	Map<String, Object> selectUserList(int cp);
 
 	/**관리자 QNA 리스트 조회 //페이지네이션
 	 * @return
@@ -32,7 +32,7 @@ public interface AdminService {
 	/**관리자 게시글 리스트 조회
 	 * @return
 	 */
-	List<HashMap<String, Object>> selectGoodsBoardList();
+	Map<String, Object> selectGoodsBoardList(int cp);
 
 	Notice selectNoticeOne(int noticeNo);
 

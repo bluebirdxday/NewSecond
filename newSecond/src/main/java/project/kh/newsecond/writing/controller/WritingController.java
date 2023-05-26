@@ -37,7 +37,7 @@ public class WritingController {
 	@GetMapping("/write")
 	public String writing() {
 		
-		// 로그인한 놈만 글쓰기 처리: 로그인한 놈만 글쓰기 이전 페이지에서 처리하면 굳이 기능 없어도 됨
+		// 로그인한 사람만 글쓰기 처리: 로그인한 놈만 글쓰기 이전 페이지에서 처리하면 굳이 기능 없어도 됨
 		
 		return "writing/writingPage";
 		// (/WEB-INF/views/)writing/writingPage(.jsp)
@@ -51,10 +51,8 @@ public class WritingController {
 			@RequestParam(value="image", required=false) List<MultipartFile> images, // 이미지 객체 생성
 			@SessionAttribute("loginUser") User loginUser,
 			RedirectAttributes ra,
-			HttpSession session,
-			Model model
+			HttpSession session
 			) throws IllegalStateException, IOException {
-		
 		
 		// 0. innerText로 불러온 category2를 categoryNo에 세팅
 		if(writing.getCategory2().equals("신발"))			{writing.setCategoryNo(1);  };
@@ -106,10 +104,9 @@ public class WritingController {
 		int goodsNo = (int) resultService.get("goodsNo");
 		
 		// 7. result, goodsNo 담기
-		model.addAttribute("goodsNo", goodsNo);
-		model.addAttribute("uploadComplete", "ok");
 		
 		if(result > 0) {
+			session.setAttribute("uploadComplete", "ok");
 			path += "/goods/" + goodsNo; // 성공시 write 화면 리턴
 		} else {
 			path += "write"; // 실패시 write 화면 리턴

@@ -23,6 +23,7 @@
 		<result property="notificationType" column="NOTIFICATION_TYPE" />
 		<result property="notificationURL" column="NOTIFICATION_URL" />
 		
+		<result property="thumbnail" column="GOODS_THUMBNAIL" />
 		<result property="shopTitle" column="SHOP_TITLE" />
 		<result property="shopProfile" column="SHOP_PROFILE"/>
 		
@@ -37,13 +38,26 @@
 	
 	<!-- 알림 리스트 + SENDER 유저 정보 -->
 	<select id="selectNotificationList" resultMap="notification_rm">
-		SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, 
-			NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, SHOP_TITLE, 
-			NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, NOTIFICATION_URL
-		FROM "notifications" n
-		JOIN "shop" s ON(SENDER_NO=s.USER_NO)
-		WHERE n.USER_NO = #{loginUserNo}
-		ORDER BY NOTIFICATION_CREATE_DT DESC
+	SELECT NOTIFICATION_NO, TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, 
+		<![CDATA[
+		    CASE
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1/24/60 THEN '방금 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1/24 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) * 24 * 60) || '분 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 1 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) * 24) || '시간 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 30 THEN FLOOR(SYSDATE - NOTIFICATION_CREATE_DT) || '일 전'
+		        WHEN SYSDATE - NOTIFICATION_CREATE_DT < 365 THEN FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) / 30) || '달 전'
+		        ELSE FLOOR((SYSDATE - NOTIFICATION_CREATE_DT) / 365) || '년 전'
+		    END NOTIFICATION_CREATE_DT, 
+	     ]]>
+		
+		NOTIFICATION_TYPE, SHOP_TITLE, SHOP_PROFILE, NOTIFICATION_URL, GOODS_THUMBNAIL
+	FROM (SELECT NOTIFICATION_NO, n.USER_NO TARGET_NO, SENDER_NO, NOTIFICATION_MESSAGE, READ_OR_NOT, NOTIFICATION_CREATE_DT, NOTIFICATION_TYPE, SHOP_TITLE,
+				NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, NOTIFICATION_URL, GOODS_THUMBNAIL
+				FROM "notifications" n
+				JOIN "shop" s ON(SENDER_NO=s.USER_NO)
+				WHERE n.USER_NO = #{userNo}
+				ORDER BY NOTIFICATION_CREATE_DT DESC)
+	<!-- WHERE NOTIFICATION_TYPE NOT IN ('K') -->
 	</select>
 	
 
@@ -70,16 +84,53 @@
 	</delete>
 	
 	
-	<!-- 팔로우 알림 추가 -->
+	<!-- 알림 추가 -->
 	<insert id="insertNotification">
 		INSERT INTO "notifications" VALUES(SEQ_NOTIFICATION_NO.NEXTVAL, 
-			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, 'F', #{notificationURL})
+			#{targetNo}, #{senderNo}, #{notificationMessage}, DEFAULT, DEFAULT, #{notificationType}, #{notificationURL}, #{thumbnail})
 	</insert>
 	
 	
 	<!-- 등록 키워드 개수 조회 -->
 	<select id="selectKeywordCount" resultType="_int">
 		SELECT COUNT(*) FROM "notification_keywords" WHERE USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 키워드 알림 리스트 조회 -->
+	<select id="selectKeywordNotiList" resultMap="notification_rm">
+		SELECT nk.USER_NO TARGET_NO, g.USER_NO SENDER_NO, 
+				 nk.KEYWORD_TITLE || '^^' || g.GOODS_TITLE NOTIFICATION_MESSAGE, 
+				'/goods/'||g.GOODS_NO NOTIFICATION_URL, 'K' NOTIFICATION_TYPE, 					
+				NVL((SELECT FILE_PATH||g.USER_NO||'/'||FILE_NAME FROM "files" f
+					WHERE f.GOODS_NO = g.GOODS_NO 
+					AND FILE_ORDER = 1), '/resources/src/img/basic_profile.png') GOODS_THUMBNAIL  
+		FROM "goods_board" g, "notification_keywords" nk
+		WHERE REGEXP_LIKE(g.GOODS_TITLE, nk.KEYWORD_TITLE)
+		AND g.USER_NO != nk.USER_NO
+		AND GOODS_NO = ${goodsNo}
+		AND GOODS_STATUS NOT IN('D', 'B')
+	</select>
+	
+	
+	<!-- 팔로우한 상점 새글 알림 -->
+	<select id="selectNewPostNotification" resultMap="notification_rm">
+		SELECT f.ACTIVE_USER_NO TARGET_NO, f.PASSIVE_USER_NO SENDER_NO, SHOP_TITLE, 
+				NVL(SHOP_PROFILE, '/resources/src/img/basic_profile2.png') SHOP_PROFILE, 'N' NOTIFICATION_TYPE,
+				(SELECT GOODS_TITLE FROM "goods_board" WHERE GOODS_NO = #{goodsNo}) || '^^님께서 새로운 상품을 게시하였습니다.' NOTIFICATION_MESSAGE,
+				 '/goods/'|| #{goodsNo} NOTIFICATION_URL
+		FROM "follow" f
+		JOIN "shop" s ON(s.USER_NO = f.PASSIVE_USER_NO)
+		WHERE f.PASSIVE_USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 후기 작성 알림 -->
+	<select id="addReviewNotification" resultMap="notification_rm">
+		SELECT #{userNo} SENDER_NO, USER_NO TARGET_NO, GOODS_TITLE || '^^' || '해당 게시글에 새로운 후기가 등록되었습니다.' NOTIFICATION_MESSAGE, 'P' NOTIFICATION_TYPE, 
+			'/shop/' || USER_NO NOTIFICATION_URL
+		FROM "goods_board" 
+		WHERE GOODS_NO = #{goodsNo}
 	</select>
 	
 </mapper>

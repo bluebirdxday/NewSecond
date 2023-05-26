@@ -11,6 +11,7 @@
 		<result property="userPassword" column="USER_PASSWORD" />
 		<result property="userNickname" column="USER_NICKNAME" />
 		<result property="userTel" column="USER_TEL" />
+		<result property="randomString" column="RANDOM_STRING" />
 		<result property="userAddress" column="USER_ADDRESS" />
 		<result property="userStatus" column="USER_STATES" />
 		<result property="enrollDate" column="ENROLL_DT" />
@@ -78,7 +79,7 @@
    <!-- 회원의 상점(프로필) 기본정보 입력 -->
    <insert id="insertShopData" parameterType="User">
 	  <selectKey keyProperty="randomString" resultType="String" order="BEFORE">
-	    SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS randomString FROM DUAL
+	    SELECT 'USER#' || LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 5, '0') AS RANDOM_STRING FROM DUAL
 	  </selectKey>
 	  INSERT INTO "shop"
 	  VALUES (

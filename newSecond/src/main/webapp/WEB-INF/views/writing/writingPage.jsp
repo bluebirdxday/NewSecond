@@ -45,12 +45,13 @@
                             <a href="#" id="imagePlus">+</a>
 <%-- 이미지  name="image" --%>
                             <div id="fileInputContainer">
-                                <%-- <input type="file" name="image" accept="image/*" data-id="NI" style="display: none;"> --%>
+                               <%-- <input type="file" name="image" accept="image/*" data-id="NI" style="display: none;"> --%>
                             </div>
                         </div>
                         <div class="post--main__ImageScroller">
                             <%-- 이 안에 img 형식으로 파일이 담김(미리보기) --%>
                             <%-- <img src="325r4325r4" data-id="NI"> --%>
+                            <%-- <img src="기본 이미지" onerror="this.src='/resources/src/img/no_image.jpeg'"/> --%>
                         </div>
                     </div>
                 </article>
@@ -80,19 +81,19 @@
             <div class="post--main__inputQuantity">
                 <div>
 <%-- 수량 name="quantity" --%>
-                    <label for="quantityInput" class="labelTitle">수량</label><span>*</span><input type="number" min="1" name="quantity"  placeholder="0" id="quantityInput" required>개
+                    <label for="quantityInput" class="labelTitle">수량</label><span></span><input type="number" min="1" name="quantity" placeholder="1" value="1" id="quantityInput">개
                 </div>
             </div>
             <div class="post--main__inputCondition">
                 <div>
-                    <label for="condition" class="labelTitle">상태</label><span>*</span>
+                    <label for="condition" class="labelTitle">상태</label><span></span>
                     <article class="post--main__inputConditionSelector">
 <%-- 상태 name="condition" --%>                    
                         <label>
-                            <input type="radio" name="condition" value="새상품" required>새상품
+                            <input type="radio" name="condition" value="새상품">새상품
                         </label>
                         <label>
-                            <input type="radio" name="condition" value="중고상품" required>중고상품
+                            <input type="radio" name="condition" value="중고상품">중고상품
                         </label>
                     </article>
                 </div>
@@ -111,9 +112,9 @@
                         </div>
 <%-- 카테고리 name="category2" --%>                        
                         <div id="category--2depth">
-                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.</div>
-                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류"></label>
-                                <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류"></label> --%>
+                            <div style="color: #E3E3E3;">2차 카테고리까지 선택해주세요.<input type="radio" name="category2" disabled required></div>
+                            <%-- <label id="male2" class="category--2depth__item">남성의류<input type="radio" name="category2" value="남성의류" required></label>
+                                <label id="female2" class="category--2depth__item">여성의류<input type="radio" name="category2" value="여성의류" required></label> --%>
                         </div>
                     </article>
                 </div>

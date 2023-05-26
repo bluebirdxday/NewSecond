@@ -43,7 +43,13 @@ public class ShopController {
 		
 		
 		Shop shop = service.selectShopInfo(userNo);
-		int loginUserNo = loginUser.getUserNo();
+			
+		int loginUserNo = 0;
+		
+		if(loginUser!=null) {
+			loginUserNo = loginUser.getUserNo();
+		}
+		
 		int openDays = service.selectShopOpenDay(userNo);
 		
 		
@@ -57,10 +63,14 @@ public class ShopController {
 	
 		
 		// userNo 넣고 shopUserNo 넣고 
-				
 		Map<String, Integer> map = new HashMap<>();
-		map.put("activeUserNo", loginUserNo);
 		map.put("passiveUserNo", userNo);
+		
+		if(loginUser!=null) {
+			map.put("activeUserNo", loginUserNo);
+		}else {
+			map.put("activeUserNo", 2);
+		}
 
 		int checkFollow = service.checkFollow(map);
 				
@@ -127,15 +137,12 @@ public class ShopController {
 			RedirectAttributes ra, HttpSession session) throws IllegalStateException, IOException {
 		
 		
-		System.out.println(shopNewProfile);
-		
-		
 		if(shopNewProfile.getSize()==0) {
 			shop.setShopProfile(service.selectShopInfo(shop.getUserNo()).getShopProfile());
 		}
 		
 		int userNo = shop.getUserNo();
-		String webPath = "/resources/src/img/profile/" + userNo + "/";
+		String webPath = "/resources/src/img/profile/";
 		String filePath = session.getServletContext().getRealPath(webPath);
 		
 		int result = service.updateShopInfo(shop, shopNewProfile,  webPath, filePath);

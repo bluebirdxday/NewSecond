@@ -65,6 +65,9 @@ public interface GoodsBoardService {
 
 	// 조회수 증가
 	int updateViewCount(int goodsNo);
+
+	// 조건별 상품 리스트 조
+	List<GoodsBoard> selectSortedList(Map<String, String> map);
 	
 	
 	

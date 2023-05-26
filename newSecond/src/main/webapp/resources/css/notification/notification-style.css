@@ -103,9 +103,9 @@ a{
 }
 
 /* 활동 알림 아이템(알림 div) 구성 */
-.notice--tab1__item>div:nth-of-type(1){ width: 20%; }
+.notice--tab1__item>div:nth-of-type(1){ width: 18%; }
 .notice--tab1__item>div:nth-of-type(2){ width: 70%; }
-.notice--tab1__item>div:nth-of-type(3){ width: 10%; }
+.notice--tab1__item>div:nth-of-type(3){ width: 12%; margin-bottom: 10px}
 
 /* 활동 알림 img */
 .notice--tab1__img{
@@ -282,4 +282,17 @@ a{
     width: 10%; 
     color: #656565;
     font-size: 16px;
+}
+
+/* 활동알림이 존재하지 않을 때 div */
+.emptyNotification{
+    width: auto;
+    height: 200px;
+    padding: 30px;
+    align-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #656565;
+    text-align: center;
+    line-height: 150px;
 }

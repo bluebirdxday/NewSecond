@@ -56,12 +56,13 @@ public class WritingServiceImpl implements WritingService {
 					
 					int order = i + 1; // 파일 순서는 1번부터
 					
-					// 파일 순서 1번 자리 강제 배정(상준)
+					// 파일 순서 1번 자리 강제 배정(상준) ***************************************************************
 					orderList[i] = order;
 					if(orderList[0] != 1) { // order 1이 씹혔다면 order 1 강제 배정
 						order = 1;
+						// i--; // 만약 1, 2, 3이 강제되어야 한다면 이 코드를 생각 후 사용하기(하지만 1, 3, 4도 되니 일단은 보류)
 					}
-					// 파일 순서 1번 자리 강제 배정(상준)
+					// 파일 순서 1번 자리 강제 배정(상준) ***************************************************************
 					
 					// Finalimgs에 매개변수 담기
 					Finalimgs.setGoodsNo(goodsNo); // 1-2에서 불러온 goodsNo 담기
@@ -92,9 +93,21 @@ public class WritingServiceImpl implements WritingService {
 					int tempIndex = FinalImages.get(i).getFileOrder();
 					int index = tempIndex - 1;
 					
-					// 파일로 변환
 					String afterRename = FinalImages.get(i).getFileName();
-					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
+					
+					// 글 올리기 전에 폴더가 없다면 폴더 미리 만드는 코드 추가
+					String userFolderPath = filePath + writing.getUserNo() + "/";
+					File userFolder = new File(userFolderPath);
+
+					if (!userFolder.exists()) {
+					    userFolder.mkdirs(); // 폴더 미리 만들기
+					}
+
+					images.get(index).transferTo(new File(userFolderPath + afterRename));
+					
+					
+					// 파일로 변환
+//					images.get(index).transferTo(new File(filePath + writing.getUserNo() + "/" + afterRename));
 				
 				}
 				

@@ -127,6 +127,7 @@
 			AND ((GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 			OR SHOP_TITLE LIKE '%${searchName}%')
 		ORDER BY SELL_ENROLL_DT DESC
+		
 	</select>
 	
 	
@@ -142,6 +143,37 @@
 		WHERE GOODS_STATUS IN ('A','E','C')
 			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
 		ORDER BY SELL_ENROLL_DT DESC
+		
+	</select>
+	
+	
+	<!-- 검색 상품 목록 조회(조건별) -->
+	<select id="selectSortedList" resultMap="goodsboard_rm">
+	
+		SELECT GOODS_NO , USER_NO , CATEGORY_NO , GOODS_TITLE , GOODS_PRICE, GOODS_STATUS,
+			(SELECT FILE_PATH||USER_NO||'/'||FILE_NAME FROM "files" F
+			WHERE F.GOODS_NO = G.GOODS_NO
+			AND FILE_ORDER = 1) THUMBNAIL
+		FROM "goods_board" G
+		JOIN "shop" USING (USER_NO)
+		WHERE GOODS_STATUS IN ('A','E','C')
+			AND (GOODS_TITLE || GOODS_DESCR) LIKE '%${searchName}%'
+		
+		<!-- 조건에 따라 조회 -->
+		<choose>
+			<when test='listSort == "rowPrice"'>
+			ORDER BY GOODS_PRICE
+			</when>
+			<when test='listSort == "highPrice"'>
+			ORDER BY GOODS_PRICE DESC
+			</when>
+			<when test='listSort == "famous"'>
+			ORDER BY VIEW_COUNT DESC
+			</when>
+			<when test='listSort == "recent"'>
+			ORDER BY SELL_ENROLL_DT DESC
+			</when>
+		</choose>
 		
 	</select>
 	
@@ -337,6 +369,38 @@
 	<update id="updateViewCount">
 		UPDATE "goods_board" SET
 		VIEW_COUNT  = VIEW_COUNT +1
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
+		
+		
+		
+	<!-- 상준: 게시글 삭제 -->
+	<update id="myGoodsDelete">
+		UPDATE "goods_board"
+		SET GOODS_STATUS = 'D'
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
+	
+	<!-- 상준: 게시글 수정 -->
+	<update id="myGoodsModify">
+		UPDATE "goods_board"
+		SET GOODS_TITLE = #{goodsTitle},
+			GOODS_DESCR = #{goodsDescr},
+			GOODS_PRICE = #{goodsPrice}
+		WHERE GOODS_NO = #{goodsNo}
+		AND USER_NO = #{userNo}
+	</update>
+	
+	<!-- 상준: 게시글 이미지 수정 -->
+	<update id="myGoodsImageModify">
+		UPDATE "files"
+		<foreach collection="list" item="img" separator=" UNION ALL ">
+			SET FILE_NO = SEQ_FILE_NO.NEXTVAL,
+				FILE_NAME = #{img.fileName},
+				FILE_ORDER = #{img.fileOrder},
+				FILE_PATH = #{img.filePath}
+			FROM DUAL
+		</foreach>
 		WHERE GOODS_NO = #{goodsNo}
 	</update>
 		

@@ -179,6 +179,11 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	public int updateViewCount(int goodsNo) {
 		return dao.updateViewCount(goodsNo);
 	}
+	
+	@Override
+	public List<GoodsBoard> selectSortedList(Map<String, String> map) {
+		return dao.selectSortedList(map);
+	}
 
 	
 	 

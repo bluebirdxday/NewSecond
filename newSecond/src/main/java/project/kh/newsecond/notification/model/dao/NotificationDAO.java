@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
+import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 @Repository
@@ -54,6 +55,21 @@ public class NotificationDAO {
 	// 알림 리스트 조회
 	public List<Notification> selectNotificationList(int userNo) {
 		return sqlSession.selectList("NotificationMapper.selectNotificationList", userNo);
+	}
+
+	// 키워드 알림을 위한 리스트 조회
+	public List<Notification> selectKeywordNotiList(int goodsNo) {
+		return sqlSession.selectList("NotificationMapper.selectKeywordNotiList", goodsNo);
+	}
+
+	// 팔로우한 상점 새글 알림
+	public List<Notification> selectNewPostNotification(Map<String, Object> map) {
+		return sqlSession.selectList("NotificationMapper.selectNewPostNotification", map);
+	}
+
+	// 후기 작성 알림
+	public Notification addReviewNotification(Map<String, Object> map) {
+		return sqlSession.selectOne("NotificationMapper.addReviewNotification", map);
 	}
 
 }

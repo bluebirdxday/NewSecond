@@ -234,19 +234,6 @@ INSERT INTO "notification_keywords" VALUES(SEQ_KEYWORD_NO.NEXTVAL, 1, '수제비
 COMMIT;
 
 
-INSERT INTO "transaction_list" VALUES(1, 202);
-INSERT INTO "transaction_list" VALUES(1, 199);
-INSERT INTO "transaction_list" VALUES(1, 189);
-INSERT INTO "transaction_list" VALUES(1, 188);
-
-INSERT INTO "transaction_list" VALUES(1, 194);
-INSERT INTO "transaction_list" VALUES(1, 143);
-INSERT INTO "transaction_list" VALUES(1, 137);
-INSERT INTO "transaction_list" VALUES(1, 201);
-INSERT INTO "transaction_list" VALUES(1, 179);
-INSERT INTO "transaction_list" VALUES(1, 118);
-
-
               
               
 INSERT INTO "shop" VALUES (
@@ -268,4 +255,9 @@ SELECT LPAD(FLOOR(DBMS_RANDOM.VALUE(0, 100000)), 6, '0')
 FROM DUAL;
 
 SELECT * FROM "notifications";
+
+
+SELECT * FROM "qna";
+
+
 

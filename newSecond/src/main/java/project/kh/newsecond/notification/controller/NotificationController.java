@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
 import project.kh.newsecond.notification.model.service.NotificationService;
+import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.user.model.dto.User;
 
 @Controller
@@ -94,6 +95,39 @@ public class NotificationController {
 	    return service.deleteKeyword(keyword);
 	}
 	
+	
+	// 키워드 알림을 위한 리스트 조회
+	@GetMapping("/selectKeywordNotiList")
+	@ResponseBody
+	public List<Notification> selectKeywordNotiList(@RequestParam("goodsNo") int goodsNo){
+		return service.selectKeywordNotiList(goodsNo);
+	}
+	
+	
+	// 새글 작성 알림
+	@GetMapping("/selectNewPostNotification")
+	@ResponseBody
+	public List<Notification> selectNewPostNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo){
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", userNo);
+		map.put("goodsNo", goodsNo);
+		
+		return service.selectNewPostNotification(map);
+	}
+	
+	
+	// 후기 작성 알림
+	@GetMapping("/addReviewNotification")
+	@ResponseBody
+	public Notification addReviewNotification(@RequestParam("userNo") int userNo, @RequestParam("goodsNo") int goodsNo) {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", userNo);
+		map.put("goodsNo", goodsNo);
+		
+		return service.addReviewNotification(map);
+	}
 	
 	
 }

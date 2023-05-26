@@ -27,7 +27,6 @@ public class GoodsBoardDAO {
 	 * @return searchGoodsCount
 	 */
 	public int searchGoodsCount(String searchName) {
-		
 		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", searchName);
 	}
 
@@ -39,6 +38,14 @@ public class GoodsBoardDAO {
 		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", searchName);
 	}
 
+	
+	/**조건별 목록 조회
+	 * @param listSort
+	 * @return
+	 */
+	public List<GoodsBoard> selectSortedList(Map<String, String> map) {
+		return sqlSession.selectList("goodsBoardMapper.selectSortedList", map);
+	}
 
 	/** 더보기
 	 * @param startCallNum
@@ -191,6 +198,7 @@ public class GoodsBoardDAO {
 	public int updateViewCount(int goodsNo) {
 		return sqlSession.update("goodsBoardMapper.updateViewCount",goodsNo);
 	}
+
 
 	
 }

@@ -59,7 +59,7 @@
 	
 	
 	
-		<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
+			<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
 	<beans:bean id="inquireNotificationHandler" 
 			class="project.kh.newsecond.notification.websocket.InquireNotiWebSocketHandler"/>
 
