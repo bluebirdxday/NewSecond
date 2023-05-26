@@ -31,6 +31,8 @@ public class PriceViewResultController {
 		// (/WEB-INF/views/)priceView/priceViewResultPage(.jsp)
 	}
 	
+	
+	
 	// iphone 으로 검색하면 localhost/priceView/priceSee/search?keyword=iphone 으로 연결
 	@GetMapping("/priceSee/search")
 	public String priceViewSearch(
@@ -43,13 +45,13 @@ public class PriceViewResultController {
 		keywords.setDetailText(keyword);
 		keywords.setTitle(keyword);
 		
-		int result = service.goodsPriceSelect(keywords);
-		int result2 = service.goodsPriceSelect2(keywords);
-		int result3 = service.goodsPriceSelect3(keywords);
+		Integer result = service.goodsPriceSelect(keywords);
+		Integer result2 = service.goodsPriceSelect2(keywords);
+		Integer result3 = service.goodsPriceSelect3(keywords);
 		
-		if (result == 0) result = 0;
-		if (result2 == 0) result2 = 0;
-		if (result3 == 0) result3 = 0;
+		if (result == null)  result = 1;
+		if (result2 == null) result2 = 1;
+		if (result3 == null) result3 = 1;
 		
 	    model.addAttribute("result", result);
 	    model.addAttribute("result2", result2);
