@@ -6,8 +6,6 @@
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
-<c:set var="paramQuery" value="${param.query}"/>
-<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,7 +13,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${query} 검색 결과</title>
-    <%-- ${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')} --%>
     
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/resources/css/goods/searchGoodsList.css">
@@ -44,18 +41,18 @@
                     <c:choose>
                         <c:when test="${not empty searchGoodsList}">
                             <div class="selectSort" id="selectSort">
-                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
-                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="famous" class="listSort">인기순</label>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="selectSort" id="selectSort" style="display:none">
-                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
-                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="famous" class="listSort">인기순</label>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -121,7 +118,6 @@
 
         <script>
             const searchGoodsList = ${searchGoodsList}
-            const cleanQuery = ${query}
         </script>
         <script src="/resources/js/goods/searchGoodsList.js"></script>
         <script src="/resources/js/goods/moreGoods.js"></script>

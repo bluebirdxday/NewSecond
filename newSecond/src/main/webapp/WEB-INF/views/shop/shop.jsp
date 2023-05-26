@@ -45,22 +45,24 @@
                 </div>
 
 
-            <c:if test="${loginUserNo!=0}" >
                 <div class = "myshop--info__btn-container">
-                    <c:if test="${loginUserNo==shop.userNo}" >
-                        <div class="myshop--info__btn-edit" id="img-edit">편집</div>
-                    </c:if>
-
-                    <c:if test="${loginUserNo!=shop.userNo}" >
-                        <c:if test="${checkFollow==0}">
-                            <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo}, 'shopOwnerFollow')">팔로우</button>
+                    <c:if test="${loginUserNo!=0}" >
+                        <c:if test="${loginUserNo==shop.userNo}" >
+                            <div class="myshop--info__btn-edit" id="img-edit">편집</div>
                         </c:if>
-                        <c:if test="${checkFollow==1}">
-                            <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo}, 'shopOwnerUnfollow')">언팔로우</button>
+
+                        <c:if test="${loginUserNo!=shop.userNo}" >
+                            <c:if test="${checkFollow==0}">
+                                <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo}, 'shopOwnerFollow')">팔로우</button>
+                            </c:if>
+                            <c:if test="${checkFollow==1}">
+                                <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo}, 'shopOwnerUnfollow')">언팔로우</button>
+                            </c:if>
                         </c:if>
                     </c:if>
                 </div>
-            </c:if>
+
+
             </div>
 
 
