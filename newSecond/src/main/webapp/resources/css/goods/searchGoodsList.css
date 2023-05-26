@@ -50,6 +50,7 @@
 
 [name="listSort"]:checked + .listSort{
     color: #2365b9;
+    font-weight: bold;
 }
 
 /* 판매 완료 상품 제외 체크박스 */

@@ -25,15 +25,14 @@ if(searchForm!=null){
 })();
 
 // 기능별 조회 (최신순/낮은가격순/높은가격순/인기순)
-const listsortList = document.getElementsByName("listSort");
 
 function callSortedGoods(obj, query){
-    console.log(obj.value);
-    fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&searchName=" + query)
+    fetch("/goods/search/sortGoodsList?listSort=" + obj.value + "&query=" + query)
     .then(resp => resp.json())
     .then(sortedGoodsList => {
+        console.log(obj.value);
         console.log(query);
-        console.log(sortedGoodsList);
+        // console.log(sortedGoodsList);
         const goodsListTable = document.getElementById("goodsListTable");
 
         if(sortedGoodsList.length>0){
