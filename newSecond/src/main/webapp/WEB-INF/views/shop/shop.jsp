@@ -367,11 +367,13 @@
 
     </section>
 
-    <a href="/writing/write">
-        <div class="myshop--btn__fixed-addpost">
-            <img src="/resources/src/img/addPost.png">
-        </div>
-    </a>
+   <c:if test="${loginUserNo==shop.userNo}" >
+        <a href="/writing/write">
+            <div class="myshop--btn__fixed-addpost">
+                <img src="/resources/src/img/addPost.png">
+            </div>
+        </a>
+    </c:if>
 
 
     
