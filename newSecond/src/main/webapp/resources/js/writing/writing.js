@@ -144,6 +144,11 @@ function removeFileInput(dataId) {
 function updateImageCount() {
     const imageCount = document.getElementById('imageCount');
     imageCount.textContent = `(${fileCount}/5)`;
+    if (fileCount >= 5) {
+        imageCount.style.color = 'red';
+    } else {
+        imageCount.style.color = '';
+    }
 
     const imagePlusBtn = document.getElementById('imagePlus');
     // 이미지 개수가 5개 이상인 경우 + 버튼을 비활성화
