@@ -5,10 +5,7 @@ import java.util.List;
 
 import project.kh.newsecond.review.model.dto.Review;
 
-/**
- * @author user
- *
- */
+
 public interface ReviewService {
 
 	/** 작성된 리뷰 리스트 조회
