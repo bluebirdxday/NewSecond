@@ -9,6 +9,10 @@ import project.kh.newsecond.wish.model.dto.Wish;
 public interface WishService {
 
 	
+	/**관심상품 목록 글 조회
+	 * @param wishUserNo
+	 * @return
+	 */
 	List<GoodsBoard> wishList(int wishUserNo);
 
 

@@ -61,8 +61,8 @@ for(let i=0; i<forcedsignOut.length; i++){
 
     if (confirm("정말 탈퇴 하시겠습니까?")) {
 
-    if(states[i].innerText == '정상'){
-    states[i].innerText = '탈퇴';
+    if(states[i].innerText == '정상'){ //상태가 '정상'일 때
+    states[i].innerText = '탈퇴'; 
     forcedsignOut[i].style.display = "none";
     signOutH[i].style.display = "inline-block";
     }
@@ -243,7 +243,7 @@ function updateCheckboxCount() {
       }
   }
 
-  document.getElementById('checkboxCount').innerText = count;
+  document.getElementById('checkboxCount').innerText = count;z
   document.getElementById('checkboxCount').style.color= '#005eee';
   document.getElementById('checkboxCount').style.fontWeight = 'bold';
 }

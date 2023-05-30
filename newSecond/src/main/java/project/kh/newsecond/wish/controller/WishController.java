@@ -23,10 +23,13 @@ public class WishController {
 
 	@Autowired
 	private WishService wishService;
-	
-	@Autowired
-	private GoodsBoardService goodsBodardservice;
-	
+
+	/**관심상품 목록 글 조회
+	 * @param loginUser
+	 * @param wish
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/wish")
 	public String wish(
 			@SessionAttribute(value="loginUser", required=false) User loginUser,

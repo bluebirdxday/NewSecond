@@ -184,6 +184,11 @@ public class AdminDAO {
 	}
 
 
+	/**공지사항 게시글 삭제
+	 * @param notice
+	 * @param paramMap
+	 * @return
+	 */
 	public int noticeDelete(Notice notice, Map<String, Object> paramMap) {
 	int result = sqlSession.delete("AdminMapper.noticeDelete",notice);
 		
@@ -192,6 +197,10 @@ public class AdminDAO {
 		return result;
 	}
 
+	/**공지사항 게시글 선택 삭제
+	 * @param noticeNo
+	 * @return
+	 */
 	public int noticeListDelete(int noticeNo) {
 		
 		return sqlSession.update("AdminMapper.noticeListDelete",noticeNo);
@@ -251,21 +260,37 @@ public class AdminDAO {
 		return sqlSession.update("AdminMapper.userBlockH",userNo); 
 	}
 	
+	/**상품 게시글 블라인드
+	 * @param goodsNo
+	 * @return
+	 */
 	public int boardBlind(int goodsNo) {
 	
 		return sqlSession.update("AdminMapper.boardBlind",goodsNo); 
 	}
 
+	/**상품 게시글 삭제
+	 * @param goodsNo
+	 * @return
+	 */
 	public int boardDelete(int goodsNo) {
 	
 		return sqlSession.update("AdminMapper.boardDelete",goodsNo); 
 	}
 
+	/**문의관리 raido 검색 (시도, 기능 구현 X)
+	 * @param qnaCategory
+	 * @return
+	 */
 	public List<Qna> radioTrade(String qnaCategory) {
 		
 		return sqlSession.selectList("AdminMapper.radioTrade",qnaCategory); 
 	}
 
+	/**회원 검색 기능(구현X)
+	 * @param searchKeyword
+	 * @return
+	 */
 	public List<User> userSelectList(String searchKeyword) {
 		
 		return sqlSession.selectList("AdminMapper.userSelectList",searchKeyword); 
