@@ -130,7 +130,6 @@
 		
 	</select>
 	
-	
 	<!-- 검색 상품 목록 조회 -->
 	<select id="selectSearchGoodsList" resultMap="goodsboard_rm">
 	
@@ -253,6 +252,13 @@
 	<select id="countLike" resultType="_int">
 		SELECT COUNT(*) FROM "wish_lists" WHERE GOODS_NO = #{goodsNo}
 	</select>	
+	
+	<!-- 조회수 증가 -->
+	<update id="updateViewCount">
+		UPDATE "goods_board" SET
+		VIEW_COUNT  = VIEW_COUNT +1
+		WHERE GOODS_NO = #{goodsNo}
+	</update>
 	
 	<!-- 상품 상세 상점 정보 -->
 	<select id="shopInfo" resultMap="shop_rm">
@@ -382,14 +388,6 @@
 	</select>
 
 
-
-	<!-- 조회수 증가 -->
-	<update id="updateViewCount">
-		UPDATE "goods_board" SET
-		VIEW_COUNT  = VIEW_COUNT +1
-		WHERE GOODS_NO = #{goodsNo}
-	</update>
-		
 		
 		
 	<!-- 상준: 게시글 삭제 -->
