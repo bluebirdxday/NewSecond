@@ -25,9 +25,10 @@
 
 			<div class="mainPage--wholeWrapper">
 
+				<%-- https://getbootstrap.kr/docs/5.2/components/carousel/ --%>
+
 				<section class="mainPage--carousel">
 					<div id="carouselIndicators" class="carousel slide mainPage--carousel__container" data-bs-ride="carousel" data-bs-interval="10000">
-
 						<div class="carousel-indicators">
 							<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 							<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -61,7 +62,9 @@
 				<section class="mainPage--goodsContainer1 mt-5">
 
 					<span class="mainPage--imgs__title">최근 업데이트된 상품</span>
-
+					
+										<%-- main.homeController를 통해서 recentGoodsList를 불러옴 --%>
+										<%-- recentGoodsList를 불러와서 상품을 나열 --%>
 					<div class="row row-cols-5">
 						<c:forEach items="${recentGoodsList10}" var="recentGood" begin="0" end="4">
 							<div class="col mainPage--item__container">
@@ -73,6 +76,7 @@
 									data-bs-placement="top" 
 									data-bs-title="${recentGood.goodsTitle}"
 									>
+									<%-- https://getbootstrap.kr/docs/5.2/components/tooltips/ --%>
 								</a>
 							</div>
 						</c:forEach>
@@ -105,6 +109,8 @@
 
 					<span class="mainPage--imgs__title">조회수 높은 인기 상품</span>
 
+											<%-- main.homeController를 통해서 mostViewedList를 불러옴 --%>
+											<%-- mostViewedList를 불러와서 상품을 나열 --%>
 					<div class="row row-cols-5">
 						<c:forEach items="${mostViewedList10}" var="mostViewed" begin="0" end="4">
 							<div class="col mainPage--item__container">
@@ -139,6 +145,8 @@
 					<a class="btn btn-outline-secondary w-100 mt-2" href="/goods/category/200"> 전체보기 </a>
 				</section>
 
+
+			<%-- 로그인 상태면 글쓰기 버튼이 보이게끔 함. --%>
 			<c:if test="${not empty loginUser}" >
 				<a href="/writing/write">
 					<div class="myshop--btn__fixed-addpost">

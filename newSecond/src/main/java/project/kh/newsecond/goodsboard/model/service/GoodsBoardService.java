@@ -26,7 +26,7 @@ public interface GoodsBoardService {
 	
 	/* 메인페이지 - 지환 */
 	
-	// 최근 업데이트된 게시글 상품 5가지
+	// 최근 업데이트된 게시글 상품 10가지
 	List<GoodsBoard> selectRecentGoodsList10();
 	
 	// 최근 업데이트된 게시글 상품 불러오기

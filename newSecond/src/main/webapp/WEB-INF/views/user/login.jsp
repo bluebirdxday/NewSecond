@@ -49,6 +49,7 @@
 
 
 <script>
+    /* x버튼 누를때 로그인버튼 한번 더 클릭하게 해서 로그인 폼(드롭다운) 닫히게 함 */
     document.getElementById('loginClose').addEventListener('click', e => {
         document.getElementById('login').click();
     });

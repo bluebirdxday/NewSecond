@@ -19,7 +19,7 @@
 </head>
 
 
-
+<%-- 지영님의 list검색 copy임 --%>
 
 <body style="overflow: auto;">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
