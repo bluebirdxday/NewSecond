@@ -73,12 +73,15 @@ public class NotificationWebSocketHandler extends TextWebSocketHandler{
 		}
 		
 		
+		// 리스트로 받았을 때
 		private void processNotifications(List<Notification> notifications) throws Exception {
 	        for (Notification notification : notifications) {
 	            processNotification(notification);
 	        }
 	    }
 		
+		
+		// 단일 처리
 	    private void processNotification(Notification notification) throws Exception {
 	    	
 	    	int existCheck = service.selectExistNotification(notification);

@@ -9,10 +9,6 @@ import project.kh.newsecond.review.model.dto.Review;
 import project.kh.newsecond.shop.model.dto.Shop;
 
 
-/**
- * @author user
- *
- */
 public interface NotificationService {
 
 
