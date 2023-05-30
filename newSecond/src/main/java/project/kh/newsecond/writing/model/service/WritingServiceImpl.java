@@ -54,9 +54,9 @@ public class WritingServiceImpl implements WritingService {
 					
 					WritingImage Finalimgs = new WritingImage();
 					
-					int order = i + 1; // 파일 순서는 1번부터
-					
 					// 파일 순서 1번 자리 강제 배정(상준) ***************************************************************
+					int order = i + 1; // fileOrder는 1번부터 -> 지영씨 작업 시 1번으로 불러오기 때문에 지영씨 요청으로 바꿔둠
+					
 					orderList[i] = order;
 					if(orderList[0] != 1) { // order 1이 씹혔다면 order 1 강제 배정
 						order = 1;
@@ -91,11 +91,12 @@ public class WritingServiceImpl implements WritingService {
 				for(int i=0; i<FinalImages.size(); i++) {
 					
 					int tempIndex = FinalImages.get(i).getFileOrder();
-					int index = tempIndex - 1;
+					int index = tempIndex - 1; // fileOrder가 1번부터 시작하기 때문에 원래 인덱스인 0부터 시작하도록 변경
 					
-					String afterRename = FinalImages.get(i).getFileName();
+					String afterRename = FinalImages.get(i).getFileName(); // rename된 파일명을 대입
 					
 					// 글 올리기 전에 폴더가 없다면 폴더 미리 만드는 코드 추가
+					// (신규 유저의 경우 미리 만들어둔 폴더가 없기 때문에 여기서 오류 발생 -> 이를 막기 위해 폴더가 없다면 미리 생성하는 코드 작성)
 					String userFolderPath = filePath + writing.getUserNo() + "/";
 					File userFolder = new File(userFolderPath);
 
@@ -103,7 +104,7 @@ public class WritingServiceImpl implements WritingService {
 					    userFolder.mkdirs(); // 폴더 미리 만들기
 					}
 
-					images.get(index).transferTo(new File(userFolderPath + afterRename));
+					images.get(index).transferTo(new File(userFolderPath + afterRename)); // 이미지를 오른쪽 서버 폴더에 넣는 용도의 코드
 					
 					
 					// 파일로 변환
@@ -117,7 +118,7 @@ public class WritingServiceImpl implements WritingService {
 			} 
 			
 			
-			
+			// 원래는 result만을 return 했지만 url 생성시 goodsNo를 return할 필요가 생겨 map에 담아 return 
 			map.put("result", result);
 			map.put("goodsNo", goodsNo);
 			

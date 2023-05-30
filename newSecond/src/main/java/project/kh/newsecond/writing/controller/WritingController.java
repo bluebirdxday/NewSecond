@@ -87,12 +87,15 @@ public class WritingController {
 		// 2. writing 객체에 잘 담겼는지 확인
 		
 		
-		// 3. webPath, filePath 생성
-		String webPath = "/resources/src/user/";
+		// 3. webPath, filePath 생성:
+								// webPath: 상대경로
+								// filePath: 절대경로
+		String webPath = "/resources/src/user/"; // -> 웹에서 불러오는 문서는 webapp이 최상위폴더(/)
 		String filePath = session.getServletContext().getRealPath(webPath);
 		// -> writing, images, webPath, filePath 객체 완성
 		
 		// 4. service 호출
+		// -> 원래는 단순 result에 대입했지만 goodsNo를 return시켜야 해서 map으로 두 개를 담아서 처리함
 		Map<String, Object> resultService = service.writingInsert(writing, images, webPath, filePath);
 		
 		// 5. 결과 리턴
@@ -113,6 +116,7 @@ public class WritingController {
 		}
 		
 		return path;
+		// return redirect:/goods/234 -> 앞에 /를 붙이지 않으면 해당 requestMapping의 기본 주소부터 시작, /를 붙이면 해당 url 주소부터 시작
 		// return redirect:writing/write -> redirect와 return은 다름에 유의
 	}
 }

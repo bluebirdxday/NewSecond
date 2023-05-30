@@ -60,6 +60,7 @@
                         <div class="priceViewResult--main__RightBox">
 <!-- <%-- URL의 keyword=iphone의 keyword를 넣음 --%> -->
                             <div>한달 내 ${param.keyword} 시세금액</div>
+                            <div>한달 내 프라이탁 시세금액</div>
                             <div>
 <!-- <%-- iphone의 1달 내 평균 시세를 조회해서 스크립틀릿 안에 넣음 --%>   -->                          
                                 <div style="font-style: italic;"> 약 <fmt:formatNumber value="${result}" pattern="##,###,###"/> 원</div>
