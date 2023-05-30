@@ -96,10 +96,11 @@ else{
 
   delBtn.addEventListener(('click'),()=>{
 
+ 
   if (confirm("정말 삭제 하시겠습니까?")) {
     for(let i=0; i<checkbox.length; i++){
       if (checkbox[i].checked) {
-   var noticeNo = document.getElementsByClassName("admin_notice_checkbox_no")[i].innerText
+   var noticeNo = document.getElementsByClassName("admin_notice_checkbox_no")[i].innerText //체크박스 옆 숫자 =  공지번호
   
 } if(checkbox!=null){
 noticeDelete(noticeNo);

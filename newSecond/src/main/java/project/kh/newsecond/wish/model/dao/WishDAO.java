@@ -18,6 +18,10 @@ public class WishDAO {
 	private SqlSessionTemplate sqlSession;
 
 
+	/**관심상품 목록 글 조회
+	 * @param wishUserNo
+	 * @return
+	 */
 	public List<GoodsBoard> wishList(int wishUserNo) {
 		
 

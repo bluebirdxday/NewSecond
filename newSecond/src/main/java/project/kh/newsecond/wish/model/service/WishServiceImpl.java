@@ -15,6 +15,9 @@ public class WishServiceImpl implements WishService {
 	@Autowired 
 	private WishDAO wishDao;
 
+	/**
+	 *관심상품 목록 글 조회
+	 */
 	@Override
 	public List<GoodsBoard> wishList(int wishUserNo) {
 		

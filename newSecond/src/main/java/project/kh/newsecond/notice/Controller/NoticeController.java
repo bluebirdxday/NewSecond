@@ -19,6 +19,10 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+		/** 공지사항 글 조회
+		 * @param model
+		 * @return
+		 */
 		@GetMapping("/notice")
 		public String notice(Model model) {
 			
@@ -31,6 +35,11 @@ public class NoticeController {
 		}
 
 			
+			/**공지사항 게시글 읽기 조회
+			 * @param model
+			 * @param noticeNo
+			 * @return
+			 */
 			@GetMapping("/notice_read/{noticeNo}")
 			public String notice_read(Model model
 					, @PathVariable("noticeNo") int noticeNo) {

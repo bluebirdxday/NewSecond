@@ -24,6 +24,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDao.selectNoticeList();
 	}
 
+	/**
+	 *공지사항 게시글 읽기 조회
+	 */
 	@Override
 	public Notice selectNoticeOneList(int noticeNo) {
 		return noticeDao.selectNoticeOneList(noticeNo);

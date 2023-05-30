@@ -165,6 +165,9 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	/**
+	 *공지사항 게시글 선택 삭제
+	 */
 	@Override
 	public int noticeListDelete(int noticeNo) {
 		
@@ -187,6 +190,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 
+	/**
+	 *공지사항 선택 삭제
+	 */
 	@Override
 	public int deleteNoticeList(int noticeNo) {
 
@@ -257,7 +263,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	/**
-	 *
+	 *관리자 회원 검색 기능
 	 */
 	@Override
 	public Map<String, Object> userSelectList(String searchKeyword) {
