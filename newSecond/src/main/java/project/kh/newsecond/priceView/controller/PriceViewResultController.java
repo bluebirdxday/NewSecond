@@ -45,26 +45,31 @@ public class PriceViewResultController {
 		keywords.setDetailText(keyword);
 		keywords.setTitle(keyword);
 		
-		Integer result = service.goodsPriceSelect(keywords);
-		Integer result2 = service.goodsPriceSelect2(keywords);
-		Integer result3 = service.goodsPriceSelect3(keywords);
+		// null을 담을 수 있는 변수 Integer에 저장하기 위해 int 대신 Integer를 사용
+		Integer result = service.goodsPriceSelect(keywords); // 1달 내 
+		Integer result2 = service.goodsPriceSelect2(keywords); // 1달~2달 내
+		Integer result3 = service.goodsPriceSelect3(keywords); // 2달~3달 내
 		
+		// 왜 안되는지 이유를 파악할 수 없음
 		if (result == null)  result = 1;
 		if (result2 == null) result2 = 1;
 		if (result3 == null) result3 = 1;
 		
+		// model에 result를 result라는 이름으로 대입
 	    model.addAttribute("result", result);
 	    model.addAttribute("result2", result2);
 	    model.addAttribute("result3", result3);
 	    
 //	    ---------------------------------------------------------------------
 	    
+	    // 최근 올라온 상품을 위한 searchList
 	    goodsBoard.setGoodsTitle(keyword); // 타이틀과 내용 모두 sql에서 처리
 	    
 	    List<GoodsBoard> searchList = service.selectSearchKeyword(goodsBoard);
 		
+	    // 위에서 담긴 searchList를 searchList라는 변수로 model에 담기
 		model.addAttribute("searchList", searchList);
 		
-		return "priceView/priceViewResultPage";
+		return "priceView/priceViewResultPage"; // 앞에 /가 없는 상대경로로 return
 	}
 }

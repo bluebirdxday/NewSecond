@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/priceView")
 public class PriceViewController {
 
+	// /priceView/priceSee url로 들어오면 priceView/priceViewPage.jsp를 리턴함
 	@GetMapping("/priceSee")
 	public String priceView() {
 		

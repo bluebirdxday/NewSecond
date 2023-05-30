@@ -15,6 +15,7 @@ import lombok.ToString;
 @ToString
 public class PriceViewKeyword {
 
-	private String title;
-	private String detailText;
+	private String title; // 제목
+	private String detailText; // 상세설명
+	// 이 안에 키워드가 있으면 확인
 }
