@@ -57,6 +57,7 @@ public interface GoodsBoardService {
 	List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode);
 	
 
+	// 지영
 	// 기존 찜 여부 확인
 	int goodsLikeChecked(Map<String, Object> map);
 

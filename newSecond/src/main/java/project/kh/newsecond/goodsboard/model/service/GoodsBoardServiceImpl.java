@@ -24,7 +24,7 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	
 	// 지영
 	// 상품 게시글 목록 조회(검색)
-	 @Override
+	@Override
 	public Map<String, Object> selectSearchGoodsList(String query) {
 		 
 		 // 검색 조건 일치하는 삭제x 특정 상품게시글 count
@@ -41,21 +41,23 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return map;
 	}
 	 
+	 // 지영
 	 // 조건별 조회
 	 @Override
 	 public List<GoodsBoard> selectSortedList(Map<String, String> map) {
 		 return dao.selectSortedList(map);
 	 }
 	 
-	 // 상품 더보기
-	 @Override
+	// 지영
+	// 상품 더보기
+	@Override
 	public List<GoodsBoard> moreGoods(Map<String, Object> numAndSearchName) {
 		return dao.moreGoods(numAndSearchName);
 	}
 	 
-	 
-	 // 상품 게시글 상세 조회
-	 @Override
+	// 지영
+	// 상품 게시글 상세 조회
+	@Override
 	public GoodsBoard goodsDetail(int goodsNo) {
 		return dao.goodsDetail(goodsNo);
 	}
@@ -145,17 +147,14 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 	}
 	
 	
-
+	// 지영
 	// 기존 찜 여부 확인
 	@Override
 	public int goodsLikeChecked(Map<String, Object> map) {
 		return dao.goodsLikeChecked(map);
 	}
 	
-	
-
-	
-
+	// 지영
 	// 찜 처리 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -173,25 +172,19 @@ public class GoodsBoardServiceImpl implements GoodsBoardService{
 		return count;
 	}
 	
+	// 지영
 	// 상품 상세 - 상점 정보
 	@Override
 	public Shop shopInfo(int goodsNo) {
 		return dao.shopInfo(goodsNo);
 	}
 	
+	// 지영
 	// 조회수 증가 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int updateViewCount(int goodsNo) {
 		return dao.updateViewCount(goodsNo);
 	}
-	
-
-	
-	 
-	 
-	 
-	 
-	 
 
 }

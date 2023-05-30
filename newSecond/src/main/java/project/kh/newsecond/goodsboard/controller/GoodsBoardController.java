@@ -44,9 +44,9 @@ public class GoodsBoardController {
 	@GetMapping("/search/goodsList")
 	public String selectSearchGoodsList(@RequestParam(value="query", required=false)String searchName, 
 			Model model) {
+		// 태그 방지
 		String query = searchName.replaceAll("<[^>]*>", "");
 		Map<String, Object> map = service.selectSearchGoodsList(query);
-		
 		// 조회 결과
 		model.addAttribute("map", map);
 		model.addAttribute("query", query);
@@ -54,26 +54,22 @@ public class GoodsBoardController {
 		return "goods/searchGoodsList";
 	}
 	
-	
+	// 지영
 	// 상품 게시글 목록 최신순/낮은가격순/높은가격순/인기순(조회수순)
 	@ResponseBody
 	@GetMapping(value="/search/sortGoodsList", produces = "application/json; charset=UTF-8")
 	public List<GoodsBoard> selectSortedList(@RequestParam(value="listSort", required=false)String listSort,
 			@RequestParam(value="query", required=false)String query){
 		
-		System.out.println(query);
 		Map<String, String> map = new HashMap<>();
 		map.put("listSort", listSort);
 		map.put("query", query);
 		
-		System.out.println(service.selectSortedList(map));
-		
 		return service.selectSortedList(map);
 	}
 	
-	
-	
-	// 상품 게시글 추가 조회 (더보기)
+	// 지영
+	// 상품 게시글 목록 추가 조회 (더보기)
 	@PostMapping("/searchMore")
 	@ResponseBody
 	public List<GoodsBoard> searchMoreGoodsList(@RequestBody Map<String, Object> numAndSearchName) {
@@ -81,30 +77,29 @@ public class GoodsBoardController {
 		return service.moreGoods(numAndSearchName);
 	}
 	
-	
+	// 지영
 	// 상품 게시글 상세 조회
 	@GetMapping("/{goodsNo}")
 	public String goodsDetail(@PathVariable("goodsNo") int goodsNo, Model model,
-			@SessionAttribute(value = "loginUser", required = false) User loginUser, HttpServletRequest req, // 조회수
-			HttpServletResponse resp) throws ParseException {
+			@SessionAttribute(value = "loginUser", required = false) User loginUser,
+			HttpServletRequest req, HttpServletResponse resp // 조회수 하루 1회
+			) throws ParseException {
 
 		GoodsBoard goodsBoard = service.goodsDetail(goodsNo);
-
-		String path = null;
 
 		// 기존 찜 조회
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodsNo", goodsNo);
 
 		if (goodsBoard != null) {
-			if (loginUser != null) {
+			if (loginUser != null) { // 상품 상세 페이지에서 로그인 돼있을 때
 				map.put("userNo", loginUser.getUserNo());
-				int result = service.goodsLikeChecked(map);
+				int result = service.goodsLikeChecked(map); // 기존 찜 조회
 				if (result > 0)
 					model.addAttribute("likeChecked", "like");
 			}
 			// 조회수
-			if (loginUser == null || loginUser.getUserNo() != goodsBoard.getUserNo()) {
+			if (loginUser == null || loginUser.getUserNo() != goodsBoard.getUserNo()) { // 비회원/상품 판매자 아닐 때
 				Cookie c = null;
 				Cookie[] cookies = req.getCookies();
 				if (cookies != null) {
@@ -116,6 +111,7 @@ public class GoodsBoardController {
 					}
 				}
 				int result = 0;
+				// 쿠키 생성
 				if (c == null) {
 					c = new Cookie("readGoodsNo", "|" + goodsNo + "|");
 					result = service.updateViewCount(goodsNo);
@@ -125,7 +121,7 @@ public class GoodsBoardController {
 						result = service.updateViewCount(goodsNo);
 					}
 				}
-				if (result > 0) { // 조회 수 증가 성공하면 쿠키 적용 경로, 수명 지
+				if (result > 0) { // 조회 수 증가 성공하면 쿠키 적용 경로, 수명 지정
 					goodsBoard.setViewCount(goodsBoard.getViewCount() + 1);
 					c.setPath("/"); // /이하 경로 요청 시 쿠키 서버로 전달
 					Calendar cal = Calendar.getInstance();
@@ -149,6 +145,7 @@ public class GoodsBoardController {
 		return "/goods/goodsDetail";
 	}
 
+	// 지영
 	// 찜(좋아요) 증가
 	@PostMapping("/like")
 	@ResponseBody
@@ -157,11 +154,13 @@ public class GoodsBoardController {
 		return service.like(likeMap);
 	}
 
+	// 지영
 	// 게시글 상세 조회에서 판매자 상정 바로가기
 	@GetMapping("/goodsDetail/moveShop")
 	public String moveShop() {
 		return "/shop/shop";
 	}
+	
 	/* 지환 - 카테고리 조회 */
 
 	// 상품 게시글 카테고리 별조회
