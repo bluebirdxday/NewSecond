@@ -162,6 +162,7 @@ public class GoodsBoardController {
 	public String moveShop() {
 		return "/shop/shop";
 	}
+
 	/* 지환 - 카테고리 조회 */
 
 	// 상품 게시글 카테고리 별조회
@@ -180,11 +181,14 @@ public class GoodsBoardController {
 
 			categoryName = "조회수 높은 인기 상품";
 
-		} else if (category.get(categoryNo - 1).getCategoryName() == null) {
+		// 카테고리 게시판은 카테고리 숫자,코드(PathVariable)를 통해서 접근이 가능하다.
+		// 그런데 카테고리 테이블에 없는 숫자가 나올경우 DB에 존재하지 않는다 -> 이름을 얻을 수 없다.
+		// 잘못된 접근(URL을 통한 의도하지 않은 접근)이므로 에러 페이지로 포워드 시킨다.
+		} else if (category.get(categoryNo - 1).getCategoryName() == null) { 
 
 			return "common/error";
 
-		} else {
+		} else { 
 			categoryName = category.get(categoryNo - 1).getCategoryName();
 		}
 
@@ -232,7 +236,8 @@ public class GoodsBoardController {
 			moreList = service.moreCategoryGoods(numAndCategoryCode);
 			
 		}
-		 
+
+		// moreList의 경우 지영님의 검색 리스트를 참고해서 만든게 커서 지영님의 코드를 참조 해야한다.
 
 		return moreList;
 	}

@@ -34,6 +34,7 @@
                     <form action="/myPage/info/changeNickname" method="post" id="nicknameCheck">
                         <div class="d-flex align-items-center">
                             <div class="input-group w-50">
+                                <%-- https://getbootstrap.kr/docs/5.2/components/tooltips/#content --%>
                                 <input type="text" id="userNickname" name="userNickname" value="${loginUser.userNickname}" autocomplete="off" required
                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                         data-bs-html="true"

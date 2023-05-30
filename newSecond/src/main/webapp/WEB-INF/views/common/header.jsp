@@ -101,12 +101,12 @@
 </header>
 
 
-
+<%-- 지금 url 경로가 /가 아닐때(메인페이지가 아닐때) --%>
 <c:if test="${requestScope['javax.servlet.forward.request_uri'] ne '/'}" >
-
+    <%-- 카테고리 리스트가 세션정보에 없으면 --%>
     <c:if test="${empty categoryList}" >
         <script>
-            location.href='/'
+            location.href='/' /* js로 메인페이지에 이동시키게 함 */
         </script>
     </c:if>
 

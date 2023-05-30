@@ -33,11 +33,14 @@ public class HomeController {
 		// 조회수 높은 인기 상품 10가지에 대한 리스트
 		List<GoodsBoard> mostViewedList10 = service.selectMostViewedList10();
 		model.addAttribute("mostViewedList10", mostViewedList10);
-		 
+
 		
 		// 카테고리 리스트
 		List<Category> CaterogyList = service.selectCategoryList();
 		
+		// 카테고리 리스트를 세션에 저장 -> 다른 페이지 에서도 카테고리 리스트를 받을 수 있게 범위를 설정함.
+		// 하지만 home을 경유하지 않고 사이트에 접속한다면 카테고리 리스트가 없을 수 있다.
+		// -> 세션에 카테고리 리스트가 null이면 home에 리다이렉트되도록 설정함.
 		session.setAttribute("categoryList", CaterogyList);
 		
 
