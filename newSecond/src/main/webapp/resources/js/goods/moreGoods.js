@@ -5,13 +5,23 @@ const more = document.getElementById("viewMoreGoods");
 const goodsListTable = document.getElementById("goodsListTable");
 
 more.addEventListener("click", e => {
+    // radio
+    const sorts = document.getElementsByName("listSort");
+    for (var i = 0; i < sorts.length; i++) {
+        if (sorts[i].checked) {
+        var sort = sorts[i].value;
+        console.log("Selected Value: " + sort);
+        break;
+        }
+    }
     const addGoodsDiv = "";
     const startCallNum = goodsListTable.childElementCount;
+
     // const untilNum = startCallNum + 11; 몇번까지 (more버튼 구현 위해 startNum~끝까지 조회)
     // 제출된 검색어
     const searchName = new URL(location.href).searchParams.get("query");
 
-    const data = {"startCallNum" : startCallNum, "searchName" : searchName};
+    const data = {"startCallNum" : startCallNum, "searchName" : searchName, "sort" : sort};
 
     fetch("/goods/searchMore",{
         method : "POST",
