@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+	
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	
+	
+	
+	
+	<!-- viewResolver  -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="project.kh.newsecond" />
+	
+	<!-- @Transactional 어노테이션 인식, 활성화 -->
+	<tx:annotation-driven   transaction-manager="transactionManager"/>
+	
+	<!-- AOP Proxy를 이용한 관점 제어 자동화 -->
+	<aop:aspectj-autoproxy/>
+
+	
+	
+		<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
+	<beans:bean id="notificationHandler" 
+			class="project.kh.newsecond.notification.websocket.NotificationWebSocketHandler"/>
+
+	<!-- 어떤 주소로 웹소켓 요청이 오면 세션을 가로챌지 지정 -->
+	<websocket:handlers>
+		<websocket:mapping handler="notificationHandler" path="/notificationSock"/>
+	
+		<!-- 요청 클라이언트의 세션을 가로채서 WebSocketSession에 넣어주는 역할 -->
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		
+		<!-- SockJS라는 라이브러리를 이용한 웹소켓 연결 요청임을 명시 -->
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+	
+	
+		<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
+	<beans:bean id="likeBoardNotificationHandler" 
+			class="project.kh.newsecond.notification.websocket.LikeBoardWebSocketHandler"/>
+
+	<!-- 어떤 주소로 웹소켓 요청이 오면 세션을 가로챌지 지정 -->
+	<websocket:handlers>
+		<websocket:mapping handler="likeBoardNotificationHandler" path="/likeBoardNotificationSock"/>
+	
+		<!-- 요청 클라이언트의 세션을 가로채서 WebSocketSession에 넣어주는 역할 -->
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		
+		<!-- SockJS라는 라이브러리를 이용한 웹소켓 연결 요청임을 명시 -->
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+	
+	
+	
+			<!-- 웹소켓 처리 클래스를 bean으로 등록 -->
+	<beans:bean id="inquireNotificationHandler" 
+			class="project.kh.newsecond.notification.websocket.InquireNotiWebSocketHandler"/>
+
+	<!-- 어떤 주소로 웹소켓 요청이 오면 세션을 가로챌지 지정 -->
+	<websocket:handlers>
+		<websocket:mapping handler="inquireNotificationHandler" path="/inquireNotificationSock"/>
+	
+		<!-- 요청 클라이언트의 세션을 가로채서 WebSocketSession에 넣어주는 역할 -->
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		
+		<!-- SockJS라는 라이브러리를 이용한 웹소켓 연결 요청임을 명시 -->
+		<websocket:sockjs/>
+	</websocket:handlers>
+	
+	
+</beans:beans>

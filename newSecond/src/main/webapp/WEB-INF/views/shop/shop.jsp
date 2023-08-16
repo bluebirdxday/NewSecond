@@ -53,10 +53,10 @@
 
                         <c:if test="${loginUserNo!=shop.userNo}" >
                             <c:if test="${checkFollow==0}">
-                                <button type="button" class="myshop--info__btn-follow" onclick="follow(${shop.userNo}, ${loginUserNo}, 'shopOwnerFollow')">팔로우</button>
+                                <button type="button" class="myshop--info__btn-follow" onclick="shopOwnerFollow(${shop.userNo}, ${loginUserNo})">팔로우</button>
                             </c:if>
                             <c:if test="${checkFollow==1}">
-                                <button type="button" class="myshop--info__btn-unfollow" onclick="unFollow(${shop.userNo}, ${loginUserNo}, 'shopOwnerUnfollow')">언팔로우</button>
+                                <button type="button" class="myshop--info__btn-unfollow" onclick="shopOwnerUnfollow(${shop.userNo}, ${loginUserNo})">언팔로우</button>
                             </c:if>
                         </c:if>
                     </c:if>
@@ -278,10 +278,18 @@
                                 </div>
                                 <div>
 
-                                        <c:if test="${loginUserNo!=0}" >
-                                            <c:if test="${follow.passiveUserNo != loginUserNo}" >
-                                                <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                    <a href="/shop/${follow.passiveUserNo}">
+                                        <div class="tab3--item__btn-gotoshop tab3--item__btn"
+                                            style="<c:if test='${loginUserNo==0 || follow.passiveUserNo==loginUserNo}'>width: 160px;</c:if>">
+                                            상점가기
+                                        </div>
+                                    </a>
 
+                                    
+                                    <%-- 로그인 상태 --%>
+                                    <c:if test="${loginUserNo!=0}" >
+                                        <c:if test="${follow.passiveUserNo != loginUserNo}" >
+                                            
                                             <c:if test="${follow.followYou==0}">
                                                 <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">팔로우</button>
                                             </c:if>
@@ -290,16 +298,8 @@
                                                 <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follow.passiveUserNo}, ${loginUserNo}, 'following')">언팔로우</button>
                                             </c:if>
                                         </c:if>
-
                                     </c:if>
 
-                                    <c:if test="${loginUserNo==0}" >
-                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
-                                    </c:if>
-
-                                    <c:if test="${follow.passiveUserNo == loginUserNo}" >
-                                        <a href="/shop/${follow.passiveUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
-                                    </c:if>
 
                                 </div>
                             </div>
@@ -307,8 +307,8 @@
                     </c:if>
                 </div>
 
-                <c:if test="${empty followList}" >
-                    <div class="tab--content__empty">현재 팔로잉하고 있는 상점이 없습니다</div>
+                <c:if test="${empty followList}">
+                    <div class="tab--content__empty" id="followingEmpty">현재 팔로잉하고 있는 상점이 없습니다</div>
                 </c:if>
                 
             </div>
@@ -327,29 +327,29 @@
                                 </div>
                                 <div>
 
-                                        <c:if test="${loginUserNo!=0}"> 
+
+
+                                    <a href="/shop/${follower.activeUserNo}">
+                                        <div class="tab3--item__btn-gotoshop tab3--item__btn"
+                                            style="<c:if test='${loginUserNo==0 || follower.activeUserNo==loginUserNo}'>width: 160px;</c:if>">
+                                            상점가기
+                                        </div>
+                                    </a>
+
+
+                                    <c:if test="${loginUserNo!=0}"> 
                                         <%-- 팔로워 탭에서 팔로워!=로그인회원인 경우 팔로우/언팔로우 버튼 보이도록 --%>
-                                        <c:if test="${follower.activeUserNo != loginUserNo}" >
+                                        <c:if test="${follower.activeUserNo != loginUserNo}">
 
-                                            <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn">상점가기</div></a>
+                                            <c:if test="${follower.followYou==0}">
+                                                <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">팔로우</button>
+                                            </c:if>
 
-                                                <c:if test="${follower.followYou==0}">
-                                                    <button class="tab3--item__btn-follow tab3--item__btn" onclick="follow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">팔로우</button>
-                                                </c:if>
+                                            <c:if test="${follower.followYou==1}">
+                                                <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">언팔로우</button>
+                                            </c:if>
 
-                                                <c:if test="${follower.followYou==1}">
-                                                    <button class="tab3--item__btn-unfollow tab3--item__btn" onclick="unFollow(${follower.activeUserNo}, ${loginUserNo}, 'follower')">언팔로우</button>
-                                                </c:if>
                                         </c:if>
-                                    </c:if>
-
-                                    <c:if test="${loginUserNo==0}">
-                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
-                                    </c:if>
-
-                                    <%-- 팔로워 탭에서 팔로워==로그인회원인 경우 상점가기 버튼만 보이도록 --%>
-                                    <c:if test="${follower.activeUserNo == loginUserNo}" >
-                                        <a href="/shop/${follower.activeUserNo}"> <div class="tab3--item__btn-gotoshop tab3--item__btn" style="width: 160px;">상점가기</div></a>
                                     </c:if>
 
                                 </div>
@@ -361,7 +361,7 @@
                 </div>
 
                 <c:if test="${empty followerList}" >
-                    <div class="tab--content__empty">현재 팔로워가 존재하지 않습니다</div>
+                    <div class="tab--content__empty" id="followerEmpty">현재 팔로워가 존재하지 않습니다</div>
                 </c:if>
             </div>
 
