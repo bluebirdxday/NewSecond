@@ -42,6 +42,8 @@
 
 
 
+<%-- 로그인 하지 않았을 경우 회원 기능을 누르면 기능이 작동하지 않게하고 로그인창이 뜨게함 
+    추가로 로그인해야 된다고 사용자에게 알려주는 메세지를 띄움  --%>
 <c:if test="${empty loginUser}" >
     <script>
     document.querySelector('.myMarket').addEventListener('click', e => {
@@ -75,10 +77,12 @@
 
 
 
+    <%-- bootstrap 툴팁을 이용하려면 먼저 비동기로 모든 tooltip들의 인스턴스를 불러와야한다. --%>
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
+
 <c:if test="${not empty alarm}" >
     <script>
         alarmTrigger.click();

@@ -5,13 +5,23 @@ const more = document.getElementById("viewMoreGoods");
 const goodsListTable = document.getElementById("goodsListTable");
 
 more.addEventListener("click", e => {
+    // radio
+    const sorts = document.getElementsByName("listSort");
+    for (var i = 0; i < sorts.length; i++) {
+        if (sorts[i].checked) {
+        var sort = sorts[i].value;
+        console.log("Selected Value: " + sort);
+        break;
+        }
+    }
     const addGoodsDiv = "";
     const startCallNum = goodsListTable.childElementCount;
+
     // const untilNum = startCallNum + 11; 몇번까지 (more버튼 구현 위해 startNum~끝까지 조회)
     // 제출된 검색어
     const searchName = new URL(location.href).searchParams.get("query");
 
-    const data = {"startCallNum" : startCallNum, "searchName" : searchName};
+    const data = {"startCallNum" : startCallNum, "searchName" : searchName, "sort" : sort};
 
     fetch("/goods/searchMore",{
         method : "POST",
@@ -37,8 +47,6 @@ more.addEventListener("click", e => {
                 }
                 a.append(img);
 
-                // console.log(moreGoodsList[i].goodsStatus);
-
                 if(moreGoodsList[i].goodsStatus=='E'){
                     const statusDiv = document.createElement("div");
                     statusDiv.classList.add("status");
@@ -52,7 +60,6 @@ more.addEventListener("click", e => {
                     statusDiv.innerText = "Reserved";
                     a.append(statusDiv);
                 }
-                
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("goods_price");
                 priceDiv.innerHTML = moreGoodsList[i].goodsPrice.toLocaleString('ko-KR');
@@ -60,13 +67,8 @@ more.addEventListener("click", e => {
                 titleDiv.classList.add("goods_title");
                 titleDiv.innerHTML = moreGoodsList[i].goodsTitle;
                 
-                
                 a.append(priceDiv);
                 a.append(titleDiv);
-                // a.append(img);
-                // a.append(statusDiv);
-                // a.append(priceDiv);
-                // a.append(titleDiv);
 
                 goodsDiv.append(a);
             }

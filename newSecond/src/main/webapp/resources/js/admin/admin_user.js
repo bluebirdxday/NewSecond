@@ -61,8 +61,8 @@ for(let i=0; i<forcedsignOut.length; i++){
 
     if (confirm("정말 탈퇴 하시겠습니까?")) {
 
-    if(states[i].innerText == '정상'){
-    states[i].innerText = '탈퇴';
+    if(states[i].innerText == '정상'){ //상태가 '정상'일 때
+    states[i].innerText = '탈퇴'; 
     forcedsignOut[i].style.display = "none";
     signOutH[i].style.display = "inline-block";
     }
@@ -75,6 +75,10 @@ for(let i=0; i<forcedsignOut.length; i++){
     if(forcedsignOut!=null){
       signOutUser(signOutUserNo);
     }
+
+/* 블락시 블락해제 */
+
+
   }
   });
 
@@ -96,6 +100,8 @@ function signOutUser(userNo){
   }).catch(err=> console.log(err));
 
 }
+
+
 
 /* 체크박스 전체선택 */
 function userSelectAll(userSelectAll)  {
@@ -237,7 +243,7 @@ function updateCheckboxCount() {
       }
   }
 
-  document.getElementById('checkboxCount').innerText = count;
+  document.getElementById('checkboxCount').innerText = count;z
   document.getElementById('checkboxCount').style.color= '#005eee';
   document.getElementById('checkboxCount').style.fontWeight = 'bold';
 }
@@ -245,4 +251,14 @@ function updateCheckboxCount() {
 var checkboxElements = document.getElementsByClassName('admin_user_checkbox');
 for (var i = 0; i < checkboxElements.length; i++) {
   checkboxElements[i].addEventListener('change', updateCheckboxCount);
+}
+
+
+
+for(let i=0; i<states.length;i++){
+
+  if(states[i].innerText == '블락'){
+    block[i].style.display = 'none'
+    blockH[i] .style.display = 'inline-block';
+}
 }

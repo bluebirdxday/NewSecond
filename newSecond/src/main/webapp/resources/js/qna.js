@@ -1,3 +1,4 @@
+/* 드롭다운 */
 const qnaHead = document.querySelector('.qna_head');
   const qnaHeadContent = document.querySelector('.qna_head_content');
 

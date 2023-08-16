@@ -386,6 +386,10 @@ public class AdminController {
 		 return adminService.boardDelete(goodsBoard.getGoodsNo());
 	}
 	
+	/**문의관리 raido 검색 (시도, 기능 구현 X)
+	 * @param qna
+	 * @return
+	 */
 	@PostMapping("/admin_qna/radioTrade")
 	@ResponseBody
 	public List<Qna> radioTrade(@RequestBody Qna qna) {	
@@ -394,6 +398,11 @@ public class AdminController {
 		 return adminService.radioTrade(qna.getQnaCategory());
 	}
 	
+	/**회원 검색 기능(구현X)
+	 * @param searchKeyword
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/admin_user/search")
 	public String userSelectList(@RequestParam(value="search", required=false)String searchKeyword,Model model){
 		

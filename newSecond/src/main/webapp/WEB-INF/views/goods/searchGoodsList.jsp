@@ -6,8 +6,6 @@
 
 <c:set var="searchGoodsList" value="${map.searchGoodsList}"/>
 <c:set var="searchGoodsCount" value="${map.searchGoodsCount}"/>
-<c:set var="paramQuery" value="${param.query}"/>
-<c:set var="query" value="${fn:replace(paramQuery, '/(<([^>]+)>)/ig', '')}"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -30,9 +28,8 @@
             <div class="container--inner">
                 <!-- 목록건수, 판매완료상품제외, 기능별조회 -->
                 <div class="container--inner__top">
-                    <c:if test="${not empty query}" >
-                        <div class="searchNameCount">query.replace() (${searchGoodsCount}건)</div>
-                        <%-- <c:set var="query" scope="application" value="${param.query}"/> --%>
+                    <c:if test="${not empty param.query}" >
+                        <div class="searchNameCount">${query} (${searchGoodsCount}건)</div>
                     </c:if>
                     <!-- 판매완료상품제외 -->
                     <%-- <div><input type="checkbox" class="soldoutExcept" id="check1" onclick="soldOutCheck()">
@@ -44,18 +41,18 @@
                     <c:choose>
                         <c:when test="${not empty searchGoodsList}">
                             <div class="selectSort" id="selectSort">
-                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
-                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="famous" class="listSort">인기순</label>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="selectSort" id="selectSort" style="display:none">
-                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this)"><label for="recent" class="listSort">최신순&nbsp;</label>
-                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this)"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this)"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
-                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this)"><label for="famous" class="listSort">인기순</label>
+                                <input type="radio" name="listSort" id="recent" value="recent" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="recent" class="listSort">최신순&nbsp;</label>
+                                <input type="radio" name="listSort" id="rowPrice" value="rowPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="rowPrice"  class="listSort">낮은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="highPrice" value="highPrice" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="highPrice"  class="listSort">높은가격순&nbsp;</label>
+                                <input type="radio" name="listSort" id="famous" value="famous" style="display:none" onclick="callSortedGoods(this, '${query}')"><label for="famous" class="listSort">인기순</label>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -64,7 +61,7 @@
                     <%-- 해당 검색 결과 없다면 --%>
                     <c:when test="${empty searchGoodsList}">
                         <div class="container--inner__middle_noList">
-                            <div class="noGoodsList">"${param.query}"에 해당하는 상품이 없습니다.</div>
+                            <div class="noGoodsList">"${query}"에 해당하는 상품이 없습니다.</div>
                         </div>
                     </c:when>
                         

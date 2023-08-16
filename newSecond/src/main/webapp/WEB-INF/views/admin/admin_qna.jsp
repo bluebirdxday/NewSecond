@@ -43,6 +43,7 @@
                 <button  class="admin_qna_searchBtn">문의조회</button>
             </span>
         </div>
+        <%-- radio 버튼 --%>
         <form action="" name="myRadio">
         <div class="admin_qna_raidosWrap">
             <span>

@@ -42,19 +42,22 @@ public class UserController{
 			
 			model.addAttribute("loginUser", loginUser);
 			
-			/* id 저장 */
+			// 쿠키 생성(해당 쿠키에 담을 데이터를 K:V 로 지정)
 			Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
 			
-			if(saveId != null) {
-				cookie.setMaxAge(60 * 60 * 24 * 30);
-			}else { 
-				cookie.setMaxAge(0);
+			/* 쿠키의 유통기한 설정 */
+			if(saveId != null) { // 체크 되었을 때
+				cookie.setMaxAge(60 * 60 * 24 * 30); // 한 달(30일) 동안 유지되는 쿠키 생성
+			}else { // 체크 안되었을 때
+				cookie.setMaxAge(0); // 0초 동안 유지 되는 쿠키 생성 == 기존 쿠키 삭제
 			}
 			
-			cookie.setPath("/");
+			// 클라이언트가 어떤 요청을 할때 쿠키가 첨부될지 경로(주소)를 지정
+			cookie.setPath("/"); // localhost / 이하 모든 주소 == 모든 요청에 쿠키 첨부
 			
+			// 응답 객체(HttpsServletResponse)를 이용해서
+			// 만들어진 쿠키를 클라이언트에게 전달
 			resp.addCookie(cookie);
-			/* ------- */
 			
 			ra.addFlashAttribute("alertType", "success");
 			ra.addFlashAttribute("message", loginUser.getUserNickname() + "님의 방문을 환영합니다!");
@@ -66,7 +69,7 @@ public class UserController{
 			
 		}
 		
-		return "redirect:" + referer;
+		return "redirect:" + referer; // HTTP Header - referer(이전 주소)
 	} 
 	
 	// 로그아웃 -> 세션 만료
@@ -75,7 +78,7 @@ public class UserController{
 						HttpSession session,
 						RedirectAttributes ra) {
 		
-		status.setComplete();
+		status.setComplete(); // 세션 만료
 		
 		ra.addFlashAttribute("alertType", "success");
 		ra.addFlashAttribute("message", "로그아웃 되었습니다.");

@@ -18,6 +18,7 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 	@Autowired
 	private PriceViewResultDAO dao;
 
+	// 1달 내
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int goodsPriceSelect(PriceViewKeyword keywords) {
@@ -27,6 +28,7 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 		return result;
 	}
 
+	// 1달~2달 내
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int goodsPriceSelect2(PriceViewKeyword keywords) {
@@ -36,6 +38,7 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 		return result2;
 	}
 
+	// 2달~3달 내
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int goodsPriceSelect3(PriceViewKeyword keywords) {
@@ -45,6 +48,7 @@ public class PriceViewResultServiceImpl implements PriceViewResultService {
 		return result3;
 	}
 
+	// 키워드로 최근 15개 조회
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<GoodsBoard> selectSearchKeyword(GoodsBoard goodsBoard) {

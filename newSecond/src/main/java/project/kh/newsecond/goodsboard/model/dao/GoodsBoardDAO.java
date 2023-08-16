@@ -26,19 +26,18 @@ public class GoodsBoardDAO {
 	 * @param searchName
 	 * @return searchGoodsCount
 	 */
-	public int searchGoodsCount(String searchName) {
-		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", searchName);
+	public int searchGoodsCount(String query) {
+		return sqlSession.selectOne("goodsBoardMapper.searchGoodsCount", query);
 	}
 
 	/** 검색 상품 목록 조회 
 	 * @param searchName
 	 * @return searchGoodsList
 	 */
-	public List<GoodsBoard> selectSearchGoodsList(String searchName) {
-		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", searchName);
+	public List<GoodsBoard> selectSearchGoodsList(String query) {
+		return sqlSession.selectList("goodsBoardMapper.selectSearchGoodsList", query);
 	}
 
-	
 	/**조건별 목록 조회
 	 * @param listSort
 	 * @return
@@ -58,7 +57,6 @@ public class GoodsBoardDAO {
 		return sqlSession.selectList("goodsBoardMapper.moreGoods", numAndSearchName);
 	}
 
-	
 	/** 상품 게시글 상세 조회
 	 * @param goodsTitle
 	 * @return goodsBoard
@@ -107,8 +105,15 @@ public class GoodsBoardDAO {
 	public Shop shopInfo(int goodsNo) {
 		return sqlSession.selectOne("goodsBoardMapper.shopInfo", goodsNo);
 	}
-
-
+	
+	// 지영
+	/** 조회수 증가
+	 * @param goodsNo
+	 * @return
+	 */
+	public int updateViewCount(int goodsNo) {
+		return sqlSession.update("goodsBoardMapper.updateViewCount",goodsNo);
+	}
 	
 	/* 메인 페이지 - 지환 */
 	/**	최근 업데이트된 상품 10가지
@@ -188,15 +193,6 @@ public class GoodsBoardDAO {
 	 */
 	public List<GoodsBoard> moreCategoryGoods(Map<String, Object> numAndCategoryCode) {
 		return sqlSession.selectList("goodsBoardMapper.moreCategoryGoods", numAndCategoryCode);
-	}
-
- 
-	/** 조회수 증가
-	 * @param goodsNo
-	 * @return
-	 */
-	public int updateViewCount(int goodsNo) {
-		return sqlSession.update("goodsBoardMapper.updateViewCount",goodsNo);
 	}
 
 

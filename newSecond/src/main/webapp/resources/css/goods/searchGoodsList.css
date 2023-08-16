@@ -14,7 +14,7 @@
 }
 
 .container--inner__top{
-    margin: 0 120px;
+    margin: 0 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,7 +27,9 @@
 }
 
 .searchNameCount{
-    width: 190px;
+    /* width: 190px; */
+    padding: 14px 10px 0 10px;
+    width: auto;
     height: 55px;
     border-radius: 35px;
     background-color: #c0d5e8;
@@ -48,6 +50,7 @@
 
 [name="listSort"]:checked + .listSort{
     color: #2365b9;
+    font-weight: bold;
 }
 
 /* 판매 완료 상품 제외 체크박스 */

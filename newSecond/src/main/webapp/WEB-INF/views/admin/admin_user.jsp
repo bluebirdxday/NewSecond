@@ -93,6 +93,7 @@
                             <td class="admin_user_states">${user["USER_STATUS"]}</td>
                             <td>${user["ENROLL_DT"]}</td>
                           <td>
+                          <%-- 타입이 HashMap인 경우 --%>
 
                    
                           <input type="hidden" value="${user['USER_NO']}" class="signOutUserNo">
@@ -102,10 +103,10 @@
                             <td>
                            
                    
-                           
+                          
                             <button class="admin_user_tableBtn block show" id="block">회원블락</button>
                             <button class="admin_user_tableBtn blockH" id="blockH">블락해제</button>
-               
+                        
                           
                             </td>
                             </tr>

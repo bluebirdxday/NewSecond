@@ -23,6 +23,10 @@ public class NoticeDAO {
 		return sqlSession.selectList("NoticeMapper.selectNoticeList");
 	}
 
+	/**공지사항 게시글 읽기 조회
+	 * @param noticeNo
+	 * @return
+	 */
 	public Notice selectNoticeOneList(int noticeNo) {
 		
 		return sqlSession.selectOne("NoticeMapper.selectNoticeOneList",noticeNo);

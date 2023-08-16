@@ -19,7 +19,7 @@
 </head>
 
 
-
+<%-- 지영님의 list검색 copy임 --%>
 
 <body style="overflow: auto;">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -31,9 +31,9 @@
                 <div class="container--inner__top">
                         <div class="searchNameCount">${categoryName}</div>
                     <!-- 판매완료상품제외 -->
-                    <div><input type="checkbox" class="soldoutExcept" id="check1">
+                    <%-- <div><input type="checkbox" class="soldoutExcept" id="check1">
                         <label for="check1"> 판매 완료 상품 제외</label>
-                    </div>
+                    </div> --%>
                     <!-- 기능별 조회 -->
                     <div class="selectSort">
                         <span id="selecSortRecent">최신순</span>
@@ -102,6 +102,15 @@
                     </c:otherwise>
                 </c:choose> 
             </div>
+
+            <c:if test="${not empty loginUser}" >
+				<a href="/writing/write">
+					<div class="myshop--btn__fixed-addpost">
+						<img src="/resources/src/img/addPost.png">
+					</div>
+				</a>
+			</c:if>
+
 
         </div>
 

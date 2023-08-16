@@ -257,7 +257,6 @@ FROM DUAL;
 SELECT * FROM "notifications";
 
 
-SELECT * FROM "qna";
 
 
 
