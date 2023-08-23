@@ -154,13 +154,20 @@
 	</select>
 	
 	
-	<!-- 이전 알림 삭제 -->
+	<!-- 중복의 경우 이전 알림 삭제 -->
 	<delete id="deleteNotification">
 		DELETE FROM "notifications"
 		WHERE USER_NO = #{targetNo}
 		AND SENDER_NO = #{senderNo}
 		AND NOTIFICATION_MESSAGE = #{notificationMessage}
 		AND NOTIFICATION_TYPE = #{notificationType}
+	</delete>
+	
+	
+	<!-- 글 삭제 시 관련 알림 삭제 -->
+	<delete id="deleteGoodsNotification">
+		DELETE FROM "notifications"
+		WHERE NOTIFICATION_URL = '/goods/' || #{goodsNo}
 	</delete>
 	
 </mapper>

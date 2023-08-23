@@ -138,6 +138,7 @@
                             <div class="container--inner__bottom__shopInfo__shopDescibe">${shop.shopInfo}</div>
                             
                             <input type="hidden" id="uploadComplete" value="${uploadComplete}">
+                            <div>${uploadComplete}</div>
                         </div>
                     </div>
                 </div>

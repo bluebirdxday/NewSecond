@@ -98,4 +98,11 @@ public interface NotificationService {
 	 * @return existResult
 	 */
 	int selectExistNotification(Notification notification);
+
+
+	/** 글 삭제 시 관련 알림 삭제
+	 * @param goodsNo
+	 * @return isCompleteDelete
+	 */
+	int deleteGoodsNotification(int goodsNo);
 }

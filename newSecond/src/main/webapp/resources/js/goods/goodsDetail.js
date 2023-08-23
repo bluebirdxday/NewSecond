@@ -23,15 +23,19 @@ next.addEventListener('click', () => {
 
 // 신고버튼 미로그인 시
 const siren = document.getElementById("siren");
-siren.addEventListener('click',e=>{
-    if(loginUserNo == ""){
-        document.getElementById('toastBody').innerText = "로그인 후 이용해주세요!";
-        document.getElementById('liveToast').classList.add('text-bg-danger');
-        toastTrigger.click();
-        e.preventDefault();
-        return;
-    }
-});
+
+if(siren!=null){
+    siren.addEventListener('click',e=>{
+        if(loginUserNo == ""){
+            document.getElementById('toastBody').innerText = "로그인 후 이용해주세요!";
+            document.getElementById('liveToast').classList.add('text-bg-danger');
+            toastTrigger.click();
+            e.preventDefault();
+            return;
+        }
+    });
+}
+
 
 // 지영
 // 좋아요 버튼
@@ -123,22 +127,20 @@ const sendLikeBoardNotification = (goodsUserNo, goodsNo, loginUserNo)=>{
 const uploadComplete = document.getElementById("uploadComplete").value;
 if(uploadComplete!=''){
 
-    let likeNofiticationSock = new SockJS("/notificationSock");
-
     // 키워드 라이브 알림 보내기
-    fetch("/notification/selectKeywordNotiList?goodsNo=" + goodsNo + "&goodsUserNo=" + goodsUserNo)
+    fetch("/notification/selectKeywordNotiList?goodsNo=" + goodsNo)
     .then(resp=>resp.json())
     .then(keywordNotiList=>{
-        likeNofiticationSock.send(JSON.stringify(keywordNotiList));
+        notificationSock.send(JSON.stringify(keywordNotiList));
     }).catch(err=>{
         console.log(err);
     })
-
+    
     // 상점을 팔로하고 있는 유저들에게 알림 전달
     fetch("/notification/selectNewPostNotification?userNo="+ goodsUserNo + "&goodsNo=" + goodsNo)
     .then(resp=>resp.json())
     .then(newPostNotiList=>{
-        likeNofiticationSock.send(JSON.stringify(newPostNotiList));
+        notificationSock.send(JSON.stringify(newPostNotiList));
     }).catch(err=>{
         console.log(err);
     })

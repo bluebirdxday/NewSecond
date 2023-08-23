@@ -176,6 +176,8 @@ function shopOwnerFollow(shopUserNo ,loginUserNo){
     .then(result=>{
         if(result>0)
             changeProfileFollowBtn("F", loginUserNo);
+
+            sendFollowNotification(shopUserNo, loginUserNo);
     })
     .catch(err=>{
         console.log(err);
@@ -330,7 +332,6 @@ function unFollow(passiveUserNo, loginUserNo, tab){
 // 알림 종류('F': 팔로우, 'P':가격 하락, 'L': 관심상품등록, 'K':키워드, 'N':새글 업데이트)
 // 팔로우 알람
 let notificationSock = new SockJS("/notificationSock");
-let inquireNotiSocket = new SockJS("/inquireNotificationSock"); 
 
 const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
     
@@ -340,17 +341,9 @@ const sendFollowNotification = (passiveUserNo, loginUserNo)=>{
             "notificationMessage": "님께서 회원님을 팔로우하였습니다",
             "notificationType": "F",
             "notificationURL" : "/shop/" + loginUserNo
-
         };
 
         notificationSock.send(JSON.stringify(followObj));
-
-
-        var followObj2 = {
-            "targetNo": passiveUserNo
-        }
-
-        inquireNotiSocket.send(JSON.stringify(followObj2));
         
 }
 
@@ -425,9 +418,6 @@ function selectFollowList(followList, tab, loginUserNo){
         const aTag = document.createElement("a");
         const gotoShop = document.createElement("div");
         const followBtn = document.createElement("button");
-
-
-        /* --------------------------------- */
 
         
         gotoShop.classList.add("tab3--item__btn-gotoshop");

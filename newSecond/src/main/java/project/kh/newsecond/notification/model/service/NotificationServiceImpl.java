@@ -108,4 +108,11 @@ public class NotificationServiceImpl implements NotificationService{
 		return dao.selectExistNotification(notification);
 	}
 
+
+	// 글 삭제 시 관련 알림 삭제
+	@Override
+	public int deleteGoodsNotification(int goodsNo) {
+		return dao.deleteGoodsNotification(goodsNo);
+	}
+
 }

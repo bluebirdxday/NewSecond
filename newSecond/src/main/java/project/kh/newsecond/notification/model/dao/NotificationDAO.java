@@ -87,4 +87,9 @@ public class NotificationDAO {
 		return sqlSession.delete("NotificationMapper.deleteNotification", noti);
 	}
 
+	// 글 삭제 시 관련 알림 삭제
+	public int deleteGoodsNotification(int goodsNo) {
+		return sqlSession.delete("NotificationMapper.deleteGoodsNotification", goodsNo);
+	}
+
 }

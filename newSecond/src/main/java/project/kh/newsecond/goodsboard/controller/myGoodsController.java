@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.kh.newsecond.goodsboard.model.dto.Files;
 import project.kh.newsecond.goodsboard.model.dto.GoodsBoard;
 import project.kh.newsecond.goodsboard.model.service.MyGoodsService;
+import project.kh.newsecond.notification.model.service.NotificationService;
 
 @Controller
 @RequestMapping("/myGoods")
@@ -25,6 +26,10 @@ public class myGoodsController {
 	
 	@Autowired
 	private MyGoodsService service;
+	
+	
+	@Autowired
+	private NotificationService notiService;
 	
 	// 게시글 수정 페이지 단순 리턴
 	@PostMapping("/modify")
@@ -119,7 +124,19 @@ public class myGoodsController {
 		String path = "redirect:";
 		
 		if(result > 0) { // 성공시 http://localhost/shop/{userNo}
-			path += "/shop/" + goodsBoard.getUserNo();
+			
+			// (희진) 관련 알림 삭제
+			int isCompleteDelete = 0;
+			
+			isCompleteDelete = notiService.deleteGoodsNotification(goodsBoard.getGoodsNo());
+			
+			if(isCompleteDelete>0)
+				path += "/";
+			
+			else
+				path += "/goods/" + goodsBoard.getGoodsNo();
+
+			
 		} else { // 실패시 http://localhost/goods/{goodsNo}
 			path += "/goods/" + goodsBoard.getGoodsNo();
 		}

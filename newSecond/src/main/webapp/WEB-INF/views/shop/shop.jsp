@@ -91,7 +91,7 @@
             </div>
 
             <div class="myshop--info__bottom">
-            <c:if test="${loginUserNo!=0}" >
+            <c:if test="${loginUserNo!=0 && loginUserNo!=shop.userNo}" >
                 <div class="myshop--info__btn-report">
                     <a href="/qna/qna">
                         <img src="/resources/src/img/siren.png">
