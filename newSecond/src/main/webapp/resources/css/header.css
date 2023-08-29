@@ -312,3 +312,24 @@ header>section:nth-child(3){ height: 30%; }
     background-color: transparent;
 }
 
+
+
+/* 알림 아이콘 */
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+    display: none;
+}

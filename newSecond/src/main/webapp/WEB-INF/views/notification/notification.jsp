@@ -128,71 +128,71 @@
             </div>
 
             
-                    <!-- 키워드 알림 탭 -->
-                    <div id="tab2" class="notice--tab__content">
-                        
-                        <div class="notice--tab2__banner">
-                            <div><img src="/resources/src/img/loudSpeaker.png"> &nbsp;알림 받고 있는 키워드 <span>${keywordCount}</span>개</div>
-                            <a href="/notification/editKeyword">편집</a>
-                        </div>
+            <!-- 키워드 알림 탭 -->
+            <div id="tab2" class="notice--tab__content">
+                
+                <div class="notice--tab2__banner">
+                    <div><img src="/resources/src/img/loudSpeaker.png"> &nbsp;알림 받고 있는 키워드 <span>${keywordCount}</span>개</div>
+                    <a href="/notification/editKeyword">편집</a>
+                </div>
 
-                        <c:if test="${not empty notificationList}" >
-                            <c:forEach items="${notificationList}" var="notification">
+                <c:if test="${not empty notificationList}" >
+                    <c:forEach items="${notificationList}" var="notification">
 
-                                    <c:if test="${notification.notificationType=='K'}" >
-                                        <a href="${notification.notificationURL}">
+                            <c:if test="${notification.notificationType=='K'}" >
+                                <a href="${notification.notificationURL}">
 
-                                                <c:if test="${notification.readOrNot=='N'}" >
-                                                    <div class="notice--tab2__item notice--new"> 
-                                                </c:if>
+                                        <c:if test="${notification.readOrNot=='N'}" >
+                                            <div class="notice--tab2__item notice--new"> 
+                                        </c:if>
 
-                                                <c:if test="${notification.readOrNot=='Y'}" >
-                                                    <div class="notice--tab2__item">
-                                                </c:if>
+                                        <c:if test="${notification.readOrNot=='Y'}" >
+                                            <div class="notice--tab2__item">
+                                        </c:if>
 
-                                                    <div class="notice--tab2__item-first">
-                                                        <img src="${notification.thumbnail}">
-                                                    </div>
-                                                    <div class="notice--tab2__item-second">
-                                                        <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
-                                                        <div>${keywordArr[0]}</div>
-                                                        <div>${keywordArr[1]}</div>
-                                                    </div>
-                                                    <div class="notice--tab2__item-third">${notification.sendDate}</div>
-                                                </div>
-                                            </a>
-                                    </c:if>
+                                            <div class="notice--tab2__item-first">
+                                                <img src="${notification.thumbnail}">
+                                            </div>
+                                            <div class="notice--tab2__item-second">
+                                                <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
+                                                <div>${keywordArr[0]}</div>
+                                                <div>${keywordArr[1]}</div>
+                                            </div>
+                                            <div class="notice--tab2__item-third">${notification.sendDate}</div>
+                                        </div>
+                                    </a>
+                            </c:if>
 
-                            </c:forEach>
-                        </c:if>
+                    </c:forEach>
+                </c:if>
 
-                        <c:if test="${empty notificationList}" >
-                            <div class="emptyNotification">현재 키워드 알림이 없습니다</div>
-                        </c:if>
-                        
-                        <%-- <div class="notice--tab2__item">
-                            <div class="notice--tab2__item-first">
-                                <img src="/resources/src/img/blackimg.jpg">
-                            </div>
-                            <div class="notice--tab2__item-second">
-                                <div>키워드명</div>
-                                <div>게시글 제목</div>
-                            </div>
-                            <div class="notice--tab2__item-third">1시간 전</div>
-                        </div> --%>
-
-
-                                            <%-- <c:if test="${notification.notificationType=='K'}" >
-                                                    <div>${notification.shopTitle}</div>
-                                                </div>
-                                                <div class="notice--tab1__item-second" style="font-size:18px;">
-                                                    <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
-                                                    <div>${keywordArr[0]} &nbsp; &nbsp; &nbsp; <span style="font-weight:400"> ${keywordArr[1]}</span></div>
-                                                </div>
-                                            </c:if>
-                                                <div class="notice--tab1__item-third">${notification.sendDate}</div> --%>
-
+                <c:if test="${empty notificationList}" >
+                    <div class="emptyNotification">현재 키워드 알림이 없습니다</div>
+                </c:if>
+                
+                <%-- <div class="notice--tab2__item">
+                    <div class="notice--tab2__item-first">
+                        <img src="/resources/src/img/blackimg.jpg">
                     </div>
+                    <div class="notice--tab2__item-second">
+                        <div>키워드명</div>
+                        <div>게시글 제목</div>
+                    </div>
+                    <div class="notice--tab2__item-third">1시간 전</div>
+                </div> --%>
+
+
+                                    <%-- <c:if test="${notification.notificationType=='K'}" >
+                                            <div>${notification.shopTitle}</div>
+                                        </div>
+                                        <div class="notice--tab1__item-second" style="font-size:18px;">
+                                            <c:set var="keywordArr" value="${fn:split(notification.notificationMessage, '^^')}"/>
+                                            <div>${keywordArr[0]} &nbsp; &nbsp; &nbsp; <span style="font-weight:400"> ${keywordArr[1]}</span></div>
+                                        </div>
+                                    </c:if>
+                                        <div class="notice--tab1__item-third">${notification.sendDate}</div> --%>
+
+            </div>
 
         </div>
 

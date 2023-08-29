@@ -53,8 +53,8 @@ public class NotificationDAO {
 	}
 
 	// 알림 리스트 조회
-	public List<Notification> selectNotificationList(int userNo) {
-		return sqlSession.selectList("NotificationMapper.selectNotificationList", userNo);
+	public List<Notification> selectNotificationList(Map<String, Object> map) {
+		return sqlSession.selectList("NotificationMapper.selectNotificationList", map);
 	}
 
 	// 키워드 알림을 위한 리스트 조회
@@ -73,8 +73,8 @@ public class NotificationDAO {
 	}
 
 	// 알림 읽음 업데이트
-	public int updateReadOrNot(int userNo) {
-		return sqlSession.update("NotificationMapper.updateReadOrNot", userNo);
+	public int updateReadOrNot(Map<String, Object> map) {
+		return sqlSession.update("NotificationMapper.updateReadOrNot", map);
 	}
 
 	// 알림 중복 체크
@@ -90,6 +90,11 @@ public class NotificationDAO {
 	// 글 삭제 시 관련 알림 삭제
 	public int deleteGoodsNotification(int goodsNo) {
 		return sqlSession.delete("NotificationMapper.deleteGoodsNotification", goodsNo);
+	}
+
+	// 알림 개수 조회
+	public int selectNotificationCount(int userNo) {
+		return sqlSession.selectOne("NotificationMapper.selectNotificationCount", userNo);
 	}
 
 }

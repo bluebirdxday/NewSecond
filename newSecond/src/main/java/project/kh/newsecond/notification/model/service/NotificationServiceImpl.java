@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import project.kh.newsecond.notification.model.dao.NotificationDAO;
 import project.kh.newsecond.notification.model.dto.Notification;
 import project.kh.newsecond.notification.model.dto.NotificationKeyword;
-import project.kh.newsecond.review.model.dto.Review;
-import project.kh.newsecond.shop.model.dto.Shop;
 
 @Service
 public class NotificationServiceImpl implements NotificationService{
@@ -69,8 +67,8 @@ public class NotificationServiceImpl implements NotificationService{
 
 	// 알림 리스트 조회
 	@Override
-	public List<Notification> selectNotificationList(int userNo) {
-		return dao.selectNotificationList(userNo);
+	public List<Notification> selectNotificationList(Map<String, Object> map) {
+		return dao.selectNotificationList(map);
 	}
 
 
@@ -95,13 +93,6 @@ public class NotificationServiceImpl implements NotificationService{
 	}
 
 
-	// 알림 읽음 업데이트
-	@Override
-	public int updateReadOrNot(int userNo) {
-		return dao.updateReadOrNot(userNo);
-	}
-
-
 	// 알림 중복 체크
 	@Override
 	public int selectExistNotification(Notification notification) {
@@ -113,6 +104,20 @@ public class NotificationServiceImpl implements NotificationService{
 	@Override
 	public int deleteGoodsNotification(int goodsNo) {
 		return dao.deleteGoodsNotification(goodsNo);
+	}
+
+
+	// 알림 읽음 업데이트
+	@Override
+	public int updateReadOrNot(Map<String, Object> map) {
+		return dao.updateReadOrNot(map);
+	}
+
+
+	// 알림 개수 조회
+	@Override
+	public int selectNotificationCount(int userNo) {
+		return dao.selectNotificationCount(userNo);
 	}
 
 }

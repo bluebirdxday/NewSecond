@@ -30,7 +30,21 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	
+		<!-- 
+		base-package 이하에 작성된 
+		@Component와 자식 어노테이션(@Controller, @Service, @Repository)이 붙은
+		클래스를 찾아 Bean(Spring이 관리하는 객체)으로 등록
+		-->
 	<context:component-scan base-package="project.kh.newsecond" />
+	
+	<interceptors>
+		<interceptor>
+			<!-- 인터셉터가 동작할 url 패턴 -->
+			<mapping path="/**"/>
+			<beans:bean id="notificationInterceptor" class="project.kh.newsecond.common.interceptor.NotificationInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<!-- @Transactional 어노테이션 인식, 활성화 -->
 	<tx:annotation-driven   transaction-manager="transactionManager"/>

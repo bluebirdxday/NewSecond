@@ -58,10 +58,10 @@ public interface NotificationService {
 
 
 	/** 알림 리스트 조회
-	 * @param loginUserNo
+	 * @param map
 	 * @return notificationList
 	 */
-	List<Notification> selectNotificationList(int loginUserNo);
+	List<Notification> selectNotificationList(Map<String, Object> map);
 
 
 	/** 키워드 알림을 위한 리스트 조회
@@ -84,14 +84,6 @@ public interface NotificationService {
 	 */
 	Notification addReviewNotification(Map<String, Object> map);
 
-
-	/** 알림 읽음 업데이트
-	 * @param userNo
-	 * @return result
-	 */
-	int updateReadOrNot(int userNo);
-
-
 	
 	/** 알림 중복 체크
 	 * @param notification
@@ -105,4 +97,20 @@ public interface NotificationService {
 	 * @return isCompleteDelete
 	 */
 	int deleteGoodsNotification(int goodsNo);
+
+
+	 /** 알림 읽음 업데이트
+	 * @param notificationList
+	 * @param isKeyword
+	 * @return result
+	 */
+	int updateReadOrNot(Map<String, Object> map);
+
+
+	/** 알림 개수 조회
+	 * @param userNo
+	 * @return
+	 */
+	int selectNotificationCount(int userNo);
+
 }

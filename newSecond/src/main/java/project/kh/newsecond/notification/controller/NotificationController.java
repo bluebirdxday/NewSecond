@@ -37,13 +37,28 @@ public class NotificationController {
 	@GetMapping("/notification")
 	public String notification(@SessionAttribute(value="loginUser", required=false) User loginUser, Model model) {
 		
+		
+		if(loginUser==null)
+			return "redirect:/";
+		
+		
 		int loginUserNo = loginUser.getUserNo();
 		
 		int keywordCount = service.selectKeywordCount(loginUserNo);
-		List<Notification> notificationList = service.selectNotificationList(loginUserNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", loginUserNo);
+		map.put("keyword", 0);
+		
+		List<Notification> notificationList = service.selectNotificationList(map);
 		
 		model.addAttribute("keywordCount", keywordCount);
 		model.addAttribute("notificationList", notificationList);
+		
+		
+		if(!notificationList.isEmpty())
+			service.updateReadOrNot(map);
+		
 		
 		return "notification/notification";
 	}
@@ -131,11 +146,16 @@ public class NotificationController {
 		return service.addReviewNotification(map);
 	}
 	
-	// 알림 읽음 업데이트
-	@PostMapping("/updateReadOrNot")
+	// 키워드 알림 읽음 업데이트
+	@PostMapping("/updateKeywordReadOrNot")
 	@ResponseBody
-	public int updateReadOrNot(int userNo) {
-		return service.updateReadOrNot(userNo);
+	public int updateKeywordReadOrNot(@SessionAttribute(value="loginUser", required=false) User loginUser) {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", loginUser.getUserNo());
+		map.put("keyword", 1);
+		
+		return service.updateReadOrNot(map);
 	}
 	
 	

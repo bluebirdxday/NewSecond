@@ -7,7 +7,7 @@ tabList.forEach(function(tab) {
     tab.addEventListener("click" , function(){
 
         var tab_id = tab.firstChild.getAttribute('rel');
-
+        
         tabList.forEach(e=>{
             e.classList.remove('notice--tabs__active');
         });
@@ -18,8 +18,30 @@ tabList.forEach(function(tab) {
 
         tab.classList.add('notice--tabs__active');
         document.getElementById(`${tab_id}`).classList.add('notice--tabs__active');
+
+
+        /* 키워드 알림 읽음 처리 */
+        if(tab_id=='tab2'){
+            
+            fetch('/notification/updateKeywordReadOrNot', {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"}
+            })
+            .then(resp=>resp.text())
+            .then(result=>{
+
+                if(result>0)
+                    console.log("키워드 알림 읽음 처리 완료");
+                
+            })
+            .catch(err=>console.log(err))
+        }
+
+
     });
 });
+
+
 
 
 // let inquireNotiSocket;

@@ -70,7 +70,7 @@
                 </span>
 
 
-                <span>
+                <span class="notification-wrapper">
                     <c:if test="${empty loginUser}">
                         <a href="/" id="notification">
                             <img class="notifications" src="/resources/src/img/notifications.png"/>
@@ -81,6 +81,7 @@
                         <a href="/notification/notification" id="notification">
                             <img class="notifications" src="/resources/src/img/notifications.png"/>
                         </a>
+                        <div class="notification-dot"></div>
                     </c:if>
                 </span>
             </div>
@@ -95,6 +96,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="/resources/js/goods/searchGoodsList.js"></script>
+
+<script>
+    const notificationCount = ${hasUnreadNotifications};
+</script>
+
 <script src="/resources/js/header.js"></script>
 
 
