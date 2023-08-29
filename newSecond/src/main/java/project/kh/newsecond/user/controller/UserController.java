@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.kh.newsecond.notification.model.service.NotificationService;
 import project.kh.newsecond.user.model.dto.User;
 import project.kh.newsecond.user.model.service.UserService;
 
@@ -27,6 +28,7 @@ public class UserController{
 	
 	@Autowired
 	private UserService service;
+	
 	
 	// 로그인 -> 유저 정보 세션 넘기기
 	@PostMapping("/login")

@@ -1,7 +1,15 @@
 
-/* 희진 : 팔로우 알림 + 키워드 알림 */
+/* 희진 : 알림 아이콘 */
+const newNotification = document.querySelector(".notification-dot");
+const notificationIcon = document.querySelector("#notification>.notifications");
+
+if(notificationCount>0){
+    newNotification.style.display = 'block';
+}else
+    newNotification.style.display = 'none';
+
+/* 희진 : 실시간 알림 */
 let notificationSock2 = new SockJS("/notificationSock");
-// let likeBoardNotificationSock2 = new SockJS("/likeBoardNotificationSock");
 
 notificationSock2.onmessage = function(e) {
     // 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 msg 변수에 저장.
@@ -40,5 +48,12 @@ notificationSock2.onmessage = function(e) {
         document.getElementById('alarmBody').innerText= liveMessage;
     }
 
+    newNotification.style.display = 'block';
     alarmTrigger.click();
 }
+
+
+/* 알림 아이콘 클릭 시 */
+notificationIcon.addEventListener("click", ()=>{
+    newNotification.style.display = 'none';
+});

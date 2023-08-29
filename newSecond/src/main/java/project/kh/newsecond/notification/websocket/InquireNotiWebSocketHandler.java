@@ -1,8 +1,10 @@
 package project.kh.newsecond.notification.websocket;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -52,7 +54,11 @@ public class InquireNotiWebSocketHandler  extends TextWebSocketHandler{
 		
 		Notification noti = objectMapper.readValue(msg, Notification.class);
 		
-		List<Notification> notificationList = service.selectNotificationList(noti.getTargetNo());
+		Map<String, Object> map = new HashMap<>();
+		map.put("userNo", noti.getTargetNo());
+		map.put("keyword", 0);
+		
+		List<Notification> notificationList = service.selectNotificationList(map);
 
 		
         if(!notificationList.isEmpty()){

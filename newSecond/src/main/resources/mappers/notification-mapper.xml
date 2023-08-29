@@ -57,7 +57,12 @@
 				JOIN "shop" s ON(SENDER_NO=s.USER_NO)
 				WHERE n.USER_NO = #{userNo}
 				ORDER BY NOTIFICATION_CREATE_DT DESC)
-	<!-- WHERE NOTIFICATION_TYPE NOT IN ('K') -->
+				
+		  <where>
+	        <if test="keyword==1">
+	            AND NOTIFICATION_TYPE = 'K'
+	        </if>
+	    </where>
 	</select>
 	
 
@@ -136,10 +141,21 @@
 	
 	<!-- 알림 읽음 처리 -->
 	<update id="updateReadOrNot">
-		UPDATE "notifications" 
-		SET READ_OR_NOT = 'Y'
-		WHERE NOTIFICATION_NO IN 
-			(SELECT NOTIFICATION_NO FROM "notifications" WHERE READ_OR_NOT = 'N' AND USER_NO = ${userNo})
+	    UPDATE "notifications" 
+	    SET READ_OR_NOT = 'Y'
+	    WHERE USER_NO = #{userNo} 
+	    AND NOTIFICATION_NO IN (
+	        SELECT NOTIFICATION_NO FROM "notifications" 
+	        WHERE READ_OR_NOT = 'N' AND USER_NO = #{userNo} 
+	        <choose>
+	            <when test="keyword == 1">
+	                AND NOTIFICATION_TYPE = 'K'
+	            </when>
+	            <otherwise>
+	                AND NOTIFICATION_TYPE != 'K'
+	            </otherwise>
+	        </choose>
+	    )
 	</update>
 	
 	
@@ -169,5 +185,13 @@
 		DELETE FROM "notifications"
 		WHERE NOTIFICATION_URL = '/goods/' || #{goodsNo}
 	</delete>
+	
+	
+	<!-- 알림 개수 조회 -->
+	<select id="selectNotificationCount" resultType="int">
+		SELECT COUNT(*) FROM "notifications"
+		WHERE USER_NO = #{userNo}
+		AND READ_OR_NOT = 'N'
+	</select>
 	
 </mapper>
