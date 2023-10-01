@@ -1,5 +1,8 @@
-# New Second
+# ✨ New Second
 신세대를 주타겟으로 하는 중고 거래 서비스
+
+![메인화면 2](https://github.com/bluebirdxday/NewSecond/assets/101131054/f1103989-51ad-40c0-86a4-f97d49fcbbdc)
+
 <br></br>
 <br></br>
 
